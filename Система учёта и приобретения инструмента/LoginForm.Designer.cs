@@ -38,9 +38,9 @@
             // 
             // ExitLF
             // 
-            this.ExitLF.Location = new System.Drawing.Point(52, 273);
+            this.ExitLF.Location = new System.Drawing.Point(50, 400);
             this.ExitLF.Name = "ExitLF";
-            this.ExitLF.Size = new System.Drawing.Size(289, 47);
+            this.ExitLF.Size = new System.Drawing.Size(300, 50);
             this.ExitLF.TabIndex = 0;
             this.ExitLF.Text = "Выйти";
             this.ExitLF.UseVisualStyleBackColor = true;
@@ -48,27 +48,28 @@
             // 
             // LoginLFINJ
             // 
-            this.LoginLFINJ.Location = new System.Drawing.Point(205, 220);
+            this.LoginLFINJ.Location = new System.Drawing.Point(203, 344);
             this.LoginLFINJ.Name = "LoginLFINJ";
-            this.LoginLFINJ.Size = new System.Drawing.Size(136, 47);
+            this.LoginLFINJ.Size = new System.Drawing.Size(147, 50);
             this.LoginLFINJ.TabIndex = 0;
-            this.LoginLFINJ.Text = "Инженер по инструменту";
+            this.LoginLFINJ.Text = "Инженер по инструменту отдела подготовки производства";
             this.LoginLFINJ.UseVisualStyleBackColor = true;
+            this.LoginLFINJ.Click += new System.EventHandler(this.LoginLFINJ_Click);
             // 
             // UsersLF
             // 
-            this.UsersLF.Location = new System.Drawing.Point(52, 194);
+            this.UsersLF.Location = new System.Drawing.Point(50, 318);
             this.UsersLF.Name = "UsersLF";
             this.UsersLF.ReadOnly = true;
-            this.UsersLF.Size = new System.Drawing.Size(289, 20);
+            this.UsersLF.Size = new System.Drawing.Size(300, 20);
             this.UsersLF.TabIndex = 1;
             this.UsersLF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // LoginLFKLAD
             // 
-            this.LoginLFKLAD.Location = new System.Drawing.Point(52, 220);
+            this.LoginLFKLAD.Location = new System.Drawing.Point(50, 344);
             this.LoginLFKLAD.Name = "LoginLFKLAD";
-            this.LoginLFKLAD.Size = new System.Drawing.Size(147, 47);
+            this.LoginLFKLAD.Size = new System.Drawing.Size(147, 50);
             this.LoginLFKLAD.TabIndex = 0;
             this.LoginLFKLAD.Text = "Кладовщик ЦИС, БИХ цеха";
             this.LoginLFKLAD.UseVisualStyleBackColor = true;
@@ -78,7 +79,7 @@
             // 
             this.LoginFormLable.AutoSize = true;
             this.LoginFormLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LoginFormLable.Location = new System.Drawing.Point(58, 8);
+            this.LoginFormLable.Location = new System.Drawing.Point(60, 159);
             this.LoginFormLable.MaximumSize = new System.Drawing.Size(300, 0);
             this.LoginFormLable.Name = "LoginFormLable";
             this.LoginFormLable.Size = new System.Drawing.Size(279, 75);
@@ -90,7 +91,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(139, 160);
+            this.label1.Location = new System.Drawing.Point(137, 281);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 25);
             this.label1.TabIndex = 3;
@@ -100,17 +101,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(388, 348);
+            this.ClientSize = new System.Drawing.Size(384, 461);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LoginFormLable);
             this.Controls.Add(this.UsersLF);
             this.Controls.Add(this.LoginLFKLAD);
             this.Controls.Add(this.LoginLFINJ);
             this.Controls.Add(this.ExitLF);
-            this.MaximumSize = new System.Drawing.Size(404, 387);
-            this.MinimumSize = new System.Drawing.Size(404, 387);
+            this.MaximumSize = new System.Drawing.Size(400, 500);
+            this.MinimumSize = new System.Drawing.Size(400, 500);
             this.Name = "LoginForm";
-            this.Text = "Авторизация Информационная система учета и приобретения инструмента";
+            this.Text = "Информационная система учета и приобретения инструмента – Авторизация";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

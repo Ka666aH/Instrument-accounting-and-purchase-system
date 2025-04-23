@@ -10,26 +10,21 @@ using System.Windows.Forms;
 
 namespace Система_учёта_и_приобретения_инструмента
 {
-    public partial class Klad: Form
+    public partial class Inj : Form
     {
         LoginForm login;
-        bool changeUser=false;
-        public Klad(LoginForm _login)
+        bool changeUser = false;
+        public Inj(LoginForm _login)
         {
             InitializeComponent();
             login = _login;
         }
 
-        private void Klad_Load(object sender, EventArgs e)
+        private void Inj_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
-        }
-
-        private void Klad_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if(changeUser)
+            if (changeUser)
                 login.Show();
-            else 
+            else
                 login.Close();
         }
     }

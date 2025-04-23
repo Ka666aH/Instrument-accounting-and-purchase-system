@@ -19,7 +19,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void ExitLF_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -29,8 +29,26 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void LoginLFKLAD_Click(object sender, EventArgs e)
         {
-            Klad klad = new Klad();
-            klad.Show();
+            Klad klad = new Klad(this);
+            Hide();
+            klad.ShowDialog();
+        }
+
+        private void LoginLFINJ_Click(object sender, EventArgs e)
+        {
+            Inj inj = new Inj(this);
+            inj.ShowDialog();
+
+        }
+
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //if(this.Visible)
+            //{
+            //    e.Cancel = true;
+            //    Show();
+            //}
+
         }
     }
 }

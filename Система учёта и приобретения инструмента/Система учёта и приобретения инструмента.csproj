@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Inj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inj.Designer.cs">
+      <DependentUpon>Inj.cs</DependentUpon>
+    </Compile>
     <Compile Include="Klad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Inj.resx">
+      <DependentUpon>Inj.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Klad.resx">
       <DependentUpon>Klad.cs</DependentUpon>
     </EmbeddedResource>

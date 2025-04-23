@@ -30,11 +30,11 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -53,7 +53,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(776, 567);
+            this.tabControl1.Size = new System.Drawing.Size(1240, 657);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -62,47 +62,10 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(768, 541);
+            this.tabPage1.Size = new System.Drawing.Size(1232, 631);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Справочник номенклатуры";
+            this.tabPage1.Text = "Номенклатура инструмента";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(768, 541);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Заявки на получение инструмента";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(768, 541);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Движение инструмента";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(768, 541);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Дефектные ведомости";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(768, 541);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Фиксация остатков";
-            this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -112,17 +75,56 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(15, 96);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(736, 431);
+            this.dataGridView1.Size = new System.Drawing.Size(1200, 521);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1232, 631);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Заявки на получение инструмента";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1232, 631);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Движение инструмента";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1232, 631);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Дефектные ведомости";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(1232, 631);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Фиксация остатков";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // Klad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 591);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.tabControl1);
             this.Name = "Klad";
-            this.Text = "Кладовщик ЦИС, БИХ цеха Информационная система учета и приобретения инструмента";
+            this.Text = "Кладовщик ЦИС, БИХ цеха – Информационная система учета и приобретения инструмента" +
+    "";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Klad_FormClosed);
             this.Load += new System.EventHandler(this.Klad_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
