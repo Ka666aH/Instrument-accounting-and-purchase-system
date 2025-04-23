@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Система_учёта_и_приобретения_инструмента
 {
-    public partial class Form1 : Form
+    public partial class Klad: Form
     {
-        public Form1()
+        public Klad()
         {
             InitializeComponent();
+        }
+
+        private void Klad_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
         }
     }
 }
