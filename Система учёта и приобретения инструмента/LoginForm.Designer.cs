@@ -41,7 +41,7 @@
             this.ExitLF.Location = new System.Drawing.Point(50, 400);
             this.ExitLF.Name = "ExitLF";
             this.ExitLF.Size = new System.Drawing.Size(300, 50);
-            this.ExitLF.TabIndex = 0;
+            this.ExitLF.TabIndex = 2;
             this.ExitLF.Text = "Выйти";
             this.ExitLF.UseVisualStyleBackColor = true;
             this.ExitLF.Click += new System.EventHandler(this.ExitLF_Click);
@@ -51,7 +51,7 @@
             this.LoginLFINJ.Location = new System.Drawing.Point(203, 344);
             this.LoginLFINJ.Name = "LoginLFINJ";
             this.LoginLFINJ.Size = new System.Drawing.Size(147, 50);
-            this.LoginLFINJ.TabIndex = 0;
+            this.LoginLFINJ.TabIndex = 1;
             this.LoginLFINJ.Text = "Инженер по инструменту отдела подготовки производства";
             this.LoginLFINJ.UseVisualStyleBackColor = true;
             this.LoginLFINJ.Click += new System.EventHandler(this.LoginLFINJ_Click);
@@ -62,7 +62,7 @@
             this.UsersLF.Name = "UsersLF";
             this.UsersLF.ReadOnly = true;
             this.UsersLF.Size = new System.Drawing.Size(300, 20);
-            this.UsersLF.TabIndex = 1;
+            this.UsersLF.TabIndex = 4;
             this.UsersLF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // LoginLFKLAD
@@ -111,6 +111,7 @@
             this.MaximumSize = new System.Drawing.Size(400, 500);
             this.MinimumSize = new System.Drawing.Size(400, 500);
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Информационная система учета и приобретения инструмента – Авторизация";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
             this.Load += new System.EventHandler(this.LoginForm_Load);

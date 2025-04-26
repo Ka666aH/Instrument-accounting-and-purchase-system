@@ -27,5 +27,16 @@ namespace Система_учёта_и_приобретения_инструме
             else
                 login.Close();
         }
+
+        private void сменитьПользователяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            changeUser = true;
+            Close();
+        }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
