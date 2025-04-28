@@ -130,6 +130,7 @@
             this.CloseNewApplication.TabIndex = 4;
             this.CloseNewApplication.Text = "Закрыть без сохранения";
             this.CloseNewApplication.UseVisualStyleBackColor = true;
+            this.CloseNewApplication.Click += new System.EventHandler(this.CloseNewApplication_Click);
             // 
             // label3
             // 

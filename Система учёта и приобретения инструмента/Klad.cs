@@ -49,5 +49,11 @@ namespace Система_учёта_и_приобретения_инструме
             AddApplications addApplications = new AddApplications();
             addApplications.ShowDialog();
         }
+
+        private void AddMoving_Click(object sender, EventArgs e)
+        {
+            AddMoving addMoving = new AddMoving(); 
+            addMoving.ShowDialog(); 
+        }
     }
 }

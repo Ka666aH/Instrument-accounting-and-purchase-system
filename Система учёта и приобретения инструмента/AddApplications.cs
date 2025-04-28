@@ -38,5 +38,10 @@ namespace Система_учёта_и_приобретения_инструме
                 OtherReason.Visible = false;
             }
         }
+
+        private void CloseNewApplication_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

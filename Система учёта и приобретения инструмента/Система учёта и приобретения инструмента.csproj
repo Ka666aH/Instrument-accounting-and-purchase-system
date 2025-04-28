@@ -52,6 +52,12 @@
     <Compile Include="AddApplications.Designer.cs">
       <DependentUpon>AddApplications.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddMoving.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddMoving.Designer.cs">
+      <DependentUpon>AddMoving.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inj.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddApplications.resx">
       <DependentUpon>AddApplications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddMoving.resx">
+      <DependentUpon>AddMoving.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inj.resx">
       <DependentUpon>Inj.cs</DependentUpon>
