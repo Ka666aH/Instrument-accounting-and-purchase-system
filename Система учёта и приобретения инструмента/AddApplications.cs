@@ -43,5 +43,10 @@ namespace Система_учёта_и_приобретения_инструме
         {
             this.Close();
         }
+
+        private void ApplicationsCompound_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

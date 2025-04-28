@@ -55,5 +55,11 @@ namespace Система_учёта_и_приобретения_инструме
             AddMoving addMoving = new AddMoving(); 
             addMoving.ShowDialog(); 
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            DefAdd defAdd = new DefAdd();
+            defAdd.ShowDialog();
+        }
     }
 }

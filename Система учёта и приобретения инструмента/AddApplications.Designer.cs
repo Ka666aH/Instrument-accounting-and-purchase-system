@@ -96,6 +96,7 @@
             this.ApplicationsCompound.Name = "ApplicationsCompound";
             this.ApplicationsCompound.Size = new System.Drawing.Size(760, 328);
             this.ApplicationsCompound.TabIndex = 2;
+            this.ApplicationsCompound.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ApplicationsCompound_CellContentClick);
             // 
             // ApplicationType
             // 
