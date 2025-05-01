@@ -43,8 +43,8 @@ namespace Система_учёта_и_приобретения_инструме
         {
             WindowState = FormWindowState.Maximized;
 
-            InjLogStartPeriod.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
-            InjLogEndPeriod.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddDays(-1);
+            LogStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            LogEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddDays(-1);
         }
     }
 }
