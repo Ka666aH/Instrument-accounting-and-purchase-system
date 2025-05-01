@@ -81,7 +81,6 @@
             this.comboBox13 = new System.Windows.Forms.ComboBox();
             this.label31 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button19 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
@@ -162,11 +161,38 @@
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
-            this.dataGridView12 = new System.Windows.Forms.DataGridView();
-            this.dataGridView13 = new System.Windows.Forms.DataGridView();
             this.label39 = new System.Windows.Forms.Label();
             this.button20 = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
+            this.dataGridView14 = new System.Windows.Forms.DataGridView();
+            this.dataGridView15 = new System.Windows.Forms.DataGridView();
+            this.dataGridView16 = new System.Windows.Forms.DataGridView();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label44 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox15 = new System.Windows.Forms.ComboBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.dataGridView12 = new System.Windows.Forms.DataGridView();
+            this.dataGridView13 = new System.Windows.Forms.DataGridView();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.comboBox20 = new System.Windows.Forms.ComboBox();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.label48 = new System.Windows.Forms.Label();
+            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox21 = new System.Windows.Forms.ComboBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.dataGridView17 = new System.Windows.Forms.DataGridView();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.dataGridView18 = new System.Windows.Forms.DataGridView();
+            this.button23 = new System.Windows.Forms.Button();
             this.InjLevel1.SuspendLayout();
             this.InjNomenPage.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -182,6 +208,8 @@
             this.tabPage1.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.tabPage7.SuspendLayout();
+            this.tabPage8.SuspendLayout();
+            this.tabPage9.SuspendLayout();
             this.InjAnalogPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -199,8 +227,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView16)).BeginInit();
+            this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView13)).BeginInit();
+            this.groupBox10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView18)).BeginInit();
             this.SuspendLayout();
             // 
             // InjLevel1
@@ -657,10 +692,10 @@
             this.InjLevel2.Controls.Add(this.tabPage9);
             this.InjLevel2.Controls.Add(this.tabPage10);
             this.InjLevel2.Controls.Add(this.tabPage12);
-            this.InjLevel2.Location = new System.Drawing.Point(0, 0);
+            this.InjLevel2.Location = new System.Drawing.Point(-2, -1);
             this.InjLevel2.Name = "InjLevel2";
             this.InjLevel2.SelectedIndex = 0;
-            this.InjLevel2.Size = new System.Drawing.Size(1258, 632);
+            this.InjLevel2.Size = new System.Drawing.Size(1260, 633);
             this.InjLevel2.TabIndex = 0;
             // 
             // tabPage11
@@ -671,7 +706,7 @@
             this.tabPage11.Controls.Add(this.groupBox7);
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(1250, 606);
+            this.tabPage11.Size = new System.Drawing.Size(1252, 607);
             this.tabPage11.TabIndex = 4;
             this.tabPage11.Text = "Заявки от цехов";
             this.tabPage11.UseVisualStyleBackColor = true;
@@ -680,7 +715,7 @@
             // 
             this.button17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button17.Enabled = false;
-            this.button17.Location = new System.Drawing.Point(1057, 105);
+            this.button17.Location = new System.Drawing.Point(1059, 105);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(182, 26);
             this.button17.TabIndex = 19;
@@ -691,14 +726,13 @@
             // 
             this.dataGridView8.AllowUserToAddRows = false;
             this.dataGridView8.AllowUserToDeleteRows = false;
-            this.dataGridView8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridView8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView8.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView8.Location = new System.Drawing.Point(7, 105);
             this.dataGridView8.Name = "dataGridView8";
             this.dataGridView8.ReadOnly = true;
-            this.dataGridView8.Size = new System.Drawing.Size(1035, 245);
+            this.dataGridView8.Size = new System.Drawing.Size(1037, 245);
             this.dataGridView8.TabIndex = 7;
             // 
             // groupBox7
@@ -716,7 +750,7 @@
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox7.Location = new System.Drawing.Point(7, 7);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(1241, 92);
+            this.groupBox7.Size = new System.Drawing.Size(1234, 92);
             this.groupBox7.TabIndex = 4;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Поиск";
@@ -797,33 +831,21 @@
             // 
             this.tabPage1.Controls.Add(this.dataGridView9);
             this.tabPage1.Controls.Add(this.dataGridView11);
-            this.tabPage1.Controls.Add(this.button19);
             this.tabPage1.Controls.Add(this.button18);
             this.tabPage1.Controls.Add(this.button16);
             this.tabPage1.Controls.Add(this.groupBox8);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1250, 606);
+            this.tabPage1.Size = new System.Drawing.Size(1252, 607);
             this.tabPage1.TabIndex = 6;
             this.tabPage1.Text = "Принятые заявки от цехов";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // button19
-            // 
-            this.button19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button19.Enabled = false;
-            this.button19.Location = new System.Drawing.Point(1057, 105);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(182, 26);
-            this.button19.TabIndex = 24;
-            this.button19.Text = "Создать";
-            this.button19.UseVisualStyleBackColor = true;
             // 
             // button18
             // 
             this.button18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button18.Enabled = false;
-            this.button18.Location = new System.Drawing.Point(1057, 169);
+            this.button18.Location = new System.Drawing.Point(1059, 137);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(182, 26);
             this.button18.TabIndex = 23;
@@ -834,7 +856,7 @@
             // 
             this.button16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button16.Enabled = false;
-            this.button16.Location = new System.Drawing.Point(1057, 137);
+            this.button16.Location = new System.Drawing.Point(1059, 105);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(182, 26);
             this.button16.TabIndex = 22;
@@ -843,6 +865,8 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox8.Controls.Add(this.comboBox16);
             this.groupBox8.Controls.Add(this.label33);
             this.groupBox8.Controls.Add(this.comboBox17);
@@ -856,17 +880,19 @@
             this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox8.Location = new System.Drawing.Point(7, 7);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(1241, 92);
+            this.groupBox8.Size = new System.Drawing.Size(1234, 92);
             this.groupBox8.TabIndex = 20;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Поиск";
             // 
             // comboBox16
             // 
+            this.comboBox16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox16.FormattingEnabled = true;
             this.comboBox16.Location = new System.Drawing.Point(1021, 19);
             this.comboBox16.Name = "comboBox16";
-            this.comboBox16.Size = new System.Drawing.Size(211, 28);
+            this.comboBox16.Size = new System.Drawing.Size(204, 28);
             this.comboBox16.TabIndex = 12;
             // 
             // label33
@@ -953,11 +979,11 @@
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.dataGridView12);
+            this.tabPage7.Controls.Add(this.dataGridView13);
             this.tabPage7.Controls.Add(this.button20);
             this.tabPage7.Controls.Add(this.button21);
             this.tabPage7.Controls.Add(this.label39);
-            this.tabPage7.Controls.Add(this.dataGridView12);
-            this.tabPage7.Controls.Add(this.dataGridView13);
             this.tabPage7.Controls.Add(this.textBox9);
             this.tabPage7.Controls.Add(this.label38);
             this.tabPage7.Controls.Add(this.textBox8);
@@ -965,26 +991,39 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(1250, 606);
+            this.tabPage7.Size = new System.Drawing.Size(1252, 607);
             this.tabPage7.TabIndex = 0;
             this.tabPage7.Text = "Создание заявки на приобретение";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.dataGridView15);
+            this.tabPage8.Controls.Add(this.label42);
+            this.tabPage8.Controls.Add(this.label41);
+            this.tabPage8.Controls.Add(this.label40);
+            this.tabPage8.Controls.Add(this.dataGridView16);
+            this.tabPage8.Controls.Add(this.dataGridView14);
+            this.tabPage8.Controls.Add(this.groupBox9);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(1250, 606);
+            this.tabPage8.Size = new System.Drawing.Size(1252, 607);
             this.tabPage8.TabIndex = 1;
             this.tabPage8.Text = "Список заявок на приобретение";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.button23);
+            this.tabPage9.Controls.Add(this.dataGridView17);
+            this.tabPage9.Controls.Add(this.label50);
+            this.tabPage9.Controls.Add(this.label51);
+            this.tabPage9.Controls.Add(this.dataGridView18);
+            this.tabPage9.Controls.Add(this.groupBox10);
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(1250, 606);
+            this.tabPage9.Size = new System.Drawing.Size(1252, 607);
             this.tabPage9.TabIndex = 2;
             this.tabPage9.Text = "Ведомости поставки";
             this.tabPage9.UseVisualStyleBackColor = true;
@@ -993,7 +1032,7 @@
             // 
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Size = new System.Drawing.Size(1250, 606);
+            this.tabPage10.Size = new System.Drawing.Size(1252, 607);
             this.tabPage10.TabIndex = 3;
             this.tabPage10.Text = "Товарные накладные";
             this.tabPage10.UseVisualStyleBackColor = true;
@@ -1002,7 +1041,7 @@
             // 
             this.tabPage12.Location = new System.Drawing.Point(4, 22);
             this.tabPage12.Name = "tabPage12";
-            this.tabPage12.Size = new System.Drawing.Size(1250, 606);
+            this.tabPage12.Size = new System.Drawing.Size(1252, 607);
             this.tabPage12.TabIndex = 5;
             this.tabPage12.Text = "История поступлений";
             this.tabPage12.UseVisualStyleBackColor = true;
@@ -1601,10 +1640,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView10.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView10.Location = new System.Drawing.Point(7, 355);
+            this.dataGridView10.Location = new System.Drawing.Point(7, 356);
             this.dataGridView10.Name = "dataGridView10";
             this.dataGridView10.ReadOnly = true;
-            this.dataGridView10.Size = new System.Drawing.Size(1035, 245);
+            this.dataGridView10.Size = new System.Drawing.Size(1037, 245);
             this.dataGridView10.TabIndex = 20;
             // 
             // dataGridView9
@@ -1615,24 +1654,23 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView9.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView9.Location = new System.Drawing.Point(7, 355);
+            this.dataGridView9.Location = new System.Drawing.Point(7, 356);
             this.dataGridView9.Name = "dataGridView9";
             this.dataGridView9.ReadOnly = true;
-            this.dataGridView9.Size = new System.Drawing.Size(1035, 245);
+            this.dataGridView9.Size = new System.Drawing.Size(1037, 245);
             this.dataGridView9.TabIndex = 26;
             // 
             // dataGridView11
             // 
             this.dataGridView11.AllowUserToAddRows = false;
             this.dataGridView11.AllowUserToDeleteRows = false;
-            this.dataGridView11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridView11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView11.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView11.Location = new System.Drawing.Point(7, 105);
             this.dataGridView11.Name = "dataGridView11";
             this.dataGridView11.ReadOnly = true;
-            this.dataGridView11.Size = new System.Drawing.Size(1035, 245);
+            this.dataGridView11.Size = new System.Drawing.Size(1037, 245);
             this.dataGridView11.TabIndex = 25;
             // 
             // label32
@@ -1673,34 +1711,6 @@
             this.label38.TabIndex = 9;
             this.label38.Text = "Дата";
             // 
-            // dataGridView12
-            // 
-            this.dataGridView12.AllowUserToAddRows = false;
-            this.dataGridView12.AllowUserToDeleteRows = false;
-            this.dataGridView12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView12.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView12.Location = new System.Drawing.Point(7, 355);
-            this.dataGridView12.Name = "dataGridView12";
-            this.dataGridView12.ReadOnly = true;
-            this.dataGridView12.Size = new System.Drawing.Size(1035, 245);
-            this.dataGridView12.TabIndex = 28;
-            // 
-            // dataGridView13
-            // 
-            this.dataGridView13.AllowUserToAddRows = false;
-            this.dataGridView13.AllowUserToDeleteRows = false;
-            this.dataGridView13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView13.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView13.Location = new System.Drawing.Point(7, 105);
-            this.dataGridView13.Name = "dataGridView13";
-            this.dataGridView13.ReadOnly = true;
-            this.dataGridView13.Size = new System.Drawing.Size(1035, 245);
-            this.dataGridView13.TabIndex = 27;
-            // 
             // label39
             // 
             this.label39.AutoSize = true;
@@ -1715,7 +1725,7 @@
             // 
             this.button20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button20.Enabled = false;
-            this.button20.Location = new System.Drawing.Point(1057, 137);
+            this.button20.Location = new System.Drawing.Point(1059, 137);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(182, 26);
             this.button20.TabIndex = 31;
@@ -1726,12 +1736,343 @@
             // 
             this.button21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button21.Enabled = false;
-            this.button21.Location = new System.Drawing.Point(1057, 105);
+            this.button21.Location = new System.Drawing.Point(1059, 105);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(182, 26);
             this.button21.TabIndex = 30;
             this.button21.Text = "Добавить в заявку";
             this.button21.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView14
+            // 
+            this.dataGridView14.AllowUserToAddRows = false;
+            this.dataGridView14.AllowUserToDeleteRows = false;
+            this.dataGridView14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView14.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView14.Location = new System.Drawing.Point(350, 383);
+            this.dataGridView14.Name = "dataGridView14";
+            this.dataGridView14.ReadOnly = true;
+            this.dataGridView14.Size = new System.Drawing.Size(896, 218);
+            this.dataGridView14.TabIndex = 30;
+            // 
+            // dataGridView15
+            // 
+            this.dataGridView15.AllowUserToAddRows = false;
+            this.dataGridView15.AllowUserToDeleteRows = false;
+            this.dataGridView15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView15.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView15.Location = new System.Drawing.Point(350, 130);
+            this.dataGridView15.Name = "dataGridView15";
+            this.dataGridView15.ReadOnly = true;
+            this.dataGridView15.Size = new System.Drawing.Size(896, 218);
+            this.dataGridView15.TabIndex = 29;
+            // 
+            // dataGridView16
+            // 
+            this.dataGridView16.AllowUserToAddRows = false;
+            this.dataGridView16.AllowUserToDeleteRows = false;
+            this.dataGridView16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataGridView16.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView16.Location = new System.Drawing.Point(6, 130);
+            this.dataGridView16.Name = "dataGridView16";
+            this.dataGridView16.ReadOnly = true;
+            this.dataGridView16.Size = new System.Drawing.Size(338, 471);
+            this.dataGridView16.TabIndex = 31;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label40.Location = new System.Drawing.Point(6, 104);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(198, 20);
+            this.label40.TabIndex = 32;
+            this.label40.Text = "Заявки на приобретение";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label41.Location = new System.Drawing.Point(350, 104);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(516, 20);
+            this.label41.TabIndex = 33;
+            this.label41.Text = "Заявки на получение, входящие в данную заявку на приобретение";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label42.Location = new System.Drawing.Point(350, 357);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(425, 20);
+            this.label42.TabIndex = 34;
+            this.label42.Text = "Инструменты входящие в данную заявку на получение";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox9.Controls.Add(this.comboBox15);
+            this.groupBox9.Controls.Add(this.label45);
+            this.groupBox9.Controls.Add(this.label43);
+            this.groupBox9.Controls.Add(this.dateTimePicker1);
+            this.groupBox9.Controls.Add(this.label44);
+            this.groupBox9.Controls.Add(this.dateTimePicker2);
+            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox9.Location = new System.Drawing.Point(7, 7);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(1239, 91);
+            this.groupBox9.TabIndex = 35;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Поиск";
+            // 
+            // label43
+            // 
+            this.label43.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label43.Location = new System.Drawing.Point(6, 64);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(159, 13);
+            this.label43.TabIndex = 17;
+            this.label43.Text = "Конец временного диапазона";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(177, 55);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(257, 26);
+            this.dateTimePicker1.TabIndex = 16;
+            // 
+            // label44
+            // 
+            this.label44.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label44.Location = new System.Drawing.Point(6, 30);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(165, 13);
+            this.label44.TabIndex = 15;
+            this.label44.Text = "Начало временного диапазона";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(177, 19);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(257, 26);
+            this.dateTimePicker2.TabIndex = 13;
+            // 
+            // comboBox15
+            // 
+            this.comboBox15.FormattingEnabled = true;
+            this.comboBox15.Location = new System.Drawing.Point(524, 19);
+            this.comboBox15.Name = "comboBox15";
+            this.comboBox15.Size = new System.Drawing.Size(293, 28);
+            this.comboBox15.TabIndex = 18;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label45.Location = new System.Drawing.Point(438, 30);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(80, 13);
+            this.label45.TabIndex = 19;
+            this.label45.Text = "Статус заявки";
+            // 
+            // dataGridView12
+            // 
+            this.dataGridView12.AllowUserToAddRows = false;
+            this.dataGridView12.AllowUserToDeleteRows = false;
+            this.dataGridView12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView12.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView12.Location = new System.Drawing.Point(7, 356);
+            this.dataGridView12.Name = "dataGridView12";
+            this.dataGridView12.ReadOnly = true;
+            this.dataGridView12.Size = new System.Drawing.Size(1037, 245);
+            this.dataGridView12.TabIndex = 33;
+            // 
+            // dataGridView13
+            // 
+            this.dataGridView13.AllowUserToAddRows = false;
+            this.dataGridView13.AllowUserToDeleteRows = false;
+            this.dataGridView13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView13.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView13.Location = new System.Drawing.Point(7, 105);
+            this.dataGridView13.Name = "dataGridView13";
+            this.dataGridView13.ReadOnly = true;
+            this.dataGridView13.Size = new System.Drawing.Size(1037, 245);
+            this.dataGridView13.TabIndex = 32;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox10.Controls.Add(this.comboBox21);
+            this.groupBox10.Controls.Add(this.label49);
+            this.groupBox10.Controls.Add(this.label48);
+            this.groupBox10.Controls.Add(this.dateTimePicker4);
+            this.groupBox10.Controls.Add(this.label47);
+            this.groupBox10.Controls.Add(this.dateTimePicker3);
+            this.groupBox10.Controls.Add(this.comboBox20);
+            this.groupBox10.Controls.Add(this.label46);
+            this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox10.Location = new System.Drawing.Point(7, 7);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(1232, 91);
+            this.groupBox10.TabIndex = 36;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Поиск";
+            // 
+            // comboBox20
+            // 
+            this.comboBox20.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox20.FormattingEnabled = true;
+            this.comboBox20.Location = new System.Drawing.Point(171, 19);
+            this.comboBox20.Name = "comboBox20";
+            this.comboBox20.Size = new System.Drawing.Size(437, 28);
+            this.comboBox20.TabIndex = 6;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label46.Location = new System.Drawing.Point(6, 30);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(148, 13);
+            this.label46.TabIndex = 7;
+            this.label46.Text = "Наименование поставщика";
+            // 
+            // label47
+            // 
+            this.label47.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label47.Location = new System.Drawing.Point(6, 64);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(91, 13);
+            this.label47.TabIndex = 19;
+            this.label47.Text = "Дата ведомости";
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker3.Location = new System.Drawing.Point(171, 55);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(437, 26);
+            this.dateTimePicker3.TabIndex = 18;
+            // 
+            // label48
+            // 
+            this.label48.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label48.Location = new System.Drawing.Point(614, 64);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(161, 13);
+            this.label48.TabIndex = 21;
+            this.label48.Text = "Дата заявки на приобретение";
+            // 
+            // dateTimePicker4
+            // 
+            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker4.Location = new System.Drawing.Point(789, 55);
+            this.dateTimePicker4.Name = "dateTimePicker4";
+            this.dateTimePicker4.Size = new System.Drawing.Size(437, 26);
+            this.dateTimePicker4.TabIndex = 20;
+            // 
+            // comboBox21
+            // 
+            this.comboBox21.FormattingEnabled = true;
+            this.comboBox21.Location = new System.Drawing.Point(789, 19);
+            this.comboBox21.Name = "comboBox21";
+            this.comboBox21.Size = new System.Drawing.Size(437, 28);
+            this.comboBox21.TabIndex = 22;
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label49.Location = new System.Drawing.Point(614, 30);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(169, 13);
+            this.label49.TabIndex = 23;
+            this.label49.Text = "Номер заявки на приобретение";
+            // 
+            // dataGridView17
+            // 
+            this.dataGridView17.AllowUserToAddRows = false;
+            this.dataGridView17.AllowUserToDeleteRows = false;
+            this.dataGridView17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView17.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView17.Location = new System.Drawing.Point(433, 130);
+            this.dataGridView17.Name = "dataGridView17";
+            this.dataGridView17.ReadOnly = true;
+            this.dataGridView17.Size = new System.Drawing.Size(618, 471);
+            this.dataGridView17.TabIndex = 37;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label50.Location = new System.Drawing.Point(429, 104);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(226, 20);
+            this.label50.TabIndex = 40;
+            this.label50.Text = "Состав ведомости поставки";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label51.Location = new System.Drawing.Point(7, 104);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(169, 20);
+            this.label51.TabIndex = 39;
+            this.label51.Text = "Ведомости поставки";
+            // 
+            // dataGridView18
+            // 
+            this.dataGridView18.AllowUserToAddRows = false;
+            this.dataGridView18.AllowUserToDeleteRows = false;
+            this.dataGridView18.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataGridView18.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView18.Location = new System.Drawing.Point(7, 130);
+            this.dataGridView18.Name = "dataGridView18";
+            this.dataGridView18.ReadOnly = true;
+            this.dataGridView18.Size = new System.Drawing.Size(420, 471);
+            this.dataGridView18.TabIndex = 38;
+            // 
+            // button23
+            // 
+            this.button23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button23.Enabled = false;
+            this.button23.Location = new System.Drawing.Point(1057, 130);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(182, 26);
+            this.button23.TabIndex = 41;
+            this.button23.Text = "Создать";
+            this.button23.UseVisualStyleBackColor = true;
             // 
             // Inj
             // 
@@ -1766,6 +2107,10 @@
             this.groupBox8.PerformLayout();
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
+            this.tabPage8.ResumeLayout(false);
+            this.tabPage8.PerformLayout();
+            this.tabPage9.ResumeLayout(false);
+            this.tabPage9.PerformLayout();
             this.InjAnalogPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -1788,8 +2133,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView16)).EndInit();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView13)).EndInit();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView18)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1923,7 +2277,6 @@
         private System.Windows.Forms.TabPage tabPage12;
         private System.Windows.Forms.ComboBox comboBox16;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Button button19;
         private System.Windows.Forms.DataGridView dataGridView10;
         private System.Windows.Forms.DataGridView dataGridView9;
         private System.Windows.Forms.DataGridView dataGridView11;
@@ -1932,9 +2285,36 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.DataGridView dataGridView12;
-        private System.Windows.Forms.DataGridView dataGridView13;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.DataGridView dataGridView16;
+        private System.Windows.Forms.DataGridView dataGridView14;
+        private System.Windows.Forms.DataGridView dataGridView15;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.ComboBox comboBox15;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.DataGridView dataGridView12;
+        private System.Windows.Forms.DataGridView dataGridView13;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.ComboBox comboBox20;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.ComboBox comboBox21;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.DateTimePicker dateTimePicker4;
+        private System.Windows.Forms.DataGridView dataGridView17;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.DataGridView dataGridView18;
+        private System.Windows.Forms.Button button23;
     }
 }
