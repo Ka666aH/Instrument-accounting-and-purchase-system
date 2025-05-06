@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GroupForm));
             this.GroupFormSpanInfo = new System.Windows.Forms.Label();
             this.GroupFormClose = new System.Windows.Forms.Button();
             this.GroupFormSaveClose = new System.Windows.Forms.Button();
@@ -165,6 +166,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.GroupFormRange);
             this.Controls.Add(this.GroupFormName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GroupForm";
             this.Text = "Форма группы – Информационная система учета и приобретения инструмента";
             ((System.ComponentModel.ISupportInitialize)(this.GroupFormSpan)).EndInit();

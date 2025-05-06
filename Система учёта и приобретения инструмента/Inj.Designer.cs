@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inj));
             this.InjLevel1 = new System.Windows.Forms.TabControl();
             this.InjNomenPage = new System.Windows.Forms.TabPage();
             this.NomenButtonDelete = new System.Windows.Forms.Button();
@@ -325,7 +326,6 @@
             // NomenButtonCreate
             // 
             this.NomenButtonCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenButtonCreate.Enabled = false;
             this.NomenButtonCreate.Location = new System.Drawing.Point(1057, 132);
             this.NomenButtonCreate.Name = "NomenButtonCreate";
             this.NomenButtonCreate.Size = new System.Drawing.Size(182, 26);
@@ -561,7 +561,6 @@
             // GroupsButtonCreate
             // 
             this.GroupsButtonCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.GroupsButtonCreate.Enabled = false;
             this.GroupsButtonCreate.Location = new System.Drawing.Point(1057, 70);
             this.GroupsButtonCreate.Name = "GroupsButtonCreate";
             this.GroupsButtonCreate.Size = new System.Drawing.Size(182, 26);
@@ -2343,6 +2342,7 @@
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.InjLevel1);
             this.Controls.Add(this.Menu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "Inj";
             this.Text = "Инженер по инструменту отдела подготовки производства – Информационная система уч" +
