@@ -1,235 +1,204 @@
 CREATE DATABASE TOOLACCOUNTING;
 GO
-
 USE TOOLACCOUNTING;
 GO
-
 -- 1. Группы инструментов
-CREATE TABLE ToolGroups (
-    GroupID INT IDENTITY(1,1) PRIMARY KEY,
-    GroupName NVARCHAR(255) NOT NULL,
-    StartRange VARCHAR(9) NOT NULL,
-    EndRange VARCHAR(9) NOT NULL,
-    --CONSTRAINT CHK_Range CHECK (StartRange < EndRange)
+CREATE TABLE Groups (
+    RangeStart CHAR(4) PRIMARY KEY,
+    Name NVARCHAR(255) NOT NULL
 );
-GO
+
 
 -- 2. Номенклатура инструмента
 CREATE TABLE Nomenclature (
-    NomenclatureNumber VARCHAR(9) PRIMARY KEY,
-    GroupID INT NOT NULL,
-    Name NVARCHAR(255) NOT NULL,
+    NomenclatureNumber CHAR(9) PRIMARY KEY,
+    --GroupRangeStart CHAR(4) NOT NULL FOREIGN KEY REFERENCES Groups(RangeStart),
     Designation NVARCHAR(100),
-    UnitOfMeasure NVARCHAR(50),
-    TypeSize NVARCHAR(255),
+    Unit NVARCHAR(10) NOT NULL,
+    Dimensions NVARCHAR(MAX),
     CuttingMaterial NVARCHAR(100),
-    NormativeDoc NVARCHAR(255),
-    Manufacturer NVARCHAR(255),
+    RegulatoryDoc NVARCHAR(100),
+    Producer NVARCHAR(100),
+    --FullName AS (Designation + ' ' + Dimensions + ' ' + CuttingMaterial + ' ' + RegulatoryDoc) PERSISTED,
     UsageFlag TINYINT NOT NULL CHECK (UsageFlag IN (0, 1, 2)),
-    MinStockLevel INT,
-    FullName AS (Name + ' ' + Designation + ' ' + TypeSize + ' ' + CuttingMaterial + ' ' + NormativeDoc),
-    FOREIGN KEY (GroupID) REFERENCES ToolGroups(GroupID)
+    MinStock INT NOT NULL DEFAULT 0
 );
-GO
+
 
 -- 3. Аналоги инструментов
-CREATE TABLE ToolAnalogues (
-    OriginalNumber VARCHAR(9) NOT NULL,
-    AnalogueNumber VARCHAR(9) NOT NULL,
-    PRIMARY KEY (OriginalNumber, AnalogueNumber),
-    FOREIGN KEY (OriginalNumber) REFERENCES Nomenclature(NomenclatureNumber),
-    FOREIGN KEY (AnalogueNumber) REFERENCES Nomenclature(NomenclatureNumber)
+CREATE TABLE AnalogTools (
+    ID INT IDENTITY(1,1) PRIMARY KEY,
+    OriginalNomenclatureNumber CHAR(9) NOT NULL FOREIGN KEY REFERENCES Nomenclature(NomenclatureNumber),
+    AnalogNomenclatureNumber CHAR(9) NOT NULL FOREIGN KEY REFERENCES Nomenclature(NomenclatureNumber),
+    CHECK (OriginalNomenclatureNumber <> AnalogNomenclatureNumber)
 );
-GO
+
 
 -- 4. Логи корректировок
 CREATE TABLE NomenclatureLogs (
     LogID INT IDENTITY(1,1) PRIMARY KEY,
-    NomenclatureNumber VARCHAR(9) NOT NULL,
-    ChangedDate DATETIME DEFAULT GETDATE(),
-    ChangedBy NVARCHAR(255) NOT NULL,
+    NomenclatureNumber CHAR(9) NOT NULL FOREIGN KEY REFERENCES Nomenclature(NomenclatureNumber),
     FieldName NVARCHAR(255) NOT NULL,
     OldValue NVARCHAR(MAX),
     NewValue NVARCHAR(MAX),
-    FOREIGN KEY (NomenclatureNumber) REFERENCES Nomenclature(NomenclatureNumber)
+    ChangedDate DATETIME,
+    Executor NVARCHAR(255) NOT NULL
+    
 );
-GO
 
--- 5. Поставщики
-CREATE TABLE Suppliers (
-    INN VARCHAR(12) PRIMARY KEY,
-    Name NVARCHAR(255) NOT NULL,
-    LegalAddress NVARCHAR(500),
-    ContactInfo NVARCHAR(500),
-    Notes NVARCHAR(MAX)
-);
-GO
-
--- 6. Ведомости поставки
-CREATE TABLE DeliveryStatements (
-    StatementID INT IDENTITY(1,1) PRIMARY KEY,
-    SupplierINN VARCHAR(12) NOT NULL,
-    StatementDate DATE NOT NULL,
-    ContractNumber NVARCHAR(100),
-    FOREIGN KEY (SupplierINN) REFERENCES Suppliers(INN)
-);
-GO
-
--- 7. Состав ведомости поставки
-CREATE TABLE DeliveryStatementDetails (
-    DetailID INT IDENTITY(1,1) PRIMARY KEY,
-    StatementID INT NOT NULL,
-    NomenclatureNumber VARCHAR(9) NOT NULL,
-    Quantity INT NOT NULL CHECK (Quantity > 0),
-    Price DECIMAL(18,2) NOT NULL CHECK (Price > 0),
-    Deadline DATE,
-    FOREIGN KEY (StatementID) REFERENCES DeliveryStatements(StatementID),
-    FOREIGN KEY (NomenclatureNumber) REFERENCES Nomenclature(NomenclatureNumber)
-);
-GO
-
--- 8. Товарная накладная
-CREATE TABLE Invoices (
-    InvoiceID INT IDENTITY(1,1) PRIMARY KEY,
-    InvoiceNumber NVARCHAR(50) NOT NULL UNIQUE,
-    InvoiceDate DATE NOT NULL,
-    SupplierINN VARCHAR(12) NOT NULL,
-    TotalAmount DECIMAL(18,2),
-    FOREIGN KEY (SupplierINN) REFERENCES Suppliers(INN)
-);
-GO
-
--- 9. Состав товарной накладной
-CREATE TABLE InvoiceDetails (
-    InvoiceDetailID INT IDENTITY(1,1) PRIMARY KEY,
-    InvoiceID INT NOT NULL,
-    NomenclatureNumber VARCHAR(9) NOT NULL,
-    Quantity INT NOT NULL CHECK (Quantity > 0),
-    Price DECIMAL(18,2) NOT NULL CHECK (Price > 0),
-    FOREIGN KEY (InvoiceID) REFERENCES Invoices(InvoiceID),
-    FOREIGN KEY (NomenclatureNumber) REFERENCES Nomenclature(NomenclatureNumber)
-);
-GO
-
--- 10. Накладные-Ведомости (связь M:N)
-CREATE TABLE InvoiceStatementLinks (
-    LinkID INT IDENTITY(1,1) PRIMARY KEY,
-    InvoiceID INT NOT NULL,
-    StatementID INT NOT NULL,
-    FOREIGN KEY (InvoiceID) REFERENCES Invoices(InvoiceID),
-    FOREIGN KEY (StatementID) REFERENCES DeliveryStatements(StatementID)
-);
-GO
-
--- 11. Цеха
+-- 5. Цеха
 CREATE TABLE Workshops (
-    WorkshopID INT IDENTITY(1,1) PRIMARY KEY,
-    WorkshopNumber NVARCHAR(50) NOT NULL UNIQUE,
+    WorkshopID INT PRIMARY KEY,
     Name NVARCHAR(255) NOT NULL
 );
-GO
 
--- 12. Заявки на получение
-CREATE TABLE AcquisitionRequests (
-    RequestID INT IDENTITY(1,1) PRIMARY KEY,
-    RequestNumber NVARCHAR(50) NOT NULL UNIQUE,
-    RequestDate DATE NOT NULL,
-    WorkshopID INT NOT NULL,
-    Status NVARCHAR(50) DEFAULT 'Новая',
-    FOREIGN KEY (WorkshopID) REFERENCES Workshops(WorkshopID)
-);
-GO
-
--- 13. Состав заявок на получение
-CREATE TABLE AcquisitionRequestDetails (
-    RequestDetailID INT IDENTITY(1,1) PRIMARY KEY,
-    RequestID INT NOT NULL,
-    NomenclatureNumber VARCHAR(9),
-    FullName NVARCHAR(MAX),
-    Quantity INT NOT NULL CHECK (Quantity > 0),
-    PlannedDate DATE,
-    Reason NVARCHAR(500),
-    FOREIGN KEY (RequestID) REFERENCES AcquisitionRequests(RequestID),
-    FOREIGN KEY (NomenclatureNumber) REFERENCES Nomenclature(NomenclatureNumber)
-);
-GO
-
--- 14. Склады
-CREATE TABLE Warehouses (
-    WarehouseID INT IDENTITY(1,1) PRIMARY KEY,
+-- 6. Склады
+CREATE TABLE Storages (
+    StorageID INT PRIMARY KEY,
     Name NVARCHAR(255) NOT NULL,
-    Location NVARCHAR(500)
+    WorkshopID INT NOT NULL FOREIGN KEY REFERENCES Workshops(WorkshopID)
 );
-GO
 
--- 15. Заявки на приобретение
+-- 7. Заявки на получение
+CREATE TABLE ReceivingRequests (
+    ReceivingRequestID INT IDENTITY(1,1) PRIMARY KEY,
+    ReceivingRequestDate DATE NOT NULL,
+    WorkshopID INT NOT NULL FOREIGN KEY REFERENCES Workshops(WorkshopID),
+    PlannedDate DATE,
+    ReceivingRequestType NVARCHAR(50) NOT NULL CHECK (ReceivingRequestType IN ('Плановая', 'Внеплановая')),
+    Reason NVARCHAR(MAX),
+    Status NVARCHAR(50) NOT NULL CHECK (Status IN ('Не обработана', 'В работе', 'Исполнена частично', 'Исполнена полностью'))
+);
+
+-- 8. Состав заявок на получение
+CREATE TABLE ReceivingRequestsContent (
+    ReceivingContentID INT IDENTITY(1,1) PRIMARY KEY,
+    ReceivingRequestID INT NOT NULL FOREIGN KEY REFERENCES ReceivingRequests(ReceivingRequestID),
+    NomenclatureNumber CHAR(9) FOREIGN KEY REFERENCES Nomenclature(NomenclatureNumber),
+    FullName NVARCHAR(MAX) NOT NULL,
+    Quantity INT NOT NULL CHECK (Quantity > 0)
+);
+
+-- 9. Фиксация замены аналогом
+CREATE TABLE ReplacementFixation (
+    ReplacementID INT IDENTITY(1,1) PRIMARY KEY,
+    ReceivingRequestID INT NOT NULL FOREIGN KEY REFERENCES ReceivingRequests(ReceivingRequestID),
+    AnalogNomenclatureNumber CHAR(9) NOT NULL FOREIGN KEY REFERENCES Nomenclature(NomenclatureNumber),
+    Quantity INT NOT NULL CHECK (Quantity > 0)
+);
+
+-- 10. Заявки на приобретение
 CREATE TABLE PurchaseRequests (
     PurchaseRequestID INT IDENTITY(1,1) PRIMARY KEY,
-    RequestNumber NVARCHAR(50) NOT NULL UNIQUE,
-    CreationDate DATE DEFAULT GETDATE(),
-    Status NVARCHAR(50) DEFAULT 'В обработке'
+    PurchaseRequestDate DATE NOT NULL,
+    Status NVARCHAR(50) NOT NULL CHECK (Status IN ('Не обработана', 'В работе', 'Исполнена частично', 'Исполнена полностью'))
 );
-GO
 
--- 16. Состав заявок на приобретение
-CREATE TABLE PurchaseRequestDetails (
-    PurchaseDetailID INT IDENTITY(1,1) PRIMARY KEY,
-    PurchaseRequestID INT NOT NULL,
-    NomenclatureNumber VARCHAR(9) NOT NULL,
+
+-- 11. Состав заявок на приобретение
+CREATE TABLE PurchaseRequestsContent (
+    PurchaseContentID INT IDENTITY(1,1) PRIMARY KEY,
+    PurchaseRequestID INT NOT NULL FOREIGN KEY REFERENCES PurchaseRequests(PurchaseRequestID),
+    ReceivingContentID INT NOT NULL FOREIGN KEY REFERENCES ReceivingRequestsContent(ReceivingContentID),
+    IsPurchase BIT NOT NULL,
+    DonorWorkshopID INT FOREIGN KEY REFERENCES Workshops(WorkshopID)
+);
+
+-- 12. Поставщики
+CREATE TABLE Suppliers (
+    INN NVARCHAR(12) PRIMARY KEY,
+    Name NVARCHAR(255) NOT NULL,
+    LegalAddress NVARCHAR(MAX) NOT NULL,
+    Contacts NVARCHAR(MAX) NOT NULL,
+    Notes NVARCHAR(MAX)
+);
+
+-- 13. Ведомости поставки
+CREATE TABLE DeliveryLists (
+    DeliveryListID INT IDENTITY(1,1) PRIMARY KEY,
+    DeliveryListDate DATE NOT NULL,
+    SupplierINN NVARCHAR(12) NOT NULL FOREIGN KEY REFERENCES Suppliers(INN)
+);
+
+
+-- 14. Состав ведомости поставки
+CREATE TABLE DeliveryListsContent (
+    DeliveryContentID INT IDENTITY(1,1) PRIMARY KEY,
+    DeliveryListID INT NOT NULL FOREIGN KEY REFERENCES DeliveryLists(DeliveryListID),
+    PurchaseContentID INT NOT NULL FOREIGN KEY REFERENCES PurchaseRequestsContent(PurchaseContentID),
+    DeliveryContentDate DATE NOT NULL,
+    ContractNumber NVARCHAR(100) NOT NULL,
     Quantity INT NOT NULL CHECK (Quantity > 0),
-    FOREIGN KEY (PurchaseRequestID) REFERENCES PurchaseRequests(PurchaseRequestID),
-    FOREIGN KEY (NomenclatureNumber) REFERENCES Nomenclature(NomenclatureNumber)
+    Price DECIMAL(18,2) NOT NULL,
+    Total AS (Quantity * Price) PERSISTED
 );
-GO
 
--- 17. Остатки
-CREATE TABLE StockBalances (
+
+-- 15. Товарная накладная
+CREATE TABLE Invoices (
+    InvoiceID INT IDENTITY(1,1) PRIMARY KEY,
+    InvoiceDate DATE NOT NULL,
+    DeliveryListID INT NOT NULL FOREIGN KEY REFERENCES DeliveryLists(DeliveryListID)
+);
+
+
+-- 16. Состав товарной накладной
+CREATE TABLE InvoicesContent (
+    InvoiceContentID INT IDENTITY(1,1) PRIMARY KEY,
+    InvoiceID INT NOT NULL FOREIGN KEY REFERENCES Invoices(InvoiceID),
+    DeliveryContentID INT NOT NULL FOREIGN KEY REFERENCES DeliveryListsContent(DeliveryContentID),
+    Quantity INT NOT NULL CHECK (Quantity > 0)
+);
+
+-- 17. Дефектная ведомость
+CREATE TABLE DefectiveLists (
+    DefectiveListID INT IDENTITY(1,1) PRIMARY KEY,
+    DefectiveListDate DATE NOT NULL,
+    NomenclatureNumber CHAR(9) NOT NULL FOREIGN KEY REFERENCES Nomenclature(NomenclatureNumber),
+    WorkshopID INT NOT NULL FOREIGN KEY REFERENCES Workshops(WorkshopID),
+    BatchNumber NVARCHAR(50) NOT NULL,
+    Price DECIMAL(18,2) NOT NULL,
+    Quantity INT NOT NULL CHECK (Quantity > 0),
+    IsWriteOff BIT NOT NULL
+);
+
+
+-- 18. Остатки
+CREATE TABLE Balances (
     BalanceID INT IDENTITY(1,1) PRIMARY KEY,
-    WarehouseID INT NOT NULL,
-    NomenclatureNumber VARCHAR(9) NOT NULL,
+    NomenclatureNumber CHAR(9) NOT NULL FOREIGN KEY REFERENCES Nomenclature(NomenclatureNumber),
+    StorageID INT NOT NULL FOREIGN KEY REFERENCES Storages(StorageID),
     BalanceDate DATE NOT NULL,
-    Quantity INT NOT NULL CHECK (Quantity >= 0),
-    FOREIGN KEY (WarehouseID) REFERENCES Warehouses(WarehouseID),
-    FOREIGN KEY (NomenclatureNumber) REFERENCES Nomenclature(NomenclatureNumber)
+    BatchNumber NVARCHAR(50) NOT NULL,
+    Price DECIMAL(18,2) NOT NULL,
+    Account NVARCHAR(50) NOT NULL
 );
-GO
 
--- 18. Дефектная ведомость
-CREATE TABLE DefectActs (
-    ActID INT IDENTITY(1,1) PRIMARY KEY,
-    ActNumber NVARCHAR(50) NOT NULL UNIQUE,
-    ActDate DATE NOT NULL,
-    WorkshopID INT NOT NULL,
-    NomenclatureNumber VARCHAR(9) NOT NULL,
-    Quantity INT NOT NULL CHECK (Quantity > 0),
-    Decision NVARCHAR(50) CHECK (Decision IN ('Списание', 'Ремонт')),
-    FOREIGN KEY (WorkshopID) REFERENCES Workshops(WorkshopID),
-    FOREIGN KEY (NomenclatureNumber) REFERENCES Nomenclature(NomenclatureNumber)
-);
-GO
 
 -- 19. Виды движений
 CREATE TABLE MovementTypes (
     MovementTypeID INT IDENTITY(1,1) PRIMARY KEY,
-    TypeName NVARCHAR(50) NOT NULL UNIQUE,
-    Description NVARCHAR(500)
+    Code NVARCHAR(10) NOT NULL UNIQUE,
+    Name NVARCHAR(50) NOT NULL
 );
-GO
+
 
 -- 20. Движение инструмента
 CREATE TABLE ToolMovements (
     MovementID INT IDENTITY(1,1) PRIMARY KEY,
-    DocumentNumber NVARCHAR(50) NOT NULL,
     MovementDate DATE NOT NULL,
-    MovementTypeID INT NOT NULL,
-    FromWarehouseID INT,
-    ToWarehouseID INT NOT NULL,
-    NomenclatureNumber VARCHAR(9) NOT NULL,
+    ToStorageID INT NOT NULL FOREIGN KEY REFERENCES Storages(StorageID),
+    FromStorageID INT FOREIGN KEY REFERENCES Storages(StorageID),
+    MovementTypeID INT NOT NULL FOREIGN KEY REFERENCES MovementTypes(MovementTypeID),
+    NomenclatureNumber CHAR(9) NOT NULL FOREIGN KEY REFERENCES Nomenclature(NomenclatureNumber),
+    SourceDocumentType NVARCHAR(50),
+    SourceDocumentID INT,
+    BatchNumber NVARCHAR(50) NOT NULL,
+    Price DECIMAL(18,2) NOT NULL,
     Quantity INT NOT NULL CHECK (Quantity > 0),
-    FOREIGN KEY (MovementTypeID) REFERENCES MovementTypes(MovementTypeID),
-    FOREIGN KEY (FromWarehouseID) REFERENCES Warehouses(WarehouseID),
-    FOREIGN KEY (ToWarehouseID) REFERENCES Warehouses(WarehouseID),
-    FOREIGN KEY (NomenclatureNumber) REFERENCES Nomenclature(NomenclatureNumber)
+    Total AS (Quantity * Price) PERSISTED,
+    InvoiceType NVARCHAR(50),
+    IsPosted BIT NOT NULL DEFAULT 0,
+    Executor NVARCHAR(255) NOT NULL,
+    LastUpdated DATETIME2 NOT NULL
 );
-GO
-
