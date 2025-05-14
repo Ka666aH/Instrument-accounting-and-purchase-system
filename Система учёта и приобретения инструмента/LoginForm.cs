@@ -37,8 +37,8 @@ namespace Система_учёта_и_приобретения_инструме
         private void LoginLFINJ_Click(object sender, EventArgs e)
         {
             Inj inj = new Inj(this);
+            Hide();
             inj.ShowDialog();
-
         }
 
         private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)

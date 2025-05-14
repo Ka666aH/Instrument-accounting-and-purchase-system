@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.ExitLF = new System.Windows.Forms.Button();
             this.LoginLFINJ = new System.Windows.Forms.Button();
             this.UsersLF = new System.Windows.Forms.TextBox();
             this.LoginLFKLAD = new System.Windows.Forms.Button();
             this.LoginFormLable = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // ExitLF
@@ -97,17 +100,29 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Войти как:";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Система_учёта_и_приобретения_инструмента.Properties.Resources.DiplomLogo;
+            this.pictureBox1.Location = new System.Drawing.Point(60, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(279, 144);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 461);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LoginFormLable);
             this.Controls.Add(this.UsersLF);
             this.Controls.Add(this.LoginLFKLAD);
             this.Controls.Add(this.LoginLFINJ);
             this.Controls.Add(this.ExitLF);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(400, 500);
             this.MinimumSize = new System.Drawing.Size(400, 500);
             this.Name = "LoginForm";
@@ -115,6 +130,7 @@
             this.Text = "Информационная система учета и приобретения инструмента – Авторизация";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
             this.Load += new System.EventHandler(this.LoginForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,6 +144,7 @@
         private System.Windows.Forms.Button LoginLFKLAD;
         private System.Windows.Forms.Label LoginFormLable;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

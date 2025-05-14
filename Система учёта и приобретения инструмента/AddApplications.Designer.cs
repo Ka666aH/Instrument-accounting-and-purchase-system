@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddApplications));
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -96,6 +97,7 @@
             this.ApplicationsCompound.Name = "ApplicationsCompound";
             this.ApplicationsCompound.Size = new System.Drawing.Size(760, 328);
             this.ApplicationsCompound.TabIndex = 2;
+            this.ApplicationsCompound.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ApplicationsCompound_CellContentClick);
             // 
             // ApplicationType
             // 
@@ -288,6 +290,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "AddApplications";
