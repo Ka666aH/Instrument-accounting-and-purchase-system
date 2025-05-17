@@ -99,6 +99,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TOOLACCOUNTINGDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TOOLACCOUNTINGDataSet.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddApplications.resx">
       <DependentUpon>AddApplications.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,6 +147,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="TOOLACCOUNTINGDataSet.xsc">
+      <DependentUpon>TOOLACCOUNTINGDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TOOLACCOUNTINGDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TOOLACCOUNTINGDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TOOLACCOUNTINGDataSet.xss">
+      <DependentUpon>TOOLACCOUNTINGDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
