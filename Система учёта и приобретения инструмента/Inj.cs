@@ -41,6 +41,8 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Inj_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Suppliers". При необходимости она может быть перемещена или удалена.
+            this.suppliersTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Suppliers);
             WindowState = FormWindowState.Maximized;
 
             LogStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
