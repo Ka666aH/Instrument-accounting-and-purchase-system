@@ -21,7 +21,7 @@ CREATE TABLE Nomenclature (
     Producer NVARCHAR(100),
     --FullName AS (Designation + ' ' + Dimensions + ' ' + CuttingMaterial + ' ' + RegulatoryDoc) PERSISTED,
     UsageFlag TINYINT NOT NULL CHECK (UsageFlag IN (0, 1, 2)),
-    MinStock INT NOT NULL DEFAULT 0
+    MinStock INT NOT NULL DEFAULT 0 CHECK (MinStock >= 0)
 );
 
 
