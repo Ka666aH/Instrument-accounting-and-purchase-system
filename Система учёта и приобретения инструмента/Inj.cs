@@ -10,6 +10,11 @@ using System.Windows.Forms;
 
 namespace Система_учёта_и_приобретения_инструмента
 {
+    public enum FormMode
+    {
+        Add,
+        Edit
+    }
     public partial class Inj : Form
     {
         LoginForm login;
@@ -112,12 +117,18 @@ namespace Система_учёта_и_приобретения_инструме
         {
             SupForm supForm = new SupForm(tOOLACCOUNTINGDataSet,suppliersTableAdapter);
             supForm.ShowDialog();
-            
         }
 
         private void ProvidersButtonAlter_Click(object sender, EventArgs e)
         {
-
+            var selectedRow = ProvidersTable.CurrentRow.DataBoundItem as DataRowView;
+            if (selectedRow != null)
+            {
+                var supplierRow = selectedRow.Row as TOOLACCOUNTINGDataSet.SuppliersRow;
+                SupForm supForm = new SupForm(tOOLACCOUNTINGDataSet, suppliersTableAdapter, FormMode.Edit, supplierRow);
+                supForm.ShowDialog();
+            }
+                
         }
 
         private void ProvidersButtonDelete_Click(object sender, EventArgs e)
@@ -125,6 +136,18 @@ namespace Система_учёта_и_приобретения_инструме
 
         }
 
+        private void ProvidersTable_CurrentCellChanged(object sender, EventArgs e)
+        {
+            if (ProvidersTable.CurrentRow == null)
+            {
+                ProvidersButtonAlter.Enabled = false;
+            }
+            else
+            {
+                ProvidersButtonAlter.Enabled = true;
+            }
+
+        }
 
         #endregion
 
@@ -144,6 +167,6 @@ namespace Система_учёта_и_приобретения_инструме
 
         #endregion
 
-        
+
     }
 }

@@ -2167,6 +2167,7 @@
             this.ProvidersTable.RowHeadersVisible = false;
             this.ProvidersTable.Size = new System.Drawing.Size(1035, 545);
             this.ProvidersTable.TabIndex = 7;
+            this.ProvidersTable.CurrentCellChanged += new System.EventHandler(this.ProvidersTable_CurrentCellChanged);
             // 
             // iNNDataGridViewTextBoxColumn
             // 
