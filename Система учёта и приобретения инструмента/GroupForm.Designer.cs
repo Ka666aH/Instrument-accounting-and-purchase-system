@@ -167,6 +167,8 @@
             this.Controls.Add(this.GroupFormRange);
             this.Controls.Add(this.GroupFormName);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(645, 210);
+            this.MinimumSize = new System.Drawing.Size(645, 210);
             this.Name = "GroupForm";
             this.Text = "Форма группы – Информационная система учета и приобретения инструмента";
             ((System.ComponentModel.ISupportInitialize)(this.GroupFormSpan)).EndInit();
