@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>DiplomLogo.ico</ApplicationIcon>
+    <ApplicationIcon>DiplomIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -175,7 +175,10 @@
     <None Include="Resources\DiplomLogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DiplomLogo.ico" />
+    <EmbeddedResource Include="DiplomIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DiplomIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

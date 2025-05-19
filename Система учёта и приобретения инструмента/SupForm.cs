@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 using Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters;
 
 namespace Система_учёта_и_приобретения_инструмента
@@ -47,15 +48,18 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Notify(string title, string text, ToolTipIcon icon)
         {
-            //TODO создавать уведомления в коде
-            //NotifyIcon notifyIcon = new NotifyIcon();
-            notifyIcon1.Visible = true;
-            notifyIcon1.ShowBalloonTip(0, title, text, icon);
+            NotifyIcon notifyIcon = new NotifyIcon();
+            notifyIcon.Icon = Properties.Resources.DiplomIcon;
+            notifyIcon.BalloonTipClosed += notifyIcon_BalloonTipClosed;
+            notifyIcon.Visible = true;
+            notifyIcon.ShowBalloonTip(0, title, text, icon);
         }
 
-        private void notifyIcon1_BalloonTipClosed(object sender, EventArgs e)
+        private void notifyIcon_BalloonTipClosed(object sender, EventArgs e)
         {
-            notifyIcon1.Visible = false;
+            NotifyIcon notifyIcon = sender as NotifyIcon;
+            notifyIcon.Visible = false;
+            notifyIcon.Dispose();
         }
 
         private void SupFormSave_Click(object sender, EventArgs e)
@@ -129,6 +133,7 @@ namespace Система_учёта_и_приобретения_инструме
             FillFields(newRow);
             toolAccounting.Suppliers.Rows.Add(newRow);
             suppliersTableAdapter.Update(toolAccounting.Suppliers);
+            //suppliersTableAdapter.Fill(toolAccounting.Suppliers);
         }
 
         private void UpdateSupplier()
@@ -140,8 +145,6 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void FillFields(TOOLACCOUNTINGDataSet.SuppliersRow row)
         {
-            //var newRow = toolAccounting.Suppliers.NewSuppliersRow();
-
             row.INN = SupFormINN.Text;
             row.Name = SupFormName.Text;
             row.LegalAddress = SupFormAddress.Text;
@@ -149,10 +152,6 @@ namespace Система_учёта_и_приобретения_инструме
             row.Notes = string.IsNullOrEmpty(SupFormNotes.Text)
                 ? null
                 : SupFormNotes.Text;
-
-            //toolAccounting.Suppliers.Rows.Add(row);
-            //suppliersTableAdapter.Update(toolAccounting.Suppliers);
-            //suppliersTableAdapter.Fill(toolAccounting.Suppliers);
         }
 
         private void ClearForm()

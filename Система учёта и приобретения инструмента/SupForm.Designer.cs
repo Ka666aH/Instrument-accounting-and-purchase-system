@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SupForm));
             this.SupFormClose = new System.Windows.Forms.Button();
             this.SupFormSaveClose = new System.Windows.Forms.Button();
@@ -43,7 +42,6 @@
             this.SupFormContacts = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.SupFormNotes = new System.Windows.Forms.TextBox();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // SupFormClose
@@ -176,13 +174,6 @@
             this.SupFormNotes.Size = new System.Drawing.Size(475, 78);
             this.SupFormNotes.TabIndex = 5;
             // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "Сообщение";
-            this.notifyIcon1.BalloonTipClosed += new System.EventHandler(this.notifyIcon1_BalloonTipClosed);
-            // 
             // SupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,6 +217,5 @@
         private System.Windows.Forms.TextBox SupFormContacts;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox SupFormNotes;
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
