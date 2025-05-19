@@ -41,7 +41,6 @@ namespace Система_учёта_и_приобретения_инструме
                 SupFormName.Text = editRow.Name;
                 SupFormAddress.Text = editRow.LegalAddress;
                 SupFormContacts.Text = editRow.Contacts;
-                //SupFormNotes.Text = string.IsNullOrEmpty(editRow.Notes) ? string.Empty : editRow.Notes;
                 SupFormNotes.Text = editRow.IsNotesNull() ? string.Empty : editRow.Notes;
             }
         }
@@ -75,7 +74,7 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!AllRequiredFieldsFilled())
             {
-                Notify("Предупреждение", "Необходимо заполнить все обязательные поля (отмечены *).", ToolTipIcon.Warning);
+                Notify("Предупреждение", "Необходимо заполнить все обязательные поля, отмеченные *.", ToolTipIcon.Warning);
                 return false;
             }
 
@@ -92,7 +91,6 @@ namespace Система_учёта_и_приобретения_инструме
             }
             try
             {
-                //SaveSupplier();
                 if (mode == FormMode.Add) CreateSupplier();
                 if (mode == FormMode.Edit) UpdateSupplier();
                 return true;
@@ -124,7 +122,6 @@ namespace Система_учёта_и_приобретения_инструме
             string inn = SupFormINN.Text;
             if (mode == FormMode.Edit && inn == editRow.INN) return true;
             return !toolAccounting.Suppliers.Any(s => s.INN == inn);
-                
         }
 
         private void CreateSupplier()
