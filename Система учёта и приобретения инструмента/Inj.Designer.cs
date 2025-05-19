@@ -2228,6 +2228,7 @@
             this.ProvidersINN.Name = "ProvidersINN";
             this.ProvidersINN.Size = new System.Drawing.Size(292, 26);
             this.ProvidersINN.TabIndex = 3;
+            this.ProvidersINN.TextChanged += new System.EventHandler(this.SuppliersTextChanged);
             // 
             // ProvidersName
             // 
@@ -2236,6 +2237,7 @@
             this.ProvidersName.Name = "ProvidersName";
             this.ProvidersName.Size = new System.Drawing.Size(796, 28);
             this.ProvidersName.TabIndex = 1;
+            this.ProvidersName.TextChanged += new System.EventHandler(this.SuppliersTextChanged);
             // 
             // label23
             // 

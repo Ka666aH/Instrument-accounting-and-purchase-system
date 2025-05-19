@@ -61,6 +61,7 @@
     <Compile Include="AddMoving.Designer.cs">
       <DependentUpon>AddMoving.cs</DependentUpon>
     </Compile>
+    <Compile Include="Search.cs" />
     <Compile Include="DefAdd.cs">
       <SubType>Form</SubType>
     </Compile>

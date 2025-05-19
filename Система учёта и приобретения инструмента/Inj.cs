@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,6 +24,8 @@ namespace Система_учёта_и_приобретения_инструме
         {
             InitializeComponent();
             login = _login;
+            //DateTime date = DateTime.Today;
+            //MessageBox.Show(date.ToString());
         }
 
         private void Inj_FormClosed(object sender, FormClosedEventArgs e)
@@ -64,7 +67,8 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void InjLevel1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(InjLevel1.SelectedIndex == 4)
+
+            if (InjLevel1.SelectedIndex == 4)
             {
                 //suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
                 //suppliersTableAdapter.Fill(tOOLACCOUNTINGDataSet.Suppliers);
@@ -127,8 +131,7 @@ namespace Система_учёта_и_приобретения_инструме
                 var supplierRow = selectedRow.Row as TOOLACCOUNTINGDataSet.SuppliersRow;
                 SupForm supForm = new SupForm(tOOLACCOUNTINGDataSet, suppliersTableAdapter, FormMode.Edit, supplierRow);
                 supForm.ShowDialog();
-            }
-                
+            }     
         }
 
         private void ProvidersButtonDelete_Click(object sender, EventArgs e)
@@ -138,16 +141,20 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void ProvidersTable_CurrentCellChanged(object sender, EventArgs e)
         {
-            if (ProvidersTable.CurrentRow == null)
-            {
-                ProvidersButtonAlter.Enabled = false;
-            }
-            else
-            {
-                ProvidersButtonAlter.Enabled = true;
-            }
-
+            if (ProvidersTable.CurrentRow == null) ProvidersButtonAlter.Enabled = false;
+            else ProvidersButtonAlter.Enabled = true;
         }
+        private void SuppliersTextChanged(object sender, EventArgs e)
+        {
+            var parameters = new Dictionary<string, object>();
+            if (!string.IsNullOrEmpty(ProvidersINN.Text)) parameters.Add("INN", ProvidersINN.Text);
+            if (!string.IsNullOrEmpty(ProvidersName.Text)) parameters.Add("Name", ProvidersName.Text);
+            string filter = Search.Filter(parameters);
+            ProvidersTable.SuspendLayout();
+            suppliersBindingSource.Filter = filter;
+            ProvidersTable.ResumeLayout();
+        }
+
 
         #endregion
 
@@ -166,7 +173,6 @@ namespace Система_учёта_и_приобретения_инструме
         #region Остатки номенклатуры
 
         #endregion
-
 
     }
 }
