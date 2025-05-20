@@ -2168,10 +2168,12 @@
             this.ProvidersTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ProvidersTable.Size = new System.Drawing.Size(1035, 545);
             this.ProvidersTable.TabIndex = 7;
+            this.ProvidersTable.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.ProvidersTable_CellBeginEdit);
             this.ProvidersTable.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.ProvidersTable_CellValidating);
             this.ProvidersTable.CurrentCellChanged += new System.EventHandler(this.ProvidersTable_CurrentCellChanged);
             this.ProvidersTable.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.ProvidersTable_EditingControlShowing);
             this.ProvidersTable.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProvidersTable_RowValidated);
+            this.ProvidersTable.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.ProvidersTable_UserDeletingRow);
             // 
             // iNNDataGridViewTextBoxColumn
             // 
