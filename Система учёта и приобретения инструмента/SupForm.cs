@@ -45,21 +45,21 @@ namespace Система_учёта_и_приобретения_инструме
             }
         }
 
-        private void Notify(string title, string text, ToolTipIcon icon)
-        {
-            NotifyIcon notifyIcon = new NotifyIcon();
-            notifyIcon.Icon = Properties.Resources.DiplomIcon;
-            notifyIcon.BalloonTipClosed += notifyIcon_BalloonTipClosed;
-            notifyIcon.Visible = true;
-            notifyIcon.ShowBalloonTip(0, title, text, icon);
-        }
+        //private void Notify(string title, string text, ToolTipIcon icon)
+        //{
+        //    NotifyIcon notifyIcon = new NotifyIcon();
+        //    notifyIcon.Icon = Properties.Resources.DiplomIcon;
+        //    notifyIcon.BalloonTipClosed += notifyIcon_BalloonTipClosed;
+        //    notifyIcon.Visible = true;
+        //    notifyIcon.ShowBalloonTip(0, title, text, icon);
+        //}
 
-        private void notifyIcon_BalloonTipClosed(object sender, EventArgs e)
-        {
-            NotifyIcon notifyIcon = sender as NotifyIcon;
-            notifyIcon.Visible = false;
-            notifyIcon.Dispose();
-        }
+        //private void notifyIcon_BalloonTipClosed(object sender, EventArgs e)
+        //{
+        //    NotifyIcon notifyIcon = sender as NotifyIcon;
+        //    notifyIcon.Visible = false;
+        //    notifyIcon.Dispose();
+        //}
 
         private void SupFormSave_Click(object sender, EventArgs e)
         {
@@ -74,19 +74,19 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!AllRequiredFieldsFilled())
             {
-                Notify("Предупреждение", "Необходимо заполнить все обязательные поля, отмеченные *.", ToolTipIcon.Warning);
+                NotificationService.Notify("Предупреждение", "Необходимо заполнить все обязательные поля, отмеченные *.", ToolTipIcon.Warning);
                 return false;
             }
 
-            if (!IsInnValid())
+            if (!Validation.IsInnValid(SupFormINN.Text))
             {
-                Notify("Предупреждение", "ИНН должен содержать 10 цифр (для юридических лиц) или 12 цифр (для физических лиц и индивидуальных предпринимателей).", ToolTipIcon.Warning);
+                NotificationService.Notify("Предупреждение", "ИНН должен содержать 10 цифр (для юридических лиц) или 12 цифр (для физических лиц и индивидуальных предпринимателей).", ToolTipIcon.Warning);
                 return false;
             }
 
-            if (!IsINNUnique())
+            if (!Validation.IsINNUnique(SupFormINN.Text, toolAccounting,mode,editRow))
             {
-                Notify("Предупреждение", "Поставщик с таким ИНН уже существует.", ToolTipIcon.Warning);
+                NotificationService.Notify("Предупреждение", "Поставщик с таким ИНН уже существует.", ToolTipIcon.Warning);
                 return false;
             }
             try
@@ -111,18 +111,18 @@ namespace Система_учёта_и_приобретения_инструме
                    !string.IsNullOrEmpty(SupFormContacts.Text);
         }
 
-        private bool IsInnValid()
-        {
-            return (SupFormINN.TextLength == 10 || SupFormINN.TextLength == 12) && SupFormINN.Text.All(char.IsDigit);
-            //Стоит ли добавить проверку контрольной суммы ИНН?
-        }
+        //private bool IsInnValid()
+        //{
+        //    return (SupFormINN.TextLength == 10 || SupFormINN.TextLength == 12) && SupFormINN.Text.All(char.IsDigit);
+        //    //Стоит ли добавить проверку контрольной суммы ИНН?
+        //}
 
-        private bool IsINNUnique()
-        {
-            string inn = SupFormINN.Text;
-            if (mode == FormMode.Edit && inn == editRow.INN) return true;
-            return !toolAccounting.Suppliers.Any(s => s.INN == inn);
-        }
+        //private bool IsINNUnique()
+        //{
+        //    string inn = SupFormINN.Text;
+        //    if (mode == FormMode.Edit && inn == editRow.INN) return true;
+        //    return !toolAccounting.Suppliers.Any(s => s.INN == inn);
+        //}
 
         private void CreateSupplier()
         {
@@ -185,6 +185,11 @@ namespace Система_учёта_и_приобретения_инструме
             string.IsNullOrEmpty(SupFormAddress.Text) &&
             string.IsNullOrEmpty(SupFormContacts.Text) &&
             string.IsNullOrEmpty(SupFormNotes.Text);
+        }
+
+        private void SupFormINN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
         }
     }
 }

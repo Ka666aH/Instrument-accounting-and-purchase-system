@@ -99,6 +99,7 @@
             this.SupFormINN.Name = "SupFormINN";
             this.SupFormINN.Size = new System.Drawing.Size(475, 26);
             this.SupFormINN.TabIndex = 1;
+            this.SupFormINN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SupFormINN_KeyPress);
             // 
             // label1
             // 

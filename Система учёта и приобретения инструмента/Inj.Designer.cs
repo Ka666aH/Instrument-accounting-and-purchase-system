@@ -2165,9 +2165,13 @@
             this.ProvidersTable.Location = new System.Drawing.Point(7, 77);
             this.ProvidersTable.Name = "ProvidersTable";
             this.ProvidersTable.RowHeadersVisible = false;
+            this.ProvidersTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ProvidersTable.Size = new System.Drawing.Size(1035, 545);
             this.ProvidersTable.TabIndex = 7;
+            this.ProvidersTable.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.ProvidersTable_CellValidating);
             this.ProvidersTable.CurrentCellChanged += new System.EventHandler(this.ProvidersTable_CurrentCellChanged);
+            this.ProvidersTable.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.ProvidersTable_EditingControlShowing);
+            this.ProvidersTable.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProvidersTable_RowValidated);
             // 
             // iNNDataGridViewTextBoxColumn
             // 

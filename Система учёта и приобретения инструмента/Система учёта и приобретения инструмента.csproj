@@ -61,6 +61,7 @@
     <Compile Include="AddMoving.Designer.cs">
       <DependentUpon>AddMoving.cs</DependentUpon>
     </Compile>
+    <Compile Include="NotificationService.cs" />
     <Compile Include="Search.cs" />
     <Compile Include="DefAdd.cs">
       <SubType>Form</SubType>
@@ -111,6 +112,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TOOLACCOUNTINGDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Validation.cs" />
     <EmbeddedResource Include="AddApplications.resx">
       <DependentUpon>AddApplications.cs</DependentUpon>
     </EmbeddedResource>

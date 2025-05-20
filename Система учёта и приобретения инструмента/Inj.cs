@@ -49,7 +49,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Inj_Load(object sender, EventArgs e)
         {
-            
+
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.NomenclatureLogs". При необходимости она может быть перемещена или удалена.
             this.nomenclatureLogsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NomenclatureLogs);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Groups". При необходимости она может быть перемещена или удалена.
@@ -58,7 +58,7 @@ namespace Система_учёта_и_приобретения_инструме
             this.nomenclatureWithFullNameTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NomenclatureWithFullName);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Suppliers". При необходимости она может быть перемещена или удалена.
             this.suppliersTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Suppliers);
-            
+
             WindowState = FormWindowState.Maximized;
 
             LogStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
@@ -119,43 +119,130 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void ProvidersButtonCreate_Click(object sender, EventArgs e)
         {
-            SupForm supForm = new SupForm(tOOLACCOUNTINGDataSet,suppliersTableAdapter);
+            SupForm supForm = new SupForm(tOOLACCOUNTINGDataSet, suppliersTableAdapter);
             supForm.ShowDialog();
         }
 
         private void ProvidersButtonAlter_Click(object sender, EventArgs e)
         {
-            var selectedRow = ProvidersTable.CurrentRow.DataBoundItem as DataRowView;
-            if (selectedRow != null)
+            if (ProvidersTable.CurrentRow == null)
             {
-                var supplierRow = selectedRow.Row as TOOLACCOUNTINGDataSet.SuppliersRow;
-                SupForm supForm = new SupForm(tOOLACCOUNTINGDataSet, suppliersTableAdapter, FormMode.Edit, supplierRow);
-                supForm.ShowDialog();
-            }     
+                AlterDeleteButtonsState(false);
+                return;
+            }
+            var selectedRow = ProvidersTable.CurrentRow.DataBoundItem as DataRowView;
+            var supplierRow = selectedRow.Row as TOOLACCOUNTINGDataSet.SuppliersRow;
+            SupForm supForm = new SupForm(tOOLACCOUNTINGDataSet, suppliersTableAdapter, FormMode.Edit, supplierRow);
+            supForm.ShowDialog();
         }
 
         private void ProvidersButtonDelete_Click(object sender, EventArgs e)
         {
+            if (ProvidersTable.CurrentRow == null)
+            {
+                AlterDeleteButtonsState(false);
+                return;
+            }
 
+            DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту запись?", "Удаление поставщика", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No) return;
+
+            try
+            {
+                var selectedRow = ProvidersTable.CurrentRow.DataBoundItem as DataRowView;
+                var supplierRow = selectedRow.Row as TOOLACCOUNTINGDataSet.SuppliersRow;
+                supplierRow.Delete();
+                suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ProvidersTable_CurrentCellChanged(object sender, EventArgs e)
         {
-            if (ProvidersTable.CurrentRow == null) ProvidersButtonAlter.Enabled = false;
-            else ProvidersButtonAlter.Enabled = true;
+            if (ProvidersTable.CurrentRow == null)
+            {
+                AlterDeleteButtonsState(false);
+            }
+            else
+            {
+                AlterDeleteButtonsState(true);
+            }
         }
         private void SuppliersTextChanged(object sender, EventArgs e)
         {
             var parameters = new Dictionary<string, object>();
             if (!string.IsNullOrEmpty(ProvidersINN.Text)) parameters.Add("INN", ProvidersINN.Text);
             if (!string.IsNullOrEmpty(ProvidersName.Text)) parameters.Add("Name", ProvidersName.Text);
-            string filter = Search.Filter(parameters);
-            ProvidersTable.SuspendLayout();
-            suppliersBindingSource.Filter = filter;
-            ProvidersTable.ResumeLayout();
+            try
+            {
+                string filter = Search.Filter(parameters);
+                ProvidersTable.SuspendLayout();
+                suppliersBindingSource.Filter = filter;
+                ProvidersTable.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        public void AlterDeleteButtonsState(bool state)
+        {
+            ProvidersButtonAlter.Enabled = state;
+            ProvidersButtonDelete.Enabled = state;
+        }
 
+        private void ProvidersTable_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (ProvidersTable.CurrentCell.ColumnIndex == 0)
+            {
+                if (e.Control is TextBox textBox)
+                {
+                    textBox.KeyPress -= INN_KeyPress;
+                    textBox.KeyPress += INN_KeyPress;
+                }
+            }
+        }
+
+        private void INN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
+        }
+
+        private void ProvidersTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            //var row = ProvidersTable.CurrentRow;
+            //var cell = ProvidersTable.CurrentCell;
+            //switch (cell.ColumnIndex)
+            //{
+            //    case 0:
+
+            //        var inn = cell.Value.ToString();
+            //        if(row.IsNewRow) //проблема
+            //        {
+            //            if (!Validation.IsInnValid(inn) || !Validation.IsINNUnique(inn, tOOLACCOUNTINGDataSet, FormMode.Add)) e.Cancel = true;
+            //        }
+            //        else
+            //        {
+            //            var dataRowView= row.DataBoundItem as DataRowView;
+            //            var originRow = dataRowView.Row as TOOLACCOUNTINGDataSet.SuppliersRow;
+            //            if (!Validation.IsInnValid(inn) || !Validation.IsINNUnique(inn, tOOLACCOUNTINGDataSet, FormMode.Edit,originRow)) e.Cancel = true;
+
+            //        }
+                    
+            //        break;
+            //    default:
+
+            //        break;
+            //}
+        }
+        private void ProvidersTable_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
         #endregion
 
         #region Аналоги инструментов
@@ -173,6 +260,7 @@ namespace Система_учёта_и_приобретения_инструме
         #region Остатки номенклатуры
 
         #endregion
+
 
     }
 }
