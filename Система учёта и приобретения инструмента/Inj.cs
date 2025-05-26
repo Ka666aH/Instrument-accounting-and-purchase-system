@@ -214,7 +214,7 @@ namespace Система_учёта_и_приобретения_инструме
             originSupplierRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.SuppliersRow;
         }
 
-        private void ProvidersTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e) //Добавить валидацию других столбцов
+        private void ProvidersTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             if(!userEditing) return;
             if (ProvidersTable.Rows[e.RowIndex] == null) return;
@@ -243,7 +243,14 @@ namespace Система_учёта_и_приобретения_инструме
                     }
 
                     break;
+                case 4: break;
                 default:
+
+                    if (string.IsNullOrEmpty(cell.EditedFormattedValue as string))
+                    {
+                        e.Cancel = true;
+                        NotificationService.Notify("Предупреждение", "Это поле не может быть пустым.", ToolTipIcon.Warning);
+                    }
 
                     break;
             }
@@ -254,7 +261,6 @@ namespace Система_учёта_и_приобретения_инструме
             suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
             userEditing = false;
         }
-
 
         #endregion
 
