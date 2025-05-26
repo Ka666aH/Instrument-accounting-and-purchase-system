@@ -92,7 +92,7 @@
               "RelativeDocumentMoniker": "Inj.cs",
               "ToolTip": "E:\\Saaaveeesss\\\u0414\u0438\u043F\u043B\u043E\u043C\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\Inj.cs",
               "RelativeToolTip": "Inj.cs",
-              "ViewState": "AQIAAIcAAAAAAAAAAAAswBkAAAAbAAAA",
+              "ViewState": "AQIAANMAAAAAAAAAAAAgwPgAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-14T16:57:09.927Z",
               "IsPinned": true,
@@ -106,7 +106,7 @@
               "RelativeDocumentMoniker": "SupForm.cs",
               "ToolTip": "E:\\Saaaveeesss\\\u0414\u0438\u043F\u043B\u043E\u043C\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\SupForm.cs",
               "RelativeToolTip": "SupForm.cs",
-              "ViewState": "AQIAAEwAAAAAAAAAAAAhwGMAAAAvAAAA",
+              "ViewState": "AQIAAGEAAAAAAAAAAAAhwGMAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-18T12:06:57.255Z",
               "IsPinned": true,
@@ -122,8 +122,7 @@
               "RelativeToolTip": "Inj.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-14T16:57:09.211Z",
-              "IsPinned": true,
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -136,8 +135,7 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-20T11:42:11.158Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -176,8 +174,7 @@
               "RelativeToolTip": "LoginForm.cs",
               "ViewState": "AQIAAA4AAAAAAAAAAAAEwCgAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T16:57:09.925Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T16:57:09.925Z"
             },
             {
               "$type": "Document",
@@ -189,8 +186,7 @@
               "RelativeToolTip": "NotificationService.cs",
               "ViewState": "AQIAAAIAAAAAAAAAAAAWwBQAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T12:20:02.721Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T12:20:02.721Z"
             },
             {
               "$type": "Document",
@@ -202,8 +198,7 @@
               "RelativeToolTip": "Search.cs",
               "ViewState": "AQIAAB8AAAAAAAAAAAAgwDMAAAB1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T10:45:13.595Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T10:45:13.595Z"
             },
             {
               "$type": "Document",
@@ -225,8 +220,7 @@
               "ToolTip": "E:\\Saaaveeesss\\\u0414\u0438\u043F\u043B\u043E\u043C\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\TOOLACCOUNTINGDataSet.xsd",
               "RelativeToolTip": "TOOLACCOUNTINGDataSet.xsd",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003579|",
-              "WhenOpened": "2025-05-17T17:16:13.725Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T17:16:13.725Z"
             },
             {
               "$type": "Document",
@@ -283,8 +277,7 @@
               "ToolTip": "E:\\Saaaveeesss\\\u0414\u0438\u043F\u043B\u043E\u043C\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\LoginForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "LoginForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T16:57:09.213Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2025-05-14T16:57:09.213Z"
             },
             {
               "$type": "Document",

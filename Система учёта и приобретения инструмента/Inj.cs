@@ -214,7 +214,7 @@ namespace Система_учёта_и_приобретения_инструме
             originSupplierRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.SuppliersRow;
         }
 
-        private void ProvidersTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        private void ProvidersTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e) //Добавить валидацию других столбцов
         {
             if(!userEditing) return;
             if (ProvidersTable.Rows[e.RowIndex] == null) return;
