@@ -59,7 +59,7 @@ namespace Система_учёта_и_приобретения_инструме
             WindowState = FormWindowState.Maximized;
 
             LogStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
-            LogEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddDays(-1);
+            LogEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1);
         }
 
         private void InjLevel1_SelectedIndexChanged(object sender, EventArgs e)
@@ -234,7 +234,7 @@ namespace Система_учёта_и_приобретения_инструме
                     if (!Validation.IsInnValid(inn))
                     {
                         e.Cancel = true;
-                        NotificationService.Notify("Предупреждение", "ИНН должен содержать 10 цифр (для юридических лиц) или 12 цифр (для физических лиц и индивидуальных предпринимателей).", ToolTipIcon.Warning);
+                        //NotificationService.Notify("Предупреждение", "ИНН должен содержать 10 цифр (для юридических лиц) или 12 цифр (для физических лиц и индивидуальных предпринимателей).", ToolTipIcon.Warning);
                     }
                     if (!Validation.IsINNUnique(inn, tOOLACCOUNTINGDataSet, mode, originSupplierRow))
                     {
