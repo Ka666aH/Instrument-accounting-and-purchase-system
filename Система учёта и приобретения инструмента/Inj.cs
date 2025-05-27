@@ -122,10 +122,10 @@ namespace Система_учёта_и_приобретения_инструме
             ProvidersButtonDelete.Enabled = state;
         }
 
-
         private void ProvidersButtonAlter_Click(object sender, EventArgs e)
         {
             SetProvidersButtonsState();
+            if(ProvidersTable.CurrentRow.DataBoundItem as DataRowView == null) return;
             var selectedRow = ProvidersTable.CurrentRow.DataBoundItem as DataRowView;
             var supplierRow = selectedRow.Row as TOOLACCOUNTINGDataSet.SuppliersRow;
             SupForm supForm = new SupForm(tOOLACCOUNTINGDataSet, suppliersTableAdapter, FormMode.Edit, supplierRow);
@@ -140,7 +140,7 @@ namespace Система_учёта_и_приобретения_инструме
         private bool ProvidersDelete()
         {
             SetProvidersButtonsState();
-
+            if (ProvidersTable.CurrentRow.DataBoundItem as DataRowView == null) return false;
             DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту запись?", "Удаление поставщика", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.No) return false;
 
@@ -166,9 +166,9 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void SuppliersTextChanged(object sender, EventArgs e)
         {
-            var parameters = new Dictionary<string, object>();
-            if (!string.IsNullOrEmpty(ProvidersINN.Text)) parameters.Add("INN", ProvidersINN.Text);
-            if (!string.IsNullOrEmpty(ProvidersName.Text)) parameters.Add("Name", ProvidersName.Text);
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(ProvidersINN.Text)) parameters.Add(new SearchParameter("INN", ProvidersINN.Text,true));
+            if (!string.IsNullOrEmpty(ProvidersName.Text)) parameters.Add(new SearchParameter("Name", ProvidersName.Text, false));
             try
             {
                 string filter = Search.Filter(parameters);
