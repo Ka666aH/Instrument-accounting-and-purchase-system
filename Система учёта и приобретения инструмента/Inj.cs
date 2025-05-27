@@ -45,8 +45,38 @@ namespace Система_учёта_и_приобретения_инструме
             Close();
         }
 
+        private void импортToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImportForm importForm = new ImportForm(tOOLACCOUNTINGDataSet);
+            importForm.ShowDialog();
+
+            if (tOOLACCOUNTINGDataSet.Groups.GetChanges() != null)
+            {
+                groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
+                InjLevel1.SelectedTab = InjGroupsPage;
+            }
+            if (tOOLACCOUNTINGDataSet.Nomenclature.GetChanges() != null)
+            {
+                //обновление номенклатуры
+                InjLevel1.SelectedTab = InjNomenPage;
+            }
+            if (tOOLACCOUNTINGDataSet.AnalogTools.GetChanges() != null)
+            {
+                //
+                InjLevel1.SelectedTab = InjAnalogPage;
+            }
+            if (tOOLACCOUNTINGDataSet.Suppliers.GetChanges() != null)
+            {
+                suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
+                InjLevel1.SelectedTab = InjProvidersPage;
+            }
+
+        }
+
         private void Inj_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Nomenclature". При необходимости она может быть перемещена или удалена.
+            this.nomenclatureTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Nomenclature);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.NomenclatureLogs". При необходимости она может быть перемещена или удалена.
             this.nomenclatureLogsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NomenclatureLogs);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Groups". При необходимости она может быть перемещена или удалена.
@@ -59,12 +89,12 @@ namespace Система_учёта_и_приобретения_инструме
             WindowState = FormWindowState.Maximized;
 
             LogStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
-            LogEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddDays(-1);
+            LogEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1);
         }
 
         private void InjLevel1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         #region Номенклатура инструмента
@@ -122,10 +152,10 @@ namespace Система_учёта_и_приобретения_инструме
             ProvidersButtonDelete.Enabled = state;
         }
 
-
         private void ProvidersButtonAlter_Click(object sender, EventArgs e)
         {
             SetProvidersButtonsState();
+            if(ProvidersTable.CurrentRow.DataBoundItem as DataRowView == null) return;
             var selectedRow = ProvidersTable.CurrentRow.DataBoundItem as DataRowView;
             var supplierRow = selectedRow.Row as TOOLACCOUNTINGDataSet.SuppliersRow;
             SupForm supForm = new SupForm(tOOLACCOUNTINGDataSet, suppliersTableAdapter, FormMode.Edit, supplierRow);
@@ -140,7 +170,7 @@ namespace Система_учёта_и_приобретения_инструме
         private bool ProvidersDelete()
         {
             SetProvidersButtonsState();
-
+            if (ProvidersTable.CurrentRow.DataBoundItem as DataRowView == null) return false;
             DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту запись?", "Удаление поставщика", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.No) return false;
 
@@ -166,9 +196,9 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void SuppliersTextChanged(object sender, EventArgs e)
         {
-            var parameters = new Dictionary<string, object>();
-            if (!string.IsNullOrEmpty(ProvidersINN.Text)) parameters.Add("INN", ProvidersINN.Text);
-            if (!string.IsNullOrEmpty(ProvidersName.Text)) parameters.Add("Name", ProvidersName.Text);
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(ProvidersINN.Text)) parameters.Add(new SearchParameter("INN", ProvidersINN.Text,true));
+            if (!string.IsNullOrEmpty(ProvidersName.Text)) parameters.Add(new SearchParameter("Name", ProvidersName.Text, false));
             try
             {
                 string filter = Search.Filter(parameters);
@@ -234,7 +264,7 @@ namespace Система_учёта_и_приобретения_инструме
                     if (!Validation.IsInnValid(inn))
                     {
                         e.Cancel = true;
-                        NotificationService.Notify("Предупреждение", "ИНН должен содержать 10 цифр (для юридических лиц) или 12 цифр (для физических лиц и индивидуальных предпринимателей).", ToolTipIcon.Warning);
+                        //NotificationService.Notify("Предупреждение", "ИНН должен содержать 10 цифр (для юридических лиц) или 12 цифр (для физических лиц и индивидуальных предпринимателей).", ToolTipIcon.Warning);
                     }
                     if (!Validation.IsINNUnique(inn, tOOLACCOUNTINGDataSet, mode, originSupplierRow))
                     {
@@ -268,7 +298,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         #endregion
 
-        #region Поставщики
+        #region 
 
         #endregion
 
@@ -279,5 +309,6 @@ namespace Система_учёта_и_приобретения_инструме
         #region Остатки номенклатуры
 
         #endregion
+
     }
 }

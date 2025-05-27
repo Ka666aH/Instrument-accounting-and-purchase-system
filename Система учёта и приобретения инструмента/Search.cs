@@ -7,9 +7,23 @@ using System.Threading.Tasks;
 
 namespace Система_учёта_и_приобретения_инструмента
 {
+    public class SearchParameter
+    {
+        public string Field { get; }
+        public object Value { get; }
+        public bool SearchFromStart { get; }
+
+        public SearchParameter(string field, object value, bool searchFromStart)
+        {
+            Field = field;
+            Value = value;
+            SearchFromStart = searchFromStart;
+        }
+    }
+
     public class Search
     {
-        public static string Filter(Dictionary<string, object> parameters)
+        public static string Filter(List<SearchParameter> parameters)
         {
             var conditions = new List<string>();
 
@@ -25,7 +39,8 @@ namespace Система_учёта_и_приобретения_инструме
                             string pureStr = strVal.Replace("'", "''")
                                 .Replace("%", "[%]")
                                 .Replace("_", "[_]");
-                            formattedValue = $"'{strVal}%'";
+                            if(parameter.SearchFromStart) formattedValue = $"'{strVal}%'";
+                            else formattedValue = $"'%{strVal}%'";
                             break;
 
                         case DateTime dateVal:
@@ -52,7 +67,7 @@ namespace Система_учёта_и_приобретения_инструме
                             throw new ArgumentException($"Неподдерживаемый тип данных: {parameter.Value.GetType()}");
                     }
 
-                    conditions.Add($"{parameter.Key} LIKE {formattedValue}");
+                    conditions.Add($"{parameter.Field} LIKE {formattedValue}");
                 }
             }
             return string.Join(" AND ", conditions);

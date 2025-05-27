@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters;
 
 namespace Система_учёта_и_приобретения_инструмента
 {
@@ -42,6 +43,34 @@ namespace Система_учёта_и_приобретения_инструме
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void импортToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //ImportForm importForm = new ImportForm(tOOLACCOUNTINGDataSet);
+            //importForm.ShowDialog();
+
+            //if (tOOLACCOUNTINGDataSet.Groups.GetChanges() != null)
+            //{
+            //    groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
+            //    InjLevel1.SelectedTab = InjGroupsPage;
+            //}
+            //if (tOOLACCOUNTINGDataSet.Nomenclature.GetChanges() != null)
+            //{
+            //    //обновление номенклатуры
+            //    InjLevel1.SelectedTab = InjNomenPage;
+            //}
+            //if (tOOLACCOUNTINGDataSet.AnalogTools.GetChanges() != null)
+            //{
+            //    //
+            //    InjLevel1.SelectedTab = InjAnalogPage;
+            //}
+            //if (tOOLACCOUNTINGDataSet.Suppliers.GetChanges() != null)
+            //{
+            //    suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
+            //    InjLevel1.SelectedTab = InjProvidersPage;
+            //}
+
         }
 
         private void AddApplication_Click(object sender, EventArgs e)
