@@ -45,8 +45,38 @@ namespace Система_учёта_и_приобретения_инструме
             Close();
         }
 
+        private void импортToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImportForm importForm = new ImportForm(tOOLACCOUNTINGDataSet);
+            importForm.ShowDialog();
+
+            if (tOOLACCOUNTINGDataSet.Groups.GetChanges() != null)
+            {
+                groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
+                InjLevel1.SelectedTab = InjGroupsPage;
+            }
+            if (tOOLACCOUNTINGDataSet.Nomenclature.GetChanges() != null)
+            {
+                //обновление номенклатуры
+                InjLevel1.SelectedTab = InjNomenPage;
+            }
+            if (tOOLACCOUNTINGDataSet.AnalogTools.GetChanges() != null)
+            {
+                //
+                InjLevel1.SelectedTab = InjAnalogPage;
+            }
+            if (tOOLACCOUNTINGDataSet.Suppliers.GetChanges() != null)
+            {
+                suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
+                InjLevel1.SelectedTab = InjProvidersPage;
+            }
+
+        }
+
         private void Inj_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Nomenclature". При необходимости она может быть перемещена или удалена.
+            this.nomenclatureTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Nomenclature);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.NomenclatureLogs". При необходимости она может быть перемещена или удалена.
             this.nomenclatureLogsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NomenclatureLogs);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Groups". При необходимости она может быть перемещена или удалена.
@@ -64,7 +94,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void InjLevel1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         #region Номенклатура инструмента
@@ -268,7 +298,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         #endregion
 
-        #region Поставщики
+        #region 
 
         #endregion
 
@@ -279,5 +309,6 @@ namespace Система_учёта_и_приобретения_инструме
         #region Остатки номенклатуры
 
         #endregion
+
     }
 }

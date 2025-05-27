@@ -246,10 +246,13 @@
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сменитьПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.импортToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.suppliersTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.SuppliersTableAdapter();
             this.nomenclatureWithFullNameTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.NomenclatureWithFullNameTableAdapter();
             this.groupsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.GroupsTableAdapter();
             this.nomenclatureLogsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.NomenclatureLogsTableAdapter();
+            this.nomenclatureBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nomenclatureTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.NomenclatureTableAdapter();
             this.InjLevel1.SuspendLayout();
             this.InjNomenPage.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -305,6 +308,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.OstatkiTable)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.Menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nomenclatureBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // InjLevel1
@@ -2607,7 +2611,8 @@
             // Menu
             // 
             this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem});
+            this.файлToolStripMenuItem,
+            this.импортToolStripMenuItem});
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
             this.Menu.Size = new System.Drawing.Size(1264, 24);
@@ -2637,6 +2642,13 @@
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
+            // импортToolStripMenuItem
+            // 
+            this.импортToolStripMenuItem.Name = "импортToolStripMenuItem";
+            this.импортToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.импортToolStripMenuItem.Text = "Импорт";
+            this.импортToolStripMenuItem.Click += new System.EventHandler(this.импортToolStripMenuItem_Click);
+            // 
             // suppliersTableAdapter
             // 
             this.suppliersTableAdapter.ClearBeforeFill = true;
@@ -2652,6 +2664,15 @@
             // nomenclatureLogsTableAdapter
             // 
             this.nomenclatureLogsTableAdapter.ClearBeforeFill = true;
+            // 
+            // nomenclatureBindingSource
+            // 
+            this.nomenclatureBindingSource.DataMember = "Nomenclature";
+            this.nomenclatureBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
+            // 
+            // nomenclatureTableAdapter
+            // 
+            this.nomenclatureTableAdapter.ClearBeforeFill = true;
             // 
             // Inj
             // 
@@ -2741,6 +2762,7 @@
             this.groupBox6.PerformLayout();
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nomenclatureBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2966,5 +2988,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn newValueDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn changedDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn executorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem импортToolStripMenuItem;
+        private System.Windows.Forms.BindingSource nomenclatureBindingSource;
+        private TOOLACCOUNTINGDataSetTableAdapters.NomenclatureTableAdapter nomenclatureTableAdapter;
     }
 }
