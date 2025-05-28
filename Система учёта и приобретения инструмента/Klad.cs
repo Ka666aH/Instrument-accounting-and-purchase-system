@@ -23,6 +23,10 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Klad_Load(object sender, EventArgs e)
         {
+
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.NonemclatureView". При необходимости она может быть перемещена или удалена.
+            this.nonemclatureViewTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NonemclatureView);
+
             this.WindowState = FormWindowState.Maximized;
         }
 
