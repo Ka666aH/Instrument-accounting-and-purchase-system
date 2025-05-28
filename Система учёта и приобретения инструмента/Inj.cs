@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters;
 
 namespace Система_учёта_и_приобретения_инструмента
 {
@@ -47,6 +48,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void импортToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             ImportForm importForm = new ImportForm(tOOLACCOUNTINGDataSet);
             importForm.ShowDialog();
 
@@ -57,7 +59,8 @@ namespace Система_учёта_и_приобретения_инструме
             }
             if (tOOLACCOUNTINGDataSet.Nomenclature.GetChanges() != null)
             {
-                //обновление номенклатуры
+                nomenclatureTableAdapter.Update(tOOLACCOUNTINGDataSet.Nomenclature);
+                nonemclatureViewTableAdapter.Fill(tOOLACCOUNTINGDataSet.NonemclatureView);
                 InjLevel1.SelectedTab = InjNomenPage;
             }
             if (tOOLACCOUNTINGDataSet.AnalogTools.GetChanges() != null)
@@ -75,14 +78,14 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Inj_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.NonemclatureView". При необходимости она может быть перемещена или удалена.
+            this.nonemclatureViewTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NonemclatureView);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Nomenclature". При необходимости она может быть перемещена или удалена.
             this.nomenclatureTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Nomenclature);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.NomenclatureLogs". При необходимости она может быть перемещена или удалена.
             this.nomenclatureLogsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NomenclatureLogs);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Groups". При необходимости она может быть перемещена или удалена.
             this.groupsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Groups);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.NomenclatureWithFullName". При необходимости она может быть перемещена или удалена.
-            this.nomenclatureWithFullNameTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NomenclatureWithFullName);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Suppliers". При необходимости она может быть перемещена или удалена.
             this.suppliersTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Suppliers);
 

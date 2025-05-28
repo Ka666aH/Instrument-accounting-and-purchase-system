@@ -14,18 +14,18 @@ using MSExcel = Microsoft.Office.Interop.Excel;
 
 namespace Система_учёта_и_приобретения_инструмента
 {
+    //не закрывается процесс EXCEL.EXE
     public partial class ImportForm : Form
     {
         Dictionary<string, string> tables = new Dictionary<string, string>
         {
             { "Groups","Группы инструментов" },
-            { "Nomenclature","Номенклатура инструмента" },
+            { "Nomenclature","Номенклатура инструментов" },
             { "AnalogTools","Аналоги инструментов" },
             { "Workshops","Цеха" },
             { "Storages","Склады" },
             { "Suppliers","Поставщики" },
-            { "Balances","Остатки" },
-
+            { "Balances","Остатки" }
         };
 
         MSExcel.Application application;
@@ -37,22 +37,23 @@ namespace Система_учёта_и_приобретения_инструме
         public ImportForm(TOOLACCOUNTINGDataSet _toolAccounting)
         {
             InitializeComponent();
-
+            ImportFormTable.Items.AddRange(tables.Values.ToArray());
             toolAccounting = _toolAccounting;
-            application = new MSExcel.Application();
-            openFileDialog1.Filter = "(*.xls;*.xlsx)|*.xls;*.xlsx";
-            openFileDialog1.Title = "Выберите файл Excel";
-            openFileDialog1.FileName = string.Empty;
-            openFileDialog1.Multiselect = false;
+            Cursor.Current = Cursors.Arrow;
         }
 
         private void ImportFormSelectFileButton_Click(object sender, EventArgs e)
         {
+            openFileDialog1.Filter = "(*.xls;*.xlsx)|*.xls;*.xlsx";
+            openFileDialog1.Title = "Выберите файл Excel";
+            openFileDialog1.FileName = string.Empty;
+            openFileDialog1.Multiselect = false;
             if (openFileDialog1.ShowDialog() == DialogResult.OK) ImportFormFilePath.Text = openFileDialog1.FileName;
         }
 
         private void ImportFormFilePath_TextChanged(object sender, EventArgs e)
         {
+            application = new MSExcel.Application();
             workbook = application.Workbooks.Open(ImportFormFilePath.Text);
             ImportFormSheet.Items.Clear();
             AllowImport();
@@ -87,6 +88,8 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void ImportFormImport_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            var data = new List<List<object>>();
             try
             {
                 worksheet = workbook.Worksheets[ImportFormSheet.Text];
@@ -99,7 +102,6 @@ namespace Система_учёта_и_приобретения_инструме
 
                 if (table.Columns.Count != cols) throw new Exception("Не совпадает количество столбцов в таблицах.");
 
-                var data = new List<List<object>>();
                 for (int row = 2; row <= rows; row++)
                 {
                     var rowData = new List<object>();
@@ -111,7 +113,7 @@ namespace Система_учёта_и_приобретения_инструме
                     }
                     data.Add(rowData);
                 }
-                if(data.Count>0)
+                if (data.Count > 0)
                 {
                     foreach (var rowItems in data)
                     {
@@ -132,34 +134,48 @@ namespace Система_учёта_и_приобретения_инструме
                     }
                     //table.AcceptChanges();
                     //toolAccounting.AcceptChanges();
-                    
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка импорта",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка импорта", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                if (worksheet != null) Marshal.ReleaseComObject(worksheet);
+                NotificationService.Notify("Импорт", $"В таблицу \"{ImportFormTable.Text}\" добавлено строк: {data.Count}.", ToolTipIcon.Info);
+                ImportFormSheet.SelectedIndex = -1;
+                ImportFormTable.SelectedIndex = -1;
+                Cursor.Current = Cursors.Arrow;
+                ReleaseComObject(range);
+                ReleaseComObject(worksheet);
             }
         }
 
         private void ImportForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (workbook != null)
-            {
-                workbook.Close();
-                Marshal.ReleaseComObject(workbook);
-            }
-
-            if (application != null)
-            {
-                application.Quit();
-                Marshal.ReleaseComObject(application);
-            }
+            workbook.Close(false);
+            ReleaseComObject(workbook);
+            application.Quit();
+            ReleaseComObject(application);
+            
             GC.Collect();
             GC.WaitForPendingFinalizers();
+            GC.Collect();
+        }
+        private void ReleaseComObject(object obj)
+        {
+            try
+            {
+                if (obj != null && Marshal.IsComObject(obj))
+                {
+                    Marshal.ReleaseComObject(obj);
+                }
+            }
+            catch { }
+            finally
+            {
+                obj = null;
+            }
         }
     }
 }

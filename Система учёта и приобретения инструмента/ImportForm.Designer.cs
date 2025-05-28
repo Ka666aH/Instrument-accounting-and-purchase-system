@@ -93,14 +93,6 @@
             // 
             this.ImportFormTable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ImportFormTable.FormattingEnabled = true;
-            this.ImportFormTable.Items.AddRange(new object[] {
-            "Группы инструментов",
-            "Номенклатура инструмента",
-            "Аналоги инструментов",
-            "Цеха",
-            "Склады",
-            "Поставщики",
-            "Остатки"});
             this.ImportFormTable.Location = new System.Drawing.Point(75, 58);
             this.ImportFormTable.Name = "ImportFormTable";
             this.ImportFormTable.Size = new System.Drawing.Size(305, 21);

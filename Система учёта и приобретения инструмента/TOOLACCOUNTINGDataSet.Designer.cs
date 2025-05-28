@@ -64,7 +64,7 @@ namespace Система_учёта_и_приобретения_инструме
         
         private WorkshopsDataTable tableWorkshops;
         
-        private NomenclatureWithFullNameDataTable tableNomenclatureWithFullName;
+        private NonemclatureViewDataTable tableNonemclatureView;
         
         private global::System.Data.DataRelation relationFK__AnalogToo__Analo__3E52440B;
         
@@ -206,8 +206,8 @@ namespace Система_учёта_и_приобретения_инструме
                 if ((ds.Tables["Workshops"] != null)) {
                     base.Tables.Add(new WorkshopsDataTable(ds.Tables["Workshops"]));
                 }
-                if ((ds.Tables["NomenclatureWithFullName"] != null)) {
-                    base.Tables.Add(new NomenclatureWithFullNameDataTable(ds.Tables["NomenclatureWithFullName"]));
+                if ((ds.Tables["NonemclatureView"] != null)) {
+                    base.Tables.Add(new NonemclatureViewDataTable(ds.Tables["NonemclatureView"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -431,9 +431,9 @@ namespace Система_учёта_и_приобретения_инструме
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public NomenclatureWithFullNameDataTable NomenclatureWithFullName {
+        public NonemclatureViewDataTable NonemclatureView {
             get {
-                return this.tableNomenclatureWithFullName;
+                return this.tableNonemclatureView;
             }
         }
         
@@ -564,8 +564,8 @@ namespace Система_учёта_и_приобретения_инструме
                 if ((ds.Tables["Workshops"] != null)) {
                     base.Tables.Add(new WorkshopsDataTable(ds.Tables["Workshops"]));
                 }
-                if ((ds.Tables["NomenclatureWithFullName"] != null)) {
-                    base.Tables.Add(new NomenclatureWithFullNameDataTable(ds.Tables["NomenclatureWithFullName"]));
+                if ((ds.Tables["NonemclatureView"] != null)) {
+                    base.Tables.Add(new NonemclatureViewDataTable(ds.Tables["NonemclatureView"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -720,10 +720,10 @@ namespace Система_учёта_и_приобретения_инструме
                     this.tableWorkshops.InitVars();
                 }
             }
-            this.tableNomenclatureWithFullName = ((NomenclatureWithFullNameDataTable)(base.Tables["NomenclatureWithFullName"]));
+            this.tableNonemclatureView = ((NonemclatureViewDataTable)(base.Tables["NonemclatureView"]));
             if ((initTable == true)) {
-                if ((this.tableNomenclatureWithFullName != null)) {
-                    this.tableNomenclatureWithFullName.InitVars();
+                if ((this.tableNonemclatureView != null)) {
+                    this.tableNonemclatureView.InitVars();
                 }
             }
             this.relationFK__AnalogToo__Analo__3E52440B = this.Relations["FK__AnalogToo__Analo__3E52440B"];
@@ -802,8 +802,8 @@ namespace Система_учёта_и_приобретения_инструме
             base.Tables.Add(this.tableToolMovements);
             this.tableWorkshops = new WorkshopsDataTable();
             base.Tables.Add(this.tableWorkshops);
-            this.tableNomenclatureWithFullName = new NomenclatureWithFullNameDataTable();
-            base.Tables.Add(this.tableNomenclatureWithFullName);
+            this.tableNonemclatureView = new NonemclatureViewDataTable();
+            base.Tables.Add(this.tableNonemclatureView);
             this.relationFK__AnalogToo__Analo__3E52440B = new global::System.Data.DataRelation("FK__AnalogToo__Analo__3E52440B", new global::System.Data.DataColumn[] {
                         this.tableNomenclature.NomenclatureNumberColumn}, new global::System.Data.DataColumn[] {
                         this.tableAnalogTools.AnalogNomenclatureNumberColumn}, false);
@@ -1032,7 +1032,7 @@ namespace Система_учёта_и_приобретения_инструме
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeNomenclatureWithFullName() {
+        private bool ShouldSerializeNonemclatureView() {
             return false;
         }
         
@@ -1152,7 +1152,7 @@ namespace Система_учёта_и_приобретения_инструме
         public delegate void WorkshopsRowChangeEventHandler(object sender, WorkshopsRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void NomenclatureWithFullNameRowChangeEventHandler(object sender, NomenclatureWithFullNameRowChangeEvent e);
+        public delegate void NonemclatureViewRowChangeEventHandler(object sender, NonemclatureViewRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -7789,7 +7789,7 @@ namespace Система_учёта_и_приобретения_инструме
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class NomenclatureWithFullNameDataTable : global::System.Data.TypedTableBase<NomenclatureWithFullNameRow> {
+        public partial class NonemclatureViewDataTable : global::System.Data.TypedTableBase<NonemclatureViewRow> {
             
             private global::System.Data.DataColumn columnNomenclatureNumber;
             
@@ -7815,8 +7815,8 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public NomenclatureWithFullNameDataTable() {
-                this.TableName = "NomenclatureWithFullName";
+            public NonemclatureViewDataTable() {
+                this.TableName = "NonemclatureView";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -7824,7 +7824,7 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal NomenclatureWithFullNameDataTable(global::System.Data.DataTable table) {
+            internal NonemclatureViewDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -7841,7 +7841,7 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected NomenclatureWithFullNameDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected NonemclatureViewDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -7945,34 +7945,34 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public NomenclatureWithFullNameRow this[int index] {
+            public NonemclatureViewRow this[int index] {
                 get {
-                    return ((NomenclatureWithFullNameRow)(this.Rows[index]));
+                    return ((NonemclatureViewRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event NomenclatureWithFullNameRowChangeEventHandler NomenclatureWithFullNameRowChanging;
+            public event NonemclatureViewRowChangeEventHandler NonemclatureViewRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event NomenclatureWithFullNameRowChangeEventHandler NomenclatureWithFullNameRowChanged;
+            public event NonemclatureViewRowChangeEventHandler NonemclatureViewRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event NomenclatureWithFullNameRowChangeEventHandler NomenclatureWithFullNameRowDeleting;
+            public event NonemclatureViewRowChangeEventHandler NonemclatureViewRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event NomenclatureWithFullNameRowChangeEventHandler NomenclatureWithFullNameRowDeleted;
+            public event NonemclatureViewRowChangeEventHandler NonemclatureViewRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddNomenclatureWithFullNameRow(NomenclatureWithFullNameRow row) {
+            public void AddNonemclatureViewRow(NonemclatureViewRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public NomenclatureWithFullNameRow AddNomenclatureWithFullNameRow(string NomenclatureNumber, string Name, string Designation, string Unit, string Dimensions, string CuttingMaterial, string RegulatoryDoc, string Producer, string FullName, byte UsageFlag, int MinStock) {
-                NomenclatureWithFullNameRow rowNomenclatureWithFullNameRow = ((NomenclatureWithFullNameRow)(this.NewRow()));
+            public NonemclatureViewRow AddNonemclatureViewRow(string NomenclatureNumber, string Name, string Designation, string Unit, string Dimensions, string CuttingMaterial, string RegulatoryDoc, string Producer, string FullName, byte UsageFlag, int MinStock) {
+                NonemclatureViewRow rowNonemclatureViewRow = ((NonemclatureViewRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NomenclatureNumber,
                         Name,
@@ -7985,22 +7985,22 @@ namespace Система_учёта_и_приобретения_инструме
                         FullName,
                         UsageFlag,
                         MinStock};
-                rowNomenclatureWithFullNameRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowNomenclatureWithFullNameRow);
-                return rowNomenclatureWithFullNameRow;
+                rowNonemclatureViewRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowNonemclatureViewRow);
+                return rowNonemclatureViewRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public NomenclatureWithFullNameRow FindByNomenclatureNumber(string NomenclatureNumber) {
-                return ((NomenclatureWithFullNameRow)(this.Rows.Find(new object[] {
+            public NonemclatureViewRow FindByNomenclatureNumber(string NomenclatureNumber) {
+                return ((NonemclatureViewRow)(this.Rows.Find(new object[] {
                             NomenclatureNumber})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                NomenclatureWithFullNameDataTable cln = ((NomenclatureWithFullNameDataTable)(base.Clone()));
+                NonemclatureViewDataTable cln = ((NonemclatureViewDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -8008,7 +8008,7 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new NomenclatureWithFullNameDataTable();
+                return new NonemclatureViewDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8073,28 +8073,28 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public NomenclatureWithFullNameRow NewNomenclatureWithFullNameRow() {
-                return ((NomenclatureWithFullNameRow)(this.NewRow()));
+            public NonemclatureViewRow NewNonemclatureViewRow() {
+                return ((NonemclatureViewRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new NomenclatureWithFullNameRow(builder);
+                return new NonemclatureViewRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(NomenclatureWithFullNameRow);
+                return typeof(NonemclatureViewRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.NomenclatureWithFullNameRowChanged != null)) {
-                    this.NomenclatureWithFullNameRowChanged(this, new NomenclatureWithFullNameRowChangeEvent(((NomenclatureWithFullNameRow)(e.Row)), e.Action));
+                if ((this.NonemclatureViewRowChanged != null)) {
+                    this.NonemclatureViewRowChanged(this, new NonemclatureViewRowChangeEvent(((NonemclatureViewRow)(e.Row)), e.Action));
                 }
             }
             
@@ -8102,8 +8102,8 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.NomenclatureWithFullNameRowChanging != null)) {
-                    this.NomenclatureWithFullNameRowChanging(this, new NomenclatureWithFullNameRowChangeEvent(((NomenclatureWithFullNameRow)(e.Row)), e.Action));
+                if ((this.NonemclatureViewRowChanging != null)) {
+                    this.NonemclatureViewRowChanging(this, new NonemclatureViewRowChangeEvent(((NonemclatureViewRow)(e.Row)), e.Action));
                 }
             }
             
@@ -8111,8 +8111,8 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.NomenclatureWithFullNameRowDeleted != null)) {
-                    this.NomenclatureWithFullNameRowDeleted(this, new NomenclatureWithFullNameRowChangeEvent(((NomenclatureWithFullNameRow)(e.Row)), e.Action));
+                if ((this.NonemclatureViewRowDeleted != null)) {
+                    this.NonemclatureViewRowDeleted(this, new NonemclatureViewRowChangeEvent(((NonemclatureViewRow)(e.Row)), e.Action));
                 }
             }
             
@@ -8120,14 +8120,14 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.NomenclatureWithFullNameRowDeleting != null)) {
-                    this.NomenclatureWithFullNameRowDeleting(this, new NomenclatureWithFullNameRowChangeEvent(((NomenclatureWithFullNameRow)(e.Row)), e.Action));
+                if ((this.NonemclatureViewRowDeleting != null)) {
+                    this.NonemclatureViewRowDeleting(this, new NonemclatureViewRowChangeEvent(((NonemclatureViewRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveNomenclatureWithFullNameRow(NomenclatureWithFullNameRow row) {
+            public void RemoveNonemclatureViewRow(NonemclatureViewRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -8154,7 +8154,7 @@ namespace Система_учёта_и_приобретения_инструме
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "NomenclatureWithFullNameDataTable";
+                attribute2.FixedValue = "NonemclatureViewDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -10573,25 +10573,25 @@ namespace Система_учёта_и_приобретения_инструме
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class NomenclatureWithFullNameRow : global::System.Data.DataRow {
+        public partial class NonemclatureViewRow : global::System.Data.DataRow {
             
-            private NomenclatureWithFullNameDataTable tableNomenclatureWithFullName;
+            private NonemclatureViewDataTable tableNonemclatureView;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal NomenclatureWithFullNameRow(global::System.Data.DataRowBuilder rb) : 
+            internal NonemclatureViewRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableNomenclatureWithFullName = ((NomenclatureWithFullNameDataTable)(this.Table));
+                this.tableNonemclatureView = ((NonemclatureViewDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string NomenclatureNumber {
                 get {
-                    return ((string)(this[this.tableNomenclatureWithFullName.NomenclatureNumberColumn]));
+                    return ((string)(this[this.tableNonemclatureView.NomenclatureNumberColumn]));
                 }
                 set {
-                    this[this.tableNomenclatureWithFullName.NomenclatureNumberColumn] = value;
+                    this[this.tableNonemclatureView.NomenclatureNumberColumn] = value;
                 }
             }
             
@@ -10600,14 +10600,14 @@ namespace Система_учёта_и_приобретения_инструме
             public string Name {
                 get {
                     try {
-                        return ((string)(this[this.tableNomenclatureWithFullName.NameColumn]));
+                        return ((string)(this[this.tableNonemclatureView.NameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Name\' в таблице \'NomenclatureWithFullName\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Name\' в таблице \'NonemclatureView\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNomenclatureWithFullName.NameColumn] = value;
+                    this[this.tableNonemclatureView.NameColumn] = value;
                 }
             }
             
@@ -10616,15 +10616,14 @@ namespace Система_учёта_и_приобретения_инструме
             public string Designation {
                 get {
                     try {
-                        return ((string)(this[this.tableNomenclatureWithFullName.DesignationColumn]));
+                        return ((string)(this[this.tableNonemclatureView.DesignationColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Designation\' в таблице \'NomenclatureWithFullName\' равно DBN" +
-                                "ull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Designation\' в таблице \'NonemclatureView\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNomenclatureWithFullName.DesignationColumn] = value;
+                    this[this.tableNonemclatureView.DesignationColumn] = value;
                 }
             }
             
@@ -10632,10 +10631,10 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Unit {
                 get {
-                    return ((string)(this[this.tableNomenclatureWithFullName.UnitColumn]));
+                    return ((string)(this[this.tableNonemclatureView.UnitColumn]));
                 }
                 set {
-                    this[this.tableNomenclatureWithFullName.UnitColumn] = value;
+                    this[this.tableNonemclatureView.UnitColumn] = value;
                 }
             }
             
@@ -10644,15 +10643,14 @@ namespace Система_учёта_и_приобретения_инструме
             public string Dimensions {
                 get {
                     try {
-                        return ((string)(this[this.tableNomenclatureWithFullName.DimensionsColumn]));
+                        return ((string)(this[this.tableNonemclatureView.DimensionsColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Dimensions\' в таблице \'NomenclatureWithFullName\' равно DBNu" +
-                                "ll.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Dimensions\' в таблице \'NonemclatureView\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNomenclatureWithFullName.DimensionsColumn] = value;
+                    this[this.tableNonemclatureView.DimensionsColumn] = value;
                 }
             }
             
@@ -10661,15 +10659,15 @@ namespace Система_учёта_и_приобретения_инструме
             public string CuttingMaterial {
                 get {
                     try {
-                        return ((string)(this[this.tableNomenclatureWithFullName.CuttingMaterialColumn]));
+                        return ((string)(this[this.tableNonemclatureView.CuttingMaterialColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CuttingMaterial\' в таблице \'NomenclatureWithFullName\' равно" +
-                                " DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CuttingMaterial\' в таблице \'NonemclatureView\' равно DBNull." +
+                                "", e);
                     }
                 }
                 set {
-                    this[this.tableNomenclatureWithFullName.CuttingMaterialColumn] = value;
+                    this[this.tableNonemclatureView.CuttingMaterialColumn] = value;
                 }
             }
             
@@ -10678,15 +10676,14 @@ namespace Система_учёта_и_приобретения_инструме
             public string RegulatoryDoc {
                 get {
                     try {
-                        return ((string)(this[this.tableNomenclatureWithFullName.RegulatoryDocColumn]));
+                        return ((string)(this[this.tableNonemclatureView.RegulatoryDocColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'RegulatoryDoc\' в таблице \'NomenclatureWithFullName\' равно D" +
-                                "BNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'RegulatoryDoc\' в таблице \'NonemclatureView\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNomenclatureWithFullName.RegulatoryDocColumn] = value;
+                    this[this.tableNonemclatureView.RegulatoryDocColumn] = value;
                 }
             }
             
@@ -10695,15 +10692,14 @@ namespace Система_учёта_и_приобретения_инструме
             public string Producer {
                 get {
                     try {
-                        return ((string)(this[this.tableNomenclatureWithFullName.ProducerColumn]));
+                        return ((string)(this[this.tableNonemclatureView.ProducerColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Producer\' в таблице \'NomenclatureWithFullName\' равно DBNull" +
-                                ".", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Producer\' в таблице \'NonemclatureView\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNomenclatureWithFullName.ProducerColumn] = value;
+                    this[this.tableNonemclatureView.ProducerColumn] = value;
                 }
             }
             
@@ -10712,15 +10708,14 @@ namespace Система_учёта_и_приобретения_инструме
             public string FullName {
                 get {
                     try {
-                        return ((string)(this[this.tableNomenclatureWithFullName.FullNameColumn]));
+                        return ((string)(this[this.tableNonemclatureView.FullNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FullName\' в таблице \'NomenclatureWithFullName\' равно DBNull" +
-                                ".", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FullName\' в таблице \'NonemclatureView\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNomenclatureWithFullName.FullNameColumn] = value;
+                    this[this.tableNonemclatureView.FullNameColumn] = value;
                 }
             }
             
@@ -10728,10 +10723,10 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public byte UsageFlag {
                 get {
-                    return ((byte)(this[this.tableNomenclatureWithFullName.UsageFlagColumn]));
+                    return ((byte)(this[this.tableNonemclatureView.UsageFlagColumn]));
                 }
                 set {
-                    this[this.tableNomenclatureWithFullName.UsageFlagColumn] = value;
+                    this[this.tableNonemclatureView.UsageFlagColumn] = value;
                 }
             }
             
@@ -10739,95 +10734,95 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public int MinStock {
                 get {
-                    return ((int)(this[this.tableNomenclatureWithFullName.MinStockColumn]));
+                    return ((int)(this[this.tableNonemclatureView.MinStockColumn]));
                 }
                 set {
-                    this[this.tableNomenclatureWithFullName.MinStockColumn] = value;
+                    this[this.tableNonemclatureView.MinStockColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsNameNull() {
-                return this.IsNull(this.tableNomenclatureWithFullName.NameColumn);
+                return this.IsNull(this.tableNonemclatureView.NameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetNameNull() {
-                this[this.tableNomenclatureWithFullName.NameColumn] = global::System.Convert.DBNull;
+                this[this.tableNonemclatureView.NameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsDesignationNull() {
-                return this.IsNull(this.tableNomenclatureWithFullName.DesignationColumn);
+                return this.IsNull(this.tableNonemclatureView.DesignationColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetDesignationNull() {
-                this[this.tableNomenclatureWithFullName.DesignationColumn] = global::System.Convert.DBNull;
+                this[this.tableNonemclatureView.DesignationColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsDimensionsNull() {
-                return this.IsNull(this.tableNomenclatureWithFullName.DimensionsColumn);
+                return this.IsNull(this.tableNonemclatureView.DimensionsColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetDimensionsNull() {
-                this[this.tableNomenclatureWithFullName.DimensionsColumn] = global::System.Convert.DBNull;
+                this[this.tableNonemclatureView.DimensionsColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCuttingMaterialNull() {
-                return this.IsNull(this.tableNomenclatureWithFullName.CuttingMaterialColumn);
+                return this.IsNull(this.tableNonemclatureView.CuttingMaterialColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCuttingMaterialNull() {
-                this[this.tableNomenclatureWithFullName.CuttingMaterialColumn] = global::System.Convert.DBNull;
+                this[this.tableNonemclatureView.CuttingMaterialColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsRegulatoryDocNull() {
-                return this.IsNull(this.tableNomenclatureWithFullName.RegulatoryDocColumn);
+                return this.IsNull(this.tableNonemclatureView.RegulatoryDocColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetRegulatoryDocNull() {
-                this[this.tableNomenclatureWithFullName.RegulatoryDocColumn] = global::System.Convert.DBNull;
+                this[this.tableNonemclatureView.RegulatoryDocColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsProducerNull() {
-                return this.IsNull(this.tableNomenclatureWithFullName.ProducerColumn);
+                return this.IsNull(this.tableNonemclatureView.ProducerColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetProducerNull() {
-                this[this.tableNomenclatureWithFullName.ProducerColumn] = global::System.Convert.DBNull;
+                this[this.tableNonemclatureView.ProducerColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsFullNameNull() {
-                return this.IsNull(this.tableNomenclatureWithFullName.FullNameColumn);
+                return this.IsNull(this.tableNonemclatureView.FullNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetFullNameNull() {
-                this[this.tableNomenclatureWithFullName.FullNameColumn] = global::System.Convert.DBNull;
+                this[this.tableNonemclatureView.FullNameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -11515,22 +11510,22 @@ namespace Система_учёта_и_приобретения_инструме
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class NomenclatureWithFullNameRowChangeEvent : global::System.EventArgs {
+        public class NonemclatureViewRowChangeEvent : global::System.EventArgs {
             
-            private NomenclatureWithFullNameRow eventRow;
+            private NonemclatureViewRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public NomenclatureWithFullNameRowChangeEvent(NomenclatureWithFullNameRow row, global::System.Data.DataRowAction action) {
+            public NonemclatureViewRowChangeEvent(NonemclatureViewRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public NomenclatureWithFullNameRow Row {
+            public NonemclatureViewRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -19237,7 +19232,7 @@ SELECT MovementID, MovementDate, ToStorageID, FromStorageID, MovementTypeID, Nom
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class NomenclatureWithFullNameTableAdapter : global::System.ComponentModel.Component {
+    public partial class NonemclatureViewTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -19251,7 +19246,7 @@ SELECT MovementID, MovementDate, ToStorageID, FromStorageID, MovementTypeID, Nom
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public NomenclatureWithFullNameTableAdapter() {
+        public NonemclatureViewTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -19348,7 +19343,7 @@ SELECT MovementID, MovementDate, ToStorageID, FromStorageID, MovementTypeID, Nom
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "NomenclatureWithFullName";
+            tableMapping.DataSetTable = "NonemclatureView";
             tableMapping.ColumnMappings.Add("NomenclatureNumber", "NomenclatureNumber");
             tableMapping.ColumnMappings.Add("Name", "Name");
             tableMapping.ColumnMappings.Add("Designation", "Designation");
@@ -19376,9 +19371,28 @@ SELECT MovementID, MovementDate, ToStorageID, FromStorageID, MovementTypeID, Nom
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT NomenclatureNumber, Name, Designation, Unit, Dimensions, CuttingMaterial, " +
-                "RegulatoryDoc, Producer, FullName, UsageFlag, MinStock FROM dbo.NomenclatureWith" +
-                "FullName";
+            this._commandCollection[0].CommandText = @"SELECT 
+    n.NomenclatureNumber,
+	g.Name,
+    n.Designation,
+    n.Unit,
+    n.Dimensions,
+    n.CuttingMaterial,
+    n.RegulatoryDoc,
+    n.Producer,
+
+    FullName = 
+        COALESCE(g.Name + ' ', '') + 
+        COALESCE(n.Designation + ' ', '') + 
+        COALESCE(n.Dimensions + ' ', '') + 
+        COALESCE(n.CuttingMaterial + ' ', '') + 
+        COALESCE(n.RegulatoryDoc, ''),
+	
+	n.UsageFlag,
+    n.MinStock
+FROM Nomenclature n
+LEFT JOIN Groups g 
+    ON g.RangeStart = LEFT(n.NomenclatureNumber, 4)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -19386,7 +19400,7 @@ SELECT MovementID, MovementDate, ToStorageID, FromStorageID, MovementTypeID, Nom
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(TOOLACCOUNTINGDataSet.NomenclatureWithFullNameDataTable dataTable) {
+        public virtual int Fill(TOOLACCOUNTINGDataSet.NonemclatureViewDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -19399,9 +19413,9 @@ SELECT MovementID, MovementDate, ToStorageID, FromStorageID, MovementTypeID, Nom
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual TOOLACCOUNTINGDataSet.NomenclatureWithFullNameDataTable GetData() {
+        public virtual TOOLACCOUNTINGDataSet.NonemclatureViewDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            TOOLACCOUNTINGDataSet.NomenclatureWithFullNameDataTable dataTable = new TOOLACCOUNTINGDataSet.NomenclatureWithFullNameDataTable();
+            TOOLACCOUNTINGDataSet.NonemclatureViewDataTable dataTable = new TOOLACCOUNTINGDataSet.NonemclatureViewDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
