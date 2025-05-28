@@ -51,30 +51,42 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void импортToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //ImportForm importForm = new ImportForm(tOOLACCOUNTINGDataSet);
-            //importForm.ShowDialog();
+            Cursor.Current = Cursors.WaitCursor;
+            ImportForm importForm = new ImportForm(tOOLACCOUNTINGDataSet);
+            importForm.Owner = this;
+            importForm.ShowDialog();
 
-            //if (tOOLACCOUNTINGDataSet.Groups.GetChanges() != null)
+        }
+        public void ImportRefresh(string tableName)
+        {
+            //switch (tableName)
             //{
-            //    groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
-            //    InjLevel1.SelectedTab = InjGroupsPage;
-            //}
-            //if (tOOLACCOUNTINGDataSet.Nomenclature.GetChanges() != null)
-            //{
-            //    //обновление номенклатуры
-            //    InjLevel1.SelectedTab = InjNomenPage;
-            //}
-            //if (tOOLACCOUNTINGDataSet.AnalogTools.GetChanges() != null)
-            //{
-            //    //
-            //    InjLevel1.SelectedTab = InjAnalogPage;
-            //}
-            //if (tOOLACCOUNTINGDataSet.Suppliers.GetChanges() != null)
-            //{
-            //    suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
-            //    InjLevel1.SelectedTab = InjProvidersPage;
-            //}
+            //    case "Groups":
 
+            //        groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
+            //        InjLevel1.SelectedTab = InjGroupsPage;
+
+            //        break;
+            //    case "Nomenclature":
+
+            //        nomenclatureTableAdapter.Update(tOOLACCOUNTINGDataSet.Nomenclature);
+            //        nonemclatureViewTableAdapter.Fill(tOOLACCOUNTINGDataSet.NonemclatureView);
+            //        InjLevel1.SelectedTab = InjNomenPage;
+
+            //        break;
+            //    case "AnalogTools":
+
+            //        //обновление таблиц аналогов
+            //        InjLevel1.SelectedTab = InjAnalogPage;
+
+            //        break;
+            //    case "Suppliers":
+
+            //        suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
+            //        InjLevel1.SelectedTab = InjProvidersPage;
+
+            //        break;
+            //}
         }
 
         private void AddApplication_Click(object sender, EventArgs e)

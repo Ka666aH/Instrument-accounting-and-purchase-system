@@ -14,19 +14,17 @@ using MSExcel = Microsoft.Office.Interop.Excel;
 
 namespace Система_учёта_и_приобретения_инструмента
 {
-    //не закрывается процесс EXCEL.EXE
     public partial class ImportForm : Form
     {
-        Dictionary<string, string> tables = new Dictionary<string, string>
+        enum Forms
         {
-            { "Groups","Группы инструментов" },
-            { "Nomenclature","Номенклатура инструментов" },
-            { "AnalogTools","Аналоги инструментов" },
-            { "Workshops","Цеха" },
-            { "Storages","Склады" },
-            { "Suppliers","Поставщики" },
-            { "Balances","Остатки" }
-        };
+            Inj,
+            Klad
+        }
+
+        Forms owner;
+
+        Dictionary<string, string> tables;
 
         MSExcel.Application application;
         MSExcel.Workbook workbook;
@@ -34,12 +32,55 @@ namespace Система_учёта_и_приобретения_инструме
         MSExcel.Range range;
 
         TOOLACCOUNTINGDataSet toolAccounting;
+
+        List<string> importErrorReport = new List<string>();
         public ImportForm(TOOLACCOUNTINGDataSet _toolAccounting)
         {
             InitializeComponent();
-            ImportFormTable.Items.AddRange(tables.Values.ToArray());
             toolAccounting = _toolAccounting;
             Cursor.Current = Cursors.Default;
+        }
+
+        private void ImportForm_Load(object sender, EventArgs e)
+        {
+            DefineOwner();
+            DefineAvalibleTables();
+        }
+
+        public void DefineOwner()
+        {
+            switch (Owner.GetType().Name)
+            {
+                case "Inj": owner = Forms.Inj; break;
+                case "Klad": owner = Forms.Klad; break;
+                default: throw new Exception("Вызов с неизвестной формы.");
+            }
+        }
+
+        public void DefineAvalibleTables()
+        {
+            if (owner == Forms.Inj)
+            {
+                tables = new Dictionary<string, string>
+        {
+            { "Groups","Группы инструментов" },
+            { "Nomenclature","Номенклатура инструментов" },
+            { "AnalogTools","Аналоги инструментов" },
+            { "Suppliers","Поставщики" }
+        };
+            }
+
+            if (owner == Forms.Klad)
+            {
+                tables = new Dictionary<string, string>
+        {
+            { "Workshops","Цеха" },
+            { "Storages","Склады" },
+            { "Balances","Остатки" }
+        };
+            }
+
+            ImportFormTable.Items.AddRange(tables.Values.ToArray());
         }
 
         private void ImportFormSelectFileButton_Click(object sender, EventArgs e)
@@ -88,69 +129,112 @@ namespace Система_учёта_и_приобретения_инструме
             else ImportFormImportButton.Enabled = false;
         }
 
+        int importedRows = 0;
+        int errorRows = 0;
+        string tableName = null;
         private void ImportFormImport_Click(object sender, EventArgs e)
         {
+            Import();
+            if (importedRows > 0) UpdateMainForm(tableName);
+            NotificationService.Notify("Импорт", $"В таблицу \"{ImportFormTable.Text}\" закончен.\nДобавлено строк: {importedRows}.\nСтрок с ошибками: {errorRows}.", ToolTipIcon.Info);
+            ImportFormSheet.SelectedIndex = -1;
+            ImportFormTable.SelectedIndex = -1;
+            if (errorRows > 0) MessageBox.Show(string.Join("\n", importErrorReport), "Строки с ошибками", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            importedRows = 0;
+            errorRows = 0;
+            importErrorReport.Clear();
+            Cursor.Current = Cursors.Default;
+        }
+
+        public void Import(int startRow = 2)
+        {
             Cursor.Current = Cursors.WaitCursor;
-            //int importedRows = 0;
-            var data = new List<List<object>>();
+            int currentRow = -1;
             try
             {
                 worksheet = workbook.Worksheets[ImportFormSheet.Text];
                 range = worksheet.UsedRange;
-                int rows = range.Rows.Count;
-                int cols = range.Columns.Count;
+                object[,] allData = range.Value2;
+                int rows = allData.GetLength(0);
+                int cols = allData.GetLength(1);
 
                 //получаем имя таблицы и определяем её
-                var table = toolAccounting.Tables[tables.FirstOrDefault(x => x.Value == ImportFormTable.Text).Key];
+                tableName = tables.FirstOrDefault(x => x.Value == ImportFormTable.Text).Key;
+                var table = toolAccounting.Tables[tableName];
 
-                if (table.Columns.Count != cols) throw new Exception("Не совпадает количество столбцов в таблицах.");
+                if (table.Columns.Count != cols)
+                    throw new Exception($"Не совпадает количество столбцов. В таблице: {table.Columns.Count}, в файле: {cols}.");
 
-                for (int row = 2; row <= rows; row++)
+                for (int row = startRow; row <= rows; row++)
                 {
-                    var rowData = new List<object>();
+                    DataRow newRow = table.NewRow();
+                    bool rowHasData = false;
                     for (int col = 1; col <= cols; col++)
                     {
-                        var cell = range.Cells[row, col];
-                        rowData.Add(cell.Value);
-                        Marshal.ReleaseComObject(cell);
-                    }
-                    data.Add(rowData);
-                }
-                if (data.Count > 0)
-                {
-                    foreach (var rowItems in data)
-                    {
-                        DataRow newRow = table.NewRow();
-                        for (int i = 0; i < rowItems.Count; i++)
-                        {
-                            if (i >= table.Columns.Count) throw new Exception("Количество столбцов в импортируемых данных превышает схему таблицы.");
+                        object value = allData[row, col];
 
-                            // Преобразование типа данных при необходимости
-                            object value = rowItems[i];
-                            if (value != null && value.GetType() != table.Columns[i].DataType)
+                        // Пропускаем пустые строки
+                        if (value == null && col == 1) break;
+
+                        if (value != null)
+                        {
+                            rowHasData = true;
+                            //Безопасное преобразование типов
+                            try
                             {
-                                value = Convert.ChangeType(value, table.Columns[i].DataType);
+                                if (value.GetType() != table.Columns[col - 1].DataType)
+                                {
+                                    value = Convert.ChangeType(value, table.Columns[col - 1].DataType);
+                                }
+                                newRow[col - 1] = value;
                             }
-                            newRow[i] = value ?? DBNull.Value;
+                            catch { }
                         }
-                        table.Rows.Add(newRow);
+                        else
+                        {
+                            currentRow = row;
+                            newRow[col - 1] = DBNull.Value;
+                        }
+
                     }
-                    //table.AcceptChanges();
-                    //toolAccounting.AcceptChanges();
+                    if (rowHasData)
+                    {
+                        table.Rows.Add(newRow);
+                        importedRows++;
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка импорта", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                importErrorReport.Add($"Строка {currentRow}: {ex.Message}");
+                errorRows++;
+                Import(currentRow + 1);
             }
             finally
             {
-                NotificationService.Notify("Импорт", $"В таблицу \"{ImportFormTable.Text}\" добавлено строк: {data.Count}.", ToolTipIcon.Info);
-                ImportFormSheet.SelectedIndex = -1;
-                ImportFormTable.SelectedIndex = -1;
-                Cursor.Current = Cursors.Arrow;
                 ReleaseComObject(range);
                 ReleaseComObject(worksheet);
+            }
+        }
+
+        public void UpdateMainForm(string tableName)
+        {
+            if (tableName == null) return;
+            switch (owner)
+            {
+                case Forms.Inj:
+
+                    Inj injForm = Owner as Inj;
+                    injForm.ImportRefresh(tableName);
+
+                    break;
+                case Forms.Klad:
+
+                    Klad kladForm = Owner as Klad;
+                    kladForm.ImportRefresh(tableName);
+
+                    break;
+                default: throw new Exception("Вызов с неизвестной формы.");
             }
         }
 
@@ -160,9 +244,14 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 workbook.Close(false);
                 ReleaseComObject(workbook);
+                workbook = null;
             }
-            application.Quit();
-            ReleaseComObject(application);
+            if (application != null)
+            {
+                application.Quit();
+                ReleaseComObject(application);
+                application = null;
+            }
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
@@ -174,7 +263,7 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 if (obj != null && Marshal.IsComObject(obj))
                 {
-                    Marshal.ReleaseComObject(obj);
+                    while (Marshal.ReleaseComObject(obj) > 0) { };
                 }
             }
             catch { }

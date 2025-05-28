@@ -153,6 +153,7 @@
             this.Name = "ImportForm";
             this.Text = "Импорт – Информационная система учета и приобретения инструмента";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ImportForm_FormClosing);
+            this.Load += new System.EventHandler(this.ImportForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

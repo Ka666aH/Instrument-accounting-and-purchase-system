@@ -50,30 +50,41 @@ namespace Система_учёта_и_приобретения_инструме
         {
             Cursor.Current = Cursors.WaitCursor;
             ImportForm importForm = new ImportForm(tOOLACCOUNTINGDataSet);
+            importForm.Owner = this;
             importForm.ShowDialog();
 
-            if (tOOLACCOUNTINGDataSet.Groups.GetChanges() != null)
-            {
-                groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
-                InjLevel1.SelectedTab = InjGroupsPage;
-            }
-            if (tOOLACCOUNTINGDataSet.Nomenclature.GetChanges() != null)
-            {
-                nomenclatureTableAdapter.Update(tOOLACCOUNTINGDataSet.Nomenclature);
-                nonemclatureViewTableAdapter.Fill(tOOLACCOUNTINGDataSet.NonemclatureView);
-                InjLevel1.SelectedTab = InjNomenPage;
-            }
-            if (tOOLACCOUNTINGDataSet.AnalogTools.GetChanges() != null)
-            {
-                //
-                InjLevel1.SelectedTab = InjAnalogPage;
-            }
-            if (tOOLACCOUNTINGDataSet.Suppliers.GetChanges() != null)
-            {
-                suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
-                InjLevel1.SelectedTab = InjProvidersPage;
-            }
+        }
 
+        public void ImportRefresh(string tableName)
+        {
+            switch (tableName)
+            {
+                case "Groups":
+
+                    groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
+                    InjLevel1.SelectedTab = InjGroupsPage;
+
+                    break;
+                case "Nomenclature":
+
+                    nomenclatureTableAdapter.Update(tOOLACCOUNTINGDataSet.Nomenclature);
+                    nonemclatureViewTableAdapter.Fill(tOOLACCOUNTINGDataSet.NonemclatureView);
+                    InjLevel1.SelectedTab = InjNomenPage;
+
+                    break;
+                case "AnalogTools":
+
+                    //обновление таблиц аналогов
+                    InjLevel1.SelectedTab = InjAnalogPage;
+
+                    break;
+                case "Suppliers":
+
+                    suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
+                    InjLevel1.SelectedTab = InjProvidersPage;
+
+                    break;
+            }
         }
 
         private void Inj_Load(object sender, EventArgs e)
@@ -101,7 +112,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void InjLevel1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         #region Номенклатура инструмента
@@ -162,7 +173,7 @@ namespace Система_учёта_и_приобретения_инструме
         private void ProvidersButtonAlter_Click(object sender, EventArgs e)
         {
             SetProvidersButtonsState();
-            if(ProvidersTable.CurrentRow.DataBoundItem as DataRowView == null) return;
+            if (ProvidersTable.CurrentRow.DataBoundItem as DataRowView == null) return;
             var selectedRow = ProvidersTable.CurrentRow.DataBoundItem as DataRowView;
             var supplierRow = selectedRow.Row as TOOLACCOUNTINGDataSet.SuppliersRow;
             SupForm supForm = new SupForm(tOOLACCOUNTINGDataSet, suppliersTableAdapter, FormMode.Edit, supplierRow);
@@ -204,7 +215,7 @@ namespace Система_учёта_и_приобретения_инструме
         private void SuppliersTextChanged(object sender, EventArgs e)
         {
             var parameters = new List<SearchParameter>();
-            if (!string.IsNullOrEmpty(ProvidersINN.Text)) parameters.Add(new SearchParameter("INN", ProvidersINN.Text,true));
+            if (!string.IsNullOrEmpty(ProvidersINN.Text)) parameters.Add(new SearchParameter("INN", ProvidersINN.Text, true));
             if (!string.IsNullOrEmpty(ProvidersName.Text)) parameters.Add(new SearchParameter("Name", ProvidersName.Text, false));
             try
             {
@@ -238,10 +249,10 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void ProvidersTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if(!ProvidersDelete()) e.Cancel = true;
+            if (!ProvidersDelete()) e.Cancel = true;
         }
 
-        private TOOLACCOUNTINGDataSet.SuppliersRow originSupplierRow =  null;
+        private TOOLACCOUNTINGDataSet.SuppliersRow originSupplierRow = null;
         private bool userEditing = false;
 
         private void ProvidersTable_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
@@ -253,7 +264,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void ProvidersTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if(!userEditing) return;
+            if (!userEditing) return;
             if (ProvidersTable.Rows[e.RowIndex] == null) return;
             var row = ProvidersTable.Rows[e.RowIndex];
             var cell = row.Cells[e.ColumnIndex];
