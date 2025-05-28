@@ -39,7 +39,7 @@ namespace Система_учёта_и_приобретения_инструме
             InitializeComponent();
             ImportFormTable.Items.AddRange(tables.Values.ToArray());
             toolAccounting = _toolAccounting;
-            Cursor.Current = Cursors.Arrow;
+            Cursor.Current = Cursors.Default;
         }
 
         private void ImportFormSelectFileButton_Click(object sender, EventArgs e)
@@ -53,6 +53,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void ImportFormFilePath_TextChanged(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             application = new MSExcel.Application();
             workbook = application.Workbooks.Open(ImportFormFilePath.Text);
             ImportFormSheet.Items.Clear();
@@ -62,6 +63,7 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 ImportFormSheet.Items.Add(sheet.Name);
             }
+            Cursor.Current = Cursors.Default;
         }
 
         private void ImportFormClose_Click(object sender, EventArgs e)
@@ -89,6 +91,7 @@ namespace Система_учёта_и_приобретения_инструме
         private void ImportFormImport_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
+            //int importedRows = 0;
             var data = new List<List<object>>();
             try
             {
@@ -153,11 +156,14 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void ImportForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            workbook.Close(false);
-            ReleaseComObject(workbook);
+            if (workbook != null)
+            {
+                workbook.Close(false);
+                ReleaseComObject(workbook);
+            }
             application.Quit();
             ReleaseComObject(application);
-            
+
             GC.Collect();
             GC.WaitForPendingFinalizers();
             GC.Collect();
