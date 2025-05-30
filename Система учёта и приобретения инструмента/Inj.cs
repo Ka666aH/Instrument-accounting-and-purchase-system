@@ -55,40 +55,62 @@ namespace Система_учёта_и_приобретения_инструме
 
         }
 
-        public void ImportRefresh(string tableName)
+        public string ImportRefresh(string tableName)
         {
-            switch (tableName)
+            try
             {
-                case "Groups":
 
-                    groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
-                    InjLevel1.SelectedTab = InjGroupsPage;
+                switch (tableName)
+                {
+                    case "Groups":
 
-                    break;
-                case "Nomenclature":
+                        groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
+                        InjLevel1.SelectedTab = InjGroupsPage;
+                        return null;
 
-                    nomenclatureTableAdapter.Update(tOOLACCOUNTINGDataSet.Nomenclature);
-                    nonemclatureViewTableAdapter.Fill(tOOLACCOUNTINGDataSet.NonemclatureView);
-                    InjLevel1.SelectedTab = InjNomenPage;
+                    case "Nomenclature":
 
-                    break;
-                case "AnalogTools":
+                        nomenclatureTableAdapter.Update(tOOLACCOUNTINGDataSet.Nomenclature);
+                        nomenclatureTableAdapter.Fill(tOOLACCOUNTINGDataSet.Nomenclature);
+                        nonemclatureViewTableAdapter.Fill(tOOLACCOUNTINGDataSet.NonemclatureView);
+                        InjLevel1.SelectedTab = InjNomenPage;
+                        return null;
 
-                    //обновление таблиц аналогов
-                    InjLevel1.SelectedTab = InjAnalogPage;
+                    case "AnalogTools":
 
-                    break;
-                case "Suppliers":
+                        //обновление таблиц аналогов
 
-                    suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
-                    InjLevel1.SelectedTab = InjProvidersPage;
+                        analogToolsTableAdapter.Update(tOOLACCOUNTINGDataSet.AnalogTools);
+                        analogToolsTableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools);
+                        analogTools1TableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools1);
+                        dataTable1TableAdapter.Fill(tOOLACCOUNTINGDataSet.DataTable1);
+                        InjLevel1.SelectedTab = InjAnalogPage;
+                        return null;
 
-                    break;
+                    case "Suppliers":
+
+                        suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
+                        InjLevel1.SelectedTab = InjProvidersPage;
+                        return null;
+
+                    default: return "Не найдена таблица.";
+
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
             }
         }
 
         private void Inj_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.AnalogTools". При необходимости она может быть перемещена или удалена.
+            this.analogToolsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.AnalogTools);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DataTable1". При необходимости она может быть перемещена или удалена.
+            this.dataTable1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DataTable1);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.AnalogTools1". При необходимости она может быть перемещена или удалена.
+            this.analogTools1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet.AnalogTools1);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Balances". При необходимости она может быть перемещена или удалена.
             this.balancesTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Balances);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.AnalogTools". При необходимости она может быть перемещена или удалена.

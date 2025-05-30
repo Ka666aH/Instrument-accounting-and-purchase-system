@@ -57,36 +57,70 @@ namespace Система_учёта_и_приобретения_инструме
             importForm.ShowDialog();
 
         }
-        public void ImportRefresh(string tableName)
+        public string ImportRefresh(string tableName)
         {
             //switch (tableName)
             //{
             //    case "Groups":
 
-            //        groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
-            //        InjLevel1.SelectedTab = InjGroupsPage;
+            //        try
+            //        {
+            //            groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
+            //            InjLevel1.SelectedTab = InjGroupsPage;
+            //            return null;
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            return ex.Message;
+            //        }
 
-            //        break;
             //    case "Nomenclature":
 
-            //        nomenclatureTableAdapter.Update(tOOLACCOUNTINGDataSet.Nomenclature);
-            //        nonemclatureViewTableAdapter.Fill(tOOLACCOUNTINGDataSet.NonemclatureView);
-            //        InjLevel1.SelectedTab = InjNomenPage;
+            //        try
+            //        {
+            //            nomenclatureTableAdapter.Update(tOOLACCOUNTINGDataSet.Nomenclature);
+            //            nonemclatureViewTableAdapter.Fill(tOOLACCOUNTINGDataSet.NonemclatureView);
+            //            InjLevel1.SelectedTab = InjNomenPage;
+            //            return null;
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            return ex.Message;
+            //        }
 
-            //        break;
             //    case "AnalogTools":
 
             //        //обновление таблиц аналогов
-            //        InjLevel1.SelectedTab = InjAnalogPage;
+            //        try
+            //        {
+            //            analogToolsTableAdapter.Update(tOOLACCOUNTINGDataSet.AnalogTools);
+            //            analogToolsTableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools);
+            //            analogTools1TableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools1);
+            //            dataTable1TableAdapter.Fill(tOOLACCOUNTINGDataSet.DataTable1);
+            //            InjLevel1.SelectedTab = InjAnalogPage;
+            //            return null;
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            return ex.Message;
+            //        }
 
-            //        break;
             //    case "Suppliers":
 
-            //        suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
-            //        InjLevel1.SelectedTab = InjProvidersPage;
+            //        try
+            //        {
+            //            suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
+            //            InjLevel1.SelectedTab = InjProvidersPage;
+            //            return null;
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            return ex.Message;
+            //        }
 
-            //        break;
+            //    default: return "Не найдена таблица.";
             //}
+             return null; // это надо убрать
         }
 
         private void AddApplication_Click(object sender, EventArgs e)

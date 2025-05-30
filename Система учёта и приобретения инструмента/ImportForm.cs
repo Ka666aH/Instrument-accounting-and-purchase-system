@@ -95,6 +95,15 @@ namespace Система_учёта_и_приобретения_инструме
         private void ImportFormFilePath_TextChanged(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
+            if (application != null)
+            {
+                application.Quit();
+                ReleaseComObject(application);
+                application = null;
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+            }
             application = new MSExcel.Application();
             workbook = application.Workbooks.Open(ImportFormFilePath.Text);
             ImportFormSheet.Items.Clear();
@@ -129,44 +138,66 @@ namespace Система_учёта_и_приобретения_инструме
             else ImportFormImportButton.Enabled = false;
         }
 
-        int importedRows = 0;
-        int errorRows = 0;
+        object[,] allData;
+        int rows;
+        int cols;
         string tableName = null;
+        System.Data.DataTable table;
+        int currentRow;
+        int importedRows = 0;
+        int skipedRows = 0;
+        int errorRows = 0;
+
         private void ImportFormImport_Click(object sender, EventArgs e)
         {
-            Import();
-            if (importedRows > 0) UpdateMainForm(tableName);
-            NotificationService.Notify("Импорт", $"В таблицу \"{ImportFormTable.Text}\" закончен.\nДобавлено строк: {importedRows}.\nСтрок с ошибками: {errorRows}.", ToolTipIcon.Info);
-            ImportFormSheet.SelectedIndex = -1;
-            ImportFormTable.SelectedIndex = -1;
-            if (errorRows > 0) MessageBox.Show(string.Join("\n", importErrorReport), "Строки с ошибками", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            importedRows = 0;
-            errorRows = 0;
-            importErrorReport.Clear();
-            Cursor.Current = Cursors.Default;
-        }
-
-        public void Import(int startRow = 2)
-        {
-            Cursor.Current = Cursors.WaitCursor;
-            int currentRow = -1;
             try
             {
                 worksheet = workbook.Worksheets[ImportFormSheet.Text];
                 range = worksheet.UsedRange;
-                object[,] allData = range.Value2;
-                int rows = allData.GetLength(0);
-                int cols = allData.GetLength(1);
+                allData = range.Value2;
+                rows = allData.GetLength(0);
+                cols = allData.GetLength(1);
 
                 //получаем имя таблицы и определяем её
                 tableName = tables.FirstOrDefault(x => x.Value == ImportFormTable.Text).Key;
-                var table = toolAccounting.Tables[tableName];
+                table = toolAccounting.Tables[tableName];
+
+                UpdateMainForm(tableName);
 
                 if (table.Columns.Count != cols)
                     throw new Exception($"Не совпадает количество столбцов. В таблице: {table.Columns.Count}, в файле: {cols}.");
+                Cursor.Current = Cursors.WaitCursor;
+                currentRow = -1;
+                Import();
+            }
+            catch(Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ReleaseComObject(range);
+                ReleaseComObject(worksheet);
+                if (importedRows > 0) UpdateMainForm(tableName);
+                NotificationService.Notify("Импорт", $"В таблицу \"{ImportFormTable.Text}\":\nДобавлено строк: {importedRows}.\nПропущено строк: {skipedRows}.\nСтрок с ошибками: {errorRows}.", ToolTipIcon.Info);
+                ImportFormSheet.SelectedIndex = -1;
+                ImportFormTable.SelectedIndex = -1;
+                if (errorRows > 0) MessageBox.Show(string.Join("\n", importErrorReport), "Строки с ошибками", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                importedRows = 0;
+                skipedRows = 0;
+                errorRows = 0;
+                importErrorReport.Clear();
+                Cursor.Current = Cursors.Default;
+            }
+        }
 
+        public void Import(int startRow = 2)
+        {
+            try
+            {
                 for (int row = startRow; row <= rows; row++)
                 {
+                    currentRow = row;
                     DataRow newRow = table.NewRow();
                     bool rowHasData = false;
                     for (int col = 1; col <= cols; col++)
@@ -174,7 +205,12 @@ namespace Система_учёта_и_приобретения_инструме
                         object value = allData[row, col];
 
                         // Пропускаем пустые строки
-                        if (value == null && col == 1) break;
+                        if ((value == null) && col == 1)
+                        {
+                            skipedRows++;
+                            break;
+                        }
+                        if (newRow.Table.Columns[0].ColumnName.Contains("ID") && col == 1) continue;
 
                         if (value != null)
                         {
@@ -192,15 +228,44 @@ namespace Система_учёта_и_приобретения_инструме
                         }
                         else
                         {
-                            currentRow = row;
                             newRow[col - 1] = DBNull.Value;
                         }
-
                     }
                     if (rowHasData)
                     {
-                        table.Rows.Add(newRow);
-                        importedRows++;
+                        bool isDuplicate;
+                        //Проверка на уникальность
+                        if (newRow.Table.Columns[0].ColumnName.Contains("ID"))
+                        {
+                            isDuplicate = table.Rows
+                                .Cast<DataRow>()
+                                .Any(existingRow =>
+                                Enumerable.Range(1, existingRow.ItemArray.Length - 1)
+                                .All(i =>
+                                (existingRow[i] == DBNull.Value && newRow[i] == DBNull.Value) ||
+                                (existingRow[i] != null && existingRow[i].Equals(newRow[i])) ||
+                                (newRow[i] != null && newRow[i].Equals(existingRow[i]))));
+                        }
+                        else
+                        {
+                            isDuplicate = table.Rows
+                                .Cast<DataRow>()
+                                .Any(existingRow =>
+                                existingRow.ItemArray
+                                .Select((val, idx) => new { val, idx })
+                                .All(x =>
+                                (x.val == DBNull.Value && newRow[x.idx] == DBNull.Value) ||
+                                (x.val != null && x.val.Equals(newRow[x.idx])) ||
+                                (newRow[x.idx] != null && newRow[x.idx].Equals(x.val))));
+                        }
+
+                        if (!isDuplicate)
+                        {
+                            table.Rows.Add(newRow);
+                            if (UpdateMainForm(tableName) != null) throw new Exception(UpdateMainForm(tableName));
+                            importedRows++;
+                        }
+                        else skipedRows++;
                     }
                 }
             }
@@ -208,32 +273,25 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 importErrorReport.Add($"Строка {currentRow}: {ex.Message}");
                 errorRows++;
+                table.RejectChanges();
                 Import(currentRow + 1);
-            }
-            finally
-            {
-                ReleaseComObject(range);
-                ReleaseComObject(worksheet);
             }
         }
 
-        public void UpdateMainForm(string tableName)
+        public string UpdateMainForm(string tableName)
         {
-            if (tableName == null) return;
+            if (tableName == null) return null;
             switch (owner)
             {
                 case Forms.Inj:
 
                     Inj injForm = Owner as Inj;
-                    injForm.ImportRefresh(tableName);
-
-                    break;
+                    return injForm.ImportRefresh(tableName);
                 case Forms.Klad:
 
                     Klad kladForm = Owner as Klad;
-                    kladForm.ImportRefresh(tableName);
+                    return kladForm.ImportRefresh(tableName);
 
-                    break;
                 default: throw new Exception("Вызов с неизвестной формы.");
             }
         }
