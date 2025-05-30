@@ -118,6 +118,9 @@
     <Compile Include="SupForm.Designer.cs">
       <DependentUpon>SupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TOOLACCOUNTINGDataSet.cs">
+      <DependentUpon>TOOLACCOUNTINGDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="TOOLACCOUNTINGDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

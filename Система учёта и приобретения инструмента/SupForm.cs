@@ -16,26 +16,26 @@ namespace Система_учёта_и_приобретения_инструме
     public partial class SupForm : Form
     {
         TOOLACCOUNTINGDataSet toolAccounting;
-        SuppliersTableAdapter suppliersTableAdapter;
+        SuppliersTableAdapter tableAdapter;
         FormMode mode;
         TOOLACCOUNTINGDataSet.SuppliersRow editRow;
         public SupForm(
             TOOLACCOUNTINGDataSet _toolAccounting,
-            SuppliersTableAdapter _suppliersTableAdapter, 
-            FormMode _mode = FormMode.Add, 
+            SuppliersTableAdapter _tableAdapter,
+            FormMode _mode = FormMode.Add,
             TOOLACCOUNTINGDataSet.SuppliersRow _editRow = null)
         {
             InitializeComponent();
-            
+
             toolAccounting = _toolAccounting;
-            suppliersTableAdapter = _suppliersTableAdapter;
+            tableAdapter = _tableAdapter;
             mode = _mode;
             editRow = _editRow;
         }
 
         private void SupForm_Load(object sender, EventArgs e)
         {
-            if(mode == FormMode.Edit && editRow != null)
+            if (mode == FormMode.Edit && editRow != null)
             {
                 SupFormINN.Text = editRow.INN.ToString();
                 SupFormName.Text = editRow.Name;
@@ -45,25 +45,9 @@ namespace Система_учёта_и_приобретения_инструме
             }
         }
 
-        //private void Notify(string title, string text, ToolTipIcon icon)
-        //{
-        //    NotifyIcon notifyIcon = new NotifyIcon();
-        //    notifyIcon.Icon = Properties.Resources.DiplomIcon;
-        //    notifyIcon.BalloonTipClosed += notifyIcon_BalloonTipClosed;
-        //    notifyIcon.Visible = true;
-        //    notifyIcon.ShowBalloonTip(0, title, text, icon);
-        //}
-
-        //private void notifyIcon_BalloonTipClosed(object sender, EventArgs e)
-        //{
-        //    NotifyIcon notifyIcon = sender as NotifyIcon;
-        //    notifyIcon.Visible = false;
-        //    notifyIcon.Dispose();
-        //}
-
         private void SupFormSave_Click(object sender, EventArgs e)
         {
-            if(TrySave())
+            if (TrySave())
             {
                 ClearForm();
                 SupFormINN.Focus();
@@ -72,23 +56,10 @@ namespace Система_учёта_и_приобретения_инструме
 
         private bool TrySave()
         {
-            if (!AllRequiredFieldsFilled())
-            {
-                NotificationService.Notify("Предупреждение", "Необходимо заполнить все обязательные поля, отмеченные *.", ToolTipIcon.Warning);
-                return false;
-            }
+            if (!AllRequiredFieldsFilled()) return false;
+            if (!Validation.IsINNValid(SupFormINN.Text)) return false;
+            if (!Validation.IsINNUnique(SupFormINN.Text, toolAccounting, mode, editRow)) return false;
 
-            if (!Validation.IsInnValid(SupFormINN.Text))
-            {
-                NotificationService.Notify("Предупреждение", "ИНН должен содержать 10 цифр (для юридических лиц) или 12 цифр (для физических лиц и индивидуальных предпринимателей).", ToolTipIcon.Warning);
-                return false;
-            }
-
-            if (!Validation.IsINNUnique(SupFormINN.Text, toolAccounting,mode,editRow))
-            {
-                NotificationService.Notify("Предупреждение", "Поставщик с таким ИНН уже существует.", ToolTipIcon.Warning);
-                return false;
-            }
             try
             {
                 if (mode == FormMode.Add) CreateSupplier();
@@ -98,17 +69,21 @@ namespace Система_учёта_и_приобретения_инструме
             catch (Exception ex)
             {
                 toolAccounting.RejectChanges();
-                MessageBox.Show(ex.Message, "Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
 
         private bool AllRequiredFieldsFilled()
         {
-            return !string.IsNullOrEmpty(SupFormINN.Text) &&
-                   !string.IsNullOrEmpty(SupFormName.Text) &&
-                   !string.IsNullOrEmpty(SupFormAddress.Text) &&
-                   !string.IsNullOrEmpty(SupFormContacts.Text);
+            bool isReturn;
+            isReturn = !string.IsNullOrEmpty(SupFormINN.Text) &&
+                !string.IsNullOrEmpty(SupFormName.Text) &&
+                !string.IsNullOrEmpty(SupFormAddress.Text) &&
+                !string.IsNullOrEmpty(SupFormContacts.Text);
+            if (!isReturn) NotificationService.Notify("Предупреждение", "Необходимо заполнить все обязательные поля, отмеченные *.", ToolTipIcon.Warning);
+            return isReturn;
+
         }
 
         //private bool IsInnValid()
@@ -129,15 +104,14 @@ namespace Система_учёта_и_приобретения_инструме
             var newRow = toolAccounting.Suppliers.NewSuppliersRow();
             FillFields(newRow);
             toolAccounting.Suppliers.Rows.Add(newRow);
-            suppliersTableAdapter.Update(toolAccounting.Suppliers);
-            //suppliersTableAdapter.Fill(toolAccounting.Suppliers);
+            UpdateTable();
         }
 
         private void UpdateSupplier()
         {
             if (editRow == null) return;
             FillFields(editRow);
-            suppliersTableAdapter.Update(toolAccounting.Suppliers);
+            UpdateTable();
         }
 
         private void FillFields(TOOLACCOUNTINGDataSet.SuppliersRow row)
@@ -149,6 +123,12 @@ namespace Система_учёта_и_приобретения_инструме
             row.Notes = string.IsNullOrEmpty(SupFormNotes.Text)
                 ? null
                 : SupFormNotes.Text;
+        }
+
+        public void UpdateTable()
+        {
+            tableAdapter.Update(toolAccounting.Suppliers);
+            tableAdapter.Fill(toolAccounting.Suppliers);
         }
 
         private void ClearForm()
@@ -171,7 +151,7 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!AllFieldsEmpty())
             {
-                DialogResult result = MessageBox.Show("Вы уверены, что закрыть форму? Все несохранённые данные будут потеряны.", "Подтверждение закрытия", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("Вы уверены, что закрыть форму? Все несохранённые данные будут потеряны.", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.No) return;
             }
 

@@ -65,6 +65,7 @@ namespace Система_учёта_и_приобретения_инструме
                     case "Groups":
 
                         groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
+                        groupsTableAdapter.Fill(tOOLACCOUNTINGDataSet.Groups);
                         InjLevel1.SelectedTab = InjGroupsPage;
                         return null;
 
@@ -90,6 +91,7 @@ namespace Система_учёта_и_приобретения_инструме
                     case "Suppliers":
 
                         suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
+                        suppliersTableAdapter.Fill(tOOLACCOUNTINGDataSet.Suppliers);
                         InjLevel1.SelectedTab = InjProvidersPage;
                         return null;
 
@@ -111,11 +113,10 @@ namespace Система_учёта_и_приобретения_инструме
             this.dataTable1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DataTable1);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.AnalogTools1". При необходимости она может быть перемещена или удалена.
             this.analogTools1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet.AnalogTools1);
+            AnalogListTable.Columns[0].Visible = false;
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Balances". При необходимости она может быть перемещена или удалена.
             this.balancesTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Balances);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.AnalogTools". При необходимости она может быть перемещена или удалена.
-            //this.analogToolsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.AnalogTools);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.NonemclatureView". При необходимости она может быть перемещена или удалена.
             this.nonemclatureViewTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NonemclatureView);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Nomenclature". При необходимости она может быть перемещена или удалена.
             this.nomenclatureTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Nomenclature);
@@ -128,8 +129,13 @@ namespace Система_учёта_и_приобретения_инструме
 
             WindowState = FormWindowState.Maximized;
 
+            //ProvidersTable.Rows[0].Selected = true;
+
             LogStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
             LogEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1);
+
+
+            //AnalogCompareTable.RowTemplate.Height = (AnalogCompareTable.Height-AnalogCompareTable.ColumnHeadersHeight-10)/2;
         }
 
         private void InjLevel1_SelectedIndexChanged(object sender, EventArgs e)
@@ -142,6 +148,146 @@ namespace Система_учёта_и_приобретения_инструме
         #endregion
 
         #region Группы инструментов
+
+        public void SetGroupsButtonsState()
+        {
+            try
+            {
+                bool state = GroupsTable.CurrentRow != null && !string.IsNullOrEmpty(GroupsTable.CurrentRow.Cells[0].Value.ToString());
+                GroupsButtonAlter.Enabled = state;
+                GroupsButtonDelete.Enabled = state;
+            }
+            catch { }
+        }
+
+        private void GroupsButtonCreate_Click(object sender, EventArgs e)
+        {
+            GroupForm groupForm = new GroupForm(tOOLACCOUNTINGDataSet, groupsTableAdapter);
+            groupForm.ShowDialog();
+        }
+
+        private void GroupsButtonAlter_Click(object sender, EventArgs e)
+        {
+            SetGroupsButtonsState();
+            if (GroupsTable.CurrentRow.DataBoundItem as DataRowView == null) return;
+            var selectedRow = GroupsTable.CurrentRow.DataBoundItem as DataRowView;
+            var groupRow = selectedRow.Row as TOOLACCOUNTINGDataSet.GroupsRow;
+            GroupForm groupForm = new GroupForm(tOOLACCOUNTINGDataSet, groupsTableAdapter, FormMode.Edit, groupRow);
+            groupForm.ShowDialog();
+        }
+
+        private void GroupsButtonDelete_Click(object sender, EventArgs e)
+        {
+            GroupsDelete();
+        }
+
+        private bool GroupsDelete()
+        {
+            SetGroupsButtonsState();
+            if (GroupsTable.CurrentRow.DataBoundItem as DataRowView == null) return false;
+            DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту запись?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No) return false;
+
+            try
+            {
+                var selectedRow = GroupsTable.CurrentRow.DataBoundItem as DataRowView;
+                var groupRow = selectedRow.Row as TOOLACCOUNTINGDataSet.GroupsRow;
+                groupRow.Delete();
+                groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
+                groupsTableAdapter.Fill(tOOLACCOUNTINGDataSet.Groups);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                tOOLACCOUNTINGDataSet.RejectChanges();
+                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private void GroupsTable_CurrentCellChanged(object sender, EventArgs e)
+        {
+            SetGroupsButtonsState();
+        }
+
+        private void GroupsTable_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+                if (GroupsTable.CurrentCell.ColumnIndex == 0)
+                {
+                    if (e.Control is TextBox textBox)
+                    {
+                        textBox.KeyPress -= Digits_KeyPress;
+                        textBox.KeyPress += Digits_KeyPress;
+                    }
+                }
+        }
+
+        private void GroupsTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            if (!GroupsDelete()) e.Cancel = true;
+        }
+
+        private TOOLACCOUNTINGDataSet.GroupsRow groupOriginRow = null;
+        private bool groupUserEditing = false;
+        private void GroupsTable_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            groupUserEditing = true;
+            var dataRowView = GroupsTable.Rows[e.RowIndex].DataBoundItem as DataRowView;
+            groupOriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.GroupsRow;
+        }
+
+        private void GroupsTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (!groupUserEditing) return;
+            if (GroupsTable.Rows[e.RowIndex] == null) return;
+            var row = GroupsTable.Rows[e.RowIndex];
+            var cell = row.Cells[e.ColumnIndex];
+            switch (e.ColumnIndex)
+            {
+                case 0:
+
+                    string range = cell.EditedFormattedValue as string;
+                    FormMode mode;
+                    if (groupOriginRow == null) mode = FormMode.Add;
+                    else mode = FormMode.Edit;
+                    if (!Validation.IsRangeValid(range)) e.Cancel = true;
+                    if (!Validation.IsRangeUnique(range, tOOLACCOUNTINGDataSet, mode, groupOriginRow)) e.Cancel = true;
+
+                    break;
+                default:
+
+                    if (string.IsNullOrEmpty(cell.EditedFormattedValue as string))
+                    {
+                        e.Cancel = true;
+                        NotificationService.Notify("Предупреждение", "Это поле не может быть пустым.", ToolTipIcon.Warning);
+                    }
+
+                    break;
+            }
+        }
+        private void GroupsTable_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
+            //groupsTableAdapter.Fill(tOOLACCOUNTINGDataSet.Groups);
+            groupUserEditing = false;
+        }
+
+        private void GroupsName_TextChanged(object sender, EventArgs e)
+        {
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(GroupsName.Text)) parameters.Add(new SearchParameter("Name", GroupsName.Text, true));
+            try
+            {
+                string filter = Search.Filter(parameters);
+                GroupsTable.SuspendLayout();
+                groupsBindingSource.Filter = filter;
+                GroupsTable.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         #endregion
 
@@ -211,7 +357,7 @@ namespace Система_учёта_и_приобретения_инструме
         {
             SetProvidersButtonsState();
             if (ProvidersTable.CurrentRow.DataBoundItem as DataRowView == null) return false;
-            DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту запись?", "Удаление поставщика", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту запись?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.No) return false;
 
             try
@@ -220,6 +366,7 @@ namespace Система_учёта_и_приобретения_инструме
                 var supplierRow = selectedRow.Row as TOOLACCOUNTINGDataSet.SuppliersRow;
                 supplierRow.Delete();
                 suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
+                suppliersTableAdapter.Fill(tOOLACCOUNTINGDataSet.Suppliers);
                 return true;
             }
             catch (Exception ex)
@@ -258,15 +405,10 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 if (e.Control is TextBox textBox)
                 {
-                    textBox.KeyPress -= INN_KeyPress;
-                    textBox.KeyPress += INN_KeyPress;
+                    textBox.KeyPress -= Digits_KeyPress;
+                    textBox.KeyPress += Digits_KeyPress;
                 }
             }
-        }
-
-        private void INN_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
         }
 
         private void ProvidersTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
@@ -274,19 +416,19 @@ namespace Система_учёта_и_приобретения_инструме
             if (!ProvidersDelete()) e.Cancel = true;
         }
 
-        private TOOLACCOUNTINGDataSet.SuppliersRow originSupplierRow = null;
-        private bool userEditing = false;
+        private TOOLACCOUNTINGDataSet.SuppliersRow supplierOriginRow = null;
+        private bool supplierUserEditing = false;
 
         private void ProvidersTable_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
-            userEditing = true;
+            supplierUserEditing = true;
             var dataRowView = ProvidersTable.Rows[e.RowIndex].DataBoundItem as DataRowView;
-            originSupplierRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.SuppliersRow;
+            supplierOriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.SuppliersRow;
         }
 
         private void ProvidersTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (!userEditing) return;
+            if (!supplierUserEditing) return;
             if (ProvidersTable.Rows[e.RowIndex] == null) return;
             var row = ProvidersTable.Rows[e.RowIndex];
             var cell = row.Cells[e.ColumnIndex];
@@ -299,18 +441,10 @@ namespace Система_учёта_и_приобретения_инструме
 
                     string inn = cell.EditedFormattedValue as string;
                     FormMode mode;
-                    if (originSupplierRow == null) mode = FormMode.Add;
+                    if (supplierOriginRow == null) mode = FormMode.Add;
                     else mode = FormMode.Edit;
-                    if (!Validation.IsInnValid(inn))
-                    {
-                        e.Cancel = true;
-                        //NotificationService.Notify("Предупреждение", "ИНН должен содержать 10 цифр (для юридических лиц) или 12 цифр (для физических лиц и индивидуальных предпринимателей).", ToolTipIcon.Warning);
-                    }
-                    if (!Validation.IsINNUnique(inn, tOOLACCOUNTINGDataSet, mode, originSupplierRow))
-                    {
-                        e.Cancel = true;
-                        NotificationService.Notify("Предупреждение", "Поставщик с таким ИНН уже существует.", ToolTipIcon.Warning);
-                    }
+                    if (!Validation.IsINNValid(inn)) e.Cancel = true;
+                    if (!Validation.IsINNUnique(inn, tOOLACCOUNTINGDataSet, mode, supplierOriginRow)) e.Cancel = true;
 
                     break;
                 case 4: break;
@@ -329,7 +463,8 @@ namespace Система_учёта_и_приобретения_инструме
         private void ProvidersTable_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
             suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
-            userEditing = false;
+            //suppliersTableAdapter.Fill(tOOLACCOUNTINGDataSet.Suppliers);
+            supplierUserEditing = false;
         }
 
         #endregion
@@ -349,6 +484,11 @@ namespace Система_учёта_и_приобретения_инструме
         #region Остатки номенклатуры
 
         #endregion
+
+        private void Digits_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
+        }
 
     }
 }

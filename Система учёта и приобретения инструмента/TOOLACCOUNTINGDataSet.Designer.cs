@@ -124,6 +124,10 @@ namespace Система_учёта_и_приобретения_инструме
         
         private global::System.Data.DataRelation relationAnalogTools1_DataTable1;
         
+        private global::System.Data.DataRelation relationFK__AnalogToo__Analo__3E52440B1;
+        
+        private global::System.Data.DataRelation relationFK__AnalogToo__Origi__3D5E1FD21;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -803,6 +807,8 @@ namespace Система_учёта_и_приобретения_инструме
             this.relationFK__ToolMovem__Nomen__7F2BE32F = this.Relations["FK__ToolMovem__Nomen__7F2BE32F"];
             this.relationFK__ToolMovem__ToSto__7C4F7684 = this.Relations["FK__ToolMovem__ToSto__7C4F7684"];
             this.relationAnalogTools1_DataTable1 = this.Relations["AnalogTools1_DataTable1"];
+            this.relationFK__AnalogToo__Analo__3E52440B1 = this.Relations["FK__AnalogToo__Analo__3E52440B1"];
+            this.relationFK__AnalogToo__Origi__3D5E1FD21 = this.Relations["FK__AnalogToo__Origi__3D5E1FD21"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -967,6 +973,14 @@ namespace Система_учёта_и_приобретения_инструме
                         this.tableAnalogTools1.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableDataTable1.IDColumn}, false);
             this.Relations.Add(this.relationAnalogTools1_DataTable1);
+            this.relationFK__AnalogToo__Analo__3E52440B1 = new global::System.Data.DataRelation("FK__AnalogToo__Analo__3E52440B1", new global::System.Data.DataColumn[] {
+                        this.tableNomenclature.NomenclatureNumberColumn}, new global::System.Data.DataColumn[] {
+                        this.tableAnalogTools1.AnalogNomenclatureNumberColumn}, false);
+            this.Relations.Add(this.relationFK__AnalogToo__Analo__3E52440B1);
+            this.relationFK__AnalogToo__Origi__3D5E1FD21 = new global::System.Data.DataRelation("FK__AnalogToo__Origi__3D5E1FD21", new global::System.Data.DataColumn[] {
+                        this.tableNomenclature.NomenclatureNumberColumn}, new global::System.Data.DataColumn[] {
+                        this.tableAnalogTools1.OriginalNomenclatureNumberColumn}, false);
+            this.Relations.Add(this.relationFK__AnalogToo__Origi__3D5E1FD21);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8285,6 +8299,10 @@ namespace Система_учёта_и_приобретения_инструме
             
             private global::System.Data.DataColumn columnAnalogNomenclatureNumber;
             
+            private global::System.Data.DataColumn columnOriginalFullName;
+            
+            private global::System.Data.DataColumn columnAnalogFullName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public AnalogTools1DataTable() {
@@ -8344,6 +8362,22 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OriginalFullNameColumn {
+                get {
+                    return this.columnOriginalFullName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn AnalogFullNameColumn {
+                get {
+                    return this.columnAnalogFullName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -8379,12 +8413,20 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AnalogTools1Row AddAnalogTools1Row(string OriginalNomenclatureNumber, string AnalogNomenclatureNumber) {
+            public AnalogTools1Row AddAnalogTools1Row(NomenclatureRow parentNomenclatureRowByFK__AnalogToo__Origi__3D5E1FD21, NomenclatureRow parentNomenclatureRowByFK__AnalogToo__Analo__3E52440B1, string OriginalFullName, string AnalogFullName) {
                 AnalogTools1Row rowAnalogTools1Row = ((AnalogTools1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        OriginalNomenclatureNumber,
-                        AnalogNomenclatureNumber};
+                        null,
+                        null,
+                        OriginalFullName,
+                        AnalogFullName};
+                if ((parentNomenclatureRowByFK__AnalogToo__Origi__3D5E1FD21 != null)) {
+                    columnValuesArray[1] = parentNomenclatureRowByFK__AnalogToo__Origi__3D5E1FD21[0];
+                }
+                if ((parentNomenclatureRowByFK__AnalogToo__Analo__3E52440B1 != null)) {
+                    columnValuesArray[2] = parentNomenclatureRowByFK__AnalogToo__Analo__3E52440B1[0];
+                }
                 rowAnalogTools1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAnalogTools1Row);
                 return rowAnalogTools1Row;
@@ -8417,6 +8459,8 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnID = base.Columns["ID"];
                 this.columnOriginalNomenclatureNumber = base.Columns["OriginalNomenclatureNumber"];
                 this.columnAnalogNomenclatureNumber = base.Columns["AnalogNomenclatureNumber"];
+                this.columnOriginalFullName = base.Columns["OriginalFullName"];
+                this.columnAnalogFullName = base.Columns["AnalogFullName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8428,6 +8472,10 @@ namespace Система_учёта_и_приобретения_инструме
                 base.Columns.Add(this.columnOriginalNomenclatureNumber);
                 this.columnAnalogNomenclatureNumber = new global::System.Data.DataColumn("AnalogNomenclatureNumber", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAnalogNomenclatureNumber);
+                this.columnOriginalFullName = new global::System.Data.DataColumn("OriginalFullName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOriginalFullName);
+                this.columnAnalogFullName = new global::System.Data.DataColumn("AnalogFullName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAnalogFullName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -8440,6 +8488,10 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnOriginalNomenclatureNumber.MaxLength = 9;
                 this.columnAnalogNomenclatureNumber.AllowDBNull = false;
                 this.columnAnalogNomenclatureNumber.MaxLength = 9;
+                this.columnOriginalFullName.ReadOnly = true;
+                this.columnOriginalFullName.MaxLength = 2147483647;
+                this.columnAnalogFullName.ReadOnly = true;
+                this.columnAnalogFullName.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10076,6 +10128,28 @@ namespace Система_учёта_и_приобретения_инструме
                     return ((ToolMovementsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ToolMovem__Nomen__7F2BE32F"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public AnalogTools1Row[] GetAnalogTools1RowsByFK__AnalogToo__Analo__3E52440B1() {
+                if ((this.Table.ChildRelations["FK__AnalogToo__Analo__3E52440B1"] == null)) {
+                    return new AnalogTools1Row[0];
+                }
+                else {
+                    return ((AnalogTools1Row[])(base.GetChildRows(this.Table.ChildRelations["FK__AnalogToo__Analo__3E52440B1"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public AnalogTools1Row[] GetAnalogTools1RowsByFK__AnalogToo__Origi__3D5E1FD21() {
+                if ((this.Table.ChildRelations["FK__AnalogToo__Origi__3D5E1FD21"] == null)) {
+                    return new AnalogTools1Row[0];
+                }
+                else {
+                    return ((AnalogTools1Row[])(base.GetChildRows(this.Table.ChildRelations["FK__AnalogToo__Origi__3D5E1FD21"])));
+                }
+            }
         }
         
         /// <summary>
@@ -11677,6 +11751,84 @@ namespace Система_учёта_и_приобретения_инструме
                 set {
                     this[this.tableAnalogTools1.AnalogNomenclatureNumberColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string OriginalFullName {
+                get {
+                    try {
+                        return ((string)(this[this.tableAnalogTools1.OriginalFullNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'OriginalFullName\' в таблице \'AnalogTools1\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAnalogTools1.OriginalFullNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string AnalogFullName {
+                get {
+                    try {
+                        return ((string)(this[this.tableAnalogTools1.AnalogFullNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'AnalogFullName\' в таблице \'AnalogTools1\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAnalogTools1.AnalogFullNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public NomenclatureRow NomenclatureRowByFK__AnalogToo__Analo__3E52440B1 {
+                get {
+                    return ((NomenclatureRow)(this.GetParentRow(this.Table.ParentRelations["FK__AnalogToo__Analo__3E52440B1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__AnalogToo__Analo__3E52440B1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public NomenclatureRow NomenclatureRowByFK__AnalogToo__Origi__3D5E1FD21 {
+                get {
+                    return ((NomenclatureRow)(this.GetParentRow(this.Table.ParentRelations["FK__AnalogToo__Origi__3D5E1FD21"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__AnalogToo__Origi__3D5E1FD21"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsOriginalFullNameNull() {
+                return this.IsNull(this.tableAnalogTools1.OriginalFullNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetOriginalFullNameNull() {
+                this[this.tableAnalogTools1.OriginalFullNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsAnalogFullNameNull() {
+                return this.IsNull(this.tableAnalogTools1.AnalogFullNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetAnalogFullNameNull() {
+                this[this.tableAnalogTools1.AnalogFullNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20783,34 +20935,9 @@ LEFT JOIN Groups g
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("OriginalNomenclatureNumber", "OriginalNomenclatureNumber");
             tableMapping.ColumnMappings.Add("AnalogNomenclatureNumber", "AnalogNomenclatureNumber");
+            tableMapping.ColumnMappings.Add("OriginalFullName", "OriginalFullName");
+            tableMapping.ColumnMappings.Add("AnalogFullName", "AnalogFullName");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [AnalogTools] WHERE (([ID] = @Original_ID) AND ([OriginalNomenclature" +
-                "Number] = @Original_OriginalNomenclatureNumber) AND ([AnalogNomenclatureNumber] " +
-                "= @Original_AnalogNomenclatureNumber))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OriginalNomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OriginalNomenclatureNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AnalogNomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AnalogNomenclatureNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [AnalogTools] ([OriginalNomenclatureNumber], [AnalogNomenclatureNumber]) VALUES (@OriginalNomenclatureNumber, @AnalogNomenclatureNumber);
-SELECT ID, OriginalNomenclatureNumber, AnalogNomenclatureNumber FROM AnalogTools WHERE (ID = SCOPE_IDENTITY())";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OriginalNomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OriginalNomenclatureNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AnalogNomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AnalogNomenclatureNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [AnalogTools] SET [OriginalNomenclatureNumber] = @OriginalNomenclatureNumber, [AnalogNomenclatureNumber] = @AnalogNomenclatureNumber WHERE (([ID] = @Original_ID) AND ([OriginalNomenclatureNumber] = @Original_OriginalNomenclatureNumber) AND ([AnalogNomenclatureNumber] = @Original_AnalogNomenclatureNumber));
-SELECT ID, OriginalNomenclatureNumber, AnalogNomenclatureNumber FROM AnalogTools WHERE (ID = @ID)";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OriginalNomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OriginalNomenclatureNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AnalogNomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AnalogNomenclatureNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OriginalNomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OriginalNomenclatureNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AnalogNomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AnalogNomenclatureNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20826,7 +20953,16 @@ SELECT ID, OriginalNomenclatureNumber, AnalogNomenclatureNumber FROM AnalogTools
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        AnalogTools.*\r\nFROM            AnalogTools";
+            this._commandCollection[0].CommandText = @"SELECT        at.ID, at.OriginalNomenclatureNumber, n1.FullName AS OriginalFullName, at.AnalogNomenclatureNumber, n2.FullName AS AnalogFullName
+FROM            AnalogTools AS at LEFT OUTER JOIN
+                             (SELECT        n.NomenclatureNumber, COALESCE (g.Name + ' ', '') + COALESCE (n.Designation + ' ', '') + COALESCE (n.Dimensions + ' ', '') + COALESCE (n.CuttingMaterial + ' ', '') + COALESCE (n.RegulatoryDoc, '') 
+                                                         AS FullName
+                               FROM            Nomenclature AS n LEFT OUTER JOIN
+                                                         Groups AS g ON g.RangeStart = LEFT(n.NomenclatureNumber, 4)) AS n1 ON n1.NomenclatureNumber = at.OriginalNomenclatureNumber LEFT OUTER JOIN
+                             (SELECT        n.NomenclatureNumber, COALESCE (g.Name + ' ', '') + COALESCE (n.Designation + ' ', '') + COALESCE (n.Dimensions + ' ', '') + COALESCE (n.CuttingMaterial + ' ', '') + COALESCE (n.RegulatoryDoc, '') 
+                                                         AS FullName
+                               FROM            Nomenclature AS n LEFT OUTER JOIN
+                                                         Groups AS g ON g.RangeStart = LEFT(n.NomenclatureNumber, 4)) AS n2 ON n2.NomenclatureNumber = at.AnalogNomenclatureNumber";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -20852,157 +20988,6 @@ SELECT ID, OriginalNomenclatureNumber, AnalogNomenclatureNumber FROM AnalogTools
             TOOLACCOUNTINGDataSet.AnalogTools1DataTable dataTable = new TOOLACCOUNTINGDataSet.AnalogTools1DataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(TOOLACCOUNTINGDataSet.AnalogTools1DataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(TOOLACCOUNTINGDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "AnalogTools1");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, string Original_OriginalNomenclatureNumber, string Original_AnalogNomenclatureNumber) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
-            if ((Original_OriginalNomenclatureNumber == null)) {
-                throw new global::System.ArgumentNullException("Original_OriginalNomenclatureNumber");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_OriginalNomenclatureNumber));
-            }
-            if ((Original_AnalogNomenclatureNumber == null)) {
-                throw new global::System.ArgumentNullException("Original_AnalogNomenclatureNumber");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_AnalogNomenclatureNumber));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string OriginalNomenclatureNumber, string AnalogNomenclatureNumber) {
-            if ((OriginalNomenclatureNumber == null)) {
-                throw new global::System.ArgumentNullException("OriginalNomenclatureNumber");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(OriginalNomenclatureNumber));
-            }
-            if ((AnalogNomenclatureNumber == null)) {
-                throw new global::System.ArgumentNullException("AnalogNomenclatureNumber");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(AnalogNomenclatureNumber));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string OriginalNomenclatureNumber, string AnalogNomenclatureNumber, int Original_ID, string Original_OriginalNomenclatureNumber, string Original_AnalogNomenclatureNumber, int ID) {
-            if ((OriginalNomenclatureNumber == null)) {
-                throw new global::System.ArgumentNullException("OriginalNomenclatureNumber");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(OriginalNomenclatureNumber));
-            }
-            if ((AnalogNomenclatureNumber == null)) {
-                throw new global::System.ArgumentNullException("AnalogNomenclatureNumber");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(AnalogNomenclatureNumber));
-            }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_ID));
-            if ((Original_OriginalNomenclatureNumber == null)) {
-                throw new global::System.ArgumentNullException("Original_OriginalNomenclatureNumber");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_OriginalNomenclatureNumber));
-            }
-            if ((Original_AnalogNomenclatureNumber == null)) {
-                throw new global::System.ArgumentNullException("Original_AnalogNomenclatureNumber");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_AnalogNomenclatureNumber));
-            }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(ID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string OriginalNomenclatureNumber, string AnalogNomenclatureNumber, int Original_ID, string Original_OriginalNomenclatureNumber, string Original_AnalogNomenclatureNumber) {
-            return this.Update(OriginalNomenclatureNumber, AnalogNomenclatureNumber, Original_ID, Original_OriginalNomenclatureNumber, Original_AnalogNomenclatureNumber, Original_ID);
         }
     }
     
@@ -21267,8 +21252,6 @@ ORDER BY
         private ToolMovementsTableAdapter _toolMovementsTableAdapter;
         
         private WorkshopsTableAdapter _workshopsTableAdapter;
-        
-        private AnalogTools1TableAdapter _analogTools1TableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -21567,20 +21550,6 @@ ORDER BY
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public AnalogTools1TableAdapter AnalogTools1TableAdapter {
-            get {
-                return this._analogTools1TableAdapter;
-            }
-            set {
-                this._analogTools1TableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -21678,10 +21647,6 @@ ORDER BY
                             && (this._workshopsTableAdapter.Connection != null))) {
                     return this._workshopsTableAdapter.Connection;
                 }
-                if (((this._analogTools1TableAdapter != null) 
-                            && (this._analogTools1TableAdapter.Connection != null))) {
-                    return this._analogTools1TableAdapter.Connection;
-                }
                 return null;
             }
             set {
@@ -21753,9 +21718,6 @@ ORDER BY
                     count = (count + 1);
                 }
                 if ((this._workshopsTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._analogTools1TableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -21874,15 +21836,6 @@ ORDER BY
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._storagesTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._analogTools1TableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.AnalogTools1.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._analogTools1TableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -22064,14 +22017,6 @@ ORDER BY
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._analogTools1TableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.AnalogTools1.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._analogTools1TableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._toolMovementsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ToolMovements.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -22207,14 +22152,6 @@ ORDER BY
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._toolMovementsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._analogTools1TableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.AnalogTools1.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._analogTools1TableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -22453,11 +22390,6 @@ ORDER BY
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
-            if (((this._analogTools1TableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._analogTools1TableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
-                        "r, должны использовать одинаковую строку подключения.");
-            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager не содержит сведений о подключении. Укажите для каждого адапт" +
@@ -22670,15 +22602,6 @@ ORDER BY
                         adaptersWithAcceptChangesDuringUpdate.Add(this._workshopsTableAdapter.Adapter);
                     }
                 }
-                if ((this._analogTools1TableAdapter != null)) {
-                    revertConnections.Add(this._analogTools1TableAdapter, this._analogTools1TableAdapter.Connection);
-                    this._analogTools1TableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._analogTools1TableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._analogTools1TableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._analogTools1TableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._analogTools1TableAdapter.Adapter);
-                    }
-                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -22816,10 +22739,6 @@ ORDER BY
                 if ((this._workshopsTableAdapter != null)) {
                     this._workshopsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._workshopsTableAdapter]));
                     this._workshopsTableAdapter.Transaction = null;
-                }
-                if ((this._analogTools1TableAdapter != null)) {
-                    this._analogTools1TableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._analogTools1TableAdapter]));
-                    this._analogTools1TableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

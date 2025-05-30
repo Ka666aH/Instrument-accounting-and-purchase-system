@@ -10,7 +10,7 @@ namespace Система_учёта_и_приобретения_инструме
     public static class Validation
     {
         #region ИНН
-        public static bool IsInnValid(string inn)
+        public static bool IsINNValid(string inn)
         {
             //return (inn.Length == 10 || inn.Length == 12) && inn.All(char.IsDigit);
 
@@ -31,8 +31,8 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 int[] coefficients = { 2, 4, 10, 3, 5, 9, 4, 6, 8 };
                 int controlSum = CalculateControlSum(inn, coefficients) % 11 % 10;
-                
-                if(controlSum != inn[9].ToInt())
+
+                if (controlSum != inn[9].ToInt())
                     NotificationService.Notify("Предупреждение", "ИНН не корректен. Не совпадает контрольная сумма.", ToolTipIcon.Warning);
 
                 return controlSum == inn[9].ToInt();
@@ -74,8 +74,48 @@ namespace Система_учёта_и_приобретения_инструме
 
         public static bool IsINNUnique(string inn, TOOLACCOUNTINGDataSet toolAccounting, FormMode mode, TOOLACCOUNTINGDataSet.SuppliersRow originRow = null)
         {
-            if (mode == FormMode.Edit && inn == originRow.INN) return true;
-            return !toolAccounting.Suppliers.Any(s => s.INN == inn);
+            bool isReturn;
+            if (mode == FormMode.Edit && inn == originRow.INN)
+            {
+                isReturn = true;
+                return isReturn;
+            }
+
+            isReturn = !toolAccounting.Suppliers.Any(s => s.INN == inn);
+            if (!isReturn) NotificationService.Notify("Предупреждение", "Поставщик с таким ИНН уже существует.", ToolTipIcon.Warning);
+            return isReturn;
+        }
+        #endregion
+
+        #region Группа
+        public static bool IsRangeValid(string range)
+        {
+            if (string.IsNullOrEmpty(range) || range.Length != 4)
+            {
+                NotificationService.Notify("Предупреждение", "Диапазон должен содержать 4 цифры.", ToolTipIcon.Warning);
+                return false;
+            }
+
+            if (!range.All(char.IsDigit))
+            {
+                NotificationService.Notify("Предупреждение", "Диапазон должен состоять только из цифр.", ToolTipIcon.Warning);
+                return false;
+            }
+
+            return true;
+        }
+
+        public static bool IsRangeUnique(string range, TOOLACCOUNTINGDataSet toolAccounting, FormMode mode, TOOLACCOUNTINGDataSet.GroupsRow originRow = null)
+        {
+            bool isReturn;
+            if (mode == FormMode.Edit && range == originRow.RangeStart)
+            {
+                isReturn = true;
+                return isReturn;
+            }
+            isReturn = !toolAccounting.Groups.Any(s => s.RangeStart == range);
+            if (!isReturn) NotificationService.Notify("Предупреждение", "Группа с таким дипазоном уже существует.", ToolTipIcon.Warning);
+            return isReturn;
         }
         #endregion
     }
