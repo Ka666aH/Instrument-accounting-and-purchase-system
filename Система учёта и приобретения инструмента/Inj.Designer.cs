@@ -70,6 +70,7 @@
             this.GroupsButtonAlter = new System.Windows.Forms.Button();
             this.GroupsButtonCreate = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.GroupsName = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.GroupsTable = new System.Windows.Forms.DataGridView();
             this.rangeStartDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -195,10 +196,8 @@
             this.AnalogAnalogNumber = new System.Windows.Forms.MaskedTextBox();
             this.AnalogMainNumber = new System.Windows.Forms.MaskedTextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.AnalogAnalogName = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.AnalogMainName = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.AnalogListTable = new System.Windows.Forms.DataGridView();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -279,7 +278,8 @@
             this.dataTable1TableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.DataTable1TableAdapter();
             this.analogToolsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.analogToolsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.AnalogToolsTableAdapter();
-            this.GroupsName = new System.Windows.Forms.TextBox();
+            this.AnalogMainName = new System.Windows.Forms.TextBox();
+            this.AnalogAnalogName = new System.Windows.Forms.TextBox();
             this.InjLevel1.SuspendLayout();
             this.InjNomenPage.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -784,6 +784,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Поиск";
             // 
+            // GroupsName
+            // 
+            this.GroupsName.Location = new System.Drawing.Point(134, 21);
+            this.GroupsName.Name = "GroupsName";
+            this.GroupsName.Size = new System.Drawing.Size(1092, 29);
+            this.GroupsName.TabIndex = 20;
+            this.GroupsName.TextChanged += new System.EventHandler(this.Groups_TextChanged);
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -1081,7 +1089,7 @@
             this.AcceptedWorkshopsRequestsContentTable.Location = new System.Drawing.Point(7, 397);
             this.AcceptedWorkshopsRequestsContentTable.Name = "AcceptedWorkshopsRequestsContentTable";
             this.AcceptedWorkshopsRequestsContentTable.ReadOnly = true;
-            this.AcceptedWorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 247);
+            this.AcceptedWorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 261);
             this.AcceptedWorkshopsRequestsContentTable.TabIndex = 37;
             // 
             // AcceptedWorkshopsRequestsRequestsTable
@@ -1296,7 +1304,7 @@
             this.CreateRequestContentTable.Location = new System.Drawing.Point(10, 357);
             this.CreateRequestContentTable.Name = "CreateRequestContentTable";
             this.CreateRequestContentTable.ReadOnly = true;
-            this.CreateRequestContentTable.Size = new System.Drawing.Size(1236, 272);
+            this.CreateRequestContentTable.Size = new System.Drawing.Size(1236, 286);
             this.CreateRequestContentTable.TabIndex = 41;
             // 
             // CreateRequestRequestsTable
@@ -1466,7 +1474,7 @@
             this.RequestsListPurchaseRequestsTable.Location = new System.Drawing.Point(6, 141);
             this.RequestsListPurchaseRequestsTable.Name = "RequestsListPurchaseRequestsTable";
             this.RequestsListPurchaseRequestsTable.ReadOnly = true;
-            this.RequestsListPurchaseRequestsTable.Size = new System.Drawing.Size(338, 499);
+            this.RequestsListPurchaseRequestsTable.Size = new System.Drawing.Size(338, 513);
             this.RequestsListPurchaseRequestsTable.TabIndex = 31;
             // 
             // RequestsListContentTable
@@ -1480,7 +1488,7 @@
             this.RequestsListContentTable.Location = new System.Drawing.Point(350, 394);
             this.RequestsListContentTable.Name = "RequestsListContentTable";
             this.RequestsListContentTable.ReadOnly = true;
-            this.RequestsListContentTable.Size = new System.Drawing.Size(896, 246);
+            this.RequestsListContentTable.Size = new System.Drawing.Size(896, 260);
             this.RequestsListContentTable.TabIndex = 30;
             // 
             // groupBox9
@@ -1608,7 +1616,7 @@
             this.StatementsContentTable.Location = new System.Drawing.Point(433, 142);
             this.StatementsContentTable.Name = "StatementsContentTable";
             this.StatementsContentTable.ReadOnly = true;
-            this.StatementsContentTable.Size = new System.Drawing.Size(612, 499);
+            this.StatementsContentTable.Size = new System.Drawing.Size(612, 513);
             this.StatementsContentTable.TabIndex = 37;
             // 
             // label50
@@ -1641,7 +1649,7 @@
             this.StatementsStatementsTable.Location = new System.Drawing.Point(7, 142);
             this.StatementsStatementsTable.Name = "StatementsStatementsTable";
             this.StatementsStatementsTable.ReadOnly = true;
-            this.StatementsStatementsTable.Size = new System.Drawing.Size(420, 499);
+            this.StatementsStatementsTable.Size = new System.Drawing.Size(420, 513);
             this.StatementsStatementsTable.TabIndex = 38;
             // 
             // groupBox10
@@ -1781,7 +1789,7 @@
             this.InvoicesContentTable.Location = new System.Drawing.Point(433, 105);
             this.InvoicesContentTable.Name = "InvoicesContentTable";
             this.InvoicesContentTable.ReadOnly = true;
-            this.InvoicesContentTable.Size = new System.Drawing.Size(612, 535);
+            this.InvoicesContentTable.Size = new System.Drawing.Size(612, 549);
             this.InvoicesContentTable.TabIndex = 43;
             // 
             // label52
@@ -1814,7 +1822,7 @@
             this.InvoicesInvoicesTable.Location = new System.Drawing.Point(7, 105);
             this.InvoicesInvoicesTable.Name = "InvoicesInvoicesTable";
             this.InvoicesInvoicesTable.ReadOnly = true;
-            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(420, 535);
+            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(420, 549);
             this.InvoicesInvoicesTable.TabIndex = 44;
             // 
             // groupBox11
@@ -1897,7 +1905,7 @@
             this.HistoryTable.Location = new System.Drawing.Point(7, 117);
             this.HistoryTable.Name = "HistoryTable";
             this.HistoryTable.ReadOnly = true;
-            this.HistoryTable.Size = new System.Drawing.Size(1239, 512);
+            this.HistoryTable.Size = new System.Drawing.Size(1239, 526);
             this.HistoryTable.TabIndex = 13;
             // 
             // groupBox12
@@ -2001,6 +2009,7 @@
             this.AnalogButtonDelete.TabIndex = 22;
             this.AnalogButtonDelete.Text = "Удалить";
             this.AnalogButtonDelete.UseVisualStyleBackColor = true;
+            this.AnalogButtonDelete.Click += new System.EventHandler(this.AnalogButtonDelete_Click);
             // 
             // AnalogButtonAlter
             // 
@@ -2012,6 +2021,7 @@
             this.AnalogButtonAlter.TabIndex = 21;
             this.AnalogButtonAlter.Text = "Изменить";
             this.AnalogButtonAlter.UseVisualStyleBackColor = true;
+            this.AnalogButtonAlter.Click += new System.EventHandler(this.AnalogButtonAlter_Click);
             // 
             // AnalogButtonCreate
             // 
@@ -2023,6 +2033,7 @@
             this.AnalogButtonCreate.TabIndex = 20;
             this.AnalogButtonCreate.Text = "Создать";
             this.AnalogButtonCreate.UseVisualStyleBackColor = true;
+            this.AnalogButtonCreate.Click += new System.EventHandler(this.AnalogButtonCreate_Click);
             // 
             // AnalogCompareTable
             // 
@@ -2152,13 +2163,13 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.AnalogAnalogName);
+            this.groupBox3.Controls.Add(this.AnalogMainName);
             this.groupBox3.Controls.Add(this.AnalogAnalogNumber);
             this.groupBox3.Controls.Add(this.AnalogMainNumber);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.AnalogAnalogName);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.AnalogMainName);
             this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox3.Location = new System.Drawing.Point(7, 7);
@@ -2171,41 +2182,38 @@
             // AnalogAnalogNumber
             // 
             this.AnalogAnalogNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AnalogAnalogNumber.Location = new System.Drawing.Point(946, 61);
+            this.AnalogAnalogNumber.HidePromptOnLeave = true;
+            this.AnalogAnalogNumber.Location = new System.Drawing.Point(946, 56);
             this.AnalogAnalogNumber.Mask = "000000000";
             this.AnalogAnalogNumber.Name = "AnalogAnalogNumber";
             this.AnalogAnalogNumber.Size = new System.Drawing.Size(280, 29);
             this.AnalogAnalogNumber.TabIndex = 4;
+            this.AnalogAnalogNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.AnalogAnalogNumber.TextChanged += new System.EventHandler(this.Analog_TextChanged);
             // 
             // AnalogMainNumber
             // 
             this.AnalogMainNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AnalogMainNumber.Location = new System.Drawing.Point(387, 62);
+            this.AnalogMainNumber.HidePromptOnLeave = true;
+            this.AnalogMainNumber.Location = new System.Drawing.Point(387, 56);
             this.AnalogMainNumber.Mask = "000000000";
             this.AnalogMainNumber.Name = "AnalogMainNumber";
             this.AnalogMainNumber.Size = new System.Drawing.Size(280, 29);
             this.AnalogMainNumber.TabIndex = 2;
+            this.AnalogMainNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.AnalogMainNumber.TextChanged += new System.EventHandler(this.Analog_TextChanged);
             // 
             // label11
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(678, 64);
+            this.label11.Location = new System.Drawing.Point(678, 65);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(257, 20);
             this.label11.TabIndex = 8;
             this.label11.Text = "Номенклатурный номер аналога";
-            // 
-            // AnalogAnalogName
-            // 
-            this.AnalogAnalogName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AnalogAnalogName.FormattingEnabled = true;
-            this.AnalogAnalogName.Location = new System.Drawing.Point(946, 18);
-            this.AnalogAnalogName.Name = "AnalogAnalogName";
-            this.AnalogAnalogName.Size = new System.Drawing.Size(280, 32);
-            this.AnalogAnalogName.TabIndex = 3;
             // 
             // label12
             // 
@@ -2227,16 +2235,6 @@
             this.label10.Size = new System.Drawing.Size(375, 20);
             this.label10.TabIndex = 3;
             this.label10.Text = "Номенклатурный номер основного инструмента";
-            // 
-            // AnalogMainName
-            // 
-            this.AnalogMainName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AnalogMainName.FormattingEnabled = true;
-            this.AnalogMainName.Location = new System.Drawing.Point(387, 18);
-            this.AnalogMainName.Name = "AnalogMainName";
-            this.AnalogMainName.Size = new System.Drawing.Size(280, 32);
-            this.AnalogMainName.TabIndex = 1;
             // 
             // label19
             // 
@@ -2271,6 +2269,13 @@
             this.AnalogListTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.AnalogListTable.Size = new System.Drawing.Size(1044, 380);
             this.AnalogListTable.TabIndex = 5;
+            this.AnalogListTable.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.AnalogListTable_CellBeginEdit);
+            this.AnalogListTable.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.AnalogListTable_CellValidating);
+            this.AnalogListTable.CurrentCellChanged += new System.EventHandler(this.AnalogListTable_CurrentCellChanged);
+            this.AnalogListTable.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.AnalogListTable_EditingControlShowing);
+            this.AnalogListTable.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.AnalogListTable_RowValidated);
+            this.AnalogListTable.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.AnalogListTable_RowValidating);
+            this.AnalogListTable.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.AnalogListTable_UserDeletingRow);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -2964,13 +2969,21 @@
             // 
             this.analogToolsTableAdapter.ClearBeforeFill = true;
             // 
-            // GroupsName
+            // AnalogMainName
             // 
-            this.GroupsName.Location = new System.Drawing.Point(134, 21);
-            this.GroupsName.Name = "GroupsName";
-            this.GroupsName.Size = new System.Drawing.Size(1092, 29);
-            this.GroupsName.TabIndex = 20;
-            this.GroupsName.TextChanged += new System.EventHandler(this.GroupsName_TextChanged);
+            this.AnalogMainName.Location = new System.Drawing.Point(387, 21);
+            this.AnalogMainName.Name = "AnalogMainName";
+            this.AnalogMainName.Size = new System.Drawing.Size(280, 29);
+            this.AnalogMainName.TabIndex = 9;
+            this.AnalogMainName.TextChanged += new System.EventHandler(this.Analog_TextChanged);
+            // 
+            // AnalogAnalogName
+            // 
+            this.AnalogAnalogName.Location = new System.Drawing.Point(946, 21);
+            this.AnalogAnalogName.Name = "AnalogAnalogName";
+            this.AnalogAnalogName.Size = new System.Drawing.Size(280, 29);
+            this.AnalogAnalogName.TabIndex = 10;
+            this.AnalogAnalogName.TextChanged += new System.EventHandler(this.Analog_TextChanged);
             // 
             // Inj
             // 
@@ -3100,11 +3113,9 @@
         private System.Windows.Forms.ComboBox NomenName;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox AnalogMainName;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DataGridView AnalogListTable;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox AnalogAnalogName;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.MaskedTextBox AnalogAnalogNumber;
         private System.Windows.Forms.MaskedTextBox AnalogMainNumber;
@@ -3321,5 +3332,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn usageFlagDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn minStockDataGridViewTextBoxColumn;
         private System.Windows.Forms.TextBox GroupsName;
+        private System.Windows.Forms.TextBox AnalogMainName;
+        private System.Windows.Forms.TextBox AnalogAnalogName;
     }
 }

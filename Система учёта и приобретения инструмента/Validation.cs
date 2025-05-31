@@ -9,6 +9,33 @@ namespace Система_учёта_и_приобретения_инструме
 {
     public static class Validation
     {
+        #region Номенклатурный номер
+        public static bool IsNomenclatureNumberValid(string nomenclatureNumber)
+        {
+            if (string.IsNullOrEmpty(nomenclatureNumber) || nomenclatureNumber.Length != 9)
+            {
+                NotificationService.Notify("Предупреждение", "Номенклатурный номер должен содержать 9 цифр.", ToolTipIcon.Warning);
+                return false;
+            }
+
+            if (!nomenclatureNumber.All(char.IsDigit))
+            {
+                NotificationService.Notify("Предупреждение", "Номенклатурный номер должен состоять только из цифр.", ToolTipIcon.Warning);
+                return false;
+            }
+
+            return true;
+        }
+
+        public static bool IsNomenclatureNumberExist(string nomenclatureNumber, TOOLACCOUNTINGDataSet toolAccounting)
+        {
+            bool isReturn;
+            isReturn = toolAccounting.Nomenclature.Any(s => s.NomenclatureNumber == nomenclatureNumber);
+            if (!isReturn) NotificationService.Notify("Предупреждение", "Инструмента с таким номенклатурным номером не существует.", ToolTipIcon.Warning);
+            return isReturn;
+        }
+        #endregion
+
         #region ИНН
         public static bool IsINNValid(string inn)
         {
@@ -118,5 +145,6 @@ namespace Система_учёта_и_приобретения_инструме
             return isReturn;
         }
         #endregion
+
     }
 }

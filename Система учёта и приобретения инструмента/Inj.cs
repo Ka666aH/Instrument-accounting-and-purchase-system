@@ -212,14 +212,14 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void GroupsTable_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-                if (GroupsTable.CurrentCell.ColumnIndex == 0)
+            if (GroupsTable.CurrentCell.ColumnIndex == 0)
+            {
+                if (e.Control is TextBox textBox)
                 {
-                    if (e.Control is TextBox textBox)
-                    {
-                        textBox.KeyPress -= Digits_KeyPress;
-                        textBox.KeyPress += Digits_KeyPress;
-                    }
+                    textBox.KeyPress -= Digits_KeyPress;
+                    textBox.KeyPress += Digits_KeyPress;
                 }
+            }
         }
 
         private void GroupsTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
@@ -267,12 +267,21 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void GroupsTable_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
-            groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
-            //groupsTableAdapter.Fill(tOOLACCOUNTINGDataSet.Groups);
+            if (!groupUserEditing) return;
+            try
+            {
+                groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
+                groupsTableAdapter.Fill(tOOLACCOUNTINGDataSet.Groups);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             groupUserEditing = false;
         }
 
-        private void GroupsName_TextChanged(object sender, EventArgs e)
+        private void Groups_TextChanged(object sender, EventArgs e)
         {
             var parameters = new List<SearchParameter>();
             if (!string.IsNullOrEmpty(GroupsName.Text)) parameters.Add(new SearchParameter("Name", GroupsName.Text, true));
@@ -321,6 +330,189 @@ namespace Система_учёта_и_приобретения_инструме
 
         #endregion
 
+        #endregion
+
+        #region Аналоги инструментов
+
+        public void SetAnalogsButtonsState()
+        {
+            try
+            {
+                bool state = AnalogListTable.CurrentRow != null && !string.IsNullOrEmpty(AnalogListTable.CurrentRow.Cells[0].Value.ToString());
+                AnalogButtonAlter.Enabled = state;
+                AnalogButtonDelete.Enabled = state;
+            }
+            catch { }
+        }
+
+        private void AnalogButtonCreate_Click(object sender, EventArgs e)
+        {
+            //форма
+        }
+
+        private void AnalogButtonAlter_Click(object sender, EventArgs e)
+        {
+            //форма
+        }
+
+        private void AnalogButtonDelete_Click(object sender, EventArgs e)
+        {
+            AnalogsDelete();
+        }
+
+        private bool AnalogsDelete()
+        {
+            SetAnalogsButtonsState();
+            if (AnalogListTable.CurrentRow.DataBoundItem as DataRowView == null) return false;
+            DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту запись?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No) return false;
+
+            try
+            {
+                var selectedRow = AnalogListTable.CurrentRow.DataBoundItem as DataRowView;
+                var analog1Row = selectedRow.Row as TOOLACCOUNTINGDataSet.AnalogTools1Row;
+                var analog1RowId = analog1Row.ID;
+
+                var analogRow = tOOLACCOUNTINGDataSet.AnalogTools.FindByID(analog1RowId);
+                analogRow.Delete();
+                analogToolsTableAdapter.Update(tOOLACCOUNTINGDataSet.AnalogTools);
+                analogToolsTableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools);
+                analogTools1TableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools1);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                tOOLACCOUNTINGDataSet.RejectChanges();
+                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private void AnalogListTable_CurrentCellChanged(object sender, EventArgs e)
+        {
+            SetAnalogsButtonsState();
+        }
+        private void AnalogListTable_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            //if (AnalogListTable.CurrentCell.ColumnIndex == 1 || AnalogListTable.CurrentCell.ColumnIndex == 2)
+            //{
+            if (e.Control is TextBox textBox)
+            {
+                textBox.KeyPress -= Digits_KeyPress;
+                textBox.KeyPress += Digits_KeyPress;
+            }
+            //}
+
+        }
+
+        private void AnalogListTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            if (!AnalogsDelete()) e.Cancel = true;
+        }
+
+        private TOOLACCOUNTINGDataSet.AnalogToolsRow analogOriginRow = null;
+        private bool analogUserEditing = false;
+        private void AnalogListTable_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            analogUserEditing = true;
+            var dataRowView = AnalogListTable.Rows[e.RowIndex].DataBoundItem as DataRowView;
+            analogOriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.AnalogToolsRow;
+        }
+
+        private void AnalogListTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (!analogUserEditing) return;
+            if (AnalogListTable.Rows[e.RowIndex] == null) return;
+            var row = AnalogListTable.Rows[e.RowIndex];
+            var cell = row.Cells[e.ColumnIndex];
+            switch (e.ColumnIndex)
+            {
+                case 1:
+                case 2:
+
+                    string nomenclatureNumber = cell.EditedFormattedValue as string;
+                    //FormMode mode;
+                    //if (analogOriginRow == null) mode = FormMode.Add;
+                    //else mode = FormMode.Edit;
+                    if (!Validation.IsNomenclatureNumberValid(nomenclatureNumber)) e.Cancel = true;
+                    if (!Validation.IsNomenclatureNumberExist(nomenclatureNumber, tOOLACCOUNTINGDataSet)) e.Cancel = true;
+
+                    //if (row.Cells[1].Value as string == row.Cells[2].Value as string)
+                    //{
+                    //    MessageBox.Show("Номенклатурные номера основного и аналогичного инструмента не могут совпадать.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //    e.Cancel = true;
+                    //}
+
+
+                    break;
+                default: break;
+            }
+        }
+
+        private void AnalogListTable_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            var row = AnalogListTable.Rows[e.RowIndex];
+            if (row.Cells[1].Value as string != row.Cells[2].Value as string) return;
+            MessageBox.Show("Номенклатурные номера основного и аналогичного инструмента не могут совпадать.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            e.Cancel = true;
+        }
+
+        private void AnalogListTable_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!analogUserEditing) return;
+
+            DataGridViewRow row = null;
+            try
+            {
+                row = AnalogListTable.Rows[e.RowIndex];
+                var newRow = tOOLACCOUNTINGDataSet.AnalogTools.NewAnalogToolsRow();
+
+                if (string.IsNullOrEmpty(row.Cells[1].Value as string) ||
+                    string.IsNullOrEmpty(row.Cells[2].Value as string)) return;
+
+                //throw new Exception("Номенклатурные номера основного и аналогичного инструмента не могут совпадать.");
+                newRow.OriginalNomenclatureNumber = row.Cells[1].Value as string;
+                newRow.AnalogNomenclatureNumber = row.Cells[2].Value as string;
+
+                //newRow.OriginalNomenclatureNumber = row.Cells[1].Value as string;
+                //newRow.AnalogNomenclatureNumber = row.Cells[2].Value as string;
+                tOOLACCOUNTINGDataSet.AnalogTools.Rows.Add(newRow);
+                analogToolsTableAdapter.Update(tOOLACCOUNTINGDataSet.AnalogTools);
+                analogToolsTableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools);
+                analogTools1TableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools1);
+            }
+            catch (Exception ex)
+            {
+                //AnalogListTable.Rows.Remove(row);
+                MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                analogUserEditing = false;
+            }
+        }
+        private void Analog_TextChanged(object sender, EventArgs e)
+        {
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(AnalogMainNumber.Text)) parameters.Add(new SearchParameter("OriginalNomenclatureNumber", AnalogMainNumber.Text, true));
+            if (!string.IsNullOrEmpty(AnalogAnalogNumber.Text)) parameters.Add(new SearchParameter("AnalogNomenclatureNumber", AnalogAnalogNumber.Text, true));
+            if (!string.IsNullOrEmpty(AnalogMainName.Text)) parameters.Add(new SearchParameter("OriginalFullName", AnalogMainName.Text, true));
+            if (!string.IsNullOrEmpty(AnalogMainName.Text)) parameters.Add(new SearchParameter("AnalogFullName", AnalogAnalogName.Text, true));
+            //at.ID, at.OriginalNomenclatureNumber, n1.FullName AS OriginalFullName, at.AnalogNomenclatureNumber, n2.FullName AS AnalogFullName
+            try
+            {
+                string filter = Search.Filter(parameters);
+                AnalogListTable.SuspendLayout();
+                //AnalogCompareTable.SuspendLayout();
+                analogTools1BindingSource.Filter = filter;
+                AnalogListTable.ResumeLayout();
+                //AnalogCompareTable.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         #endregion
 
         #region Поставщики
@@ -462,18 +654,18 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void ProvidersTable_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
-            suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
-            //suppliersTableAdapter.Fill(tOOLACCOUNTINGDataSet.Suppliers);
-            supplierUserEditing = false;
+            if (!supplierUserEditing) return;
+            try
+            {
+                suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
+                suppliersTableAdapter.Fill(tOOLACCOUNTINGDataSet.Suppliers);
+                supplierUserEditing = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
-
-        #endregion
-
-        #region Аналоги инструментов
-
-        #endregion
-
-        #region 
 
         #endregion
 
@@ -489,6 +681,5 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
         }
-
     }
 }
