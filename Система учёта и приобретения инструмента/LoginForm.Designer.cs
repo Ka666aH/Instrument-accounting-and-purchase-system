@@ -41,9 +41,10 @@
             // 
             // ExitLF
             // 
-            this.ExitLF.Location = new System.Drawing.Point(50, 400);
+            this.ExitLF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ExitLF.Location = new System.Drawing.Point(93, 438);
             this.ExitLF.Name = "ExitLF";
-            this.ExitLF.Size = new System.Drawing.Size(300, 50);
+            this.ExitLF.Size = new System.Drawing.Size(300, 60);
             this.ExitLF.TabIndex = 2;
             this.ExitLF.Text = "Выйти";
             this.ExitLF.UseVisualStyleBackColor = true;
@@ -51,9 +52,10 @@
             // 
             // LoginLFINJ
             // 
-            this.LoginLFINJ.Location = new System.Drawing.Point(203, 344);
+            this.LoginLFINJ.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LoginLFINJ.Location = new System.Drawing.Point(252, 362);
             this.LoginLFINJ.Name = "LoginLFINJ";
-            this.LoginLFINJ.Size = new System.Drawing.Size(147, 50);
+            this.LoginLFINJ.Size = new System.Drawing.Size(230, 70);
             this.LoginLFINJ.TabIndex = 1;
             this.LoginLFINJ.Text = "Инженер по инструменту отдела подготовки производства";
             this.LoginLFINJ.UseVisualStyleBackColor = true;
@@ -61,18 +63,20 @@
             // 
             // UsersLF
             // 
-            this.UsersLF.Location = new System.Drawing.Point(50, 318);
+            this.UsersLF.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.UsersLF.Location = new System.Drawing.Point(12, 325);
             this.UsersLF.Name = "UsersLF";
             this.UsersLF.ReadOnly = true;
-            this.UsersLF.Size = new System.Drawing.Size(300, 20);
+            this.UsersLF.Size = new System.Drawing.Size(470, 31);
             this.UsersLF.TabIndex = 4;
             this.UsersLF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // LoginLFKLAD
             // 
-            this.LoginLFKLAD.Location = new System.Drawing.Point(50, 344);
+            this.LoginLFKLAD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LoginLFKLAD.Location = new System.Drawing.Point(12, 362);
             this.LoginLFKLAD.Name = "LoginLFKLAD";
-            this.LoginLFKLAD.Size = new System.Drawing.Size(147, 50);
+            this.LoginLFKLAD.Size = new System.Drawing.Size(230, 70);
             this.LoginLFKLAD.TabIndex = 0;
             this.LoginLFKLAD.Text = "Кладовщик ЦИС, БИХ цеха";
             this.LoginLFKLAD.UseVisualStyleBackColor = true;
@@ -81,11 +85,11 @@
             // LoginFormLable
             // 
             this.LoginFormLable.AutoSize = true;
-            this.LoginFormLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LoginFormLable.Location = new System.Drawing.Point(60, 159);
-            this.LoginFormLable.MaximumSize = new System.Drawing.Size(300, 0);
+            this.LoginFormLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LoginFormLable.Location = new System.Drawing.Point(88, 159);
+            this.LoginFormLable.MaximumSize = new System.Drawing.Size(350, 0);
             this.LoginFormLable.Name = "LoginFormLable";
-            this.LoginFormLable.Size = new System.Drawing.Size(279, 75);
+            this.LoginFormLable.Size = new System.Drawing.Size(326, 87);
             this.LoginFormLable.TabIndex = 2;
             this.LoginFormLable.Text = "Информационная система учета и приобретения инструмента";
             this.LoginFormLable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -94,7 +98,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(137, 281);
+            this.label1.Location = new System.Drawing.Point(190, 297);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 25);
             this.label1.TabIndex = 3;
@@ -103,7 +107,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Система_учёта_и_приобретения_инструмента.Properties.Resources.DiplomLogo;
-            this.pictureBox1.Location = new System.Drawing.Point(60, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(114, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(279, 144);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -114,7 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 461);
+            this.ClientSize = new System.Drawing.Size(494, 511);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LoginFormLable);
@@ -123,8 +127,8 @@
             this.Controls.Add(this.LoginLFINJ);
             this.Controls.Add(this.ExitLF);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(400, 500);
-            this.MinimumSize = new System.Drawing.Size(400, 500);
+            this.MaximumSize = new System.Drawing.Size(510, 550);
+            this.MinimumSize = new System.Drawing.Size(510, 550);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Информационная система учета и приобретения инструмента – Авторизация";
