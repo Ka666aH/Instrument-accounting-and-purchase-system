@@ -1090,7 +1090,7 @@
             this.AcceptedWorkshopsRequestsContentTable.Location = new System.Drawing.Point(7, 397);
             this.AcceptedWorkshopsRequestsContentTable.Name = "AcceptedWorkshopsRequestsContentTable";
             this.AcceptedWorkshopsRequestsContentTable.ReadOnly = true;
-            this.AcceptedWorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 240);
+            this.AcceptedWorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 247);
             this.AcceptedWorkshopsRequestsContentTable.TabIndex = 37;
             // 
             // AcceptedWorkshopsRequestsRequestsTable
@@ -1305,7 +1305,7 @@
             this.CreateRequestContentTable.Location = new System.Drawing.Point(10, 357);
             this.CreateRequestContentTable.Name = "CreateRequestContentTable";
             this.CreateRequestContentTable.ReadOnly = true;
-            this.CreateRequestContentTable.Size = new System.Drawing.Size(1236, 265);
+            this.CreateRequestContentTable.Size = new System.Drawing.Size(1236, 272);
             this.CreateRequestContentTable.TabIndex = 41;
             // 
             // CreateRequestRequestsTable
@@ -1475,7 +1475,7 @@
             this.RequestsListPurchaseRequestsTable.Location = new System.Drawing.Point(6, 141);
             this.RequestsListPurchaseRequestsTable.Name = "RequestsListPurchaseRequestsTable";
             this.RequestsListPurchaseRequestsTable.ReadOnly = true;
-            this.RequestsListPurchaseRequestsTable.Size = new System.Drawing.Size(338, 492);
+            this.RequestsListPurchaseRequestsTable.Size = new System.Drawing.Size(338, 499);
             this.RequestsListPurchaseRequestsTable.TabIndex = 31;
             // 
             // RequestsListContentTable
@@ -1489,7 +1489,7 @@
             this.RequestsListContentTable.Location = new System.Drawing.Point(350, 394);
             this.RequestsListContentTable.Name = "RequestsListContentTable";
             this.RequestsListContentTable.ReadOnly = true;
-            this.RequestsListContentTable.Size = new System.Drawing.Size(896, 239);
+            this.RequestsListContentTable.Size = new System.Drawing.Size(896, 246);
             this.RequestsListContentTable.TabIndex = 30;
             // 
             // groupBox9
@@ -1617,7 +1617,7 @@
             this.StatementsContentTable.Location = new System.Drawing.Point(433, 142);
             this.StatementsContentTable.Name = "StatementsContentTable";
             this.StatementsContentTable.ReadOnly = true;
-            this.StatementsContentTable.Size = new System.Drawing.Size(612, 492);
+            this.StatementsContentTable.Size = new System.Drawing.Size(612, 499);
             this.StatementsContentTable.TabIndex = 37;
             // 
             // label50
@@ -1650,7 +1650,7 @@
             this.StatementsStatementsTable.Location = new System.Drawing.Point(7, 142);
             this.StatementsStatementsTable.Name = "StatementsStatementsTable";
             this.StatementsStatementsTable.ReadOnly = true;
-            this.StatementsStatementsTable.Size = new System.Drawing.Size(420, 492);
+            this.StatementsStatementsTable.Size = new System.Drawing.Size(420, 499);
             this.StatementsStatementsTable.TabIndex = 38;
             // 
             // groupBox10
@@ -1790,7 +1790,7 @@
             this.InvoicesContentTable.Location = new System.Drawing.Point(433, 105);
             this.InvoicesContentTable.Name = "InvoicesContentTable";
             this.InvoicesContentTable.ReadOnly = true;
-            this.InvoicesContentTable.Size = new System.Drawing.Size(612, 528);
+            this.InvoicesContentTable.Size = new System.Drawing.Size(612, 535);
             this.InvoicesContentTable.TabIndex = 43;
             // 
             // label52
@@ -1823,7 +1823,7 @@
             this.InvoicesInvoicesTable.Location = new System.Drawing.Point(7, 105);
             this.InvoicesInvoicesTable.Name = "InvoicesInvoicesTable";
             this.InvoicesInvoicesTable.ReadOnly = true;
-            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(420, 528);
+            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(420, 535);
             this.InvoicesInvoicesTable.TabIndex = 44;
             // 
             // groupBox11
@@ -1906,7 +1906,7 @@
             this.HistoryTable.Location = new System.Drawing.Point(7, 117);
             this.HistoryTable.Name = "HistoryTable";
             this.HistoryTable.ReadOnly = true;
-            this.HistoryTable.Size = new System.Drawing.Size(1239, 505);
+            this.HistoryTable.Size = new System.Drawing.Size(1239, 512);
             this.HistoryTable.TabIndex = 13;
             // 
             // groupBox12

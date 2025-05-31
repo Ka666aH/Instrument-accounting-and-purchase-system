@@ -11,10 +11,10 @@ using Система_учёта_и_приобретения_инструмент
 
 namespace Система_учёта_и_приобретения_инструмента
 {
-    public partial class Klad: Form
+    public partial class Klad : Form
     {
         LoginForm login;
-        bool changeUser=false;
+        bool changeUser = false;
         public Klad(LoginForm _login)
         {
             InitializeComponent();
@@ -23,6 +23,24 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Klad_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.DefectiveLists". При необходимости она может быть перемещена или удалена.
+            this.defectiveListsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.DefectiveLists);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.ToolMovements". При необходимости она может быть перемещена или удалена.
+            this.toolMovementsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.ToolMovements);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.Storages". При необходимости она может быть перемещена или удалена.
+            this.storagesTableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.Storages);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.Storages1". При необходимости она может быть перемещена или удалена.
+            this.storages1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.Storages1);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.Workshops1". При необходимости она может быть перемещена или удалена.
+            this.workshops1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.Workshops1);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.Workshops". При необходимости она может быть перемещена или удалена.
+            this.workshopsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.Workshops);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.ReceivingRequestsContent1". При необходимости она может быть перемещена или удалена.
+            this.receivingRequestsContent1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.ReceivingRequestsContent1);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.ReceivingRequests1". При необходимости она может быть перемещена или удалена.
+            this.receivingRequests1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.ReceivingRequests1);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequests". При необходимости она может быть перемещена или удалена.
+            this.receivingRequestsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.ReceivingRequests);
 
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.NonemclatureView". При необходимости она может быть перемещена или удалена.
             this.nonemclatureViewTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NonemclatureView);
@@ -32,9 +50,9 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Klad_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if(changeUser)
+            if (changeUser)
                 login.Show();
-            else 
+            else
                 login.Close();
         }
 
@@ -120,7 +138,7 @@ namespace Система_учёта_и_приобретения_инструме
 
             //    default: return "Не найдена таблица.";
             //}
-             return null; // это надо убрать
+            return null; // это надо убрать
         }
 
         private void AddApplication_Click(object sender, EventArgs e)
@@ -131,8 +149,8 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void AddMoving_Click(object sender, EventArgs e)
         {
-            AddMoving addMoving = new AddMoving(); 
-            addMoving.ShowDialog(); 
+            AddMoving addMoving = new AddMoving();
+            addMoving.ShowDialog();
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -140,5 +158,30 @@ namespace Система_учёта_и_приобретения_инструме
             DefAdd defAdd = new DefAdd();
             defAdd.ShowDialog();
         }
+        
+        private void textBox11_TextChanged(object sender, EventArgs e)
+        {
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(dateTimePicker2.Text)) parameters.Add(new SearchParameter("DefectiveListDate", dateTimePicker2.Value, true));
+            if (!string.IsNullOrEmpty(comboBox6.Text)) parameters.Add(new SearchParameter("WorkshopID", comboBox6.Text, true));
+            if (!string.IsNullOrEmpty(textBox1.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", textBox1.Text, true));
+            if (!string.IsNullOrEmpty(textBox11.Text)) parameters.Add(new SearchParameter("BatchNumber", textBox11.Text, true));
+            if (!string.IsNullOrEmpty(textBox14.Text)) parameters.Add(new SearchParameter("Price", textBox14.Text, true));
+            if (!string.IsNullOrEmpty(textBox13.Text)) parameters.Add(new SearchParameter("Quantity", textBox13.Text, true));
+            if (radioButton1.Checked) parameters.Add(new SearchParameter("IsWriteOff", true, true));
+            if (radioButton2.Checked) parameters.Add(new SearchParameter("IsWriteOff", false, true));
+            try
+            {
+                string filter = Search.Filter(parameters);
+                dataGridView3.SuspendLayout();
+                defectiveListsBindingSource.Filter = filter;
+                dataGridView3.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }
