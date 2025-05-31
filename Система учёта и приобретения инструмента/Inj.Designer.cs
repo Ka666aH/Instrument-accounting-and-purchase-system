@@ -70,7 +70,6 @@
             this.GroupsButtonAlter = new System.Windows.Forms.Button();
             this.GroupsButtonCreate = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.GroupsName = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.GroupsTable = new System.Windows.Forms.DataGridView();
             this.rangeStartDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -280,6 +279,7 @@
             this.dataTable1TableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.DataTable1TableAdapter();
             this.analogToolsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.analogToolsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.AnalogToolsTableAdapter();
+            this.GroupsName = new System.Windows.Forms.TextBox();
             this.InjLevel1.SuspendLayout();
             this.InjNomenPage.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -483,9 +483,9 @@
             "Используется и покупается",
             "Используется и не покупается",
             "Не используется и не покупается"});
-            this.NomenUsage.Location = new System.Drawing.Point(631, 96);
+            this.NomenUsage.Location = new System.Drawing.Point(807, 89);
             this.NomenUsage.Name = "NomenUsage";
-            this.NomenUsage.Size = new System.Drawing.Size(595, 32);
+            this.NomenUsage.Size = new System.Drawing.Size(419, 32);
             this.NomenUsage.TabIndex = 8;
             // 
             // label4
@@ -502,9 +502,9 @@
             // 
             this.NomenUnits.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenUnits.Location = new System.Drawing.Point(176, 62);
+            this.NomenUnits.Location = new System.Drawing.Point(176, 56);
             this.NomenUnits.Name = "NomenUnits";
-            this.NomenUnits.Size = new System.Drawing.Size(238, 29);
+            this.NomenUnits.Size = new System.Drawing.Size(419, 29);
             this.NomenUnits.TabIndex = 3;
             // 
             // label9
@@ -512,7 +512,7 @@
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(420, 101);
+            this.label9.Location = new System.Drawing.Point(596, 101);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(193, 20);
             this.label9.TabIndex = 16;
@@ -523,18 +523,18 @@
             this.NomenName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NomenName.FormattingEnabled = true;
-            this.NomenName.Location = new System.Drawing.Point(176, 25);
+            this.NomenName.Location = new System.Drawing.Point(176, 18);
             this.NomenName.Name = "NomenName";
-            this.NomenName.Size = new System.Drawing.Size(238, 32);
+            this.NomenName.Size = new System.Drawing.Size(419, 32);
             this.NomenName.TabIndex = 1;
             // 
             // NomenSize
             // 
             this.NomenSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenSize.Location = new System.Drawing.Point(176, 96);
+            this.NomenSize.Location = new System.Drawing.Point(176, 92);
             this.NomenSize.Name = "NomenSize";
-            this.NomenSize.Size = new System.Drawing.Size(238, 29);
+            this.NomenSize.Size = new System.Drawing.Size(419, 29);
             this.NomenSize.TabIndex = 7;
             // 
             // label5
@@ -552,7 +552,7 @@
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(420, 65);
+            this.label8.Location = new System.Drawing.Point(596, 65);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(131, 20);
             this.label8.TabIndex = 14;
@@ -561,17 +561,17 @@
             // NomenProducer
             // 
             this.NomenProducer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenProducer.Location = new System.Drawing.Point(631, 62);
+            this.NomenProducer.Location = new System.Drawing.Point(807, 56);
             this.NomenProducer.Name = "NomenProducer";
-            this.NomenProducer.Size = new System.Drawing.Size(595, 29);
+            this.NomenProducer.Size = new System.Drawing.Size(419, 29);
             this.NomenProducer.TabIndex = 4;
             // 
             // NomenMaterial
             // 
             this.NomenMaterial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenMaterial.Location = new System.Drawing.Point(631, 25);
+            this.NomenMaterial.Location = new System.Drawing.Point(807, 21);
             this.NomenMaterial.Name = "NomenMaterial";
-            this.NomenMaterial.Size = new System.Drawing.Size(595, 29);
+            this.NomenMaterial.Size = new System.Drawing.Size(419, 29);
             this.NomenMaterial.TabIndex = 5;
             // 
             // label2
@@ -589,7 +589,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(420, 30);
+            this.label6.Location = new System.Drawing.Point(596, 30);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(205, 20);
             this.label6.TabIndex = 10;
@@ -784,15 +784,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Поиск";
             // 
-            // GroupsName
-            // 
-            this.GroupsName.FormattingEnabled = true;
-            this.GroupsName.Location = new System.Drawing.Point(134, 24);
-            this.GroupsName.Name = "GroupsName";
-            this.GroupsName.Size = new System.Drawing.Size(1092, 32);
-            this.GroupsName.TabIndex = 1;
-            this.GroupsName.TextChanged += new System.EventHandler(this.GroupsName_TextChanged);
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -974,16 +965,16 @@
             // WorkshopsRequestsStatus
             // 
             this.WorkshopsRequestsStatus.FormattingEnabled = true;
-            this.WorkshopsRequestsStatus.Location = new System.Drawing.Point(693, 62);
+            this.WorkshopsRequestsStatus.Location = new System.Drawing.Point(784, 52);
             this.WorkshopsRequestsStatus.Name = "WorkshopsRequestsStatus";
-            this.WorkshopsRequestsStatus.Size = new System.Drawing.Size(535, 32);
+            this.WorkshopsRequestsStatus.Size = new System.Drawing.Size(444, 32);
             this.WorkshopsRequestsStatus.TabIndex = 10;
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label26.Location = new System.Drawing.Point(569, 64);
+            this.label26.Location = new System.Drawing.Point(660, 64);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(118, 20);
             this.label26.TabIndex = 11;
@@ -992,16 +983,16 @@
             // WorkshopsRequestsWorkshop
             // 
             this.WorkshopsRequestsWorkshop.FormattingEnabled = true;
-            this.WorkshopsRequestsWorkshop.Location = new System.Drawing.Point(693, 25);
+            this.WorkshopsRequestsWorkshop.Location = new System.Drawing.Point(784, 18);
             this.WorkshopsRequestsWorkshop.Name = "WorkshopsRequestsWorkshop";
-            this.WorkshopsRequestsWorkshop.Size = new System.Drawing.Size(535, 32);
+            this.WorkshopsRequestsWorkshop.Size = new System.Drawing.Size(444, 32);
             this.WorkshopsRequestsWorkshop.TabIndex = 8;
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label27.Location = new System.Drawing.Point(569, 30);
+            this.label27.Location = new System.Drawing.Point(660, 30);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(37, 20);
             this.label27.TabIndex = 9;
@@ -1009,10 +1000,10 @@
             // 
             // WorkshopsRequestsNumber
             // 
-            this.WorkshopsRequestsNumber.Location = new System.Drawing.Point(203, 62);
+            this.WorkshopsRequestsNumber.Location = new System.Drawing.Point(203, 55);
             this.WorkshopsRequestsNumber.Mask = "000000000";
             this.WorkshopsRequestsNumber.Name = "WorkshopsRequestsNumber";
-            this.WorkshopsRequestsNumber.Size = new System.Drawing.Size(360, 29);
+            this.WorkshopsRequestsNumber.Size = new System.Drawing.Size(445, 29);
             this.WorkshopsRequestsNumber.TabIndex = 6;
             // 
             // label30
@@ -1028,9 +1019,9 @@
             // WorkshopsRequestsName
             // 
             this.WorkshopsRequestsName.FormattingEnabled = true;
-            this.WorkshopsRequestsName.Location = new System.Drawing.Point(203, 25);
+            this.WorkshopsRequestsName.Location = new System.Drawing.Point(203, 18);
             this.WorkshopsRequestsName.Name = "WorkshopsRequestsName";
-            this.WorkshopsRequestsName.Size = new System.Drawing.Size(360, 32);
+            this.WorkshopsRequestsName.Size = new System.Drawing.Size(445, 32);
             this.WorkshopsRequestsName.TabIndex = 4;
             // 
             // label31
@@ -1090,7 +1081,7 @@
             this.AcceptedWorkshopsRequestsContentTable.Location = new System.Drawing.Point(7, 397);
             this.AcceptedWorkshopsRequestsContentTable.Name = "AcceptedWorkshopsRequestsContentTable";
             this.AcceptedWorkshopsRequestsContentTable.ReadOnly = true;
-            this.AcceptedWorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 240);
+            this.AcceptedWorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 247);
             this.AcceptedWorkshopsRequestsContentTable.TabIndex = 37;
             // 
             // AcceptedWorkshopsRequestsRequestsTable
@@ -1305,7 +1296,7 @@
             this.CreateRequestContentTable.Location = new System.Drawing.Point(10, 357);
             this.CreateRequestContentTable.Name = "CreateRequestContentTable";
             this.CreateRequestContentTable.ReadOnly = true;
-            this.CreateRequestContentTable.Size = new System.Drawing.Size(1236, 265);
+            this.CreateRequestContentTable.Size = new System.Drawing.Size(1236, 272);
             this.CreateRequestContentTable.TabIndex = 41;
             // 
             // CreateRequestRequestsTable
@@ -1475,7 +1466,7 @@
             this.RequestsListPurchaseRequestsTable.Location = new System.Drawing.Point(6, 141);
             this.RequestsListPurchaseRequestsTable.Name = "RequestsListPurchaseRequestsTable";
             this.RequestsListPurchaseRequestsTable.ReadOnly = true;
-            this.RequestsListPurchaseRequestsTable.Size = new System.Drawing.Size(338, 492);
+            this.RequestsListPurchaseRequestsTable.Size = new System.Drawing.Size(338, 499);
             this.RequestsListPurchaseRequestsTable.TabIndex = 31;
             // 
             // RequestsListContentTable
@@ -1489,7 +1480,7 @@
             this.RequestsListContentTable.Location = new System.Drawing.Point(350, 394);
             this.RequestsListContentTable.Name = "RequestsListContentTable";
             this.RequestsListContentTable.ReadOnly = true;
-            this.RequestsListContentTable.Size = new System.Drawing.Size(896, 239);
+            this.RequestsListContentTable.Size = new System.Drawing.Size(896, 246);
             this.RequestsListContentTable.TabIndex = 30;
             // 
             // groupBox9
@@ -1617,7 +1608,7 @@
             this.StatementsContentTable.Location = new System.Drawing.Point(433, 142);
             this.StatementsContentTable.Name = "StatementsContentTable";
             this.StatementsContentTable.ReadOnly = true;
-            this.StatementsContentTable.Size = new System.Drawing.Size(612, 492);
+            this.StatementsContentTable.Size = new System.Drawing.Size(612, 499);
             this.StatementsContentTable.TabIndex = 37;
             // 
             // label50
@@ -1650,7 +1641,7 @@
             this.StatementsStatementsTable.Location = new System.Drawing.Point(7, 142);
             this.StatementsStatementsTable.Name = "StatementsStatementsTable";
             this.StatementsStatementsTable.ReadOnly = true;
-            this.StatementsStatementsTable.Size = new System.Drawing.Size(420, 492);
+            this.StatementsStatementsTable.Size = new System.Drawing.Size(420, 499);
             this.StatementsStatementsTable.TabIndex = 38;
             // 
             // groupBox10
@@ -1790,7 +1781,7 @@
             this.InvoicesContentTable.Location = new System.Drawing.Point(433, 105);
             this.InvoicesContentTable.Name = "InvoicesContentTable";
             this.InvoicesContentTable.ReadOnly = true;
-            this.InvoicesContentTable.Size = new System.Drawing.Size(612, 528);
+            this.InvoicesContentTable.Size = new System.Drawing.Size(612, 535);
             this.InvoicesContentTable.TabIndex = 43;
             // 
             // label52
@@ -1823,7 +1814,7 @@
             this.InvoicesInvoicesTable.Location = new System.Drawing.Point(7, 105);
             this.InvoicesInvoicesTable.Name = "InvoicesInvoicesTable";
             this.InvoicesInvoicesTable.ReadOnly = true;
-            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(420, 528);
+            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(420, 535);
             this.InvoicesInvoicesTable.TabIndex = 44;
             // 
             // groupBox11
@@ -1906,7 +1897,7 @@
             this.HistoryTable.Location = new System.Drawing.Point(7, 117);
             this.HistoryTable.Name = "HistoryTable";
             this.HistoryTable.ReadOnly = true;
-            this.HistoryTable.Size = new System.Drawing.Size(1239, 505);
+            this.HistoryTable.Size = new System.Drawing.Size(1239, 512);
             this.HistoryTable.TabIndex = 13;
             // 
             // groupBox12
@@ -2055,16 +2046,16 @@
             this.usageFlagDataGridViewTextBoxColumn1,
             this.minStockDataGridViewTextBoxColumn1});
             this.AnalogCompareTable.DataSource = this.analogTools1DataTable1BindingSource;
-            this.AnalogCompareTable.Location = new System.Drawing.Point(7, 532);
-            this.AnalogCompareTable.MaximumSize = new System.Drawing.Size(0, 90);
-            this.AnalogCompareTable.MinimumSize = new System.Drawing.Size(1044, 90);
+            this.AnalogCompareTable.Location = new System.Drawing.Point(7, 499);
+            this.AnalogCompareTable.MaximumSize = new System.Drawing.Size(0, 120);
+            this.AnalogCompareTable.MinimumSize = new System.Drawing.Size(1044, 120);
             this.AnalogCompareTable.Name = "AnalogCompareTable";
             this.AnalogCompareTable.ReadOnly = true;
             this.AnalogCompareTable.RowHeadersVisible = false;
             this.AnalogCompareTable.RowTemplate.Height = 21;
             this.AnalogCompareTable.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.AnalogCompareTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullColumnSelect;
-            this.AnalogCompareTable.Size = new System.Drawing.Size(1044, 90);
+            this.AnalogCompareTable.Size = new System.Drawing.Size(1044, 120);
             this.AnalogCompareTable.TabIndex = 6;
             // 
             // nomenclatureNumberDataGridViewTextBoxColumn3
@@ -2180,10 +2171,10 @@
             // AnalogAnalogNumber
             // 
             this.AnalogAnalogNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AnalogAnalogNumber.Location = new System.Drawing.Point(800, 62);
+            this.AnalogAnalogNumber.Location = new System.Drawing.Point(946, 61);
             this.AnalogAnalogNumber.Mask = "000000000";
             this.AnalogAnalogNumber.Name = "AnalogAnalogNumber";
-            this.AnalogAnalogNumber.Size = new System.Drawing.Size(423, 29);
+            this.AnalogAnalogNumber.Size = new System.Drawing.Size(280, 29);
             this.AnalogAnalogNumber.TabIndex = 4;
             // 
             // AnalogMainNumber
@@ -2193,7 +2184,7 @@
             this.AnalogMainNumber.Location = new System.Drawing.Point(387, 62);
             this.AnalogMainNumber.Mask = "000000000";
             this.AnalogMainNumber.Name = "AnalogMainNumber";
-            this.AnalogMainNumber.Size = new System.Drawing.Size(135, 29);
+            this.AnalogMainNumber.Size = new System.Drawing.Size(280, 29);
             this.AnalogMainNumber.TabIndex = 2;
             // 
             // label11
@@ -2201,7 +2192,7 @@
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(532, 65);
+            this.label11.Location = new System.Drawing.Point(678, 64);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(257, 20);
             this.label11.TabIndex = 8;
@@ -2211,9 +2202,9 @@
             // 
             this.AnalogAnalogName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AnalogAnalogName.FormattingEnabled = true;
-            this.AnalogAnalogName.Location = new System.Drawing.Point(800, 25);
+            this.AnalogAnalogName.Location = new System.Drawing.Point(946, 18);
             this.AnalogAnalogName.Name = "AnalogAnalogName";
-            this.AnalogAnalogName.Size = new System.Drawing.Size(423, 32);
+            this.AnalogAnalogName.Size = new System.Drawing.Size(280, 32);
             this.AnalogAnalogName.TabIndex = 3;
             // 
             // label12
@@ -2221,7 +2212,7 @@
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(532, 30);
+            this.label12.Location = new System.Drawing.Point(678, 30);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(188, 20);
             this.label12.TabIndex = 7;
@@ -2242,9 +2233,9 @@
             this.AnalogMainName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AnalogMainName.FormattingEnabled = true;
-            this.AnalogMainName.Location = new System.Drawing.Point(387, 25);
+            this.AnalogMainName.Location = new System.Drawing.Point(387, 18);
             this.AnalogMainName.Name = "AnalogMainName";
-            this.AnalogMainName.Size = new System.Drawing.Size(135, 32);
+            this.AnalogMainName.Size = new System.Drawing.Size(280, 32);
             this.AnalogMainName.TabIndex = 1;
             // 
             // label19
@@ -2259,6 +2250,7 @@
             // 
             // AnalogListTable
             // 
+            this.AnalogListTable.AllowUserToResizeRows = false;
             this.AnalogListTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -2273,10 +2265,11 @@
             this.analogFullNameDataGridViewTextBoxColumn});
             this.AnalogListTable.DataSource = this.analogTools1BindingSource;
             this.AnalogListTable.Location = new System.Drawing.Point(7, 113);
+            this.AnalogListTable.MultiSelect = false;
             this.AnalogListTable.Name = "AnalogListTable";
             this.AnalogListTable.RowHeadersVisible = false;
             this.AnalogListTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.AnalogListTable.Size = new System.Drawing.Size(1044, 413);
+            this.AnalogListTable.Size = new System.Drawing.Size(1044, 380);
             this.AnalogListTable.TabIndex = 5;
             // 
             // iDDataGridViewTextBoxColumn
@@ -2817,7 +2810,7 @@
             // OstatkiPrice
             // 
             this.OstatkiPrice.AutoSize = true;
-            this.OstatkiPrice.Location = new System.Drawing.Point(609, 68);
+            this.OstatkiPrice.Location = new System.Drawing.Point(988, 68);
             this.OstatkiPrice.Name = "OstatkiPrice";
             this.OstatkiPrice.Size = new System.Drawing.Size(15, 14);
             this.OstatkiPrice.TabIndex = 11;
@@ -2827,7 +2820,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label24.Location = new System.Drawing.Point(483, 64);
+            this.label24.Location = new System.Drawing.Point(862, 64);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(120, 20);
             this.label24.TabIndex = 10;
@@ -2836,7 +2829,7 @@
             // OstatkiStorage
             // 
             this.OstatkiStorage.FormattingEnabled = true;
-            this.OstatkiStorage.Location = new System.Drawing.Point(609, 25);
+            this.OstatkiStorage.Location = new System.Drawing.Point(988, 25);
             this.OstatkiStorage.Name = "OstatkiStorage";
             this.OstatkiStorage.Size = new System.Drawing.Size(253, 32);
             this.OstatkiStorage.TabIndex = 8;
@@ -2845,7 +2838,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label22.Location = new System.Drawing.Point(483, 30);
+            this.label22.Location = new System.Drawing.Point(862, 30);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(58, 20);
             this.label22.TabIndex = 9;
@@ -2856,7 +2849,7 @@
             this.OstatkiNumber.Location = new System.Drawing.Point(203, 62);
             this.OstatkiNumber.Mask = "000000000";
             this.OstatkiNumber.Name = "OstatkiNumber";
-            this.OstatkiNumber.Size = new System.Drawing.Size(274, 29);
+            this.OstatkiNumber.Size = new System.Drawing.Size(653, 29);
             this.OstatkiNumber.TabIndex = 6;
             // 
             // label28
@@ -2874,7 +2867,7 @@
             this.OstatkiName.FormattingEnabled = true;
             this.OstatkiName.Location = new System.Drawing.Point(203, 25);
             this.OstatkiName.Name = "OstatkiName";
-            this.OstatkiName.Size = new System.Drawing.Size(274, 32);
+            this.OstatkiName.Size = new System.Drawing.Size(653, 32);
             this.OstatkiName.TabIndex = 4;
             // 
             // label29
@@ -2970,6 +2963,14 @@
             // analogToolsTableAdapter
             // 
             this.analogToolsTableAdapter.ClearBeforeFill = true;
+            // 
+            // GroupsName
+            // 
+            this.GroupsName.Location = new System.Drawing.Point(134, 21);
+            this.GroupsName.Name = "GroupsName";
+            this.GroupsName.Size = new System.Drawing.Size(1092, 29);
+            this.GroupsName.TabIndex = 20;
+            this.GroupsName.TextChanged += new System.EventHandler(this.GroupsName_TextChanged);
             // 
             // Inj
             // 
@@ -3094,7 +3095,6 @@
         private System.Windows.Forms.ComboBox NomenUsage;
         private System.Windows.Forms.TabPage InjGroupsPage;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox GroupsName;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DataGridView GroupsTable;
         private System.Windows.Forms.ComboBox NomenName;
@@ -3320,5 +3320,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn usageFlagDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn minStockDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox GroupsName;
     }
 }
