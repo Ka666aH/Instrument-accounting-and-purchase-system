@@ -38,9 +38,9 @@ namespace Система_учёта_и_приобретения_инструме
                         case string strVal:
                             string pureStr = strVal.Replace("'", "''")
                                 .Replace("%", "[%]")
-                                .Replace("_", "[_]");
-                            if(parameter.SearchFromStart) formattedValue = $"'{strVal}%'";
-                            else formattedValue = $"'%{strVal}%'";
+                                .Replace("_", "[_]").Trim();
+                            if(parameter.SearchFromStart) formattedValue = $"'{pureStr}%'";
+                            else formattedValue = $"'%{pureStr}%'";
                             break;
 
                         case DateTime dateVal:
