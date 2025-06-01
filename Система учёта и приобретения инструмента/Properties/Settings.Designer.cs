@@ -26,8 +26,8 @@ namespace Система_учёта_и_приобретения_инструме
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(local);Initial Catalog=TOOLACCOUNTING;Integrated Security=True;Trust" +
-            "ServerCertificate=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-2HRM1C8\\SQLEXPRESS;Initial Catalog=TOOLACCOUNTING;Integrated " +
+            "Security=True;TrustServerCertificate=True")]
         public string TOOLACCOUNTINGConnectionString {
             get {
                 return ((string)(this["TOOLACCOUNTINGConnectionString"]));

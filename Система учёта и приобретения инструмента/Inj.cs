@@ -86,6 +86,7 @@ namespace Система_учёта_и_приобретения_инструме
                         analogToolsTableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools);
                         analogTools1TableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools1);
                         dataTable1TableAdapter.Fill(tOOLACCOUNTINGDataSet.DataTable1);
+                        AnalogListTable.Columns[0].Visible = false;
                         InjLevel1.SelectedTab = InjAnalogPage;
                         return null;
 
@@ -221,6 +222,10 @@ namespace Система_учёта_и_приобретения_инструме
                     textBox.KeyPress += Digits_KeyPress;
                 }
             }
+            else
+            {
+                if (e.Control is TextBox textBox) textBox.KeyPress -= Digits_KeyPress;
+            }
         }
 
         private void GroupsTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
@@ -339,7 +344,10 @@ namespace Система_учёта_и_приобретения_инструме
         {
             try
             {
-                bool state = AnalogListTable.CurrentRow != null && !string.IsNullOrEmpty(AnalogListTable.CurrentRow.Cells[0].Value.ToString());
+                bool state = 
+                    AnalogListTable.CurrentRow != null &&
+                    !string.IsNullOrEmpty(AnalogListTable.CurrentRow.Cells[0].Value.ToString()) &&
+                    !AnalogListTable.CurrentRow.IsNewRow;
                 AnalogButtonAlter.Enabled = state;
                 AnalogButtonDelete.Enabled = state;
             }
@@ -459,9 +467,14 @@ namespace Система_учёта_и_приобретения_инструме
         private void AnalogListTable_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
             var row = AnalogListTable.Rows[e.RowIndex];
-            if (row.Cells[1].Value as string != row.Cells[2].Value as string) return;
-            MessageBox.Show("Номенклатурные номера основного и аналогичного инструмента не могут совпадать.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            e.Cancel = true;
+            if (
+                row.Cells[1].Value as string == row.Cells[2].Value as string &&
+                (!string.IsNullOrEmpty(row.Cells[1].Value as string) || !string.IsNullOrEmpty(row.Cells[2].Value as string))
+                )
+            {
+                MessageBox.Show("Номенклатурные номера основного и аналогичного инструмента не могут совпадать.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Cancel = true;
+            }
         }
 
         private void AnalogListTable_RowValidated(object sender, DataGridViewCellEventArgs e)
@@ -608,6 +621,11 @@ namespace Система_учёта_и_приобретения_инструме
                     textBox.KeyPress += Digits_KeyPress;
                 }
             }
+            else
+            {
+                if (e.Control is TextBox textBox) textBox.KeyPress -= Digits_KeyPress;
+            }
+
         }
 
         private void ProvidersTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
