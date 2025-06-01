@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters;
+using static Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet;
 
 namespace Система_учёта_и_приобретения_инструмента
 {
@@ -347,12 +348,18 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void AnalogButtonCreate_Click(object sender, EventArgs e)
         {
-            //форма
+            AnalogForm analogForm = new AnalogForm(tOOLACCOUNTINGDataSet, analogTools1TableAdapter);
+            analogForm.ShowDialog();
         }
 
         private void AnalogButtonAlter_Click(object sender, EventArgs e)
         {
-            //форма
+            SetAnalogsButtonsState();
+            if (AnalogListTable.CurrentRow.DataBoundItem as DataRowView == null) return;
+            var selectedRow = AnalogListTable.CurrentRow.DataBoundItem as DataRowView;
+            var analogRow = selectedRow.Row as TOOLACCOUNTINGDataSet.AnalogTools1Row;
+            AnalogForm analogForm = new AnalogForm(tOOLACCOUNTINGDataSet, analogTools1TableAdapter, FormMode.Edit, analogRow);
+            analogForm.ShowDialog();
         }
 
         private void AnalogButtonDelete_Click(object sender, EventArgs e)
