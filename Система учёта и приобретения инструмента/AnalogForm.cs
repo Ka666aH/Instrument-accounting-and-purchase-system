@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Система_учёта_и_приобретения_инструмента
 {
@@ -29,7 +30,8 @@ namespace Система_учёта_и_приобретения_инструме
             mode = _mode;
             editRow = _editRow;
         }
-
+        NonemclatureViewTableAdapter nomenclatureViewAdapter = new NonemclatureViewTableAdapter();
+        AutoCompleteStringCollection source = new AutoCompleteStringCollection();
         private void AnalogForm_Load(object sender, EventArgs e)
         {
             if (mode == FormMode.Edit && editRow != null)
@@ -37,16 +39,42 @@ namespace Система_учёта_и_приобретения_инструме
                 AnalogFormOrigiinalNumber.Text = editRow.OriginalNomenclatureNumber.ToString();
                 AnalogFormAnalogNumber.Text = editRow.AnalogNomenclatureNumber.ToString();
             }
+            nomenclatureViewAdapter.Fill(toolAccounting.NonemclatureView);
+
+            foreach (DataRow row in nomenclatureViewAdapter.GetData().Rows)
+            {
+                if (row.Table.Columns.Contains("FullName"))
+                {
+                    string fullName = row["FullName"]?.ToString().Trim() ?? "";
+                    if (!string.IsNullOrEmpty(fullName))
+                    {
+                        source.Add(fullName);
+                    }
+
+                }
+            }
+            AnalogFormOrigiinalName.AutoCompleteCustomSource = source;
+            AnalogFormAnalogName.AutoCompleteCustomSource = source;
         }
 
-        private void AnalogFormName_TextChanged(object sender, EventArgs e)
+        private void AnalogFormOrigiinalName_Leave(object sender, EventArgs e)
         {
-
+            FindNomenclatureNumber(sender as System.Windows.Forms.ComboBox, true);
         }
 
-        private void AnalogFormOrigiinalName_SelectedIndexChanged(object sender, EventArgs e)
+        private void AnalogFormAnalogName_Leave(object sender, EventArgs e)
         {
+            FindNomenclatureNumber(sender as System.Windows.Forms.ComboBox, false);
+        }
 
+        private void FindNomenclatureNumber(System.Windows.Forms.ComboBox sender, bool isOriginal)
+        {
+            string selectedText = sender.Text;
+            sender.Text = new List<string>(source.Cast<string>()).Where(x => x.ToLower() == selectedText.ToLower()).FirstOrDefault();
+            var foundRow = nomenclatureViewAdapter.GetData().Select($"FullName = '{selectedText}'").FirstOrDefault();
+            string nomenclatureNumber = foundRow["NomenclatureNumber"].ToString();
+            if(isOriginal) AnalogFormOrigiinalNumber.Text = nomenclatureNumber;
+            else AnalogFormAnalogNumber.Text = nomenclatureNumber;
         }
 
         private void AnalogFormOrigiinalNumber_TextChanged(object sender, EventArgs e)
@@ -54,15 +82,12 @@ namespace Система_учёта_и_приобретения_инструме
 
         }
 
-        private void AnalogFormAnalogName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void AnalogFormAnalogNumber_TextChanged(object sender, EventArgs e)
         {
 
         }
+
         private void AnalogFormSave_Click(object sender, EventArgs e)
         {
 
@@ -75,7 +100,14 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void AnalogFormClose_Click(object sender, EventArgs e)
         {
-
+            //if (!AllFieldsEmpty())
+            //{
+            //    DialogResult result = MessageBox.Show("Вы уверены, что закрыть форму? Все несохранённые данные будут потеряны.", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            //    if (result == DialogResult.No) return;
+            //}
+            //Close();
         }
+
+
     }
 }
