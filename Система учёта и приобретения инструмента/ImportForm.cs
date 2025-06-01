@@ -222,6 +222,7 @@ namespace Система_учёта_и_приобретения_инструме
                                 {
                                     value = Convert.ChangeType(value, table.Columns[col - 1].DataType);
                                 }
+                                if (value is string) newRow[col - 1] = value.ToString().Trim();
                                 newRow[col - 1] = value;
                             }
                             catch { }
