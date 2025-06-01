@@ -146,5 +146,21 @@ namespace Система_учёта_и_приобретения_инструме
         }
         #endregion
 
+        #region Цех
+        public static bool IsWorkshopUnique(string num1, TOOLACCOUNTINGDataSet toolAccounting, FormMode mode, TOOLACCOUNTINGDataSet.WorkshopsRow originRow = null)
+        {
+            bool isReturn = false;
+            if (mode == FormMode.Edit && num1 == originRow.WorkshopID.ToString())
+            {
+                isReturn = true;
+                return isReturn;
+            }
+            isReturn = !toolAccounting.Workshops.Any(s => s.WorkshopID.ToString() == num1);
+           
+            if (!isReturn) NotificationService.Notify("Предупреждение", "Цех с таким номером уже существует.", ToolTipIcon.Warning);
+            return isReturn;
+        }
+        #endregion
+
     }
 }

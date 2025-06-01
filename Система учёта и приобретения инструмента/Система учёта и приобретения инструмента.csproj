@@ -133,6 +133,12 @@
       <DependentUpon>TOOLACCOUNTINGDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Validation.cs" />
+    <Compile Include="WorkshopForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkshopForm.Designer.cs">
+      <DependentUpon>WorkshopForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddApplications.resx">
       <DependentUpon>AddApplications.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +181,9 @@
     </Compile>
     <EmbeddedResource Include="SupForm.resx">
       <DependentUpon>SupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkshopForm.resx">
+      <DependentUpon>WorkshopForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

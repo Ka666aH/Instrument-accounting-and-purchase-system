@@ -33,7 +33,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -44,8 +43,10 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.CloseNewApplication = new System.Windows.Forms.Button();
-            this.AddConfirm = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.GroupFormClose = new System.Windows.Forms.Button();
+            this.GroupFormSaveClose = new System.Windows.Forms.Button();
+            this.GroupFormSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,14 +99,6 @@
             this.label1.Size = new System.Drawing.Size(90, 20);
             this.label1.TabIndex = 7;
             this.label1.Text = "Дефект №";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 188);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(760, 328);
-            this.dataGridView1.TabIndex = 17;
             // 
             // label9
             // 
@@ -213,32 +206,57 @@
             this.textBox4.Size = new System.Drawing.Size(248, 26);
             this.textBox4.TabIndex = 30;
             // 
-            // CloseNewApplication
+            // dataGridView1
             // 
-            this.CloseNewApplication.Location = new System.Drawing.Point(461, 522);
-            this.CloseNewApplication.Name = "CloseNewApplication";
-            this.CloseNewApplication.Size = new System.Drawing.Size(153, 32);
-            this.CloseNewApplication.TabIndex = 31;
-            this.CloseNewApplication.Text = "Закрыть без сохранения";
-            this.CloseNewApplication.UseVisualStyleBackColor = true;
-            this.CloseNewApplication.Click += new System.EventHandler(this.CloseNewApplication_Click);
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 188);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(760, 328);
+            this.dataGridView1.TabIndex = 17;
             // 
-            // AddConfirm
+            // GroupFormClose
             // 
-            this.AddConfirm.Location = new System.Drawing.Point(620, 522);
-            this.AddConfirm.Name = "AddConfirm";
-            this.AddConfirm.Size = new System.Drawing.Size(153, 32);
-            this.AddConfirm.TabIndex = 32;
-            this.AddConfirm.Text = "Создать";
-            this.AddConfirm.UseVisualStyleBackColor = true;
+            this.GroupFormClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GroupFormClose.Location = new System.Drawing.Point(669, 522);
+            this.GroupFormClose.MaximumSize = new System.Drawing.Size(103, 31);
+            this.GroupFormClose.MinimumSize = new System.Drawing.Size(103, 31);
+            this.GroupFormClose.Name = "GroupFormClose";
+            this.GroupFormClose.Size = new System.Drawing.Size(103, 31);
+            this.GroupFormClose.TabIndex = 33;
+            this.GroupFormClose.Text = "Закрыть";
+            this.GroupFormClose.UseVisualStyleBackColor = true;
+            // 
+            // GroupFormSaveClose
+            // 
+            this.GroupFormSaveClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GroupFormSaveClose.Location = new System.Drawing.Point(435, 522);
+            this.GroupFormSaveClose.Name = "GroupFormSaveClose";
+            this.GroupFormSaveClose.Size = new System.Drawing.Size(228, 31);
+            this.GroupFormSaveClose.TabIndex = 32;
+            this.GroupFormSaveClose.Text = "Сохранить и закрыть";
+            this.GroupFormSaveClose.UseVisualStyleBackColor = true;
+            // 
+            // GroupFormSave
+            // 
+            this.GroupFormSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GroupFormSave.Location = new System.Drawing.Point(297, 522);
+            this.GroupFormSave.Name = "GroupFormSave";
+            this.GroupFormSave.Size = new System.Drawing.Size(132, 31);
+            this.GroupFormSave.TabIndex = 31;
+            this.GroupFormSave.Text = "Сохранить";
+            this.GroupFormSave.UseVisualStyleBackColor = true;
             // 
             // DefAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.CloseNewApplication);
-            this.Controls.Add(this.AddConfirm);
+            this.Controls.Add(this.GroupFormClose);
+            this.Controls.Add(this.GroupFormSaveClose);
+            this.Controls.Add(this.GroupFormSave);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.comboBox3);
@@ -271,7 +289,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -282,7 +299,9 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button CloseNewApplication;
-        private System.Windows.Forms.Button AddConfirm;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button GroupFormClose;
+        private System.Windows.Forms.Button GroupFormSaveClose;
+        private System.Windows.Forms.Button GroupFormSave;
     }
 }

@@ -23,26 +23,24 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Klad_Load(object sender, EventArgs e)
         {
-            
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.DefectiveLists". При необходимости она может быть перемещена или удалена.
-            this.defectiveListsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.DefectiveLists);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.ToolMovements". При необходимости она может быть перемещена или удалена.
-            this.toolMovementsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.ToolMovements);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.Storages". При необходимости она может быть перемещена или удалена.
-            this.storagesTableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.Storages);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.Storages1". При необходимости она может быть перемещена или удалена.
-            this.storages1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.Storages1);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.Workshops1". При необходимости она может быть перемещена или удалена.
-            this.workshops1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.Workshops1);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.Workshops". При необходимости она может быть перемещена или удалена.
-            this.workshopsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.Workshops);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.ReceivingRequestsContent1". При необходимости она может быть перемещена или удалена.
-            this.receivingRequestsContent1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.ReceivingRequestsContent1);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.ReceivingRequests1". При необходимости она может быть перемещена или удалена.
-            this.receivingRequests1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.ReceivingRequests1);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequests". При необходимости она может быть перемещена или удалена.
-            this.receivingRequestsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.ReceivingRequests);
-
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Workshops". При необходимости она может быть перемещена или удалена.
+            this.workshopsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Workshops);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Balances". При необходимости она может быть перемещена или удалена.
+            this.balancesTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Balances);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DefectiveLists". При необходимости она может быть перемещена или удалена.
+            this.defectiveListsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DefectiveLists);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ToolMovements". При необходимости она может быть перемещена или удалена.
+            this.toolMovementsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.ToolMovements);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequestsContent1". При необходимости она может быть перемещена или удалена.
+            this.receivingRequestsContent1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet.ReceivingRequestsContent1);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequests1". При необходимости она может быть перемещена или удалена.
+            this.receivingRequests1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet.ReceivingRequests1);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Storages". При необходимости она может быть перемещена или удалена.
+            this.storagesTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Storages);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Storages1". При необходимости она может быть перемещена или удалена.
+            this.storages1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Storages1);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Workshops1". При необходимости она может быть перемещена или удалена.
+            this.workshops1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Workshops1);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.NonemclatureView". При необходимости она может быть перемещена или удалена.
             this.nonemclatureViewTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NonemclatureView);
 
@@ -185,24 +183,7 @@ namespace Система_учёта_и_приобретения_инструме
         }
 
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-            var parameters = new List<SearchParameter>();
-            if (!string.IsNullOrEmpty(textBox3.Text)) parameters.Add(new SearchParameter("WorkshopID", textBox3.Text, true));
-            if (!string.IsNullOrEmpty(GroupsName.Text)) parameters.Add(new SearchParameter("Name", GroupsName.Text, false));
-            try
-            {
-                string filter = Search.Filter(parameters);
-                dataGridView1.SuspendLayout();
-                workshops1BindingSource.Filter = filter;
-                dataGridView1.ResumeLayout();
-            }
-            catch (ArgumentException ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+        #region storages
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             var parameters = new List<SearchParameter>();
@@ -221,7 +202,9 @@ namespace Система_учёта_и_приобретения_инструме
                 MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
 
+        #region ReceivingReq
         private void textBox8_TextChanged(object sender, EventArgs e)
         {
             var parameters = new List<SearchParameter>();
@@ -243,5 +226,50 @@ namespace Система_учёта_и_приобретения_инструме
                 MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
+
+        #region workshops
+        #region workshopsSearch
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(textBox3.Text)) parameters.Add(new SearchParameter("WorkshopID", Convert.ToInt32(textBox3.Text), true));
+            if (!string.IsNullOrEmpty(GroupsName.Text)) parameters.Add(new SearchParameter("Name", GroupsName.Text, false));
+            try
+            {
+                string filter = Search.Filter(parameters);
+                WorkshopsMain.SuspendLayout();
+                workshops1BindingSource.Filter = filter;
+                WorkshopsMain.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        #endregion
+
+
+
+        private void CreateWorkshop_Click(object sender, EventArgs e)
+        {
+            WorkshopForm workshopForm = new WorkshopForm(tOOLACCOUNTINGDataSet, workshopsTableAdapter);
+            workshopForm.ShowDialog();
+        }
+        public void SetWorkshopsButtonsState()
+        {
+            bool state = WorkshopsMain.CurrentRow != null && !string.IsNullOrEmpty(WorkshopsMain.CurrentRow.Cells[0].Value.ToString());
+            AlterWorkshop.Enabled = state;
+            DeleteWorkshop.Enabled = state;
+        }
+        private void dataGridView1_CurrentCellChanged(object sender, EventArgs e)
+        {
+            SetWorkshopsButtonsState();
+        }
+
+        #endregion
+
+
+
     }
 }

@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\toolaccountingdataset.xsd||{07AC752B-D2B0-4DCD-AD9C-237BF561A30A}",
-      "RelativeMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|solutionrelative:toolaccountingdataset.xsd||{07AC752B-D2B0-4DCD-AD9C-237BF561A30A}"
+      "AbsoluteMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\klad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|solutionrelative:klad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|i:\\dw\\diplom\\\u0441\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\klad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -15,24 +15,28 @@
       "RelativeMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|solutionrelative:inj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\klad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|solutionrelative:klad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\inj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|solutionrelative:inj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|i:\\dw\\diplom\\\u0441\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\workshopform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|solutionrelative:workshopform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|i:\\dw\\diplom\\\u0441\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\workshopform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|solutionrelative:workshopform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|i:\\dw\\diplom\\\u0441\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\supform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|solutionrelative:supform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|i:\\dw\\diplom\\\u0441\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\validation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|solutionrelative:validation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|i:\\dw\\diplom\\\u0441\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\search.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB400097-D63A-4F65-AD75-E0B9ACAFE42A}|\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430.csproj|solutionrelative:search.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,54 +46,68 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "App.config",
-              "DocumentMoniker": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\App.config",
-              "RelativeDocumentMoniker": "App.config",
-              "ToolTip": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\App.config",
-              "RelativeToolTip": "App.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-06-01T10:08:09.978Z",
+              "DocumentIndex": 7,
+              "Title": "Validation.cs",
+              "DocumentMoniker": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\Validation.cs",
+              "RelativeDocumentMoniker": "Validation.cs",
+              "ToolTip": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\Validation.cs",
+              "RelativeToolTip": "Validation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJoAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T18:23:42.428Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Search.cs",
-              "DocumentMoniker": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\Search.cs",
-              "RelativeDocumentMoniker": "Search.cs",
-              "ToolTip": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\Search.cs",
-              "RelativeToolTip": "Search.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "SupForm.cs",
+              "DocumentMoniker": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\SupForm.cs",
+              "RelativeDocumentMoniker": "SupForm.cs",
+              "ToolTip": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\SupForm.cs",
+              "RelativeToolTip": "SupForm.cs",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAvwKsAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-31T12:46:52.992Z"
+              "WhenOpened": "2025-06-01T17:09:44.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WorkshopForm.cs",
+              "DocumentMoniker": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\WorkshopForm.cs",
+              "RelativeDocumentMoniker": "WorkshopForm.cs",
+              "ToolTip": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\WorkshopForm.cs",
+              "RelativeToolTip": "WorkshopForm.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAIA1wDQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T16:46:19.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "WorkshopForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\WorkshopForm.cs",
+              "RelativeDocumentMoniker": "WorkshopForm.cs",
+              "ToolTip": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\WorkshopForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "WorkshopForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T16:46:17.255Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "TOOLACCOUNTINGDataSet.xsd",
-              "DocumentMoniker": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\TOOLACCOUNTINGDataSet.xsd",
-              "RelativeDocumentMoniker": "TOOLACCOUNTINGDataSet.xsd",
-              "ToolTip": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\TOOLACCOUNTINGDataSet.xsd",
-              "RelativeToolTip": "TOOLACCOUNTINGDataSet.xsd",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003579|",
-              "WhenOpened": "2025-05-31T12:13:39.739Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Klad.cs",
               "DocumentMoniker": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\Klad.cs",
               "RelativeDocumentMoniker": "Klad.cs",
-              "ToolTip": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\Klad.cs*",
-              "RelativeToolTip": "Klad.cs*",
-              "ViewState": "AgIAANgAAAAAAAAAAAAqwOUAAABhAAAAAAAAAA==",
+              "ToolTip": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\Klad.cs",
+              "RelativeToolTip": "Klad.cs",
+              "ViewState": "AgIAAKoAAAAAAAAAAAAAwPEAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-31T11:53:53.795Z",
               "EditorCaption": ""
@@ -100,8 +118,8 @@
               "Title": "Klad.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\Klad.cs",
               "RelativeDocumentMoniker": "Klad.cs",
-              "ToolTip": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\Klad.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
-              "RelativeToolTip": "Klad.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
+              "ToolTip": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\Klad.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "Klad.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-31T11:36:08.201Z",
               "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
@@ -114,14 +132,14 @@
               "RelativeDocumentMoniker": "Inj.cs",
               "ToolTip": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\Inj.cs",
               "RelativeToolTip": "Inj.cs",
-              "ViewState": "AgIAAIYAAAAAAAAAAAAqwG4AAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAwCAAAAAAAAAAAIwBQCAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-31T11:36:31.093Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Inj.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\Inj.cs",
               "RelativeDocumentMoniker": "Inj.cs",
@@ -133,7 +151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "I:\\DW\\Diplom\\\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0443\u0447\u0451\u0442\u0430 \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u043D\u0438\u044F \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u0430\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -141,8 +159,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-31T08:31:26.863Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-31T08:31:26.863Z"
             }
           ]
         }
