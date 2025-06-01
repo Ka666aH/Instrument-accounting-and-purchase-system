@@ -23,6 +23,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Klad_Load(object sender, EventArgs e)
         {
+            
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.DefectiveLists". При необходимости она может быть перемещена или удалена.
             this.defectiveListsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.DefectiveLists);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.ToolMovements". При необходимости она может быть перемещена или удалена.
@@ -158,14 +159,14 @@ namespace Система_учёта_и_приобретения_инструме
             DefAdd defAdd = new DefAdd();
             defAdd.ShowDialog();
         }
-        
+
         private void textBox11_TextChanged(object sender, EventArgs e)
         {
             var parameters = new List<SearchParameter>();
             if (!string.IsNullOrEmpty(dateTimePicker2.Text)) parameters.Add(new SearchParameter("DefectiveListDate", dateTimePicker2.Value, true));
             if (!string.IsNullOrEmpty(comboBox6.Text)) parameters.Add(new SearchParameter("WorkshopID", comboBox6.Text, true));
             if (!string.IsNullOrEmpty(textBox1.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", textBox1.Text, true));
-            if (!string.IsNullOrEmpty(textBox11.Text)) parameters.Add(new SearchParameter("BatchNumber", textBox11.Text, true));
+            if (!string.IsNullOrEmpty(textBox11.Text)) parameters.Add(new SearchParameter("BatchNumber", textBox11.Text, false));
             if (!string.IsNullOrEmpty(textBox14.Text)) parameters.Add(new SearchParameter("Price", textBox14.Text, true));
             if (!string.IsNullOrEmpty(textBox13.Text)) parameters.Add(new SearchParameter("Quantity", textBox13.Text, true));
             if (radioButton1.Checked) parameters.Add(new SearchParameter("IsWriteOff", true, true));
@@ -183,5 +184,64 @@ namespace Система_учёта_и_приобретения_инструме
             }
         }
 
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(textBox3.Text)) parameters.Add(new SearchParameter("WorkshopID", textBox3.Text, true));
+            if (!string.IsNullOrEmpty(GroupsName.Text)) parameters.Add(new SearchParameter("Name", GroupsName.Text, false));
+            try
+            {
+                string filter = Search.Filter(parameters);
+                dataGridView1.SuspendLayout();
+                workshops1BindingSource.Filter = filter;
+                dataGridView1.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(textBox2.Text)) parameters.Add(new SearchParameter("StorageID", textBox2.Text, true));
+            if (!string.IsNullOrEmpty(textBox4.Text)) parameters.Add(new SearchParameter("Name", textBox4.Text, false));
+            if (!string.IsNullOrEmpty(textBox5.Text)) parameters.Add(new SearchParameter("WorkshopID", textBox5.Text, true));
+            try
+            {
+                string filter = Search.Filter(parameters);
+                dataGridView4.SuspendLayout();
+                storagesBindingSource.Filter = filter;
+                dataGridView4.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(ApplicationNeedDate.Text)) parameters.Add(new SearchParameter("ReceivingRequestDate", ApplicationNeedDate.Value, true));
+            if (!string.IsNullOrEmpty(textBox8.Text)) parameters.Add(new SearchParameter("ReceivingRequestID", textBox8.Text, true));
+            if (!string.IsNullOrEmpty(textBox9.Text)) parameters.Add(new SearchParameter("WorkshopID", textBox9.Text, true));
+            if (!string.IsNullOrEmpty(comboBox1.Text)) parameters.Add(new SearchParameter("Reason", comboBox1.Text, false));
+            if (!string.IsNullOrEmpty(comboBox3.Text)) parameters.Add(new SearchParameter("ReceivingRequestType", comboBox3.Text, true));
+            if (!string.IsNullOrEmpty(ApplicationStatusSearch.Text)) parameters.Add(new SearchParameter("Status", ApplicationStatusSearch.Text, true));
+            try
+            {
+                string filter = Search.Filter(parameters);
+                WorkshopsRequestsRequestsTable.SuspendLayout();
+                receivingRequests1BindingSource.Filter = filter;
+                WorkshopsRequestsRequestsTable.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
