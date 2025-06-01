@@ -210,7 +210,7 @@ namespace Система_учёта_и_приобретения_инструме
                             skipedRows++;
                             break;
                         }
-                        if (newRow.Table.Columns[0].ColumnName.Contains("ID") && col == 1) continue;
+                        //if (newRow.Table.Columns[0].ColumnName.Contains("ID") && col == 1) continue;
 
                         if (value != null)
                         {

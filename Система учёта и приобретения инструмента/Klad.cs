@@ -76,67 +76,51 @@ namespace Система_учёта_и_приобретения_инструме
         }
         public string ImportRefresh(string tableName)
         {
-            //switch (tableName)
-            //{
-            //    case "Groups":
+            try
+            {
+                switch (tableName)
+                {
+                    case "Workshops":
 
-            //        try
-            //        {
-            //            groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
-            //            InjLevel1.SelectedTab = InjGroupsPage;
-            //            return null;
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            return ex.Message;
-            //        }
+                        workshopsTableAdapter.Update(tOOLACCOUNTINGDataSet.Workshops);
+                        workshopsTableAdapter.Fill(tOOLACCOUNTINGDataSet.Workshops);
+                        workshops1TableAdapter.Fill(tOOLACCOUNTINGDataSet.Workshops1);
+                        tabControl1.SelectedTab = tabPage5;
+                        return null;
 
-            //    case "Nomenclature":
 
-            //        try
-            //        {
-            //            nomenclatureTableAdapter.Update(tOOLACCOUNTINGDataSet.Nomenclature);
-            //            nonemclatureViewTableAdapter.Fill(tOOLACCOUNTINGDataSet.NonemclatureView);
-            //            InjLevel1.SelectedTab = InjNomenPage;
-            //            return null;
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            return ex.Message;
-            //        }
 
-            //    case "AnalogTools":
+                    case "Storages":
 
-            //        //обновление таблиц аналогов
-            //        try
-            //        {
-            //            analogToolsTableAdapter.Update(tOOLACCOUNTINGDataSet.AnalogTools);
-            //            analogToolsTableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools);
-            //            analogTools1TableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools1);
-            //            dataTable1TableAdapter.Fill(tOOLACCOUNTINGDataSet.DataTable1);
-            //            InjLevel1.SelectedTab = InjAnalogPage;
-            //            return null;
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            return ex.Message;
-            //        }
 
-            //    case "Suppliers":
+                        storagesTableAdapter.Update(tOOLACCOUNTINGDataSet.Storages);
+                        storagesTableAdapter.Fill(tOOLACCOUNTINGDataSet.Storages);
+                        storages1TableAdapter.Fill(tOOLACCOUNTINGDataSet.Storages1);
+                        tabControl1.SelectedTab = tabPage6;
+                        return null;
 
-            //        try
-            //        {
-            //            suppliersTableAdapter.Update(tOOLACCOUNTINGDataSet.Suppliers);
-            //            InjLevel1.SelectedTab = InjProvidersPage;
-            //            return null;
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            return ex.Message;
-            //        }
 
-            //    default: return "Не найдена таблица.";
-            //}
+                    case "Balances":
+
+                        //обновление таблиц аналогов
+
+                        balancesTableAdapter.Update(tOOLACCOUNTINGDataSet.Balances);
+                        balancesTableAdapter.Fill(tOOLACCOUNTINGDataSet.Balances);
+                        tabControl1.SelectedTab = tabPage4;
+                        return null;
+
+
+
+
+
+                    default: return "Не найдена таблица.";
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
             return null; // это надо убрать
         }
 

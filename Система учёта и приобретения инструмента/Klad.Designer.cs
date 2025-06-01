@@ -1474,6 +1474,7 @@
             this.WorkshopsMain.MultiSelect = false;
             this.WorkshopsMain.Name = "WorkshopsMain";
             this.WorkshopsMain.RowHeadersVisible = false;
+            this.WorkshopsMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.WorkshopsMain.Size = new System.Drawing.Size(1021, 275);
             this.WorkshopsMain.TabIndex = 0;
             this.WorkshopsMain.CurrentCellChanged += new System.EventHandler(this.dataGridView1_CurrentCellChanged);
