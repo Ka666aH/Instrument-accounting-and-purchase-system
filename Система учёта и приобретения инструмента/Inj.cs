@@ -344,7 +344,7 @@ namespace Система_учёта_и_приобретения_инструме
         {
             try
             {
-                bool state = 
+                bool state =
                     AnalogListTable.CurrentRow != null &&
                     !string.IsNullOrEmpty(AnalogListTable.CurrentRow.Cells[0].Value.ToString()) &&
                     !AnalogListTable.CurrentRow.IsNewRow;
@@ -356,7 +356,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void AnalogButtonCreate_Click(object sender, EventArgs e)
         {
-            AnalogForm analogForm = new AnalogForm(tOOLACCOUNTINGDataSet, analogTools1TableAdapter);
+            AnalogForm analogForm = new AnalogForm(tOOLACCOUNTINGDataSet, analogToolsTableAdapter);
             analogForm.ShowDialog();
         }
 
@@ -366,7 +366,7 @@ namespace Система_учёта_и_приобретения_инструме
             if (AnalogListTable.CurrentRow.DataBoundItem as DataRowView == null) return;
             var selectedRow = AnalogListTable.CurrentRow.DataBoundItem as DataRowView;
             var analogRow = selectedRow.Row as TOOLACCOUNTINGDataSet.AnalogTools1Row;
-            AnalogForm analogForm = new AnalogForm(tOOLACCOUNTINGDataSet, analogTools1TableAdapter, FormMode.Edit, analogRow);
+            AnalogForm analogForm = new AnalogForm(tOOLACCOUNTINGDataSet, analogToolsTableAdapter, FormMode.Edit, analogRow);
             analogForm.ShowDialog();
         }
 
@@ -449,68 +449,124 @@ namespace Система_учёта_и_приобретения_инструме
                     //FormMode mode;
                     //if (analogOriginRow == null) mode = FormMode.Add;
                     //else mode = FormMode.Edit;
+                    string originalNum = row.Cells[1].Value?.ToString();
+                    string analogNum = row.Cells[2].Value?.ToString();
                     if (!Validation.IsNomenclatureNumberValid(nomenclatureNumber)) e.Cancel = true;
                     if (!Validation.IsNomenclatureNumberExist(nomenclatureNumber, tOOLACCOUNTINGDataSet)) e.Cancel = true;
-
-                    //if (row.Cells[1].Value as string == row.Cells[2].Value as string)
+                    //if (originalNum == analogNum && (!string.IsNullOrEmpty(originalNum) || !string.IsNullOrEmpty(analogNum)))
                     //{
                     //    MessageBox.Show("Номенклатурные номера основного и аналогичного инструмента не могут совпадать.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     //    e.Cancel = true;
                     //}
 
+                    //bool exists = false;
+                    //if (mode == FormMode.Add)
+                    //{
+                    //    exists = tOOLACCOUNTINGDataSet.AnalogTools
+                    //        .Any(r =>
+                    //        r.OriginalNomenclatureNumber == originalNum &&
+                    //        r.AnalogNomenclatureNumber == analogNum);
+                    //}
+                    //if (mode == FormMode.Edit)
+                    //{
+                    //    exists = tOOLACCOUNTINGDataSet.AnalogTools
+                    //        .Any(r =>
+                    //        r.OriginalNomenclatureNumber == originalNum &&
+                    //        r.AnalogNomenclatureNumber == analogNum &&
+                    //        r.ID != analogOriginRow.ID);
+                    //}
+                    //if (exists)
+                    //{
+                    //    e.Cancel = true;
+                    //    MessageBox.Show("Такая пара аналогов уже существует.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //}
 
                     break;
                 default: break;
             }
         }
 
-        private void AnalogListTable_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
-        {
-            var row = AnalogListTable.Rows[e.RowIndex];
-            if (
-                row.Cells[1].Value as string == row.Cells[2].Value as string &&
-                (!string.IsNullOrEmpty(row.Cells[1].Value as string) || !string.IsNullOrEmpty(row.Cells[2].Value as string))
-                )
-            {
-                MessageBox.Show("Номенклатурные номера основного и аналогичного инструмента не могут совпадать.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                e.Cancel = true;
-            }
-        }
-
         private void AnalogListTable_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
-            if (!analogUserEditing) return;
+            analogUserEditing = false;
+        }
+
+        private void AnalogListTable_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (!analogUserEditing /*|| e.RowIndex < 0*/) return;
 
             DataGridViewRow row = null;
             try
             {
                 row = AnalogListTable.Rows[e.RowIndex];
-                var newRow = tOOLACCOUNTINGDataSet.AnalogTools.NewAnalogToolsRow();
+                string originalNum = row.Cells[1].Value?.ToString();
+                string analogNum = row.Cells[2].Value?.ToString();
 
-                if (string.IsNullOrEmpty(row.Cells[1].Value as string) ||
-                    string.IsNullOrEmpty(row.Cells[2].Value as string)) return;
+                if (string.IsNullOrEmpty(originalNum) ||
+                    string.IsNullOrEmpty(analogNum)) return;
 
-                //throw new Exception("Номенклатурные номера основного и аналогичного инструмента не могут совпадать.");
-                newRow.OriginalNomenclatureNumber = row.Cells[1].Value as string;
-                newRow.AnalogNomenclatureNumber = row.Cells[2].Value as string;
+                if (originalNum == analogNum) throw new Exception("Номенклатурные номера основного и аналогичного инструмента не могут совпадать.");
 
-                //newRow.OriginalNomenclatureNumber = row.Cells[1].Value as string;
-                //newRow.AnalogNomenclatureNumber = row.Cells[2].Value as string;
-                tOOLACCOUNTINGDataSet.AnalogTools.Rows.Add(newRow);
+
+                    DataRowView rowView = row.DataBoundItem as DataRowView;
+                var analogTools1Row = rowView.Row as TOOLACCOUNTINGDataSet.AnalogTools1Row;
+                int relationId = analogTools1Row.ID;
+                var analogToolsRow = tOOLACCOUNTINGDataSet.AnalogTools.FindByID(relationId);
+
+                if (analogToolsRow != null)
+                {
+                    bool exists = tOOLACCOUNTINGDataSet.AnalogTools
+                        .Any(r =>
+                        r.OriginalNomenclatureNumber == originalNum &&
+                        r.AnalogNomenclatureNumber == analogNum &&
+                        r.ID != relationId);
+
+                    if (exists)
+                    {
+                        throw new Exception("Такая пара аналогов уже существует.");
+                    }
+
+                    analogToolsRow.BeginEdit();
+                    analogToolsRow.OriginalNomenclatureNumber = originalNum;
+                    analogToolsRow.AnalogNomenclatureNumber = analogNum;
+                    analogToolsRow.EndEdit();
+                }
+                else
+                {
+                    bool exists = tOOLACCOUNTINGDataSet.AnalogTools
+                        .Any(r =>
+                        r.OriginalNomenclatureNumber == originalNum &&
+                        r.AnalogNomenclatureNumber == analogNum);
+
+                    if (exists)
+                    {
+                        throw new Exception("Такая пара аналогов уже существует.");
+                    }
+
+                    var newRow = tOOLACCOUNTINGDataSet.AnalogTools.NewAnalogToolsRow();
+                    newRow.OriginalNomenclatureNumber = originalNum;
+                    newRow.AnalogNomenclatureNumber = analogNum;
+                    tOOLACCOUNTINGDataSet.AnalogTools.Rows.Add(newRow);
+                }
                 analogToolsTableAdapter.Update(tOOLACCOUNTINGDataSet.AnalogTools);
                 analogToolsTableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools);
                 analogTools1TableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools1);
+                dataTable1TableAdapter.Fill(tOOLACCOUNTINGDataSet.DataTable1);
+
             }
             catch (Exception ex)
             {
-                //AnalogListTable.Rows.Remove(row);
+                e.Cancel = true;
+                //tOOLACCOUNTINGDataSet.AnalogTools.RejectChanges();
                 MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            finally
-            {
-                analogUserEditing = false;
-            }
+            //finally
+            //{
+            //    //analogUserEditing = false;
+            //    //e.Cancel = true;
+            //}
         }
+
         private void Analog_TextChanged(object sender, EventArgs e)
         {
             var parameters = new List<SearchParameter>();

@@ -237,6 +237,7 @@
             this.MinimumSize = new System.Drawing.Size(709, 370);
             this.Name = "AnalogForm";
             this.Text = "Форма аналога – Информационная система учета и приобретения инструмента";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AnalogForm_FormClosing);
             this.Load += new System.EventHandler(this.AnalogForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
