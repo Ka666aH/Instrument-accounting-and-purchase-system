@@ -23,6 +23,10 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Klad_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.ReceivingRequestsContent1". При необходимости она может быть перемещена или удалена.
+            this.receivingRequestsContent1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.ReceivingRequestsContent1);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.ReceivingRequests1". При необходимости она может быть перемещена или удалена.
+            this.receivingRequests1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.ReceivingRequests1);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Workshops". При необходимости она может быть перемещена или удалена.
             this.workshopsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Workshops);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Balances". При необходимости она может быть перемещена или удалена.
@@ -121,7 +125,7 @@ namespace Система_учёта_и_приобретения_инструме
                 return ex.Message;
             }
 
-            return null; // это надо убрать
+    
         }
 
         private void AddApplication_Click(object sender, EventArgs e)
@@ -251,9 +255,48 @@ namespace Система_учёта_и_приобретения_инструме
             SetWorkshopsButtonsState();
         }
 
+
+
+
+
         #endregion
 
 
+        #region Nomenclature
 
+        private void NomenclatureSearchClear_Click(object sender, EventArgs e)
+        {
+            NomenNumber.Clear();
+            textBox6.Clear();
+            NomenSize.Clear();
+            NomenMaterial.Clear();
+            NomenProducer.Clear();
+            NomenUsage.Text = "";
+
+        }
+        private void Nomen_TextChanged(object sender, EventArgs e)
+        {
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(NomenNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", NomenNumber.Text));
+            if (!string.IsNullOrEmpty(textBox6.Text)) parameters.Add(new SearchParameter("FullName", textBox6.Text, false));
+            if (!string.IsNullOrEmpty(NomenSize.Text)) parameters.Add(new SearchParameter("Dimensions", NomenSize.Text, false));
+            if (!string.IsNullOrEmpty(NomenMaterial.Text)) parameters.Add(new SearchParameter("CuttingMaterial", NomenMaterial.Text));
+            if (!string.IsNullOrEmpty(NomenProducer.Text)) parameters.Add(new SearchParameter("Producer", NomenProducer.Text));
+            if (!string.IsNullOrEmpty(NomenUsage.Text)) parameters.Add(new SearchParameter("UsageFlag", NomenUsage.SelectedIndex - 1));
+
+            try
+            {
+                string filter = Search.Filter(parameters);
+                NomenTable.SuspendLayout();
+                nomenclatureViewBindingSource.Filter = filter;
+                NomenTable.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            #endregion
+        }
     }
 }

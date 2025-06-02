@@ -9226,7 +9226,7 @@ namespace Система_учёта_и_приобретения_инструме
             
             private global::System.Data.DataColumn columnStatus;
             
-            private global::System.Data.DataColumn columnName;
+            private global::System.Data.DataColumn columnWorkshopID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -9311,9 +9311,9 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn NameColumn {
+            public global::System.Data.DataColumn WorkshopIDColumn {
                 get {
-                    return this.columnName;
+                    return this.columnWorkshopID;
                 }
             }
             
@@ -9354,7 +9354,7 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReceivingRequests1Row AddReceivingRequests1Row(System.DateTime ReceivingRequestDate, System.DateTime PlannedDate, string ReceivingRequestType, string Reason, string Status, string Name) {
+            public ReceivingRequests1Row AddReceivingRequests1Row(System.DateTime ReceivingRequestDate, System.DateTime PlannedDate, string ReceivingRequestType, string Reason, string Status, int WorkshopID) {
                 ReceivingRequests1Row rowReceivingRequests1Row = ((ReceivingRequests1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -9363,7 +9363,7 @@ namespace Система_учёта_и_приобретения_инструме
                         ReceivingRequestType,
                         Reason,
                         Status,
-                        Name};
+                        WorkshopID};
                 rowReceivingRequests1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowReceivingRequests1Row);
                 return rowReceivingRequests1Row;
@@ -9399,7 +9399,7 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnReceivingRequestType = base.Columns["ReceivingRequestType"];
                 this.columnReason = base.Columns["Reason"];
                 this.columnStatus = base.Columns["Status"];
-                this.columnName = base.Columns["Name"];
+                this.columnWorkshopID = base.Columns["WorkshopID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9417,8 +9417,8 @@ namespace Система_учёта_и_приобретения_инструме
                 base.Columns.Add(this.columnReason);
                 this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStatus);
-                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnName);
+                this.columnWorkshopID = new global::System.Data.DataColumn("WorkshopID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWorkshopID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnReceivingRequestID}, true));
                 this.columnReceivingRequestID.AutoIncrement = true;
@@ -9433,8 +9433,7 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnReason.MaxLength = 2147483647;
                 this.columnStatus.AllowDBNull = false;
                 this.columnStatus.MaxLength = 50;
-                this.columnName.AllowDBNull = false;
-                this.columnName.MaxLength = 255;
+                this.columnWorkshopID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13620,12 +13619,12 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Name {
+            public int WorkshopID {
                 get {
-                    return ((string)(this[this.tableReceivingRequests1.NameColumn]));
+                    return ((int)(this[this.tableReceivingRequests1.WorkshopIDColumn]));
                 }
                 set {
-                    this[this.tableReceivingRequests1.NameColumn] = value;
+                    this[this.tableReceivingRequests1.WorkshopIDColumn] = value;
                 }
             }
             
@@ -23187,7 +23186,7 @@ ORDER BY
             tableMapping.ColumnMappings.Add("ReceivingRequestType", "ReceivingRequestType");
             tableMapping.ColumnMappings.Add("Reason", "Reason");
             tableMapping.ColumnMappings.Add("Status", "Status");
-            tableMapping.ColumnMappings.Add("Name", "Name");
+            tableMapping.ColumnMappings.Add("WorkshopID", "WorkshopID");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -23204,10 +23203,8 @@ ORDER BY
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        ReceivingRequests.ReceivingRequestID, ReceivingRequests.ReceivingRequestDate, Workshops.Name, ReceivingRequests.PlannedDate, ReceivingRequests.ReceivingRequestType, ReceivingRequests.Reason, 
-                         ReceivingRequests.Status
-FROM            ReceivingRequests INNER JOIN
-                         Workshops ON ReceivingRequests.WorkshopID = Workshops.WorkshopID";
+            this._commandCollection[0].CommandText = "SELECT        ReceivingRequestID, ReceivingRequestDate, PlannedDate, ReceivingReq" +
+                "uestType, Reason, Status, WorkshopID\r\nFROM            ReceivingRequests";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
