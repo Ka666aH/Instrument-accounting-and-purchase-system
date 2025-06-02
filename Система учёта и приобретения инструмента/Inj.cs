@@ -80,8 +80,6 @@ namespace Система_учёта_и_приобретения_инструме
 
                     case "AnalogTools":
 
-                        //обновление таблиц аналогов
-
                         analogToolsTableAdapter.Update(tOOLACCOUNTINGDataSet.AnalogTools);
                         analogToolsTableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools);
                         analogTools1TableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools1);
@@ -281,18 +279,38 @@ namespace Система_учёта_и_приобретения_инструме
                         if (!Validation.IsNomenclatureNumberValid(nomenclatureNumber, tOOLACCOUNTINGDataSet)) e.Cancel = true;
                         if (!Validation.IsNomenclatureNumberUnique(nomenclatureNumber, tOOLACCOUNTINGDataSet, mode, nomenOriginRow)) e.Cancel = true;
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Ошибка значения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
 
                     break;
+                case 2:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 10:
+
+                case 1:
+                case 8:
+
+                    //cell.Value = DBNull.Value;
+
+                    break;
                 default:
 
-                    if (string.IsNullOrEmpty(cell.EditedFormattedValue as string))
+                    try
                     {
-                        e.Cancel = true;
-                        NotificationService.Notify("Предупреждение", "Это поле не может быть пустым.", ToolTipIcon.Warning);
+                        if (string.IsNullOrEmpty(cell.EditedFormattedValue as string))
+                        {
+                            e.Cancel = true;
+                            NotificationService.Notify("Предупреждение", "Это поле не может быть пустым.", ToolTipIcon.Warning);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка значения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
 
                     break;
@@ -301,12 +319,58 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void NomenTable_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
+            if (!nomenUserEditing) return;
 
+            DataGridViewRow row = null;
+            try
+            {
+                row = NomenTable.Rows[e.RowIndex];
+                DataRowView selectedRow = row.DataBoundItem as DataRowView;
+                //if (selectedRow == null) return;
+                var nomenViewRow = selectedRow.Row as TOOLACCOUNTINGDataSet.NomenclatureViewRow;
+                var nomenViewRowNumber = nomenViewRow.NomenclatureNumber;
+                var nomenRow = tOOLACCOUNTINGDataSet.Nomenclature.Where(x => x.NomenclatureNumber == nomenViewRowNumber).FirstOrDefault();
+
+                if (nomenRow != null)
+                {
+                    nomenRow.BeginEdit();
+                    NomenFillFields(nomenRow, nomenViewRow);
+                    nomenRow.EndEdit();
+                }
+                else
+                {
+                    var newRow = tOOLACCOUNTINGDataSet.Nomenclature.NewNomenclatureRow();
+                    newRow.NomenclatureNumber = nomenViewRow.NomenclatureNumber;
+                    NomenFillFields(newRow,nomenViewRow);
+                    tOOLACCOUNTINGDataSet.Nomenclature.Rows.Add(newRow);
+                }
+                nomenclatureTableAdapter.Update(tOOLACCOUNTINGDataSet.Nomenclature);
+                nomenclatureTableAdapter.Fill(tOOLACCOUNTINGDataSet.Nomenclature);
+                nomenclatureViewTableAdapter.Fill(tOOLACCOUNTINGDataSet.NomenclatureView);
+
+            }
+            catch (Exception ex)
+            {
+                e.Cancel = true;
+                MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void NomenFillFields(NomenclatureRow row, NomenclatureViewRow nomenViewRow)
+        {
+            row.Designation = nomenViewRow.Designation;
+            row.Unit = nomenViewRow.Unit;
+            row.Dimensions = nomenViewRow.Dimensions;
+            row.CuttingMaterial = nomenViewRow.CuttingMaterial;
+            row.RegulatoryDoc = nomenViewRow.RegulatoryDoc;
+            row.Producer = nomenViewRow.Producer;
+            row.UsageFlag = nomenViewRow.UsageFlag;
+            row.MinStock = nomenViewRow.MinStock;
         }
 
         private void NomenTable_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
-
+            nomenUserEditing = false;
         }
         private void Nomen_TextChanged(object sender, EventArgs e)
         {
