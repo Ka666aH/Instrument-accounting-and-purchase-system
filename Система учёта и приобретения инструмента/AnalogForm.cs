@@ -31,7 +31,7 @@ namespace Система_учёта_и_приобретения_инструме
             if (_editRow != null) editRow = toolAccounting.AnalogTools.FindByID(_editRow.ID);
             else editRow = null;
         }
-        NonemclatureViewTableAdapter nomenclatureViewAdapter = new NonemclatureViewTableAdapter();
+        NomenclatureViewTableAdapter nomenclatureViewAdapter = new NomenclatureViewTableAdapter();
         AutoCompleteStringCollection source = new AutoCompleteStringCollection();
         private void AnalogForm_Load(object sender, EventArgs e)
         {
@@ -42,7 +42,7 @@ namespace Система_учёта_и_приобретения_инструме
                 AnalogFormOrigiinalName.Text = toolAccounting.AnalogTools1.Where(a => a.OriginalNomenclatureNumber == AnalogFormOrigiinalNumber.Text).Select(a => a.OriginalFullName).FirstOrDefault();
                 AnalogFormAnalogName.Text = toolAccounting.AnalogTools1.Where(a => a.AnalogNomenclatureNumber == AnalogFormAnalogNumber.Text).Select(a => a.AnalogFullName).FirstOrDefault();
             }
-            nomenclatureViewAdapter.Fill(toolAccounting.NonemclatureView);
+            nomenclatureViewAdapter.Fill(toolAccounting.NomenclatureView);
 
             foreach (DataRow row in nomenclatureViewAdapter.GetData().Rows)
             {

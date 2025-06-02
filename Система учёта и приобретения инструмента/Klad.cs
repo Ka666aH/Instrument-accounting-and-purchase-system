@@ -41,8 +41,8 @@ namespace Система_учёта_и_приобретения_инструме
             this.storages1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Storages1);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Workshops1". При необходимости она может быть перемещена или удалена.
             this.workshops1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Workshops1);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.NonemclatureView". При необходимости она может быть перемещена или удалена.
-            this.nonemclatureViewTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NonemclatureView);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.NomenclatureView". При необходимости она может быть перемещена или удалена.
+            this.nomenclatureViewTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NomenclatureView);
 
             this.WindowState = FormWindowState.Maximized;
         }

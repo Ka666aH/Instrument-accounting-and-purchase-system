@@ -39,11 +39,11 @@
             this.NomenButtonHistory = new System.Windows.Forms.Button();
             this.NomenButtonOstatki = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.NomenNumber = new System.Windows.Forms.MaskedTextBox();
+            this.NomenName = new System.Windows.Forms.TextBox();
             this.NomenUsage = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.NomenUnits = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.NomenName = new System.Windows.Forms.ComboBox();
             this.NomenSize = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -63,7 +63,7 @@
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usageFlagDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.minStockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nonemclatureViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nomenclatureViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
             this.InjGroupsPage = new System.Windows.Forms.TabPage();
             this.GroupsButtonDelete = new System.Windows.Forms.Button();
@@ -273,18 +273,18 @@
             this.suppliersTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.SuppliersTableAdapter();
             this.groupsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.GroupsTableAdapter();
             this.nomenclatureLogsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.NomenclatureLogsTableAdapter();
-            this.nonemclatureViewTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.NonemclatureViewTableAdapter();
             this.nomenclatureTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.NomenclatureTableAdapter();
             this.balancesTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.BalancesTableAdapter();
             this.analogTools1TableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.AnalogTools1TableAdapter();
             this.dataTable1TableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.DataTable1TableAdapter();
             this.analogToolsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.analogToolsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.AnalogToolsTableAdapter();
+            this.nomenclatureViewTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.NomenclatureViewTableAdapter();
             this.InjLevel1.SuspendLayout();
             this.InjNomenPage.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NomenTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nonemclatureViewBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nomenclatureViewBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
             this.InjGroupsPage.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -390,6 +390,7 @@
             this.NomenButtonDelete.TabIndex = 16;
             this.NomenButtonDelete.Text = "Удалить";
             this.NomenButtonDelete.UseVisualStyleBackColor = true;
+            this.NomenButtonDelete.Click += new System.EventHandler(this.NomenButtonDelete_Click);
             // 
             // NomenButtonAlter
             // 
@@ -402,6 +403,7 @@
             this.NomenButtonAlter.TabIndex = 15;
             this.NomenButtonAlter.Text = "Изменить";
             this.NomenButtonAlter.UseVisualStyleBackColor = true;
+            this.NomenButtonAlter.Click += new System.EventHandler(this.NomenButtonAlter_Click);
             // 
             // NomenButtonCreate
             // 
@@ -413,6 +415,7 @@
             this.NomenButtonCreate.TabIndex = 14;
             this.NomenButtonCreate.Text = "Создать";
             this.NomenButtonCreate.UseVisualStyleBackColor = true;
+            this.NomenButtonCreate.Click += new System.EventHandler(this.NomenButtonCreate_Click);
             // 
             // NomenButtonLog
             // 
@@ -449,16 +452,17 @@
             this.NomenButtonOstatki.TabIndex = 11;
             this.NomenButtonOstatki.Text = "Остатки";
             this.NomenButtonOstatki.UseVisualStyleBackColor = true;
+            this.NomenButtonOstatki.Click += new System.EventHandler(this.NomenButtonOstatki_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.NomenNumber);
+            this.groupBox1.Controls.Add(this.NomenName);
             this.groupBox1.Controls.Add(this.NomenUsage);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.NomenUnits);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.NomenName);
             this.groupBox1.Controls.Add(this.NomenSize);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label8);
@@ -474,68 +478,73 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Поиск";
             // 
+            // NomenNumber
+            // 
+            this.NomenNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NomenNumber.Location = new System.Drawing.Point(209, 21);
+            this.NomenNumber.Mask = "000000000";
+            this.NomenNumber.Name = "NomenNumber";
+            this.NomenNumber.Size = new System.Drawing.Size(400, 29);
+            this.NomenNumber.TabIndex = 18;
+            this.NomenNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.NomenNumber.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
+            // 
+            // NomenName
+            // 
+            this.NomenName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NomenName.Location = new System.Drawing.Point(209, 56);
+            this.NomenName.Name = "NomenName";
+            this.NomenName.Size = new System.Drawing.Size(400, 29);
+            this.NomenName.TabIndex = 17;
+            this.NomenName.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
+            // 
             // NomenUsage
             // 
             this.NomenUsage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.NomenUsage.FormattingEnabled = true;
             this.NomenUsage.Items.AddRange(new object[] {
             "",
-            "Используется и покупается",
-            "Используется и не покупается",
-            "Не используется и не покупается"});
-            this.NomenUsage.Location = new System.Drawing.Point(807, 89);
+            "0 – Используется и покупается",
+            "1 – Используется и не покупается",
+            "2 – Не используется и не покупается"});
+            this.NomenUsage.Location = new System.Drawing.Point(826, 89);
             this.NomenUsage.Name = "NomenUsage";
-            this.NomenUsage.Size = new System.Drawing.Size(419, 32);
+            this.NomenUsage.Size = new System.Drawing.Size(400, 32);
             this.NomenUsage.TabIndex = 8;
+            this.NomenUsage.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(6, 65);
+            this.label4.Location = new System.Drawing.Point(6, 30);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(164, 20);
+            this.label4.Size = new System.Drawing.Size(191, 20);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Единицы измерения";
-            // 
-            // NomenUnits
-            // 
-            this.NomenUnits.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenUnits.Location = new System.Drawing.Point(176, 56);
-            this.NomenUnits.Name = "NomenUnits";
-            this.NomenUnits.Size = new System.Drawing.Size(419, 29);
-            this.NomenUnits.TabIndex = 3;
+            this.label4.Text = "Номенклатурный номер";
             // 
             // label9
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(596, 101);
+            this.label9.Location = new System.Drawing.Point(615, 101);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(193, 20);
             this.label9.TabIndex = 16;
             this.label9.Text = "Признак использования";
             // 
-            // NomenName
-            // 
-            this.NomenName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenName.FormattingEnabled = true;
-            this.NomenName.Location = new System.Drawing.Point(176, 18);
-            this.NomenName.Name = "NomenName";
-            this.NomenName.Size = new System.Drawing.Size(419, 32);
-            this.NomenName.TabIndex = 1;
-            // 
             // NomenSize
             // 
             this.NomenSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenSize.Location = new System.Drawing.Point(176, 92);
+            this.NomenSize.Location = new System.Drawing.Point(209, 92);
             this.NomenSize.Name = "NomenSize";
-            this.NomenSize.Size = new System.Drawing.Size(419, 29);
+            this.NomenSize.Size = new System.Drawing.Size(400, 29);
             this.NomenSize.TabIndex = 7;
+            this.NomenSize.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
             // 
             // label5
             // 
@@ -552,7 +561,7 @@
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(596, 65);
+            this.label8.Location = new System.Drawing.Point(615, 65);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(131, 20);
             this.label8.TabIndex = 14;
@@ -561,24 +570,26 @@
             // NomenProducer
             // 
             this.NomenProducer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenProducer.Location = new System.Drawing.Point(807, 56);
+            this.NomenProducer.Location = new System.Drawing.Point(826, 56);
             this.NomenProducer.Name = "NomenProducer";
-            this.NomenProducer.Size = new System.Drawing.Size(419, 29);
+            this.NomenProducer.Size = new System.Drawing.Size(400, 29);
             this.NomenProducer.TabIndex = 4;
+            this.NomenProducer.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
             // 
             // NomenMaterial
             // 
             this.NomenMaterial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenMaterial.Location = new System.Drawing.Point(807, 21);
+            this.NomenMaterial.Location = new System.Drawing.Point(826, 21);
             this.NomenMaterial.Name = "NomenMaterial";
-            this.NomenMaterial.Size = new System.Drawing.Size(419, 29);
+            this.NomenMaterial.Size = new System.Drawing.Size(400, 29);
             this.NomenMaterial.TabIndex = 5;
+            this.NomenMaterial.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(6, 30);
+            this.label2.Location = new System.Drawing.Point(6, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(122, 20);
             this.label2.TabIndex = 1;
@@ -589,7 +600,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(596, 30);
+            this.label6.Location = new System.Drawing.Point(615, 30);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(205, 20);
             this.label6.TabIndex = 10;
@@ -615,7 +626,7 @@
             this.fullNameDataGridViewTextBoxColumn,
             this.usageFlagDataGridViewTextBoxColumn,
             this.minStockDataGridViewTextBoxColumn});
-            this.NomenTable.DataSource = this.nonemclatureViewBindingSource;
+            this.NomenTable.DataSource = this.nomenclatureViewBindingSource;
             this.NomenTable.Location = new System.Drawing.Point(7, 147);
             this.NomenTable.MultiSelect = false;
             this.NomenTable.Name = "NomenTable";
@@ -623,6 +634,13 @@
             this.NomenTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.NomenTable.Size = new System.Drawing.Size(1035, 468);
             this.NomenTable.TabIndex = 10;
+            this.NomenTable.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.NomenTable_CellBeginEdit);
+            this.NomenTable.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.NomenTable_CellValidating);
+            this.NomenTable.CurrentCellChanged += new System.EventHandler(this.NomenTable_CurrentCellChanged);
+            this.NomenTable.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.NomenTable_EditingControlShowing);
+            this.NomenTable.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.NomenTable_RowValidated);
+            this.NomenTable.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.NomenTable_RowValidating);
+            this.NomenTable.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.NomenTable_UserDeletingRow);
             // 
             // nomenclatureNumberDataGridViewTextBoxColumn
             // 
@@ -711,10 +729,10 @@
             this.minStockDataGridViewTextBoxColumn.Name = "minStockDataGridViewTextBoxColumn";
             this.minStockDataGridViewTextBoxColumn.Width = 90;
             // 
-            // nonemclatureViewBindingSource
+            // nomenclatureViewBindingSource
             // 
-            this.nonemclatureViewBindingSource.DataMember = "NonemclatureView";
-            this.nonemclatureViewBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
+            this.nomenclatureViewBindingSource.DataMember = "NomenclatureView";
+            this.nomenclatureViewBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
             // 
             // tOOLACCOUNTINGDataSet
             // 
@@ -1089,7 +1107,7 @@
             this.AcceptedWorkshopsRequestsContentTable.Location = new System.Drawing.Point(7, 397);
             this.AcceptedWorkshopsRequestsContentTable.Name = "AcceptedWorkshopsRequestsContentTable";
             this.AcceptedWorkshopsRequestsContentTable.ReadOnly = true;
-            this.AcceptedWorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 275);
+            this.AcceptedWorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 310);
             this.AcceptedWorkshopsRequestsContentTable.TabIndex = 37;
             // 
             // AcceptedWorkshopsRequestsRequestsTable
@@ -1304,7 +1322,7 @@
             this.CreateRequestContentTable.Location = new System.Drawing.Point(10, 357);
             this.CreateRequestContentTable.Name = "CreateRequestContentTable";
             this.CreateRequestContentTable.ReadOnly = true;
-            this.CreateRequestContentTable.Size = new System.Drawing.Size(1236, 300);
+            this.CreateRequestContentTable.Size = new System.Drawing.Size(1236, 335);
             this.CreateRequestContentTable.TabIndex = 41;
             // 
             // CreateRequestRequestsTable
@@ -1474,7 +1492,7 @@
             this.RequestsListPurchaseRequestsTable.Location = new System.Drawing.Point(6, 141);
             this.RequestsListPurchaseRequestsTable.Name = "RequestsListPurchaseRequestsTable";
             this.RequestsListPurchaseRequestsTable.ReadOnly = true;
-            this.RequestsListPurchaseRequestsTable.Size = new System.Drawing.Size(338, 527);
+            this.RequestsListPurchaseRequestsTable.Size = new System.Drawing.Size(338, 562);
             this.RequestsListPurchaseRequestsTable.TabIndex = 31;
             // 
             // RequestsListContentTable
@@ -1488,7 +1506,7 @@
             this.RequestsListContentTable.Location = new System.Drawing.Point(350, 394);
             this.RequestsListContentTable.Name = "RequestsListContentTable";
             this.RequestsListContentTable.ReadOnly = true;
-            this.RequestsListContentTable.Size = new System.Drawing.Size(896, 274);
+            this.RequestsListContentTable.Size = new System.Drawing.Size(896, 309);
             this.RequestsListContentTable.TabIndex = 30;
             // 
             // groupBox9
@@ -1616,7 +1634,7 @@
             this.StatementsContentTable.Location = new System.Drawing.Point(433, 142);
             this.StatementsContentTable.Name = "StatementsContentTable";
             this.StatementsContentTable.ReadOnly = true;
-            this.StatementsContentTable.Size = new System.Drawing.Size(612, 527);
+            this.StatementsContentTable.Size = new System.Drawing.Size(612, 562);
             this.StatementsContentTable.TabIndex = 37;
             // 
             // label50
@@ -1649,7 +1667,7 @@
             this.StatementsStatementsTable.Location = new System.Drawing.Point(7, 142);
             this.StatementsStatementsTable.Name = "StatementsStatementsTable";
             this.StatementsStatementsTable.ReadOnly = true;
-            this.StatementsStatementsTable.Size = new System.Drawing.Size(420, 527);
+            this.StatementsStatementsTable.Size = new System.Drawing.Size(420, 562);
             this.StatementsStatementsTable.TabIndex = 38;
             // 
             // groupBox10
@@ -1789,7 +1807,7 @@
             this.InvoicesContentTable.Location = new System.Drawing.Point(433, 105);
             this.InvoicesContentTable.Name = "InvoicesContentTable";
             this.InvoicesContentTable.ReadOnly = true;
-            this.InvoicesContentTable.Size = new System.Drawing.Size(612, 563);
+            this.InvoicesContentTable.Size = new System.Drawing.Size(612, 598);
             this.InvoicesContentTable.TabIndex = 43;
             // 
             // label52
@@ -1822,7 +1840,7 @@
             this.InvoicesInvoicesTable.Location = new System.Drawing.Point(7, 105);
             this.InvoicesInvoicesTable.Name = "InvoicesInvoicesTable";
             this.InvoicesInvoicesTable.ReadOnly = true;
-            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(420, 563);
+            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(420, 598);
             this.InvoicesInvoicesTable.TabIndex = 44;
             // 
             // groupBox11
@@ -1905,7 +1923,7 @@
             this.HistoryTable.Location = new System.Drawing.Point(7, 117);
             this.HistoryTable.Name = "HistoryTable";
             this.HistoryTable.ReadOnly = true;
-            this.HistoryTable.Size = new System.Drawing.Size(1239, 540);
+            this.HistoryTable.Size = new System.Drawing.Size(1239, 575);
             this.HistoryTable.TabIndex = 13;
             // 
             // groupBox12
@@ -2208,6 +2226,7 @@
             this.AnalogAnalogNumber.TabIndex = 4;
             this.AnalogAnalogNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.AnalogAnalogNumber.TextChanged += new System.EventHandler(this.Analog_TextChanged);
+            this.AnalogAnalogNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Digits_KeyPress);
             // 
             // AnalogMainNumber
             // 
@@ -2221,6 +2240,7 @@
             this.AnalogMainNumber.TabIndex = 2;
             this.AnalogMainNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.AnalogMainNumber.TextChanged += new System.EventHandler(this.Analog_TextChanged);
+            this.AnalogMainNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Digits_KeyPress);
             // 
             // label11
             // 
@@ -2958,10 +2978,6 @@
             // 
             this.nomenclatureLogsTableAdapter.ClearBeforeFill = true;
             // 
-            // nonemclatureViewTableAdapter
-            // 
-            this.nonemclatureViewTableAdapter.ClearBeforeFill = true;
-            // 
             // nomenclatureTableAdapter
             // 
             this.nomenclatureTableAdapter.ClearBeforeFill = true;
@@ -2987,6 +3003,10 @@
             // 
             this.analogToolsTableAdapter.ClearBeforeFill = true;
             // 
+            // nomenclatureViewTableAdapter
+            // 
+            this.nomenclatureViewTableAdapter.ClearBeforeFill = true;
+            // 
             // Inj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3006,7 +3026,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NomenTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nonemclatureViewBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nomenclatureViewBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).EndInit();
             this.InjGroupsPage.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -3100,7 +3120,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox NomenProducer;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox NomenUnits;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button NomenButtonLog;
@@ -3112,7 +3131,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DataGridView GroupsTable;
-        private System.Windows.Forms.ComboBox NomenName;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label19;
@@ -3289,8 +3307,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn changedDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn executorDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripMenuItem импортToolStripMenuItem;
-        private System.Windows.Forms.BindingSource nonemclatureViewBindingSource;
-        private TOOLACCOUNTINGDataSetTableAdapters.NonemclatureViewTableAdapter nonemclatureViewTableAdapter;
+        private System.Windows.Forms.BindingSource nomenclatureViewBindingSource;
         private TOOLACCOUNTINGDataSetTableAdapters.NomenclatureTableAdapter nomenclatureTableAdapter;
         private System.Windows.Forms.BindingSource balancesBindingSource;
         private TOOLACCOUNTINGDataSetTableAdapters.BalancesTableAdapter balancesTableAdapter;
@@ -3336,5 +3353,8 @@
         private System.Windows.Forms.TextBox GroupsName;
         private System.Windows.Forms.TextBox AnalogMainName;
         private System.Windows.Forms.TextBox AnalogAnalogName;
+        private System.Windows.Forms.TextBox NomenName;
+        private System.Windows.Forms.MaskedTextBox NomenNumber;
+        private TOOLACCOUNTINGDataSetTableAdapters.NomenclatureViewTableAdapter nomenclatureViewTableAdapter;
     }
 }

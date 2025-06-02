@@ -26,7 +26,7 @@
     <Shape ID="DesignTable:Suppliers" ZOrder="44" X="1723" Y="1228" Height="172" Width="198" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
     <Shape ID="DesignTable:ToolMovements" ZOrder="43" X="367" Y="554" Height="305" Width="239" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:Workshops" ZOrder="42" X="662" Y="929" Height="115" Width="210" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
-    <Shape ID="DesignTable:NonemclatureView" ZOrder="1" X="1205" Y="425" Height="286" Width="210" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="235" />
+    <Shape ID="DesignTable:NomenclatureView" ZOrder="1" X="1205" Y="425" Height="286" Width="210" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="235" />
     <Shape ID="DesignTable:AnalogTools1" ZOrder="15" X="1214" Y="102" Height="172" Width="224" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
     <Shape ID="DesignTable:DataTable1" ZOrder="13" X="1494" Y="150" Height="305" Width="210" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:ReceivingRequests1" ZOrder="10" X="1748" Y="742" Height="210" Width="260" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />

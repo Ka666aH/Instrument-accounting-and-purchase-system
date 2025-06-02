@@ -74,7 +74,7 @@ namespace Система_учёта_и_приобретения_инструме
 
                         nomenclatureTableAdapter.Update(tOOLACCOUNTINGDataSet.Nomenclature);
                         nomenclatureTableAdapter.Fill(tOOLACCOUNTINGDataSet.Nomenclature);
-                        nonemclatureViewTableAdapter.Fill(tOOLACCOUNTINGDataSet.NonemclatureView);
+                        nomenclatureViewTableAdapter.Fill(tOOLACCOUNTINGDataSet.NomenclatureView);
                         InjLevel1.SelectedTab = InjNomenPage;
                         return null;
 
@@ -119,7 +119,7 @@ namespace Система_учёта_и_приобретения_инструме
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Balances". При необходимости она может быть перемещена или удалена.
             this.balancesTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Balances);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.AnalogTools". При необходимости она может быть перемещена или удалена.
-            this.nonemclatureViewTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NonemclatureView);
+            this.nomenclatureViewTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NomenclatureView);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Nomenclature". При необходимости она может быть перемещена или удалена.
             this.nomenclatureTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Nomenclature);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.NomenclatureLogs". При необходимости она может быть перемещена или удалена.
@@ -146,6 +146,109 @@ namespace Система_учёта_и_приобретения_инструме
         }
 
         #region Номенклатура инструмента
+
+        private void NomenButtonCreate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NomenButtonAlter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NomenButtonDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NomenButtonOstatki_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NomenTable_CurrentCellChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NomenTable_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+
+        }
+
+        private void NomenTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+
+        }
+        private TOOLACCOUNTINGDataSet.NomenclatureRow nomenOriginRow = null;
+        private bool nomenUserEditing = false;
+
+        private void NomenTable_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+
+        }
+
+        private void NomenTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+
+        }
+
+        private void NomenTable_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
+        {
+
+        }
+
+        private void NomenTable_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void Nomen_TextChanged(object sender, EventArgs e)
+        {
+//            SELECT
+//    n.NomenclatureNumber,
+//	g.Name,
+//    n.Designation,
+//    n.Unit,
+//    n.Dimensions,
+//    n.CuttingMaterial,
+//    n.RegulatoryDoc,
+//    n.Producer,
+
+//    FullName =
+//        COALESCE(g.Name + ' ', '') +
+//        COALESCE(n.Designation + ' ', '') +
+//        COALESCE(n.Dimensions + ' ', '') +
+//        COALESCE(n.CuttingMaterial + ' ', '') +
+//        COALESCE(n.RegulatoryDoc, ''),
+	
+//	n.UsageFlag,
+//    n.MinStock
+//FROM Nomenclature n
+//LEFT JOIN Groups g
+//    ON g.RangeStart = LEFT(n.NomenclatureNumber, 4)
+
+            var parameters = new List<SearchParameter>();
+            //if (!string.IsNullOrEmpty(AnalogMainNumber.Text)) parameters.Add(new SearchParameter("OriginalNomenclatureNumber", AnalogMainNumber.Text, true));
+            if (!string.IsNullOrEmpty(NomenNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", NomenNumber.Text));
+            if (!string.IsNullOrEmpty(NomenName.Text)) parameters.Add(new SearchParameter("FullName", NomenName.Text, false));
+            if (!string.IsNullOrEmpty(NomenSize.Text)) parameters.Add(new SearchParameter("Dimensions", NomenSize.Text, false));
+            if (!string.IsNullOrEmpty(NomenMaterial.Text)) parameters.Add(new SearchParameter("CuttingMaterial", NomenMaterial.Text));
+            if (!string.IsNullOrEmpty(NomenProducer.Text)) parameters.Add(new SearchParameter("Producer", NomenProducer.Text));
+            if (!string.IsNullOrEmpty(NomenUsage.Text)) parameters.Add(new SearchParameter("UsageFlag", NomenUsage.SelectedIndex-1));
+
+            try
+            {
+                string filter = Search.Filter(parameters);
+                NomenTable.SuspendLayout();
+                nomenclatureViewBindingSource.Filter = filter;
+                NomenTable.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         #endregion
 
@@ -762,5 +865,7 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
         }
+
+        
     }
 }

@@ -154,8 +154,8 @@
             this.импортToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu = new System.Windows.Forms.MenuStrip();
             this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
-            this.nonemclatureViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nonemclatureViewTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.NonemclatureViewTableAdapter();
+            this.nomenclatureViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nomenclatureViewTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.NomenclatureViewTableAdapter();
             this.nomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.designationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -262,7 +262,7 @@
             this.groupBox6.SuspendLayout();
             this.Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nonemclatureViewBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nomenclatureViewBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.workshops1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.workshops1Storages1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storagesBindingSource)).BeginInit();
@@ -1137,7 +1137,7 @@
             this.fullNameDataGridViewTextBoxColumn,
             this.usageFlagDataGridViewTextBoxColumn,
             this.minStockDataGridViewTextBoxColumn});
-            this.NomenTable.DataSource = this.nonemclatureViewBindingSource;
+            this.NomenTable.DataSource = this.nomenclatureViewBindingSource;
             this.NomenTable.Location = new System.Drawing.Point(8, 152);
             this.NomenTable.MultiSelect = false;
             this.NomenTable.Name = "NomenTable";
@@ -1798,14 +1798,14 @@
             this.tOOLACCOUNTINGDataSet.DataSetName = "TOOLACCOUNTINGDataSet";
             this.tOOLACCOUNTINGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // nonemclatureViewBindingSource
+            // nomenclatureViewBindingSource
             // 
-            this.nonemclatureViewBindingSource.DataMember = "NonemclatureView";
-            this.nonemclatureViewBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
+            this.nomenclatureViewBindingSource.DataMember = "NomenclatureView";
+            this.nomenclatureViewBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
             // 
-            // nonemclatureViewTableAdapter
+            // nomenclatureViewTableAdapter
             // 
-            this.nonemclatureViewTableAdapter.ClearBeforeFill = true;
+            this.nomenclatureViewTableAdapter.ClearBeforeFill = true;
             // 
             // nomenclatureNumberDataGridViewTextBoxColumn
             // 
@@ -2327,7 +2327,7 @@
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nonemclatureViewBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nomenclatureViewBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.workshops1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.workshops1Storages1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.storagesBindingSource)).EndInit();
@@ -2467,8 +2467,8 @@
         private System.Windows.Forms.MaskedTextBox textBox1;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private TOOLACCOUNTINGDataSet tOOLACCOUNTINGDataSet;
-        private System.Windows.Forms.BindingSource nonemclatureViewBindingSource;
-        private TOOLACCOUNTINGDataSetTableAdapters.NonemclatureViewTableAdapter nonemclatureViewTableAdapter;
+        private System.Windows.Forms.BindingSource nomenclatureViewBindingSource;
+        private TOOLACCOUNTINGDataSetTableAdapters.NomenclatureViewTableAdapter nomenclatureViewTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn designationDataGridViewTextBoxColumn;
