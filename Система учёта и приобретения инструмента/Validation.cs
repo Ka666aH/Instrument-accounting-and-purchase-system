@@ -10,7 +10,7 @@ namespace Система_учёта_и_приобретения_инструме
     public static class Validation
     {
         #region Номенклатурный номер
-        public static bool IsNomenclatureNumberValid(string nomenclatureNumber)
+        public static bool IsNomenclatureNumberCorrect(string nomenclatureNumber)
         {
             if (string.IsNullOrEmpty(nomenclatureNumber) || nomenclatureNumber.Length != 9)
             {
@@ -26,6 +26,17 @@ namespace Система_учёта_и_приобретения_инструме
 
             return true;
         }
+        public static bool IsNomenclatureNumberValid(string nomenclatureNumber, TOOLACCOUNTINGDataSet tOOLACCOUNTING)
+        {
+            string group = nomenclatureNumber.Substring(0, 4);
+            bool groupExist = tOOLACCOUNTING.Groups.Any(g => g.RangeStart == group);
+            if (!groupExist)
+            {
+                NotificationService.Notify("Предупреждение", $"Номенклатурный номер должен входить в существующую группу инструментов.\nГруппы с диапазоном {group} не существует", ToolTipIcon.Warning);
+                return false;
+            }
+            return true;
+        }
 
         public static bool IsNomenclatureNumberExist(string nomenclatureNumber, TOOLACCOUNTINGDataSet toolAccounting)
         {
@@ -34,6 +45,21 @@ namespace Система_учёта_и_приобретения_инструме
             if (!isReturn) NotificationService.Notify("Предупреждение", "Инструмента с таким номенклатурным номером не существует.", ToolTipIcon.Warning);
             return isReturn;
         }
+
+        public static bool IsNomenclatureNumberUnique(string nomenclatureNumber, TOOLACCOUNTINGDataSet toolAccounting, FormMode mode, TOOLACCOUNTINGDataSet.NomenclatureRow originRow = null)
+        {
+            bool isReturn;
+            if (mode == FormMode.Edit && nomenclatureNumber == originRow.NomenclatureNumber)
+            {
+                isReturn = true;
+                return isReturn;
+            }
+
+            isReturn = !toolAccounting.Nomenclature.Any(s => s.NomenclatureNumber == nomenclatureNumber);
+            if (!isReturn) NotificationService.Notify("Предупреждение", "Инструмент с таким номенклатурным номером уже существует.", ToolTipIcon.Warning);
+            return isReturn;
+        }
+
         #endregion
 
         #region ИНН
@@ -156,7 +182,7 @@ namespace Система_учёта_и_приобретения_инструме
                 return isReturn;
             }
             isReturn = !toolAccounting.Workshops.Any(s => s.WorkshopID.ToString() == num1);
-           
+
             if (!isReturn) NotificationService.Notify("Предупреждение", "Цех с таким номером уже существует.", ToolTipIcon.Warning);
             return isReturn;
         }

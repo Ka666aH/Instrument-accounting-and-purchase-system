@@ -147,51 +147,156 @@ namespace Система_учёта_и_приобретения_инструме
 
         #region Номенклатура инструмента
 
+        public void SetNomenButtonsState()
+        {
+            try
+            {
+                bool state =
+                    NomenTable.CurrentRow != null &&
+                    !string.IsNullOrEmpty(NomenTable.CurrentRow.Cells[0].Value.ToString()) &&
+                    !NomenTable.CurrentRow.IsNewRow;
+
+                NomenButtonAlter.Enabled = state;
+                NomenButtonDelete.Enabled = state;
+                NomenButtonOstatki.Enabled = state;
+                NomenButtonHistory.Enabled = state;
+                NomenButtonLog.Enabled = state;
+            }
+            catch { }
+        }
+
         private void NomenButtonCreate_Click(object sender, EventArgs e)
         {
-
+            //форма
         }
 
         private void NomenButtonAlter_Click(object sender, EventArgs e)
         {
-
+            //форма
         }
 
         private void NomenButtonDelete_Click(object sender, EventArgs e)
         {
+            NomenDelete();
+        }
 
+        private bool NomenDelete()
+        {
+            SetNomenButtonsState();
+            if (NomenTable.CurrentRow.DataBoundItem as DataRowView == null) return false;
+            DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту запись?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No) return false;
+
+            try
+            {
+                var selectedRow = NomenTable.CurrentRow.DataBoundItem as DataRowView;
+                var nomenViewRow = selectedRow.Row as TOOLACCOUNTINGDataSet.NomenclatureViewRow;
+                var nomenViewRowNumber = nomenViewRow.NomenclatureNumber;
+
+                var nomenRow = tOOLACCOUNTINGDataSet.Nomenclature.Where(x => x.NomenclatureNumber == nomenViewRowNumber).FirstOrDefault();
+                nomenRow.Delete();
+                nomenclatureTableAdapter.Update(tOOLACCOUNTINGDataSet.Nomenclature);
+                nomenclatureTableAdapter.Fill(tOOLACCOUNTINGDataSet.Nomenclature);
+                nomenclatureViewTableAdapter.Fill(tOOLACCOUNTINGDataSet.NomenclatureView);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                tOOLACCOUNTINGDataSet.RejectChanges();
+                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
 
         private void NomenButtonOstatki_Click(object sender, EventArgs e)
         {
+            //переход на вкладку и установка значения в поиск
+        }
 
+        private void NomenButtonHistory_Click(object sender, EventArgs e)
+        {
+            //переход на вкладку и установка значения в поиск
+        }
+
+        private void NomenButtonLog_Click(object sender, EventArgs e)
+        {
+            //переход на вкладку и установка значения в поиск
         }
 
         private void NomenTable_CurrentCellChanged(object sender, EventArgs e)
         {
-
+            SetNomenButtonsState();
         }
 
         private void NomenTable_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-
+            if (
+                NomenTable.CurrentCell.ColumnIndex == 0 ||
+                NomenTable.CurrentCell.ColumnIndex == 9 ||
+                NomenTable.CurrentCell.ColumnIndex == 10
+                )
+            {
+                if (e.Control is TextBox textBox)
+                {
+                    textBox.KeyPress -= Digits_KeyPress;
+                    textBox.KeyPress += Digits_KeyPress;
+                }
+            }
+            else
+            {
+                if (e.Control is TextBox textBox) textBox.KeyPress -= Digits_KeyPress;
+            }
         }
 
         private void NomenTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-
+            if (!NomenDelete()) e.Cancel = true;
         }
         private TOOLACCOUNTINGDataSet.NomenclatureRow nomenOriginRow = null;
         private bool nomenUserEditing = false;
 
         private void NomenTable_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
-
+            nomenUserEditing = true;
+            var dataRowView = NomenTable.Rows[e.RowIndex].DataBoundItem as DataRowView;
+            nomenOriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.NomenclatureRow;
         }
 
         private void NomenTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
+            if (!nomenUserEditing) return;
+            if (NomenTable.Rows[e.RowIndex] == null) return;
+            var row = NomenTable.Rows[e.RowIndex];
+            var cell = row.Cells[e.ColumnIndex];
+            FormMode mode;
+            if (nomenOriginRow == null) mode = FormMode.Add;
+            else mode = FormMode.Edit;
+            switch (e.ColumnIndex)
+            {
+                case 0:
+                    try
+                    {
+                        string nomenclatureNumber = cell.EditedFormattedValue?.ToString();
+                        if (!Validation.IsNomenclatureNumberCorrect(nomenclatureNumber)) e.Cancel = true;
+                        if (!Validation.IsNomenclatureNumberValid(nomenclatureNumber, tOOLACCOUNTINGDataSet)) e.Cancel = true;
+                        if (!Validation.IsNomenclatureNumberUnique(nomenclatureNumber, tOOLACCOUNTINGDataSet, mode, nomenOriginRow)) e.Cancel = true;
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка значения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
 
+                    break;
+                default:
+
+                    if (string.IsNullOrEmpty(cell.EditedFormattedValue as string))
+                    {
+                        e.Cancel = true;
+                        NotificationService.Notify("Предупреждение", "Это поле не может быть пустым.", ToolTipIcon.Warning);
+                    }
+
+                    break;
+            }
         }
 
         private void NomenTable_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
@@ -205,37 +310,13 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void Nomen_TextChanged(object sender, EventArgs e)
         {
-//            SELECT
-//    n.NomenclatureNumber,
-//	g.Name,
-//    n.Designation,
-//    n.Unit,
-//    n.Dimensions,
-//    n.CuttingMaterial,
-//    n.RegulatoryDoc,
-//    n.Producer,
-
-//    FullName =
-//        COALESCE(g.Name + ' ', '') +
-//        COALESCE(n.Designation + ' ', '') +
-//        COALESCE(n.Dimensions + ' ', '') +
-//        COALESCE(n.CuttingMaterial + ' ', '') +
-//        COALESCE(n.RegulatoryDoc, ''),
-	
-//	n.UsageFlag,
-//    n.MinStock
-//FROM Nomenclature n
-//LEFT JOIN Groups g
-//    ON g.RangeStart = LEFT(n.NomenclatureNumber, 4)
-
             var parameters = new List<SearchParameter>();
-            //if (!string.IsNullOrEmpty(AnalogMainNumber.Text)) parameters.Add(new SearchParameter("OriginalNomenclatureNumber", AnalogMainNumber.Text, true));
             if (!string.IsNullOrEmpty(NomenNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", NomenNumber.Text));
             if (!string.IsNullOrEmpty(NomenName.Text)) parameters.Add(new SearchParameter("FullName", NomenName.Text, false));
             if (!string.IsNullOrEmpty(NomenSize.Text)) parameters.Add(new SearchParameter("Dimensions", NomenSize.Text, false));
             if (!string.IsNullOrEmpty(NomenMaterial.Text)) parameters.Add(new SearchParameter("CuttingMaterial", NomenMaterial.Text));
             if (!string.IsNullOrEmpty(NomenProducer.Text)) parameters.Add(new SearchParameter("Producer", NomenProducer.Text));
-            if (!string.IsNullOrEmpty(NomenUsage.Text)) parameters.Add(new SearchParameter("UsageFlag", NomenUsage.SelectedIndex-1));
+            if (!string.IsNullOrEmpty(NomenUsage.Text)) parameters.Add(new SearchParameter("UsageFlag", NomenUsage.SelectedIndex - 1));
 
             try
             {
@@ -554,7 +635,8 @@ namespace Система_учёта_и_приобретения_инструме
                     //else mode = FormMode.Edit;
                     string originalNum = row.Cells[1].Value?.ToString();
                     string analogNum = row.Cells[2].Value?.ToString();
-                    if (!Validation.IsNomenclatureNumberValid(nomenclatureNumber)) e.Cancel = true;
+                    if (!Validation.IsNomenclatureNumberCorrect(nomenclatureNumber)) e.Cancel = true;
+                    if (!Validation.IsNomenclatureNumberValid(nomenclatureNumber, tOOLACCOUNTINGDataSet)) e.Cancel = true;
                     if (!Validation.IsNomenclatureNumberExist(nomenclatureNumber, tOOLACCOUNTINGDataSet)) e.Cancel = true;
                     //if (originalNum == analogNum && (!string.IsNullOrEmpty(originalNum) || !string.IsNullOrEmpty(analogNum)))
                     //{
@@ -611,7 +693,7 @@ namespace Система_учёта_и_приобретения_инструме
                 if (originalNum == analogNum) throw new Exception("Номенклатурные номера основного и аналогичного инструмента не могут совпадать.");
 
 
-                    DataRowView rowView = row.DataBoundItem as DataRowView;
+                DataRowView rowView = row.DataBoundItem as DataRowView;
                 var analogTools1Row = rowView.Row as TOOLACCOUNTINGDataSet.AnalogTools1Row;
                 int relationId = analogTools1Row.ID;
                 var analogToolsRow = tOOLACCOUNTINGDataSet.AnalogTools.FindByID(relationId);
@@ -865,7 +947,5 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
         }
-
-        
     }
 }

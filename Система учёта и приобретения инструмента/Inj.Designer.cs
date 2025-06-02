@@ -428,6 +428,7 @@
             this.NomenButtonLog.TabIndex = 13;
             this.NomenButtonLog.Text = "Корректировки";
             this.NomenButtonLog.UseVisualStyleBackColor = true;
+            this.NomenButtonLog.Click += new System.EventHandler(this.NomenButtonLog_Click);
             // 
             // NomenButtonHistory
             // 
@@ -440,6 +441,7 @@
             this.NomenButtonHistory.TabIndex = 12;
             this.NomenButtonHistory.Text = "История поступлений";
             this.NomenButtonHistory.UseVisualStyleBackColor = true;
+            this.NomenButtonHistory.Click += new System.EventHandler(this.NomenButtonHistory_Click);
             // 
             // NomenButtonOstatki
             // 
