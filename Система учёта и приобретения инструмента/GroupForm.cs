@@ -124,12 +124,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void GroupFormClose_Click(object sender, EventArgs e)
         {
-            if (!AllFieldsEmpty())
-            {
-                DialogResult result = MessageBox.Show("Вы уверены, что закрыть форму? Все несохранённые данные будут потеряны.", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.No) return;
-            }
-
+            
             Close();
         }
         private bool AllFieldsEmpty()
@@ -148,5 +143,13 @@ namespace Система_учёта_и_приобретения_инструме
             //}
         }
 
+        private void GroupForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!AllFieldsEmpty())
+            {
+                DialogResult result = MessageBox.Show("Вы уверены, что закрыть форму? Все несохранённые данные будут потеряны.", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.No) e.Cancel = true;
+            }
+        }
     }
 }

@@ -149,12 +149,6 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void SupFormClose_Click(object sender, EventArgs e)
         {
-            if (!AllFieldsEmpty())
-            {
-                DialogResult result = MessageBox.Show("Вы уверены, что закрыть форму? Все несохранённые данные будут потеряны.", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.No) return;
-            }
-
             Close();
         }
 
@@ -170,6 +164,15 @@ namespace Система_учёта_и_приобретения_инструме
         private void SupFormINN_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
+        }
+
+        private void SupForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!AllFieldsEmpty())
+            {
+                DialogResult result = MessageBox.Show("Вы уверены, что закрыть форму? Все несохранённые данные будут потеряны.", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.No) e.Cancel = true;
+            }
         }
     }
 }

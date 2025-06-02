@@ -140,6 +140,7 @@
             this.MinimumSize = new System.Drawing.Size(655, 210);
             this.Name = "GroupForm";
             this.Text = "Форма группы – Информационная система учета и приобретения инструмента";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GroupForm_FormClosing);
             this.Load += new System.EventHandler(this.GroupForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

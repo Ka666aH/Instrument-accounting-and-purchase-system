@@ -198,6 +198,7 @@
             this.MinimumSize = new System.Drawing.Size(695, 348);
             this.Name = "SupForm";
             this.Text = "Форма поставщика – Информационная система учета и приобретения инструмента";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SupForm_FormClosing);
             this.Load += new System.EventHandler(this.SupForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
