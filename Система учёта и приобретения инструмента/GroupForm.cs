@@ -49,11 +49,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void GroupFormSave_Click(object sender, EventArgs e)
         {
-            if (TrySave())
-            {
-                ClearForm();
-                GroupFormRange.Focus();
-            }
+            TrySave();
         }
 
         private bool TrySave()
@@ -65,6 +61,8 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 if (mode == FormMode.Add) CreateGroup();
                 if (mode == FormMode.Edit) UpdateGroup();
+                ClearForm();
+                GroupFormRange.Focus();
                 return true;
             }
             catch (Exception ex)

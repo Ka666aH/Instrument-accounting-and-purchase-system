@@ -47,11 +47,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void SupFormSave_Click(object sender, EventArgs e)
         {
-            if (TrySave())
-            {
-                ClearForm();
-                SupFormINN.Focus();
-            }
+            TrySave();
         }
 
         private bool TrySave()
@@ -64,6 +60,8 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 if (mode == FormMode.Add) CreateSupplier();
                 if (mode == FormMode.Edit) UpdateSupplier();
+                ClearForm();
+                SupFormINN.Focus();
                 return true;
             }
             catch (Exception ex)
