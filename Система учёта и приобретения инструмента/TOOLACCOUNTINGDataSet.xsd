@@ -2135,7 +2135,7 @@ SELECT StorageID, Name, WorkshopID FROM Storages WHERE (StorageID = @StorageID)<
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Designation" msprop:Generator_ColumnPropNameInTable="DesignationColumn" msprop:Generator_ColumnPropNameInRow="Designation" msprop:Generator_UserColumnName="Designation" msprop:Generator_ColumnVarNameInTable="columnDesignation" minOccurs="0">
+              <xs:element name="Designation" msprop:Generator_ColumnPropNameInTable="DesignationColumn" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="Designation" msprop:Generator_UserColumnName="Designation" msprop:Generator_ColumnVarNameInTable="columnDesignation" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
@@ -2149,28 +2149,28 @@ SELECT StorageID, Name, WorkshopID FROM Storages WHERE (StorageID = @StorageID)<
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Dimensions" msprop:Generator_ColumnPropNameInTable="DimensionsColumn" msprop:Generator_ColumnPropNameInRow="Dimensions" msprop:Generator_UserColumnName="Dimensions" msprop:Generator_ColumnVarNameInTable="columnDimensions" minOccurs="0">
+              <xs:element name="Dimensions" msprop:Generator_ColumnPropNameInTable="DimensionsColumn" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="Dimensions" msprop:Generator_UserColumnName="Dimensions" msprop:Generator_ColumnVarNameInTable="columnDimensions" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="CuttingMaterial" msprop:Generator_ColumnPropNameInTable="CuttingMaterialColumn" msprop:Generator_ColumnPropNameInRow="CuttingMaterial" msprop:Generator_UserColumnName="CuttingMaterial" msprop:Generator_ColumnVarNameInTable="columnCuttingMaterial" minOccurs="0">
+              <xs:element name="CuttingMaterial" msprop:Generator_ColumnPropNameInTable="CuttingMaterialColumn" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="CuttingMaterial" msprop:Generator_UserColumnName="CuttingMaterial" msprop:Generator_ColumnVarNameInTable="columnCuttingMaterial" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="RegulatoryDoc" msprop:Generator_ColumnPropNameInTable="RegulatoryDocColumn" msprop:Generator_ColumnPropNameInRow="RegulatoryDoc" msprop:Generator_UserColumnName="RegulatoryDoc" msprop:Generator_ColumnVarNameInTable="columnRegulatoryDoc" minOccurs="0">
+              <xs:element name="RegulatoryDoc" msprop:Generator_ColumnPropNameInTable="RegulatoryDocColumn" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="RegulatoryDoc" msprop:Generator_UserColumnName="RegulatoryDoc" msprop:Generator_ColumnVarNameInTable="columnRegulatoryDoc" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Producer" msprop:Generator_ColumnPropNameInTable="ProducerColumn" msprop:Generator_ColumnPropNameInRow="Producer" msprop:Generator_UserColumnName="Producer" msprop:Generator_ColumnVarNameInTable="columnProducer" minOccurs="0">
+              <xs:element name="Producer" msprop:Generator_ColumnPropNameInTable="ProducerColumn" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="Producer" msprop:Generator_UserColumnName="Producer" msprop:Generator_ColumnVarNameInTable="columnProducer" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />

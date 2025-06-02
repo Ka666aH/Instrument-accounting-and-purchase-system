@@ -12874,11 +12874,11 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Designation {
                 get {
-                    try {
-                        return ((string)(this[this.tableNomenclatureView.DesignationColumn]));
+                    if (this.IsDesignationNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Designation\' в таблице \'NomenclatureView\' равно DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableNomenclatureView.DesignationColumn]));
                     }
                 }
                 set {
@@ -12901,11 +12901,11 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Dimensions {
                 get {
-                    try {
-                        return ((string)(this[this.tableNomenclatureView.DimensionsColumn]));
+                    if (this.IsDimensionsNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Dimensions\' в таблице \'NomenclatureView\' равно DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableNomenclatureView.DimensionsColumn]));
                     }
                 }
                 set {
@@ -12917,12 +12917,11 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string CuttingMaterial {
                 get {
-                    try {
-                        return ((string)(this[this.tableNomenclatureView.CuttingMaterialColumn]));
+                    if (this.IsCuttingMaterialNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CuttingMaterial\' в таблице \'NomenclatureView\' равно DBNull." +
-                                "", e);
+                    else {
+                        return ((string)(this[this.tableNomenclatureView.CuttingMaterialColumn]));
                     }
                 }
                 set {
@@ -12934,11 +12933,11 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string RegulatoryDoc {
                 get {
-                    try {
-                        return ((string)(this[this.tableNomenclatureView.RegulatoryDocColumn]));
+                    if (this.IsRegulatoryDocNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'RegulatoryDoc\' в таблице \'NomenclatureView\' равно DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableNomenclatureView.RegulatoryDocColumn]));
                     }
                 }
                 set {
@@ -12950,11 +12949,11 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Producer {
                 get {
-                    try {
-                        return ((string)(this[this.tableNomenclatureView.ProducerColumn]));
+                    if (this.IsProducerNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Producer\' в таблице \'NomenclatureView\' равно DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableNomenclatureView.ProducerColumn]));
                     }
                 }
                 set {
