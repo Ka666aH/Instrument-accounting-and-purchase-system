@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters;
+using static Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet;
 
 namespace Система_учёта_и_приобретения_инструмента
 {
@@ -172,6 +173,7 @@ namespace Система_учёта_и_приобретения_инструме
 
 
         #region storages
+        #region storagesSearch
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             var parameters = new List<SearchParameter>();
@@ -181,15 +183,43 @@ namespace Система_учёта_и_приобретения_инструме
             try
             {
                 string filter = Search.Filter(parameters);
-                dataGridView4.SuspendLayout();
+                StoragesTable.SuspendLayout();
                 storagesBindingSource.Filter = filter;
-                dataGridView4.ResumeLayout();
+                StoragesTable.ResumeLayout();
             }
             catch (ArgumentException ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
+        private void CreateStorage_Click(object sender, EventArgs e)
+        {
+            StorageForm storageForm = new StorageForm(tOOLACCOUNTINGDataSet, storagesTableAdapter);
+            storageForm.ShowDialog();
+        }
+        public void SetStoragesButtonsState()
+        {
+            bool state = StoragesTable.CurrentRow != null && !string.IsNullOrEmpty(StoragesTable.CurrentRow.Cells[0].Value.ToString());
+            AlterStorage.Enabled = state;
+            DeleteStorage.Enabled = state;
+        }
+        private void StoragesTable_CurrentCellChanged(object sender, EventArgs e)
+        {
+            SetStoragesButtonsState();
+        }
+        private void AlterStorage_Click(object sender, EventArgs e)
+        {
+            SetStoragesButtonsState();
+            if (StoragesTable.CurrentRow.DataBoundItem as DataRowView == null) return;
+            var selectedRow = StoragesTable.CurrentRow.DataBoundItem as DataRowView;
+            var storageRow = selectedRow.Row as TOOLACCOUNTINGDataSet.StoragesRow;
+
+            StorageForm StorageForm = new StorageForm(tOOLACCOUNTINGDataSet, storagesTableAdapter, FormMode.Edit, storageRow);
+            StorageForm.ShowDialog();
+        }
+
+
         #endregion
 
         #region ReceivingReq
@@ -311,6 +341,98 @@ namespace Система_учёта_и_приобретения_инструме
         private TOOLACCOUNTINGDataSet.WorkshopsRow workshopsOriginRow = null;
         private bool workshopsUserEditing = false;
 
+
+        private void WorkshopsMain_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            workshopsUserEditing = true;
+            var dataRowView = WorkshopsMain.Rows[e.RowIndex].DataBoundItem as DataRowView;
+            var workshop1OriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.Workshops1Row;   
+    
+
+            if (workshop1OriginRow != null) workshopsOriginRow = tOOLACCOUNTINGDataSet.Workshops.Where(s => s.WorkshopID == workshop1OriginRow.WorkshopID).FirstOrDefault();
+            else workshopsOriginRow = null;
+            var row = WorkshopsMain.Rows[e.RowIndex];
+            var cell = row.Cells[e.ColumnIndex];
+            if (cell.ColumnIndex == 0 && workshopsOriginRow != null)
+            {
+                workshopsUserEditing = false;
+                e.Cancel = true;
+            }
+
+        }
+
+        private void WorkshopsMain_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (!workshopsUserEditing) return;
+            if (WorkshopsMain.Rows[e.RowIndex] == null) return;
+            var row = WorkshopsMain.Rows[e.RowIndex];
+            var cell = row.Cells[e.ColumnIndex];
+            switch (e.ColumnIndex)
+            {
+                case 0:
+                    string WorkshopNumber = cell.EditedFormattedValue as string;
+                    string workshopNum = row.Cells[0].Value?.ToString();
+                    string workshopName = row.Cells[1].Value?.ToString();
+                    FormMode mode;
+                    if (workshopsOriginRow == null) mode = FormMode.Add;
+                    else mode = FormMode.Edit;
+                    if (!Validation.IsWorkshopUnique(workshopNum, tOOLACCOUNTINGDataSet, mode, workshopsOriginRow)) e.Cancel = true;
+                    break;
+                default:
+                    if (string.IsNullOrEmpty(cell.EditedFormattedValue as string))
+                    {
+                        e.Cancel = true;
+                        NotificationService.Notify("Предупреждение", "Это поле не может быть пустым.", ToolTipIcon.Warning);
+                    }
+                    break;
+
+
+            }
+        }
+        private void WorkshopsMain_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            workshopsUserEditing = false;
+        }
+
+        private void WorkshopsMain_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (!workshopsUserEditing) return;
+
+            DataGridViewRow row = null;
+            try
+            {
+                row = WorkshopsMain.Rows[e.RowIndex];
+                DataRowView selectedRow = row.DataBoundItem as DataRowView;
+                if (selectedRow == null) return;
+                var workshop1Row = selectedRow.Row as TOOLACCOUNTINGDataSet.Workshops1Row;
+                var workshop1Number = workshop1Row.WorkshopID;
+                var workshopRow = tOOLACCOUNTINGDataSet.Workshops.Where(x => x.WorkshopID == workshop1Number).FirstOrDefault();
+
+                if (workshopRow != null)
+                {
+                    workshopRow.Name = workshop1Row.Name;
+                }
+                else
+                {
+                    var newRow = tOOLACCOUNTINGDataSet.Workshops.NewWorkshopsRow();
+                    newRow.WorkshopID = workshop1Row.WorkshopID;
+                    newRow.Name = workshop1Row.Name;
+                    tOOLACCOUNTINGDataSet.Workshops.Rows.Add(newRow);
+     
+                }
+                workshopsTableAdapter.Update(tOOLACCOUNTINGDataSet.Workshops);
+                workshopsTableAdapter.Fill(tOOLACCOUNTINGDataSet.Workshops);
+                workshops1TableAdapter.Fill(tOOLACCOUNTINGDataSet.Workshops1);
+                storages1TableAdapter.Fill(tOOLACCOUNTINGDataSet.Storages1);    
+            }
+            catch (Exception ex)
+            {
+                e.Cancel = true;
+                tOOLACCOUNTINGDataSet.Workshops.RejectChanges();
+                MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
         #endregion
 
 
@@ -352,41 +474,14 @@ namespace Система_учёта_и_приобретения_инструме
 
 
 
+
+
+
+
+
+
         #endregion
 
-        private void WorkshopsMain_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-            workshopsUserEditing = true;
-            var dataRowView = WorkshopsMain.Rows[e.RowIndex].DataBoundItem as DataRowView;
-            workshopsOriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.WorkshopsRow;
-        }
-
-        private void WorkshopsMain_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            if (!workshopsUserEditing) return;
-            if (WorkshopsMain.Rows[e.RowIndex] == null) return;
-            var row = WorkshopsMain.Rows[e.RowIndex];
-            var cell = row.Cells[e.ColumnIndex];
-            switch (e.ColumnIndex)
-            {
-                case 1:
-                    string WorkshopNumber = cell.EditedFormattedValue as string;
-                    string workshopNum = row.Cells[0].Value?.ToString();
-                    string workshopName = row.Cells[1].Value?.ToString();
-                    FormMode mode;
-                    if (workshopsOriginRow == null) mode = FormMode.Add;
-                    else mode = FormMode.Edit;
-                    if (!Validation.IsWorkshopUnique(workshopNum, tOOLACCOUNTINGDataSet, mode, workshopsOriginRow)) e.Cancel = true;
-                    break;
-                default:
-                    if (string.IsNullOrEmpty(cell.EditedFormattedValue as string))
-                    {
-                        e.Cancel = true;
-                        NotificationService.Notify("Предупреждение", "Это поле не может быть пустым.", ToolTipIcon.Warning);
-                    }
-                    break;
-
-            }
-        }
+        
     }
 }

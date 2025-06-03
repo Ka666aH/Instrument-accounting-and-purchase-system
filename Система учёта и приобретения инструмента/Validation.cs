@@ -188,5 +188,29 @@ namespace Система_учёта_и_приобретения_инструме
         }
         #endregion
 
+        #region Склад
+        public static bool IsStorageUnique(string num1, TOOLACCOUNTINGDataSet toolAccounting, FormMode mode, TOOLACCOUNTINGDataSet.StoragesRow originRow = null)
+        {
+            bool isReturn = false;
+            if (mode == FormMode.Edit && num1 == originRow.StorageID.ToString())
+            {
+                isReturn = true;
+                return isReturn;
+            }
+            isReturn = !toolAccounting.Storages.Any(s => s.StorageID.ToString() == num1);
+
+            if (!isReturn) NotificationService.Notify("Предупреждение", "Склад с таким номером уже существует.", ToolTipIcon.Warning);
+            return isReturn;
+        }
+
+        public static bool IsStorageConnectedToWorkshop(int ID ,TOOLACCOUNTINGDataSet toolAccounting, FormMode mode, TOOLACCOUNTINGDataSet.StoragesRow originRow = null)
+        {
+            bool isReturn = true;
+            isReturn = toolAccounting.Workshops.Any(s => s.WorkshopID == ID);
+            if (!isReturn) NotificationService.Notify("Предупреждение", "Склад не связан с цехом, либо связан с несуществующим цехом.", ToolTipIcon.Warning);
+            return isReturn;
+        }
+        #endregion
+
     }
 }
