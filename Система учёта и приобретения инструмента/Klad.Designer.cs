@@ -52,8 +52,6 @@
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.defectiveListsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.FixRemains = new System.Windows.Forms.Button();
             this.DeleteMoving = new System.Windows.Forms.Button();
@@ -77,27 +75,11 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.movementIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.movementDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toStorageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fromStorageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.movementTypeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomenclatureNumberDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sourceDocumentTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sourceDocumentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.batchNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.invoiceTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isPostedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.executorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastUpdatedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolMovementsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.WorkshopsRequestsContentTable = new System.Windows.Forms.DataGridView();
+            this.receivingRequests1ReceivingRequestsContent1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.WorkshopsRequestsRequestsTable = new System.Windows.Forms.DataGridView();
             this.DeleteReceiving = new System.Windows.Forms.Button();
             this.AlterReceiving = new System.Windows.Forms.Button();
@@ -116,9 +98,13 @@
             this.label15 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.NomenclatureSearchClear = new System.Windows.Forms.Button();
             this.NomenTable = new System.Windows.Forms.DataGridView();
-            this.nomenclatureViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.NomenNumber = new System.Windows.Forms.MaskedTextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
             this.NomenUsage = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.NomenSize = new System.Windows.Forms.TextBox();
@@ -142,7 +128,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.workshops1Storages1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.workshops1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.WorkshopsMain = new System.Windows.Forms.DataGridView();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.DeleteStorage = new System.Windows.Forms.Button();
@@ -156,10 +141,8 @@
             this.label35 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.storagesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.OstatkiTable = new System.Windows.Forms.DataGridView();
-            this.balancesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.OstatkiPrice = new System.Windows.Forms.CheckBox();
             this.label37 = new System.Windows.Forms.Label();
@@ -174,16 +157,6 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.импортToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu = new System.Windows.Forms.MenuStrip();
-            this.nomenclatureViewTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.NomenclatureViewTableAdapter();
-            this.workshops1TableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.Workshops1TableAdapter();
-            this.storages1TableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.Storages1TableAdapter();
-            this.storagesTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.StoragesTableAdapter();
-            this.toolMovementsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ToolMovementsTableAdapter();
-            this.defectiveListsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.DefectiveListsTableAdapter();
-            this.balancesTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.BalancesTableAdapter();
-            this.workshopsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.workshopsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.WorkshopsTableAdapter();
-            this.NomenclatureSearchClear = new System.Windows.Forms.Button();
             this.nomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.designationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -195,19 +168,25 @@
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usageFlagDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.minStockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workshopIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomenclatureViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
             this.storageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workshopIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.workshops1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.workshopIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storageIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workshopIDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tOOLACCOUNTINGDataSet1 = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
+            this.storagesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.receivingContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receivingRequestIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomenclatureNumberDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fullNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receivingRequests1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.receivingRequests1TableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequests1TableAdapter();
-            this.receivingRequests1ReceivingRequestsContent1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.receivingRequestsContent1TableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContent1TableAdapter();
+            this.tOOLACCOUNTINGDataSet1 = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
             this.receivingRequestIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receivingRequestDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plannedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -215,11 +194,23 @@
             this.reasonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workshopIDDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receivingContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receivingRequestIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomenclatureNumberDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fullNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.movementIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.movementDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toStorageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fromStorageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.movementTypeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomenclatureNumberDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sourceDocumentTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sourceDocumentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.batchNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoiceTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isPostedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.executorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastUpdatedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolMovementsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.defectiveListIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.defectiveListDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomenclatureNumberDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -228,6 +219,7 @@
             this.priceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.isWriteOffDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.defectiveListsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.balanceIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomenclatureNumberDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storageIDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -235,47 +227,55 @@
             this.batchNumberDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomenNumber = new System.Windows.Forms.MaskedTextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
+            this.balancesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nomenclatureViewTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.NomenclatureViewTableAdapter();
+            this.workshops1TableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.Workshops1TableAdapter();
+            this.storages1TableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.Storages1TableAdapter();
+            this.storagesTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.StoragesTableAdapter();
+            this.toolMovementsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ToolMovementsTableAdapter();
+            this.defectiveListsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.DefectiveListsTableAdapter();
+            this.balancesTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.BalancesTableAdapter();
+            this.workshopsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.workshopsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.WorkshopsTableAdapter();
+            this.receivingRequests1TableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequests1TableAdapter();
+            this.receivingRequestsContent1TableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContent1TableAdapter();
             this.tabPage4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.defectiveListsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.SearchMoving.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toolMovementsBindingSource)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WorkshopsRequestsContentTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receivingRequests1ReceivingRequestsContent1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WorkshopsRequestsRequestsTable)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NomenTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nomenclatureViewBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.workshops1Storages1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.workshops1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WorkshopsMain)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.storagesBindingSource)).BeginInit();
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OstatkiTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.balancesBindingSource)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.Menu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.workshopsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nomenclatureViewBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workshops1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storagesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequests1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.receivingRequests1ReceivingRequestsContent1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toolMovementsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.defectiveListsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.balancesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workshopsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -551,16 +551,6 @@
             this.dataGridView3.RowHeadersVisible = false;
             this.dataGridView3.Size = new System.Drawing.Size(1035, 465);
             this.dataGridView3.TabIndex = 23;
-            // 
-            // defectiveListsBindingSource
-            // 
-            this.defectiveListsBindingSource.DataMember = "DefectiveLists";
-            this.defectiveListsBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
-            // 
-            // tOOLACCOUNTINGDataSet
-            // 
-            this.tOOLACCOUNTINGDataSet.DataSetName = "TOOLACCOUNTINGDataSet";
-            this.tOOLACCOUNTINGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tabPage3
             // 
@@ -851,109 +841,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(1035, 459);
             this.dataGridView2.TabIndex = 1;
             // 
-            // movementIDDataGridViewTextBoxColumn
-            // 
-            this.movementIDDataGridViewTextBoxColumn.DataPropertyName = "MovementID";
-            this.movementIDDataGridViewTextBoxColumn.HeaderText = "MovementID";
-            this.movementIDDataGridViewTextBoxColumn.Name = "movementIDDataGridViewTextBoxColumn";
-            this.movementIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // movementDateDataGridViewTextBoxColumn
-            // 
-            this.movementDateDataGridViewTextBoxColumn.DataPropertyName = "MovementDate";
-            this.movementDateDataGridViewTextBoxColumn.HeaderText = "MovementDate";
-            this.movementDateDataGridViewTextBoxColumn.Name = "movementDateDataGridViewTextBoxColumn";
-            // 
-            // toStorageIDDataGridViewTextBoxColumn
-            // 
-            this.toStorageIDDataGridViewTextBoxColumn.DataPropertyName = "ToStorageID";
-            this.toStorageIDDataGridViewTextBoxColumn.HeaderText = "ToStorageID";
-            this.toStorageIDDataGridViewTextBoxColumn.Name = "toStorageIDDataGridViewTextBoxColumn";
-            // 
-            // fromStorageIDDataGridViewTextBoxColumn
-            // 
-            this.fromStorageIDDataGridViewTextBoxColumn.DataPropertyName = "FromStorageID";
-            this.fromStorageIDDataGridViewTextBoxColumn.HeaderText = "FromStorageID";
-            this.fromStorageIDDataGridViewTextBoxColumn.Name = "fromStorageIDDataGridViewTextBoxColumn";
-            // 
-            // movementTypeIDDataGridViewTextBoxColumn
-            // 
-            this.movementTypeIDDataGridViewTextBoxColumn.DataPropertyName = "MovementTypeID";
-            this.movementTypeIDDataGridViewTextBoxColumn.HeaderText = "MovementTypeID";
-            this.movementTypeIDDataGridViewTextBoxColumn.Name = "movementTypeIDDataGridViewTextBoxColumn";
-            // 
-            // nomenclatureNumberDataGridViewTextBoxColumn2
-            // 
-            this.nomenclatureNumberDataGridViewTextBoxColumn2.DataPropertyName = "NomenclatureNumber";
-            this.nomenclatureNumberDataGridViewTextBoxColumn2.HeaderText = "NomenclatureNumber";
-            this.nomenclatureNumberDataGridViewTextBoxColumn2.Name = "nomenclatureNumberDataGridViewTextBoxColumn2";
-            // 
-            // sourceDocumentTypeDataGridViewTextBoxColumn
-            // 
-            this.sourceDocumentTypeDataGridViewTextBoxColumn.DataPropertyName = "SourceDocumentType";
-            this.sourceDocumentTypeDataGridViewTextBoxColumn.HeaderText = "SourceDocumentType";
-            this.sourceDocumentTypeDataGridViewTextBoxColumn.Name = "sourceDocumentTypeDataGridViewTextBoxColumn";
-            // 
-            // sourceDocumentIDDataGridViewTextBoxColumn
-            // 
-            this.sourceDocumentIDDataGridViewTextBoxColumn.DataPropertyName = "SourceDocumentID";
-            this.sourceDocumentIDDataGridViewTextBoxColumn.HeaderText = "SourceDocumentID";
-            this.sourceDocumentIDDataGridViewTextBoxColumn.Name = "sourceDocumentIDDataGridViewTextBoxColumn";
-            // 
-            // batchNumberDataGridViewTextBoxColumn
-            // 
-            this.batchNumberDataGridViewTextBoxColumn.DataPropertyName = "BatchNumber";
-            this.batchNumberDataGridViewTextBoxColumn.HeaderText = "BatchNumber";
-            this.batchNumberDataGridViewTextBoxColumn.Name = "batchNumberDataGridViewTextBoxColumn";
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            // 
-            // quantityDataGridViewTextBoxColumn1
-            // 
-            this.quantityDataGridViewTextBoxColumn1.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn1.HeaderText = "Quantity";
-            this.quantityDataGridViewTextBoxColumn1.Name = "quantityDataGridViewTextBoxColumn1";
-            // 
-            // totalDataGridViewTextBoxColumn
-            // 
-            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
-            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
-            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
-            this.totalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // invoiceTypeDataGridViewTextBoxColumn
-            // 
-            this.invoiceTypeDataGridViewTextBoxColumn.DataPropertyName = "InvoiceType";
-            this.invoiceTypeDataGridViewTextBoxColumn.HeaderText = "InvoiceType";
-            this.invoiceTypeDataGridViewTextBoxColumn.Name = "invoiceTypeDataGridViewTextBoxColumn";
-            // 
-            // isPostedDataGridViewCheckBoxColumn
-            // 
-            this.isPostedDataGridViewCheckBoxColumn.DataPropertyName = "IsPosted";
-            this.isPostedDataGridViewCheckBoxColumn.HeaderText = "IsPosted";
-            this.isPostedDataGridViewCheckBoxColumn.Name = "isPostedDataGridViewCheckBoxColumn";
-            // 
-            // executorDataGridViewTextBoxColumn
-            // 
-            this.executorDataGridViewTextBoxColumn.DataPropertyName = "Executor";
-            this.executorDataGridViewTextBoxColumn.HeaderText = "Executor";
-            this.executorDataGridViewTextBoxColumn.Name = "executorDataGridViewTextBoxColumn";
-            // 
-            // lastUpdatedDataGridViewTextBoxColumn
-            // 
-            this.lastUpdatedDataGridViewTextBoxColumn.DataPropertyName = "LastUpdated";
-            this.lastUpdatedDataGridViewTextBoxColumn.HeaderText = "LastUpdated";
-            this.lastUpdatedDataGridViewTextBoxColumn.Name = "lastUpdatedDataGridViewTextBoxColumn";
-            // 
-            // toolMovementsBindingSource
-            // 
-            this.toolMovementsBindingSource.DataMember = "ToolMovements";
-            this.toolMovementsBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.label3);
@@ -1017,6 +904,11 @@
             this.WorkshopsRequestsContentTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.WorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 192);
             this.WorkshopsRequestsContentTable.TabIndex = 37;
+            // 
+            // receivingRequests1ReceivingRequestsContent1BindingSource
+            // 
+            this.receivingRequests1ReceivingRequestsContent1BindingSource.DataMember = "ReceivingRequests1_ReceivingRequestsContent1";
+            this.receivingRequests1ReceivingRequestsContent1BindingSource.DataSource = this.receivingRequests1BindingSource;
             // 
             // WorkshopsRequestsRequestsTable
             // 
@@ -1236,6 +1128,18 @@
             this.tabPage1.Text = "Номенклатура инструмента";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // NomenclatureSearchClear
+            // 
+            this.NomenclatureSearchClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NomenclatureSearchClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NomenclatureSearchClear.Location = new System.Drawing.Point(1056, 152);
+            this.NomenclatureSearchClear.Name = "NomenclatureSearchClear";
+            this.NomenclatureSearchClear.Size = new System.Drawing.Size(182, 44);
+            this.NomenclatureSearchClear.TabIndex = 15;
+            this.NomenclatureSearchClear.Text = "Сброс поиска";
+            this.NomenclatureSearchClear.UseVisualStyleBackColor = true;
+            this.NomenclatureSearchClear.Click += new System.EventHandler(this.NomenclatureSearchClear_Click);
+            // 
             // NomenTable
             // 
             this.NomenTable.AllowUserToAddRows = false;
@@ -1268,11 +1172,6 @@
             this.NomenTable.Size = new System.Drawing.Size(1029, 463);
             this.NomenTable.TabIndex = 14;
             // 
-            // nomenclatureViewBindingSource
-            // 
-            this.nomenclatureViewBindingSource.DataMember = "NomenclatureView";
-            this.nomenclatureViewBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
-            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1297,6 +1196,48 @@
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Поиск";
+            // 
+            // NomenNumber
+            // 
+            this.NomenNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NomenNumber.Location = new System.Drawing.Point(203, 25);
+            this.NomenNumber.Mask = "000000000";
+            this.NomenNumber.Name = "NomenNumber";
+            this.NomenNumber.Size = new System.Drawing.Size(211, 29);
+            this.NomenNumber.TabIndex = 22;
+            this.NomenNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.NomenNumber.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
+            // 
+            // textBox6
+            // 
+            this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox6.Location = new System.Drawing.Point(203, 62);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(211, 29);
+            this.textBox6.TabIndex = 21;
+            this.textBox6.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label41.Location = new System.Drawing.Point(6, 30);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(191, 20);
+            this.label41.TabIndex = 20;
+            this.label41.Text = "Номенклатурный номер";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label42.Location = new System.Drawing.Point(6, 65);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(122, 20);
+            this.label42.TabIndex = 19;
+            this.label42.Text = "Наименование";
             // 
             // NomenUsage
             // 
@@ -1461,6 +1402,7 @@
             this.DeleteWorkshop.TabIndex = 22;
             this.DeleteWorkshop.Text = "Удалить";
             this.DeleteWorkshop.UseVisualStyleBackColor = true;
+            this.DeleteWorkshop.Click += new System.EventHandler(this.DeleteWorkshop_Click);
             // 
             // AlterWorkshop
             // 
@@ -1472,6 +1414,7 @@
             this.AlterWorkshop.TabIndex = 21;
             this.AlterWorkshop.Text = "Изменить";
             this.AlterWorkshop.UseVisualStyleBackColor = true;
+            this.AlterWorkshop.Click += new System.EventHandler(this.AlterWorkshop_Click);
             // 
             // CreateWorkshop
             // 
@@ -1565,11 +1508,6 @@
             // 
             this.workshops1Storages1BindingSource.DataMember = "Workshops1_Storages1";
             this.workshops1Storages1BindingSource.DataSource = this.workshops1BindingSource;
-            // 
-            // workshops1BindingSource
-            // 
-            this.workshops1BindingSource.DataMember = "Workshops1";
-            this.workshops1BindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
             // 
             // WorkshopsMain
             // 
@@ -1736,11 +1674,6 @@
             this.dataGridView4.Size = new System.Drawing.Size(1021, 537);
             this.dataGridView4.TabIndex = 0;
             // 
-            // storagesBindingSource
-            // 
-            this.storagesBindingSource.DataMember = "Storages";
-            this.storagesBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
-            // 
             // tabPage7
             // 
             this.tabPage7.Controls.Add(this.OstatkiTable);
@@ -1774,11 +1707,6 @@
             this.OstatkiTable.RowHeadersVisible = false;
             this.OstatkiTable.Size = new System.Drawing.Size(1238, 499);
             this.OstatkiTable.TabIndex = 13;
-            // 
-            // balancesBindingSource
-            // 
-            this.balancesBindingSource.DataMember = "Balances";
-            this.balancesBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
             // 
             // groupBox6
             // 
@@ -1916,55 +1844,6 @@
             this.Menu.TabIndex = 3;
             this.Menu.Text = "menuStrip1";
             // 
-            // nomenclatureViewTableAdapter
-            // 
-            this.nomenclatureViewTableAdapter.ClearBeforeFill = true;
-            // 
-            // workshops1TableAdapter
-            // 
-            this.workshops1TableAdapter.ClearBeforeFill = true;
-            // 
-            // storages1TableAdapter
-            // 
-            this.storages1TableAdapter.ClearBeforeFill = true;
-            // 
-            // storagesTableAdapter
-            // 
-            this.storagesTableAdapter.ClearBeforeFill = true;
-            // 
-            // toolMovementsTableAdapter
-            // 
-            this.toolMovementsTableAdapter.ClearBeforeFill = true;
-            // 
-            // defectiveListsTableAdapter
-            // 
-            this.defectiveListsTableAdapter.ClearBeforeFill = true;
-            // 
-            // balancesTableAdapter
-            // 
-            this.balancesTableAdapter.ClearBeforeFill = true;
-            // 
-            // workshopsBindingSource
-            // 
-            this.workshopsBindingSource.DataMember = "Workshops";
-            this.workshopsBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
-            // 
-            // workshopsTableAdapter
-            // 
-            this.workshopsTableAdapter.ClearBeforeFill = true;
-            // 
-            // NomenclatureSearchClear
-            // 
-            this.NomenclatureSearchClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenclatureSearchClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NomenclatureSearchClear.Location = new System.Drawing.Point(1056, 152);
-            this.NomenclatureSearchClear.Name = "NomenclatureSearchClear";
-            this.NomenclatureSearchClear.Size = new System.Drawing.Size(182, 44);
-            this.NomenclatureSearchClear.TabIndex = 15;
-            this.NomenclatureSearchClear.Text = "Сброс поиска";
-            this.NomenclatureSearchClear.UseVisualStyleBackColor = true;
-            this.NomenclatureSearchClear.Click += new System.EventHandler(this.NomenclatureSearchClear_Click);
-            // 
             // nomenclatureNumberDataGridViewTextBoxColumn
             // 
             this.nomenclatureNumberDataGridViewTextBoxColumn.DataPropertyName = "NomenclatureNumber";
@@ -2042,17 +1921,15 @@
             this.minStockDataGridViewTextBoxColumn.Name = "minStockDataGridViewTextBoxColumn";
             this.minStockDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // workshopIDDataGridViewTextBoxColumn
+            // nomenclatureViewBindingSource
             // 
-            this.workshopIDDataGridViewTextBoxColumn.DataPropertyName = "WorkshopID";
-            this.workshopIDDataGridViewTextBoxColumn.HeaderText = "Номер цеха";
-            this.workshopIDDataGridViewTextBoxColumn.Name = "workshopIDDataGridViewTextBoxColumn";
+            this.nomenclatureViewBindingSource.DataMember = "NomenclatureView";
+            this.nomenclatureViewBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
             // 
-            // nameDataGridViewTextBoxColumn1
+            // tOOLACCOUNTINGDataSet
             // 
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn1.HeaderText = "Наименование";
-            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            this.tOOLACCOUNTINGDataSet.DataSetName = "TOOLACCOUNTINGDataSet";
+            this.tOOLACCOUNTINGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // storageIDDataGridViewTextBoxColumn
             // 
@@ -2073,6 +1950,23 @@
             this.workshopIDDataGridViewTextBoxColumn1.Name = "workshopIDDataGridViewTextBoxColumn1";
             this.workshopIDDataGridViewTextBoxColumn1.Visible = false;
             // 
+            // workshops1BindingSource
+            // 
+            this.workshops1BindingSource.DataMember = "Workshops1";
+            this.workshops1BindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
+            // 
+            // workshopIDDataGridViewTextBoxColumn
+            // 
+            this.workshopIDDataGridViewTextBoxColumn.DataPropertyName = "WorkshopID";
+            this.workshopIDDataGridViewTextBoxColumn.HeaderText = "Номер цеха";
+            this.workshopIDDataGridViewTextBoxColumn.Name = "workshopIDDataGridViewTextBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Наименование";
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            // 
             // storageIDDataGridViewTextBoxColumn1
             // 
             this.storageIDDataGridViewTextBoxColumn1.DataPropertyName = "StorageID";
@@ -2091,28 +1985,57 @@
             this.workshopIDDataGridViewTextBoxColumn2.HeaderText = "Номер цеха";
             this.workshopIDDataGridViewTextBoxColumn2.Name = "workshopIDDataGridViewTextBoxColumn2";
             // 
-            // tOOLACCOUNTINGDataSet1
+            // storagesBindingSource
             // 
-            this.tOOLACCOUNTINGDataSet1.DataSetName = "TOOLACCOUNTINGDataSet";
-            this.tOOLACCOUNTINGDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.storagesBindingSource.DataMember = "Storages";
+            this.storagesBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
+            // 
+            // receivingContentIDDataGridViewTextBoxColumn
+            // 
+            this.receivingContentIDDataGridViewTextBoxColumn.DataPropertyName = "ReceivingContentID";
+            this.receivingContentIDDataGridViewTextBoxColumn.HeaderText = "ReceivingContentID";
+            this.receivingContentIDDataGridViewTextBoxColumn.Name = "receivingContentIDDataGridViewTextBoxColumn";
+            this.receivingContentIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.receivingContentIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // receivingRequestIDDataGridViewTextBoxColumn1
+            // 
+            this.receivingRequestIDDataGridViewTextBoxColumn1.DataPropertyName = "ReceivingRequestID";
+            this.receivingRequestIDDataGridViewTextBoxColumn1.HeaderText = "ReceivingRequestID";
+            this.receivingRequestIDDataGridViewTextBoxColumn1.Name = "receivingRequestIDDataGridViewTextBoxColumn1";
+            this.receivingRequestIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.receivingRequestIDDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // nomenclatureNumberDataGridViewTextBoxColumn1
+            // 
+            this.nomenclatureNumberDataGridViewTextBoxColumn1.DataPropertyName = "NomenclatureNumber";
+            this.nomenclatureNumberDataGridViewTextBoxColumn1.HeaderText = "Номенклатурный номер";
+            this.nomenclatureNumberDataGridViewTextBoxColumn1.Name = "nomenclatureNumberDataGridViewTextBoxColumn1";
+            this.nomenclatureNumberDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // fullNameDataGridViewTextBoxColumn1
+            // 
+            this.fullNameDataGridViewTextBoxColumn1.DataPropertyName = "FullName";
+            this.fullNameDataGridViewTextBoxColumn1.HeaderText = "Полное наименование";
+            this.fullNameDataGridViewTextBoxColumn1.Name = "fullNameDataGridViewTextBoxColumn1";
+            this.fullNameDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Количество";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // receivingRequests1BindingSource
             // 
             this.receivingRequests1BindingSource.DataMember = "ReceivingRequests1";
             this.receivingRequests1BindingSource.DataSource = this.tOOLACCOUNTINGDataSet1;
             // 
-            // receivingRequests1TableAdapter
+            // tOOLACCOUNTINGDataSet1
             // 
-            this.receivingRequests1TableAdapter.ClearBeforeFill = true;
-            // 
-            // receivingRequests1ReceivingRequestsContent1BindingSource
-            // 
-            this.receivingRequests1ReceivingRequestsContent1BindingSource.DataMember = "ReceivingRequests1_ReceivingRequestsContent1";
-            this.receivingRequests1ReceivingRequestsContent1BindingSource.DataSource = this.receivingRequests1BindingSource;
-            // 
-            // receivingRequestsContent1TableAdapter
-            // 
-            this.receivingRequestsContent1TableAdapter.ClearBeforeFill = true;
+            this.tOOLACCOUNTINGDataSet1.DataSetName = "TOOLACCOUNTINGDataSet";
+            this.tOOLACCOUNTINGDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // receivingRequestIDDataGridViewTextBoxColumn
             // 
@@ -2163,42 +2086,108 @@
             this.workshopIDDataGridViewTextBoxColumn4.Name = "workshopIDDataGridViewTextBoxColumn4";
             this.workshopIDDataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // receivingContentIDDataGridViewTextBoxColumn
+            // movementIDDataGridViewTextBoxColumn
             // 
-            this.receivingContentIDDataGridViewTextBoxColumn.DataPropertyName = "ReceivingContentID";
-            this.receivingContentIDDataGridViewTextBoxColumn.HeaderText = "ReceivingContentID";
-            this.receivingContentIDDataGridViewTextBoxColumn.Name = "receivingContentIDDataGridViewTextBoxColumn";
-            this.receivingContentIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.receivingContentIDDataGridViewTextBoxColumn.Visible = false;
+            this.movementIDDataGridViewTextBoxColumn.DataPropertyName = "MovementID";
+            this.movementIDDataGridViewTextBoxColumn.HeaderText = "MovementID";
+            this.movementIDDataGridViewTextBoxColumn.Name = "movementIDDataGridViewTextBoxColumn";
+            this.movementIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // receivingRequestIDDataGridViewTextBoxColumn1
+            // movementDateDataGridViewTextBoxColumn
             // 
-            this.receivingRequestIDDataGridViewTextBoxColumn1.DataPropertyName = "ReceivingRequestID";
-            this.receivingRequestIDDataGridViewTextBoxColumn1.HeaderText = "ReceivingRequestID";
-            this.receivingRequestIDDataGridViewTextBoxColumn1.Name = "receivingRequestIDDataGridViewTextBoxColumn1";
-            this.receivingRequestIDDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.receivingRequestIDDataGridViewTextBoxColumn1.Visible = false;
+            this.movementDateDataGridViewTextBoxColumn.DataPropertyName = "MovementDate";
+            this.movementDateDataGridViewTextBoxColumn.HeaderText = "MovementDate";
+            this.movementDateDataGridViewTextBoxColumn.Name = "movementDateDataGridViewTextBoxColumn";
             // 
-            // nomenclatureNumberDataGridViewTextBoxColumn1
+            // toStorageIDDataGridViewTextBoxColumn
             // 
-            this.nomenclatureNumberDataGridViewTextBoxColumn1.DataPropertyName = "NomenclatureNumber";
-            this.nomenclatureNumberDataGridViewTextBoxColumn1.HeaderText = "Номенклатурный номер";
-            this.nomenclatureNumberDataGridViewTextBoxColumn1.Name = "nomenclatureNumberDataGridViewTextBoxColumn1";
-            this.nomenclatureNumberDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.toStorageIDDataGridViewTextBoxColumn.DataPropertyName = "ToStorageID";
+            this.toStorageIDDataGridViewTextBoxColumn.HeaderText = "ToStorageID";
+            this.toStorageIDDataGridViewTextBoxColumn.Name = "toStorageIDDataGridViewTextBoxColumn";
             // 
-            // fullNameDataGridViewTextBoxColumn1
+            // fromStorageIDDataGridViewTextBoxColumn
             // 
-            this.fullNameDataGridViewTextBoxColumn1.DataPropertyName = "FullName";
-            this.fullNameDataGridViewTextBoxColumn1.HeaderText = "Полное наименование";
-            this.fullNameDataGridViewTextBoxColumn1.Name = "fullNameDataGridViewTextBoxColumn1";
-            this.fullNameDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.fromStorageIDDataGridViewTextBoxColumn.DataPropertyName = "FromStorageID";
+            this.fromStorageIDDataGridViewTextBoxColumn.HeaderText = "FromStorageID";
+            this.fromStorageIDDataGridViewTextBoxColumn.Name = "fromStorageIDDataGridViewTextBoxColumn";
             // 
-            // quantityDataGridViewTextBoxColumn
+            // movementTypeIDDataGridViewTextBoxColumn
             // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Количество";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.movementTypeIDDataGridViewTextBoxColumn.DataPropertyName = "MovementTypeID";
+            this.movementTypeIDDataGridViewTextBoxColumn.HeaderText = "MovementTypeID";
+            this.movementTypeIDDataGridViewTextBoxColumn.Name = "movementTypeIDDataGridViewTextBoxColumn";
+            // 
+            // nomenclatureNumberDataGridViewTextBoxColumn2
+            // 
+            this.nomenclatureNumberDataGridViewTextBoxColumn2.DataPropertyName = "NomenclatureNumber";
+            this.nomenclatureNumberDataGridViewTextBoxColumn2.HeaderText = "NomenclatureNumber";
+            this.nomenclatureNumberDataGridViewTextBoxColumn2.Name = "nomenclatureNumberDataGridViewTextBoxColumn2";
+            // 
+            // sourceDocumentTypeDataGridViewTextBoxColumn
+            // 
+            this.sourceDocumentTypeDataGridViewTextBoxColumn.DataPropertyName = "SourceDocumentType";
+            this.sourceDocumentTypeDataGridViewTextBoxColumn.HeaderText = "SourceDocumentType";
+            this.sourceDocumentTypeDataGridViewTextBoxColumn.Name = "sourceDocumentTypeDataGridViewTextBoxColumn";
+            // 
+            // sourceDocumentIDDataGridViewTextBoxColumn
+            // 
+            this.sourceDocumentIDDataGridViewTextBoxColumn.DataPropertyName = "SourceDocumentID";
+            this.sourceDocumentIDDataGridViewTextBoxColumn.HeaderText = "SourceDocumentID";
+            this.sourceDocumentIDDataGridViewTextBoxColumn.Name = "sourceDocumentIDDataGridViewTextBoxColumn";
+            // 
+            // batchNumberDataGridViewTextBoxColumn
+            // 
+            this.batchNumberDataGridViewTextBoxColumn.DataPropertyName = "BatchNumber";
+            this.batchNumberDataGridViewTextBoxColumn.HeaderText = "BatchNumber";
+            this.batchNumberDataGridViewTextBoxColumn.Name = "batchNumberDataGridViewTextBoxColumn";
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            // 
+            // quantityDataGridViewTextBoxColumn1
+            // 
+            this.quantityDataGridViewTextBoxColumn1.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn1.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn1.Name = "quantityDataGridViewTextBoxColumn1";
+            // 
+            // totalDataGridViewTextBoxColumn
+            // 
+            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
+            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
+            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
+            this.totalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // invoiceTypeDataGridViewTextBoxColumn
+            // 
+            this.invoiceTypeDataGridViewTextBoxColumn.DataPropertyName = "InvoiceType";
+            this.invoiceTypeDataGridViewTextBoxColumn.HeaderText = "InvoiceType";
+            this.invoiceTypeDataGridViewTextBoxColumn.Name = "invoiceTypeDataGridViewTextBoxColumn";
+            // 
+            // isPostedDataGridViewCheckBoxColumn
+            // 
+            this.isPostedDataGridViewCheckBoxColumn.DataPropertyName = "IsPosted";
+            this.isPostedDataGridViewCheckBoxColumn.HeaderText = "IsPosted";
+            this.isPostedDataGridViewCheckBoxColumn.Name = "isPostedDataGridViewCheckBoxColumn";
+            // 
+            // executorDataGridViewTextBoxColumn
+            // 
+            this.executorDataGridViewTextBoxColumn.DataPropertyName = "Executor";
+            this.executorDataGridViewTextBoxColumn.HeaderText = "Executor";
+            this.executorDataGridViewTextBoxColumn.Name = "executorDataGridViewTextBoxColumn";
+            // 
+            // lastUpdatedDataGridViewTextBoxColumn
+            // 
+            this.lastUpdatedDataGridViewTextBoxColumn.DataPropertyName = "LastUpdated";
+            this.lastUpdatedDataGridViewTextBoxColumn.HeaderText = "LastUpdated";
+            this.lastUpdatedDataGridViewTextBoxColumn.Name = "lastUpdatedDataGridViewTextBoxColumn";
+            // 
+            // toolMovementsBindingSource
+            // 
+            this.toolMovementsBindingSource.DataMember = "ToolMovements";
+            this.toolMovementsBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
             // 
             // defectiveListIDDataGridViewTextBoxColumn
             // 
@@ -2249,6 +2238,11 @@
             this.isWriteOffDataGridViewCheckBoxColumn.HeaderText = "Списание?";
             this.isWriteOffDataGridViewCheckBoxColumn.Name = "isWriteOffDataGridViewCheckBoxColumn";
             // 
+            // defectiveListsBindingSource
+            // 
+            this.defectiveListsBindingSource.DataMember = "DefectiveLists";
+            this.defectiveListsBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
+            // 
             // balanceIDDataGridViewTextBoxColumn
             // 
             this.balanceIDDataGridViewTextBoxColumn.DataPropertyName = "BalanceID";
@@ -2293,47 +2287,55 @@
             this.accountDataGridViewTextBoxColumn.HeaderText = "Количество";
             this.accountDataGridViewTextBoxColumn.Name = "accountDataGridViewTextBoxColumn";
             // 
-            // NomenNumber
+            // balancesBindingSource
             // 
-            this.NomenNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenNumber.Location = new System.Drawing.Point(203, 25);
-            this.NomenNumber.Mask = "000000000";
-            this.NomenNumber.Name = "NomenNumber";
-            this.NomenNumber.Size = new System.Drawing.Size(211, 29);
-            this.NomenNumber.TabIndex = 22;
-            this.NomenNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.NomenNumber.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
+            this.balancesBindingSource.DataMember = "Balances";
+            this.balancesBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
             // 
-            // textBox6
+            // nomenclatureViewTableAdapter
             // 
-            this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox6.Location = new System.Drawing.Point(203, 62);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(211, 29);
-            this.textBox6.TabIndex = 21;
-            this.textBox6.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
+            this.nomenclatureViewTableAdapter.ClearBeforeFill = true;
             // 
-            // label41
+            // workshops1TableAdapter
             // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label41.Location = new System.Drawing.Point(6, 30);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(191, 20);
-            this.label41.TabIndex = 20;
-            this.label41.Text = "Номенклатурный номер";
+            this.workshops1TableAdapter.ClearBeforeFill = true;
             // 
-            // label42
+            // storages1TableAdapter
             // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label42.Location = new System.Drawing.Point(6, 65);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(122, 20);
-            this.label42.TabIndex = 19;
-            this.label42.Text = "Наименование";
+            this.storages1TableAdapter.ClearBeforeFill = true;
+            // 
+            // storagesTableAdapter
+            // 
+            this.storagesTableAdapter.ClearBeforeFill = true;
+            // 
+            // toolMovementsTableAdapter
+            // 
+            this.toolMovementsTableAdapter.ClearBeforeFill = true;
+            // 
+            // defectiveListsTableAdapter
+            // 
+            this.defectiveListsTableAdapter.ClearBeforeFill = true;
+            // 
+            // balancesTableAdapter
+            // 
+            this.balancesTableAdapter.ClearBeforeFill = true;
+            // 
+            // workshopsBindingSource
+            // 
+            this.workshopsBindingSource.DataMember = "Workshops";
+            this.workshopsBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
+            // 
+            // workshopsTableAdapter
+            // 
+            this.workshopsTableAdapter.ClearBeforeFill = true;
+            // 
+            // receivingRequests1TableAdapter
+            // 
+            this.receivingRequests1TableAdapter.ClearBeforeFill = true;
+            // 
+            // receivingRequestsContent1TableAdapter
+            // 
+            this.receivingRequestsContent1TableAdapter.ClearBeforeFill = true;
             // 
             // Klad
             // 
@@ -2353,22 +2355,19 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.defectiveListsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.SearchMoving.ResumeLayout(false);
             this.SearchMoving.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toolMovementsBindingSource)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WorkshopsRequestsContentTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receivingRequests1ReceivingRequestsContent1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WorkshopsRequestsRequestsTable)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NomenTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nomenclatureViewBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -2378,24 +2377,27 @@
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.workshops1Storages1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.workshops1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WorkshopsMain)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.storagesBindingSource)).EndInit();
             this.tabPage7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.OstatkiTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.balancesBindingSource)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.workshopsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nomenclatureViewBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workshops1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storagesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequests1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.receivingRequests1ReceivingRequestsContent1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toolMovementsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.defectiveListsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.balancesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workshopsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

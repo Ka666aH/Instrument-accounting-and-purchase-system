@@ -255,8 +255,55 @@ namespace Система_учёта_и_приобретения_инструме
             SetWorkshopsButtonsState();
         }
 
+        private void AlterWorkshop_Click(object sender, EventArgs e)
+        {
+            SetWorkshopsButtonsState();
+            if (WorkshopsMain.CurrentRow.DataBoundItem as DataRowView == null) return;
+            var selectedRow = WorkshopsMain.CurrentRow.DataBoundItem as DataRowView;
+            var workshopRow = selectedRow.Row as TOOLACCOUNTINGDataSet.Workshops1Row;
+     
+            WorkshopForm WorkshopForm = new WorkshopForm(tOOLACCOUNTINGDataSet, workshopsTableAdapter, FormMode.Edit, workshopRow);
+            WorkshopForm.ShowDialog();
 
+        }
+        private void DeleteWorkshop_Click(object sender, EventArgs e)
+        {
+            WorkshopsDelete();
+        }
 
+        private bool WorkshopsDelete()
+        {
+            SetWorkshopsButtonsState();
+            if (WorkshopsMain.CurrentRow.DataBoundItem as DataRowView == null) return false;
+            DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту запись?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No) return false;
+
+            try
+            {
+                var selectedRow = WorkshopsMain.CurrentRow.DataBoundItem as DataRowView;
+                var workshops1Row = selectedRow.Row as TOOLACCOUNTINGDataSet.Workshops1Row;
+                var workshops1RowId = workshops1Row.WorkshopID;
+
+                var WorkshopsRow = tOOLACCOUNTINGDataSet.Workshops.Where(s => s.WorkshopID == workshops1Row.WorkshopID).FirstOrDefault();
+                var hasRelatedStorages = tOOLACCOUNTINGDataSet.Storages.Any(w => w.WorkshopID == workshops1Row.WorkshopID);
+                if (hasRelatedStorages)
+                {
+                    MessageBox.Show("Невозможно удалить цех, так как он связан с хранилищами.", "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                WorkshopsRow.Delete();
+                workshopsTableAdapter.Update(tOOLACCOUNTINGDataSet.Workshops);
+                workshopsTableAdapter.Fill(tOOLACCOUNTINGDataSet.Workshops);
+                workshops1TableAdapter.Fill(tOOLACCOUNTINGDataSet.Workshops1);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                tOOLACCOUNTINGDataSet.RejectChanges();
+                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
 
 
         #endregion
@@ -295,8 +342,11 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            #endregion
         }
+
+
+        #endregion
+
+        
     }
 }

@@ -21,7 +21,7 @@ namespace Система_учёта_и_приобретения_инструме
             TOOLACCOUNTINGDataSet _toolAccounting,
             WorkshopsTableAdapter _tableAdapter,
             FormMode _mode = FormMode.Add,
-            TOOLACCOUNTINGDataSet.WorkshopsRow _editRow = null)
+            TOOLACCOUNTINGDataSet.Workshops1Row _editRow = null)
         {
             InitializeComponent();
             toolAccounting = _toolAccounting;
@@ -29,9 +29,10 @@ namespace Система_учёта_и_приобретения_инструме
             mode = _mode;
             if (_editRow != null)
             {
-                editRow.WorkshopID = _editRow.WorkshopID;
-                editRow.Name = _editRow.Name;
-            }
+                    editRow = toolAccounting.Workshops.Where(s => s.WorkshopID == _editRow.WorkshopID).FirstOrDefault();
+                    //editRow.WorkshopID = _editRow.WorkshopID;
+                    //editRow.Name = _editRow.Name;
+                }
             else
             {
                 editRow = null;
