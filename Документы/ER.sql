@@ -37,7 +37,7 @@ CREATE TABLE AnalogTools (
 -- 4. Логи корректировок
 CREATE TABLE NomenclatureLogs (
     LogID INT IDENTITY(1,1) PRIMARY KEY,
-    NomenclatureNumber CHAR(9) NOT NULL FOREIGN KEY REFERENCES Nomenclature(NomenclatureNumber),
+    --NomenclatureNumber CHAR(9) NOT NULL FOREIGN KEY REFERENCES Nomenclature(NomenclatureNumber),
     FieldName NVARCHAR(255) NOT NULL,
     OldValue NVARCHAR(MAX),
     NewValue NVARCHAR(MAX),

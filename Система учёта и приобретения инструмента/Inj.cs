@@ -264,8 +264,9 @@ namespace Система_учёта_и_приобретения_инструме
             nomenUserEditing = true;
             var dataRowView = NomenTable.Rows[e.RowIndex].DataBoundItem as DataRowView;
             nomenOriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.NomenclatureRow;
-            var cell = NomenTable.Rows[e.RowIndex].Cells[e.ColumnIndex];
-            if (cell.ColumnIndex == 0 && !string.IsNullOrEmpty(nomenOriginRow.NomenclatureNumber)) e.Cancel = true;
+            //var row = NomenTable.Rows[e.RowIndex];
+            //var cell = row.Cells[e.ColumnIndex];
+            //if (cell.ColumnIndex == 0 && !row.IsNewRow) e.Cancel = true;
         }
 
         private void NomenTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -334,7 +335,7 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 row = NomenTable.Rows[e.RowIndex];
                 DataRowView selectedRow = row.DataBoundItem as DataRowView;
-                //if (selectedRow == null) return;
+                if (selectedRow == null) return;
                 var nomenViewRow = selectedRow.Row as TOOLACCOUNTINGDataSet.NomenclatureViewRow;
                 var nomenViewRowNumber = nomenViewRow.NomenclatureNumber;
                 var nomenRow = tOOLACCOUNTINGDataSet.Nomenclature.Where(x => x.NomenclatureNumber == nomenViewRowNumber).FirstOrDefault();
@@ -1033,6 +1034,8 @@ namespace Система_учёта_и_приобретения_инструме
                 log.NewValue = row[i].ToString();
                 log.ChangedDate = DateTime.Now;
                 log.Executor = Environment.UserName;
+
+                tOOLACCOUNTINGDataSet.NomenclatureLogs.Rows.Add(log);
             }
         }
 
@@ -1055,26 +1058,30 @@ namespace Система_учёта_и_приобретения_инструме
                 log.NewValue = newRow[i].ToString();
                 log.ChangedDate = DateTime.Now;
                 log.Executor = Environment.UserName;
+
+                tOOLACCOUNTINGDataSet.NomenclatureLogs.Rows.Add(log);
             }
         }
 
         private void DeleteLogs(NomenclatureRow row)
         {
-            for (int i = 1; i < row.Table.Columns.Count; i++)
-            {
-                if (string.IsNullOrEmpty(row[i].ToString())) continue;
-                var log = tOOLACCOUNTINGDataSet.NomenclatureLogs.NewNomenclatureLogsRow();
-                log.NomenclatureNumber = row.NomenclatureNumber;
+            //for (int i = 1; i < row.Table.Columns.Count; i++)
+            //{
+            //    if (string.IsNullOrEmpty(row[i].ToString())) continue;
+            //    var log = tOOLACCOUNTINGDataSet.NomenclatureLogs.NewNomenclatureLogsRow();
+            //    log.NomenclatureNumber = row.NomenclatureNumber;
 
-                string columnName = row.Table.Columns[i].ColumnName;
-                string columnHeader = FieldName(columnName);
-                if (columnHeader == null) continue;
-                log.FieldName = columnHeader;
-                log.OldValue = row[i].ToString();
-                log.NewValue = null;
-                log.ChangedDate = DateTime.Now;
-                log.Executor = Environment.UserName;
-            }
+            //    string columnName = row.Table.Columns[i].ColumnName;
+            //    string columnHeader = FieldName(columnName);
+            //    if (columnHeader == null) continue;
+            //    log.FieldName = columnHeader;
+            //    log.OldValue = row[i].ToString();
+            //    log.NewValue = null;
+            //    log.ChangedDate = DateTime.Now;
+            //    log.Executor = Environment.UserName;
+
+            //    tOOLACCOUNTINGDataSet.NomenclatureLogs.Rows.Add(log);
+            //}
         }
 
         private string FieldName(string columnName)
