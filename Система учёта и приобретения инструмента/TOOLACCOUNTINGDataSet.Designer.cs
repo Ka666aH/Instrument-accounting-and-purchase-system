@@ -11582,11 +11582,11 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string OldValue {
                 get {
-                    try {
-                        return ((string)(this[this.tableNomenclatureLogs.OldValueColumn]));
+                    if (this.IsOldValueNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'OldValue\' в таблице \'NomenclatureLogs\' равно DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableNomenclatureLogs.OldValueColumn]));
                     }
                 }
                 set {
@@ -11598,11 +11598,11 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string NewValue {
                 get {
-                    try {
-                        return ((string)(this[this.tableNomenclatureLogs.NewValueColumn]));
+                    if (this.IsNewValueNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NewValue\' в таблице \'NomenclatureLogs\' равно DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableNomenclatureLogs.NewValueColumn]));
                     }
                 }
                 set {
