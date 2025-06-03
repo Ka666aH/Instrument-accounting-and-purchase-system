@@ -172,7 +172,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch(Exception ex) 
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Ошибка импорта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             finally
             {

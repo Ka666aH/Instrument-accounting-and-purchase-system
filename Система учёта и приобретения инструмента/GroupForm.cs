@@ -67,7 +67,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (Exception ex)
             {
-                toolAccounting.RejectChanges();
+                toolAccounting.Groups.RejectChanges();
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }

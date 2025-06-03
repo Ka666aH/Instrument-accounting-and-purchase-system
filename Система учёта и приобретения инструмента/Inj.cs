@@ -166,12 +166,20 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void NomenButtonCreate_Click(object sender, EventArgs e)
         {
-            //форма
+            NomenForm nomenForm = new NomenForm(tOOLACCOUNTINGDataSet, nomenclatureTableAdapter);
+            nomenForm.ShowDialog();
+            LogTable.Columns[0].Visible = false;
         }
 
         private void NomenButtonAlter_Click(object sender, EventArgs e)
         {
-            //форма
+            SetNomenButtonsState();
+            if (NomenTable.CurrentRow.DataBoundItem as DataRowView == null) return;
+            var selectedRow = NomenTable.CurrentRow.DataBoundItem as DataRowView;
+            var nomenViewRow = selectedRow.Row as TOOLACCOUNTINGDataSet.NomenclatureViewRow;
+            NomenForm nomenForm = new NomenForm(tOOLACCOUNTINGDataSet, nomenclatureTableAdapter,FormMode.Edit, nomenViewRow);
+            nomenForm.ShowDialog();
+            LogTable.Columns[0].Visible = false;
         }
 
         private void NomenButtonDelete_Click(object sender, EventArgs e)
@@ -1025,7 +1033,6 @@ namespace Система_учёта_и_приобретения_инструме
         #endregion
 
         #region Логи корректировок
-
 
         private void AddLogs(NomenclatureRow row)
         {
