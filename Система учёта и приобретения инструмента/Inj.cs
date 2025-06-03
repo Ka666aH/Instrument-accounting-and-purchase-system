@@ -122,6 +122,7 @@ namespace Система_учёта_и_приобретения_инструме
             this.nomenclatureTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Nomenclature);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.NomenclatureLogs". При необходимости она может быть перемещена или удалена.
             this.nomenclatureLogsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NomenclatureLogs);
+            LogTable.Columns[0].Visible = false;
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Groups". При необходимости она может быть перемещена или удалена.
             this.groupsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Groups);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Suppliers". При необходимости она может быть перемещена или удалена.
@@ -263,10 +264,17 @@ namespace Система_учёта_и_приобретения_инструме
         {
             nomenUserEditing = true;
             var dataRowView = NomenTable.Rows[e.RowIndex].DataBoundItem as DataRowView;
-            nomenOriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.NomenclatureRow;
-            //var row = NomenTable.Rows[e.RowIndex];
-            //var cell = row.Cells[e.ColumnIndex];
-            //if (cell.ColumnIndex == 0 && !row.IsNewRow) e.Cancel = true;
+            TOOLACCOUNTINGDataSet.NomenclatureViewRow nomenViewOriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.NomenclatureViewRow;
+            if(nomenViewOriginRow != null) nomenOriginRow = tOOLACCOUNTINGDataSet.Nomenclature.FindByNomenclatureNumber(nomenViewOriginRow.NomenclatureNumber);
+            else nomenOriginRow = null;
+            var row = NomenTable.Rows[e.RowIndex];
+            var cell = row.Cells[e.ColumnIndex];
+            if (cell.ColumnIndex == 0 && nomenOriginRow != null)
+            {
+                nomenUserEditing = false;
+                e.Cancel = true;
+            }
+
         }
 
         private void NomenTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -361,6 +369,7 @@ namespace Система_учёта_и_приобретения_инструме
 
                 nomenclatureLogsTableAdapter.Update(tOOLACCOUNTINGDataSet.NomenclatureLogs);
                 nomenclatureLogsTableAdapter.Fill(tOOLACCOUNTINGDataSet.NomenclatureLogs);
+                LogTable.Columns[0].Visible = false;
             }
             catch (Exception ex)
             {
@@ -1089,14 +1098,14 @@ namespace Система_учёта_и_приобретения_инструме
             string columnHeader = null;
             switch (columnName)
             {
-                case "Designation": columnHeader = "Обозначение"; break;
-                case "Unit": columnHeader = "Единицы измерения"; break;
-                case "Dimensions": columnHeader = "Типоразмеры"; break;
-                case "CuttingMaterial": columnHeader = "Материал режущей части"; break;
-                case "RegulatoryDoc": columnHeader = "Нормативная документация"; break;
-                case "Producer": columnHeader = "Производитель"; break;
-                case "UsageFlag": columnHeader = "Признак использования"; break;
-                case "MinStock": columnHeader = "Неснижаемый остаток"; break;
+                case "Designation":     columnHeader = "Обозначение";               break;
+                case "Unit":            columnHeader = "Единицы измерения";         break;
+                case "Dimensions":      columnHeader = "Типоразмеры";               break;
+                case "CuttingMaterial": columnHeader = "Материал режущей части";    break;
+                case "RegulatoryDoc":   columnHeader = "Нормативная документация";  break;
+                case "Producer":        columnHeader = "Производитель";             break;
+                case "UsageFlag":       columnHeader = "Признак использования";     break;
+                case "MinStock":        columnHeader = "Неснижаемый остаток";       break;
             }
             return columnHeader;
         }
