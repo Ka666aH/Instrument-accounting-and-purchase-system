@@ -41,7 +41,7 @@
             // WorkshopName
             // 
             this.WorkshopName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.WorkshopName.Location = new System.Drawing.Point(153, 58);
+            this.WorkshopName.Location = new System.Drawing.Point(153, 59);
             this.WorkshopName.Name = "WorkshopName";
             this.WorkshopName.Size = new System.Drawing.Size(475, 26);
             this.WorkshopName.TabIndex = 36;
@@ -95,7 +95,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(10, 64);
+            this.label1.Location = new System.Drawing.Point(10, 65);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(132, 20);
             this.label1.TabIndex = 30;
@@ -105,7 +105,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(10, 19);
+            this.label2.Location = new System.Drawing.Point(10, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(107, 20);
             this.label2.TabIndex = 29;
@@ -114,7 +114,7 @@
             // WorkshopNumber
             // 
             this.WorkshopNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.WorkshopNumber.Location = new System.Drawing.Point(153, 13);
+            this.WorkshopNumber.Location = new System.Drawing.Point(153, 14);
             this.WorkshopNumber.Name = "WorkshopNumber";
             this.WorkshopNumber.Size = new System.Drawing.Size(475, 26);
             this.WorkshopNumber.TabIndex = 31;
