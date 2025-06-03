@@ -192,15 +192,21 @@ namespace Система_учёта_и_приобретения_инструме
                 var nomenViewRowNumber = nomenViewRow.NomenclatureNumber;
 
                 var nomenRow = tOOLACCOUNTINGDataSet.Nomenclature.Where(x => x.NomenclatureNumber == nomenViewRowNumber).FirstOrDefault();
+                DeleteLogs(nomenRow);
                 nomenRow.Delete();
                 nomenclatureTableAdapter.Update(tOOLACCOUNTINGDataSet.Nomenclature);
                 nomenclatureTableAdapter.Fill(tOOLACCOUNTINGDataSet.Nomenclature);
                 nomenclatureViewTableAdapter.Fill(tOOLACCOUNTINGDataSet.NomenclatureView);
+
+                nomenclatureLogsTableAdapter.Update(tOOLACCOUNTINGDataSet.NomenclatureLogs);
+                nomenclatureLogsTableAdapter.Fill(tOOLACCOUNTINGDataSet.NomenclatureLogs);
+
                 return true;
             }
             catch (Exception ex)
             {
-                tOOLACCOUNTINGDataSet.RejectChanges();
+                tOOLACCOUNTINGDataSet.Nomenclature.RejectChanges();
+                tOOLACCOUNTINGDataSet.NomenclatureLogs.RejectChanges();
                 MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -258,6 +264,8 @@ namespace Система_учёта_и_приобретения_инструме
             nomenUserEditing = true;
             var dataRowView = NomenTable.Rows[e.RowIndex].DataBoundItem as DataRowView;
             nomenOriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.NomenclatureRow;
+            var cell = NomenTable.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            if (cell.ColumnIndex == 0 && !string.IsNullOrEmpty(nomenOriginRow.NomenclatureNumber)) e.Cancel = true;
         }
 
         private void NomenTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -333,6 +341,7 @@ namespace Система_учёта_и_приобретения_инструме
 
                 if (nomenRow != null)
                 {
+                    AlterLogs(nomenRow, nomenViewRow);
                     nomenRow.BeginEdit();
                     NomenFillFields(nomenRow, nomenViewRow);
                     nomenRow.EndEdit();
@@ -341,17 +350,22 @@ namespace Система_учёта_и_приобретения_инструме
                 {
                     var newRow = tOOLACCOUNTINGDataSet.Nomenclature.NewNomenclatureRow();
                     newRow.NomenclatureNumber = nomenViewRow.NomenclatureNumber;
-                    NomenFillFields(newRow,nomenViewRow);
+                    NomenFillFields(newRow, nomenViewRow);
                     tOOLACCOUNTINGDataSet.Nomenclature.Rows.Add(newRow);
+                    AddLogs(newRow);
                 }
                 nomenclatureTableAdapter.Update(tOOLACCOUNTINGDataSet.Nomenclature);
                 nomenclatureTableAdapter.Fill(tOOLACCOUNTINGDataSet.Nomenclature);
                 nomenclatureViewTableAdapter.Fill(tOOLACCOUNTINGDataSet.NomenclatureView);
 
+                nomenclatureLogsTableAdapter.Update(tOOLACCOUNTINGDataSet.NomenclatureLogs);
+                nomenclatureLogsTableAdapter.Fill(tOOLACCOUNTINGDataSet.NomenclatureLogs);
             }
             catch (Exception ex)
             {
                 e.Cancel = true;
+                tOOLACCOUNTINGDataSet.Nomenclature.RejectChanges();
+                tOOLACCOUNTINGDataSet.NomenclatureLogs.RejectChanges();
                 MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -367,6 +381,7 @@ namespace Система_учёта_и_приобретения_инструме
             row.UsageFlag = nomenViewRow.UsageFlag;
             row.MinStock = nomenViewRow.MinStock;
         }
+
 
         private void NomenTable_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
@@ -999,7 +1014,85 @@ namespace Система_учёта_и_приобретения_инструме
 
         #endregion
 
-        #region Логи корректировокв
+        #region Логи корректировок
+
+
+        private void AddLogs(NomenclatureRow row)
+        {
+            for (int i = 1; i < row.Table.Columns.Count; i++)
+            {
+                if (string.IsNullOrEmpty(row[i].ToString())) continue;
+                var log = tOOLACCOUNTINGDataSet.NomenclatureLogs.NewNomenclatureLogsRow();
+                log.NomenclatureNumber = row.NomenclatureNumber;
+
+                string columnName = row.Table.Columns[i].ColumnName;
+                string columnHeader = FieldName(columnName);
+                if (columnHeader == null) continue;
+                log.FieldName = columnHeader;
+                log.OldValue = null;
+                log.NewValue = row[i].ToString();
+                log.ChangedDate = DateTime.Now;
+                log.Executor = Environment.UserName;
+            }
+        }
+
+        private void AlterLogs(NomenclatureRow oldRow, NomenclatureViewRow newViewRow)
+        {
+            TOOLACCOUNTINGDataSet.NomenclatureRow newRow = tOOLACCOUNTINGDataSet.Nomenclature.NewNomenclatureRow();
+            newRow.NomenclatureNumber = newViewRow.NomenclatureNumber;
+            NomenFillFields(newRow, newViewRow);
+            for (int i = 1; i < newRow.Table.Columns.Count; i++)
+            {
+                if (oldRow[i].ToString() == newRow[i].ToString()) continue;
+                var log = tOOLACCOUNTINGDataSet.NomenclatureLogs.NewNomenclatureLogsRow();
+                log.NomenclatureNumber = newRow.NomenclatureNumber;
+
+                string columnName = newRow.Table.Columns[i].ColumnName;
+                string columnHeader = FieldName(columnName);
+                if (columnHeader == null) continue;
+                log.FieldName = columnHeader;
+                log.OldValue = oldRow[i].ToString();
+                log.NewValue = newRow[i].ToString();
+                log.ChangedDate = DateTime.Now;
+                log.Executor = Environment.UserName;
+            }
+        }
+
+        private void DeleteLogs(NomenclatureRow row)
+        {
+            for (int i = 1; i < row.Table.Columns.Count; i++)
+            {
+                if (string.IsNullOrEmpty(row[i].ToString())) continue;
+                var log = tOOLACCOUNTINGDataSet.NomenclatureLogs.NewNomenclatureLogsRow();
+                log.NomenclatureNumber = row.NomenclatureNumber;
+
+                string columnName = row.Table.Columns[i].ColumnName;
+                string columnHeader = FieldName(columnName);
+                if (columnHeader == null) continue;
+                log.FieldName = columnHeader;
+                log.OldValue = row[i].ToString();
+                log.NewValue = null;
+                log.ChangedDate = DateTime.Now;
+                log.Executor = Environment.UserName;
+            }
+        }
+
+        private string FieldName(string columnName)
+        {
+            string columnHeader = null;
+            switch (columnName)
+            {
+                case "Designation": columnHeader = "Обозначение"; break;
+                case "Unit": columnHeader = "Единицы измерения"; break;
+                case "Dimensions": columnHeader = "Типоразмеры"; break;
+                case "CuttingMaterial": columnHeader = "Материал режущей части"; break;
+                case "RegulatoryDoc": columnHeader = "Нормативная документация"; break;
+                case "Producer": columnHeader = "Производитель"; break;
+                case "UsageFlag": columnHeader = "Признак использования"; break;
+                case "MinStock": columnHeader = "Неснижаемый остаток"; break;
+            }
+            return columnHeader;
+        }
 
         #endregion
 
