@@ -102,8 +102,6 @@ namespace Система_учёта_и_приобретения_инструме
         
         private global::System.Data.DataRelation relationFK__InvoicesC__Invoi__6C190EBB;
         
-        private global::System.Data.DataRelation relationFK__Nomenclat__Nomen__4222D4EF;
-        
         private global::System.Data.DataRelation relationFK__PurchaseR__Donor__5CD6CB2B;
         
         private global::System.Data.DataRelation relationFK__PurchaseR__Purch__5AEE82B9;
@@ -892,7 +890,6 @@ namespace Система_учёта_и_приобретения_инструме
             this.relationFK__Invoices__Delive__693CA210 = this.Relations["FK__Invoices__Delive__693CA210"];
             this.relationFK__InvoicesC__Deliv__6D0D32F4 = this.Relations["FK__InvoicesC__Deliv__6D0D32F4"];
             this.relationFK__InvoicesC__Invoi__6C190EBB = this.Relations["FK__InvoicesC__Invoi__6C190EBB"];
-            this.relationFK__Nomenclat__Nomen__4222D4EF = this.Relations["FK__Nomenclat__Nomen__4222D4EF"];
             this.relationFK__PurchaseR__Donor__5CD6CB2B = this.Relations["FK__PurchaseR__Donor__5CD6CB2B"];
             this.relationFK__PurchaseR__Purch__5AEE82B9 = this.Relations["FK__PurchaseR__Purch__5AEE82B9"];
             this.relationFK__PurchaseR__Recei__5BE2A6F2 = this.Relations["FK__PurchaseR__Recei__5BE2A6F2"];
@@ -1023,10 +1020,6 @@ namespace Система_учёта_и_приобретения_инструме
                         this.tableInvoices.InvoiceIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableInvoicesContent.InvoiceIDColumn}, false);
             this.Relations.Add(this.relationFK__InvoicesC__Invoi__6C190EBB);
-            this.relationFK__Nomenclat__Nomen__4222D4EF = new global::System.Data.DataRelation("FK__Nomenclat__Nomen__4222D4EF", new global::System.Data.DataColumn[] {
-                        this.tableNomenclature.NomenclatureNumberColumn}, new global::System.Data.DataColumn[] {
-                        this.tableNomenclatureLogs.NomenclatureNumberColumn}, false);
-            this.Relations.Add(this.relationFK__Nomenclat__Nomen__4222D4EF);
             this.relationFK__PurchaseR__Donor__5CD6CB2B = new global::System.Data.DataRelation("FK__PurchaseR__Donor__5CD6CB2B", new global::System.Data.DataColumn[] {
                         this.tableWorkshops.WorkshopIDColumn}, new global::System.Data.DataColumn[] {
                         this.tablePurchaseRequestsContent.DonorWorkshopIDColumn}, false);
@@ -4809,19 +4802,16 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public NomenclatureLogsRow AddNomenclatureLogsRow(NomenclatureRow parentNomenclatureRowByFK__Nomenclat__Nomen__4222D4EF, string FieldName, string OldValue, string NewValue, System.DateTime ChangedDate, string Executor) {
+            public NomenclatureLogsRow AddNomenclatureLogsRow(string NomenclatureNumber, string FieldName, string OldValue, string NewValue, System.DateTime ChangedDate, string Executor) {
                 NomenclatureLogsRow rowNomenclatureLogsRow = ((NomenclatureLogsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        null,
+                        NomenclatureNumber,
                         FieldName,
                         OldValue,
                         NewValue,
                         ChangedDate,
                         Executor};
-                if ((parentNomenclatureRowByFK__Nomenclat__Nomen__4222D4EF != null)) {
-                    columnValuesArray[1] = parentNomenclatureRowByFK__Nomenclat__Nomen__4222D4EF[0];
-                }
                 rowNomenclatureLogsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowNomenclatureLogsRow);
                 return rowNomenclatureLogsRow;
@@ -11466,17 +11456,6 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public NomenclatureLogsRow[] GetNomenclatureLogsRows() {
-                if ((this.Table.ChildRelations["FK__Nomenclat__Nomen__4222D4EF"] == null)) {
-                    return new NomenclatureLogsRow[0];
-                }
-                else {
-                    return ((NomenclatureLogsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Nomenclat__Nomen__4222D4EF"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ReceivingRequestsContentRow[] GetReceivingRequestsContentRows() {
                 if ((this.Table.ChildRelations["FK__Receiving__Nomen__4F7CD00D"] == null)) {
                     return new ReceivingRequestsContentRow[0];
@@ -11634,17 +11613,6 @@ namespace Система_учёта_и_приобретения_инструме
                 }
                 set {
                     this[this.tableNomenclatureLogs.ExecutorColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public NomenclatureRow NomenclatureRow {
-                get {
-                    return ((NomenclatureRow)(this.GetParentRow(this.Table.ParentRelations["FK__Nomenclat__Nomen__4222D4EF"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Nomenclat__Nomen__4222D4EF"]);
                 }
             }
             
