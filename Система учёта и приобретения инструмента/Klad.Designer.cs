@@ -1528,7 +1528,10 @@
             this.WorkshopsMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.WorkshopsMain.Size = new System.Drawing.Size(1021, 275);
             this.WorkshopsMain.TabIndex = 0;
+            this.WorkshopsMain.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.WorkshopsMain_CellBeginEdit);
+            this.WorkshopsMain.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.WorkshopsMain_CellValidating);
             this.WorkshopsMain.CurrentCellChanged += new System.EventHandler(this.dataGridView1_CurrentCellChanged);
+            this.WorkshopsMain.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.WorkshopsMain_UserDeletingRow);
             // 
             // tabPage6
             // 
