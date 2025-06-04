@@ -234,18 +234,18 @@
             this.executorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomenclatureLogsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.LogValue = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.LogUser = new System.Windows.Forms.TextBox();
+            this.LogField = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.LogEnd = new System.Windows.Forms.DateTimePicker();
             this.label20 = new System.Windows.Forms.Label();
             this.LogStart = new System.Windows.Forms.DateTimePicker();
-            this.LogUser = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.LogField = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.LogNumber = new System.Windows.Forms.MaskedTextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.LogName = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.InjOstatkiPage = new System.Windows.Forms.TabPage();
             this.OstatkiTable = new System.Windows.Forms.DataGridView();
             this.balanceIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -1035,6 +1035,7 @@
             this.WorkshopsRequestsNumber.Name = "WorkshopsRequestsNumber";
             this.WorkshopsRequestsNumber.Size = new System.Drawing.Size(445, 29);
             this.WorkshopsRequestsNumber.TabIndex = 6;
+            this.WorkshopsRequestsNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label30
             // 
@@ -1111,7 +1112,7 @@
             this.AcceptedWorkshopsRequestsContentTable.Location = new System.Drawing.Point(7, 397);
             this.AcceptedWorkshopsRequestsContentTable.Name = "AcceptedWorkshopsRequestsContentTable";
             this.AcceptedWorkshopsRequestsContentTable.ReadOnly = true;
-            this.AcceptedWorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 331);
+            this.AcceptedWorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 359);
             this.AcceptedWorkshopsRequestsContentTable.TabIndex = 37;
             // 
             // AcceptedWorkshopsRequestsRequestsTable
@@ -1326,7 +1327,7 @@
             this.CreateRequestContentTable.Location = new System.Drawing.Point(10, 357);
             this.CreateRequestContentTable.Name = "CreateRequestContentTable";
             this.CreateRequestContentTable.ReadOnly = true;
-            this.CreateRequestContentTable.Size = new System.Drawing.Size(1236, 356);
+            this.CreateRequestContentTable.Size = new System.Drawing.Size(1236, 384);
             this.CreateRequestContentTable.TabIndex = 41;
             // 
             // CreateRequestRequestsTable
@@ -1496,7 +1497,7 @@
             this.RequestsListPurchaseRequestsTable.Location = new System.Drawing.Point(6, 141);
             this.RequestsListPurchaseRequestsTable.Name = "RequestsListPurchaseRequestsTable";
             this.RequestsListPurchaseRequestsTable.ReadOnly = true;
-            this.RequestsListPurchaseRequestsTable.Size = new System.Drawing.Size(338, 583);
+            this.RequestsListPurchaseRequestsTable.Size = new System.Drawing.Size(338, 611);
             this.RequestsListPurchaseRequestsTable.TabIndex = 31;
             // 
             // RequestsListContentTable
@@ -1510,7 +1511,7 @@
             this.RequestsListContentTable.Location = new System.Drawing.Point(350, 394);
             this.RequestsListContentTable.Name = "RequestsListContentTable";
             this.RequestsListContentTable.ReadOnly = true;
-            this.RequestsListContentTable.Size = new System.Drawing.Size(896, 330);
+            this.RequestsListContentTable.Size = new System.Drawing.Size(896, 358);
             this.RequestsListContentTable.TabIndex = 30;
             // 
             // groupBox9
@@ -1638,7 +1639,7 @@
             this.StatementsContentTable.Location = new System.Drawing.Point(433, 142);
             this.StatementsContentTable.Name = "StatementsContentTable";
             this.StatementsContentTable.ReadOnly = true;
-            this.StatementsContentTable.Size = new System.Drawing.Size(612, 583);
+            this.StatementsContentTable.Size = new System.Drawing.Size(612, 611);
             this.StatementsContentTable.TabIndex = 37;
             // 
             // label50
@@ -1671,7 +1672,7 @@
             this.StatementsStatementsTable.Location = new System.Drawing.Point(7, 142);
             this.StatementsStatementsTable.Name = "StatementsStatementsTable";
             this.StatementsStatementsTable.ReadOnly = true;
-            this.StatementsStatementsTable.Size = new System.Drawing.Size(420, 583);
+            this.StatementsStatementsTable.Size = new System.Drawing.Size(420, 611);
             this.StatementsStatementsTable.TabIndex = 38;
             // 
             // groupBox10
@@ -1811,7 +1812,7 @@
             this.InvoicesContentTable.Location = new System.Drawing.Point(433, 105);
             this.InvoicesContentTable.Name = "InvoicesContentTable";
             this.InvoicesContentTable.ReadOnly = true;
-            this.InvoicesContentTable.Size = new System.Drawing.Size(612, 619);
+            this.InvoicesContentTable.Size = new System.Drawing.Size(612, 647);
             this.InvoicesContentTable.TabIndex = 43;
             // 
             // label52
@@ -1844,7 +1845,7 @@
             this.InvoicesInvoicesTable.Location = new System.Drawing.Point(7, 105);
             this.InvoicesInvoicesTable.Name = "InvoicesInvoicesTable";
             this.InvoicesInvoicesTable.ReadOnly = true;
-            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(420, 619);
+            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(420, 647);
             this.InvoicesInvoicesTable.TabIndex = 44;
             // 
             // groupBox11
@@ -1927,7 +1928,7 @@
             this.HistoryTable.Location = new System.Drawing.Point(7, 117);
             this.HistoryTable.Name = "HistoryTable";
             this.HistoryTable.ReadOnly = true;
-            this.HistoryTable.Size = new System.Drawing.Size(1239, 596);
+            this.HistoryTable.Size = new System.Drawing.Size(1239, 624);
             this.HistoryTable.TabIndex = 13;
             // 
             // groupBox12
@@ -2565,7 +2566,7 @@
             this.LogTable.RowHeadersVisible = false;
             this.LogTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.LogTable.Size = new System.Drawing.Size(1240, 507);
-            this.LogTable.TabIndex = 0;
+            this.LogTable.TabIndex = 6;
             // 
             // logIDDataGridViewTextBoxColumn
             // 
@@ -2626,18 +2627,18 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.LogValue);
+            this.groupBox4.Controls.Add(this.label14);
+            this.groupBox4.Controls.Add(this.LogUser);
+            this.groupBox4.Controls.Add(this.LogField);
             this.groupBox4.Controls.Add(this.label21);
             this.groupBox4.Controls.Add(this.LogEnd);
             this.groupBox4.Controls.Add(this.label20);
             this.groupBox4.Controls.Add(this.LogStart);
-            this.groupBox4.Controls.Add(this.LogUser);
             this.groupBox4.Controls.Add(this.label18);
-            this.groupBox4.Controls.Add(this.LogField);
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.LogNumber);
             this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Controls.Add(this.LogName);
-            this.groupBox4.Controls.Add(this.label14);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox4.Location = new System.Drawing.Point(7, 7);
             this.groupBox4.Name = "groupBox4";
@@ -2645,6 +2646,40 @@
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Поиск";
+            // 
+            // LogValue
+            // 
+            this.LogValue.Location = new System.Drawing.Point(610, 21);
+            this.LogValue.Name = "LogValue";
+            this.LogValue.Size = new System.Drawing.Size(193, 29);
+            this.LogValue.TabIndex = 2;
+            this.LogValue.TextChanged += new System.EventHandler(this.Log_TextChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label14.Location = new System.Drawing.Point(483, 30);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(83, 20);
+            this.label14.TabIndex = 21;
+            this.label14.Text = "Значение";
+            // 
+            // LogUser
+            // 
+            this.LogUser.Location = new System.Drawing.Point(610, 56);
+            this.LogUser.Name = "LogUser";
+            this.LogUser.Size = new System.Drawing.Size(193, 29);
+            this.LogUser.TabIndex = 3;
+            this.LogUser.TextChanged += new System.EventHandler(this.Log_TextChanged);
+            // 
+            // LogField
+            // 
+            this.LogField.Location = new System.Drawing.Point(203, 56);
+            this.LogField.Name = "LogField";
+            this.LogField.Size = new System.Drawing.Size(274, 29);
+            this.LogField.TabIndex = 1;
+            this.LogField.TextChanged += new System.EventHandler(this.Log_TextChanged);
             // 
             // label21
             // 
@@ -2659,10 +2694,11 @@
             // LogEnd
             // 
             this.LogEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.LogEnd.Location = new System.Drawing.Point(1062, 62);
+            this.LogEnd.Location = new System.Drawing.Point(1062, 56);
             this.LogEnd.Name = "LogEnd";
             this.LogEnd.Size = new System.Drawing.Size(173, 29);
-            this.LogEnd.TabIndex = 6;
+            this.LogEnd.TabIndex = 5;
+            this.LogEnd.ValueChanged += new System.EventHandler(this.Log_ValueChanged);
             // 
             // label20
             // 
@@ -2677,18 +2713,11 @@
             // LogStart
             // 
             this.LogStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.LogStart.Location = new System.Drawing.Point(1062, 25);
+            this.LogStart.Location = new System.Drawing.Point(1062, 21);
             this.LogStart.Name = "LogStart";
             this.LogStart.Size = new System.Drawing.Size(173, 29);
-            this.LogStart.TabIndex = 5;
-            // 
-            // LogUser
-            // 
-            this.LogUser.FormattingEnabled = true;
-            this.LogUser.Location = new System.Drawing.Point(610, 62);
-            this.LogUser.Name = "LogUser";
-            this.LogUser.Size = new System.Drawing.Size(193, 32);
-            this.LogUser.TabIndex = 4;
+            this.LogStart.TabIndex = 4;
+            this.LogStart.ValueChanged += new System.EventHandler(this.Log_ValueChanged);
             // 
             // label18
             // 
@@ -2700,19 +2729,11 @@
             this.label18.TabIndex = 11;
             this.label18.Text = "Пользователь";
             // 
-            // LogField
-            // 
-            this.LogField.FormattingEnabled = true;
-            this.LogField.Location = new System.Drawing.Point(610, 25);
-            this.LogField.Name = "LogField";
-            this.LogField.Size = new System.Drawing.Size(193, 32);
-            this.LogField.TabIndex = 3;
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.Location = new System.Drawing.Point(483, 30);
+            this.label16.Location = new System.Drawing.Point(6, 65);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(49, 20);
             this.label16.TabIndex = 9;
@@ -2720,39 +2741,23 @@
             // 
             // LogNumber
             // 
-            this.LogNumber.Location = new System.Drawing.Point(203, 62);
+            this.LogNumber.Location = new System.Drawing.Point(203, 21);
             this.LogNumber.Mask = "000000000";
             this.LogNumber.Name = "LogNumber";
             this.LogNumber.Size = new System.Drawing.Size(274, 29);
-            this.LogNumber.TabIndex = 2;
+            this.LogNumber.TabIndex = 0;
+            this.LogNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.LogNumber.TextChanged += new System.EventHandler(this.Log_TextChanged);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label13.Location = new System.Drawing.Point(6, 65);
+            this.label13.Location = new System.Drawing.Point(6, 30);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(191, 20);
             this.label13.TabIndex = 7;
             this.label13.Text = "Номенклатурный номер";
-            // 
-            // LogName
-            // 
-            this.LogName.FormattingEnabled = true;
-            this.LogName.Location = new System.Drawing.Point(203, 25);
-            this.LogName.Name = "LogName";
-            this.LogName.Size = new System.Drawing.Size(274, 32);
-            this.LogName.TabIndex = 1;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label14.Location = new System.Drawing.Point(6, 30);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(122, 20);
-            this.label14.TabIndex = 5;
-            this.label14.Text = "Наименование";
             // 
             // InjOstatkiPage
             // 
@@ -2900,6 +2905,7 @@
             this.OstatkiNumber.Name = "OstatkiNumber";
             this.OstatkiNumber.Size = new System.Drawing.Size(653, 29);
             this.OstatkiNumber.TabIndex = 6;
+            this.OstatkiNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label28
             // 
@@ -3153,8 +3159,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.MaskedTextBox LogNumber;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox LogName;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridView LogTable;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ComboBox ProvidersName;
@@ -3164,9 +3168,7 @@
         private System.Windows.Forms.DataGridView ProvidersTable;
         private System.Windows.Forms.TabPage InjOstatkiPage;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ComboBox LogField;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ComboBox LogUser;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.DateTimePicker LogStart;
         private System.Windows.Forms.Label label21;
@@ -3362,5 +3364,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn usageFlagDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn minStockDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox LogField;
+        private System.Windows.Forms.TextBox LogUser;
+        private System.Windows.Forms.TextBox LogValue;
+        private System.Windows.Forms.Label label14;
     }
 }

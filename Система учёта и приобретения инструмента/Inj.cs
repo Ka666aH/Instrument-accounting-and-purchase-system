@@ -177,7 +177,7 @@ namespace Система_учёта_и_приобретения_инструме
             if (NomenTable.CurrentRow.DataBoundItem as DataRowView == null) return;
             var selectedRow = NomenTable.CurrentRow.DataBoundItem as DataRowView;
             var nomenViewRow = selectedRow.Row as TOOLACCOUNTINGDataSet.NomenclatureViewRow;
-            NomenForm nomenForm = new NomenForm(tOOLACCOUNTINGDataSet, nomenclatureTableAdapter,FormMode.Edit, nomenViewRow);
+            NomenForm nomenForm = new NomenForm(tOOLACCOUNTINGDataSet, nomenclatureTableAdapter, FormMode.Edit, nomenViewRow);
             nomenForm.ShowDialog();
             LogTable.Columns[0].Visible = false;
         }
@@ -273,7 +273,7 @@ namespace Система_учёта_и_приобретения_инструме
             nomenUserEditing = true;
             var dataRowView = NomenTable.Rows[e.RowIndex].DataBoundItem as DataRowView;
             TOOLACCOUNTINGDataSet.NomenclatureViewRow nomenViewOriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.NomenclatureViewRow;
-            if(nomenViewOriginRow != null) nomenOriginRow = tOOLACCOUNTINGDataSet.Nomenclature.FindByNomenclatureNumber(nomenViewOriginRow.NomenclatureNumber);
+            if (nomenViewOriginRow != null) nomenOriginRow = tOOLACCOUNTINGDataSet.Nomenclature.FindByNomenclatureNumber(nomenViewOriginRow.NomenclatureNumber);
             else nomenOriginRow = null;
             var row = NomenTable.Rows[e.RowIndex];
             var cell = row.Cells[e.ColumnIndex];
@@ -1100,6 +1100,55 @@ namespace Система_учёта_и_приобретения_инструме
             }
         }
 
+
+        private void Log_TextChanged(object sender, EventArgs e)
+        {
+            LogSearch();
+        }
+
+
+        private void Log_ValueChanged(object sender, EventArgs e)
+        {
+            LogSearch();
+        }
+
+        private void LogSearch()
+        {
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(LogNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", LogNumber.Text));
+            if (!string.IsNullOrEmpty(LogField.Text)) parameters.Add(new SearchParameter("FieldName", LogField.Text));
+            if (!string.IsNullOrEmpty(LogUser.Text)) parameters.Add(new SearchParameter("Executor", LogUser.Text));
+
+            try
+            {
+                string filter = Search.Filter(parameters);
+
+                if (!string.IsNullOrEmpty(filter)) filter += " AND ";
+                if (!string.IsNullOrEmpty(LogValue.Text))
+                {
+                    filter += $"(OldValue LIKE '{LogValue.Text}%' OR NewValue LIKE '{LogValue.Text}%')";
+                }
+
+                if (!string.IsNullOrEmpty(filter)) filter += " AND ";
+                string date1 = $"{LogStart.Value.ToString("yyyy-MM-dd")}";
+                string date2 = $"{LogEnd.Value.AddDays(1).ToString("yyyy-MM-dd")}";
+                if (!string.IsNullOrEmpty(date1) && !string.IsNullOrEmpty(date2))
+                {
+                    filter += $"ChangedDate >= '{date1}' AND ChangedDate <'{date2}'";
+                }
+
+                LogTable.SuspendLayout();
+                nomenclatureLogsBindingSource.Filter = filter;
+                LogTable.Columns[0].Visible = false;
+                //MessageBox.Show(filter);
+                LogTable.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         #endregion
 
         #region Остатки номенклатуры
@@ -1110,6 +1159,12 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
         }
+        //private void maskedTextBox_Enter(object sender, EventArgs e)
+        //{
+        //    MaskedTextBox maskedTextBox = sender as MaskedTextBox;
+        //    maskedTextBox.SelectionStart = 0;
+        //    maskedTextBox.SelectionLength = 0;
+        //}
     }
     public static class Logs
     {
