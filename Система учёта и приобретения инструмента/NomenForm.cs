@@ -237,11 +237,10 @@ namespace Система_учёта_и_приобретения_инструме
             }
         }
 
-        private void UpdateNomenclature() // Каскадное обновление?
+        private void UpdateNomenclature() 
         {
             if (editRow == null) return;
 
-            //var alterRow = editRow;
             try
             {
                 TOOLACCOUNTINGDataSet.NomenclatureRow alterRow = toolAccounting.Nomenclature.NewNomenclatureRow();
@@ -333,7 +332,7 @@ namespace Система_учёта_и_приобретения_инструме
                 log.NomenclatureNumber = row.NomenclatureNumber;
 
                 string columnName = table.Columns[i].ColumnName;
-                string columnHeader = FieldName(columnName);
+                string columnHeader = Logs.FieldName(columnName);
                 if (columnHeader == null) continue;
                 log.FieldName = columnHeader;
 
@@ -353,23 +352,6 @@ namespace Система_учёта_и_приобретения_инструме
             NomenclatureLogsTableAdapter nomenclatureLogsTableAdapter = new NomenclatureLogsTableAdapter();
             nomenclatureLogsTableAdapter.Update(toolAccounting.NomenclatureLogs);
             nomenclatureLogsTableAdapter.Fill(toolAccounting.NomenclatureLogs);
-        }
-
-        private string FieldName(string columnName) //дубликат из Inj.cs
-        {
-            string columnHeader = null;
-            switch (columnName)
-            {
-                case "Designation": columnHeader = "Обозначение"; break;
-                case "Unit": columnHeader = "Единицы измерения"; break;
-                case "Dimensions": columnHeader = "Типоразмеры"; break;
-                case "CuttingMaterial": columnHeader = "Материал режущей части"; break;
-                case "RegulatoryDoc": columnHeader = "Нормативная документация"; break;
-                case "Producer": columnHeader = "Производитель"; break;
-                case "UsageFlag": columnHeader = "Признак использования"; break;
-                case "MinStock": columnHeader = "Неснижаемый остаток"; break;
-            }
-            return columnHeader;
         }
 
         private void ClearForm()

@@ -610,6 +610,7 @@
             // 
             // NomenTable
             // 
+            this.NomenTable.AllowUserToResizeRows = false;
             this.NomenTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1110,7 +1111,7 @@
             this.AcceptedWorkshopsRequestsContentTable.Location = new System.Drawing.Point(7, 397);
             this.AcceptedWorkshopsRequestsContentTable.Name = "AcceptedWorkshopsRequestsContentTable";
             this.AcceptedWorkshopsRequestsContentTable.ReadOnly = true;
-            this.AcceptedWorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 324);
+            this.AcceptedWorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 331);
             this.AcceptedWorkshopsRequestsContentTable.TabIndex = 37;
             // 
             // AcceptedWorkshopsRequestsRequestsTable
@@ -1325,7 +1326,7 @@
             this.CreateRequestContentTable.Location = new System.Drawing.Point(10, 357);
             this.CreateRequestContentTable.Name = "CreateRequestContentTable";
             this.CreateRequestContentTable.ReadOnly = true;
-            this.CreateRequestContentTable.Size = new System.Drawing.Size(1236, 349);
+            this.CreateRequestContentTable.Size = new System.Drawing.Size(1236, 356);
             this.CreateRequestContentTable.TabIndex = 41;
             // 
             // CreateRequestRequestsTable
@@ -1495,7 +1496,7 @@
             this.RequestsListPurchaseRequestsTable.Location = new System.Drawing.Point(6, 141);
             this.RequestsListPurchaseRequestsTable.Name = "RequestsListPurchaseRequestsTable";
             this.RequestsListPurchaseRequestsTable.ReadOnly = true;
-            this.RequestsListPurchaseRequestsTable.Size = new System.Drawing.Size(338, 576);
+            this.RequestsListPurchaseRequestsTable.Size = new System.Drawing.Size(338, 583);
             this.RequestsListPurchaseRequestsTable.TabIndex = 31;
             // 
             // RequestsListContentTable
@@ -1509,7 +1510,7 @@
             this.RequestsListContentTable.Location = new System.Drawing.Point(350, 394);
             this.RequestsListContentTable.Name = "RequestsListContentTable";
             this.RequestsListContentTable.ReadOnly = true;
-            this.RequestsListContentTable.Size = new System.Drawing.Size(896, 323);
+            this.RequestsListContentTable.Size = new System.Drawing.Size(896, 330);
             this.RequestsListContentTable.TabIndex = 30;
             // 
             // groupBox9
@@ -1637,7 +1638,7 @@
             this.StatementsContentTable.Location = new System.Drawing.Point(433, 142);
             this.StatementsContentTable.Name = "StatementsContentTable";
             this.StatementsContentTable.ReadOnly = true;
-            this.StatementsContentTable.Size = new System.Drawing.Size(612, 576);
+            this.StatementsContentTable.Size = new System.Drawing.Size(612, 583);
             this.StatementsContentTable.TabIndex = 37;
             // 
             // label50
@@ -1670,7 +1671,7 @@
             this.StatementsStatementsTable.Location = new System.Drawing.Point(7, 142);
             this.StatementsStatementsTable.Name = "StatementsStatementsTable";
             this.StatementsStatementsTable.ReadOnly = true;
-            this.StatementsStatementsTable.Size = new System.Drawing.Size(420, 576);
+            this.StatementsStatementsTable.Size = new System.Drawing.Size(420, 583);
             this.StatementsStatementsTable.TabIndex = 38;
             // 
             // groupBox10
@@ -1810,7 +1811,7 @@
             this.InvoicesContentTable.Location = new System.Drawing.Point(433, 105);
             this.InvoicesContentTable.Name = "InvoicesContentTable";
             this.InvoicesContentTable.ReadOnly = true;
-            this.InvoicesContentTable.Size = new System.Drawing.Size(612, 612);
+            this.InvoicesContentTable.Size = new System.Drawing.Size(612, 619);
             this.InvoicesContentTable.TabIndex = 43;
             // 
             // label52
@@ -1843,7 +1844,7 @@
             this.InvoicesInvoicesTable.Location = new System.Drawing.Point(7, 105);
             this.InvoicesInvoicesTable.Name = "InvoicesInvoicesTable";
             this.InvoicesInvoicesTable.ReadOnly = true;
-            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(420, 612);
+            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(420, 619);
             this.InvoicesInvoicesTable.TabIndex = 44;
             // 
             // groupBox11
@@ -1926,7 +1927,7 @@
             this.HistoryTable.Location = new System.Drawing.Point(7, 117);
             this.HistoryTable.Name = "HistoryTable";
             this.HistoryTable.ReadOnly = true;
-            this.HistoryTable.Size = new System.Drawing.Size(1239, 589);
+            this.HistoryTable.Size = new System.Drawing.Size(1239, 596);
             this.HistoryTable.TabIndex = 13;
             // 
             // groupBox12
@@ -2542,6 +2543,7 @@
             // 
             this.LogTable.AllowUserToAddRows = false;
             this.LogTable.AllowUserToDeleteRows = false;
+            this.LogTable.AllowUserToResizeRows = false;
             this.LogTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -2561,8 +2563,9 @@
             this.LogTable.Name = "LogTable";
             this.LogTable.ReadOnly = true;
             this.LogTable.RowHeadersVisible = false;
+            this.LogTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.LogTable.Size = new System.Drawing.Size(1240, 507);
-            this.LogTable.TabIndex = 6;
+            this.LogTable.TabIndex = 0;
             // 
             // logIDDataGridViewTextBoxColumn
             // 
@@ -2659,7 +2662,7 @@
             this.LogEnd.Location = new System.Drawing.Point(1062, 62);
             this.LogEnd.Name = "LogEnd";
             this.LogEnd.Size = new System.Drawing.Size(173, 29);
-            this.LogEnd.TabIndex = 16;
+            this.LogEnd.TabIndex = 6;
             // 
             // label20
             // 
@@ -2677,7 +2680,7 @@
             this.LogStart.Location = new System.Drawing.Point(1062, 25);
             this.LogStart.Name = "LogStart";
             this.LogStart.Size = new System.Drawing.Size(173, 29);
-            this.LogStart.TabIndex = 13;
+            this.LogStart.TabIndex = 5;
             // 
             // LogUser
             // 
@@ -2685,7 +2688,7 @@
             this.LogUser.Location = new System.Drawing.Point(610, 62);
             this.LogUser.Name = "LogUser";
             this.LogUser.Size = new System.Drawing.Size(193, 32);
-            this.LogUser.TabIndex = 12;
+            this.LogUser.TabIndex = 4;
             // 
             // label18
             // 
@@ -2703,7 +2706,7 @@
             this.LogField.Location = new System.Drawing.Point(610, 25);
             this.LogField.Name = "LogField";
             this.LogField.Size = new System.Drawing.Size(193, 32);
-            this.LogField.TabIndex = 8;
+            this.LogField.TabIndex = 3;
             // 
             // label16
             // 
@@ -2721,7 +2724,7 @@
             this.LogNumber.Mask = "000000000";
             this.LogNumber.Name = "LogNumber";
             this.LogNumber.Size = new System.Drawing.Size(274, 29);
-            this.LogNumber.TabIndex = 6;
+            this.LogNumber.TabIndex = 2;
             // 
             // label13
             // 
@@ -2739,7 +2742,7 @@
             this.LogName.Location = new System.Drawing.Point(203, 25);
             this.LogName.Name = "LogName";
             this.LogName.Size = new System.Drawing.Size(274, 32);
-            this.LogName.TabIndex = 4;
+            this.LogName.TabIndex = 1;
             // 
             // label14
             // 

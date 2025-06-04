@@ -1043,7 +1043,7 @@ namespace Система_учёта_и_приобретения_инструме
                 log.NomenclatureNumber = row.NomenclatureNumber;
 
                 string columnName = row.Table.Columns[i].ColumnName;
-                string columnHeader = FieldName(columnName);
+                string columnHeader = Logs.FieldName(columnName);
                 if (columnHeader == null) continue;
                 log.FieldName = columnHeader;
                 log.OldValue = null;
@@ -1067,7 +1067,7 @@ namespace Система_учёта_и_приобретения_инструме
                 log.NomenclatureNumber = newRow.NomenclatureNumber;
 
                 string columnName = newRow.Table.Columns[i].ColumnName;
-                string columnHeader = FieldName(columnName);
+                string columnHeader = Logs.FieldName(columnName);
                 if (columnHeader == null) continue;
                 log.FieldName = columnHeader;
                 log.OldValue = oldRow[i].ToString();
@@ -1088,7 +1088,7 @@ namespace Система_учёта_и_приобретения_инструме
                 log.NomenclatureNumber = row.NomenclatureNumber;
 
                 string columnName = row.Table.Columns[i].ColumnName;
-                string columnHeader = FieldName(columnName);
+                string columnHeader = Logs.FieldName(columnName);
                 if (columnHeader == null) continue;
                 log.FieldName = columnHeader;
                 log.OldValue = row[i].ToString();
@@ -1100,23 +1100,6 @@ namespace Система_учёта_и_приобретения_инструме
             }
         }
 
-        private string FieldName(string columnName)
-        {
-            string columnHeader = null;
-            switch (columnName)
-            {
-                case "Designation":     columnHeader = "Обозначение";               break;
-                case "Unit":            columnHeader = "Единицы измерения";         break;
-                case "Dimensions":      columnHeader = "Типоразмеры";               break;
-                case "CuttingMaterial": columnHeader = "Материал режущей части";    break;
-                case "RegulatoryDoc":   columnHeader = "Нормативная документация";  break;
-                case "Producer":        columnHeader = "Производитель";             break;
-                case "UsageFlag":       columnHeader = "Признак использования";     break;
-                case "MinStock":        columnHeader = "Неснижаемый остаток";       break;
-            }
-            return columnHeader;
-        }
-
         #endregion
 
         #region Остатки номенклатуры
@@ -1126,6 +1109,25 @@ namespace Система_учёта_и_приобретения_инструме
         private void Digits_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
+        }
+    }
+    public static class Logs
+    {
+        public static string FieldName(string columnName)
+        {
+            string columnHeader = null;
+            switch (columnName)
+            {
+                case "Designation": columnHeader = "Обозначение"; break;
+                case "Unit": columnHeader = "Единицы измерения"; break;
+                case "Dimensions": columnHeader = "Типоразмеры"; break;
+                case "CuttingMaterial": columnHeader = "Материал режущей части"; break;
+                case "RegulatoryDoc": columnHeader = "Нормативная документация"; break;
+                case "Producer": columnHeader = "Производитель"; break;
+                case "UsageFlag": columnHeader = "Признак использования"; break;
+                case "MinStock": columnHeader = "Неснижаемый остаток"; break;
+            }
+            return columnHeader;
         }
     }
 }
