@@ -118,8 +118,6 @@ namespace Система_учёта_и_приобретения_инструме
         
         private global::System.Data.DataRelation relationFK__Receiving__Recei__4E88ABD4;
         
-        private global::System.Data.DataRelation relationFK__Replaceme__Analo__5441852A;
-        
         private global::System.Data.DataRelation relationFK__Replaceme__Recei__534D60F1;
         
         private global::System.Data.DataRelation relationFK__Storages__Worksh__46E78A0C;
@@ -143,6 +141,8 @@ namespace Система_учёта_и_приобретения_инструме
         private global::System.Data.DataRelation relationWorkshops1_Storages1;
         
         private global::System.Data.DataRelation relationReceivingRequestsInj_ReceivingRequestsContentInj;
+        
+        private global::System.Data.DataRelation relationReceivingRequestsContent_ReplacementFixation;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -946,7 +946,6 @@ namespace Система_учёта_и_приобретения_инструме
             this.relationFK__Receiving__Works__49C3F6B7 = this.Relations["FK__Receiving__Works__49C3F6B7"];
             this.relationFK__Receiving__Nomen__4F7CD00D = this.Relations["FK__Receiving__Nomen__4F7CD00D"];
             this.relationFK__Receiving__Recei__4E88ABD4 = this.Relations["FK__Receiving__Recei__4E88ABD4"];
-            this.relationFK__Replaceme__Analo__5441852A = this.Relations["FK__Replaceme__Analo__5441852A"];
             this.relationFK__Replaceme__Recei__534D60F1 = this.Relations["FK__Replaceme__Recei__534D60F1"];
             this.relationFK__Storages__Worksh__46E78A0C = this.Relations["FK__Storages__Worksh__46E78A0C"];
             this.relationFK__ToolMovem__FromS__7D439ABD = this.Relations["FK__ToolMovem__FromS__7D439ABD"];
@@ -959,6 +958,7 @@ namespace Система_учёта_и_приобретения_инструме
             this.relationReceivingRequests1_ReceivingRequestsContent1 = this.Relations["ReceivingRequests1_ReceivingRequestsContent1"];
             this.relationWorkshops1_Storages1 = this.Relations["Workshops1_Storages1"];
             this.relationReceivingRequestsInj_ReceivingRequestsContentInj = this.Relations["ReceivingRequestsInj_ReceivingRequestsContentInj"];
+            this.relationReceivingRequestsContent_ReplacementFixation = this.Relations["ReceivingRequestsContent_ReplacementFixation"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1099,13 +1099,9 @@ namespace Система_учёта_и_приобретения_инструме
                         this.tableReceivingRequests.ReceivingRequestIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableReceivingRequestsContent.ReceivingRequestIDColumn}, false);
             this.Relations.Add(this.relationFK__Receiving__Recei__4E88ABD4);
-            this.relationFK__Replaceme__Analo__5441852A = new global::System.Data.DataRelation("FK__Replaceme__Analo__5441852A", new global::System.Data.DataColumn[] {
-                        this.tableNomenclature.NomenclatureNumberColumn}, new global::System.Data.DataColumn[] {
-                        this.tableReplacementFixation.AnalogNomenclatureNumberColumn}, false);
-            this.Relations.Add(this.relationFK__Replaceme__Analo__5441852A);
             this.relationFK__Replaceme__Recei__534D60F1 = new global::System.Data.DataRelation("FK__Replaceme__Recei__534D60F1", new global::System.Data.DataColumn[] {
                         this.tableReceivingRequests.ReceivingRequestIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableReplacementFixation.ReceivingRequestIDColumn}, false);
+                        this.tableReplacementFixation.ReceivingContentIDColumn}, false);
             this.Relations.Add(this.relationFK__Replaceme__Recei__534D60F1);
             this.relationFK__Storages__Worksh__46E78A0C = new global::System.Data.DataRelation("FK__Storages__Worksh__46E78A0C", new global::System.Data.DataColumn[] {
                         this.tableWorkshops.WorkshopIDColumn}, new global::System.Data.DataColumn[] {
@@ -1151,6 +1147,10 @@ namespace Система_учёта_и_приобретения_инструме
                         this.tableReceivingRequestsInj.ReceivingRequestIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableReceivingRequestsContentInj.ReceivingRequestIDColumn}, false);
             this.Relations.Add(this.relationReceivingRequestsInj_ReceivingRequestsContentInj);
+            this.relationReceivingRequestsContent_ReplacementFixation = new global::System.Data.DataRelation("ReceivingRequestsContent_ReplacementFixation", new global::System.Data.DataColumn[] {
+                        this.tableReceivingRequestsContent.ReceivingContentIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableReplacementFixation.ReceivingContentIDColumn}, false);
+            this.Relations.Add(this.relationReceivingRequestsContent_ReplacementFixation);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6403,7 +6403,7 @@ namespace Система_учёта_и_приобретения_инструме
             
             private global::System.Data.DataColumn columnReplacementID;
             
-            private global::System.Data.DataColumn columnReceivingRequestID;
+            private global::System.Data.DataColumn columnReceivingContentID;
             
             private global::System.Data.DataColumn columnAnalogNomenclatureNumber;
             
@@ -6452,9 +6452,9 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ReceivingRequestIDColumn {
+            public global::System.Data.DataColumn ReceivingContentIDColumn {
                 get {
-                    return this.columnReceivingRequestID;
+                    return this.columnReceivingContentID;
                 }
             }
             
@@ -6511,18 +6511,15 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReplacementFixationRow AddReplacementFixationRow(ReceivingRequestsRow parentReceivingRequestsRowByFK__Replaceme__Recei__534D60F1, NomenclatureRow parentNomenclatureRowByFK__Replaceme__Analo__5441852A, int Quantity) {
+            public ReplacementFixationRow AddReplacementFixationRow(ReceivingRequestsRow parentReceivingRequestsRowByFK__Replaceme__Recei__534D60F1, string AnalogNomenclatureNumber, int Quantity) {
                 ReplacementFixationRow rowReplacementFixationRow = ((ReplacementFixationRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
-                        null,
+                        AnalogNomenclatureNumber,
                         Quantity};
                 if ((parentReceivingRequestsRowByFK__Replaceme__Recei__534D60F1 != null)) {
                     columnValuesArray[1] = parentReceivingRequestsRowByFK__Replaceme__Recei__534D60F1[0];
-                }
-                if ((parentNomenclatureRowByFK__Replaceme__Analo__5441852A != null)) {
-                    columnValuesArray[2] = parentNomenclatureRowByFK__Replaceme__Analo__5441852A[0];
                 }
                 rowReplacementFixationRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowReplacementFixationRow);
@@ -6554,7 +6551,7 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
                 this.columnReplacementID = base.Columns["ReplacementID"];
-                this.columnReceivingRequestID = base.Columns["ReceivingRequestID"];
+                this.columnReceivingContentID = base.Columns["ReceivingContentID"];
                 this.columnAnalogNomenclatureNumber = base.Columns["AnalogNomenclatureNumber"];
                 this.columnQuantity = base.Columns["Quantity"];
             }
@@ -6564,8 +6561,8 @@ namespace Система_учёта_и_приобретения_инструме
             private void InitClass() {
                 this.columnReplacementID = new global::System.Data.DataColumn("ReplacementID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnReplacementID);
-                this.columnReceivingRequestID = new global::System.Data.DataColumn("ReceivingRequestID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnReceivingRequestID);
+                this.columnReceivingContentID = new global::System.Data.DataColumn("ReceivingContentID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReceivingContentID);
                 this.columnAnalogNomenclatureNumber = new global::System.Data.DataColumn("AnalogNomenclatureNumber", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAnalogNomenclatureNumber);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
@@ -6578,7 +6575,7 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnReplacementID.AllowDBNull = false;
                 this.columnReplacementID.ReadOnly = true;
                 this.columnReplacementID.Unique = true;
-                this.columnReceivingRequestID.AllowDBNull = false;
+                this.columnReceivingContentID.AllowDBNull = false;
                 this.columnAnalogNomenclatureNumber.AllowDBNull = false;
                 this.columnAnalogNomenclatureNumber.MaxLength = 9;
                 this.columnQuantity.AllowDBNull = false;
@@ -12195,17 +12192,6 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReplacementFixationRow[] GetReplacementFixationRows() {
-                if ((this.Table.ChildRelations["FK__Replaceme__Analo__5441852A"] == null)) {
-                    return new ReplacementFixationRow[0];
-                }
-                else {
-                    return ((ReplacementFixationRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Replaceme__Analo__5441852A"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ToolMovementsRow[] GetToolMovementsRows() {
                 if ((this.Table.ChildRelations["FK__ToolMovem__Nomen__7F2BE32F"] == null)) {
                     return new ToolMovementsRow[0];
@@ -12850,6 +12836,17 @@ namespace Система_учёта_и_приобретения_инструме
                     return ((PurchaseRequestsContentRow[])(base.GetChildRows(this.Table.ChildRelations["FK__PurchaseR__Recei__5BE2A6F2"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ReplacementFixationRow[] GetReplacementFixationRows() {
+                if ((this.Table.ChildRelations["ReceivingRequestsContent_ReplacementFixation"] == null)) {
+                    return new ReplacementFixationRow[0];
+                }
+                else {
+                    return ((ReplacementFixationRow[])(base.GetChildRows(this.Table.ChildRelations["ReceivingRequestsContent_ReplacementFixation"])));
+                }
+            }
         }
         
         /// <summary>
@@ -12879,12 +12876,12 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int ReceivingRequestID {
+            public int ReceivingContentID {
                 get {
-                    return ((int)(this[this.tableReplacementFixation.ReceivingRequestIDColumn]));
+                    return ((int)(this[this.tableReplacementFixation.ReceivingContentIDColumn]));
                 }
                 set {
-                    this[this.tableReplacementFixation.ReceivingRequestIDColumn] = value;
+                    this[this.tableReplacementFixation.ReceivingContentIDColumn] = value;
                 }
             }
             
@@ -12912,23 +12909,23 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public NomenclatureRow NomenclatureRow {
-                get {
-                    return ((NomenclatureRow)(this.GetParentRow(this.Table.ParentRelations["FK__Replaceme__Analo__5441852A"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Replaceme__Analo__5441852A"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ReceivingRequestsRow ReceivingRequestsRow {
                 get {
                     return ((ReceivingRequestsRow)(this.GetParentRow(this.Table.ParentRelations["FK__Replaceme__Recei__534D60F1"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK__Replaceme__Recei__534D60F1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ReceivingRequestsContentRow ReceivingRequestsContentRow {
+                get {
+                    return ((ReceivingRequestsContentRow)(this.GetParentRow(this.Table.ParentRelations["ReceivingRequestsContent_ReplacementFixation"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["ReceivingRequestsContent_ReplacementFixation"]);
                 }
             }
         }
@@ -21534,7 +21531,7 @@ SELECT ReceivingContentID, ReceivingRequestID, NomenclatureNumber, FullName, Qua
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "ReplacementFixation";
             tableMapping.ColumnMappings.Add("ReplacementID", "ReplacementID");
-            tableMapping.ColumnMappings.Add("ReceivingRequestID", "ReceivingRequestID");
+            tableMapping.ColumnMappings.Add("ReceivingRequestID", "ReceivingContentID");
             tableMapping.ColumnMappings.Add("AnalogNomenclatureNumber", "AnalogNomenclatureNumber");
             tableMapping.ColumnMappings.Add("Quantity", "Quantity");
             this._adapter.TableMappings.Add(tableMapping);
