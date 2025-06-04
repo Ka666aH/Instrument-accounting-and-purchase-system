@@ -173,8 +173,6 @@
             this.HistoryEnd = new System.Windows.Forms.DateTimePicker();
             this.label58 = new System.Windows.Forms.Label();
             this.HistoryStart = new System.Windows.Forms.DateTimePicker();
-            this.HistoryName = new System.Windows.Forms.ComboBox();
-            this.label57 = new System.Windows.Forms.Label();
             this.InjAnalogPage = new System.Windows.Forms.TabPage();
             this.AnalogButtonDelete = new System.Windows.Forms.Button();
             this.AnalogButtonAlter = new System.Windows.Forms.Button();
@@ -248,23 +246,13 @@
             this.label13 = new System.Windows.Forms.Label();
             this.InjOstatkiPage = new System.Windows.Forms.TabPage();
             this.OstatkiTable = new System.Windows.Forms.DataGridView();
-            this.balanceIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomenclatureNumberDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.storageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.balanceDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.batchNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.balancesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.OstatkiPrice = new System.Windows.Forms.CheckBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.OstatkiStorage = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
             this.OstatkiNumber = new System.Windows.Forms.MaskedTextBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.OstatkiName = new System.Windows.Forms.ComboBox();
-            this.label29 = new System.Windows.Forms.Label();
             this.Menu = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сменитьПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -280,6 +268,16 @@
             this.analogToolsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.analogToolsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.AnalogToolsTableAdapter();
             this.nomenclatureViewTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.NomenclatureViewTableAdapter();
+            this.OstatkiStorage = new System.Windows.Forms.TextBox();
+            this.balanceIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomenclatureNumberDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.storageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.balanceDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.batchNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HistoryNumber = new System.Windows.Forms.MaskedTextBox();
+            this.label29 = new System.Windows.Forms.Label();
             this.InjLevel1.SuspendLayout();
             this.InjNomenPage.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -1935,12 +1933,12 @@
             // 
             this.groupBox12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox12.Controls.Add(this.HistoryNumber);
+            this.groupBox12.Controls.Add(this.label29);
             this.groupBox12.Controls.Add(this.label54);
             this.groupBox12.Controls.Add(this.HistoryEnd);
             this.groupBox12.Controls.Add(this.label58);
             this.groupBox12.Controls.Add(this.HistoryStart);
-            this.groupBox12.Controls.Add(this.HistoryName);
-            this.groupBox12.Controls.Add(this.label57);
             this.groupBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox12.Location = new System.Drawing.Point(7, 7);
             this.groupBox12.Name = "groupBox12";
@@ -1964,7 +1962,7 @@
             // HistoryEnd
             // 
             this.HistoryEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.HistoryEnd.Location = new System.Drawing.Point(998, 62);
+            this.HistoryEnd.Location = new System.Drawing.Point(998, 55);
             this.HistoryEnd.Name = "HistoryEnd";
             this.HistoryEnd.Size = new System.Drawing.Size(235, 29);
             this.HistoryEnd.TabIndex = 20;
@@ -1984,28 +1982,10 @@
             // HistoryStart
             // 
             this.HistoryStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.HistoryStart.Location = new System.Drawing.Point(998, 26);
+            this.HistoryStart.Location = new System.Drawing.Point(998, 21);
             this.HistoryStart.Name = "HistoryStart";
             this.HistoryStart.Size = new System.Drawing.Size(235, 29);
             this.HistoryStart.TabIndex = 18;
-            // 
-            // HistoryName
-            // 
-            this.HistoryName.FormattingEnabled = true;
-            this.HistoryName.Location = new System.Drawing.Point(134, 25);
-            this.HistoryName.Name = "HistoryName";
-            this.HistoryName.Size = new System.Drawing.Size(605, 32);
-            this.HistoryName.TabIndex = 1;
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label57.Location = new System.Drawing.Point(6, 30);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(122, 20);
-            this.label57.TabIndex = 1;
-            this.label57.Text = "Наименование";
             // 
             // InjAnalogPage
             // 
@@ -2793,49 +2773,6 @@
             this.OstatkiTable.Size = new System.Drawing.Size(1241, 656);
             this.OstatkiTable.TabIndex = 11;
             // 
-            // balanceIDDataGridViewTextBoxColumn
-            // 
-            this.balanceIDDataGridViewTextBoxColumn.DataPropertyName = "BalanceID";
-            this.balanceIDDataGridViewTextBoxColumn.HeaderText = "BalanceID";
-            this.balanceIDDataGridViewTextBoxColumn.Name = "balanceIDDataGridViewTextBoxColumn";
-            this.balanceIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nomenclatureNumberDataGridViewTextBoxColumn2
-            // 
-            this.nomenclatureNumberDataGridViewTextBoxColumn2.DataPropertyName = "NomenclatureNumber";
-            this.nomenclatureNumberDataGridViewTextBoxColumn2.HeaderText = "NomenclatureNumber";
-            this.nomenclatureNumberDataGridViewTextBoxColumn2.Name = "nomenclatureNumberDataGridViewTextBoxColumn2";
-            // 
-            // storageIDDataGridViewTextBoxColumn
-            // 
-            this.storageIDDataGridViewTextBoxColumn.DataPropertyName = "StorageID";
-            this.storageIDDataGridViewTextBoxColumn.HeaderText = "StorageID";
-            this.storageIDDataGridViewTextBoxColumn.Name = "storageIDDataGridViewTextBoxColumn";
-            // 
-            // balanceDateDataGridViewTextBoxColumn
-            // 
-            this.balanceDateDataGridViewTextBoxColumn.DataPropertyName = "BalanceDate";
-            this.balanceDateDataGridViewTextBoxColumn.HeaderText = "BalanceDate";
-            this.balanceDateDataGridViewTextBoxColumn.Name = "balanceDateDataGridViewTextBoxColumn";
-            // 
-            // batchNumberDataGridViewTextBoxColumn
-            // 
-            this.batchNumberDataGridViewTextBoxColumn.DataPropertyName = "BatchNumber";
-            this.batchNumberDataGridViewTextBoxColumn.HeaderText = "BatchNumber";
-            this.batchNumberDataGridViewTextBoxColumn.Name = "batchNumberDataGridViewTextBoxColumn";
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            // 
-            // accountDataGridViewTextBoxColumn
-            // 
-            this.accountDataGridViewTextBoxColumn.DataPropertyName = "Account";
-            this.accountDataGridViewTextBoxColumn.HeaderText = "Account";
-            this.accountDataGridViewTextBoxColumn.Name = "accountDataGridViewTextBoxColumn";
-            // 
             // balancesBindingSource
             // 
             this.balancesBindingSource.DataMember = "Balances";
@@ -2845,18 +2782,16 @@
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.OstatkiStorage);
             this.groupBox6.Controls.Add(this.OstatkiPrice);
             this.groupBox6.Controls.Add(this.label24);
-            this.groupBox6.Controls.Add(this.OstatkiStorage);
             this.groupBox6.Controls.Add(this.label22);
             this.groupBox6.Controls.Add(this.OstatkiNumber);
             this.groupBox6.Controls.Add(this.label28);
-            this.groupBox6.Controls.Add(this.OstatkiName);
-            this.groupBox6.Controls.Add(this.label29);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox6.Location = new System.Drawing.Point(7, 7);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(1263, 104);
+            this.groupBox6.Size = new System.Drawing.Size(1241, 104);
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Поиск";
@@ -2864,7 +2799,7 @@
             // OstatkiPrice
             // 
             this.OstatkiPrice.AutoSize = true;
-            this.OstatkiPrice.Location = new System.Drawing.Point(988, 68);
+            this.OstatkiPrice.Location = new System.Drawing.Point(988, 33);
             this.OstatkiPrice.Name = "OstatkiPrice";
             this.OstatkiPrice.Size = new System.Drawing.Size(15, 14);
             this.OstatkiPrice.TabIndex = 11;
@@ -2874,25 +2809,17 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label24.Location = new System.Drawing.Point(862, 64);
+            this.label24.Location = new System.Drawing.Point(862, 30);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(120, 20);
             this.label24.TabIndex = 10;
             this.label24.Text = "С учетом цены";
             // 
-            // OstatkiStorage
-            // 
-            this.OstatkiStorage.FormattingEnabled = true;
-            this.OstatkiStorage.Location = new System.Drawing.Point(988, 25);
-            this.OstatkiStorage.Name = "OstatkiStorage";
-            this.OstatkiStorage.Size = new System.Drawing.Size(253, 32);
-            this.OstatkiStorage.TabIndex = 8;
-            // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label22.Location = new System.Drawing.Point(862, 30);
+            this.label22.Location = new System.Drawing.Point(6, 68);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(58, 20);
             this.label22.TabIndex = 9;
@@ -2900,7 +2827,7 @@
             // 
             // OstatkiNumber
             // 
-            this.OstatkiNumber.Location = new System.Drawing.Point(203, 62);
+            this.OstatkiNumber.Location = new System.Drawing.Point(203, 21);
             this.OstatkiNumber.Mask = "000000000";
             this.OstatkiNumber.Name = "OstatkiNumber";
             this.OstatkiNumber.Size = new System.Drawing.Size(653, 29);
@@ -2911,29 +2838,11 @@
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label28.Location = new System.Drawing.Point(6, 65);
+            this.label28.Location = new System.Drawing.Point(6, 30);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(191, 20);
             this.label28.TabIndex = 7;
             this.label28.Text = "Номенклатурный номер";
-            // 
-            // OstatkiName
-            // 
-            this.OstatkiName.FormattingEnabled = true;
-            this.OstatkiName.Location = new System.Drawing.Point(203, 25);
-            this.OstatkiName.Name = "OstatkiName";
-            this.OstatkiName.Size = new System.Drawing.Size(653, 32);
-            this.OstatkiName.TabIndex = 4;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label29.Location = new System.Drawing.Point(6, 30);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(122, 20);
-            this.label29.TabIndex = 5;
-            this.label29.Text = "Наименование";
             // 
             // Menu
             // 
@@ -3018,6 +2927,75 @@
             // nomenclatureViewTableAdapter
             // 
             this.nomenclatureViewTableAdapter.ClearBeforeFill = true;
+            // 
+            // OstatkiStorage
+            // 
+            this.OstatkiStorage.Location = new System.Drawing.Point(203, 58);
+            this.OstatkiStorage.Name = "OstatkiStorage";
+            this.OstatkiStorage.Size = new System.Drawing.Size(653, 29);
+            this.OstatkiStorage.TabIndex = 12;
+            // 
+            // balanceIDDataGridViewTextBoxColumn
+            // 
+            this.balanceIDDataGridViewTextBoxColumn.DataPropertyName = "BalanceID";
+            this.balanceIDDataGridViewTextBoxColumn.HeaderText = "BalanceID";
+            this.balanceIDDataGridViewTextBoxColumn.Name = "balanceIDDataGridViewTextBoxColumn";
+            this.balanceIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nomenclatureNumberDataGridViewTextBoxColumn2
+            // 
+            this.nomenclatureNumberDataGridViewTextBoxColumn2.DataPropertyName = "NomenclatureNumber";
+            this.nomenclatureNumberDataGridViewTextBoxColumn2.HeaderText = "Номенклатурный номер";
+            this.nomenclatureNumberDataGridViewTextBoxColumn2.Name = "nomenclatureNumberDataGridViewTextBoxColumn2";
+            // 
+            // storageIDDataGridViewTextBoxColumn
+            // 
+            this.storageIDDataGridViewTextBoxColumn.DataPropertyName = "StorageID";
+            this.storageIDDataGridViewTextBoxColumn.HeaderText = "Номер склада";
+            this.storageIDDataGridViewTextBoxColumn.Name = "storageIDDataGridViewTextBoxColumn";
+            // 
+            // balanceDateDataGridViewTextBoxColumn
+            // 
+            this.balanceDateDataGridViewTextBoxColumn.DataPropertyName = "BalanceDate";
+            this.balanceDateDataGridViewTextBoxColumn.HeaderText = "Дата";
+            this.balanceDateDataGridViewTextBoxColumn.Name = "balanceDateDataGridViewTextBoxColumn";
+            // 
+            // batchNumberDataGridViewTextBoxColumn
+            // 
+            this.batchNumberDataGridViewTextBoxColumn.DataPropertyName = "BatchNumber";
+            this.batchNumberDataGridViewTextBoxColumn.HeaderText = "Номер партии";
+            this.batchNumberDataGridViewTextBoxColumn.Name = "batchNumberDataGridViewTextBoxColumn";
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Учетная цена";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            // 
+            // accountDataGridViewTextBoxColumn
+            // 
+            this.accountDataGridViewTextBoxColumn.DataPropertyName = "Account";
+            this.accountDataGridViewTextBoxColumn.HeaderText = "Балансовый счет";
+            this.accountDataGridViewTextBoxColumn.Name = "accountDataGridViewTextBoxColumn";
+            // 
+            // HistoryNumber
+            // 
+            this.HistoryNumber.Location = new System.Drawing.Point(203, 21);
+            this.HistoryNumber.Mask = "000000000";
+            this.HistoryNumber.Name = "HistoryNumber";
+            this.HistoryNumber.Size = new System.Drawing.Size(536, 29);
+            this.HistoryNumber.TabIndex = 23;
+            this.HistoryNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label29.Location = new System.Drawing.Point(6, 30);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(191, 20);
+            this.label29.TabIndex = 22;
+            this.label29.Text = "Номенклатурный номер";
             // 
             // Inj
             // 
@@ -3176,11 +3154,8 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.MaskedTextBox OstatkiNumber;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.ComboBox OstatkiName;
-        private System.Windows.Forms.Label label29;
         private System.Windows.Forms.CheckBox OstatkiPrice;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.ComboBox OstatkiStorage;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Button NomenButtonDelete;
         private System.Windows.Forms.Button NomenButtonAlter;
@@ -3284,8 +3259,6 @@
         private System.Windows.Forms.DateTimePicker HistoryEnd;
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.DateTimePicker HistoryStart;
-        private System.Windows.Forms.ComboBox HistoryName;
-        private System.Windows.Forms.Label label57;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.DataGridView CreateRequestContentTable;
@@ -3319,13 +3292,6 @@
         private TOOLACCOUNTINGDataSetTableAdapters.NomenclatureTableAdapter nomenclatureTableAdapter;
         private System.Windows.Forms.BindingSource balancesBindingSource;
         private TOOLACCOUNTINGDataSetTableAdapters.BalancesTableAdapter balancesTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn balanceIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn storageIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn balanceDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn batchNumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn accountDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource analogTools1BindingSource;
         private TOOLACCOUNTINGDataSetTableAdapters.AnalogTools1TableAdapter analogTools1TableAdapter;
         private System.Windows.Forms.BindingSource analogTools1DataTable1BindingSource;
@@ -3368,5 +3334,15 @@
         private System.Windows.Forms.TextBox LogUser;
         private System.Windows.Forms.TextBox LogValue;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox OstatkiStorage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn balanceIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn storageIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn balanceDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn batchNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.MaskedTextBox HistoryNumber;
+        private System.Windows.Forms.Label label29;
     }
 }

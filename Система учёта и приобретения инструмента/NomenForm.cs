@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -44,6 +45,8 @@ namespace Система_учёта_и_приобретения_инструме
         AutoCompleteStringCollection producerSource = new AutoCompleteStringCollection();
         //AutoCompleteStringCollection usageSource = new AutoCompleteStringCollection();
 
+        GroupsTableAdapter groupsTableAdapter = new GroupsTableAdapter();
+        NomenclatureViewTableAdapter nomenclatureViewTableAdapter = new NomenclatureViewTableAdapter();
         private void NomenForm_Load(object sender, EventArgs e)
         {
             if (mode == FormMode.Edit && editRow != null)
@@ -62,20 +65,7 @@ namespace Система_учёта_и_приобретения_инструме
                 FillFullName();
             }
 
-
-            GroupsTableAdapter groupsTableAdapter = new GroupsTableAdapter();
-            NomenclatureViewTableAdapter nomenclatureViewTableAdapter = new NomenclatureViewTableAdapter();
-
-            groupsTableAdapter.Fill(toolAccounting.Groups);
-            foreach (DataRow row in groupsTableAdapter.GetData().Rows)
-            {
-                string name = row[1]?.ToString().Trim() ?? "";
-                if (!string.IsNullOrEmpty(name))
-                {
-                    groupSource.Add(name);
-                }
-            }
-            NomenFormGroup.AutoCompleteCustomSource = groupSource;
+            FillGroupsSource();
 
             nomenclatureViewTableAdapter.Fill(toolAccounting.NomenclatureView);
 
@@ -86,7 +76,20 @@ namespace Система_учёта_и_приобретения_инструме
             NomenFormProducer.AutoCompleteCustomSource = NomenclatureSource(nomenclatureViewTableAdapter, 7, producerSource);
             //NomenFormUsage.AutoCompleteCustomSource = NomenclatureSource(nomenclatureViewTableAdapter, "UsageFlag", unitSource);
         }
-        private AutoCompleteStringCollection NomenclatureSource(NomenclatureViewTableAdapter nvta, int col, AutoCompleteStringCollection source)
+        private void FillGroupsSource()
+        {
+            groupsTableAdapter.Fill(toolAccounting.Groups);
+            foreach (DataRow row in groupsTableAdapter.GetData().Rows)
+            {
+                string name = row[1]?.ToString().Trim() ?? "";
+                if (!string.IsNullOrEmpty(name))
+                {
+                    groupSource.Add(name);
+                }
+            }
+            NomenFormGroup.AutoCompleteCustomSource = groupSource;
+        }
+private AutoCompleteStringCollection NomenclatureSource(NomenclatureViewTableAdapter nvta, int col, AutoCompleteStringCollection source)
         {
             HashSet<string> uniqueValues = new HashSet<string>(StringComparer.OrdinalIgnoreCase); // Игнорируем регистр
 
@@ -111,6 +114,10 @@ namespace Система_учёта_и_приобретения_инструме
         {
             string selectedText = sender.Text;
             sender.Text = new List<string>(source.Cast<string>()).Where(x => x.ToLower() == selectedText.ToLower()).FirstOrDefault();
+            if(string.IsNullOrEmpty( sender.Text))
+            {
+                sender.Text = selectedText;
+            }
         }
 
         #region Leave
@@ -125,6 +132,12 @@ namespace Система_учёта_и_приобретения_инструме
                 .Select(x => x.RangeStart)
                 .FirstOrDefault();
 
+            if(range == null)
+            {
+                NomenFormNumber.Text = "Нет такой группы";
+                FillFullName();
+                return;
+            }
             List<string> numbers = toolAccounting.Nomenclature
                 .Where(x => x.NomenclatureNumber.StartsWith(range))
                 .Select(x => x.NomenclatureNumber)
@@ -182,6 +195,8 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!AllRequiredFieldsFilled()) return false;
             //возможная валидация
+            if (!Validation.IsNomenclatureNumberCorrect(NomenFormNumber.Text)) return false;
+            if (!Validation.IsNomenclatureNumberValid(NomenFormNumber.Text,toolAccounting)) return false;
             try
             {
                 if (mode == FormMode.Add) CreateNomenclature();
@@ -229,7 +244,7 @@ namespace Система_учёта_и_приобретения_инструме
                 UpdateTable();
                 UpdateLogs();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 toolAccounting.Nomenclature.RejectChanges();
                 toolAccounting.NomenclatureLogs.RejectChanges();
@@ -237,7 +252,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
         }
 
-        private void UpdateNomenclature() 
+        private void UpdateNomenclature()
         {
             if (editRow == null) return;
 
@@ -409,6 +424,13 @@ namespace Система_учёта_и_приобретения_инструме
             NomenFormUsage.SelectedIndex <= 0 &&
             NomenFormOstatok.Value == 0;
 
+        }
+
+        private void NomenFormAddGroup_Click(object sender, EventArgs e)
+        {
+            GroupForm groupForm = new GroupForm(toolAccounting, groupsTableAdapter);
+            groupForm.ShowDialog();
+            FillGroupsSource();
         }
     }
 }

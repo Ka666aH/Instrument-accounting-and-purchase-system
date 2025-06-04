@@ -333,6 +333,7 @@
             this.NomenFormAddGroup.TabIndex = 27;
             this.NomenFormAddGroup.Text = "+";
             this.NomenFormAddGroup.UseVisualStyleBackColor = true;
+            this.NomenFormAddGroup.Click += new System.EventHandler(this.NomenFormAddGroup_Click);
             // 
             // NomenFormNumber
             // 

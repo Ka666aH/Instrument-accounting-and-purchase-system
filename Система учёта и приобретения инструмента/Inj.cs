@@ -223,17 +223,27 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void NomenButtonOstatki_Click(object sender, EventArgs e)
         {
-            //переход на вкладку и установка значения в поиск
+            SetNomenButtonsState();
+            if (NomenTable.CurrentRow.DataBoundItem as DataRowView == null) return;
+            OstatkiNumber.Text = NomenTable.CurrentRow.Cells[0].Value.ToString();
+            InjLevel1.SelectedTab = InjOstatkiPage;
         }
 
         private void NomenButtonHistory_Click(object sender, EventArgs e)
         {
-            //переход на вкладку и установка значения в поиск
+            SetNomenButtonsState();
+            if (NomenTable.CurrentRow.DataBoundItem as DataRowView == null) return;
+            HistoryNumber.Text = NomenTable.CurrentRow.Cells[0].Value.ToString();
+            InjLevel1.SelectedTab = InjZayavkiPage;
+            InjLevel2.SelectedTab = History;
         }
 
         private void NomenButtonLog_Click(object sender, EventArgs e)
         {
-            //переход на вкладку и установка значения в поиск
+            SetNomenButtonsState();
+            if (NomenTable.CurrentRow.DataBoundItem as DataRowView == null) return;
+            LogNumber.Text = NomenTable.CurrentRow.Cells[0].Value.ToString();
+            InjLevel1.SelectedTab = InjLogPage;
         }
 
         private void NomenTable_CurrentCellChanged(object sender, EventArgs e)
@@ -1123,17 +1133,17 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 string filter = Search.Filter(parameters);
 
-                if (!string.IsNullOrEmpty(filter)) filter += " AND ";
                 if (!string.IsNullOrEmpty(LogValue.Text))
                 {
+                    if (!string.IsNullOrEmpty(filter)) filter += " AND ";
                     filter += $"(OldValue LIKE '{LogValue.Text}%' OR NewValue LIKE '{LogValue.Text}%')";
                 }
 
-                if (!string.IsNullOrEmpty(filter)) filter += " AND ";
                 string date1 = $"{LogStart.Value.ToString("yyyy-MM-dd")}";
                 string date2 = $"{LogEnd.Value.AddDays(1).ToString("yyyy-MM-dd")}";
                 if (!string.IsNullOrEmpty(date1) && !string.IsNullOrEmpty(date2))
                 {
+                    if (!string.IsNullOrEmpty(filter)) filter += " AND ";
                     filter += $"ChangedDate >= '{date1}' AND ChangedDate <'{date2}'";
                 }
 
@@ -1159,6 +1169,7 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
         }
+
         //private void maskedTextBox_Enter(object sender, EventArgs e)
         //{
         //    MaskedTextBox maskedTextBox = sender as MaskedTextBox;
