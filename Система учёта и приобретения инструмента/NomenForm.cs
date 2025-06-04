@@ -33,6 +33,8 @@ namespace Система_учёта_и_приобретения_инструме
             editViewRow = _editRow;
             if (_editRow != null) editRow = toolAccounting.Nomenclature.FindByNomenclatureNumber(_editRow.NomenclatureNumber);
             else editRow = null;
+
+            NomenFormUsage.SelectedIndex = 0;
         }
         AutoCompleteStringCollection groupSource = new AutoCompleteStringCollection();
         AutoCompleteStringCollection unitSource = new AutoCompleteStringCollection();
@@ -60,7 +62,6 @@ namespace Система_учёта_и_приобретения_инструме
                 FillFullName();
             }
 
-            NomenFormUsage.SelectedIndex = 0;
 
             GroupsTableAdapter groupsTableAdapter = new GroupsTableAdapter();
             NomenclatureViewTableAdapter nomenclatureViewTableAdapter = new NomenclatureViewTableAdapter();
@@ -116,7 +117,8 @@ namespace Система_учёта_и_приобретения_инструме
         private void NomenFormGroup_Leave(object sender, EventArgs e)
         {
             FindInSource(sender as System.Windows.Forms.ComboBox, groupSource);
-            if (string.IsNullOrEmpty(NomenFormGroup.Text)) return;
+
+            if (string.IsNullOrEmpty(NomenFormGroup.Text) || mode == FormMode.Edit) return;
 
             string range = toolAccounting.Groups
                 .Where(x => x.Name == NomenFormGroup.Text)
@@ -254,7 +256,9 @@ namespace Система_учёта_и_приобретения_инструме
                 if (!editRow.IsRegulatoryDocNull()) alterRow.RegulatoryDoc = editRow.RegulatoryDoc;
                 if (!editRow.IsProducerNull()) alterRow.Producer = editRow.Producer;
 
+                editRow.BeginEdit();
                 FillFields(editRow);
+                editRow.EndEdit();
                 Logging(false, editRow, alterRow);
                 UpdateTable();
                 UpdateLogs();
