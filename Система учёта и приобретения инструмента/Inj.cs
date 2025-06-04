@@ -107,6 +107,10 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Inj_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj". При необходимости она может быть перемещена или удалена.
+            this.receivingRequestsContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequestsInj". При необходимости она может быть перемещена или удалена.
+            this.receivingRequestsInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.AnalogTools". При необходимости она может быть перемещена или удалена.
             this.analogToolsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.AnalogTools);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DataTable1". При необходимости она может быть перемещена или удалена.
@@ -600,6 +604,81 @@ namespace Система_учёта_и_приобретения_инструме
         #region Приобретение инструмента
 
         #region Заявки от цехов
+
+        private void WorkshopsRequestsButtonConsider_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Возможный вариант поиска
+
+        //private void WorkshopsRequests_TextChanged(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        // Получаем DataSet/DataTable
+        //        var parentTable = tOOLACCOUNTINGDataSet.ReceivingRequestsInj;
+        //        var childTable = tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj;
+
+        //        // Фильтруем дочерние записи по номеру
+        //        var filteredChildRows = childTable.AsEnumerable()
+        //            .Where(row => string.IsNullOrEmpty(WorkshopsRequestsNumber.Text) ||
+        //                          row.Field<string>("NomenclatureNumber").Contains(WorkshopsRequestsNumber.Text));
+
+        //        // Получаем ID родительских записей, у которых есть подходящие дочерние
+        //        var validParentIds = filteredChildRows
+        //            .Select(row => row.Field<int>("ReceivingRequestID"))
+        //            .Distinct()
+        //            .ToList();
+
+        //        // Фильтруем родительскую таблицу
+        //        var parentFilter = new StringBuilder();
+        //        if (!string.IsNullOrEmpty(WorkshopsRequestsWorkshop.Text))
+        //            parentFilter.Append($"WorkshopNumberName LIKE '%{WorkshopsRequestsWorkshop.Text}%' AND ");
+
+        //        if (!string.IsNullOrEmpty(WorkshopsRequestsStatus.Text))
+        //            parentFilter.Append($"Status = '{WorkshopsRequestsStatus.Text}' AND ");
+
+        //        if (validParentIds.Any())
+        //            parentFilter.Append($"ReceivingRequestID IN ({string.Join(",", validParentIds)})");
+        //        else if (!string.IsNullOrEmpty(WorkshopsRequestsNumber.Text)) // Если ищем по номеру, но ничего не нашли
+        //            parentFilter.Append("1=0"); // Фильтр, который ничего не вернет
+
+        //        // Применяем фильтр к родительскому BindingSource
+        //        receivingRequestsInjBindingSource.Filter = parentFilter.ToString();
+
+        //        // Обновляем дочерний BindingSource
+        //        receivingRequestsInjReceivingRequestsContentInjBindingSource.Filter =
+        //            string.IsNullOrEmpty(WorkshopsRequestsNumber.Text) ? "" :
+        //            $"NomenclatureNumber LIKE '%{WorkshopsRequestsNumber.Text}%'";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Ошибка фильтрации", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
+        private void WorkshopsRequests_TextChanged(object sender, EventArgs e)
+        {
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(WorkshopsRequestsName.Text)) parameters.Add(new SearchParameter("FullName", WorkshopsRequestsName.Text, false)); //поиск по дочерней
+            if (!string.IsNullOrEmpty(WorkshopsRequestsNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", WorkshopsRequestsNumber.Text)); //поиск по дочерней
+            if (!string.IsNullOrEmpty(WorkshopsRequestsWorkshop.Text)) parameters.Add(new SearchParameter("WorkshopNumberName", WorkshopsRequestsWorkshop.Text, false));
+            if (!string.IsNullOrEmpty(WorkshopsRequestsStatus.Text)) parameters.Add(new SearchParameter("Status", WorkshopsRequestsStatus.Text));
+
+            try
+            {
+                string filter = Search.Filter(parameters);
+                WorkshopsRequestsRequestsTable.SuspendLayout();
+                WorkshopsRequestsContentTable.SuspendLayout();
+                //что тут?
+                WorkshopsRequestsRequestsTable.ResumeLayout();
+                WorkshopsRequestsContentTable.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         #endregion
 
@@ -1165,17 +1244,21 @@ namespace Система_учёта_и_приобретения_инструме
 
         #endregion
 
-        private void Digits_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
-        }
-
         //private void maskedTextBox_Enter(object sender, EventArgs e)
         //{
         //    MaskedTextBox maskedTextBox = sender as MaskedTextBox;
         //    maskedTextBox.SelectionStart = 0;
         //    maskedTextBox.SelectionLength = 0;
         //}
+        private void Digits_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
+        }
+
+
+
+
+
     }
     public static class Logs
     {
