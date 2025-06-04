@@ -605,9 +605,27 @@ namespace Система_учёта_и_приобретения_инструме
 
         #region Заявки от цехов
 
+        public void SetReceivingRequestButtonsState()
+        {
+            try
+            {
+                bool state = WorkshopsRequestsRequestsTable.CurrentRow != null && !string.IsNullOrEmpty(WorkshopsRequestsRequestsTable.CurrentRow.Cells[0].Value.ToString());
+                WorkshopsRequestsButtonConsider.Enabled = state;
+            }
+            catch { }
+        }
+
+        private void WorkshopsRequestsRequestsTable_CurrentCellChanged(object sender, EventArgs e)
+        {
+            SetReceivingRequestButtonsState();
+        }
+
         private void WorkshopsRequestsButtonConsider_Click(object sender, EventArgs e)
         {
-
+            if(WorkshopsRequestsRequestsTable.CurrentRow == null) return;
+            int requestNumber = int.Parse(WorkshopsRequestsRequestsTable.CurrentRow.Cells[0].Value.ToString());
+            RequestConsideration requestConsideration = new RequestConsideration(requestNumber, FormMode.Add);
+            requestConsideration.ShowDialog();
         }
 
         private void WorkshopsRequests_TextChanged(object sender, EventArgs e)
@@ -1253,11 +1271,6 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
         }
-
-
-
-
-
     }
     public static class Logs
     {

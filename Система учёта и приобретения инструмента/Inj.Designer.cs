@@ -63,43 +63,28 @@
             this.InjZayavkiPage = new System.Windows.Forms.TabPage();
             this.InjLevel2 = new System.Windows.Forms.TabControl();
             this.WorkshopsRequests = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.WorkshopsRequestsContentTable = new System.Windows.Forms.DataGridView();
-            this.WorkshopsRequestsButtonConsider = new System.Windows.Forms.Button();
+            this.receivingRequestsInjReceivingRequestsContentInjBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.WorkshopsRequestsRequestsTable = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.WorkshopsRequestsNumber = new System.Windows.Forms.MaskedTextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.AcceptedWorkshopsRequests = new System.Windows.Forms.TabPage();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.AcceptedWorkshopsRequestsContentTable = new System.Windows.Forms.DataGridView();
-            this.AcceptedWorkshopsRequestsRequestsTable = new System.Windows.Forms.DataGridView();
-            this.AcceptedWorkshopsRequestsDelete = new System.Windows.Forms.Button();
-            this.AcceptedWorkshopsRequestsButtonAlter = new System.Windows.Forms.Button();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.AcceptedWorkshopsRequestsDesi = new System.Windows.Forms.ComboBox();
-            this.label33 = new System.Windows.Forms.Label();
-            this.AcceptedWorkshopsRequestsStatus = new System.Windows.Forms.ComboBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.AcceptedWorkshopsRequestsWorkshop = new System.Windows.Forms.ComboBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.AcceptedWorkshopsRequestsNumber = new System.Windows.Forms.MaskedTextBox();
-            this.label36 = new System.Windows.Forms.Label();
-            this.AcceptedWorkshopsRequestsName = new System.Windows.Forms.ComboBox();
-            this.label37 = new System.Windows.Forms.Label();
+            this.WorkshopsRequestsWorkshop = new System.Windows.Forms.TextBox();
+            this.WorkshopsRequestsStatus = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
             this.CreateRequest = new System.Windows.Forms.TabPage();
-            this.CreateRequestButtonCreate = new System.Windows.Forms.Button();
             this.label39 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
             this.CreateRequestContentTable = new System.Windows.Forms.DataGridView();
             this.CreateRequestRequestsTable = new System.Windows.Forms.DataGridView();
-            this.CreateRequestDelete = new System.Windows.Forms.Button();
-            this.CreateRequestButtonAdd = new System.Windows.Forms.Button();
             this.CreateRequestDate = new System.Windows.Forms.TextBox();
             this.CreateRequestNumber = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
@@ -114,34 +99,12 @@
             this.RequestsListPurchaseRequestsTable = new System.Windows.Forms.DataGridView();
             this.RequestsListContentTable = new System.Windows.Forms.DataGridView();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.RequestsListStatus = new System.Windows.Forms.ComboBox();
             this.label45 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.RequestsListEnd = new System.Windows.Forms.DateTimePicker();
             this.label44 = new System.Windows.Forms.Label();
             this.RequestsListStart = new System.Windows.Forms.DateTimePicker();
-            this.Statements = new System.Windows.Forms.TabPage();
-            this.StatementsButtonToInvoices = new System.Windows.Forms.Button();
-            this.StatementsButtonCreate = new System.Windows.Forms.Button();
-            this.StatementsContentTable = new System.Windows.Forms.DataGridView();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.StatementsStatementsTable = new System.Windows.Forms.DataGridView();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.StatementsRequestNumber = new System.Windows.Forms.ComboBox();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.StatementsRequestDate = new System.Windows.Forms.DateTimePicker();
-            this.label47 = new System.Windows.Forms.Label();
-            this.StatementsDate = new System.Windows.Forms.DateTimePicker();
-            this.StatementsProvider = new System.Windows.Forms.ComboBox();
-            this.label46 = new System.Windows.Forms.Label();
             this.Invoices = new System.Windows.Forms.TabPage();
-            this.InvoicesButtonEnter = new System.Windows.Forms.Button();
-            this.InvoicesContentTable = new System.Windows.Forms.DataGridView();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
-            this.InvoicesInvoicesTable = new System.Windows.Forms.DataGridView();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.label55 = new System.Windows.Forms.Label();
             this.InvoicesStatementDate = new System.Windows.Forms.DateTimePicker();
@@ -150,6 +113,8 @@
             this.History = new System.Windows.Forms.TabPage();
             this.HistoryTable = new System.Windows.Forms.DataGridView();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.HistoryNumber = new System.Windows.Forms.MaskedTextBox();
+            this.label29 = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
             this.HistoryEnd = new System.Windows.Forms.DateTimePicker();
             this.label58 = new System.Windows.Forms.Label();
@@ -198,23 +163,21 @@
             this.InjOstatkiPage = new System.Windows.Forms.TabPage();
             this.OstatkiTable = new System.Windows.Forms.DataGridView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.OstatkiStorage = new System.Windows.Forms.TextBox();
             this.OstatkiPrice = new System.Windows.Forms.CheckBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.OstatkiNumber = new System.Windows.Forms.MaskedTextBox();
             this.label28 = new System.Windows.Forms.Label();
+            this.receivingRequestsInjReceivingRequestsContentInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Menu = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сменитьПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.импортToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.OstatkiStorage = new System.Windows.Forms.TextBox();
-            this.HistoryNumber = new System.Windows.Forms.MaskedTextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.receivingRequestsInjReceivingRequestsContentInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.WorkshopsRequestsName = new System.Windows.Forms.TextBox();
-            this.WorkshopsRequestsWorkshop = new System.Windows.Forms.TextBox();
-            this.WorkshopsRequestsStatus = new System.Windows.Forms.TextBox();
+            this.CreateRequestButtonAdd = new System.Windows.Forms.Button();
+            this.CreateRequestButtonDelete = new System.Windows.Forms.Button();
+            this.CreateRequestButtonCreate = new System.Windows.Forms.Button();
             this.nomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.designationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -231,18 +194,18 @@
             this.rangeStartDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.receivingRequestIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomenclatureNumberDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fullNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receivingRequestsInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.receivingRequestIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receivingRequestDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workshopNumberNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.plannedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receivingRequestTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reasonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomenclatureNumberDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.designationDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -293,6 +256,29 @@
             this.nomenclatureViewTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.NomenclatureViewTableAdapter();
             this.receivingRequestsInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsInjTableAdapter();
             this.receivingRequestsContentInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentInjTableAdapter();
+            this.toolaccountingDataSet1 = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
+            this.RequestsListStatus = new System.Windows.Forms.TextBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label46 = new System.Windows.Forms.Label();
+            this.StatementsDate = new System.Windows.Forms.DateTimePicker();
+            this.label47 = new System.Windows.Forms.Label();
+            this.StatementsProvider = new System.Windows.Forms.TextBox();
+            this.StatementsStatementsTable = new System.Windows.Forms.DataGridView();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.StatementsContentTable = new System.Windows.Forms.DataGridView();
+            this.StatementsButtonToInvoices = new System.Windows.Forms.Button();
+            this.StatementsButtonCreate = new System.Windows.Forms.Button();
+            this.StatementsButtonAlter = new System.Windows.Forms.Button();
+            this.StatementsButtonDelete = new System.Windows.Forms.Button();
+            this.Statements = new System.Windows.Forms.TabPage();
+            this.InvoicesButtonDelete = new System.Windows.Forms.Button();
+            this.InvoicesButtonAlter = new System.Windows.Forms.Button();
+            this.InvoicesButtonEnter = new System.Windows.Forms.Button();
+            this.InvoicesContentTable = new System.Windows.Forms.DataGridView();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.InvoicesInvoicesTable = new System.Windows.Forms.DataGridView();
             this.InjLevel1.SuspendLayout();
             this.InjNomenPage.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -304,12 +290,9 @@
             this.InjLevel2.SuspendLayout();
             this.WorkshopsRequests.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WorkshopsRequestsContentTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsInjReceivingRequestsContentInjBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WorkshopsRequestsRequestsTable)).BeginInit();
             this.groupBox7.SuspendLayout();
-            this.AcceptedWorkshopsRequests.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AcceptedWorkshopsRequestsContentTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AcceptedWorkshopsRequestsRequestsTable)).BeginInit();
-            this.groupBox8.SuspendLayout();
             this.CreateRequest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CreateRequestContentTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CreateRequestRequestsTable)).BeginInit();
@@ -318,13 +301,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.RequestsListPurchaseRequestsTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RequestsListContentTable)).BeginInit();
             this.groupBox9.SuspendLayout();
-            this.Statements.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StatementsContentTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StatementsStatementsTable)).BeginInit();
-            this.groupBox10.SuspendLayout();
             this.Invoices.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.InvoicesContentTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.InvoicesInvoicesTable)).BeginInit();
             this.groupBox11.SuspendLayout();
             this.History.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HistoryTable)).BeginInit();
@@ -343,8 +320,8 @@
             this.InjOstatkiPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OstatkiTable)).BeginInit();
             this.groupBox6.SuspendLayout();
-            this.Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsInjReceivingRequestsContentInjBindingSource)).BeginInit();
+            this.Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nomenclatureViewBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource)).BeginInit();
@@ -354,6 +331,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.nomenclatureLogsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.balancesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.analogToolsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toolaccountingDataSet1)).BeginInit();
+            this.groupBox10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StatementsStatementsTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StatementsContentTable)).BeginInit();
+            this.Statements.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoicesContentTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoicesInvoicesTable)).BeginInit();
             this.SuspendLayout();
             // 
             // InjLevel1
@@ -785,7 +769,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.InjLevel2.Controls.Add(this.WorkshopsRequests);
-            this.InjLevel2.Controls.Add(this.AcceptedWorkshopsRequests);
             this.InjLevel2.Controls.Add(this.CreateRequest);
             this.InjLevel2.Controls.Add(this.RequestsList);
             this.InjLevel2.Controls.Add(this.Statements);
@@ -799,11 +782,13 @@
             // 
             // WorkshopsRequests
             // 
-            this.WorkshopsRequests.Controls.Add(this.label3);
-            this.WorkshopsRequests.Controls.Add(this.label1);
             this.WorkshopsRequests.Controls.Add(this.WorkshopsRequestsContentTable);
-            this.WorkshopsRequests.Controls.Add(this.WorkshopsRequestsButtonConsider);
             this.WorkshopsRequests.Controls.Add(this.WorkshopsRequestsRequestsTable);
+            this.WorkshopsRequests.Controls.Add(this.button2);
+            this.WorkshopsRequests.Controls.Add(this.label1);
+            this.WorkshopsRequests.Controls.Add(this.label3);
+            this.WorkshopsRequests.Controls.Add(this.button3);
+            this.WorkshopsRequests.Controls.Add(this.button4);
             this.WorkshopsRequests.Controls.Add(this.groupBox7);
             this.WorkshopsRequests.Location = new System.Drawing.Point(4, 29);
             this.WorkshopsRequests.Name = "WorkshopsRequests";
@@ -811,26 +796,6 @@
             this.WorkshopsRequests.TabIndex = 4;
             this.WorkshopsRequests.Text = "Заявки от цехов";
             this.WorkshopsRequests.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(6, 371);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(504, 24);
-            this.label3.TabIndex = 35;
-            this.label3.Text = "Инструменты входящие в данную заявку на получение";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(6, 119);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(285, 24);
-            this.label1.TabIndex = 33;
-            this.label1.Text = "Заявки на получение от цехов";
             // 
             // WorkshopsRequestsContentTable
             // 
@@ -844,30 +809,24 @@
             this.WorkshopsRequestsContentTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.WorkshopsRequestsContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.WorkshopsRequestsContentTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.receivingRequestIDDataGridViewTextBoxColumn1,
-            this.nomenclatureNumberDataGridViewTextBoxColumn4,
-            this.fullNameDataGridViewTextBoxColumn1,
-            this.quantityDataGridViewTextBoxColumn});
-            this.WorkshopsRequestsContentTable.DataSource = this.receivingRequestsInjReceivingRequestsContentInjBindingSource;
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn15});
+            this.WorkshopsRequestsContentTable.DataSource = this.receivingRequestsInjReceivingRequestsContentInjBindingSource1;
             this.WorkshopsRequestsContentTable.Location = new System.Drawing.Point(7, 397);
+            this.WorkshopsRequestsContentTable.MultiSelect = false;
             this.WorkshopsRequestsContentTable.Name = "WorkshopsRequestsContentTable";
             this.WorkshopsRequestsContentTable.ReadOnly = true;
             this.WorkshopsRequestsContentTable.RowHeadersVisible = false;
             this.WorkshopsRequestsContentTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.WorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 190);
-            this.WorkshopsRequestsContentTable.TabIndex = 20;
+            this.WorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 183);
+            this.WorkshopsRequestsContentTable.TabIndex = 51;
             // 
-            // WorkshopsRequestsButtonConsider
+            // receivingRequestsInjReceivingRequestsContentInjBindingSource1
             // 
-            this.WorkshopsRequestsButtonConsider.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.WorkshopsRequestsButtonConsider.Enabled = false;
-            this.WorkshopsRequestsButtonConsider.Location = new System.Drawing.Point(1059, 145);
-            this.WorkshopsRequestsButtonConsider.Name = "WorkshopsRequestsButtonConsider";
-            this.WorkshopsRequestsButtonConsider.Size = new System.Drawing.Size(182, 44);
-            this.WorkshopsRequestsButtonConsider.TabIndex = 19;
-            this.WorkshopsRequestsButtonConsider.Text = "Рассмотреть заявку";
-            this.WorkshopsRequestsButtonConsider.UseVisualStyleBackColor = true;
-            this.WorkshopsRequestsButtonConsider.Click += new System.EventHandler(this.WorkshopsRequestsButtonConsider_Click);
+            this.receivingRequestsInjReceivingRequestsContentInjBindingSource1.DataMember = "ReceivingRequestsInj_ReceivingRequestsContentInj";
+            this.receivingRequestsInjReceivingRequestsContentInjBindingSource1.DataSource = this.receivingRequestsInjBindingSource;
             // 
             // WorkshopsRequestsRequestsTable
             // 
@@ -880,300 +839,191 @@
             this.WorkshopsRequestsRequestsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.WorkshopsRequestsRequestsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.WorkshopsRequestsRequestsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.receivingRequestIDDataGridViewTextBoxColumn,
-            this.receivingRequestDateDataGridViewTextBoxColumn,
-            this.workshopNumberNameDataGridViewTextBoxColumn,
-            this.plannedDateDataGridViewTextBoxColumn,
-            this.receivingRequestTypeDataGridViewTextBoxColumn,
-            this.reasonDataGridViewTextBoxColumn,
-            this.statusDataGridViewTextBoxColumn});
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18,
+            this.dataGridViewTextBoxColumn19,
+            this.dataGridViewTextBoxColumn20,
+            this.dataGridViewTextBoxColumn21,
+            this.dataGridViewTextBoxColumn22});
             this.WorkshopsRequestsRequestsTable.DataSource = this.receivingRequestsInjBindingSource;
             this.WorkshopsRequestsRequestsTable.Location = new System.Drawing.Point(7, 145);
+            this.WorkshopsRequestsRequestsTable.MultiSelect = false;
             this.WorkshopsRequestsRequestsTable.Name = "WorkshopsRequestsRequestsTable";
             this.WorkshopsRequestsRequestsTable.ReadOnly = true;
             this.WorkshopsRequestsRequestsTable.RowHeadersVisible = false;
             this.WorkshopsRequestsRequestsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.WorkshopsRequestsRequestsTable.Size = new System.Drawing.Size(1037, 220);
-            this.WorkshopsRequestsRequestsTable.TabIndex = 7;
+            this.WorkshopsRequestsRequestsTable.TabIndex = 50;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(1059, 145);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(182, 44);
+            this.button2.TabIndex = 49;
+            this.button2.Text = "Рассмотреть заявку";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(6, 371);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(504, 24);
+            this.label1.TabIndex = 48;
+            this.label1.Text = "Инструменты входящие в данную заявку на получение";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(6, 119);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(377, 24);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "Принятые заявки на получение от цехов";
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(1059, 253);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(182, 44);
+            this.button3.TabIndex = 46;
+            this.button3.Text = "Отменить обработку";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.Enabled = false;
+            this.button4.Location = new System.Drawing.Point(1059, 195);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(182, 52);
+            this.button4.TabIndex = 45;
+            this.button4.Text = "Изменить рассмотрение заявки";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // groupBox7
             // 
             this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox7.Controls.Add(this.WorkshopsRequestsStatus);
+            this.groupBox7.Controls.Add(this.radioButton3);
+            this.groupBox7.Controls.Add(this.radioButton2);
+            this.groupBox7.Controls.Add(this.radioButton1);
+            this.groupBox7.Controls.Add(this.label7);
             this.groupBox7.Controls.Add(this.WorkshopsRequestsWorkshop);
-            this.groupBox7.Controls.Add(this.WorkshopsRequestsName);
-            this.groupBox7.Controls.Add(this.label26);
+            this.groupBox7.Controls.Add(this.WorkshopsRequestsStatus);
             this.groupBox7.Controls.Add(this.label27);
-            this.groupBox7.Controls.Add(this.WorkshopsRequestsNumber);
-            this.groupBox7.Controls.Add(this.label30);
             this.groupBox7.Controls.Add(this.label31);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox7.Location = new System.Drawing.Point(7, 7);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(1234, 107);
-            this.groupBox7.TabIndex = 4;
+            this.groupBox7.TabIndex = 44;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Поиск";
             // 
-            // label26
+            // radioButton3
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label26.Location = new System.Drawing.Point(660, 64);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(118, 20);
-            this.label26.TabIndex = 11;
-            this.label26.Text = "Статус заявки";
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButton3.Location = new System.Drawing.Point(608, 81);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(129, 24);
+            this.radioButton3.TabIndex = 21;
+            this.radioButton3.Text = "Внеплановая";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButton2.Location = new System.Drawing.Point(608, 51);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(103, 24);
+            this.radioButton2.TabIndex = 20;
+            this.radioButton2.Text = "Плановая";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButton1.Location = new System.Drawing.Point(608, 21);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(55, 24);
+            this.radioButton1.TabIndex = 19;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Все";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(509, 25);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(92, 20);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Тип заявки";
+            // 
+            // WorkshopsRequestsWorkshop
+            // 
+            this.WorkshopsRequestsWorkshop.Location = new System.Drawing.Point(130, 16);
+            this.WorkshopsRequestsWorkshop.Name = "WorkshopsRequestsWorkshop";
+            this.WorkshopsRequestsWorkshop.Size = new System.Drawing.Size(373, 29);
+            this.WorkshopsRequestsWorkshop.TabIndex = 17;
+            // 
+            // WorkshopsRequestsStatus
+            // 
+            this.WorkshopsRequestsStatus.AutoCompleteCustomSource.AddRange(new string[] {
+            "Не обработана",
+            "В работе",
+            "Исполнена частично",
+            "Исполнена полностью"});
+            this.WorkshopsRequestsStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.WorkshopsRequestsStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.WorkshopsRequestsStatus.Location = new System.Drawing.Point(130, 51);
+            this.WorkshopsRequestsStatus.Name = "WorkshopsRequestsStatus";
+            this.WorkshopsRequestsStatus.Size = new System.Drawing.Size(373, 29);
+            this.WorkshopsRequestsStatus.TabIndex = 16;
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label27.Location = new System.Drawing.Point(660, 30);
+            this.label27.Location = new System.Drawing.Point(6, 60);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(37, 20);
-            this.label27.TabIndex = 9;
-            this.label27.Text = "Цех";
-            // 
-            // WorkshopsRequestsNumber
-            // 
-            this.WorkshopsRequestsNumber.Location = new System.Drawing.Point(203, 55);
-            this.WorkshopsRequestsNumber.Mask = "000000000";
-            this.WorkshopsRequestsNumber.Name = "WorkshopsRequestsNumber";
-            this.WorkshopsRequestsNumber.Size = new System.Drawing.Size(445, 29);
-            this.WorkshopsRequestsNumber.TabIndex = 6;
-            this.WorkshopsRequestsNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.WorkshopsRequestsNumber.TextChanged += new System.EventHandler(this.WorkshopsRequests_TextChanged);
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label30.Location = new System.Drawing.Point(6, 64);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(191, 20);
-            this.label30.TabIndex = 7;
-            this.label30.Text = "Номенклатурный номер";
+            this.label27.Size = new System.Drawing.Size(118, 20);
+            this.label27.TabIndex = 15;
+            this.label27.Text = "Статус заявки";
             // 
             // label31
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label31.Location = new System.Drawing.Point(6, 30);
+            this.label31.Location = new System.Drawing.Point(6, 25);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(122, 20);
-            this.label31.TabIndex = 5;
-            this.label31.Text = "Наименование";
-            // 
-            // AcceptedWorkshopsRequests
-            // 
-            this.AcceptedWorkshopsRequests.Controls.Add(this.label7);
-            this.AcceptedWorkshopsRequests.Controls.Add(this.label15);
-            this.AcceptedWorkshopsRequests.Controls.Add(this.AcceptedWorkshopsRequestsContentTable);
-            this.AcceptedWorkshopsRequests.Controls.Add(this.AcceptedWorkshopsRequestsRequestsTable);
-            this.AcceptedWorkshopsRequests.Controls.Add(this.AcceptedWorkshopsRequestsDelete);
-            this.AcceptedWorkshopsRequests.Controls.Add(this.AcceptedWorkshopsRequestsButtonAlter);
-            this.AcceptedWorkshopsRequests.Controls.Add(this.groupBox8);
-            this.AcceptedWorkshopsRequests.Location = new System.Drawing.Point(4, 29);
-            this.AcceptedWorkshopsRequests.Name = "AcceptedWorkshopsRequests";
-            this.AcceptedWorkshopsRequests.Size = new System.Drawing.Size(1252, 600);
-            this.AcceptedWorkshopsRequests.TabIndex = 6;
-            this.AcceptedWorkshopsRequests.Text = "Принятые заявки от цехов";
-            this.AcceptedWorkshopsRequests.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(6, 371);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(504, 24);
-            this.label7.TabIndex = 39;
-            this.label7.Text = "Инструменты входящие в данную заявку на получение";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(6, 119);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(377, 24);
-            this.label15.TabIndex = 38;
-            this.label15.Text = "Принятые заявки на получение от цехов";
-            // 
-            // AcceptedWorkshopsRequestsContentTable
-            // 
-            this.AcceptedWorkshopsRequestsContentTable.AllowUserToAddRows = false;
-            this.AcceptedWorkshopsRequestsContentTable.AllowUserToDeleteRows = false;
-            this.AcceptedWorkshopsRequestsContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AcceptedWorkshopsRequestsContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AcceptedWorkshopsRequestsContentTable.Location = new System.Drawing.Point(7, 397);
-            this.AcceptedWorkshopsRequestsContentTable.Name = "AcceptedWorkshopsRequestsContentTable";
-            this.AcceptedWorkshopsRequestsContentTable.ReadOnly = true;
-            this.AcceptedWorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 359);
-            this.AcceptedWorkshopsRequestsContentTable.TabIndex = 37;
-            // 
-            // AcceptedWorkshopsRequestsRequestsTable
-            // 
-            this.AcceptedWorkshopsRequestsRequestsTable.AllowUserToAddRows = false;
-            this.AcceptedWorkshopsRequestsRequestsTable.AllowUserToDeleteRows = false;
-            this.AcceptedWorkshopsRequestsRequestsTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AcceptedWorkshopsRequestsRequestsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AcceptedWorkshopsRequestsRequestsTable.Location = new System.Drawing.Point(7, 146);
-            this.AcceptedWorkshopsRequestsRequestsTable.Name = "AcceptedWorkshopsRequestsRequestsTable";
-            this.AcceptedWorkshopsRequestsRequestsTable.ReadOnly = true;
-            this.AcceptedWorkshopsRequestsRequestsTable.Size = new System.Drawing.Size(1037, 220);
-            this.AcceptedWorkshopsRequestsRequestsTable.TabIndex = 36;
-            // 
-            // AcceptedWorkshopsRequestsDelete
-            // 
-            this.AcceptedWorkshopsRequestsDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AcceptedWorkshopsRequestsDelete.Enabled = false;
-            this.AcceptedWorkshopsRequestsDelete.Location = new System.Drawing.Point(1059, 195);
-            this.AcceptedWorkshopsRequestsDelete.Name = "AcceptedWorkshopsRequestsDelete";
-            this.AcceptedWorkshopsRequestsDelete.Size = new System.Drawing.Size(182, 44);
-            this.AcceptedWorkshopsRequestsDelete.TabIndex = 23;
-            this.AcceptedWorkshopsRequestsDelete.Text = "Удалить";
-            this.AcceptedWorkshopsRequestsDelete.UseVisualStyleBackColor = true;
-            // 
-            // AcceptedWorkshopsRequestsButtonAlter
-            // 
-            this.AcceptedWorkshopsRequestsButtonAlter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AcceptedWorkshopsRequestsButtonAlter.Enabled = false;
-            this.AcceptedWorkshopsRequestsButtonAlter.Location = new System.Drawing.Point(1059, 145);
-            this.AcceptedWorkshopsRequestsButtonAlter.Name = "AcceptedWorkshopsRequestsButtonAlter";
-            this.AcceptedWorkshopsRequestsButtonAlter.Size = new System.Drawing.Size(182, 44);
-            this.AcceptedWorkshopsRequestsButtonAlter.TabIndex = 22;
-            this.AcceptedWorkshopsRequestsButtonAlter.Text = "Изменить";
-            this.AcceptedWorkshopsRequestsButtonAlter.UseVisualStyleBackColor = true;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox8.Controls.Add(this.AcceptedWorkshopsRequestsDesi);
-            this.groupBox8.Controls.Add(this.label33);
-            this.groupBox8.Controls.Add(this.AcceptedWorkshopsRequestsStatus);
-            this.groupBox8.Controls.Add(this.label34);
-            this.groupBox8.Controls.Add(this.AcceptedWorkshopsRequestsWorkshop);
-            this.groupBox8.Controls.Add(this.label35);
-            this.groupBox8.Controls.Add(this.AcceptedWorkshopsRequestsNumber);
-            this.groupBox8.Controls.Add(this.label36);
-            this.groupBox8.Controls.Add(this.AcceptedWorkshopsRequestsName);
-            this.groupBox8.Controls.Add(this.label37);
-            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox8.Location = new System.Drawing.Point(7, 7);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(1234, 107);
-            this.groupBox8.TabIndex = 20;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Поиск";
-            // 
-            // AcceptedWorkshopsRequestsDesi
-            // 
-            this.AcceptedWorkshopsRequestsDesi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AcceptedWorkshopsRequestsDesi.FormattingEnabled = true;
-            this.AcceptedWorkshopsRequestsDesi.Location = new System.Drawing.Point(1046, 25);
-            this.AcceptedWorkshopsRequestsDesi.Name = "AcceptedWorkshopsRequestsDesi";
-            this.AcceptedWorkshopsRequestsDesi.Size = new System.Drawing.Size(179, 32);
-            this.AcceptedWorkshopsRequestsDesi.TabIndex = 12;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label33.Location = new System.Drawing.Point(963, 30);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(77, 20);
-            this.label33.TabIndex = 13;
-            this.label33.Text = "Решение";
-            // 
-            // AcceptedWorkshopsRequestsStatus
-            // 
-            this.AcceptedWorkshopsRequestsStatus.FormattingEnabled = true;
-            this.AcceptedWorkshopsRequestsStatus.Location = new System.Drawing.Point(693, 62);
-            this.AcceptedWorkshopsRequestsStatus.Name = "AcceptedWorkshopsRequestsStatus";
-            this.AcceptedWorkshopsRequestsStatus.Size = new System.Drawing.Size(264, 32);
-            this.AcceptedWorkshopsRequestsStatus.TabIndex = 10;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label34.Location = new System.Drawing.Point(569, 64);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(118, 20);
-            this.label34.TabIndex = 11;
-            this.label34.Text = "Статус заявки";
-            // 
-            // AcceptedWorkshopsRequestsWorkshop
-            // 
-            this.AcceptedWorkshopsRequestsWorkshop.FormattingEnabled = true;
-            this.AcceptedWorkshopsRequestsWorkshop.Location = new System.Drawing.Point(693, 25);
-            this.AcceptedWorkshopsRequestsWorkshop.Name = "AcceptedWorkshopsRequestsWorkshop";
-            this.AcceptedWorkshopsRequestsWorkshop.Size = new System.Drawing.Size(264, 32);
-            this.AcceptedWorkshopsRequestsWorkshop.TabIndex = 8;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label35.Location = new System.Drawing.Point(569, 30);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(37, 20);
-            this.label35.TabIndex = 9;
-            this.label35.Text = "Цех";
-            // 
-            // AcceptedWorkshopsRequestsNumber
-            // 
-            this.AcceptedWorkshopsRequestsNumber.Location = new System.Drawing.Point(203, 62);
-            this.AcceptedWorkshopsRequestsNumber.Mask = "000000000";
-            this.AcceptedWorkshopsRequestsNumber.Name = "AcceptedWorkshopsRequestsNumber";
-            this.AcceptedWorkshopsRequestsNumber.Size = new System.Drawing.Size(360, 29);
-            this.AcceptedWorkshopsRequestsNumber.TabIndex = 6;
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label36.Location = new System.Drawing.Point(6, 64);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(191, 20);
-            this.label36.TabIndex = 7;
-            this.label36.Text = "Номенклатурный номер";
-            // 
-            // AcceptedWorkshopsRequestsName
-            // 
-            this.AcceptedWorkshopsRequestsName.FormattingEnabled = true;
-            this.AcceptedWorkshopsRequestsName.Location = new System.Drawing.Point(203, 25);
-            this.AcceptedWorkshopsRequestsName.Name = "AcceptedWorkshopsRequestsName";
-            this.AcceptedWorkshopsRequestsName.Size = new System.Drawing.Size(360, 32);
-            this.AcceptedWorkshopsRequestsName.TabIndex = 4;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label37.Location = new System.Drawing.Point(6, 30);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(122, 20);
-            this.label37.TabIndex = 5;
-            this.label37.Text = "Наименование";
+            this.label31.Size = new System.Drawing.Size(37, 20);
+            this.label31.TabIndex = 9;
+            this.label31.Text = "Цех";
             // 
             // CreateRequest
             // 
             this.CreateRequest.Controls.Add(this.CreateRequestButtonCreate);
+            this.CreateRequest.Controls.Add(this.CreateRequestButtonAdd);
+            this.CreateRequest.Controls.Add(this.CreateRequestButtonDelete);
             this.CreateRequest.Controls.Add(this.label39);
             this.CreateRequest.Controls.Add(this.label59);
             this.CreateRequest.Controls.Add(this.CreateRequestContentTable);
             this.CreateRequest.Controls.Add(this.CreateRequestRequestsTable);
-            this.CreateRequest.Controls.Add(this.CreateRequestDelete);
-            this.CreateRequest.Controls.Add(this.CreateRequestButtonAdd);
             this.CreateRequest.Controls.Add(this.CreateRequestDate);
             this.CreateRequest.Controls.Add(this.CreateRequestNumber);
             this.CreateRequest.Controls.Add(this.label38);
@@ -1185,17 +1035,6 @@
             this.CreateRequest.TabIndex = 0;
             this.CreateRequest.Text = "Создание заявки на приобретение";
             this.CreateRequest.UseVisualStyleBackColor = true;
-            // 
-            // CreateRequestButtonCreate
-            // 
-            this.CreateRequestButtonCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CreateRequestButtonCreate.Enabled = false;
-            this.CreateRequestButtonCreate.Location = new System.Drawing.Point(1064, 6);
-            this.CreateRequestButtonCreate.Name = "CreateRequestButtonCreate";
-            this.CreateRequestButtonCreate.Size = new System.Drawing.Size(182, 26);
-            this.CreateRequestButtonCreate.TabIndex = 44;
-            this.CreateRequestButtonCreate.Text = "Создать";
-            this.CreateRequestButtonCreate.UseVisualStyleBackColor = true;
             // 
             // label39
             // 
@@ -1225,10 +1064,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CreateRequestContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CreateRequestContentTable.Location = new System.Drawing.Point(10, 357);
+            this.CreateRequestContentTable.Location = new System.Drawing.Point(9, 357);
             this.CreateRequestContentTable.Name = "CreateRequestContentTable";
             this.CreateRequestContentTable.ReadOnly = true;
-            this.CreateRequestContentTable.Size = new System.Drawing.Size(1236, 384);
+            this.CreateRequestContentTable.Size = new System.Drawing.Size(1048, 234);
             this.CreateRequestContentTable.TabIndex = 41;
             // 
             // CreateRequestRequestsTable
@@ -1238,38 +1077,16 @@
             this.CreateRequestRequestsTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CreateRequestRequestsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CreateRequestRequestsTable.Location = new System.Drawing.Point(10, 105);
+            this.CreateRequestRequestsTable.Location = new System.Drawing.Point(9, 105);
             this.CreateRequestRequestsTable.Name = "CreateRequestRequestsTable";
             this.CreateRequestRequestsTable.ReadOnly = true;
-            this.CreateRequestRequestsTable.Size = new System.Drawing.Size(1236, 220);
+            this.CreateRequestRequestsTable.Size = new System.Drawing.Size(1048, 220);
             this.CreateRequestRequestsTable.TabIndex = 40;
-            // 
-            // CreateRequestDelete
-            // 
-            this.CreateRequestDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CreateRequestDelete.Enabled = false;
-            this.CreateRequestDelete.Location = new System.Drawing.Point(1064, 70);
-            this.CreateRequestDelete.Name = "CreateRequestDelete";
-            this.CreateRequestDelete.Size = new System.Drawing.Size(182, 26);
-            this.CreateRequestDelete.TabIndex = 31;
-            this.CreateRequestDelete.Text = "Удалить из заявки";
-            this.CreateRequestDelete.UseVisualStyleBackColor = true;
-            // 
-            // CreateRequestButtonAdd
-            // 
-            this.CreateRequestButtonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CreateRequestButtonAdd.Enabled = false;
-            this.CreateRequestButtonAdd.Location = new System.Drawing.Point(1064, 38);
-            this.CreateRequestButtonAdd.Name = "CreateRequestButtonAdd";
-            this.CreateRequestButtonAdd.Size = new System.Drawing.Size(182, 26);
-            this.CreateRequestButtonAdd.TabIndex = 30;
-            this.CreateRequestButtonAdd.Text = "Добавить в заявку";
-            this.CreateRequestButtonAdd.UseVisualStyleBackColor = true;
             // 
             // CreateRequestDate
             // 
             this.CreateRequestDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CreateRequestDate.Location = new System.Drawing.Point(71, 44);
+            this.CreateRequestDate.Location = new System.Drawing.Point(71, 37);
             this.CreateRequestDate.Name = "CreateRequestDate";
             this.CreateRequestDate.ReadOnly = true;
             this.CreateRequestDate.Size = new System.Drawing.Size(253, 29);
@@ -1278,7 +1095,7 @@
             // CreateRequestNumber
             // 
             this.CreateRequestNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CreateRequestNumber.Location = new System.Drawing.Point(71, 12);
+            this.CreateRequestNumber.Location = new System.Drawing.Point(71, 5);
             this.CreateRequestNumber.Name = "CreateRequestNumber";
             this.CreateRequestNumber.ReadOnly = true;
             this.CreateRequestNumber.Size = new System.Drawing.Size(253, 29);
@@ -1398,7 +1215,7 @@
             this.RequestsListPurchaseRequestsTable.Location = new System.Drawing.Point(6, 141);
             this.RequestsListPurchaseRequestsTable.Name = "RequestsListPurchaseRequestsTable";
             this.RequestsListPurchaseRequestsTable.ReadOnly = true;
-            this.RequestsListPurchaseRequestsTable.Size = new System.Drawing.Size(338, 611);
+            this.RequestsListPurchaseRequestsTable.Size = new System.Drawing.Size(338, 446);
             this.RequestsListPurchaseRequestsTable.TabIndex = 31;
             // 
             // RequestsListContentTable
@@ -1412,7 +1229,7 @@
             this.RequestsListContentTable.Location = new System.Drawing.Point(350, 394);
             this.RequestsListContentTable.Name = "RequestsListContentTable";
             this.RequestsListContentTable.ReadOnly = true;
-            this.RequestsListContentTable.Size = new System.Drawing.Size(896, 358);
+            this.RequestsListContentTable.Size = new System.Drawing.Size(896, 193);
             this.RequestsListContentTable.TabIndex = 30;
             // 
             // groupBox9
@@ -1433,14 +1250,6 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Поиск";
             // 
-            // RequestsListStatus
-            // 
-            this.RequestsListStatus.FormattingEnabled = true;
-            this.RequestsListStatus.Location = new System.Drawing.Point(616, 25);
-            this.RequestsListStatus.Name = "RequestsListStatus";
-            this.RequestsListStatus.Size = new System.Drawing.Size(255, 32);
-            this.RequestsListStatus.TabIndex = 18;
-            // 
             // label45
             // 
             this.label45.AutoSize = true;
@@ -1457,7 +1266,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label43.AutoSize = true;
             this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label43.Location = new System.Drawing.Point(6, 64);
+            this.label43.Location = new System.Drawing.Point(6, 65);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(235, 20);
             this.label43.TabIndex = 17;
@@ -1466,7 +1275,7 @@
             // RequestsListEnd
             // 
             this.RequestsListEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.RequestsListEnd.Location = new System.Drawing.Point(259, 62);
+            this.RequestsListEnd.Location = new System.Drawing.Point(259, 56);
             this.RequestsListEnd.Name = "RequestsListEnd";
             this.RequestsListEnd.Size = new System.Drawing.Size(227, 29);
             this.RequestsListEnd.TabIndex = 16;
@@ -1486,203 +1295,20 @@
             // RequestsListStart
             // 
             this.RequestsListStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.RequestsListStart.Location = new System.Drawing.Point(259, 25);
+            this.RequestsListStart.Location = new System.Drawing.Point(259, 21);
             this.RequestsListStart.Name = "RequestsListStart";
             this.RequestsListStart.Size = new System.Drawing.Size(227, 29);
             this.RequestsListStart.TabIndex = 13;
             // 
-            // Statements
-            // 
-            this.Statements.Controls.Add(this.StatementsButtonToInvoices);
-            this.Statements.Controls.Add(this.StatementsButtonCreate);
-            this.Statements.Controls.Add(this.StatementsContentTable);
-            this.Statements.Controls.Add(this.label50);
-            this.Statements.Controls.Add(this.label51);
-            this.Statements.Controls.Add(this.StatementsStatementsTable);
-            this.Statements.Controls.Add(this.groupBox10);
-            this.Statements.Location = new System.Drawing.Point(4, 29);
-            this.Statements.Name = "Statements";
-            this.Statements.Size = new System.Drawing.Size(1252, 600);
-            this.Statements.TabIndex = 2;
-            this.Statements.Text = "Ведомости поставки";
-            this.Statements.UseVisualStyleBackColor = true;
-            // 
-            // StatementsButtonToInvoices
-            // 
-            this.StatementsButtonToInvoices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.StatementsButtonToInvoices.Enabled = false;
-            this.StatementsButtonToInvoices.Location = new System.Drawing.Point(1057, 192);
-            this.StatementsButtonToInvoices.Name = "StatementsButtonToInvoices";
-            this.StatementsButtonToInvoices.Size = new System.Drawing.Size(182, 44);
-            this.StatementsButtonToInvoices.TabIndex = 42;
-            this.StatementsButtonToInvoices.Text = "Перейти к накладным";
-            this.StatementsButtonToInvoices.UseVisualStyleBackColor = true;
-            // 
-            // StatementsButtonCreate
-            // 
-            this.StatementsButtonCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.StatementsButtonCreate.Enabled = false;
-            this.StatementsButtonCreate.Location = new System.Drawing.Point(1057, 142);
-            this.StatementsButtonCreate.Name = "StatementsButtonCreate";
-            this.StatementsButtonCreate.Size = new System.Drawing.Size(182, 44);
-            this.StatementsButtonCreate.TabIndex = 41;
-            this.StatementsButtonCreate.Text = "Создать";
-            this.StatementsButtonCreate.UseVisualStyleBackColor = true;
-            // 
-            // StatementsContentTable
-            // 
-            this.StatementsContentTable.AllowUserToAddRows = false;
-            this.StatementsContentTable.AllowUserToDeleteRows = false;
-            this.StatementsContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.StatementsContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.StatementsContentTable.Location = new System.Drawing.Point(433, 142);
-            this.StatementsContentTable.Name = "StatementsContentTable";
-            this.StatementsContentTable.ReadOnly = true;
-            this.StatementsContentTable.Size = new System.Drawing.Size(612, 611);
-            this.StatementsContentTable.TabIndex = 37;
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label50.Location = new System.Drawing.Point(429, 116);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(268, 24);
-            this.label50.TabIndex = 40;
-            this.label50.Text = "Состав ведомости поставки";
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label51.Location = new System.Drawing.Point(7, 116);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(199, 24);
-            this.label51.TabIndex = 39;
-            this.label51.Text = "Ведомости поставки";
-            // 
-            // StatementsStatementsTable
-            // 
-            this.StatementsStatementsTable.AllowUserToAddRows = false;
-            this.StatementsStatementsTable.AllowUserToDeleteRows = false;
-            this.StatementsStatementsTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.StatementsStatementsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.StatementsStatementsTable.Location = new System.Drawing.Point(7, 142);
-            this.StatementsStatementsTable.Name = "StatementsStatementsTable";
-            this.StatementsStatementsTable.ReadOnly = true;
-            this.StatementsStatementsTable.Size = new System.Drawing.Size(420, 611);
-            this.StatementsStatementsTable.TabIndex = 38;
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox10.Controls.Add(this.StatementsRequestNumber);
-            this.groupBox10.Controls.Add(this.label49);
-            this.groupBox10.Controls.Add(this.label48);
-            this.groupBox10.Controls.Add(this.StatementsRequestDate);
-            this.groupBox10.Controls.Add(this.label47);
-            this.groupBox10.Controls.Add(this.StatementsDate);
-            this.groupBox10.Controls.Add(this.StatementsProvider);
-            this.groupBox10.Controls.Add(this.label46);
-            this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox10.Location = new System.Drawing.Point(7, 7);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(1232, 106);
-            this.groupBox10.TabIndex = 36;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Поиск";
-            // 
-            // StatementsRequestNumber
-            // 
-            this.StatementsRequestNumber.FormattingEnabled = true;
-            this.StatementsRequestNumber.Location = new System.Drawing.Point(869, 25);
-            this.StatementsRequestNumber.Name = "StatementsRequestNumber";
-            this.StatementsRequestNumber.Size = new System.Drawing.Size(357, 32);
-            this.StatementsRequestNumber.TabIndex = 22;
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label49.Location = new System.Drawing.Point(614, 30);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(249, 20);
-            this.label49.TabIndex = 23;
-            this.label49.Text = "Номер заявки на приобретение";
-            // 
-            // label48
-            // 
-            this.label48.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label48.Location = new System.Drawing.Point(614, 64);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(238, 20);
-            this.label48.TabIndex = 21;
-            this.label48.Text = "Дата заявки на приобретение";
-            // 
-            // StatementsRequestDate
-            // 
-            this.StatementsRequestDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.StatementsRequestDate.Location = new System.Drawing.Point(869, 62);
-            this.StatementsRequestDate.Name = "StatementsRequestDate";
-            this.StatementsRequestDate.Size = new System.Drawing.Size(357, 29);
-            this.StatementsRequestDate.TabIndex = 20;
-            // 
-            // label47
-            // 
-            this.label47.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label47.Location = new System.Drawing.Point(6, 64);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(136, 20);
-            this.label47.TabIndex = 19;
-            this.label47.Text = "Дата ведомости";
-            // 
-            // StatementsDate
-            // 
-            this.StatementsDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.StatementsDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.StatementsDate.Location = new System.Drawing.Point(230, 62);
-            this.StatementsDate.Name = "StatementsDate";
-            this.StatementsDate.Size = new System.Drawing.Size(378, 29);
-            this.StatementsDate.TabIndex = 18;
-            // 
-            // StatementsProvider
-            // 
-            this.StatementsProvider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.StatementsProvider.FormattingEnabled = true;
-            this.StatementsProvider.Location = new System.Drawing.Point(230, 25);
-            this.StatementsProvider.Name = "StatementsProvider";
-            this.StatementsProvider.Size = new System.Drawing.Size(378, 32);
-            this.StatementsProvider.TabIndex = 6;
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label46.Location = new System.Drawing.Point(6, 30);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(218, 20);
-            this.label46.TabIndex = 7;
-            this.label46.Text = "Наименование поставщика";
-            // 
             // Invoices
             // 
-            this.Invoices.Controls.Add(this.InvoicesButtonEnter);
             this.Invoices.Controls.Add(this.InvoicesContentTable);
-            this.Invoices.Controls.Add(this.label52);
-            this.Invoices.Controls.Add(this.label53);
+            this.Invoices.Controls.Add(this.label15);
+            this.Invoices.Controls.Add(this.label26);
             this.Invoices.Controls.Add(this.InvoicesInvoicesTable);
+            this.Invoices.Controls.Add(this.InvoicesButtonDelete);
+            this.Invoices.Controls.Add(this.InvoicesButtonAlter);
+            this.Invoices.Controls.Add(this.InvoicesButtonEnter);
             this.Invoices.Controls.Add(this.groupBox11);
             this.Invoices.Location = new System.Drawing.Point(4, 29);
             this.Invoices.Name = "Invoices";
@@ -1690,64 +1316,6 @@
             this.Invoices.TabIndex = 3;
             this.Invoices.Text = "Товарные накладные";
             this.Invoices.UseVisualStyleBackColor = true;
-            // 
-            // InvoicesButtonEnter
-            // 
-            this.InvoicesButtonEnter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.InvoicesButtonEnter.Enabled = false;
-            this.InvoicesButtonEnter.Location = new System.Drawing.Point(1057, 105);
-            this.InvoicesButtonEnter.Name = "InvoicesButtonEnter";
-            this.InvoicesButtonEnter.Size = new System.Drawing.Size(182, 44);
-            this.InvoicesButtonEnter.TabIndex = 47;
-            this.InvoicesButtonEnter.Text = "Внести накладную";
-            this.InvoicesButtonEnter.UseVisualStyleBackColor = true;
-            // 
-            // InvoicesContentTable
-            // 
-            this.InvoicesContentTable.AllowUserToAddRows = false;
-            this.InvoicesContentTable.AllowUserToDeleteRows = false;
-            this.InvoicesContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.InvoicesContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.InvoicesContentTable.Location = new System.Drawing.Point(433, 105);
-            this.InvoicesContentTable.Name = "InvoicesContentTable";
-            this.InvoicesContentTable.ReadOnly = true;
-            this.InvoicesContentTable.Size = new System.Drawing.Size(612, 647);
-            this.InvoicesContentTable.TabIndex = 43;
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label52.Location = new System.Drawing.Point(429, 79);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(268, 24);
-            this.label52.TabIndex = 46;
-            this.label52.Text = "Состав товарных накладных";
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label53.Location = new System.Drawing.Point(7, 79);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(202, 24);
-            this.label53.TabIndex = 45;
-            this.label53.Text = "Товарные накладные";
-            // 
-            // InvoicesInvoicesTable
-            // 
-            this.InvoicesInvoicesTable.AllowUserToAddRows = false;
-            this.InvoicesInvoicesTable.AllowUserToDeleteRows = false;
-            this.InvoicesInvoicesTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.InvoicesInvoicesTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.InvoicesInvoicesTable.Location = new System.Drawing.Point(7, 105);
-            this.InvoicesInvoicesTable.Name = "InvoicesInvoicesTable";
-            this.InvoicesInvoicesTable.ReadOnly = true;
-            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(420, 647);
-            this.InvoicesInvoicesTable.TabIndex = 44;
             // 
             // groupBox11
             // 
@@ -1829,7 +1397,7 @@
             this.HistoryTable.Location = new System.Drawing.Point(7, 117);
             this.HistoryTable.Name = "HistoryTable";
             this.HistoryTable.ReadOnly = true;
-            this.HistoryTable.Size = new System.Drawing.Size(1239, 624);
+            this.HistoryTable.Size = new System.Drawing.Size(1239, 470);
             this.HistoryTable.TabIndex = 13;
             // 
             // groupBox12
@@ -1849,6 +1417,25 @@
             this.groupBox12.TabIndex = 4;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Поиск";
+            // 
+            // HistoryNumber
+            // 
+            this.HistoryNumber.Location = new System.Drawing.Point(203, 21);
+            this.HistoryNumber.Mask = "000000000";
+            this.HistoryNumber.Name = "HistoryNumber";
+            this.HistoryNumber.Size = new System.Drawing.Size(536, 29);
+            this.HistoryNumber.TabIndex = 23;
+            this.HistoryNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label29.Location = new System.Drawing.Point(6, 30);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(191, 20);
+            this.label29.TabIndex = 22;
+            this.label29.Text = "Номенклатурный номер";
             // 
             // label54
             // 
@@ -1965,6 +1552,7 @@
             this.AnalogCompareTable.Location = new System.Drawing.Point(7, 499);
             this.AnalogCompareTable.MaximumSize = new System.Drawing.Size(0, 120);
             this.AnalogCompareTable.MinimumSize = new System.Drawing.Size(1044, 120);
+            this.AnalogCompareTable.MultiSelect = false;
             this.AnalogCompareTable.Name = "AnalogCompareTable";
             this.AnalogCompareTable.ReadOnly = true;
             this.AnalogCompareTable.RowHeadersVisible = false;
@@ -2188,7 +1776,7 @@
             this.ProvidersTable.Name = "ProvidersTable";
             this.ProvidersTable.RowHeadersVisible = false;
             this.ProvidersTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ProvidersTable.Size = new System.Drawing.Size(1035, 545);
+            this.ProvidersTable.Size = new System.Drawing.Size(1035, 538);
             this.ProvidersTable.TabIndex = 7;
             this.ProvidersTable.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.ProvidersTable_CellBeginEdit);
             this.ProvidersTable.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.ProvidersTable_CellValidating);
@@ -2288,7 +1876,7 @@
             this.LogTable.ReadOnly = true;
             this.LogTable.RowHeadersVisible = false;
             this.LogTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.LogTable.Size = new System.Drawing.Size(1240, 507);
+            this.LogTable.Size = new System.Drawing.Size(1240, 500);
             this.LogTable.TabIndex = 6;
             // 
             // groupBox4
@@ -2458,7 +2046,7 @@
             this.OstatkiTable.Location = new System.Drawing.Point(7, 117);
             this.OstatkiTable.Name = "OstatkiTable";
             this.OstatkiTable.RowHeadersVisible = false;
-            this.OstatkiTable.Size = new System.Drawing.Size(1241, 656);
+            this.OstatkiTable.Size = new System.Drawing.Size(1241, 498);
             this.OstatkiTable.TabIndex = 11;
             // 
             // groupBox6
@@ -2478,6 +2066,13 @@
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Поиск";
+            // 
+            // OstatkiStorage
+            // 
+            this.OstatkiStorage.Location = new System.Drawing.Point(203, 58);
+            this.OstatkiStorage.Name = "OstatkiStorage";
+            this.OstatkiStorage.Size = new System.Drawing.Size(653, 29);
+            this.OstatkiStorage.TabIndex = 12;
             // 
             // OstatkiPrice
             // 
@@ -2527,6 +2122,11 @@
             this.label28.TabIndex = 7;
             this.label28.Text = "Номенклатурный номер";
             // 
+            // receivingRequestsInjReceivingRequestsContentInjBindingSource
+            // 
+            this.receivingRequestsInjReceivingRequestsContentInjBindingSource.DataMember = "ReceivingRequestsInj_ReceivingRequestsContentInj";
+            this.receivingRequestsInjReceivingRequestsContentInjBindingSource.DataSource = this.receivingRequestsInjBindingSource;
+            // 
             // Menu
             // 
             this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2570,67 +2170,38 @@
             this.импортToolStripMenuItem.Text = "Импорт";
             this.импортToolStripMenuItem.Click += new System.EventHandler(this.импортToolStripMenuItem_Click);
             // 
-            // OstatkiStorage
+            // CreateRequestButtonAdd
             // 
-            this.OstatkiStorage.Location = new System.Drawing.Point(203, 58);
-            this.OstatkiStorage.Name = "OstatkiStorage";
-            this.OstatkiStorage.Size = new System.Drawing.Size(653, 29);
-            this.OstatkiStorage.TabIndex = 12;
+            this.CreateRequestButtonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CreateRequestButtonAdd.Enabled = false;
+            this.CreateRequestButtonAdd.Location = new System.Drawing.Point(1063, 105);
+            this.CreateRequestButtonAdd.Name = "CreateRequestButtonAdd";
+            this.CreateRequestButtonAdd.Size = new System.Drawing.Size(182, 44);
+            this.CreateRequestButtonAdd.TabIndex = 52;
+            this.CreateRequestButtonAdd.Text = "Добавить";
+            this.CreateRequestButtonAdd.UseVisualStyleBackColor = true;
             // 
-            // HistoryNumber
+            // CreateRequestButtonDelete
             // 
-            this.HistoryNumber.Location = new System.Drawing.Point(203, 21);
-            this.HistoryNumber.Mask = "000000000";
-            this.HistoryNumber.Name = "HistoryNumber";
-            this.HistoryNumber.Size = new System.Drawing.Size(536, 29);
-            this.HistoryNumber.TabIndex = 23;
-            this.HistoryNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.CreateRequestButtonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CreateRequestButtonDelete.Enabled = false;
+            this.CreateRequestButtonDelete.Location = new System.Drawing.Point(1063, 155);
+            this.CreateRequestButtonDelete.Name = "CreateRequestButtonDelete";
+            this.CreateRequestButtonDelete.Size = new System.Drawing.Size(182, 44);
+            this.CreateRequestButtonDelete.TabIndex = 51;
+            this.CreateRequestButtonDelete.Text = "Удалить";
+            this.CreateRequestButtonDelete.UseVisualStyleBackColor = true;
             // 
-            // label29
+            // CreateRequestButtonCreate
             // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label29.Location = new System.Drawing.Point(6, 30);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(191, 20);
-            this.label29.TabIndex = 22;
-            this.label29.Text = "Номенклатурный номер";
-            // 
-            // receivingRequestsInjReceivingRequestsContentInjBindingSource
-            // 
-            this.receivingRequestsInjReceivingRequestsContentInjBindingSource.DataMember = "ReceivingRequestsInj_ReceivingRequestsContentInj";
-            this.receivingRequestsInjReceivingRequestsContentInjBindingSource.DataSource = this.receivingRequestsInjBindingSource;
-            // 
-            // WorkshopsRequestsName
-            // 
-            this.WorkshopsRequestsName.Location = new System.Drawing.Point(203, 21);
-            this.WorkshopsRequestsName.Name = "WorkshopsRequestsName";
-            this.WorkshopsRequestsName.Size = new System.Drawing.Size(445, 29);
-            this.WorkshopsRequestsName.TabIndex = 12;
-            this.WorkshopsRequestsName.TextChanged += new System.EventHandler(this.WorkshopsRequests_TextChanged);
-            // 
-            // WorkshopsRequestsWorkshop
-            // 
-            this.WorkshopsRequestsWorkshop.Location = new System.Drawing.Point(784, 21);
-            this.WorkshopsRequestsWorkshop.Name = "WorkshopsRequestsWorkshop";
-            this.WorkshopsRequestsWorkshop.Size = new System.Drawing.Size(444, 29);
-            this.WorkshopsRequestsWorkshop.TabIndex = 13;
-            this.WorkshopsRequestsWorkshop.TextChanged += new System.EventHandler(this.WorkshopsRequests_TextChanged);
-            // 
-            // WorkshopsRequestsStatus
-            // 
-            this.WorkshopsRequestsStatus.AutoCompleteCustomSource.AddRange(new string[] {
-            "Не обработана",
-            "В работе",
-            "Исполнена частично",
-            "Исполнена полностью"});
-            this.WorkshopsRequestsStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.WorkshopsRequestsStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.WorkshopsRequestsStatus.Location = new System.Drawing.Point(784, 55);
-            this.WorkshopsRequestsStatus.Name = "WorkshopsRequestsStatus";
-            this.WorkshopsRequestsStatus.Size = new System.Drawing.Size(444, 29);
-            this.WorkshopsRequestsStatus.TabIndex = 14;
-            this.WorkshopsRequestsStatus.TextChanged += new System.EventHandler(this.WorkshopsRequests_TextChanged);
+            this.CreateRequestButtonCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CreateRequestButtonCreate.Enabled = false;
+            this.CreateRequestButtonCreate.Location = new System.Drawing.Point(1063, 6);
+            this.CreateRequestButtonCreate.Name = "CreateRequestButtonCreate";
+            this.CreateRequestButtonCreate.Size = new System.Drawing.Size(182, 44);
+            this.CreateRequestButtonCreate.TabIndex = 53;
+            this.CreateRequestButtonCreate.Text = "Создать";
+            this.CreateRequestButtonCreate.UseVisualStyleBackColor = true;
             // 
             // nomenclatureNumberDataGridViewTextBoxColumn
             // 
@@ -2749,100 +2320,100 @@
             this.groupsBindingSource.DataMember = "Groups";
             this.groupsBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
             // 
-            // receivingRequestIDDataGridViewTextBoxColumn1
+            // dataGridViewTextBoxColumn5
             // 
-            this.receivingRequestIDDataGridViewTextBoxColumn1.DataPropertyName = "ReceivingRequestID";
-            this.receivingRequestIDDataGridViewTextBoxColumn1.HeaderText = "ReceivingRequestID";
-            this.receivingRequestIDDataGridViewTextBoxColumn1.Name = "receivingRequestIDDataGridViewTextBoxColumn1";
-            this.receivingRequestIDDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.receivingRequestIDDataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "ReceivingRequestID";
+            this.dataGridViewTextBoxColumn5.HeaderText = "ReceivingRequestID";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Visible = false;
             // 
-            // nomenclatureNumberDataGridViewTextBoxColumn4
+            // dataGridViewTextBoxColumn6
             // 
-            this.nomenclatureNumberDataGridViewTextBoxColumn4.DataPropertyName = "NomenclatureNumber";
-            this.nomenclatureNumberDataGridViewTextBoxColumn4.HeaderText = "Номенклатурный номер";
-            this.nomenclatureNumberDataGridViewTextBoxColumn4.Name = "nomenclatureNumberDataGridViewTextBoxColumn4";
-            this.nomenclatureNumberDataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "NomenclatureNumber";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Номенклатурный номер";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
-            // fullNameDataGridViewTextBoxColumn1
+            // dataGridViewTextBoxColumn7
             // 
-            this.fullNameDataGridViewTextBoxColumn1.DataPropertyName = "FullName";
-            this.fullNameDataGridViewTextBoxColumn1.HeaderText = "Полное наименование";
-            this.fullNameDataGridViewTextBoxColumn1.Name = "fullNameDataGridViewTextBoxColumn1";
-            this.fullNameDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "FullName";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Полное наименование";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
-            // quantityDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn15
             // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Количество";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "Quantity";
+            this.dataGridViewTextBoxColumn15.HeaderText = "Количество";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
             // 
             // receivingRequestsInjBindingSource
             // 
             this.receivingRequestsInjBindingSource.DataMember = "ReceivingRequestsInj";
             this.receivingRequestsInjBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
             // 
-            // receivingRequestIDDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn16
             // 
-            this.receivingRequestIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.receivingRequestIDDataGridViewTextBoxColumn.DataPropertyName = "ReceivingRequestID";
-            this.receivingRequestIDDataGridViewTextBoxColumn.HeaderText = "Номер заявки";
-            this.receivingRequestIDDataGridViewTextBoxColumn.Name = "receivingRequestIDDataGridViewTextBoxColumn";
-            this.receivingRequestIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.receivingRequestIDDataGridViewTextBoxColumn.Width = 128;
+            this.dataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "ReceivingRequestID";
+            this.dataGridViewTextBoxColumn16.HeaderText = "Номер заявки";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            this.dataGridViewTextBoxColumn16.Width = 128;
             // 
-            // receivingRequestDateDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn17
             // 
-            this.receivingRequestDateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.receivingRequestDateDataGridViewTextBoxColumn.DataPropertyName = "ReceivingRequestDate";
-            this.receivingRequestDateDataGridViewTextBoxColumn.HeaderText = "Дата заявки";
-            this.receivingRequestDateDataGridViewTextBoxColumn.Name = "receivingRequestDateDataGridViewTextBoxColumn";
-            this.receivingRequestDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.receivingRequestDateDataGridViewTextBoxColumn.Width = 118;
+            this.dataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "ReceivingRequestDate";
+            this.dataGridViewTextBoxColumn17.HeaderText = "Дата заявки";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            this.dataGridViewTextBoxColumn17.Width = 118;
             // 
-            // workshopNumberNameDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn18
             // 
-            this.workshopNumberNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.workshopNumberNameDataGridViewTextBoxColumn.DataPropertyName = "WorkshopNumberName";
-            this.workshopNumberNameDataGridViewTextBoxColumn.HeaderText = "Цех-отправитель";
-            this.workshopNumberNameDataGridViewTextBoxColumn.Name = "workshopNumberNameDataGridViewTextBoxColumn";
-            this.workshopNumberNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "WorkshopNumberName";
+            this.dataGridViewTextBoxColumn18.HeaderText = "Цех-отправитель";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
             // 
-            // plannedDateDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn19
             // 
-            this.plannedDateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.plannedDateDataGridViewTextBoxColumn.DataPropertyName = "PlannedDate";
-            this.plannedDateDataGridViewTextBoxColumn.HeaderText = "Ожидаемая дата получения";
-            this.plannedDateDataGridViewTextBoxColumn.Name = "plannedDateDataGridViewTextBoxColumn";
-            this.plannedDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.plannedDateDataGridViewTextBoxColumn.Width = 227;
+            this.dataGridViewTextBoxColumn19.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "PlannedDate";
+            this.dataGridViewTextBoxColumn19.HeaderText = "Ожидаемая дата получения";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            this.dataGridViewTextBoxColumn19.Width = 227;
             // 
-            // receivingRequestTypeDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn20
             // 
-            this.receivingRequestTypeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.receivingRequestTypeDataGridViewTextBoxColumn.DataPropertyName = "ReceivingRequestType";
-            this.receivingRequestTypeDataGridViewTextBoxColumn.HeaderText = "Тип заявки";
-            this.receivingRequestTypeDataGridViewTextBoxColumn.Name = "receivingRequestTypeDataGridViewTextBoxColumn";
-            this.receivingRequestTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.receivingRequestTypeDataGridViewTextBoxColumn.Width = 107;
+            this.dataGridViewTextBoxColumn20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn20.DataPropertyName = "ReceivingRequestType";
+            this.dataGridViewTextBoxColumn20.HeaderText = "Тип заявки";
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            this.dataGridViewTextBoxColumn20.ReadOnly = true;
+            this.dataGridViewTextBoxColumn20.Width = 107;
             // 
-            // reasonDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn21
             // 
-            this.reasonDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.reasonDataGridViewTextBoxColumn.DataPropertyName = "Reason";
-            this.reasonDataGridViewTextBoxColumn.HeaderText = "Причина";
-            this.reasonDataGridViewTextBoxColumn.Name = "reasonDataGridViewTextBoxColumn";
-            this.reasonDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridViewTextBoxColumn21.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn21.DataPropertyName = "Reason";
+            this.dataGridViewTextBoxColumn21.HeaderText = "Причина";
+            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+            this.dataGridViewTextBoxColumn21.ReadOnly = true;
             // 
-            // statusDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn22
             // 
-            this.statusDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Статус";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-            this.statusDataGridViewTextBoxColumn.Width = 87;
+            this.dataGridViewTextBoxColumn22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn22.DataPropertyName = "Status";
+            this.dataGridViewTextBoxColumn22.HeaderText = "Статус";
+            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
+            this.dataGridViewTextBoxColumn22.ReadOnly = true;
+            this.dataGridViewTextBoxColumn22.Width = 87;
             // 
             // nomenclatureNumberDataGridViewTextBoxColumn3
             // 
@@ -3156,6 +2727,271 @@
             // 
             this.receivingRequestsContentInjTableAdapter.ClearBeforeFill = true;
             // 
+            // toolaccountingDataSet1
+            // 
+            this.toolaccountingDataSet1.DataSetName = "TOOLACCOUNTINGDataSet";
+            this.toolaccountingDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // RequestsListStatus
+            // 
+            this.RequestsListStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.RequestsListStatus.AutoCompleteCustomSource.AddRange(new string[] {
+            "Не обработана",
+            "В работе",
+            "Исполнена частично",
+            "Исполнена полностью"});
+            this.RequestsListStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.RequestsListStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.RequestsListStatus.Location = new System.Drawing.Point(616, 21);
+            this.RequestsListStatus.Name = "RequestsListStatus";
+            this.RequestsListStatus.Size = new System.Drawing.Size(429, 29);
+            this.RequestsListStatus.TabIndex = 20;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox10.Controls.Add(this.StatementsProvider);
+            this.groupBox10.Controls.Add(this.label47);
+            this.groupBox10.Controls.Add(this.StatementsDate);
+            this.groupBox10.Controls.Add(this.label46);
+            this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox10.Location = new System.Drawing.Point(7, 7);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(1232, 63);
+            this.groupBox10.TabIndex = 36;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Поиск";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label46.Location = new System.Drawing.Point(6, 30);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(218, 20);
+            this.label46.TabIndex = 7;
+            this.label46.Text = "Наименование поставщика";
+            // 
+            // StatementsDate
+            // 
+            this.StatementsDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.StatementsDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.StatementsDate.Location = new System.Drawing.Point(805, 21);
+            this.StatementsDate.Name = "StatementsDate";
+            this.StatementsDate.Size = new System.Drawing.Size(421, 29);
+            this.StatementsDate.TabIndex = 18;
+            // 
+            // label47
+            // 
+            this.label47.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label47.Location = new System.Drawing.Point(663, 30);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(136, 20);
+            this.label47.TabIndex = 19;
+            this.label47.Text = "Дата ведомости";
+            // 
+            // StatementsProvider
+            // 
+            this.StatementsProvider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.StatementsProvider.Location = new System.Drawing.Point(230, 21);
+            this.StatementsProvider.Name = "StatementsProvider";
+            this.StatementsProvider.Size = new System.Drawing.Size(421, 29);
+            this.StatementsProvider.TabIndex = 24;
+            // 
+            // StatementsStatementsTable
+            // 
+            this.StatementsStatementsTable.AllowUserToAddRows = false;
+            this.StatementsStatementsTable.AllowUserToDeleteRows = false;
+            this.StatementsStatementsTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.StatementsStatementsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.StatementsStatementsTable.Location = new System.Drawing.Point(7, 99);
+            this.StatementsStatementsTable.Name = "StatementsStatementsTable";
+            this.StatementsStatementsTable.ReadOnly = true;
+            this.StatementsStatementsTable.Size = new System.Drawing.Size(1044, 267);
+            this.StatementsStatementsTable.TabIndex = 38;
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label51.Location = new System.Drawing.Point(7, 73);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(199, 24);
+            this.label51.TabIndex = 39;
+            this.label51.Text = "Ведомости поставки";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label50.Location = new System.Drawing.Point(7, 369);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(268, 24);
+            this.label50.TabIndex = 40;
+            this.label50.Text = "Состав ведомости поставки";
+            // 
+            // StatementsContentTable
+            // 
+            this.StatementsContentTable.AllowUserToAddRows = false;
+            this.StatementsContentTable.AllowUserToDeleteRows = false;
+            this.StatementsContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.StatementsContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.StatementsContentTable.Location = new System.Drawing.Point(7, 396);
+            this.StatementsContentTable.Name = "StatementsContentTable";
+            this.StatementsContentTable.ReadOnly = true;
+            this.StatementsContentTable.Size = new System.Drawing.Size(1044, 191);
+            this.StatementsContentTable.TabIndex = 37;
+            // 
+            // StatementsButtonToInvoices
+            // 
+            this.StatementsButtonToInvoices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StatementsButtonToInvoices.Enabled = false;
+            this.StatementsButtonToInvoices.Location = new System.Drawing.Point(1057, 311);
+            this.StatementsButtonToInvoices.Name = "StatementsButtonToInvoices";
+            this.StatementsButtonToInvoices.Size = new System.Drawing.Size(182, 55);
+            this.StatementsButtonToInvoices.TabIndex = 42;
+            this.StatementsButtonToInvoices.Text = "Перейти к накладным";
+            this.StatementsButtonToInvoices.UseVisualStyleBackColor = true;
+            // 
+            // StatementsButtonCreate
+            // 
+            this.StatementsButtonCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StatementsButtonCreate.Location = new System.Drawing.Point(1057, 99);
+            this.StatementsButtonCreate.Name = "StatementsButtonCreate";
+            this.StatementsButtonCreate.Size = new System.Drawing.Size(182, 44);
+            this.StatementsButtonCreate.TabIndex = 43;
+            this.StatementsButtonCreate.Text = "Создать";
+            this.StatementsButtonCreate.UseVisualStyleBackColor = true;
+            // 
+            // StatementsButtonAlter
+            // 
+            this.StatementsButtonAlter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StatementsButtonAlter.Enabled = false;
+            this.StatementsButtonAlter.Location = new System.Drawing.Point(1057, 149);
+            this.StatementsButtonAlter.Name = "StatementsButtonAlter";
+            this.StatementsButtonAlter.Size = new System.Drawing.Size(182, 44);
+            this.StatementsButtonAlter.TabIndex = 44;
+            this.StatementsButtonAlter.Text = "Изменить";
+            this.StatementsButtonAlter.UseVisualStyleBackColor = true;
+            // 
+            // StatementsButtonDelete
+            // 
+            this.StatementsButtonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StatementsButtonDelete.Enabled = false;
+            this.StatementsButtonDelete.Location = new System.Drawing.Point(1057, 199);
+            this.StatementsButtonDelete.Name = "StatementsButtonDelete";
+            this.StatementsButtonDelete.Size = new System.Drawing.Size(182, 44);
+            this.StatementsButtonDelete.TabIndex = 45;
+            this.StatementsButtonDelete.Text = "Удалить";
+            this.StatementsButtonDelete.UseVisualStyleBackColor = true;
+            // 
+            // Statements
+            // 
+            this.Statements.Controls.Add(this.StatementsButtonDelete);
+            this.Statements.Controls.Add(this.StatementsButtonAlter);
+            this.Statements.Controls.Add(this.StatementsButtonCreate);
+            this.Statements.Controls.Add(this.StatementsButtonToInvoices);
+            this.Statements.Controls.Add(this.StatementsContentTable);
+            this.Statements.Controls.Add(this.label50);
+            this.Statements.Controls.Add(this.label51);
+            this.Statements.Controls.Add(this.StatementsStatementsTable);
+            this.Statements.Controls.Add(this.groupBox10);
+            this.Statements.Location = new System.Drawing.Point(4, 29);
+            this.Statements.Name = "Statements";
+            this.Statements.Size = new System.Drawing.Size(1252, 600);
+            this.Statements.TabIndex = 2;
+            this.Statements.Text = "Ведомости поставки";
+            this.Statements.UseVisualStyleBackColor = true;
+            // 
+            // InvoicesButtonDelete
+            // 
+            this.InvoicesButtonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.InvoicesButtonDelete.Enabled = false;
+            this.InvoicesButtonDelete.Location = new System.Drawing.Point(1064, 205);
+            this.InvoicesButtonDelete.Name = "InvoicesButtonDelete";
+            this.InvoicesButtonDelete.Size = new System.Drawing.Size(182, 44);
+            this.InvoicesButtonDelete.TabIndex = 50;
+            this.InvoicesButtonDelete.Text = "Удалить";
+            this.InvoicesButtonDelete.UseVisualStyleBackColor = true;
+            // 
+            // InvoicesButtonAlter
+            // 
+            this.InvoicesButtonAlter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.InvoicesButtonAlter.Enabled = false;
+            this.InvoicesButtonAlter.Location = new System.Drawing.Point(1064, 155);
+            this.InvoicesButtonAlter.Name = "InvoicesButtonAlter";
+            this.InvoicesButtonAlter.Size = new System.Drawing.Size(182, 44);
+            this.InvoicesButtonAlter.TabIndex = 49;
+            this.InvoicesButtonAlter.Text = "Изменить";
+            this.InvoicesButtonAlter.UseVisualStyleBackColor = true;
+            // 
+            // InvoicesButtonEnter
+            // 
+            this.InvoicesButtonEnter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.InvoicesButtonEnter.Location = new System.Drawing.Point(1064, 105);
+            this.InvoicesButtonEnter.Name = "InvoicesButtonEnter";
+            this.InvoicesButtonEnter.Size = new System.Drawing.Size(182, 44);
+            this.InvoicesButtonEnter.TabIndex = 48;
+            this.InvoicesButtonEnter.Text = "Внести";
+            this.InvoicesButtonEnter.UseVisualStyleBackColor = true;
+            // 
+            // InvoicesContentTable
+            // 
+            this.InvoicesContentTable.AllowUserToAddRows = false;
+            this.InvoicesContentTable.AllowUserToDeleteRows = false;
+            this.InvoicesContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.InvoicesContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.InvoicesContentTable.Location = new System.Drawing.Point(7, 402);
+            this.InvoicesContentTable.Name = "InvoicesContentTable";
+            this.InvoicesContentTable.ReadOnly = true;
+            this.InvoicesContentTable.Size = new System.Drawing.Size(1044, 191);
+            this.InvoicesContentTable.TabIndex = 51;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label15.Location = new System.Drawing.Point(7, 375);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(268, 24);
+            this.label15.TabIndex = 54;
+            this.label15.Text = "Состав товарных накладных";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label26.Location = new System.Drawing.Point(7, 79);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(202, 24);
+            this.label26.TabIndex = 53;
+            this.label26.Text = "Товарные накладные";
+            // 
+            // InvoicesInvoicesTable
+            // 
+            this.InvoicesInvoicesTable.AllowUserToAddRows = false;
+            this.InvoicesInvoicesTable.AllowUserToDeleteRows = false;
+            this.InvoicesInvoicesTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.InvoicesInvoicesTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.InvoicesInvoicesTable.Location = new System.Drawing.Point(7, 105);
+            this.InvoicesInvoicesTable.Name = "InvoicesInvoicesTable";
+            this.InvoicesInvoicesTable.ReadOnly = true;
+            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(1044, 267);
+            this.InvoicesInvoicesTable.TabIndex = 52;
+            // 
             // Inj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3184,15 +3020,10 @@
             this.WorkshopsRequests.ResumeLayout(false);
             this.WorkshopsRequests.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WorkshopsRequestsContentTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsInjReceivingRequestsContentInjBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WorkshopsRequestsRequestsTable)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            this.AcceptedWorkshopsRequests.ResumeLayout(false);
-            this.AcceptedWorkshopsRequests.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AcceptedWorkshopsRequestsContentTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AcceptedWorkshopsRequestsRequestsTable)).EndInit();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
             this.CreateRequest.ResumeLayout(false);
             this.CreateRequest.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CreateRequestContentTable)).EndInit();
@@ -3204,16 +3035,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.RequestsListContentTable)).EndInit();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
-            this.Statements.ResumeLayout(false);
-            this.Statements.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StatementsContentTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StatementsStatementsTable)).EndInit();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
             this.Invoices.ResumeLayout(false);
             this.Invoices.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.InvoicesContentTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.InvoicesInvoicesTable)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.History.ResumeLayout(false);
@@ -3238,9 +3061,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.OstatkiTable)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsInjReceivingRequestsContentInjBindingSource)).EndInit();
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsInjReceivingRequestsContentInjBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nomenclatureViewBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource)).EndInit();
@@ -3250,6 +3073,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.nomenclatureLogsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.balancesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.analogToolsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toolaccountingDataSet1)).EndInit();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StatementsStatementsTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StatementsContentTable)).EndInit();
+            this.Statements.ResumeLayout(false);
+            this.Statements.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoicesContentTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InvoicesInvoicesTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3333,38 +3165,7 @@
         private System.Windows.Forms.Button ProvidersButtonCreate;
         private System.Windows.Forms.TabControl InjLevel2;
         private System.Windows.Forms.TabPage WorkshopsRequests;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView WorkshopsRequestsContentTable;
-        private System.Windows.Forms.Button WorkshopsRequestsButtonConsider;
-        private System.Windows.Forms.DataGridView WorkshopsRequestsRequestsTable;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.MaskedTextBox WorkshopsRequestsNumber;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.TabPage AcceptedWorkshopsRequests;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.DataGridView AcceptedWorkshopsRequestsContentTable;
-        private System.Windows.Forms.DataGridView AcceptedWorkshopsRequestsRequestsTable;
-        private System.Windows.Forms.Button AcceptedWorkshopsRequestsDelete;
-        private System.Windows.Forms.Button AcceptedWorkshopsRequestsButtonAlter;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.ComboBox AcceptedWorkshopsRequestsDesi;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.ComboBox AcceptedWorkshopsRequestsStatus;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.ComboBox AcceptedWorkshopsRequestsWorkshop;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.MaskedTextBox AcceptedWorkshopsRequestsNumber;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.ComboBox AcceptedWorkshopsRequestsName;
-        private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TabPage CreateRequest;
-        private System.Windows.Forms.Button CreateRequestDelete;
-        private System.Windows.Forms.Button CreateRequestButtonAdd;
         private System.Windows.Forms.TextBox CreateRequestDate;
         private System.Windows.Forms.TextBox CreateRequestNumber;
         private System.Windows.Forms.Label label38;
@@ -3377,34 +3178,12 @@
         private System.Windows.Forms.DataGridView RequestsListPurchaseRequestsTable;
         private System.Windows.Forms.DataGridView RequestsListContentTable;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.ComboBox RequestsListStatus;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.DateTimePicker RequestsListEnd;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.DateTimePicker RequestsListStart;
-        private System.Windows.Forms.TabPage Statements;
-        private System.Windows.Forms.Button StatementsButtonToInvoices;
-        private System.Windows.Forms.Button StatementsButtonCreate;
-        private System.Windows.Forms.DataGridView StatementsContentTable;
-        private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.DataGridView StatementsStatementsTable;
-        private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.ComboBox StatementsRequestNumber;
-        private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.DateTimePicker StatementsRequestDate;
-        private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.DateTimePicker StatementsDate;
-        private System.Windows.Forms.ComboBox StatementsProvider;
-        private System.Windows.Forms.Label label46;
         private System.Windows.Forms.TabPage Invoices;
-        private System.Windows.Forms.Button InvoicesButtonEnter;
-        private System.Windows.Forms.DataGridView InvoicesContentTable;
-        private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.DataGridView InvoicesInvoicesTable;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.Label label55;
         private System.Windows.Forms.DateTimePicker InvoicesStatementDate;
@@ -3421,7 +3200,6 @@
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.DataGridView CreateRequestContentTable;
         private System.Windows.Forms.DataGridView CreateRequestRequestsTable;
-        private System.Windows.Forms.Button CreateRequestButtonCreate;
         private System.Windows.Forms.Button RequestsListButtonAlter;
         private System.Windows.Forms.Button RequestsListButtonDelete;
         private TOOLACCOUNTINGDataSet tOOLACCOUNTINGDataSet;
@@ -3506,19 +3284,59 @@
         private TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsInjTableAdapter receivingRequestsInjTableAdapter;
         private System.Windows.Forms.BindingSource receivingRequestsInjReceivingRequestsContentInjBindingSource;
         private TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentInjTableAdapter receivingRequestsContentInjTableAdapter;
+        private System.Windows.Forms.BindingSource receivingRequestsInjReceivingRequestsContentInjBindingSource1;
+        private System.Windows.Forms.DataGridView WorkshopsRequestsContentTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridView WorkshopsRequestsRequestsTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.TextBox WorkshopsRequestsStatus;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label31;
         private System.Windows.Forms.TextBox WorkshopsRequestsWorkshop;
-        private System.Windows.Forms.TextBox WorkshopsRequestsName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn receivingRequestIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn receivingRequestDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn workshopNumberNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn plannedDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn receivingRequestTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reasonDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn receivingRequestIDDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private TOOLACCOUNTINGDataSet toolaccountingDataSet1;
+        private System.Windows.Forms.Button CreateRequestButtonAdd;
+        private System.Windows.Forms.Button CreateRequestButtonDelete;
+        private System.Windows.Forms.Button CreateRequestButtonCreate;
+        private System.Windows.Forms.TextBox RequestsListStatus;
+        private System.Windows.Forms.TabPage Statements;
+        private System.Windows.Forms.Button StatementsButtonDelete;
+        private System.Windows.Forms.Button StatementsButtonAlter;
+        private System.Windows.Forms.Button StatementsButtonCreate;
+        private System.Windows.Forms.Button StatementsButtonToInvoices;
+        private System.Windows.Forms.DataGridView StatementsContentTable;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.DataGridView StatementsStatementsTable;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.TextBox StatementsProvider;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.DateTimePicker StatementsDate;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Button InvoicesButtonDelete;
+        private System.Windows.Forms.Button InvoicesButtonAlter;
+        private System.Windows.Forms.Button InvoicesButtonEnter;
+        private System.Windows.Forms.DataGridView InvoicesContentTable;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.DataGridView InvoicesInvoicesTable;
     }
 }
