@@ -60,6 +60,8 @@ namespace Система_учёта_и_приобретения_инструме
                 FillFullName();
             }
 
+            NomenFormUsage.SelectedIndex = 0;
+
             GroupsTableAdapter groupsTableAdapter = new GroupsTableAdapter();
             NomenclatureViewTableAdapter nomenclatureViewTableAdapter = new NomenclatureViewTableAdapter();
 
@@ -114,14 +116,6 @@ namespace Система_учёта_и_приобретения_инструме
         private void NomenFormGroup_Leave(object sender, EventArgs e)
         {
             FindInSource(sender as System.Windows.Forms.ComboBox, groupSource);
-            //string range = toolAccounting.Groups.Where(x => x.Name == NomenFormGroup.Text).Select(x => x.RangeStart).FirstOrDefault();
-            //List<string> numbers = toolAccounting.Nomenclature.Where(x=> x.NomenclatureNumber.Substring(0,4) == range).Select(x=>x.NomenclatureNumber).ToList();
-            //string number = 
-            //    Enumerable.Range(
-            //        int.Parse(range + "00001"), 99999)
-            //    .Select(x=>x.ToString("000000000"))
-            //    .FirstOrDefault(x => !numbers.Contains(x));
-            //NomenFormGroup.Text = number;
             if (string.IsNullOrEmpty(NomenFormGroup.Text)) return;
 
             string range = toolAccounting.Groups
@@ -229,14 +223,15 @@ namespace Система_учёта_и_приобретения_инструме
                 var newRow = toolAccounting.Nomenclature.NewNomenclatureRow();
                 FillFields(newRow);
                 toolAccounting.Nomenclature.Rows.Add(newRow);
-                UpdateTable();
                 Logging(true, newRow);
+                UpdateTable();
                 UpdateLogs();
             }
-            catch
+            catch(Exception ex)
             {
                 toolAccounting.Nomenclature.RejectChanges();
                 toolAccounting.NomenclatureLogs.RejectChanges();
+                throw ex;
             }
         }
 
@@ -260,8 +255,8 @@ namespace Система_учёта_и_приобретения_инструме
                 if (!editRow.IsProducerNull()) alterRow.Producer = editRow.Producer;
 
                 FillFields(editRow);
-                UpdateTable();
                 Logging(false, editRow, alterRow);
+                UpdateTable();
                 UpdateLogs();
             }
             catch
@@ -302,26 +297,51 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Logging(bool isAdd, TOOLACCOUNTINGDataSet.NomenclatureRow row, TOOLACCOUNTINGDataSet.NomenclatureRow oldRow = null)
         {
-            var table = toolAccounting.Nomenclature;
-            for (int i = 1; i < table.Columns.Count; i++) //ИСПРАВИТЬ
+            var table = toolAccounting.Nomenclature; // Получаем таблицу заранее
+
+            for (int i = 1; i < table.Columns.Count; i++) // Пропускаем первый столбец (например, ID)
             {
-                if (isAdd && string.IsNullOrEmpty(row[i].ToString())) continue;
-                if (!isAdd && row[i] == oldRow[i]) continue;
+
+                // Проверяем, доступны ли обе строки для сравнения
+                bool currentIsNull = row.IsNull(i);
+                bool oldIsNull = oldRow?.IsNull(i) ?? true;
+
+                // Получаем значение текущей строки
+                string currentValue = currentIsNull ? null : row[i].ToString();
+
+                // Если это новая запись — пропускаем пустые поля
+                if (isAdd && string.IsNullOrEmpty(currentValue))
+                    continue;
+
+                // Если это изменение — проверяем разницу с предыдущим значением
+                if (!isAdd && oldRow != null)
+                {
+                    string previousValue = oldIsNull ? null : oldRow[i].ToString();
+
+                    // Если значения совпадают — пропускаем
+                    if (currentIsNull == oldIsNull && string.Equals(currentValue, previousValue))
+                        continue;
+                }
+
+                // Создаём лог
                 var log = toolAccounting.NomenclatureLogs.NewNomenclatureLogsRow();
+
                 log.NomenclatureNumber = row.NomenclatureNumber;
-                string columnName = row.Table.Columns[i].ColumnName;
+
+                string columnName = table.Columns[i].ColumnName;
                 string columnHeader = FieldName(columnName);
                 if (columnHeader == null) continue;
                 log.FieldName = columnHeader;
 
                 if (isAdd) log.OldValue = null;
-                else log.OldValue = oldRow[i].ToString();
+                else log.OldValue = oldIsNull ? null : oldRow[i].ToString();
 
-                log.NewValue = row[i].ToString();
+                log.NewValue = currentValue;
                 log.ChangedDate = DateTime.Now;
                 log.Executor = Environment.UserName;
 
-                toolAccounting.NomenclatureLogs.Rows.Add(log);
+                // Добавляем лог в таблицу
+                toolAccounting.NomenclatureLogs.AddNomenclatureLogsRow(log);
             }
         }
         private void UpdateLogs()
@@ -351,13 +371,14 @@ namespace Система_учёта_и_приобретения_инструме
         private void ClearForm()
         {
             NomenFormGroup.Text = string.Empty;
-            //NomenFormNumber.Text = string.Empty;
+            NomenFormNumber.Text = string.Empty;
             NomenFormOboz.Text = string.Empty;
             NomenFormUnits.Text = string.Empty;
             NomenFormSize.Text = string.Empty;
             NomenFormMaterial.Text = string.Empty;
             NomenFormDocument.Text = string.Empty;
             NomenFormProducer.Text = string.Empty;
+            NomenFormFullName.Text = string.Empty;
             NomenFormUsage.SelectedIndex = 0;
             NomenFormOstatok.Value = 0;
         }
@@ -376,6 +397,32 @@ namespace Система_учёта_и_приобретения_инструме
         private void NomenFormClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void NomenForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            NomenFormClose.Focus();
+            if (!AllFieldsEmpty())
+            {
+                DialogResult result = MessageBox.Show("Вы уверены, что закрыть форму? Все несохранённые данные будут потеряны.", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.No) return;
+            }
+        }
+        private bool AllFieldsEmpty()
+        {
+            return string.IsNullOrEmpty(NomenFormGroup.Text) &&
+            string.IsNullOrEmpty(NomenFormNumber.Text) &&
+            string.IsNullOrEmpty(NomenFormOboz.Text) &&
+            string.IsNullOrEmpty(NomenFormUnits.Text) &&
+            string.IsNullOrEmpty(NomenFormSize.Text) &&
+            string.IsNullOrEmpty(NomenFormMaterial.Text) &&
+            string.IsNullOrEmpty(NomenFormDocument.Text) &&
+            string.IsNullOrEmpty(NomenFormProducer.Text) &&
+            string.IsNullOrEmpty(NomenFormFullName.Text) &&
+            string.IsNullOrEmpty(NomenFormUnits.Text) &&
+            NomenFormUsage.SelectedIndex <= 0 &&
+            NomenFormOstatok.Value == 0;
+
         }
     }
 }

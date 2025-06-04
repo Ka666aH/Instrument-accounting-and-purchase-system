@@ -389,6 +389,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NomenForm";
             this.Text = "Форма номенклатуры – Информационная система учета и приобретения инструмента";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NomenForm_FormClosing);
             this.Load += new System.EventHandler(this.NomenForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NomenFormOstatok)).EndInit();
             this.ResumeLayout(false);

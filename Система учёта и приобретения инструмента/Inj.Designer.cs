@@ -52,6 +52,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.NomenTable = new System.Windows.Forms.DataGridView();
+            this.nomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.designationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dimensionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuttingMaterialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.regulatoryDocDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.producerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usageFlagDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.minStockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomenclatureViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
             this.InjGroupsPage = new System.Windows.Forms.TabPage();
@@ -269,17 +280,6 @@
             this.analogToolsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.analogToolsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.AnalogToolsTableAdapter();
             this.nomenclatureViewTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.NomenclatureViewTableAdapter();
-            this.nomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.designationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dimensionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuttingMaterialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.regulatoryDocDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.producerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usageFlagDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.minStockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InjLevel1.SuspendLayout();
             this.InjNomenPage.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -387,7 +387,7 @@
             this.NomenButtonDelete.Location = new System.Drawing.Point(1057, 247);
             this.NomenButtonDelete.Name = "NomenButtonDelete";
             this.NomenButtonDelete.Size = new System.Drawing.Size(182, 44);
-            this.NomenButtonDelete.TabIndex = 16;
+            this.NomenButtonDelete.TabIndex = 3;
             this.NomenButtonDelete.Text = "Удалить";
             this.NomenButtonDelete.UseVisualStyleBackColor = true;
             this.NomenButtonDelete.Click += new System.EventHandler(this.NomenButtonDelete_Click);
@@ -400,7 +400,7 @@
             this.NomenButtonAlter.Location = new System.Drawing.Point(1057, 197);
             this.NomenButtonAlter.Name = "NomenButtonAlter";
             this.NomenButtonAlter.Size = new System.Drawing.Size(182, 44);
-            this.NomenButtonAlter.TabIndex = 15;
+            this.NomenButtonAlter.TabIndex = 2;
             this.NomenButtonAlter.Text = "Изменить";
             this.NomenButtonAlter.UseVisualStyleBackColor = true;
             this.NomenButtonAlter.Click += new System.EventHandler(this.NomenButtonAlter_Click);
@@ -412,7 +412,7 @@
             this.NomenButtonCreate.Location = new System.Drawing.Point(1057, 147);
             this.NomenButtonCreate.Name = "NomenButtonCreate";
             this.NomenButtonCreate.Size = new System.Drawing.Size(182, 44);
-            this.NomenButtonCreate.TabIndex = 14;
+            this.NomenButtonCreate.TabIndex = 1;
             this.NomenButtonCreate.Text = "Создать";
             this.NomenButtonCreate.UseVisualStyleBackColor = true;
             this.NomenButtonCreate.Click += new System.EventHandler(this.NomenButtonCreate_Click);
@@ -425,7 +425,7 @@
             this.NomenButtonLog.Location = new System.Drawing.Point(1057, 571);
             this.NomenButtonLog.Name = "NomenButtonLog";
             this.NomenButtonLog.Size = new System.Drawing.Size(182, 44);
-            this.NomenButtonLog.TabIndex = 13;
+            this.NomenButtonLog.TabIndex = 6;
             this.NomenButtonLog.Text = "Корректировки";
             this.NomenButtonLog.UseVisualStyleBackColor = true;
             this.NomenButtonLog.Click += new System.EventHandler(this.NomenButtonLog_Click);
@@ -438,7 +438,7 @@
             this.NomenButtonHistory.Location = new System.Drawing.Point(1057, 521);
             this.NomenButtonHistory.Name = "NomenButtonHistory";
             this.NomenButtonHistory.Size = new System.Drawing.Size(182, 44);
-            this.NomenButtonHistory.TabIndex = 12;
+            this.NomenButtonHistory.TabIndex = 5;
             this.NomenButtonHistory.Text = "История поступлений";
             this.NomenButtonHistory.UseVisualStyleBackColor = true;
             this.NomenButtonHistory.Click += new System.EventHandler(this.NomenButtonHistory_Click);
@@ -451,7 +451,7 @@
             this.NomenButtonOstatki.Location = new System.Drawing.Point(1057, 471);
             this.NomenButtonOstatki.Name = "NomenButtonOstatki";
             this.NomenButtonOstatki.Size = new System.Drawing.Size(182, 44);
-            this.NomenButtonOstatki.TabIndex = 11;
+            this.NomenButtonOstatki.TabIndex = 4;
             this.NomenButtonOstatki.Text = "Остатки";
             this.NomenButtonOstatki.UseVisualStyleBackColor = true;
             this.NomenButtonOstatki.Click += new System.EventHandler(this.NomenButtonOstatki_Click);
@@ -488,7 +488,7 @@
             this.NomenNumber.Mask = "000000000";
             this.NomenNumber.Name = "NomenNumber";
             this.NomenNumber.Size = new System.Drawing.Size(400, 29);
-            this.NomenNumber.TabIndex = 18;
+            this.NomenNumber.TabIndex = 7;
             this.NomenNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.NomenNumber.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
             // 
@@ -499,7 +499,7 @@
             this.NomenName.Location = new System.Drawing.Point(209, 56);
             this.NomenName.Name = "NomenName";
             this.NomenName.Size = new System.Drawing.Size(400, 29);
-            this.NomenName.TabIndex = 17;
+            this.NomenName.TabIndex = 8;
             this.NomenName.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
             // 
             // NomenUsage
@@ -514,7 +514,7 @@
             this.NomenUsage.Location = new System.Drawing.Point(826, 89);
             this.NomenUsage.Name = "NomenUsage";
             this.NomenUsage.Size = new System.Drawing.Size(400, 32);
-            this.NomenUsage.TabIndex = 8;
+            this.NomenUsage.TabIndex = 12;
             this.NomenUsage.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
             // 
             // label4
@@ -545,7 +545,7 @@
             this.NomenSize.Location = new System.Drawing.Point(209, 92);
             this.NomenSize.Name = "NomenSize";
             this.NomenSize.Size = new System.Drawing.Size(400, 29);
-            this.NomenSize.TabIndex = 7;
+            this.NomenSize.TabIndex = 9;
             this.NomenSize.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
             // 
             // label5
@@ -575,7 +575,7 @@
             this.NomenProducer.Location = new System.Drawing.Point(826, 56);
             this.NomenProducer.Name = "NomenProducer";
             this.NomenProducer.Size = new System.Drawing.Size(400, 29);
-            this.NomenProducer.TabIndex = 4;
+            this.NomenProducer.TabIndex = 11;
             this.NomenProducer.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
             // 
             // NomenMaterial
@@ -584,7 +584,7 @@
             this.NomenMaterial.Location = new System.Drawing.Point(826, 21);
             this.NomenMaterial.Name = "NomenMaterial";
             this.NomenMaterial.Size = new System.Drawing.Size(400, 29);
-            this.NomenMaterial.TabIndex = 5;
+            this.NomenMaterial.TabIndex = 10;
             this.NomenMaterial.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
             // 
             // label2
@@ -635,7 +635,7 @@
             this.NomenTable.RowHeadersVisible = false;
             this.NomenTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.NomenTable.Size = new System.Drawing.Size(1035, 468);
-            this.NomenTable.TabIndex = 10;
+            this.NomenTable.TabIndex = 13;
             this.NomenTable.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.NomenTable_CellBeginEdit);
             this.NomenTable.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.NomenTable_CellValidating);
             this.NomenTable.CurrentCellChanged += new System.EventHandler(this.NomenTable_CurrentCellChanged);
@@ -643,6 +643,94 @@
             this.NomenTable.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.NomenTable_RowValidated);
             this.NomenTable.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.NomenTable_RowValidating);
             this.NomenTable.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.NomenTable_UserDeletingRow);
+            // 
+            // nomenclatureNumberDataGridViewTextBoxColumn
+            // 
+            this.nomenclatureNumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.nomenclatureNumberDataGridViewTextBoxColumn.DataPropertyName = "NomenclatureNumber";
+            this.nomenclatureNumberDataGridViewTextBoxColumn.HeaderText = "Номенклатурный номер";
+            this.nomenclatureNumberDataGridViewTextBoxColumn.Name = "nomenclatureNumberDataGridViewTextBoxColumn";
+            this.nomenclatureNumberDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Наименование";
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn1.Width = 147;
+            // 
+            // designationDataGridViewTextBoxColumn
+            // 
+            this.designationDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.designationDataGridViewTextBoxColumn.DataPropertyName = "Designation";
+            this.designationDataGridViewTextBoxColumn.HeaderText = "Обозначение";
+            this.designationDataGridViewTextBoxColumn.Name = "designationDataGridViewTextBoxColumn";
+            this.designationDataGridViewTextBoxColumn.Width = 135;
+            // 
+            // unitDataGridViewTextBoxColumn
+            // 
+            this.unitDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
+            this.unitDataGridViewTextBoxColumn.HeaderText = "Единицы измерения";
+            this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
+            this.unitDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // dimensionsDataGridViewTextBoxColumn
+            // 
+            this.dimensionsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dimensionsDataGridViewTextBoxColumn.DataPropertyName = "Dimensions";
+            this.dimensionsDataGridViewTextBoxColumn.HeaderText = "Типоразмеры";
+            this.dimensionsDataGridViewTextBoxColumn.Name = "dimensionsDataGridViewTextBoxColumn";
+            this.dimensionsDataGridViewTextBoxColumn.Width = 136;
+            // 
+            // cuttingMaterialDataGridViewTextBoxColumn
+            // 
+            this.cuttingMaterialDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.cuttingMaterialDataGridViewTextBoxColumn.DataPropertyName = "CuttingMaterial";
+            this.cuttingMaterialDataGridViewTextBoxColumn.HeaderText = "Материал режущей части";
+            this.cuttingMaterialDataGridViewTextBoxColumn.Name = "cuttingMaterialDataGridViewTextBoxColumn";
+            this.cuttingMaterialDataGridViewTextBoxColumn.Width = 169;
+            // 
+            // regulatoryDocDataGridViewTextBoxColumn
+            // 
+            this.regulatoryDocDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.regulatoryDocDataGridViewTextBoxColumn.DataPropertyName = "RegulatoryDoc";
+            this.regulatoryDocDataGridViewTextBoxColumn.HeaderText = "Нормативная документация";
+            this.regulatoryDocDataGridViewTextBoxColumn.Name = "regulatoryDocDataGridViewTextBoxColumn";
+            // 
+            // producerDataGridViewTextBoxColumn
+            // 
+            this.producerDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.producerDataGridViewTextBoxColumn.DataPropertyName = "Producer";
+            this.producerDataGridViewTextBoxColumn.HeaderText = "Производитель";
+            this.producerDataGridViewTextBoxColumn.Name = "producerDataGridViewTextBoxColumn";
+            this.producerDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // fullNameDataGridViewTextBoxColumn
+            // 
+            this.fullNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
+            this.fullNameDataGridViewTextBoxColumn.HeaderText = "Полное наименование";
+            this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
+            this.fullNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // usageFlagDataGridViewTextBoxColumn
+            // 
+            this.usageFlagDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.usageFlagDataGridViewTextBoxColumn.DataPropertyName = "UsageFlag";
+            this.usageFlagDataGridViewTextBoxColumn.HeaderText = "Признак использования";
+            this.usageFlagDataGridViewTextBoxColumn.Name = "usageFlagDataGridViewTextBoxColumn";
+            this.usageFlagDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // minStockDataGridViewTextBoxColumn
+            // 
+            this.minStockDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.minStockDataGridViewTextBoxColumn.DataPropertyName = "MinStock";
+            this.minStockDataGridViewTextBoxColumn.HeaderText = "Неснижаемый остаток";
+            this.minStockDataGridViewTextBoxColumn.Name = "minStockDataGridViewTextBoxColumn";
+            this.minStockDataGridViewTextBoxColumn.Width = 90;
             // 
             // nomenclatureViewBindingSource
             // 
@@ -1022,7 +1110,7 @@
             this.AcceptedWorkshopsRequestsContentTable.Location = new System.Drawing.Point(7, 397);
             this.AcceptedWorkshopsRequestsContentTable.Name = "AcceptedWorkshopsRequestsContentTable";
             this.AcceptedWorkshopsRequestsContentTable.ReadOnly = true;
-            this.AcceptedWorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 317);
+            this.AcceptedWorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 324);
             this.AcceptedWorkshopsRequestsContentTable.TabIndex = 37;
             // 
             // AcceptedWorkshopsRequestsRequestsTable
@@ -1237,7 +1325,7 @@
             this.CreateRequestContentTable.Location = new System.Drawing.Point(10, 357);
             this.CreateRequestContentTable.Name = "CreateRequestContentTable";
             this.CreateRequestContentTable.ReadOnly = true;
-            this.CreateRequestContentTable.Size = new System.Drawing.Size(1236, 342);
+            this.CreateRequestContentTable.Size = new System.Drawing.Size(1236, 349);
             this.CreateRequestContentTable.TabIndex = 41;
             // 
             // CreateRequestRequestsTable
@@ -1407,7 +1495,7 @@
             this.RequestsListPurchaseRequestsTable.Location = new System.Drawing.Point(6, 141);
             this.RequestsListPurchaseRequestsTable.Name = "RequestsListPurchaseRequestsTable";
             this.RequestsListPurchaseRequestsTable.ReadOnly = true;
-            this.RequestsListPurchaseRequestsTable.Size = new System.Drawing.Size(338, 569);
+            this.RequestsListPurchaseRequestsTable.Size = new System.Drawing.Size(338, 576);
             this.RequestsListPurchaseRequestsTable.TabIndex = 31;
             // 
             // RequestsListContentTable
@@ -1421,7 +1509,7 @@
             this.RequestsListContentTable.Location = new System.Drawing.Point(350, 394);
             this.RequestsListContentTable.Name = "RequestsListContentTable";
             this.RequestsListContentTable.ReadOnly = true;
-            this.RequestsListContentTable.Size = new System.Drawing.Size(896, 316);
+            this.RequestsListContentTable.Size = new System.Drawing.Size(896, 323);
             this.RequestsListContentTable.TabIndex = 30;
             // 
             // groupBox9
@@ -1549,7 +1637,7 @@
             this.StatementsContentTable.Location = new System.Drawing.Point(433, 142);
             this.StatementsContentTable.Name = "StatementsContentTable";
             this.StatementsContentTable.ReadOnly = true;
-            this.StatementsContentTable.Size = new System.Drawing.Size(612, 569);
+            this.StatementsContentTable.Size = new System.Drawing.Size(612, 576);
             this.StatementsContentTable.TabIndex = 37;
             // 
             // label50
@@ -1582,7 +1670,7 @@
             this.StatementsStatementsTable.Location = new System.Drawing.Point(7, 142);
             this.StatementsStatementsTable.Name = "StatementsStatementsTable";
             this.StatementsStatementsTable.ReadOnly = true;
-            this.StatementsStatementsTable.Size = new System.Drawing.Size(420, 569);
+            this.StatementsStatementsTable.Size = new System.Drawing.Size(420, 576);
             this.StatementsStatementsTable.TabIndex = 38;
             // 
             // groupBox10
@@ -1722,7 +1810,7 @@
             this.InvoicesContentTable.Location = new System.Drawing.Point(433, 105);
             this.InvoicesContentTable.Name = "InvoicesContentTable";
             this.InvoicesContentTable.ReadOnly = true;
-            this.InvoicesContentTable.Size = new System.Drawing.Size(612, 605);
+            this.InvoicesContentTable.Size = new System.Drawing.Size(612, 612);
             this.InvoicesContentTable.TabIndex = 43;
             // 
             // label52
@@ -1755,7 +1843,7 @@
             this.InvoicesInvoicesTable.Location = new System.Drawing.Point(7, 105);
             this.InvoicesInvoicesTable.Name = "InvoicesInvoicesTable";
             this.InvoicesInvoicesTable.ReadOnly = true;
-            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(420, 605);
+            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(420, 612);
             this.InvoicesInvoicesTable.TabIndex = 44;
             // 
             // groupBox11
@@ -1838,7 +1926,7 @@
             this.HistoryTable.Location = new System.Drawing.Point(7, 117);
             this.HistoryTable.Name = "HistoryTable";
             this.HistoryTable.ReadOnly = true;
-            this.HistoryTable.Size = new System.Drawing.Size(1239, 582);
+            this.HistoryTable.Size = new System.Drawing.Size(1239, 589);
             this.HistoryTable.TabIndex = 13;
             // 
             // groupBox12
@@ -2921,94 +3009,6 @@
             // nomenclatureViewTableAdapter
             // 
             this.nomenclatureViewTableAdapter.ClearBeforeFill = true;
-            // 
-            // nomenclatureNumberDataGridViewTextBoxColumn
-            // 
-            this.nomenclatureNumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.nomenclatureNumberDataGridViewTextBoxColumn.DataPropertyName = "NomenclatureNumber";
-            this.nomenclatureNumberDataGridViewTextBoxColumn.HeaderText = "Номенклатурный номер";
-            this.nomenclatureNumberDataGridViewTextBoxColumn.Name = "nomenclatureNumberDataGridViewTextBoxColumn";
-            this.nomenclatureNumberDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // nameDataGridViewTextBoxColumn1
-            // 
-            this.nameDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn1.HeaderText = "Наименование";
-            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
-            this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn1.Width = 147;
-            // 
-            // designationDataGridViewTextBoxColumn
-            // 
-            this.designationDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.designationDataGridViewTextBoxColumn.DataPropertyName = "Designation";
-            this.designationDataGridViewTextBoxColumn.HeaderText = "Обозначение";
-            this.designationDataGridViewTextBoxColumn.Name = "designationDataGridViewTextBoxColumn";
-            this.designationDataGridViewTextBoxColumn.Width = 135;
-            // 
-            // unitDataGridViewTextBoxColumn
-            // 
-            this.unitDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
-            this.unitDataGridViewTextBoxColumn.HeaderText = "Единицы измерения";
-            this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
-            this.unitDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // dimensionsDataGridViewTextBoxColumn
-            // 
-            this.dimensionsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dimensionsDataGridViewTextBoxColumn.DataPropertyName = "Dimensions";
-            this.dimensionsDataGridViewTextBoxColumn.HeaderText = "Типоразмеры";
-            this.dimensionsDataGridViewTextBoxColumn.Name = "dimensionsDataGridViewTextBoxColumn";
-            this.dimensionsDataGridViewTextBoxColumn.Width = 136;
-            // 
-            // cuttingMaterialDataGridViewTextBoxColumn
-            // 
-            this.cuttingMaterialDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.cuttingMaterialDataGridViewTextBoxColumn.DataPropertyName = "CuttingMaterial";
-            this.cuttingMaterialDataGridViewTextBoxColumn.HeaderText = "Материал режущей части";
-            this.cuttingMaterialDataGridViewTextBoxColumn.Name = "cuttingMaterialDataGridViewTextBoxColumn";
-            this.cuttingMaterialDataGridViewTextBoxColumn.Width = 169;
-            // 
-            // regulatoryDocDataGridViewTextBoxColumn
-            // 
-            this.regulatoryDocDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.regulatoryDocDataGridViewTextBoxColumn.DataPropertyName = "RegulatoryDoc";
-            this.regulatoryDocDataGridViewTextBoxColumn.HeaderText = "Нормативная документация";
-            this.regulatoryDocDataGridViewTextBoxColumn.Name = "regulatoryDocDataGridViewTextBoxColumn";
-            // 
-            // producerDataGridViewTextBoxColumn
-            // 
-            this.producerDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.producerDataGridViewTextBoxColumn.DataPropertyName = "Producer";
-            this.producerDataGridViewTextBoxColumn.HeaderText = "Производитель";
-            this.producerDataGridViewTextBoxColumn.Name = "producerDataGridViewTextBoxColumn";
-            this.producerDataGridViewTextBoxColumn.Width = 90;
-            // 
-            // fullNameDataGridViewTextBoxColumn
-            // 
-            this.fullNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
-            this.fullNameDataGridViewTextBoxColumn.HeaderText = "Полное наименование";
-            this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
-            this.fullNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // usageFlagDataGridViewTextBoxColumn
-            // 
-            this.usageFlagDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.usageFlagDataGridViewTextBoxColumn.DataPropertyName = "UsageFlag";
-            this.usageFlagDataGridViewTextBoxColumn.HeaderText = "Признак использования";
-            this.usageFlagDataGridViewTextBoxColumn.Name = "usageFlagDataGridViewTextBoxColumn";
-            this.usageFlagDataGridViewTextBoxColumn.Width = 90;
-            // 
-            // minStockDataGridViewTextBoxColumn
-            // 
-            this.minStockDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.minStockDataGridViewTextBoxColumn.DataPropertyName = "MinStock";
-            this.minStockDataGridViewTextBoxColumn.HeaderText = "Неснижаемый остаток";
-            this.minStockDataGridViewTextBoxColumn.Name = "minStockDataGridViewTextBoxColumn";
-            this.minStockDataGridViewTextBoxColumn.Width = 90;
             // 
             // Inj
             // 
