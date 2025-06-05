@@ -147,7 +147,7 @@ namespace Система_учёта_и_приобретения_инструме
         {
 
         }
-
+        private bool isSearchReseting = false;
         #region Номенклатура инструмента
 
         public void SetNomenButtonsState()
@@ -421,6 +421,7 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void Nomen_TextChanged(object sender, EventArgs e)
         {
+            if (isSearchReseting) return;
             var parameters = new List<SearchParameter>();
             if (!string.IsNullOrEmpty(NomenNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", NomenNumber.Text));
             if (!string.IsNullOrEmpty(NomenName.Text)) parameters.Add(new SearchParameter("FullName", NomenName.Text, false));
@@ -441,6 +442,31 @@ namespace Система_учёта_и_приобретения_инструме
                 MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void NomenButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            NomenResetSearch();
+        }
+
+        private void NomenResetSearch()
+        {
+            isSearchReseting = true;
+            NomenResetSearchNumber();
+NomenResetSearchName();
+            NomenResetSearchSize();
+            NomenResetSearchMaterial();
+            NomenResetSearchProducer();
+            NomenResetSearchUsage();
+            isSearchReseting = false;
+        }
+
+        private void NomenResetSearchNumber() { NomenNumber.Text = string.Empty; }
+        private void NomenResetSearchName() { NomenName.Text = string.Empty; }
+        private void NomenResetSearchSize() { NomenSize.Text = string.Empty; }
+        private void NomenResetSearchMaterial() { NomenMaterial.Text = string.Empty; }
+        private void NomenResetSearchProducer() { NomenProducer.Text = string.Empty; }
+        private void NomenResetSearchUsage() { NomenUsage.SelectedIndex = 0; }
+
+
 
         #endregion
 
@@ -584,6 +610,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Groups_TextChanged(object sender, EventArgs e)
         {
+            if (isSearchReseting) return;
             var parameters = new List<SearchParameter>();
             if (!string.IsNullOrEmpty(GroupsName.Text)) parameters.Add(new SearchParameter("Name", GroupsName.Text, true));
             try
@@ -597,6 +624,10 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void GroupsButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            GroupsName.Text = string.Empty;
         }
 
         #endregion
@@ -622,7 +653,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void WorkshopsRequestsButtonConsider_Click(object sender, EventArgs e)
         {
-            if(ReceivingRequestsRequestsTable.CurrentRow == null) return;
+            if (ReceivingRequestsRequestsTable.CurrentRow == null) return;
             int requestNumber = int.Parse(ReceivingRequestsRequestsTable.CurrentRow.Cells[0].Value.ToString());
             RequestConsideration requestConsideration = new RequestConsideration(requestNumber, FormMode.Add);
             requestConsideration.ShowDialog();
@@ -630,6 +661,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void WorkshopsRequests_TextChanged(object sender, EventArgs e)
         {
+            if (isSearchReseting) return;
             var parameters = new List<SearchParameter>();
             //if (!string.IsNullOrEmpty(WorkshopsRequestsName.Text)) parameters.Add(new SearchParameter("FullName", WorkshopsRequestsName.Text, false)); //поиск по дочерней
             //if (!string.IsNullOrEmpty(WorkshopsRequestsNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", WorkshopsRequestsNumber.Text)); //поиск по дочерней
@@ -949,6 +981,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Analog_TextChanged(object sender, EventArgs e)
         {
+            if (isSearchReseting) return;
             var parameters = new List<SearchParameter>();
             if (!string.IsNullOrEmpty(AnalogMainNumber.Text)) parameters.Add(new SearchParameter("OriginalNomenclatureNumber", AnalogMainNumber.Text, true));
             if (!string.IsNullOrEmpty(AnalogAnalogNumber.Text)) parameters.Add(new SearchParameter("AnalogNomenclatureNumber", AnalogAnalogNumber.Text, true));
@@ -1031,6 +1064,7 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void SuppliersTextChanged(object sender, EventArgs e)
         {
+            if (isSearchReseting) return;
             var parameters = new List<SearchParameter>();
             if (!string.IsNullOrEmpty(ProvidersINN.Text)) parameters.Add(new SearchParameter("INN", ProvidersINN.Text, true));
             if (!string.IsNullOrEmpty(ProvidersName.Text)) parameters.Add(new SearchParameter("Name", ProvidersName.Text, false));
@@ -1212,6 +1246,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void LogSearch()
         {
+            if (isSearchReseting) return;
             var parameters = new List<SearchParameter>();
             if (!string.IsNullOrEmpty(LogNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", LogNumber.Text));
             if (!string.IsNullOrEmpty(LogField.Text)) parameters.Add(new SearchParameter("FieldName", LogField.Text));
@@ -1263,6 +1298,8 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
         }
+
+
     }
     public static class Logs
     {

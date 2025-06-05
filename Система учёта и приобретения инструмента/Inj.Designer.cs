@@ -268,6 +268,17 @@
             this.receivingRequestsInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsInjTableAdapter();
             this.receivingRequestsContentInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentInjTableAdapter();
             this.toolaccountingDataSet1 = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
+            this.NomenButtonResetSearch = new System.Windows.Forms.Button();
+            this.GroupsButtonResetSearch = new System.Windows.Forms.Button();
+            this.PurchaseRequestsButtonResetSearch = new System.Windows.Forms.Button();
+            this.ReceivingRequestsButtonResetSearch = new System.Windows.Forms.Button();
+            this.StatementsButtonResetSearch = new System.Windows.Forms.Button();
+            this.InvoicesButtonResetSearch = new System.Windows.Forms.Button();
+            this.HistoryButtonResetSearch = new System.Windows.Forms.Button();
+            this.AnalogButtonResetSearch = new System.Windows.Forms.Button();
+            this.ProvidersButtonReserSearch = new System.Windows.Forms.Button();
+            this.LogButtonResetSearch = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.InjLevel1.SuspendLayout();
             this.InjNomenPage.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -445,6 +456,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.NomenButtonResetSearch);
             this.groupBox1.Controls.Add(this.NomenNumber);
             this.groupBox1.Controls.Add(this.NomenName);
             this.groupBox1.Controls.Add(this.NomenUsage);
@@ -467,38 +479,35 @@
             // 
             // NomenNumber
             // 
-            this.NomenNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.NomenNumber.Location = new System.Drawing.Point(209, 21);
             this.NomenNumber.Mask = "000000000";
             this.NomenNumber.Name = "NomenNumber";
-            this.NomenNumber.Size = new System.Drawing.Size(400, 29);
+            this.NomenNumber.Size = new System.Drawing.Size(366, 29);
             this.NomenNumber.TabIndex = 7;
             this.NomenNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.NomenNumber.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
             // 
             // NomenName
             // 
-            this.NomenName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.NomenName.Location = new System.Drawing.Point(209, 56);
             this.NomenName.Name = "NomenName";
-            this.NomenName.Size = new System.Drawing.Size(400, 29);
+            this.NomenName.Size = new System.Drawing.Size(366, 29);
             this.NomenName.TabIndex = 8;
             this.NomenName.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
             // 
             // NomenUsage
             // 
-            this.NomenUsage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NomenUsage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.NomenUsage.FormattingEnabled = true;
             this.NomenUsage.Items.AddRange(new object[] {
             "",
             "0 – Используется и покупается",
             "1 – Используется и не покупается",
             "2 – Не используется и не покупается"});
-            this.NomenUsage.Location = new System.Drawing.Point(826, 89);
+            this.NomenUsage.Location = new System.Drawing.Point(792, 89);
             this.NomenUsage.Name = "NomenUsage";
-            this.NomenUsage.Size = new System.Drawing.Size(400, 32);
+            this.NomenUsage.Size = new System.Drawing.Size(366, 32);
             this.NomenUsage.TabIndex = 12;
             this.NomenUsage.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
             // 
@@ -517,7 +526,7 @@
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(615, 101);
+            this.label9.Location = new System.Drawing.Point(581, 101);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(193, 20);
             this.label9.TabIndex = 16;
@@ -525,11 +534,9 @@
             // 
             // NomenSize
             // 
-            this.NomenSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.NomenSize.Location = new System.Drawing.Point(209, 92);
             this.NomenSize.Name = "NomenSize";
-            this.NomenSize.Size = new System.Drawing.Size(400, 29);
+            this.NomenSize.Size = new System.Drawing.Size(366, 29);
             this.NomenSize.TabIndex = 9;
             this.NomenSize.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
             // 
@@ -548,7 +555,7 @@
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(615, 65);
+            this.label8.Location = new System.Drawing.Point(581, 65);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(131, 20);
             this.label8.TabIndex = 14;
@@ -556,19 +563,21 @@
             // 
             // NomenProducer
             // 
-            this.NomenProducer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenProducer.Location = new System.Drawing.Point(826, 56);
+            this.NomenProducer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NomenProducer.Location = new System.Drawing.Point(792, 56);
             this.NomenProducer.Name = "NomenProducer";
-            this.NomenProducer.Size = new System.Drawing.Size(400, 29);
+            this.NomenProducer.Size = new System.Drawing.Size(366, 29);
             this.NomenProducer.TabIndex = 11;
             this.NomenProducer.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
             // 
             // NomenMaterial
             // 
-            this.NomenMaterial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenMaterial.Location = new System.Drawing.Point(826, 21);
+            this.NomenMaterial.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NomenMaterial.Location = new System.Drawing.Point(792, 21);
             this.NomenMaterial.Name = "NomenMaterial";
-            this.NomenMaterial.Size = new System.Drawing.Size(400, 29);
+            this.NomenMaterial.Size = new System.Drawing.Size(366, 29);
             this.NomenMaterial.TabIndex = 10;
             this.NomenMaterial.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
             // 
@@ -587,7 +596,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(615, 30);
+            this.label6.Location = new System.Drawing.Point(581, 30);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(205, 20);
             this.label6.TabIndex = 10;
@@ -683,6 +692,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.GroupsButtonResetSearch);
             this.groupBox2.Controls.Add(this.GroupsName);
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -697,7 +707,7 @@
             // 
             this.GroupsName.Location = new System.Drawing.Point(134, 21);
             this.GroupsName.Name = "GroupsName";
-            this.GroupsName.Size = new System.Drawing.Size(1092, 29);
+            this.GroupsName.Size = new System.Drawing.Size(1023, 29);
             this.GroupsName.TabIndex = 20;
             this.GroupsName.TextChanged += new System.EventHandler(this.Groups_TextChanged);
             // 
@@ -845,7 +855,7 @@
             // 
             this.ReceivingRequestsButtonConsider.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ReceivingRequestsButtonConsider.Enabled = false;
-            this.ReceivingRequestsButtonConsider.Location = new System.Drawing.Point(1059, 145);
+            this.ReceivingRequestsButtonConsider.Location = new System.Drawing.Point(1057, 145);
             this.ReceivingRequestsButtonConsider.Name = "ReceivingRequestsButtonConsider";
             this.ReceivingRequestsButtonConsider.Size = new System.Drawing.Size(182, 44);
             this.ReceivingRequestsButtonConsider.TabIndex = 49;
@@ -876,7 +886,7 @@
             // 
             this.ReceivingRequestsButtonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ReceivingRequestsButtonDelete.Enabled = false;
-            this.ReceivingRequestsButtonDelete.Location = new System.Drawing.Point(1059, 252);
+            this.ReceivingRequestsButtonDelete.Location = new System.Drawing.Point(1057, 252);
             this.ReceivingRequestsButtonDelete.Name = "ReceivingRequestsButtonDelete";
             this.ReceivingRequestsButtonDelete.Size = new System.Drawing.Size(182, 44);
             this.ReceivingRequestsButtonDelete.TabIndex = 46;
@@ -887,6 +897,7 @@
             // 
             this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox7.Controls.Add(this.ReceivingRequestsButtonResetSearch);
             this.groupBox7.Controls.Add(this.radioButton3);
             this.groupBox7.Controls.Add(this.radioButton2);
             this.groupBox7.Controls.Add(this.radioButton1);
@@ -898,7 +909,7 @@
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox7.Location = new System.Drawing.Point(7, 7);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(1234, 107);
+            this.groupBox7.Size = new System.Drawing.Size(1232, 107);
             this.groupBox7.TabIndex = 44;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Поиск";
@@ -950,13 +961,17 @@
             // 
             // ReceivingRequestsWorkshop
             // 
+            this.ReceivingRequestsWorkshop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ReceivingRequestsWorkshop.Location = new System.Drawing.Point(130, 16);
             this.ReceivingRequestsWorkshop.Name = "ReceivingRequestsWorkshop";
-            this.ReceivingRequestsWorkshop.Size = new System.Drawing.Size(373, 29);
+            this.ReceivingRequestsWorkshop.Size = new System.Drawing.Size(371, 29);
             this.ReceivingRequestsWorkshop.TabIndex = 17;
             // 
             // ReceivingRequestsStatus
             // 
+            this.ReceivingRequestsStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ReceivingRequestsStatus.AutoCompleteCustomSource.AddRange(new string[] {
             "Не обработана",
             "В работе",
@@ -966,7 +981,7 @@
             this.ReceivingRequestsStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.ReceivingRequestsStatus.Location = new System.Drawing.Point(130, 51);
             this.ReceivingRequestsStatus.Name = "ReceivingRequestsStatus";
-            this.ReceivingRequestsStatus.Size = new System.Drawing.Size(373, 29);
+            this.ReceivingRequestsStatus.Size = new System.Drawing.Size(371, 29);
             this.ReceivingRequestsStatus.TabIndex = 16;
             // 
             // label27
@@ -1016,7 +1031,7 @@
             this.PurchaseRequestsButtonCreate.Enabled = false;
             this.PurchaseRequestsButtonCreate.Location = new System.Drawing.Point(1064, 141);
             this.PurchaseRequestsButtonCreate.Name = "PurchaseRequestsButtonCreate";
-            this.PurchaseRequestsButtonCreate.Size = new System.Drawing.Size(182, 44);
+            this.PurchaseRequestsButtonCreate.Size = new System.Drawing.Size(175, 44);
             this.PurchaseRequestsButtonCreate.TabIndex = 54;
             this.PurchaseRequestsButtonCreate.Text = "Создать";
             this.PurchaseRequestsButtonCreate.UseVisualStyleBackColor = true;
@@ -1027,7 +1042,7 @@
             this.PurchaseRequestsButtonAlter.Enabled = false;
             this.PurchaseRequestsButtonAlter.Location = new System.Drawing.Point(1064, 191);
             this.PurchaseRequestsButtonAlter.Name = "PurchaseRequestsButtonAlter";
-            this.PurchaseRequestsButtonAlter.Size = new System.Drawing.Size(182, 44);
+            this.PurchaseRequestsButtonAlter.Size = new System.Drawing.Size(175, 44);
             this.PurchaseRequestsButtonAlter.TabIndex = 46;
             this.PurchaseRequestsButtonAlter.Text = "Изменить";
             this.PurchaseRequestsButtonAlter.UseVisualStyleBackColor = true;
@@ -1038,7 +1053,7 @@
             this.PurchaseRequestsButtonDelete.Enabled = false;
             this.PurchaseRequestsButtonDelete.Location = new System.Drawing.Point(1064, 241);
             this.PurchaseRequestsButtonDelete.Name = "PurchaseRequestsButtonDelete";
-            this.PurchaseRequestsButtonDelete.Size = new System.Drawing.Size(182, 44);
+            this.PurchaseRequestsButtonDelete.Size = new System.Drawing.Size(175, 44);
             this.PurchaseRequestsButtonDelete.TabIndex = 45;
             this.PurchaseRequestsButtonDelete.Text = "Удалить";
             this.PurchaseRequestsButtonDelete.UseVisualStyleBackColor = true;
@@ -1117,6 +1132,7 @@
             // 
             this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox9.Controls.Add(this.PurchaseRequestsButtonResetSearch);
             this.groupBox9.Controls.Add(this.PurchaseRequestsStatus);
             this.groupBox9.Controls.Add(this.label45);
             this.groupBox9.Controls.Add(this.label43);
@@ -1126,7 +1142,7 @@
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox9.Location = new System.Drawing.Point(7, 7);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(1239, 104);
+            this.groupBox9.Size = new System.Drawing.Size(1232, 104);
             this.groupBox9.TabIndex = 35;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Поиск";
@@ -1142,16 +1158,16 @@
             "Исполнена полностью"});
             this.PurchaseRequestsStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.PurchaseRequestsStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.PurchaseRequestsStatus.Location = new System.Drawing.Point(616, 21);
+            this.PurchaseRequestsStatus.Location = new System.Drawing.Point(616, 16);
             this.PurchaseRequestsStatus.Name = "PurchaseRequestsStatus";
-            this.PurchaseRequestsStatus.Size = new System.Drawing.Size(617, 29);
+            this.PurchaseRequestsStatus.Size = new System.Drawing.Size(541, 29);
             this.PurchaseRequestsStatus.TabIndex = 20;
             // 
             // label45
             // 
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label45.Location = new System.Drawing.Point(492, 30);
+            this.label45.Location = new System.Drawing.Point(492, 25);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(118, 20);
             this.label45.TabIndex = 19;
@@ -1163,7 +1179,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label43.AutoSize = true;
             this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label43.Location = new System.Drawing.Point(6, 65);
+            this.label43.Location = new System.Drawing.Point(6, 60);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(235, 20);
             this.label43.TabIndex = 17;
@@ -1172,7 +1188,7 @@
             // PurchaseRequestsEnd
             // 
             this.PurchaseRequestsEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.PurchaseRequestsEnd.Location = new System.Drawing.Point(259, 56);
+            this.PurchaseRequestsEnd.Location = new System.Drawing.Point(259, 51);
             this.PurchaseRequestsEnd.Name = "PurchaseRequestsEnd";
             this.PurchaseRequestsEnd.Size = new System.Drawing.Size(227, 29);
             this.PurchaseRequestsEnd.TabIndex = 16;
@@ -1183,7 +1199,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label44.AutoSize = true;
             this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label44.Location = new System.Drawing.Point(6, 30);
+            this.label44.Location = new System.Drawing.Point(6, 25);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(247, 20);
             this.label44.TabIndex = 15;
@@ -1192,7 +1208,7 @@
             // PurchaseRequestsStart
             // 
             this.PurchaseRequestsStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.PurchaseRequestsStart.Location = new System.Drawing.Point(259, 21);
+            this.PurchaseRequestsStart.Location = new System.Drawing.Point(259, 16);
             this.PurchaseRequestsStart.Name = "PurchaseRequestsStart";
             this.PurchaseRequestsStart.Size = new System.Drawing.Size(227, 29);
             this.PurchaseRequestsStart.TabIndex = 13;
@@ -1298,6 +1314,7 @@
             // 
             this.groupBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox10.Controls.Add(this.StatementsButtonResetSearch);
             this.groupBox10.Controls.Add(this.StatementsProvider);
             this.groupBox10.Controls.Add(this.label47);
             this.groupBox10.Controls.Add(this.StatementsDate);
@@ -1314,9 +1331,9 @@
             // 
             this.StatementsProvider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.StatementsProvider.Location = new System.Drawing.Point(230, 21);
+            this.StatementsProvider.Location = new System.Drawing.Point(230, 16);
             this.StatementsProvider.Name = "StatementsProvider";
-            this.StatementsProvider.Size = new System.Drawing.Size(421, 29);
+            this.StatementsProvider.Size = new System.Drawing.Size(386, 29);
             this.StatementsProvider.TabIndex = 24;
             // 
             // label47
@@ -1325,7 +1342,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label47.AutoSize = true;
             this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label47.Location = new System.Drawing.Point(663, 30);
+            this.label47.Location = new System.Drawing.Point(622, 25);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(136, 20);
             this.label47.TabIndex = 19;
@@ -1336,16 +1353,16 @@
             this.StatementsDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StatementsDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.StatementsDate.Location = new System.Drawing.Point(805, 21);
+            this.StatementsDate.Location = new System.Drawing.Point(764, 16);
             this.StatementsDate.Name = "StatementsDate";
-            this.StatementsDate.Size = new System.Drawing.Size(421, 29);
+            this.StatementsDate.Size = new System.Drawing.Size(393, 29);
             this.StatementsDate.TabIndex = 18;
             // 
             // label46
             // 
             this.label46.AutoSize = true;
             this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label46.Location = new System.Drawing.Point(6, 30);
+            this.label46.Location = new System.Drawing.Point(6, 25);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(218, 20);
             this.label46.TabIndex = 7;
@@ -1452,6 +1469,7 @@
             // 
             this.groupBox11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox11.Controls.Add(this.InvoicesButtonResetSearch);
             this.groupBox11.Controls.Add(this.label56);
             this.groupBox11.Controls.Add(this.InvoicesDate);
             this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1481,7 +1499,7 @@
             this.InvoicesDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.InvoicesDate.Location = new System.Drawing.Point(147, 21);
             this.InvoicesDate.Name = "InvoicesDate";
-            this.InvoicesDate.Size = new System.Drawing.Size(1079, 29);
+            this.InvoicesDate.Size = new System.Drawing.Size(1010, 29);
             this.InvoicesDate.TabIndex = 18;
             // 
             // History
@@ -1503,16 +1521,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HistoryTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.HistoryTable.Location = new System.Drawing.Point(7, 117);
+            this.HistoryTable.Location = new System.Drawing.Point(7, 113);
             this.HistoryTable.Name = "HistoryTable";
             this.HistoryTable.ReadOnly = true;
-            this.HistoryTable.Size = new System.Drawing.Size(1239, 470);
+            this.HistoryTable.Size = new System.Drawing.Size(1239, 474);
             this.HistoryTable.TabIndex = 13;
             // 
             // groupBox12
             // 
             this.groupBox12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox12.Controls.Add(this.HistoryButtonResetSearch);
             this.groupBox12.Controls.Add(this.HistoryNumber);
             this.groupBox12.Controls.Add(this.label29);
             this.groupBox12.Controls.Add(this.label54);
@@ -1522,7 +1541,7 @@
             this.groupBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox12.Location = new System.Drawing.Point(7, 7);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(1239, 104);
+            this.groupBox12.Size = new System.Drawing.Size(1232, 100);
             this.groupBox12.TabIndex = 4;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Поиск";
@@ -1532,7 +1551,7 @@
             this.HistoryNumber.Location = new System.Drawing.Point(697, 16);
             this.HistoryNumber.Mask = "000000000";
             this.HistoryNumber.Name = "HistoryNumber";
-            this.HistoryNumber.Size = new System.Drawing.Size(536, 29);
+            this.HistoryNumber.Size = new System.Drawing.Size(460, 29);
             this.HistoryNumber.TabIndex = 23;
             this.HistoryNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1565,7 +1584,7 @@
             this.HistoryEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.HistoryEnd.Location = new System.Drawing.Point(259, 50);
             this.HistoryEnd.Name = "HistoryEnd";
-            this.HistoryEnd.Size = new System.Drawing.Size(235, 29);
+            this.HistoryEnd.Size = new System.Drawing.Size(228, 29);
             this.HistoryEnd.TabIndex = 20;
             // 
             // label58
@@ -1587,7 +1606,7 @@
             this.HistoryStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.HistoryStart.Location = new System.Drawing.Point(259, 16);
             this.HistoryStart.Name = "HistoryStart";
-            this.HistoryStart.Size = new System.Drawing.Size(235, 29);
+            this.HistoryStart.Size = new System.Drawing.Size(228, 29);
             this.HistoryStart.TabIndex = 18;
             // 
             // InjAnalogPage
@@ -1684,6 +1703,7 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.AnalogButtonResetSearch);
             this.groupBox3.Controls.Add(this.AnalogAnalogName);
             this.groupBox3.Controls.Add(this.AnalogMainName);
             this.groupBox3.Controls.Add(this.AnalogAnalogNumber);
@@ -1703,9 +1723,9 @@
             // AnalogAnalogName
             // 
             this.AnalogAnalogName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AnalogAnalogName.Location = new System.Drawing.Point(946, 21);
+            this.AnalogAnalogName.Location = new System.Drawing.Point(909, 21);
             this.AnalogAnalogName.Name = "AnalogAnalogName";
-            this.AnalogAnalogName.Size = new System.Drawing.Size(280, 29);
+            this.AnalogAnalogName.Size = new System.Drawing.Size(248, 29);
             this.AnalogAnalogName.TabIndex = 10;
             this.AnalogAnalogName.TextChanged += new System.EventHandler(this.Analog_TextChanged);
             // 
@@ -1715,7 +1735,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AnalogMainName.Location = new System.Drawing.Point(387, 21);
             this.AnalogMainName.Name = "AnalogMainName";
-            this.AnalogMainName.Size = new System.Drawing.Size(280, 29);
+            this.AnalogMainName.Size = new System.Drawing.Size(248, 29);
             this.AnalogMainName.TabIndex = 9;
             this.AnalogMainName.TextChanged += new System.EventHandler(this.Analog_TextChanged);
             // 
@@ -1723,10 +1743,10 @@
             // 
             this.AnalogAnalogNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AnalogAnalogNumber.HidePromptOnLeave = true;
-            this.AnalogAnalogNumber.Location = new System.Drawing.Point(946, 56);
+            this.AnalogAnalogNumber.Location = new System.Drawing.Point(909, 56);
             this.AnalogAnalogNumber.Mask = "000000000";
             this.AnalogAnalogNumber.Name = "AnalogAnalogNumber";
-            this.AnalogAnalogNumber.Size = new System.Drawing.Size(280, 29);
+            this.AnalogAnalogNumber.Size = new System.Drawing.Size(248, 29);
             this.AnalogAnalogNumber.TabIndex = 4;
             this.AnalogAnalogNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.AnalogAnalogNumber.TextChanged += new System.EventHandler(this.Analog_TextChanged);
@@ -1740,7 +1760,7 @@
             this.AnalogMainNumber.Location = new System.Drawing.Point(387, 56);
             this.AnalogMainNumber.Mask = "000000000";
             this.AnalogMainNumber.Name = "AnalogMainNumber";
-            this.AnalogMainNumber.Size = new System.Drawing.Size(280, 29);
+            this.AnalogMainNumber.Size = new System.Drawing.Size(248, 29);
             this.AnalogMainNumber.TabIndex = 2;
             this.AnalogMainNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.AnalogMainNumber.TextChanged += new System.EventHandler(this.Analog_TextChanged);
@@ -1751,7 +1771,7 @@
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(678, 65);
+            this.label11.Location = new System.Drawing.Point(641, 65);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(257, 20);
             this.label11.TabIndex = 8;
@@ -1762,7 +1782,7 @@
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(678, 30);
+            this.label12.Location = new System.Drawing.Point(641, 30);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(188, 20);
             this.label12.TabIndex = 7;
@@ -1901,6 +1921,7 @@
             // 
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.ProvidersButtonReserSearch);
             this.groupBox5.Controls.Add(this.ProvidersINN);
             this.groupBox5.Controls.Add(this.ProvidersName);
             this.groupBox5.Controls.Add(this.label23);
@@ -1915,18 +1936,18 @@
             // 
             // ProvidersINN
             // 
-            this.ProvidersINN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProvidersINN.Location = new System.Drawing.Point(808, 25);
+            this.ProvidersINN.Location = new System.Drawing.Point(808, 21);
             this.ProvidersINN.Name = "ProvidersINN";
-            this.ProvidersINN.Size = new System.Drawing.Size(424, 29);
+            this.ProvidersINN.Size = new System.Drawing.Size(349, 29);
             this.ProvidersINN.TabIndex = 3;
             this.ProvidersINN.TextChanged += new System.EventHandler(this.SuppliersTextChanged);
             // 
             // ProvidersName
             // 
+            this.ProvidersName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ProvidersName.FormattingEnabled = true;
-            this.ProvidersName.Location = new System.Drawing.Point(134, 25);
+            this.ProvidersName.Location = new System.Drawing.Point(134, 18);
             this.ProvidersName.Name = "ProvidersName";
             this.ProvidersName.Size = new System.Drawing.Size(618, 32);
             this.ProvidersName.TabIndex = 1;
@@ -1995,6 +2016,7 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.LogButtonResetSearch);
             this.groupBox4.Controls.Add(this.LogValue);
             this.groupBox4.Controls.Add(this.label14);
             this.groupBox4.Controls.Add(this.LogUser);
@@ -2017,9 +2039,9 @@
             // 
             // LogValue
             // 
-            this.LogValue.Location = new System.Drawing.Point(610, 21);
+            this.LogValue.Location = new System.Drawing.Point(518, 21);
             this.LogValue.Name = "LogValue";
-            this.LogValue.Size = new System.Drawing.Size(193, 29);
+            this.LogValue.Size = new System.Drawing.Size(192, 29);
             this.LogValue.TabIndex = 2;
             this.LogValue.TextChanged += new System.EventHandler(this.Log_TextChanged);
             // 
@@ -2027,7 +2049,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label14.Location = new System.Drawing.Point(483, 30);
+            this.label14.Location = new System.Drawing.Point(401, 30);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(83, 20);
             this.label14.TabIndex = 21;
@@ -2035,9 +2057,9 @@
             // 
             // LogUser
             // 
-            this.LogUser.Location = new System.Drawing.Point(610, 56);
+            this.LogUser.Location = new System.Drawing.Point(518, 56);
             this.LogUser.Name = "LogUser";
-            this.LogUser.Size = new System.Drawing.Size(193, 29);
+            this.LogUser.Size = new System.Drawing.Size(192, 29);
             this.LogUser.TabIndex = 3;
             this.LogUser.TextChanged += new System.EventHandler(this.Log_TextChanged);
             // 
@@ -2045,7 +2067,7 @@
             // 
             this.LogField.Location = new System.Drawing.Point(203, 56);
             this.LogField.Name = "LogField";
-            this.LogField.Size = new System.Drawing.Size(274, 29);
+            this.LogField.Size = new System.Drawing.Size(192, 29);
             this.LogField.TabIndex = 1;
             this.LogField.TextChanged += new System.EventHandler(this.Log_TextChanged);
             // 
@@ -2053,7 +2075,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label21.Location = new System.Drawing.Point(809, 65);
+            this.label21.Location = new System.Drawing.Point(716, 65);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(235, 20);
             this.label21.TabIndex = 17;
@@ -2062,9 +2084,9 @@
             // LogEnd
             // 
             this.LogEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.LogEnd.Location = new System.Drawing.Point(1062, 56);
+            this.LogEnd.Location = new System.Drawing.Point(969, 56);
             this.LogEnd.Name = "LogEnd";
-            this.LogEnd.Size = new System.Drawing.Size(173, 29);
+            this.LogEnd.Size = new System.Drawing.Size(197, 29);
             this.LogEnd.TabIndex = 5;
             this.LogEnd.ValueChanged += new System.EventHandler(this.Log_ValueChanged);
             // 
@@ -2072,7 +2094,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label20.Location = new System.Drawing.Point(809, 30);
+            this.label20.Location = new System.Drawing.Point(716, 30);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(247, 20);
             this.label20.TabIndex = 15;
@@ -2081,9 +2103,9 @@
             // LogStart
             // 
             this.LogStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.LogStart.Location = new System.Drawing.Point(1062, 21);
+            this.LogStart.Location = new System.Drawing.Point(969, 21);
             this.LogStart.Name = "LogStart";
-            this.LogStart.Size = new System.Drawing.Size(173, 29);
+            this.LogStart.Size = new System.Drawing.Size(197, 29);
             this.LogStart.TabIndex = 4;
             this.LogStart.ValueChanged += new System.EventHandler(this.Log_ValueChanged);
             // 
@@ -2091,11 +2113,11 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label18.Location = new System.Drawing.Point(483, 65);
+            this.label18.Location = new System.Drawing.Point(401, 65);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(121, 20);
+            this.label18.Size = new System.Drawing.Size(111, 20);
             this.label18.TabIndex = 11;
-            this.label18.Text = "Пользователь";
+            this.label18.Text = "Исполнитель";
             // 
             // label16
             // 
@@ -2112,7 +2134,7 @@
             this.LogNumber.Location = new System.Drawing.Point(203, 21);
             this.LogNumber.Mask = "000000000";
             this.LogNumber.Name = "LogNumber";
-            this.LogNumber.Size = new System.Drawing.Size(274, 29);
+            this.LogNumber.Size = new System.Drawing.Size(192, 29);
             this.LogNumber.TabIndex = 0;
             this.LogNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.LogNumber.TextChanged += new System.EventHandler(this.Log_TextChanged);
@@ -2165,6 +2187,7 @@
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.button2);
             this.groupBox6.Controls.Add(this.OstatkiStorage);
             this.groupBox6.Controls.Add(this.OstatkiPrice);
             this.groupBox6.Controls.Add(this.label24);
@@ -2288,7 +2311,7 @@
             this.PurchaseRequestsButtonExport.Enabled = false;
             this.PurchaseRequestsButtonExport.Location = new System.Drawing.Point(1064, 291);
             this.PurchaseRequestsButtonExport.Name = "PurchaseRequestsButtonExport";
-            this.PurchaseRequestsButtonExport.Size = new System.Drawing.Size(182, 44);
+            this.PurchaseRequestsButtonExport.Size = new System.Drawing.Size(175, 44);
             this.PurchaseRequestsButtonExport.TabIndex = 55;
             this.PurchaseRequestsButtonExport.Text = "Экспорт";
             this.PurchaseRequestsButtonExport.UseVisualStyleBackColor = true;
@@ -2319,7 +2342,7 @@
             // 
             this.ReceivingRequestsButtonAlter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ReceivingRequestsButtonAlter.Enabled = false;
-            this.ReceivingRequestsButtonAlter.Location = new System.Drawing.Point(1059, 195);
+            this.ReceivingRequestsButtonAlter.Location = new System.Drawing.Point(1057, 195);
             this.ReceivingRequestsButtonAlter.Name = "ReceivingRequestsButtonAlter";
             this.ReceivingRequestsButtonAlter.Size = new System.Drawing.Size(182, 51);
             this.ReceivingRequestsButtonAlter.TabIndex = 52;
@@ -2855,6 +2878,129 @@
             this.toolaccountingDataSet1.DataSetName = "TOOLACCOUNTINGDataSet";
             this.toolaccountingDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // NomenButtonResetSearch
+            // 
+            this.NomenButtonResetSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NomenButtonResetSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NomenButtonResetSearch.Location = new System.Drawing.Point(1163, 21);
+            this.NomenButtonResetSearch.Name = "NomenButtonResetSearch";
+            this.NomenButtonResetSearch.Size = new System.Drawing.Size(63, 29);
+            this.NomenButtonResetSearch.TabIndex = 14;
+            this.NomenButtonResetSearch.Text = "Сброс";
+            this.NomenButtonResetSearch.UseVisualStyleBackColor = true;
+            this.NomenButtonResetSearch.Click += new System.EventHandler(this.NomenButtonResetSearch_Click);
+            // 
+            // GroupsButtonResetSearch
+            // 
+            this.GroupsButtonResetSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.GroupsButtonResetSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GroupsButtonResetSearch.Location = new System.Drawing.Point(1163, 21);
+            this.GroupsButtonResetSearch.Name = "GroupsButtonResetSearch";
+            this.GroupsButtonResetSearch.Size = new System.Drawing.Size(63, 29);
+            this.GroupsButtonResetSearch.TabIndex = 21;
+            this.GroupsButtonResetSearch.Text = "Сброс";
+            this.GroupsButtonResetSearch.UseVisualStyleBackColor = true;
+            this.GroupsButtonResetSearch.Click += new System.EventHandler(this.GroupsButtonResetSearch_Click);
+            // 
+            // PurchaseRequestsButtonResetSearch
+            // 
+            this.PurchaseRequestsButtonResetSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PurchaseRequestsButtonResetSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PurchaseRequestsButtonResetSearch.Location = new System.Drawing.Point(1163, 16);
+            this.PurchaseRequestsButtonResetSearch.Name = "PurchaseRequestsButtonResetSearch";
+            this.PurchaseRequestsButtonResetSearch.Size = new System.Drawing.Size(63, 29);
+            this.PurchaseRequestsButtonResetSearch.TabIndex = 22;
+            this.PurchaseRequestsButtonResetSearch.Text = "Сброс";
+            this.PurchaseRequestsButtonResetSearch.UseVisualStyleBackColor = true;
+            // 
+            // ReceivingRequestsButtonResetSearch
+            // 
+            this.ReceivingRequestsButtonResetSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReceivingRequestsButtonResetSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ReceivingRequestsButtonResetSearch.Location = new System.Drawing.Point(1163, 16);
+            this.ReceivingRequestsButtonResetSearch.Name = "ReceivingRequestsButtonResetSearch";
+            this.ReceivingRequestsButtonResetSearch.Size = new System.Drawing.Size(63, 29);
+            this.ReceivingRequestsButtonResetSearch.TabIndex = 23;
+            this.ReceivingRequestsButtonResetSearch.Text = "Сброс";
+            this.ReceivingRequestsButtonResetSearch.UseVisualStyleBackColor = true;
+            // 
+            // StatementsButtonResetSearch
+            // 
+            this.StatementsButtonResetSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StatementsButtonResetSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.StatementsButtonResetSearch.Location = new System.Drawing.Point(1163, 16);
+            this.StatementsButtonResetSearch.Name = "StatementsButtonResetSearch";
+            this.StatementsButtonResetSearch.Size = new System.Drawing.Size(63, 29);
+            this.StatementsButtonResetSearch.TabIndex = 25;
+            this.StatementsButtonResetSearch.Text = "Сброс";
+            this.StatementsButtonResetSearch.UseVisualStyleBackColor = true;
+            // 
+            // InvoicesButtonResetSearch
+            // 
+            this.InvoicesButtonResetSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.InvoicesButtonResetSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.InvoicesButtonResetSearch.Location = new System.Drawing.Point(1163, 21);
+            this.InvoicesButtonResetSearch.Name = "InvoicesButtonResetSearch";
+            this.InvoicesButtonResetSearch.Size = new System.Drawing.Size(63, 29);
+            this.InvoicesButtonResetSearch.TabIndex = 26;
+            this.InvoicesButtonResetSearch.Text = "Сброс";
+            this.InvoicesButtonResetSearch.UseVisualStyleBackColor = true;
+            // 
+            // HistoryButtonResetSearch
+            // 
+            this.HistoryButtonResetSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.HistoryButtonResetSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.HistoryButtonResetSearch.Location = new System.Drawing.Point(1163, 16);
+            this.HistoryButtonResetSearch.Name = "HistoryButtonResetSearch";
+            this.HistoryButtonResetSearch.Size = new System.Drawing.Size(63, 29);
+            this.HistoryButtonResetSearch.TabIndex = 26;
+            this.HistoryButtonResetSearch.Text = "Сброс";
+            this.HistoryButtonResetSearch.UseVisualStyleBackColor = true;
+            // 
+            // AnalogButtonResetSearch
+            // 
+            this.AnalogButtonResetSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AnalogButtonResetSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AnalogButtonResetSearch.Location = new System.Drawing.Point(1163, 21);
+            this.AnalogButtonResetSearch.Name = "AnalogButtonResetSearch";
+            this.AnalogButtonResetSearch.Size = new System.Drawing.Size(63, 29);
+            this.AnalogButtonResetSearch.TabIndex = 27;
+            this.AnalogButtonResetSearch.Text = "Сброс";
+            this.AnalogButtonResetSearch.UseVisualStyleBackColor = true;
+            // 
+            // ProvidersButtonReserSearch
+            // 
+            this.ProvidersButtonReserSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProvidersButtonReserSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ProvidersButtonReserSearch.Location = new System.Drawing.Point(1163, 21);
+            this.ProvidersButtonReserSearch.Name = "ProvidersButtonReserSearch";
+            this.ProvidersButtonReserSearch.Size = new System.Drawing.Size(63, 29);
+            this.ProvidersButtonReserSearch.TabIndex = 28;
+            this.ProvidersButtonReserSearch.Text = "Сброс";
+            this.ProvidersButtonReserSearch.UseVisualStyleBackColor = true;
+            // 
+            // LogButtonResetSearch
+            // 
+            this.LogButtonResetSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LogButtonResetSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LogButtonResetSearch.Location = new System.Drawing.Point(1172, 21);
+            this.LogButtonResetSearch.Name = "LogButtonResetSearch";
+            this.LogButtonResetSearch.Size = new System.Drawing.Size(63, 29);
+            this.LogButtonResetSearch.TabIndex = 29;
+            this.LogButtonResetSearch.Text = "Сброс";
+            this.LogButtonResetSearch.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(1172, 21);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(63, 29);
+            this.button2.TabIndex = 30;
+            this.button2.Text = "Сброс";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // Inj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3186,5 +3332,16 @@
         private System.Windows.Forms.Button StatementsButtonExport;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button ReceivingRequestsButtonAlter;
+        private System.Windows.Forms.Button NomenButtonResetSearch;
+        private System.Windows.Forms.Button GroupsButtonResetSearch;
+        private System.Windows.Forms.Button PurchaseRequestsButtonResetSearch;
+        private System.Windows.Forms.Button ReceivingRequestsButtonResetSearch;
+        private System.Windows.Forms.Button StatementsButtonResetSearch;
+        private System.Windows.Forms.Button InvoicesButtonResetSearch;
+        private System.Windows.Forms.Button HistoryButtonResetSearch;
+        private System.Windows.Forms.Button AnalogButtonResetSearch;
+        private System.Windows.Forms.Button ProvidersButtonReserSearch;
+        private System.Windows.Forms.Button LogButtonResetSearch;
+        private System.Windows.Forms.Button button2;
     }
 }
