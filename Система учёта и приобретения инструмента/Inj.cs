@@ -1,4 +1,5 @@
-﻿using System;
+﻿//using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet;
 
 namespace Система_учёта_и_приобретения_инструмента
@@ -53,7 +55,6 @@ namespace Система_учёта_и_приобретения_инструме
             ImportForm importForm = new ImportForm(tOOLACCOUNTINGDataSet);
             importForm.Owner = this;
             importForm.ShowDialog();
-
         }
 
         public string ImportRefresh(string tableName)
@@ -107,6 +108,10 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Inj_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj". При необходимости она может быть перемещена или удалена.
+            this.receivingRequestsContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequestsInj". При необходимости она может быть перемещена или удалена.
+            this.receivingRequestsInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.AnalogTools". При необходимости она может быть перемещена или удалена.
             this.analogToolsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.AnalogTools);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DataTable1". При необходимости она может быть перемещена или удалена.
@@ -130,19 +135,39 @@ namespace Система_учёта_и_приобретения_инструме
 
             WindowState = FormWindowState.Maximized;
 
-            //ProvidersTable.Rows[0].Selected = true;
-
-            LogStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
-            LogEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1);
-
-
-            //AnalogCompareTable.RowTemplate.Height = (AnalogCompareTable.Height-AnalogCompareTable.ColumnHeadersHeight-10)/2;
+            //Установка дат во вкладках с диапазоном
+            PurchaseRequestsResetStart();
+            PurchaseRequestsResetEnd();
+            HistoryResetStart();
+            HistoryResetEnd();
+            LogResetStart();
+            LogResetEnd();
         }
+        private bool isSearchReseting = false;
 
         private void InjLevel1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
+        //private void AnalogListTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        //{
+        //    if (e.Button == MouseButtons.Right)
+        //    {
+        //        if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && !NomenTable.Rows[e.RowIndex].IsNewRow)
+        //        {
+        //            AnalogListTable.Rows[e.RowIndex].Selected = true;
+        //            SetAnalogContextMenuItems(true);
+        //        }
+        //        else SetAnalogContextMenuItems(false);
+        //        AnalogsTableContextMenu.Show(Cursor.Position);
+        //    }
+        //}
+        //private void SetAnalogContextMenuItems(bool isRow)
+        //{
+        //    AnalogsTableContextMenuAlter.Visible = isRow;
+        //    AnalogsTableContextMenuDelete.Visible = isRow;
+        //}
 
         #region Номенклатура инструмента
 
@@ -166,12 +191,20 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void NomenButtonCreate_Click(object sender, EventArgs e)
         {
-            //форма
+            NomenForm nomenForm = new NomenForm(tOOLACCOUNTINGDataSet, nomenclatureTableAdapter);
+            nomenForm.ShowDialog();
+            LogTable.Columns[0].Visible = false;
         }
 
         private void NomenButtonAlter_Click(object sender, EventArgs e)
         {
-            //форма
+            SetNomenButtonsState();
+            if (NomenTable.CurrentRow.DataBoundItem as DataRowView == null) return;
+            var selectedRow = NomenTable.CurrentRow.DataBoundItem as DataRowView;
+            var nomenViewRow = selectedRow.Row as TOOLACCOUNTINGDataSet.NomenclatureViewRow;
+            NomenForm nomenForm = new NomenForm(tOOLACCOUNTINGDataSet, nomenclatureTableAdapter, FormMode.Edit, nomenViewRow);
+            nomenForm.ShowDialog();
+            LogTable.Columns[0].Visible = false;
         }
 
         private void NomenButtonDelete_Click(object sender, EventArgs e)
@@ -215,17 +248,27 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void NomenButtonOstatki_Click(object sender, EventArgs e)
         {
-            //переход на вкладку и установка значения в поиск
+            SetNomenButtonsState();
+            if (NomenTable.CurrentRow.DataBoundItem as DataRowView == null) return;
+            OstatkiNumber.Text = NomenTable.CurrentRow.Cells[0].Value.ToString();
+            InjLevel1.SelectedTab = InjOstatkiPage;
         }
 
         private void NomenButtonHistory_Click(object sender, EventArgs e)
         {
-            //переход на вкладку и установка значения в поиск
+            SetNomenButtonsState();
+            if (NomenTable.CurrentRow.DataBoundItem as DataRowView == null) return;
+            HistoryNumber.Text = NomenTable.CurrentRow.Cells[0].Value.ToString();
+            InjLevel1.SelectedTab = InjZayavkiPage;
+            InjLevel2.SelectedTab = History;
         }
 
         private void NomenButtonLog_Click(object sender, EventArgs e)
         {
-            //переход на вкладку и установка значения в поиск
+            SetNomenButtonsState();
+            if (NomenTable.CurrentRow.DataBoundItem as DataRowView == null) return;
+            LogNumber.Text = NomenTable.CurrentRow.Cells[0].Value.ToString();
+            InjLevel1.SelectedTab = InjLogPage;
         }
 
         private void NomenTable_CurrentCellChanged(object sender, EventArgs e)
@@ -259,13 +302,12 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private TOOLACCOUNTINGDataSet.NomenclatureRow nomenOriginRow = null;
         private bool nomenUserEditing = false;
-
         private void NomenTable_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             nomenUserEditing = true;
             var dataRowView = NomenTable.Rows[e.RowIndex].DataBoundItem as DataRowView;
             TOOLACCOUNTINGDataSet.NomenclatureViewRow nomenViewOriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.NomenclatureViewRow;
-            if(nomenViewOriginRow != null) nomenOriginRow = tOOLACCOUNTINGDataSet.Nomenclature.FindByNomenclatureNumber(nomenViewOriginRow.NomenclatureNumber);
+            if (nomenViewOriginRow != null) nomenOriginRow = tOOLACCOUNTINGDataSet.Nomenclature.FindByNomenclatureNumber(nomenViewOriginRow.NomenclatureNumber);
             else nomenOriginRow = null;
             var row = NomenTable.Rows[e.RowIndex];
             var cell = row.Cells[e.ColumnIndex];
@@ -276,7 +318,6 @@ namespace Система_учёта_и_приобретения_инструме
             }
 
         }
-
         private void NomenTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             if (!nomenUserEditing) return;
@@ -333,7 +374,6 @@ namespace Система_учёта_и_приобретения_инструме
                     break;
             }
         }
-
         private void NomenTable_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (!nomenUserEditing) return;
@@ -379,7 +419,6 @@ namespace Система_учёта_и_приобретения_инструме
                 MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
         private void NomenFillFields(NomenclatureRow row, NomenclatureViewRow nomenViewRow)
         {
             row.Designation = nomenViewRow.Designation;
@@ -391,14 +430,13 @@ namespace Система_учёта_и_приобретения_инструме
             row.UsageFlag = nomenViewRow.UsageFlag;
             row.MinStock = nomenViewRow.MinStock;
         }
-
-
         private void NomenTable_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
             nomenUserEditing = false;
         }
         private void Nomen_TextChanged(object sender, EventArgs e)
         {
+            if (isSearchReseting) return;
             var parameters = new List<SearchParameter>();
             if (!string.IsNullOrEmpty(NomenNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", NomenNumber.Text));
             if (!string.IsNullOrEmpty(NomenName.Text)) parameters.Add(new SearchParameter("FullName", NomenName.Text, false));
@@ -419,196 +457,76 @@ namespace Система_учёта_и_приобретения_инструме
                 MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        #endregion
-
-        #region Группы инструментов
-
-        public void SetGroupsButtonsState()
+        private void NomenButtonResetSearch_Click(object sender, EventArgs e)
         {
-            try
+            NomenResetSearch();
+        }
+
+        private void NomenTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
             {
-                bool state = GroupsTable.CurrentRow != null && !string.IsNullOrEmpty(GroupsTable.CurrentRow.Cells[0].Value.ToString());
-                GroupsButtonAlter.Enabled = state;
-                GroupsButtonDelete.Enabled = state;
-            }
-            catch { }
-        }
-
-        private void GroupsButtonCreate_Click(object sender, EventArgs e)
-        {
-            GroupForm groupForm = new GroupForm(tOOLACCOUNTINGDataSet, groupsTableAdapter);
-            groupForm.ShowDialog();
-        }
-
-        private void GroupsButtonAlter_Click(object sender, EventArgs e)
-        {
-            SetGroupsButtonsState();
-            if (GroupsTable.CurrentRow.DataBoundItem as DataRowView == null) return;
-            var selectedRow = GroupsTable.CurrentRow.DataBoundItem as DataRowView;
-            var groupRow = selectedRow.Row as TOOLACCOUNTINGDataSet.GroupsRow;
-            GroupForm groupForm = new GroupForm(tOOLACCOUNTINGDataSet, groupsTableAdapter, FormMode.Edit, groupRow);
-            groupForm.ShowDialog();
-        }
-
-        private void GroupsButtonDelete_Click(object sender, EventArgs e)
-        {
-            GroupsDelete();
-        }
-
-        private bool GroupsDelete()
-        {
-            SetGroupsButtonsState();
-            if (GroupsTable.CurrentRow.DataBoundItem as DataRowView == null) return false;
-            DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту запись?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.No) return false;
-
-            try
-            {
-                var selectedRow = GroupsTable.CurrentRow.DataBoundItem as DataRowView;
-                var groupRow = selectedRow.Row as TOOLACCOUNTINGDataSet.GroupsRow;
-                groupRow.Delete();
-                groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
-                groupsTableAdapter.Fill(tOOLACCOUNTINGDataSet.Groups);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                tOOLACCOUNTINGDataSet.RejectChanges();
-                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        private void GroupsTable_CurrentCellChanged(object sender, EventArgs e)
-        {
-            SetGroupsButtonsState();
-        }
-
-        private void GroupsTable_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            if (GroupsTable.CurrentCell.ColumnIndex == 0)
-            {
-                if (e.Control is TextBox textBox)
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && !NomenTable.Rows[e.RowIndex].IsNewRow)
                 {
-                    textBox.KeyPress -= Digits_KeyPress;
-                    textBox.KeyPress += Digits_KeyPress;
+                    //NomenTable.ClearSelection();
+                    NomenTable.Rows[e.RowIndex].Selected = true;
+                    SetNomenContextMenuItems(true);
                 }
-            }
-            else
-            {
-                if (e.Control is TextBox textBox) textBox.KeyPress -= Digits_KeyPress;
+                else SetNomenContextMenuItems(false);
+                NomenTableContextMenu.Show(Cursor.Position);
             }
         }
-
-        private void GroupsTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        private void SetNomenContextMenuItems(bool isRow)
         {
-            if (!GroupsDelete()) e.Cancel = true;
+            NomenTableContexMenuAlter.Visible = isRow;
+            NomenTableContexMenuDelete.Visible = isRow;
+            NomenTableContexMenuSeparator1.Visible = isRow;
+            NomenTableContexMenuOstatki.Visible = isRow;
+            NomenTableContexMenuHistory.Visible = isRow;
+            NomenTableContexMenuLogs.Visible = isRow;
+            NomenTableContexMenuSeparator2.Visible = isRow;
+            NomenTableContexMenuFindAnalogs.Visible = isRow;
+            NomenTableContexMenuAddAnalog.Visible = isRow;
         }
-
-        private TOOLACCOUNTINGDataSet.GroupsRow groupOriginRow = null;
-        private bool groupUserEditing = false;
-        private void GroupsTable_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        private void NomenTableContexMenuCreate_Click(object sender, EventArgs e)
         {
-            groupUserEditing = true;
-            var dataRowView = GroupsTable.Rows[e.RowIndex].DataBoundItem as DataRowView;
-            groupOriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.GroupsRow;
+            //fill
         }
 
-        private void GroupsTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        private void NomenTableContexMenuAlter_Click(object sender, EventArgs e)
         {
-            if (!groupUserEditing) return;
-            if (GroupsTable.Rows[e.RowIndex] == null) return;
-            var row = GroupsTable.Rows[e.RowIndex];
-            var cell = row.Cells[e.ColumnIndex];
-            switch (e.ColumnIndex)
-            {
-                case 0:
-
-                    string range = cell.EditedFormattedValue as string;
-                    FormMode mode;
-                    if (groupOriginRow == null) mode = FormMode.Add;
-                    else mode = FormMode.Edit;
-                    if (!Validation.IsRangeValid(range)) e.Cancel = true;
-                    if (!Validation.IsRangeUnique(range, tOOLACCOUNTINGDataSet, mode, groupOriginRow)) e.Cancel = true;
-
-                    break;
-                default:
-
-                    if (string.IsNullOrEmpty(cell.EditedFormattedValue as string))
-                    {
-                        e.Cancel = true;
-                        NotificationService.Notify("Предупреждение", "Это поле не может быть пустым.", ToolTipIcon.Warning);
-                    }
-
-                    break;
-            }
+            //fill
         }
-        private void GroupsTable_RowValidated(object sender, DataGridViewCellEventArgs e)
+
+        private void NomenTableContexMenuDelete_Click(object sender, EventArgs e)
         {
-            if (!groupUserEditing) return;
-            try
-            {
-                groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
-                groupsTableAdapter.Fill(tOOLACCOUNTINGDataSet.Groups);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            groupUserEditing = false;
+            //fill
         }
 
-        private void Groups_TextChanged(object sender, EventArgs e)
+        private void NomenTableContexMenuOstatki_Click(object sender, EventArgs e)
         {
-            var parameters = new List<SearchParameter>();
-            if (!string.IsNullOrEmpty(GroupsName.Text)) parameters.Add(new SearchParameter("Name", GroupsName.Text, true));
-            try
-            {
-                string filter = Search.Filter(parameters);
-                GroupsTable.SuspendLayout();
-                groupsBindingSource.Filter = filter;
-                GroupsTable.ResumeLayout();
-            }
-            catch (ArgumentException ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //fill
         }
 
-        #endregion
+        private void NomenTableContexMenuHistory_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
 
-        #region Приобретение инструмента
+        private void NomenTableContexMenuLogs_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
 
-        #region Заявки от цехов
+        private void NomenTableContexMenuFindAnalogs_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
 
-        #endregion
-
-        #region Принятые заявки от цехов
-
-        #endregion
-
-        #region Создание заявки на приобретение
-
-        #endregion
-
-        #region Список заявок на приобретение
-
-        #endregion
-
-        #region Ведомости поставки
-
-        #endregion
-
-        #region Товарные накладные
-
-        #endregion
-
-        #region История поступлений
-
-        #endregion
-
+        private void NomenTableContexMenuAddAnalog_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
         #endregion
 
         #region Аналоги инструментов
@@ -626,13 +544,11 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch { }
         }
-
         private void AnalogButtonCreate_Click(object sender, EventArgs e)
         {
             AnalogForm analogForm = new AnalogForm(tOOLACCOUNTINGDataSet, analogToolsTableAdapter);
             analogForm.ShowDialog();
         }
-
         private void AnalogButtonAlter_Click(object sender, EventArgs e)
         {
             SetAnalogsButtonsState();
@@ -642,12 +558,10 @@ namespace Система_учёта_и_приобретения_инструме
             AnalogForm analogForm = new AnalogForm(tOOLACCOUNTINGDataSet, analogToolsTableAdapter, FormMode.Edit, analogRow);
             analogForm.ShowDialog();
         }
-
         private void AnalogButtonDelete_Click(object sender, EventArgs e)
         {
             AnalogsDelete();
         }
-
         private bool AnalogsDelete()
         {
             SetAnalogsButtonsState();
@@ -675,7 +589,6 @@ namespace Система_учёта_и_приобретения_инструме
                 return false;
             }
         }
-
         private void AnalogListTable_CurrentCellChanged(object sender, EventArgs e)
         {
             SetAnalogsButtonsState();
@@ -692,12 +605,10 @@ namespace Система_учёта_и_приобретения_инструме
             //}
 
         }
-
         private void AnalogListTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             if (!AnalogsDelete()) e.Cancel = true;
         }
-
         private TOOLACCOUNTINGDataSet.AnalogToolsRow analogOriginRow = null;
         private bool analogUserEditing = false;
         private void AnalogListTable_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
@@ -706,7 +617,6 @@ namespace Система_учёта_и_приобретения_инструме
             var dataRowView = AnalogListTable.Rows[e.RowIndex].DataBoundItem as DataRowView;
             analogOriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.AnalogToolsRow;
         }
-
         private void AnalogListTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             if (!analogUserEditing) return;
@@ -759,12 +669,10 @@ namespace Система_учёта_и_приобретения_инструме
                 default: break;
             }
         }
-
         private void AnalogListTable_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
             analogUserEditing = false;
         }
-
         private void AnalogListTable_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (!analogUserEditing /*|| e.RowIndex < 0*/) return;
@@ -840,9 +748,9 @@ namespace Система_учёта_и_приобретения_инструме
             //    //e.Cancel = true;
             //}
         }
-
         private void Analog_TextChanged(object sender, EventArgs e)
         {
+            if (isSearchReseting) return;
             var parameters = new List<SearchParameter>();
             if (!string.IsNullOrEmpty(AnalogMainNumber.Text)) parameters.Add(new SearchParameter("OriginalNomenclatureNumber", AnalogMainNumber.Text, true));
             if (!string.IsNullOrEmpty(AnalogAnalogNumber.Text)) parameters.Add(new SearchParameter("AnalogNomenclatureNumber", AnalogAnalogNumber.Text, true));
@@ -863,6 +771,514 @@ namespace Система_учёта_и_приобретения_инструме
                 MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void AnalogButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            AnalogsResetSearch();
+        }
+        private void AnalogListTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && !AnalogListTable.Rows[e.RowIndex].IsNewRow)
+                {
+                    AnalogListTable.Rows[e.RowIndex].Selected = true;
+                    SetAnalogContextMenuItems(true);
+                }
+                else SetAnalogContextMenuItems(false);
+                AnalogsTableContextMenu.Show(Cursor.Position);
+            }
+        }
+        private void SetAnalogContextMenuItems(bool isRow)
+        {
+            AnalogsTableContextMenuAlter.Visible = isRow;
+            AnalogsTableContextMenuDelete.Visible = isRow;
+        }
+        private void AnalogsTableContextMenuCreate_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void AnalogsTableContextMenuAlter_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void AnalogsTableContextMenuDelete_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+
+        #endregion
+
+        #region Группы инструментов
+
+        public void SetGroupsButtonsState()
+        {
+            try
+            {
+                bool state = GroupsTable.CurrentRow != null && !string.IsNullOrEmpty(GroupsTable.CurrentRow.Cells[0].Value.ToString());
+                GroupsButtonAlter.Enabled = state;
+                GroupsButtonDelete.Enabled = state;
+            }
+            catch { }
+        }
+        private void GroupsButtonCreate_Click(object sender, EventArgs e)
+        {
+            GroupForm groupForm = new GroupForm(tOOLACCOUNTINGDataSet, groupsTableAdapter);
+            groupForm.ShowDialog();
+        }
+        private void GroupsButtonAlter_Click(object sender, EventArgs e)
+        {
+            SetGroupsButtonsState();
+            if (GroupsTable.CurrentRow.DataBoundItem as DataRowView == null) return;
+            var selectedRow = GroupsTable.CurrentRow.DataBoundItem as DataRowView;
+            var groupRow = selectedRow.Row as TOOLACCOUNTINGDataSet.GroupsRow;
+            GroupForm groupForm = new GroupForm(tOOLACCOUNTINGDataSet, groupsTableAdapter, FormMode.Edit, groupRow);
+            groupForm.ShowDialog();
+        }
+        private void GroupsButtonDelete_Click(object sender, EventArgs e)
+        {
+            GroupsDelete();
+        }
+        private bool GroupsDelete()
+        {
+            SetGroupsButtonsState();
+            if (GroupsTable.CurrentRow.DataBoundItem as DataRowView == null) return false;
+            DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту запись?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No) return false;
+
+            try
+            {
+                var selectedRow = GroupsTable.CurrentRow.DataBoundItem as DataRowView;
+                var groupRow = selectedRow.Row as TOOLACCOUNTINGDataSet.GroupsRow;
+                groupRow.Delete();
+                groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
+                groupsTableAdapter.Fill(tOOLACCOUNTINGDataSet.Groups);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                tOOLACCOUNTINGDataSet.RejectChanges();
+                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+        private void GroupsTable_CurrentCellChanged(object sender, EventArgs e)
+        {
+            SetGroupsButtonsState();
+        }
+        private void GroupsTable_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (GroupsTable.CurrentCell.ColumnIndex == 0)
+            {
+                if (e.Control is TextBox textBox)
+                {
+                    textBox.KeyPress -= Digits_KeyPress;
+                    textBox.KeyPress += Digits_KeyPress;
+                }
+            }
+            else
+            {
+                if (e.Control is TextBox textBox) textBox.KeyPress -= Digits_KeyPress;
+            }
+        }
+        private void GroupsTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            if (!GroupsDelete()) e.Cancel = true;
+        }
+        private TOOLACCOUNTINGDataSet.GroupsRow groupOriginRow = null;
+        private bool groupUserEditing = false;
+        private void GroupsTable_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            groupUserEditing = true;
+            var dataRowView = GroupsTable.Rows[e.RowIndex].DataBoundItem as DataRowView;
+            groupOriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.GroupsRow;
+        }
+        private void GroupsTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (!groupUserEditing) return;
+            if (GroupsTable.Rows[e.RowIndex] == null) return;
+            var row = GroupsTable.Rows[e.RowIndex];
+            var cell = row.Cells[e.ColumnIndex];
+            switch (e.ColumnIndex)
+            {
+                case 0:
+
+                    string range = cell.EditedFormattedValue as string;
+                    FormMode mode;
+                    if (groupOriginRow == null) mode = FormMode.Add;
+                    else mode = FormMode.Edit;
+                    if (!Validation.IsRangeValid(range)) e.Cancel = true;
+                    if (!Validation.IsRangeUnique(range, tOOLACCOUNTINGDataSet, mode, groupOriginRow)) e.Cancel = true;
+
+                    break;
+                default:
+
+                    if (string.IsNullOrEmpty(cell.EditedFormattedValue as string))
+                    {
+                        e.Cancel = true;
+                        NotificationService.Notify("Предупреждение", "Это поле не может быть пустым.", ToolTipIcon.Warning);
+                    }
+
+                    break;
+            }
+        }
+        private void GroupsTable_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!groupUserEditing) return;
+            try
+            {
+                groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
+                groupsTableAdapter.Fill(tOOLACCOUNTINGDataSet.Groups);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            groupUserEditing = false;
+        }
+        private void Groups_TextChanged(object sender, EventArgs e)
+        {
+            if (isSearchReseting) return;
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(GroupsName.Text)) parameters.Add(new SearchParameter("Name", GroupsName.Text, true));
+            try
+            {
+                string filter = Search.Filter(parameters);
+                GroupsTable.SuspendLayout();
+                groupsBindingSource.Filter = filter;
+                GroupsTable.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void GroupsButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            GroupsResetSearch();
+        }
+        private void GroupsTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && !GroupsTable.Rows[e.RowIndex].IsNewRow)
+                {
+                    //NomenTable.ClearSelection();
+                    GroupsTable.Rows[e.RowIndex].Selected = true;
+                    SetGroupContextMenuItems(true);
+                }
+                else SetGroupContextMenuItems(false);
+                GroupsTableContextMenu.Show(Cursor.Position);
+            }
+        }
+        private void SetGroupContextMenuItems(bool isRow)
+        {
+            GroupTableContextMenuAlter.Visible = isRow;
+            GroupTableContextMenuDelete.Visible = isRow;
+            GroupTableContextMenuSeparator.Visible = isRow;
+            GroupTableContextMenuFindNomen.Visible = isRow;
+            GroupTableContextMenuAddNomen.Visible = isRow;
+        }
+        private void GroupTableContextMenuCreate_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void GroupTableContextMenuAlter_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void GroupTableContextMenuDelete_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void GroupTableContextMenuFindNomen_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void GroupTableContextMenuAddNomen_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        #endregion
+
+        #region Приобретение инструмента
+
+        #region Заявки от цехов
+
+        public void SetReceivingRequestButtonsState()
+        {
+            try
+            {
+                bool state = ReceivingRequestsRequestsTable.CurrentRow != null && !string.IsNullOrEmpty(ReceivingRequestsRequestsTable.CurrentRow.Cells[0].Value.ToString());
+                //WorkshopsRequestsButtonConsider.Enabled = state;
+            }
+            catch { }
+        }
+
+        private void WorkshopsRequestsRequestsTable_CurrentCellChanged(object sender, EventArgs e)
+        {
+            SetReceivingRequestButtonsState();
+        }
+
+        private void WorkshopsRequestsButtonConsider_Click(object sender, EventArgs e)
+        {
+            if (ReceivingRequestsRequestsTable.CurrentRow == null) return;
+            int requestNumber = int.Parse(ReceivingRequestsRequestsTable.CurrentRow.Cells[0].Value.ToString());
+            RequestConsideration requestConsideration = new RequestConsideration(requestNumber, FormMode.Add);
+            requestConsideration.ShowDialog();
+        }
+
+        private void WorkshopsRequests_TextChanged(object sender, EventArgs e)
+        {
+            if (isSearchReseting) return;
+            var parameters = new List<SearchParameter>();
+            //if (!string.IsNullOrEmpty(WorkshopsRequestsName.Text)) parameters.Add(new SearchParameter("FullName", WorkshopsRequestsName.Text, false)); //поиск по дочерней
+            //if (!string.IsNullOrEmpty(WorkshopsRequestsNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", WorkshopsRequestsNumber.Text)); //поиск по дочерней
+            if (!string.IsNullOrEmpty(ReceivingRequestsWorkshop.Text)) parameters.Add(new SearchParameter("WorkshopNumberName", ReceivingRequestsWorkshop.Text, false));
+            if (!string.IsNullOrEmpty(ReceivingRequestsStatus.Text)) parameters.Add(new SearchParameter("Status", ReceivingRequestsStatus.Text));
+
+            try
+            {
+                string filter = Search.Filter(parameters);
+                ReceivingRequestsRequestsTable.SuspendLayout();
+                ReceivingRequestsContentTable.SuspendLayout();
+                //что тут?
+                ReceivingRequestsRequestsTable.ResumeLayout();
+                ReceivingRequestsContentTable.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        //Возможный вариант поиска
+        //private void WorkshopsRequests_TextChanged(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        // Получаем DataSet/DataTable
+        //        var parentTable = tOOLACCOUNTINGDataSet.ReceivingRequestsInj;
+        //        var childTable = tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj;
+
+        //        // Фильтруем дочерние записи по номеру
+        //        var filteredChildRows = childTable.AsEnumerable()
+        //            .Where(row => string.IsNullOrEmpty(WorkshopsRequestsNumber.Text) ||
+        //                          row.Field<string>("NomenclatureNumber").Contains(WorkshopsRequestsNumber.Text));
+
+        //        // Получаем ID родительских записей, у которых есть подходящие дочерние
+        //        var validParentIds = filteredChildRows
+        //            .Select(row => row.Field<int>("ReceivingRequestID"))
+        //            .Distinct()
+        //            .ToList();
+
+        //        // Фильтруем родительскую таблицу
+        //        var parentFilter = new StringBuilder();
+        //        if (!string.IsNullOrEmpty(WorkshopsRequestsWorkshop.Text))
+        //            parentFilter.Append($"WorkshopNumberName LIKE '%{WorkshopsRequestsWorkshop.Text}%' AND ");
+
+        //        if (!string.IsNullOrEmpty(WorkshopsRequestsStatus.Text))
+        //            parentFilter.Append($"Status = '{WorkshopsRequestsStatus.Text}' AND ");
+
+        //        if (validParentIds.Any())
+        //            parentFilter.Append($"ReceivingRequestID IN ({string.Join(",", validParentIds)})");
+        //        else if (!string.IsNullOrEmpty(WorkshopsRequestsNumber.Text)) // Если ищем по номеру, но ничего не нашли
+        //            parentFilter.Append("1=0"); // Фильтр, который ничего не вернет
+
+        //        // Применяем фильтр к родительскому BindingSource
+        //        receivingRequestsInjBindingSource.Filter = parentFilter.ToString();
+
+        //        // Обновляем дочерний BindingSource
+        //        receivingRequestsInjReceivingRequestsContentInjBindingSource.Filter =
+        //            string.IsNullOrEmpty(WorkshopsRequestsNumber.Text) ? "" :
+        //            $"NomenclatureNumber LIKE '%{WorkshopsRequestsNumber.Text}%'";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Ошибка фильтрации", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
+        private void ReceivingRequestsButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            ReceivingRequestsResetSearch();
+        }
+        private void ReceivingRequestsRequestsTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && !ReceivingRequestsRequestsTable.Rows[e.RowIndex].IsNewRow)
+                {
+                    ReceivingRequestsRequestsTable.Rows[e.RowIndex].Selected = true;
+                    SetReceivingRequestsContextMenuItems(true);
+                }
+                else SetReceivingRequestsContextMenuItems(false);
+                ReceivingRequestsContextMenu.Show(Cursor.Position);
+            }
+        }
+        private void SetReceivingRequestsContextMenuItems(bool isRow)
+        {
+            ReceivingRequestsContextMenuConsider.Visible = isRow;
+            ReceivingRequestsContextMenuAlter.Visible = isRow;
+            ReceivingRequestsContextMenuCancel.Visible = isRow;
+        }
+        private void ReceivingRequestsContextMenuConsider_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void ReceivingRequestsContextMenuAlter_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void ReceivingRequestsContextMenuCancel_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        #endregion
+
+        #region Заявки на приобретение
+
+
+        private void PurchaseRequestsButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            PurchaseRequestsResetSearch();
+        }
+        private void PurchaseRequestsPurchaseRequestsTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && !PurchaseRequestsPurchaseRequestsTable.Rows[e.RowIndex].IsNewRow)
+                {
+                    PurchaseRequestsPurchaseRequestsTable.Rows[e.RowIndex].Selected = true;
+                    SetPurchaseRequestsContextMenuItems(true);
+                }
+                else SetPurchaseRequestsContextMenuItems(false);
+                PurchaseRequestsContextMenu.Show(Cursor.Position);
+            }
+        }
+        private void SetPurchaseRequestsContextMenuItems(bool isRow)
+        {
+            PurchaseRequestsContextMenuAlter.Visible = isRow;
+            PurchaseRequestsContextMenuDelete.Visible = isRow;
+            PurchaseRequestsContextMenuSeparator.Visible = isRow;
+            PurchaseRequestsContextMenuExport.Visible = isRow;
+        }
+
+        private void PurchaseRequestsContextMenuCreate_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void PurchaseRequestsContextMenuAlter_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void PurchaseRequestsContextMenuDelete_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void PurchaseRequestsContextMenuExport_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        #endregion
+
+        #region Ведомости поставки
+        private void StatementsButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            StatementsResetSearch();
+        }
+        private void StatementsStatementsTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && !StatementsStatementsTable.Rows[e.RowIndex].IsNewRow)
+                {
+                    StatementsStatementsTable.Rows[e.RowIndex].Selected = true;
+                    SetStatementsTableContextMenuItems(true);
+                }
+                else SetStatementsTableContextMenuItems(false);
+                StatementsTableContextMenu.Show(Cursor.Position);
+            }
+        }
+        private void SetStatementsTableContextMenuItems(bool isRow)
+        {
+            StatementsTableContextMenuAlter.Visible = isRow;
+            StatementsTableContextMenuDelete.Visible = isRow;
+            StatementsTableContextMenuSeparator.Visible = isRow;
+            StatementsTableContextMenuExport.Visible = isRow;
+        }
+        private void StatementsTableContextMenuCreate_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void StatementsTableContextMenuAlter_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void StatementsTableContextMenuDelete_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void StatementsTableContextMenuExport_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        #endregion
+
+        #region Товарные накладные
+        private void InvoicesButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            InvoicesResetSearch();
+        }
+        private void InvoicesInvoicesTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && !InvoicesInvoicesTable.Rows[e.RowIndex].IsNewRow)
+                {
+                    InvoicesInvoicesTable.Rows[e.RowIndex].Selected = true;
+                    SetInvoicesContextMenuItems(true);
+                }
+                else SetInvoicesContextMenuItems(false);
+                InvoicesTableContextMenu.Show(Cursor.Position);
+            }
+        }
+        private void SetInvoicesContextMenuItems(bool isRow)
+        {
+            InvoicesTableContextMenuAlter.Visible = isRow;
+            InvoicesTableContextMenuDelete.Visible = isRow;
+            InvoicesTableContextMenuSeparator.Visible = isRow;
+            InvoicesTableContextMenuExport.Visible = isRow;
+        }
+        private void InvoicesTableContextMenuCreate_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void InvoicesTableContextMenuAlter_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void InvoicesTableContextMenuDelete_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void InvoicesTableContextMenuExport_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        #endregion
+
+        #region История поступлений
+
+
+        private void HistoryButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            HistoryResetSearch();
+        }
+
+
+        //private void PurchaseRequestsResetStart() { PurchaseRequestsStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1); PurchaseRequestsStart.Checked = false; }
+        //private void PurchaseRequestsResetEnd() { PurchaseRequestsEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1); PurchaseRequestsEnd.Checked = false; }
+        #endregion
+
         #endregion
 
         #region Поставщики
@@ -925,6 +1341,7 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void SuppliersTextChanged(object sender, EventArgs e)
         {
+            if (isSearchReseting) return;
             var parameters = new List<SearchParameter>();
             if (!string.IsNullOrEmpty(ProvidersINN.Text)) parameters.Add(new SearchParameter("INN", ProvidersINN.Text, true));
             if (!string.IsNullOrEmpty(ProvidersName.Text)) parameters.Add(new SearchParameter("Name", ProvidersName.Text, false));
@@ -1021,11 +1438,49 @@ namespace Система_учёта_и_приобретения_инструме
                 MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
+        private void ProvidersButtonReserSearch_Click(object sender, EventArgs e)
+        {
+            ProvidersResetSearch();
+        }
+        private void ProvidersTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && !ProvidersTable.Rows[e.RowIndex].IsNewRow)
+                {
+                    ProvidersTable.Rows[e.RowIndex].Selected = true;
+                    SetProvidersContextMenuItems(true);
+                }
+                else SetProvidersContextMenuItems(false);
+                ProvidersTableContextMenu.Show(Cursor.Position);
+            }
+        }
+        private void SetProvidersContextMenuItems(bool isRow)
+        {
+            ProvidersTableContextMenuAlter.Visible = isRow;
+            ProvidersTableContextMenuDelete.Visible = isRow;
+            ProvidersTableContextMenuSeparator.Visible = isRow;
+            ProvidersTableContextMenuCreateStatement.Visible = isRow;
+        }
+        private void ProvidersTableContextMenuCreate_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void ProvidersTableContextMenuAlter_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void ProvidersTableContextMenuDelete_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void ProvidersTableContextMenuCreateStatement_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
         #endregion
 
         #region Логи корректировок
-
 
         private void AddLogs(NomenclatureRow row)
         {
@@ -1036,7 +1491,7 @@ namespace Система_учёта_и_приобретения_инструме
                 log.NomenclatureNumber = row.NomenclatureNumber;
 
                 string columnName = row.Table.Columns[i].ColumnName;
-                string columnHeader = FieldName(columnName);
+                string columnHeader = Logs.FieldName(columnName);
                 if (columnHeader == null) continue;
                 log.FieldName = columnHeader;
                 log.OldValue = null;
@@ -1060,7 +1515,7 @@ namespace Система_учёта_и_приобретения_инструме
                 log.NomenclatureNumber = newRow.NomenclatureNumber;
 
                 string columnName = newRow.Table.Columns[i].ColumnName;
-                string columnHeader = FieldName(columnName);
+                string columnHeader = Logs.FieldName(columnName);
                 if (columnHeader == null) continue;
                 log.FieldName = columnHeader;
                 log.OldValue = oldRow[i].ToString();
@@ -1081,7 +1536,7 @@ namespace Система_учёта_и_приобретения_инструме
                 log.NomenclatureNumber = row.NomenclatureNumber;
 
                 string columnName = row.Table.Columns[i].ColumnName;
-                string columnHeader = FieldName(columnName);
+                string columnHeader = Logs.FieldName(columnName);
                 if (columnHeader == null) continue;
                 log.FieldName = columnHeader;
                 log.OldValue = row[i].ToString();
@@ -1093,32 +1548,324 @@ namespace Система_учёта_и_приобретения_инструме
             }
         }
 
-        private string FieldName(string columnName)
+
+        private void Log_TextChanged(object sender, EventArgs e)
         {
-            string columnHeader = null;
-            switch (columnName)
-            {
-                case "Designation":     columnHeader = "Обозначение";               break;
-                case "Unit":            columnHeader = "Единицы измерения";         break;
-                case "Dimensions":      columnHeader = "Типоразмеры";               break;
-                case "CuttingMaterial": columnHeader = "Материал режущей части";    break;
-                case "RegulatoryDoc":   columnHeader = "Нормативная документация";  break;
-                case "Producer":        columnHeader = "Производитель";             break;
-                case "UsageFlag":       columnHeader = "Признак использования";     break;
-                case "MinStock":        columnHeader = "Неснижаемый остаток";       break;
-            }
-            return columnHeader;
+            LogSearch();
         }
 
+
+        private void Log_ValueChanged(object sender, EventArgs e)
+        {
+            LogSearch();
+        }
+
+        private void LogSearch()
+        {
+            if (isSearchReseting) return;
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(LogNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", LogNumber.Text));
+            if (!string.IsNullOrEmpty(LogField.Text)) parameters.Add(new SearchParameter("FieldName", LogField.Text));
+            if (!string.IsNullOrEmpty(LogUser.Text)) parameters.Add(new SearchParameter("Executor", LogUser.Text));
+
+            try
+            {
+                string filter = Search.Filter(parameters);
+
+                if (!string.IsNullOrEmpty(LogValue.Text))
+                {
+                    if (!string.IsNullOrEmpty(filter)) filter += " AND ";
+                    filter += $"(OldValue LIKE '{LogValue.Text}%' OR NewValue LIKE '{LogValue.Text}%')";
+                }
+
+                string date1 = $"{LogStart.Value.ToString("yyyy-MM-dd")}";
+                string date2 = $"{LogEnd.Value.AddDays(1).ToString("yyyy-MM-dd")}";
+                if (LogStart.Checked)
+                {
+                    if (!string.IsNullOrEmpty(filter)) filter += " AND ";
+                    filter += $"ChangedDate >= '{date1}'";
+                }
+                if (LogEnd.Checked)
+                {
+                    if (!string.IsNullOrEmpty(filter)) filter += " AND ";
+                    filter += $"ChangedDate <'{date2}'";
+                }
+
+                LogTable.SuspendLayout();
+                nomenclatureLogsBindingSource.Filter = filter;
+                LogTable.Columns[0].Visible = false;
+                //MessageBox.Show(filter);
+                LogTable.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void LogButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            LogResetSearch();
+        }
         #endregion
 
         #region Остатки номенклатуры
+        private void OstatkiButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            OstatkiResetSearch();
+        }
+        #endregion
 
+        //private void maskedTextBox_Enter(object sender, EventArgs e)
+        //{
+        //    MaskedTextBox maskedTextBox = sender as MaskedTextBox;
+        //    maskedTextBox.SelectionStart = 0;
+        //    maskedTextBox.SelectionLength = 0;
+        //}
+
+        #region Сброс поиска
+
+        private void NomenResetSearch()
+        {
+            isSearchReseting = true;
+            NomenResetSearchNumber();
+            NomenResetSearchName();
+            NomenResetSearchSize();
+            NomenResetSearchMaterial();
+            NomenResetSearchProducer();
+            NomenResetSearchUsage();
+            isSearchReseting = false;
+            nomenclatureViewBindingSource.RemoveFilter();
+        }
+        private void NomenResetSearchNumber() { NomenNumber.Text = string.Empty; }
+        private void NomenResetSearchName() { NomenName.Text = string.Empty; }
+        private void NomenResetSearchSize() { NomenSize.Text = string.Empty; }
+        private void NomenResetSearchMaterial() { NomenMaterial.Text = string.Empty; }
+        private void NomenResetSearchProducer() { NomenProducer.Text = string.Empty; }
+        private void NomenResetSearchUsage() { NomenUsage.SelectedIndex = 0; }
+
+        private void GroupsResetSearch()
+        {
+            isSearchReseting = true;
+            GroupsResetName();
+            isSearchReseting = false;
+            groupsBindingSource.RemoveFilter();
+        }
+        private void GroupsResetName() { GroupsName.Text = string.Empty; }
+
+        //remove filter #fix
+        private void ReceivingRequestsResetSearch()
+        {
+            isSearchReseting = true;
+            ReceivingRequestsResetWorkshop();
+            ReceivingRequestsResetStatus();
+            ReceivingRequestsResetType();
+            isSearchReseting = false;
+        }
+        private void ReceivingRequestsResetWorkshop() { ReceivingRequestsWorkshop.Text = string.Empty; }
+        private void ReceivingRequestsResetStatus() { ReceivingRequestsStatus.Text = string.Empty; }
+        private void ReceivingRequestsResetType() { ReceivingRequestsAll.Checked = true; }
+        //remove filter #fix
+        private void PurchaseRequestsResetSearch()
+        {
+            isSearchReseting = true;
+            PurchaseRequestsResetStart();
+            PurchaseRequestsResetEnd();
+            PurchaseRequestsResetStatus();
+            isSearchReseting = false;
+        }
+        private void PurchaseRequestsResetStart() { PurchaseRequestsStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1); PurchaseRequestsStart.Checked = false; }
+        private void PurchaseRequestsResetEnd() { PurchaseRequestsEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1); PurchaseRequestsEnd.Checked = false; }
+        private void PurchaseRequestsResetStatus() { PurchaseRequestsStatus.Text = string.Empty; }
+        //remove filter #fix
+        private void StatementsResetSearch()
+        {
+            isSearchReseting = true;
+            StatementsResetName();
+            StatementsResetDate();
+            isSearchReseting = false;
+        }
+        private void StatementsResetName() { StatementsProvider.Text = string.Empty; }
+        private void StatementsResetDate() { StatementsDate.Value = DateTime.Today; StatementsDate.Checked = false; }
+        //remove filter #fix
+        private void InvoicesResetSearch()
+        {
+            isSearchReseting = true;
+            InvoicesResetDate();
+            isSearchReseting = false;
+        }
+        private void InvoicesResetDate() { InvoicesDate.Value = DateTime.Today; InvoicesDate.Checked = false; }
+        //remove filter #fix
+        private void HistoryResetSearch()
+        {
+            isSearchReseting = true;
+            HistoryResetStart();
+            HistoryResetEnd();
+            HistoryResetNumber();
+            isSearchReseting = false;
+        }
+        private void HistoryResetStart() { HistoryStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1); HistoryStart.Checked = false; }
+        private void HistoryResetEnd() { HistoryEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1); HistoryEnd.Checked = false; }
+        private void HistoryResetNumber() { HistoryNumber.Text = string.Empty; }
+
+        private void AnalogsResetSearch()
+        {
+            isSearchReseting = true;
+            AnalogsResetMainName();
+            AnalogsResetMainNumber();
+            AnalogsResetAnalogName();
+            AnalogsResetAnalogNumber();
+            isSearchReseting = false;
+            analogTools1BindingSource.RemoveFilter();
+        }
+        private void AnalogsResetMainName() { AnalogMainName.Text = string.Empty; }
+        private void AnalogsResetMainNumber() { AnalogMainNumber.Text = string.Empty; }
+        private void AnalogsResetAnalogName() { AnalogAnalogName.Text = string.Empty; }
+        private void AnalogsResetAnalogNumber() { AnalogAnalogNumber.Text = string.Empty; }
+
+        private void ProvidersResetSearch()
+        {
+            isSearchReseting = true;
+            ProvidersResetName();
+            ProvidersResetINN();
+            isSearchReseting = false;
+            suppliersBindingSource.RemoveFilter();
+        }
+        private void ProvidersResetName() { ProvidersName.Text = string.Empty; }
+        private void ProvidersResetINN() { ProvidersINN.Text = string.Empty; }
+
+        private void LogResetSearch()
+        {
+            isSearchReseting = true;
+            LogResetNumber();
+            LogResetField();
+            LogResetValue();
+            LogResetExecutor();
+            LogResetStart();
+            LogResetEnd();
+            isSearchReseting = false;
+            nomenclatureLogsBindingSource.RemoveFilter();
+        }
+        private void LogResetNumber() { LogNumber.Text = string.Empty; }
+        private void LogResetField() { LogField.Text = string.Empty; }
+        private void LogResetValue() { LogValue.Text = string.Empty; }
+        private void LogResetExecutor() { LogUser.Text = string.Empty; }
+        private void LogResetStart() { LogStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1); LogStart.Checked = false; }
+        private void LogResetEnd() { LogEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1); LogEnd.Checked = false; }
+        //remove filter #fix
+        private void OstatkiResetSearch()
+        {
+            isSearchReseting = true;
+            OstatkiResetNumber();
+            OstatkiResetStorage();
+            OstatkiResetPrice();
+            isSearchReseting = false;
+        }
+        private void OstatkiResetNumber() { OstatkiNumber.Text = string.Empty; }
+        private void OstatkiResetStorage() { OstatkiStorage.Text = string.Empty; }
+        private void OstatkiResetPrice() { OstatkiPrice.Checked = false; }
+
+        private void ResetSearchGroup_Click(object sender, EventArgs e)
+        {
+            if (!(sender is ToolStripItem item)) return;
+            if (!(item.Owner is ContextMenuStrip menu && menu.SourceControl is Control control)) return;
+            if (!(control is System.Windows.Forms.GroupBox groupBox)) return;
+
+            string groupName = groupBox.Name;
+
+            switch (groupName)
+            {
+                case "NomenSearchGroup": NomenResetSearch(); break;
+                case "GroupsSearchGroup": GroupsResetSearch(); break;
+                case "ReceivingRequestsSearchGroup": ReceivingRequestsResetSearch(); break;
+                case "PurchaseRequestsSearchGroup": PurchaseRequestsResetSearch(); break;
+                case "StatementsSearchGroup": StatementsResetSearch(); break;
+                case "InvoicesSearchGroup": InvoicesResetSearch(); break;
+                case "HistorySearchGroup": HistoryResetSearch(); break;
+                case "AnalogsSearchGroup": AnalogsResetSearch(); break;
+                case "ProvidersSearchGroup": ProvidersResetSearch(); break;
+                case "LogSearchGroup": LogResetSearch(); break;
+                case "OstatkiSearchGroup": OstatkiResetSearch(); break;
+                default: break;
+            }
+        }
+        private void ResetSearchField_Click(object sender, EventArgs e)
+        {
+            if (!(sender is ToolStripItem item)) return;
+            if (!(item.Owner is ContextMenuStrip menu && menu.SourceControl is Control field)) return;
+            string fieldName = field.Name;
+            switch (fieldName)
+            {
+                case "NomenNumber": NomenResetSearchNumber(); break;
+                case "NomenName": NomenResetSearchName(); break;
+                case "NomenSize": NomenResetSearchSize(); break;
+                case "NomenMaterial": NomenResetSearchMaterial(); break;
+                case "NomenProducer": NomenResetSearchProducer(); break;
+                case "NomenUsage": NomenResetSearchUsage(); break;
+
+                case "GroupsName": GroupsResetName(); break;
+
+                case "ReceivingRequestsWorkshop": ReceivingRequestsResetWorkshop(); break;
+                case "ReceivingRequestsStatus": ReceivingRequestsResetStatus(); break;
+
+                case "PurchaseRequestsStart": PurchaseRequestsResetStart(); break;
+                case "PurchaseRequestsEnd": PurchaseRequestsResetEnd(); break;
+                case "PurchaseRequestsStatus": PurchaseRequestsResetStatus(); break;
+
+                case "StatementsProvider": StatementsResetName(); break;
+                case "StatementsDate": StatementsResetDate(); break;
+
+                case "InvoicesDate": InvoicesResetDate(); break;
+
+                case "HistoryStart": HistoryResetStart(); break;
+                case "HistoryEnd": HistoryResetEnd(); break;
+                case "HistoryNumber": HistoryResetNumber(); break;
+
+                case "AnalogMainName": AnalogsResetMainName(); break;
+                case "AnalogMainNumber": AnalogsResetMainNumber(); break;
+                case "AnalogAnalogName": AnalogsResetAnalogName(); break;
+                case "AnalogAnalogNumber": AnalogsResetAnalogNumber(); break;
+
+                case "ProvidersName": ProvidersResetName(); break;
+                case "ProvidersINN": ProvidersResetINN(); break;
+
+                case "LogNumber": LogResetNumber(); break;
+                case "LogField": LogResetField(); break;
+                case "LogValue": LogResetValue(); break;
+                case "LogUser": LogResetExecutor(); break;
+                case "LogStart": LogResetStart(); break;
+                case "LogEnd": LogResetEnd(); break;
+
+                case "OstatkiNumber": OstatkiResetNumber(); break;
+                case "OstatkiStorage": OstatkiResetStorage(); break;
+                case "OstatkiPrice": OstatkiResetPrice(); break;
+
+                default: break;
+            }
+        }
         #endregion
 
         private void Digits_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
+        }
+    }
+    public static class Logs
+    {
+        public static string FieldName(string columnName)
+        {
+            string columnHeader = null;
+            switch (columnName)
+            {
+                case "Designation": columnHeader = "Обозначение"; break;
+                case "Unit": columnHeader = "Единицы измерения"; break;
+                case "Dimensions": columnHeader = "Типоразмеры"; break;
+                case "CuttingMaterial": columnHeader = "Материал режущей части"; break;
+                case "RegulatoryDoc": columnHeader = "Нормативная документация"; break;
+                case "Producer": columnHeader = "Производитель"; break;
+                case "UsageFlag": columnHeader = "Признак использования"; break;
+                case "MinStock": columnHeader = "Неснижаемый остаток"; break;
+            }
+            return columnHeader;
         }
     }
 }

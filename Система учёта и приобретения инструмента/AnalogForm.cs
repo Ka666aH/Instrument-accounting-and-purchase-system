@@ -46,14 +46,10 @@ namespace Система_учёта_и_приобретения_инструме
 
             foreach (DataRow row in nomenclatureViewAdapter.GetData().Rows)
             {
-                if (row.Table.Columns.Contains("FullName"))
+                string fullName = row[8]?.ToString().Trim() ?? "";
+                if (!string.IsNullOrEmpty(fullName))
                 {
-                    string fullName = row["FullName"]?.ToString().Trim() ?? "";
-                    if (!string.IsNullOrEmpty(fullName))
-                    {
-                        source.Add(fullName);
-                    }
-
+                    source.Add(fullName);
                 }
             }
             AnalogFormOrigiinalName.AutoCompleteCustomSource = source;
@@ -116,7 +112,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (Exception ex)
             {
-                toolAccounting.RejectChanges();
+                toolAccounting.AnalogTools.RejectChanges();
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
@@ -180,7 +176,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

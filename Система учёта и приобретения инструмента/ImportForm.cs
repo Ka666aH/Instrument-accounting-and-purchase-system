@@ -1,5 +1,6 @@
 ﻿using Microsoft.Office.Interop.Excel;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -170,9 +171,9 @@ namespace Система_учёта_и_приобретения_инструме
                 currentRow = -1;
                 Import();
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Ошибка импорта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             finally
             {
@@ -220,7 +221,9 @@ namespace Система_учёта_и_приобретения_инструме
                             {
                                 if (value.GetType() != table.Columns[col - 1].DataType)
                                 {
-                                    value = Convert.ChangeType(value, table.Columns[col - 1].DataType);
+                                    if (table.Columns[col - 1].DataType == typeof(DateTime)) value = DateTime.FromOADate((double)value);
+                                    else if (table.Columns[col - 1].DataType == typeof(decimal)) value = decimal.Parse(value.ToString().Trim().Replace(".",","));
+                                    else value = Convert.ChangeType(value, table.Columns[col - 1].DataType);
                                 }
                                 if (value is string) newRow[col - 1] = value.ToString().Trim();
                                 newRow[col - 1] = value;
