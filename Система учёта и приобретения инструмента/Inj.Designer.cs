@@ -70,6 +70,39 @@
             this.minStockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomenclatureViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
+            this.InjAnalogPage = new System.Windows.Forms.TabPage();
+            this.AnalogButtonDelete = new System.Windows.Forms.Button();
+            this.AnalogButtonAlter = new System.Windows.Forms.Button();
+            this.AnalogButtonCreate = new System.Windows.Forms.Button();
+            this.AnalogCompareTable = new System.Windows.Forms.DataGridView();
+            this.nomenclatureNumberDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.designationDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dimensionsDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuttingMaterialDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.regulatoryDocDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.producerDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usageFlagDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.minStockDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.analogTools1DataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.analogTools1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.AnalogsSearchGroup = new System.Windows.Forms.GroupBox();
+            this.AnalogButtonResetSearch = new System.Windows.Forms.Button();
+            this.AnalogAnalogName = new System.Windows.Forms.TextBox();
+            this.AnalogMainName = new System.Windows.Forms.TextBox();
+            this.AnalogAnalogNumber = new System.Windows.Forms.MaskedTextBox();
+            this.AnalogMainNumber = new System.Windows.Forms.MaskedTextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.AnalogListTable = new System.Windows.Forms.DataGridView();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.originalNomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.analogNomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.originalFullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.analogFullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InjGroupsPage = new System.Windows.Forms.TabPage();
             this.GroupsButtonDelete = new System.Windows.Forms.Button();
             this.GroupsButtonAlter = new System.Windows.Forms.Button();
@@ -172,39 +205,6 @@
             this.HistoryEnd = new System.Windows.Forms.DateTimePicker();
             this.label58 = new System.Windows.Forms.Label();
             this.HistoryStart = new System.Windows.Forms.DateTimePicker();
-            this.InjAnalogPage = new System.Windows.Forms.TabPage();
-            this.AnalogButtonDelete = new System.Windows.Forms.Button();
-            this.AnalogButtonAlter = new System.Windows.Forms.Button();
-            this.AnalogButtonCreate = new System.Windows.Forms.Button();
-            this.AnalogCompareTable = new System.Windows.Forms.DataGridView();
-            this.nomenclatureNumberDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.designationDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dimensionsDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuttingMaterialDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.regulatoryDocDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.producerDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usageFlagDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.minStockDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.analogTools1DataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.analogTools1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.AnalogsSearchGroup = new System.Windows.Forms.GroupBox();
-            this.AnalogButtonResetSearch = new System.Windows.Forms.Button();
-            this.AnalogAnalogName = new System.Windows.Forms.TextBox();
-            this.AnalogMainName = new System.Windows.Forms.TextBox();
-            this.AnalogAnalogNumber = new System.Windows.Forms.MaskedTextBox();
-            this.AnalogMainNumber = new System.Windows.Forms.MaskedTextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.AnalogListTable = new System.Windows.Forms.DataGridView();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.originalNomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.originalFullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.analogFullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InjProvidersPage = new System.Windows.Forms.TabPage();
             this.ProvidersButtonDelete = new System.Windows.Forms.Button();
             this.ProvidersButtonAlter = new System.Windows.Forms.Button();
@@ -248,13 +248,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.InjOstatkiPage = new System.Windows.Forms.TabPage();
             this.OstatkiTable = new System.Windows.Forms.DataGridView();
-            this.balanceIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomenclatureNumberDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.storageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.balanceDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.batchNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.balancesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.OstatkiSearchGroup = new System.Windows.Forms.GroupBox();
             this.OstatkiButtonResetSearch = new System.Windows.Forms.Button();
@@ -283,6 +276,63 @@
             this.receivingRequestsInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsInjTableAdapter();
             this.receivingRequestsContentInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentInjTableAdapter();
             this.toolaccountingDataSet1 = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
+            this.NomenTableContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.NomenTableContexMenuCreate = new System.Windows.Forms.ToolStripMenuItem();
+            this.NomenTableContexMenuAlter = new System.Windows.Forms.ToolStripMenuItem();
+            this.NomenTableContexMenuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.NomenTableContexMenuSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.NomenTableContexMenuOstatki = new System.Windows.Forms.ToolStripMenuItem();
+            this.NomenTableContexMenuHistory = new System.Windows.Forms.ToolStripMenuItem();
+            this.NomenTableContexMenuLogs = new System.Windows.Forms.ToolStripMenuItem();
+            this.NomenTableContexMenuSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.NomenTableContexMenuFindAnalogs = new System.Windows.Forms.ToolStripMenuItem();
+            this.NomenTableContexMenuAddAnalog = new System.Windows.Forms.ToolStripMenuItem();
+            this.AnalogsTableContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.AnalogsTableContextMenuCreate = new System.Windows.Forms.ToolStripMenuItem();
+            this.AnalogsTableContextMenuAlter = new System.Windows.Forms.ToolStripMenuItem();
+            this.AnalogsTableContextMenuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.GroupsTableContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.GroupTableContextMenuCreate = new System.Windows.Forms.ToolStripMenuItem();
+            this.GroupTableContextMenuAlter = new System.Windows.Forms.ToolStripMenuItem();
+            this.GroupTableContextMenuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.GroupTableContextMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.GroupTableContextMenuFindNomen = new System.Windows.Forms.ToolStripMenuItem();
+            this.GroupTableContextMenuAddNomen = new System.Windows.Forms.ToolStripMenuItem();
+            this.ReceivingRequestsContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ReceivingRequestsContextMenuConsider = new System.Windows.Forms.ToolStripMenuItem();
+            this.ReceivingRequestsContextMenuAlter = new System.Windows.Forms.ToolStripMenuItem();
+            this.ReceivingRequestsContextMenuCancel = new System.Windows.Forms.ToolStripMenuItem();
+            this.PurchaseRequestsContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.PurchaseRequestsContextMenuCreate = new System.Windows.Forms.ToolStripMenuItem();
+            this.PurchaseRequestsContextMenuAlter = new System.Windows.Forms.ToolStripMenuItem();
+            this.PurchaseRequestsContextMenuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.PurchaseRequestsContextMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.PurchaseRequestsContextMenuExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.StatementsTableContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.StatementsTableContextMenuCreate = new System.Windows.Forms.ToolStripMenuItem();
+            this.StatementsTableContextMenuAlter = new System.Windows.Forms.ToolStripMenuItem();
+            this.StatementsTableContextMenuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.StatementsTableContextMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.StatementsTableContextMenuExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.InvoicesTableContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.InvoicesTableContextMenuCreate = new System.Windows.Forms.ToolStripMenuItem();
+            this.InvoicesTableContextMenuAlter = new System.Windows.Forms.ToolStripMenuItem();
+            this.InvoicesTableContextMenuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.InvoicesTableContextMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.InvoicesTableContextMenuExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.ProvidersTableContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ProvidersTableContextMenuCreate = new System.Windows.Forms.ToolStripMenuItem();
+            this.ProvidersTableContextMenuAlter = new System.Windows.Forms.ToolStripMenuItem();
+            this.ProvidersTableContextMenuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.ProvidersTableContextMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.ProvidersTableContextMenuCreateStatement = new System.Windows.Forms.ToolStripMenuItem();
+            this.balanceIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomenclatureNumberDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.storageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.balanceDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.batchNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InjLevel1.SuspendLayout();
             this.InjNomenPage.SuspendLayout();
             this.NomenSearchGroup.SuspendLayout();
@@ -291,6 +341,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.NomenTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nomenclatureViewBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
+            this.InjAnalogPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AnalogCompareTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.analogTools1DataTable1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.analogTools1BindingSource)).BeginInit();
+            this.AnalogsSearchGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AnalogListTable)).BeginInit();
             this.InjGroupsPage.SuspendLayout();
             this.GroupsSearchGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GroupsTable)).BeginInit();
@@ -319,12 +375,6 @@
             this.History.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HistoryTable)).BeginInit();
             this.HistorySearchGroup.SuspendLayout();
-            this.InjAnalogPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AnalogCompareTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.analogTools1DataTable1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.analogTools1BindingSource)).BeginInit();
-            this.AnalogsSearchGroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AnalogListTable)).BeginInit();
             this.InjProvidersPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProvidersTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.suppliersBindingSource)).BeginInit();
@@ -341,6 +391,14 @@
             this.Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.analogToolsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolaccountingDataSet1)).BeginInit();
+            this.NomenTableContextMenu.SuspendLayout();
+            this.AnalogsTableContextMenu.SuspendLayout();
+            this.GroupsTableContextMenu.SuspendLayout();
+            this.ReceivingRequestsContextMenu.SuspendLayout();
+            this.PurchaseRequestsContextMenu.SuspendLayout();
+            this.StatementsTableContextMenu.SuspendLayout();
+            this.InvoicesTableContextMenu.SuspendLayout();
+            this.ProvidersTableContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // InjLevel1
@@ -691,6 +749,7 @@
             this.NomenTable.Size = new System.Drawing.Size(1035, 468);
             this.NomenTable.TabIndex = 13;
             this.NomenTable.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.NomenTable_CellBeginEdit);
+            this.NomenTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.NomenTable_CellMouseClick);
             this.NomenTable.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.NomenTable_CellValidating);
             this.NomenTable.CurrentCellChanged += new System.EventHandler(this.NomenTable_CurrentCellChanged);
             this.NomenTable.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.NomenTable_EditingControlShowing);
@@ -795,6 +854,378 @@
             // 
             this.tOOLACCOUNTINGDataSet.DataSetName = "TOOLACCOUNTINGDataSet";
             this.tOOLACCOUNTINGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // InjAnalogPage
+            // 
+            this.InjAnalogPage.Controls.Add(this.AnalogButtonDelete);
+            this.InjAnalogPage.Controls.Add(this.AnalogButtonAlter);
+            this.InjAnalogPage.Controls.Add(this.AnalogButtonCreate);
+            this.InjAnalogPage.Controls.Add(this.AnalogCompareTable);
+            this.InjAnalogPage.Controls.Add(this.AnalogsSearchGroup);
+            this.InjAnalogPage.Controls.Add(this.AnalogListTable);
+            this.InjAnalogPage.Location = new System.Drawing.Point(4, 29);
+            this.InjAnalogPage.Name = "InjAnalogPage";
+            this.InjAnalogPage.Size = new System.Drawing.Size(1254, 625);
+            this.InjAnalogPage.TabIndex = 2;
+            this.InjAnalogPage.Text = "Аналоги инструментов";
+            this.InjAnalogPage.UseVisualStyleBackColor = true;
+            // 
+            // AnalogButtonDelete
+            // 
+            this.AnalogButtonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AnalogButtonDelete.Enabled = false;
+            this.AnalogButtonDelete.Location = new System.Drawing.Point(1057, 213);
+            this.AnalogButtonDelete.Name = "AnalogButtonDelete";
+            this.AnalogButtonDelete.Size = new System.Drawing.Size(182, 44);
+            this.AnalogButtonDelete.TabIndex = 22;
+            this.AnalogButtonDelete.Text = "Удалить";
+            this.AnalogButtonDelete.UseVisualStyleBackColor = true;
+            this.AnalogButtonDelete.Click += new System.EventHandler(this.AnalogButtonDelete_Click);
+            // 
+            // AnalogButtonAlter
+            // 
+            this.AnalogButtonAlter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AnalogButtonAlter.Enabled = false;
+            this.AnalogButtonAlter.Location = new System.Drawing.Point(1057, 163);
+            this.AnalogButtonAlter.Name = "AnalogButtonAlter";
+            this.AnalogButtonAlter.Size = new System.Drawing.Size(182, 44);
+            this.AnalogButtonAlter.TabIndex = 21;
+            this.AnalogButtonAlter.Text = "Изменить";
+            this.AnalogButtonAlter.UseVisualStyleBackColor = true;
+            this.AnalogButtonAlter.Click += new System.EventHandler(this.AnalogButtonAlter_Click);
+            // 
+            // AnalogButtonCreate
+            // 
+            this.AnalogButtonCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AnalogButtonCreate.Location = new System.Drawing.Point(1057, 113);
+            this.AnalogButtonCreate.Name = "AnalogButtonCreate";
+            this.AnalogButtonCreate.Size = new System.Drawing.Size(182, 44);
+            this.AnalogButtonCreate.TabIndex = 20;
+            this.AnalogButtonCreate.Text = "Создать";
+            this.AnalogButtonCreate.UseVisualStyleBackColor = true;
+            this.AnalogButtonCreate.Click += new System.EventHandler(this.AnalogButtonCreate_Click);
+            // 
+            // AnalogCompareTable
+            // 
+            this.AnalogCompareTable.AllowUserToAddRows = false;
+            this.AnalogCompareTable.AllowUserToDeleteRows = false;
+            this.AnalogCompareTable.AllowUserToResizeRows = false;
+            this.AnalogCompareTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AnalogCompareTable.AutoGenerateColumns = false;
+            this.AnalogCompareTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.AnalogCompareTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AnalogCompareTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nomenclatureNumberDataGridViewTextBoxColumn3,
+            this.nameDataGridViewTextBoxColumn3,
+            this.designationDataGridViewTextBoxColumn1,
+            this.unitDataGridViewTextBoxColumn1,
+            this.dimensionsDataGridViewTextBoxColumn1,
+            this.cuttingMaterialDataGridViewTextBoxColumn1,
+            this.regulatoryDocDataGridViewTextBoxColumn1,
+            this.producerDataGridViewTextBoxColumn1,
+            this.usageFlagDataGridViewTextBoxColumn1,
+            this.minStockDataGridViewTextBoxColumn1});
+            this.AnalogCompareTable.DataSource = this.analogTools1DataTable1BindingSource;
+            this.AnalogCompareTable.Location = new System.Drawing.Point(7, 499);
+            this.AnalogCompareTable.MaximumSize = new System.Drawing.Size(0, 120);
+            this.AnalogCompareTable.MinimumSize = new System.Drawing.Size(1044, 120);
+            this.AnalogCompareTable.MultiSelect = false;
+            this.AnalogCompareTable.Name = "AnalogCompareTable";
+            this.AnalogCompareTable.ReadOnly = true;
+            this.AnalogCompareTable.RowHeadersVisible = false;
+            this.AnalogCompareTable.RowTemplate.Height = 21;
+            this.AnalogCompareTable.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.AnalogCompareTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullColumnSelect;
+            this.AnalogCompareTable.Size = new System.Drawing.Size(1044, 120);
+            this.AnalogCompareTable.TabIndex = 6;
+            // 
+            // nomenclatureNumberDataGridViewTextBoxColumn3
+            // 
+            this.nomenclatureNumberDataGridViewTextBoxColumn3.DataPropertyName = "NomenclatureNumber";
+            this.nomenclatureNumberDataGridViewTextBoxColumn3.HeaderText = "Номенклатурный номер";
+            this.nomenclatureNumberDataGridViewTextBoxColumn3.Name = "nomenclatureNumberDataGridViewTextBoxColumn3";
+            this.nomenclatureNumberDataGridViewTextBoxColumn3.ReadOnly = true;
+            this.nomenclatureNumberDataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // nameDataGridViewTextBoxColumn3
+            // 
+            this.nameDataGridViewTextBoxColumn3.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn3.HeaderText = "Наименование";
+            this.nameDataGridViewTextBoxColumn3.Name = "nameDataGridViewTextBoxColumn3";
+            this.nameDataGridViewTextBoxColumn3.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // designationDataGridViewTextBoxColumn1
+            // 
+            this.designationDataGridViewTextBoxColumn1.DataPropertyName = "Designation";
+            this.designationDataGridViewTextBoxColumn1.HeaderText = "Обозначение";
+            this.designationDataGridViewTextBoxColumn1.Name = "designationDataGridViewTextBoxColumn1";
+            this.designationDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.designationDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // unitDataGridViewTextBoxColumn1
+            // 
+            this.unitDataGridViewTextBoxColumn1.DataPropertyName = "Unit";
+            this.unitDataGridViewTextBoxColumn1.HeaderText = "Единицы измерения";
+            this.unitDataGridViewTextBoxColumn1.Name = "unitDataGridViewTextBoxColumn1";
+            this.unitDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.unitDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dimensionsDataGridViewTextBoxColumn1
+            // 
+            this.dimensionsDataGridViewTextBoxColumn1.DataPropertyName = "Dimensions";
+            this.dimensionsDataGridViewTextBoxColumn1.HeaderText = "Типоразмеры";
+            this.dimensionsDataGridViewTextBoxColumn1.Name = "dimensionsDataGridViewTextBoxColumn1";
+            this.dimensionsDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dimensionsDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // cuttingMaterialDataGridViewTextBoxColumn1
+            // 
+            this.cuttingMaterialDataGridViewTextBoxColumn1.DataPropertyName = "CuttingMaterial";
+            this.cuttingMaterialDataGridViewTextBoxColumn1.HeaderText = "Материал режущей части";
+            this.cuttingMaterialDataGridViewTextBoxColumn1.Name = "cuttingMaterialDataGridViewTextBoxColumn1";
+            this.cuttingMaterialDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.cuttingMaterialDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // regulatoryDocDataGridViewTextBoxColumn1
+            // 
+            this.regulatoryDocDataGridViewTextBoxColumn1.DataPropertyName = "RegulatoryDoc";
+            this.regulatoryDocDataGridViewTextBoxColumn1.HeaderText = "Нормативная документация";
+            this.regulatoryDocDataGridViewTextBoxColumn1.Name = "regulatoryDocDataGridViewTextBoxColumn1";
+            this.regulatoryDocDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.regulatoryDocDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // producerDataGridViewTextBoxColumn1
+            // 
+            this.producerDataGridViewTextBoxColumn1.DataPropertyName = "Producer";
+            this.producerDataGridViewTextBoxColumn1.HeaderText = "Производитель";
+            this.producerDataGridViewTextBoxColumn1.Name = "producerDataGridViewTextBoxColumn1";
+            this.producerDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.producerDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // usageFlagDataGridViewTextBoxColumn1
+            // 
+            this.usageFlagDataGridViewTextBoxColumn1.DataPropertyName = "UsageFlag";
+            this.usageFlagDataGridViewTextBoxColumn1.HeaderText = "Признак использования";
+            this.usageFlagDataGridViewTextBoxColumn1.Name = "usageFlagDataGridViewTextBoxColumn1";
+            this.usageFlagDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.usageFlagDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // minStockDataGridViewTextBoxColumn1
+            // 
+            this.minStockDataGridViewTextBoxColumn1.DataPropertyName = "MinStock";
+            this.minStockDataGridViewTextBoxColumn1.HeaderText = "Неснижаемый остаток";
+            this.minStockDataGridViewTextBoxColumn1.Name = "minStockDataGridViewTextBoxColumn1";
+            this.minStockDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.minStockDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // analogTools1DataTable1BindingSource
+            // 
+            this.analogTools1DataTable1BindingSource.DataMember = "AnalogTools1_DataTable1";
+            this.analogTools1DataTable1BindingSource.DataSource = this.analogTools1BindingSource;
+            // 
+            // analogTools1BindingSource
+            // 
+            this.analogTools1BindingSource.DataMember = "AnalogTools1";
+            this.analogTools1BindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
+            // 
+            // AnalogsSearchGroup
+            // 
+            this.AnalogsSearchGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AnalogsSearchGroup.ContextMenuStrip = this.SearchGroupContextMenu;
+            this.AnalogsSearchGroup.Controls.Add(this.AnalogButtonResetSearch);
+            this.AnalogsSearchGroup.Controls.Add(this.AnalogAnalogName);
+            this.AnalogsSearchGroup.Controls.Add(this.AnalogMainName);
+            this.AnalogsSearchGroup.Controls.Add(this.AnalogAnalogNumber);
+            this.AnalogsSearchGroup.Controls.Add(this.AnalogMainNumber);
+            this.AnalogsSearchGroup.Controls.Add(this.label11);
+            this.AnalogsSearchGroup.Controls.Add(this.label12);
+            this.AnalogsSearchGroup.Controls.Add(this.label10);
+            this.AnalogsSearchGroup.Controls.Add(this.label19);
+            this.AnalogsSearchGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AnalogsSearchGroup.Location = new System.Drawing.Point(7, 7);
+            this.AnalogsSearchGroup.Name = "AnalogsSearchGroup";
+            this.AnalogsSearchGroup.Size = new System.Drawing.Size(1232, 100);
+            this.AnalogsSearchGroup.TabIndex = 11;
+            this.AnalogsSearchGroup.TabStop = false;
+            this.AnalogsSearchGroup.Text = "Поиск";
+            // 
+            // AnalogButtonResetSearch
+            // 
+            this.AnalogButtonResetSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AnalogButtonResetSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AnalogButtonResetSearch.Location = new System.Drawing.Point(1163, 21);
+            this.AnalogButtonResetSearch.Name = "AnalogButtonResetSearch";
+            this.AnalogButtonResetSearch.Size = new System.Drawing.Size(63, 29);
+            this.AnalogButtonResetSearch.TabIndex = 27;
+            this.AnalogButtonResetSearch.Text = "Сброс";
+            this.AnalogButtonResetSearch.UseVisualStyleBackColor = true;
+            this.AnalogButtonResetSearch.Click += new System.EventHandler(this.AnalogButtonResetSearch_Click);
+            // 
+            // AnalogAnalogName
+            // 
+            this.AnalogAnalogName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AnalogAnalogName.ContextMenuStrip = this.SearchFieldsContextMenu;
+            this.AnalogAnalogName.Location = new System.Drawing.Point(909, 21);
+            this.AnalogAnalogName.Name = "AnalogAnalogName";
+            this.AnalogAnalogName.Size = new System.Drawing.Size(248, 29);
+            this.AnalogAnalogName.TabIndex = 10;
+            this.AnalogAnalogName.TextChanged += new System.EventHandler(this.Analog_TextChanged);
+            // 
+            // AnalogMainName
+            // 
+            this.AnalogMainName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AnalogMainName.ContextMenuStrip = this.SearchFieldsContextMenu;
+            this.AnalogMainName.Location = new System.Drawing.Point(387, 21);
+            this.AnalogMainName.Name = "AnalogMainName";
+            this.AnalogMainName.Size = new System.Drawing.Size(248, 29);
+            this.AnalogMainName.TabIndex = 9;
+            this.AnalogMainName.TextChanged += new System.EventHandler(this.Analog_TextChanged);
+            // 
+            // AnalogAnalogNumber
+            // 
+            this.AnalogAnalogNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AnalogAnalogNumber.ContextMenuStrip = this.SearchFieldsContextMenu;
+            this.AnalogAnalogNumber.HidePromptOnLeave = true;
+            this.AnalogAnalogNumber.Location = new System.Drawing.Point(909, 56);
+            this.AnalogAnalogNumber.Mask = "000000000";
+            this.AnalogAnalogNumber.Name = "AnalogAnalogNumber";
+            this.AnalogAnalogNumber.Size = new System.Drawing.Size(248, 29);
+            this.AnalogAnalogNumber.TabIndex = 4;
+            this.AnalogAnalogNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.AnalogAnalogNumber.TextChanged += new System.EventHandler(this.Analog_TextChanged);
+            this.AnalogAnalogNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Digits_KeyPress);
+            // 
+            // AnalogMainNumber
+            // 
+            this.AnalogMainNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AnalogMainNumber.ContextMenuStrip = this.SearchFieldsContextMenu;
+            this.AnalogMainNumber.HidePromptOnLeave = true;
+            this.AnalogMainNumber.Location = new System.Drawing.Point(387, 56);
+            this.AnalogMainNumber.Mask = "000000000";
+            this.AnalogMainNumber.Name = "AnalogMainNumber";
+            this.AnalogMainNumber.Size = new System.Drawing.Size(248, 29);
+            this.AnalogMainNumber.TabIndex = 2;
+            this.AnalogMainNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.AnalogMainNumber.TextChanged += new System.EventHandler(this.Analog_TextChanged);
+            this.AnalogMainNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Digits_KeyPress);
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.Location = new System.Drawing.Point(641, 65);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(257, 20);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "Номенклатурный номер аналога";
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.Location = new System.Drawing.Point(641, 30);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(188, 20);
+            this.label12.TabIndex = 7;
+            this.label12.Text = "Наименование аналога";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(6, 65);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(375, 20);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Номенклатурный номер основного инструмента";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label19.Location = new System.Drawing.Point(6, 30);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(306, 20);
+            this.label19.TabIndex = 1;
+            this.label19.Text = "Наименование основного инструмента";
+            // 
+            // AnalogListTable
+            // 
+            this.AnalogListTable.AllowUserToResizeRows = false;
+            this.AnalogListTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AnalogListTable.AutoGenerateColumns = false;
+            this.AnalogListTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.AnalogListTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AnalogListTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.iDDataGridViewTextBoxColumn,
+            this.originalNomenclatureNumberDataGridViewTextBoxColumn,
+            this.analogNomenclatureNumberDataGridViewTextBoxColumn,
+            this.originalFullNameDataGridViewTextBoxColumn,
+            this.analogFullNameDataGridViewTextBoxColumn});
+            this.AnalogListTable.DataSource = this.analogTools1BindingSource;
+            this.AnalogListTable.Location = new System.Drawing.Point(7, 113);
+            this.AnalogListTable.Name = "AnalogListTable";
+            this.AnalogListTable.RowHeadersVisible = false;
+            this.AnalogListTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.AnalogListTable.Size = new System.Drawing.Size(1044, 380);
+            this.AnalogListTable.TabIndex = 5;
+            this.AnalogListTable.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.AnalogListTable_CellBeginEdit);
+            this.AnalogListTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AnalogListTable_CellMouseClick);
+            this.AnalogListTable.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.AnalogListTable_CellValidating);
+            this.AnalogListTable.CurrentCellChanged += new System.EventHandler(this.AnalogListTable_CurrentCellChanged);
+            this.AnalogListTable.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.AnalogListTable_EditingControlShowing);
+            this.AnalogListTable.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.AnalogListTable_RowValidated);
+            this.AnalogListTable.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.AnalogListTable_RowValidating);
+            this.AnalogListTable.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.AnalogListTable_UserDeletingRow);
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // originalNomenclatureNumberDataGridViewTextBoxColumn
+            // 
+            this.originalNomenclatureNumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.originalNomenclatureNumberDataGridViewTextBoxColumn.DataPropertyName = "OriginalNomenclatureNumber";
+            this.originalNomenclatureNumberDataGridViewTextBoxColumn.HeaderText = "Номенклатурный номер основного инструмента";
+            this.originalNomenclatureNumberDataGridViewTextBoxColumn.Name = "originalNomenclatureNumberDataGridViewTextBoxColumn";
+            this.originalNomenclatureNumberDataGridViewTextBoxColumn.Width = 110;
+            // 
+            // analogNomenclatureNumberDataGridViewTextBoxColumn
+            // 
+            this.analogNomenclatureNumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.analogNomenclatureNumberDataGridViewTextBoxColumn.DataPropertyName = "AnalogNomenclatureNumber";
+            this.analogNomenclatureNumberDataGridViewTextBoxColumn.HeaderText = "Номенклатурный номер аналога";
+            this.analogNomenclatureNumberDataGridViewTextBoxColumn.Name = "analogNomenclatureNumberDataGridViewTextBoxColumn";
+            this.analogNomenclatureNumberDataGridViewTextBoxColumn.Width = 110;
+            // 
+            // originalFullNameDataGridViewTextBoxColumn
+            // 
+            this.originalFullNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.originalFullNameDataGridViewTextBoxColumn.DataPropertyName = "OriginalFullName";
+            this.originalFullNameDataGridViewTextBoxColumn.HeaderText = "Полное наименование основного инструмента";
+            this.originalFullNameDataGridViewTextBoxColumn.Name = "originalFullNameDataGridViewTextBoxColumn";
+            this.originalFullNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // analogFullNameDataGridViewTextBoxColumn
+            // 
+            this.analogFullNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.analogFullNameDataGridViewTextBoxColumn.DataPropertyName = "AnalogFullName";
+            this.analogFullNameDataGridViewTextBoxColumn.HeaderText = "Полное наименование аналога";
+            this.analogFullNameDataGridViewTextBoxColumn.Name = "analogFullNameDataGridViewTextBoxColumn";
+            this.analogFullNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // InjGroupsPage
             // 
@@ -913,6 +1344,7 @@
             this.GroupsTable.Size = new System.Drawing.Size(1035, 533);
             this.GroupsTable.TabIndex = 3;
             this.GroupsTable.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.GroupsTable_CellBeginEdit);
+            this.GroupsTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GroupsTable_CellMouseClick);
             this.GroupsTable.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.GroupsTable_CellValidating);
             this.GroupsTable.CurrentCellChanged += new System.EventHandler(this.GroupsTable_CurrentCellChanged);
             this.GroupsTable.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.GroupsTable_EditingControlShowing);
@@ -1085,6 +1517,7 @@
             this.ReceivingRequestsRequestsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ReceivingRequestsRequestsTable.Size = new System.Drawing.Size(1037, 220);
             this.ReceivingRequestsRequestsTable.TabIndex = 50;
+            this.ReceivingRequestsRequestsTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ReceivingRequestsRequestsTable_CellMouseClick);
             // 
             // dataGridViewTextBoxColumn16
             // 
@@ -1439,6 +1872,7 @@
             this.PurchaseRequestsPurchaseRequestsTable.ReadOnly = true;
             this.PurchaseRequestsPurchaseRequestsTable.Size = new System.Drawing.Size(338, 446);
             this.PurchaseRequestsPurchaseRequestsTable.TabIndex = 31;
+            this.PurchaseRequestsPurchaseRequestsTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.PurchaseRequestsPurchaseRequestsTable_CellMouseClick);
             // 
             // PurchaseRequestsContentTable
             // 
@@ -1585,7 +2019,7 @@
             this.StatementsButtonExport.Name = "StatementsButtonExport";
             this.StatementsButtonExport.Size = new System.Drawing.Size(182, 44);
             this.StatementsButtonExport.TabIndex = 56;
-            this.StatementsButtonExport.Text = "Экспорт";
+            this.StatementsButtonExport.Text = "Экспортировать";
             this.StatementsButtonExport.UseVisualStyleBackColor = true;
             // 
             // StatementsButtonDelete
@@ -1627,7 +2061,7 @@
             this.StatementsContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StatementsContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.StatementsContentTable.Location = new System.Drawing.Point(7, 323);
+            this.StatementsContentTable.Location = new System.Drawing.Point(4, 323);
             this.StatementsContentTable.Name = "StatementsContentTable";
             this.StatementsContentTable.ReadOnly = true;
             this.StatementsContentTable.Size = new System.Drawing.Size(1044, 264);
@@ -1638,7 +2072,7 @@
             this.label50.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label50.AutoSize = true;
             this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label50.Location = new System.Drawing.Point(7, 296);
+            this.label50.Location = new System.Drawing.Point(4, 296);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(268, 24);
             this.label50.TabIndex = 40;
@@ -1667,6 +2101,7 @@
             this.StatementsStatementsTable.ReadOnly = true;
             this.StatementsStatementsTable.Size = new System.Drawing.Size(1044, 194);
             this.StatementsStatementsTable.TabIndex = 38;
+            this.StatementsStatementsTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.StatementsStatementsTable_CellMouseClick);
             // 
             // StatementsSearchGroup
             // 
@@ -1767,7 +2202,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(182, 44);
             this.button1.TabIndex = 57;
-            this.button1.Text = "Экспорт";
+            this.button1.Text = "Экспортировать";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // InvoicesContentTable
@@ -1777,7 +2212,7 @@
             this.InvoicesContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.InvoicesContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.InvoicesContentTable.Location = new System.Drawing.Point(4, 323);
+            this.InvoicesContentTable.Location = new System.Drawing.Point(6, 323);
             this.InvoicesContentTable.Name = "InvoicesContentTable";
             this.InvoicesContentTable.ReadOnly = true;
             this.InvoicesContentTable.Size = new System.Drawing.Size(1044, 264);
@@ -1788,7 +2223,7 @@
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(4, 296);
+            this.label15.Location = new System.Drawing.Point(6, 296);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(268, 24);
             this.label15.TabIndex = 54;
@@ -1817,6 +2252,7 @@
             this.InvoicesInvoicesTable.ReadOnly = true;
             this.InvoicesInvoicesTable.Size = new System.Drawing.Size(1044, 194);
             this.InvoicesInvoicesTable.TabIndex = 52;
+            this.InvoicesInvoicesTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.InvoicesInvoicesTable_CellMouseClick);
             // 
             // InvoicesButtonDelete
             // 
@@ -2030,377 +2466,6 @@
             this.HistoryStart.Size = new System.Drawing.Size(228, 29);
             this.HistoryStart.TabIndex = 18;
             // 
-            // InjAnalogPage
-            // 
-            this.InjAnalogPage.Controls.Add(this.AnalogButtonDelete);
-            this.InjAnalogPage.Controls.Add(this.AnalogButtonAlter);
-            this.InjAnalogPage.Controls.Add(this.AnalogButtonCreate);
-            this.InjAnalogPage.Controls.Add(this.AnalogCompareTable);
-            this.InjAnalogPage.Controls.Add(this.AnalogsSearchGroup);
-            this.InjAnalogPage.Controls.Add(this.AnalogListTable);
-            this.InjAnalogPage.Location = new System.Drawing.Point(4, 29);
-            this.InjAnalogPage.Name = "InjAnalogPage";
-            this.InjAnalogPage.Size = new System.Drawing.Size(1254, 625);
-            this.InjAnalogPage.TabIndex = 2;
-            this.InjAnalogPage.Text = "Аналоги инструментов";
-            this.InjAnalogPage.UseVisualStyleBackColor = true;
-            // 
-            // AnalogButtonDelete
-            // 
-            this.AnalogButtonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AnalogButtonDelete.Enabled = false;
-            this.AnalogButtonDelete.Location = new System.Drawing.Point(1057, 213);
-            this.AnalogButtonDelete.Name = "AnalogButtonDelete";
-            this.AnalogButtonDelete.Size = new System.Drawing.Size(182, 44);
-            this.AnalogButtonDelete.TabIndex = 22;
-            this.AnalogButtonDelete.Text = "Удалить";
-            this.AnalogButtonDelete.UseVisualStyleBackColor = true;
-            this.AnalogButtonDelete.Click += new System.EventHandler(this.AnalogButtonDelete_Click);
-            // 
-            // AnalogButtonAlter
-            // 
-            this.AnalogButtonAlter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AnalogButtonAlter.Enabled = false;
-            this.AnalogButtonAlter.Location = new System.Drawing.Point(1057, 163);
-            this.AnalogButtonAlter.Name = "AnalogButtonAlter";
-            this.AnalogButtonAlter.Size = new System.Drawing.Size(182, 44);
-            this.AnalogButtonAlter.TabIndex = 21;
-            this.AnalogButtonAlter.Text = "Изменить";
-            this.AnalogButtonAlter.UseVisualStyleBackColor = true;
-            this.AnalogButtonAlter.Click += new System.EventHandler(this.AnalogButtonAlter_Click);
-            // 
-            // AnalogButtonCreate
-            // 
-            this.AnalogButtonCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AnalogButtonCreate.Location = new System.Drawing.Point(1057, 113);
-            this.AnalogButtonCreate.Name = "AnalogButtonCreate";
-            this.AnalogButtonCreate.Size = new System.Drawing.Size(182, 44);
-            this.AnalogButtonCreate.TabIndex = 20;
-            this.AnalogButtonCreate.Text = "Создать";
-            this.AnalogButtonCreate.UseVisualStyleBackColor = true;
-            this.AnalogButtonCreate.Click += new System.EventHandler(this.AnalogButtonCreate_Click);
-            // 
-            // AnalogCompareTable
-            // 
-            this.AnalogCompareTable.AllowUserToAddRows = false;
-            this.AnalogCompareTable.AllowUserToDeleteRows = false;
-            this.AnalogCompareTable.AllowUserToResizeRows = false;
-            this.AnalogCompareTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AnalogCompareTable.AutoGenerateColumns = false;
-            this.AnalogCompareTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.AnalogCompareTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AnalogCompareTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nomenclatureNumberDataGridViewTextBoxColumn3,
-            this.nameDataGridViewTextBoxColumn3,
-            this.designationDataGridViewTextBoxColumn1,
-            this.unitDataGridViewTextBoxColumn1,
-            this.dimensionsDataGridViewTextBoxColumn1,
-            this.cuttingMaterialDataGridViewTextBoxColumn1,
-            this.regulatoryDocDataGridViewTextBoxColumn1,
-            this.producerDataGridViewTextBoxColumn1,
-            this.usageFlagDataGridViewTextBoxColumn1,
-            this.minStockDataGridViewTextBoxColumn1});
-            this.AnalogCompareTable.DataSource = this.analogTools1DataTable1BindingSource;
-            this.AnalogCompareTable.Location = new System.Drawing.Point(7, 499);
-            this.AnalogCompareTable.MaximumSize = new System.Drawing.Size(0, 120);
-            this.AnalogCompareTable.MinimumSize = new System.Drawing.Size(1044, 120);
-            this.AnalogCompareTable.MultiSelect = false;
-            this.AnalogCompareTable.Name = "AnalogCompareTable";
-            this.AnalogCompareTable.ReadOnly = true;
-            this.AnalogCompareTable.RowHeadersVisible = false;
-            this.AnalogCompareTable.RowTemplate.Height = 21;
-            this.AnalogCompareTable.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.AnalogCompareTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullColumnSelect;
-            this.AnalogCompareTable.Size = new System.Drawing.Size(1044, 120);
-            this.AnalogCompareTable.TabIndex = 6;
-            // 
-            // nomenclatureNumberDataGridViewTextBoxColumn3
-            // 
-            this.nomenclatureNumberDataGridViewTextBoxColumn3.DataPropertyName = "NomenclatureNumber";
-            this.nomenclatureNumberDataGridViewTextBoxColumn3.HeaderText = "Номенклатурный номер";
-            this.nomenclatureNumberDataGridViewTextBoxColumn3.Name = "nomenclatureNumberDataGridViewTextBoxColumn3";
-            this.nomenclatureNumberDataGridViewTextBoxColumn3.ReadOnly = true;
-            this.nomenclatureNumberDataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // nameDataGridViewTextBoxColumn3
-            // 
-            this.nameDataGridViewTextBoxColumn3.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn3.HeaderText = "Наименование";
-            this.nameDataGridViewTextBoxColumn3.Name = "nameDataGridViewTextBoxColumn3";
-            this.nameDataGridViewTextBoxColumn3.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // designationDataGridViewTextBoxColumn1
-            // 
-            this.designationDataGridViewTextBoxColumn1.DataPropertyName = "Designation";
-            this.designationDataGridViewTextBoxColumn1.HeaderText = "Обозначение";
-            this.designationDataGridViewTextBoxColumn1.Name = "designationDataGridViewTextBoxColumn1";
-            this.designationDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.designationDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // unitDataGridViewTextBoxColumn1
-            // 
-            this.unitDataGridViewTextBoxColumn1.DataPropertyName = "Unit";
-            this.unitDataGridViewTextBoxColumn1.HeaderText = "Единицы измерения";
-            this.unitDataGridViewTextBoxColumn1.Name = "unitDataGridViewTextBoxColumn1";
-            this.unitDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.unitDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dimensionsDataGridViewTextBoxColumn1
-            // 
-            this.dimensionsDataGridViewTextBoxColumn1.DataPropertyName = "Dimensions";
-            this.dimensionsDataGridViewTextBoxColumn1.HeaderText = "Типоразмеры";
-            this.dimensionsDataGridViewTextBoxColumn1.Name = "dimensionsDataGridViewTextBoxColumn1";
-            this.dimensionsDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dimensionsDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // cuttingMaterialDataGridViewTextBoxColumn1
-            // 
-            this.cuttingMaterialDataGridViewTextBoxColumn1.DataPropertyName = "CuttingMaterial";
-            this.cuttingMaterialDataGridViewTextBoxColumn1.HeaderText = "Материал режущей части";
-            this.cuttingMaterialDataGridViewTextBoxColumn1.Name = "cuttingMaterialDataGridViewTextBoxColumn1";
-            this.cuttingMaterialDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.cuttingMaterialDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // regulatoryDocDataGridViewTextBoxColumn1
-            // 
-            this.regulatoryDocDataGridViewTextBoxColumn1.DataPropertyName = "RegulatoryDoc";
-            this.regulatoryDocDataGridViewTextBoxColumn1.HeaderText = "Нормативная документация";
-            this.regulatoryDocDataGridViewTextBoxColumn1.Name = "regulatoryDocDataGridViewTextBoxColumn1";
-            this.regulatoryDocDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.regulatoryDocDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // producerDataGridViewTextBoxColumn1
-            // 
-            this.producerDataGridViewTextBoxColumn1.DataPropertyName = "Producer";
-            this.producerDataGridViewTextBoxColumn1.HeaderText = "Производитель";
-            this.producerDataGridViewTextBoxColumn1.Name = "producerDataGridViewTextBoxColumn1";
-            this.producerDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.producerDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // usageFlagDataGridViewTextBoxColumn1
-            // 
-            this.usageFlagDataGridViewTextBoxColumn1.DataPropertyName = "UsageFlag";
-            this.usageFlagDataGridViewTextBoxColumn1.HeaderText = "Признак использования";
-            this.usageFlagDataGridViewTextBoxColumn1.Name = "usageFlagDataGridViewTextBoxColumn1";
-            this.usageFlagDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.usageFlagDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // minStockDataGridViewTextBoxColumn1
-            // 
-            this.minStockDataGridViewTextBoxColumn1.DataPropertyName = "MinStock";
-            this.minStockDataGridViewTextBoxColumn1.HeaderText = "Неснижаемый остаток";
-            this.minStockDataGridViewTextBoxColumn1.Name = "minStockDataGridViewTextBoxColumn1";
-            this.minStockDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.minStockDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // analogTools1DataTable1BindingSource
-            // 
-            this.analogTools1DataTable1BindingSource.DataMember = "AnalogTools1_DataTable1";
-            this.analogTools1DataTable1BindingSource.DataSource = this.analogTools1BindingSource;
-            // 
-            // analogTools1BindingSource
-            // 
-            this.analogTools1BindingSource.DataMember = "AnalogTools1";
-            this.analogTools1BindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
-            // 
-            // AnalogsSearchGroup
-            // 
-            this.AnalogsSearchGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AnalogsSearchGroup.ContextMenuStrip = this.SearchGroupContextMenu;
-            this.AnalogsSearchGroup.Controls.Add(this.AnalogButtonResetSearch);
-            this.AnalogsSearchGroup.Controls.Add(this.AnalogAnalogName);
-            this.AnalogsSearchGroup.Controls.Add(this.AnalogMainName);
-            this.AnalogsSearchGroup.Controls.Add(this.AnalogAnalogNumber);
-            this.AnalogsSearchGroup.Controls.Add(this.AnalogMainNumber);
-            this.AnalogsSearchGroup.Controls.Add(this.label11);
-            this.AnalogsSearchGroup.Controls.Add(this.label12);
-            this.AnalogsSearchGroup.Controls.Add(this.label10);
-            this.AnalogsSearchGroup.Controls.Add(this.label19);
-            this.AnalogsSearchGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AnalogsSearchGroup.Location = new System.Drawing.Point(7, 7);
-            this.AnalogsSearchGroup.Name = "AnalogsSearchGroup";
-            this.AnalogsSearchGroup.Size = new System.Drawing.Size(1232, 100);
-            this.AnalogsSearchGroup.TabIndex = 11;
-            this.AnalogsSearchGroup.TabStop = false;
-            this.AnalogsSearchGroup.Text = "Поиск";
-            // 
-            // AnalogButtonResetSearch
-            // 
-            this.AnalogButtonResetSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AnalogButtonResetSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AnalogButtonResetSearch.Location = new System.Drawing.Point(1163, 21);
-            this.AnalogButtonResetSearch.Name = "AnalogButtonResetSearch";
-            this.AnalogButtonResetSearch.Size = new System.Drawing.Size(63, 29);
-            this.AnalogButtonResetSearch.TabIndex = 27;
-            this.AnalogButtonResetSearch.Text = "Сброс";
-            this.AnalogButtonResetSearch.UseVisualStyleBackColor = true;
-            this.AnalogButtonResetSearch.Click += new System.EventHandler(this.AnalogButtonResetSearch_Click);
-            // 
-            // AnalogAnalogName
-            // 
-            this.AnalogAnalogName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AnalogAnalogName.ContextMenuStrip = this.SearchFieldsContextMenu;
-            this.AnalogAnalogName.Location = new System.Drawing.Point(909, 21);
-            this.AnalogAnalogName.Name = "AnalogAnalogName";
-            this.AnalogAnalogName.Size = new System.Drawing.Size(248, 29);
-            this.AnalogAnalogName.TabIndex = 10;
-            this.AnalogAnalogName.TextChanged += new System.EventHandler(this.Analog_TextChanged);
-            // 
-            // AnalogMainName
-            // 
-            this.AnalogMainName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AnalogMainName.ContextMenuStrip = this.SearchFieldsContextMenu;
-            this.AnalogMainName.Location = new System.Drawing.Point(387, 21);
-            this.AnalogMainName.Name = "AnalogMainName";
-            this.AnalogMainName.Size = new System.Drawing.Size(248, 29);
-            this.AnalogMainName.TabIndex = 9;
-            this.AnalogMainName.TextChanged += new System.EventHandler(this.Analog_TextChanged);
-            // 
-            // AnalogAnalogNumber
-            // 
-            this.AnalogAnalogNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AnalogAnalogNumber.ContextMenuStrip = this.SearchFieldsContextMenu;
-            this.AnalogAnalogNumber.HidePromptOnLeave = true;
-            this.AnalogAnalogNumber.Location = new System.Drawing.Point(909, 56);
-            this.AnalogAnalogNumber.Mask = "000000000";
-            this.AnalogAnalogNumber.Name = "AnalogAnalogNumber";
-            this.AnalogAnalogNumber.Size = new System.Drawing.Size(248, 29);
-            this.AnalogAnalogNumber.TabIndex = 4;
-            this.AnalogAnalogNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.AnalogAnalogNumber.TextChanged += new System.EventHandler(this.Analog_TextChanged);
-            this.AnalogAnalogNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Digits_KeyPress);
-            // 
-            // AnalogMainNumber
-            // 
-            this.AnalogMainNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AnalogMainNumber.ContextMenuStrip = this.SearchFieldsContextMenu;
-            this.AnalogMainNumber.HidePromptOnLeave = true;
-            this.AnalogMainNumber.Location = new System.Drawing.Point(387, 56);
-            this.AnalogMainNumber.Mask = "000000000";
-            this.AnalogMainNumber.Name = "AnalogMainNumber";
-            this.AnalogMainNumber.Size = new System.Drawing.Size(248, 29);
-            this.AnalogMainNumber.TabIndex = 2;
-            this.AnalogMainNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.AnalogMainNumber.TextChanged += new System.EventHandler(this.Analog_TextChanged);
-            this.AnalogMainNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Digits_KeyPress);
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(641, 65);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(257, 20);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "Номенклатурный номер аналога";
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(641, 30);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(188, 20);
-            this.label12.TabIndex = 7;
-            this.label12.Text = "Наименование аналога";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(6, 65);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(375, 20);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Номенклатурный номер основного инструмента";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label19.Location = new System.Drawing.Point(6, 30);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(306, 20);
-            this.label19.TabIndex = 1;
-            this.label19.Text = "Наименование основного инструмента";
-            // 
-            // AnalogListTable
-            // 
-            this.AnalogListTable.AllowUserToResizeRows = false;
-            this.AnalogListTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AnalogListTable.AutoGenerateColumns = false;
-            this.AnalogListTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.AnalogListTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AnalogListTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iDDataGridViewTextBoxColumn,
-            this.originalNomenclatureNumberDataGridViewTextBoxColumn,
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn,
-            this.originalFullNameDataGridViewTextBoxColumn,
-            this.analogFullNameDataGridViewTextBoxColumn});
-            this.AnalogListTable.DataSource = this.analogTools1BindingSource;
-            this.AnalogListTable.Location = new System.Drawing.Point(7, 113);
-            this.AnalogListTable.Name = "AnalogListTable";
-            this.AnalogListTable.RowHeadersVisible = false;
-            this.AnalogListTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.AnalogListTable.Size = new System.Drawing.Size(1044, 380);
-            this.AnalogListTable.TabIndex = 5;
-            this.AnalogListTable.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.AnalogListTable_CellBeginEdit);
-            this.AnalogListTable.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.AnalogListTable_CellValidating);
-            this.AnalogListTable.CurrentCellChanged += new System.EventHandler(this.AnalogListTable_CurrentCellChanged);
-            this.AnalogListTable.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.AnalogListTable_EditingControlShowing);
-            this.AnalogListTable.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.AnalogListTable_RowValidated);
-            this.AnalogListTable.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.AnalogListTable_RowValidating);
-            this.AnalogListTable.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.AnalogListTable_UserDeletingRow);
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.iDDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // originalNomenclatureNumberDataGridViewTextBoxColumn
-            // 
-            this.originalNomenclatureNumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.originalNomenclatureNumberDataGridViewTextBoxColumn.DataPropertyName = "OriginalNomenclatureNumber";
-            this.originalNomenclatureNumberDataGridViewTextBoxColumn.HeaderText = "Номенклатурный номер основного инструмента";
-            this.originalNomenclatureNumberDataGridViewTextBoxColumn.Name = "originalNomenclatureNumberDataGridViewTextBoxColumn";
-            this.originalNomenclatureNumberDataGridViewTextBoxColumn.Width = 110;
-            // 
-            // analogNomenclatureNumberDataGridViewTextBoxColumn
-            // 
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn.DataPropertyName = "AnalogNomenclatureNumber";
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn.HeaderText = "Номенклатурный номер аналога";
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn.Name = "analogNomenclatureNumberDataGridViewTextBoxColumn";
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn.Width = 110;
-            // 
-            // originalFullNameDataGridViewTextBoxColumn
-            // 
-            this.originalFullNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.originalFullNameDataGridViewTextBoxColumn.DataPropertyName = "OriginalFullName";
-            this.originalFullNameDataGridViewTextBoxColumn.HeaderText = "Полное наименование основного инструмента";
-            this.originalFullNameDataGridViewTextBoxColumn.Name = "originalFullNameDataGridViewTextBoxColumn";
-            this.originalFullNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // analogFullNameDataGridViewTextBoxColumn
-            // 
-            this.analogFullNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.analogFullNameDataGridViewTextBoxColumn.DataPropertyName = "AnalogFullName";
-            this.analogFullNameDataGridViewTextBoxColumn.HeaderText = "Полное наименование аналога";
-            this.analogFullNameDataGridViewTextBoxColumn.Name = "analogFullNameDataGridViewTextBoxColumn";
-            this.analogFullNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // InjProvidersPage
             // 
             this.InjProvidersPage.Controls.Add(this.ProvidersButtonDelete);
@@ -2474,6 +2539,7 @@
             this.ProvidersTable.Size = new System.Drawing.Size(1035, 538);
             this.ProvidersTable.TabIndex = 7;
             this.ProvidersTable.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.ProvidersTable_CellBeginEdit);
+            this.ProvidersTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ProvidersTable_CellMouseClick);
             this.ProvidersTable.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.ProvidersTable_CellValidating);
             this.ProvidersTable.CurrentCellChanged += new System.EventHandler(this.ProvidersTable_CurrentCellChanged);
             this.ProvidersTable.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.ProvidersTable_EditingControlShowing);
@@ -2888,49 +2954,6 @@
             this.OstatkiTable.Size = new System.Drawing.Size(1241, 498);
             this.OstatkiTable.TabIndex = 11;
             // 
-            // balanceIDDataGridViewTextBoxColumn
-            // 
-            this.balanceIDDataGridViewTextBoxColumn.DataPropertyName = "BalanceID";
-            this.balanceIDDataGridViewTextBoxColumn.HeaderText = "BalanceID";
-            this.balanceIDDataGridViewTextBoxColumn.Name = "balanceIDDataGridViewTextBoxColumn";
-            this.balanceIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nomenclatureNumberDataGridViewTextBoxColumn2
-            // 
-            this.nomenclatureNumberDataGridViewTextBoxColumn2.DataPropertyName = "NomenclatureNumber";
-            this.nomenclatureNumberDataGridViewTextBoxColumn2.HeaderText = "Номенклатурный номер";
-            this.nomenclatureNumberDataGridViewTextBoxColumn2.Name = "nomenclatureNumberDataGridViewTextBoxColumn2";
-            // 
-            // storageIDDataGridViewTextBoxColumn
-            // 
-            this.storageIDDataGridViewTextBoxColumn.DataPropertyName = "StorageID";
-            this.storageIDDataGridViewTextBoxColumn.HeaderText = "Номер склада";
-            this.storageIDDataGridViewTextBoxColumn.Name = "storageIDDataGridViewTextBoxColumn";
-            // 
-            // balanceDateDataGridViewTextBoxColumn
-            // 
-            this.balanceDateDataGridViewTextBoxColumn.DataPropertyName = "BalanceDate";
-            this.balanceDateDataGridViewTextBoxColumn.HeaderText = "Дата";
-            this.balanceDateDataGridViewTextBoxColumn.Name = "balanceDateDataGridViewTextBoxColumn";
-            // 
-            // batchNumberDataGridViewTextBoxColumn
-            // 
-            this.batchNumberDataGridViewTextBoxColumn.DataPropertyName = "BatchNumber";
-            this.batchNumberDataGridViewTextBoxColumn.HeaderText = "Номер партии";
-            this.batchNumberDataGridViewTextBoxColumn.Name = "batchNumberDataGridViewTextBoxColumn";
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Учетная цена";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            // 
-            // accountDataGridViewTextBoxColumn
-            // 
-            this.accountDataGridViewTextBoxColumn.DataPropertyName = "Account";
-            this.accountDataGridViewTextBoxColumn.HeaderText = "Балансовый счет";
-            this.accountDataGridViewTextBoxColumn.Name = "accountDataGridViewTextBoxColumn";
-            // 
             // balancesBindingSource
             // 
             this.balancesBindingSource.DataMember = "Balances";
@@ -3127,6 +3150,431 @@
             this.toolaccountingDataSet1.DataSetName = "TOOLACCOUNTINGDataSet";
             this.toolaccountingDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // NomenTableContextMenu
+            // 
+            this.NomenTableContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.NomenTableContexMenuCreate,
+            this.NomenTableContexMenuAlter,
+            this.NomenTableContexMenuDelete,
+            this.NomenTableContexMenuSeparator1,
+            this.NomenTableContexMenuOstatki,
+            this.NomenTableContexMenuHistory,
+            this.NomenTableContexMenuLogs,
+            this.NomenTableContexMenuSeparator2,
+            this.NomenTableContexMenuFindAnalogs,
+            this.NomenTableContexMenuAddAnalog});
+            this.NomenTableContextMenu.Name = "NomenTableContextMenu";
+            this.NomenTableContextMenu.ShowImageMargin = false;
+            this.NomenTableContextMenu.Size = new System.Drawing.Size(187, 192);
+            // 
+            // NomenTableContexMenuCreate
+            // 
+            this.NomenTableContexMenuCreate.Name = "NomenTableContexMenuCreate";
+            this.NomenTableContexMenuCreate.Size = new System.Drawing.Size(186, 22);
+            this.NomenTableContexMenuCreate.Text = "Создать";
+            this.NomenTableContexMenuCreate.Click += new System.EventHandler(this.NomenTableContexMenuCreate_Click);
+            // 
+            // NomenTableContexMenuAlter
+            // 
+            this.NomenTableContexMenuAlter.Name = "NomenTableContexMenuAlter";
+            this.NomenTableContexMenuAlter.Size = new System.Drawing.Size(186, 22);
+            this.NomenTableContexMenuAlter.Text = "Изменить";
+            this.NomenTableContexMenuAlter.Click += new System.EventHandler(this.NomenTableContexMenuAlter_Click);
+            // 
+            // NomenTableContexMenuDelete
+            // 
+            this.NomenTableContexMenuDelete.Name = "NomenTableContexMenuDelete";
+            this.NomenTableContexMenuDelete.Size = new System.Drawing.Size(186, 22);
+            this.NomenTableContexMenuDelete.Text = "Удалить";
+            this.NomenTableContexMenuDelete.Click += new System.EventHandler(this.NomenTableContexMenuDelete_Click);
+            // 
+            // NomenTableContexMenuSeparator1
+            // 
+            this.NomenTableContexMenuSeparator1.Name = "NomenTableContexMenuSeparator1";
+            this.NomenTableContexMenuSeparator1.Size = new System.Drawing.Size(183, 6);
+            // 
+            // NomenTableContexMenuOstatki
+            // 
+            this.NomenTableContexMenuOstatki.Name = "NomenTableContexMenuOstatki";
+            this.NomenTableContexMenuOstatki.Size = new System.Drawing.Size(186, 22);
+            this.NomenTableContexMenuOstatki.Text = "Показать остатки";
+            this.NomenTableContexMenuOstatki.Click += new System.EventHandler(this.NomenTableContexMenuOstatki_Click);
+            // 
+            // NomenTableContexMenuHistory
+            // 
+            this.NomenTableContexMenuHistory.Name = "NomenTableContexMenuHistory";
+            this.NomenTableContexMenuHistory.Size = new System.Drawing.Size(186, 22);
+            this.NomenTableContexMenuHistory.Text = "История поступлений";
+            this.NomenTableContexMenuHistory.Click += new System.EventHandler(this.NomenTableContexMenuHistory_Click);
+            // 
+            // NomenTableContexMenuLogs
+            // 
+            this.NomenTableContexMenuLogs.Name = "NomenTableContexMenuLogs";
+            this.NomenTableContexMenuLogs.Size = new System.Drawing.Size(186, 22);
+            this.NomenTableContexMenuLogs.Text = "Показать корректировки";
+            this.NomenTableContexMenuLogs.Click += new System.EventHandler(this.NomenTableContexMenuLogs_Click);
+            // 
+            // NomenTableContexMenuSeparator2
+            // 
+            this.NomenTableContexMenuSeparator2.Name = "NomenTableContexMenuSeparator2";
+            this.NomenTableContexMenuSeparator2.Size = new System.Drawing.Size(183, 6);
+            // 
+            // NomenTableContexMenuFindAnalogs
+            // 
+            this.NomenTableContexMenuFindAnalogs.Name = "NomenTableContexMenuFindAnalogs";
+            this.NomenTableContexMenuFindAnalogs.Size = new System.Drawing.Size(186, 22);
+            this.NomenTableContexMenuFindAnalogs.Text = "Найти аналоги";
+            this.NomenTableContexMenuFindAnalogs.Click += new System.EventHandler(this.NomenTableContexMenuFindAnalogs_Click);
+            // 
+            // NomenTableContexMenuAddAnalog
+            // 
+            this.NomenTableContexMenuAddAnalog.Name = "NomenTableContexMenuAddAnalog";
+            this.NomenTableContexMenuAddAnalog.Size = new System.Drawing.Size(186, 22);
+            this.NomenTableContexMenuAddAnalog.Text = "Добавить аналог";
+            this.NomenTableContexMenuAddAnalog.Click += new System.EventHandler(this.NomenTableContexMenuAddAnalog_Click);
+            // 
+            // AnalogsTableContextMenu
+            // 
+            this.AnalogsTableContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AnalogsTableContextMenuCreate,
+            this.AnalogsTableContextMenuAlter,
+            this.AnalogsTableContextMenuDelete});
+            this.AnalogsTableContextMenu.Name = "AnalogsContextMenu";
+            this.AnalogsTableContextMenu.ShowImageMargin = false;
+            this.AnalogsTableContextMenu.Size = new System.Drawing.Size(104, 70);
+            // 
+            // AnalogsTableContextMenuCreate
+            // 
+            this.AnalogsTableContextMenuCreate.Name = "AnalogsTableContextMenuCreate";
+            this.AnalogsTableContextMenuCreate.Size = new System.Drawing.Size(103, 22);
+            this.AnalogsTableContextMenuCreate.Text = "Создать";
+            this.AnalogsTableContextMenuCreate.Click += new System.EventHandler(this.AnalogsTableContextMenuCreate_Click);
+            // 
+            // AnalogsTableContextMenuAlter
+            // 
+            this.AnalogsTableContextMenuAlter.Name = "AnalogsTableContextMenuAlter";
+            this.AnalogsTableContextMenuAlter.Size = new System.Drawing.Size(103, 22);
+            this.AnalogsTableContextMenuAlter.Text = "Изменить";
+            this.AnalogsTableContextMenuAlter.Click += new System.EventHandler(this.AnalogsTableContextMenuAlter_Click);
+            // 
+            // AnalogsTableContextMenuDelete
+            // 
+            this.AnalogsTableContextMenuDelete.Name = "AnalogsTableContextMenuDelete";
+            this.AnalogsTableContextMenuDelete.Size = new System.Drawing.Size(103, 22);
+            this.AnalogsTableContextMenuDelete.Text = "Удалить";
+            this.AnalogsTableContextMenuDelete.Click += new System.EventHandler(this.AnalogsTableContextMenuDelete_Click);
+            // 
+            // GroupsTableContextMenu
+            // 
+            this.GroupsTableContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.GroupTableContextMenuCreate,
+            this.GroupTableContextMenuAlter,
+            this.GroupTableContextMenuDelete,
+            this.GroupTableContextMenuSeparator,
+            this.GroupTableContextMenuFindNomen,
+            this.GroupTableContextMenuAddNomen});
+            this.GroupsTableContextMenu.Name = "GroupTableContextMenu";
+            this.GroupsTableContextMenu.ShowImageMargin = false;
+            this.GroupsTableContextMenu.Size = new System.Drawing.Size(170, 120);
+            // 
+            // GroupTableContextMenuCreate
+            // 
+            this.GroupTableContextMenuCreate.Name = "GroupTableContextMenuCreate";
+            this.GroupTableContextMenuCreate.Size = new System.Drawing.Size(169, 22);
+            this.GroupTableContextMenuCreate.Text = "Создать";
+            this.GroupTableContextMenuCreate.Click += new System.EventHandler(this.GroupTableContextMenuCreate_Click);
+            // 
+            // GroupTableContextMenuAlter
+            // 
+            this.GroupTableContextMenuAlter.Name = "GroupTableContextMenuAlter";
+            this.GroupTableContextMenuAlter.Size = new System.Drawing.Size(169, 22);
+            this.GroupTableContextMenuAlter.Text = "Изменить";
+            this.GroupTableContextMenuAlter.Click += new System.EventHandler(this.GroupTableContextMenuAlter_Click);
+            // 
+            // GroupTableContextMenuDelete
+            // 
+            this.GroupTableContextMenuDelete.Name = "GroupTableContextMenuDelete";
+            this.GroupTableContextMenuDelete.Size = new System.Drawing.Size(169, 22);
+            this.GroupTableContextMenuDelete.Text = "Удалить";
+            this.GroupTableContextMenuDelete.Click += new System.EventHandler(this.GroupTableContextMenuDelete_Click);
+            // 
+            // GroupTableContextMenuSeparator
+            // 
+            this.GroupTableContextMenuSeparator.Name = "GroupTableContextMenuSeparator";
+            this.GroupTableContextMenuSeparator.Size = new System.Drawing.Size(166, 6);
+            // 
+            // GroupTableContextMenuFindNomen
+            // 
+            this.GroupTableContextMenuFindNomen.Name = "GroupTableContextMenuFindNomen";
+            this.GroupTableContextMenuFindNomen.Size = new System.Drawing.Size(169, 22);
+            this.GroupTableContextMenuFindNomen.Text = "Найти инструменты";
+            this.GroupTableContextMenuFindNomen.ToolTipText = "Найти инструменты, входящие в эту группу";
+            this.GroupTableContextMenuFindNomen.Click += new System.EventHandler(this.GroupTableContextMenuFindNomen_Click);
+            // 
+            // GroupTableContextMenuAddNomen
+            // 
+            this.GroupTableContextMenuAddNomen.Name = "GroupTableContextMenuAddNomen";
+            this.GroupTableContextMenuAddNomen.Size = new System.Drawing.Size(169, 22);
+            this.GroupTableContextMenuAddNomen.Text = "Добавить инструмент";
+            this.GroupTableContextMenuAddNomen.ToolTipText = "Добавить новый инструмент, входящий в эту группу";
+            this.GroupTableContextMenuAddNomen.Click += new System.EventHandler(this.GroupTableContextMenuAddNomen_Click);
+            // 
+            // ReceivingRequestsContextMenu
+            // 
+            this.ReceivingRequestsContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ReceivingRequestsContextMenuConsider,
+            this.ReceivingRequestsContextMenuAlter,
+            this.ReceivingRequestsContextMenuCancel});
+            this.ReceivingRequestsContextMenu.Name = "ReceivingRequestsContextMenu";
+            this.ReceivingRequestsContextMenu.ShowImageMargin = false;
+            this.ReceivingRequestsContextMenu.Size = new System.Drawing.Size(186, 70);
+            // 
+            // ReceivingRequestsContextMenuConsider
+            // 
+            this.ReceivingRequestsContextMenuConsider.Name = "ReceivingRequestsContextMenuConsider";
+            this.ReceivingRequestsContextMenuConsider.Size = new System.Drawing.Size(185, 22);
+            this.ReceivingRequestsContextMenuConsider.Text = "Рассмотреть";
+            this.ReceivingRequestsContextMenuConsider.Click += new System.EventHandler(this.ReceivingRequestsContextMenuConsider_Click);
+            // 
+            // ReceivingRequestsContextMenuAlter
+            // 
+            this.ReceivingRequestsContextMenuAlter.Name = "ReceivingRequestsContextMenuAlter";
+            this.ReceivingRequestsContextMenuAlter.Size = new System.Drawing.Size(185, 22);
+            this.ReceivingRequestsContextMenuAlter.Text = "Изменить рассмотрение";
+            this.ReceivingRequestsContextMenuAlter.Click += new System.EventHandler(this.ReceivingRequestsContextMenuAlter_Click);
+            // 
+            // ReceivingRequestsContextMenuCancel
+            // 
+            this.ReceivingRequestsContextMenuCancel.Name = "ReceivingRequestsContextMenuCancel";
+            this.ReceivingRequestsContextMenuCancel.Size = new System.Drawing.Size(185, 22);
+            this.ReceivingRequestsContextMenuCancel.Text = "Отменить обработку";
+            this.ReceivingRequestsContextMenuCancel.Click += new System.EventHandler(this.ReceivingRequestsContextMenuCancel_Click);
+            // 
+            // PurchaseRequestsContextMenu
+            // 
+            this.PurchaseRequestsContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.PurchaseRequestsContextMenuCreate,
+            this.PurchaseRequestsContextMenuAlter,
+            this.PurchaseRequestsContextMenuDelete,
+            this.PurchaseRequestsContextMenuSeparator,
+            this.PurchaseRequestsContextMenuExport});
+            this.PurchaseRequestsContextMenu.Name = "PurchaseRequestsContextMenu";
+            this.PurchaseRequestsContextMenu.ShowImageMargin = false;
+            this.PurchaseRequestsContextMenu.Size = new System.Drawing.Size(139, 98);
+            // 
+            // PurchaseRequestsContextMenuCreate
+            // 
+            this.PurchaseRequestsContextMenuCreate.Name = "PurchaseRequestsContextMenuCreate";
+            this.PurchaseRequestsContextMenuCreate.Size = new System.Drawing.Size(138, 22);
+            this.PurchaseRequestsContextMenuCreate.Text = "Создать";
+            this.PurchaseRequestsContextMenuCreate.Click += new System.EventHandler(this.PurchaseRequestsContextMenuCreate_Click);
+            // 
+            // PurchaseRequestsContextMenuAlter
+            // 
+            this.PurchaseRequestsContextMenuAlter.Name = "PurchaseRequestsContextMenuAlter";
+            this.PurchaseRequestsContextMenuAlter.Size = new System.Drawing.Size(138, 22);
+            this.PurchaseRequestsContextMenuAlter.Text = "Изменить";
+            this.PurchaseRequestsContextMenuAlter.Click += new System.EventHandler(this.PurchaseRequestsContextMenuAlter_Click);
+            // 
+            // PurchaseRequestsContextMenuDelete
+            // 
+            this.PurchaseRequestsContextMenuDelete.Name = "PurchaseRequestsContextMenuDelete";
+            this.PurchaseRequestsContextMenuDelete.Size = new System.Drawing.Size(138, 22);
+            this.PurchaseRequestsContextMenuDelete.Text = "Удалить";
+            this.PurchaseRequestsContextMenuDelete.Click += new System.EventHandler(this.PurchaseRequestsContextMenuDelete_Click);
+            // 
+            // PurchaseRequestsContextMenuSeparator
+            // 
+            this.PurchaseRequestsContextMenuSeparator.Name = "PurchaseRequestsContextMenuSeparator";
+            this.PurchaseRequestsContextMenuSeparator.Size = new System.Drawing.Size(135, 6);
+            // 
+            // PurchaseRequestsContextMenuExport
+            // 
+            this.PurchaseRequestsContextMenuExport.Name = "PurchaseRequestsContextMenuExport";
+            this.PurchaseRequestsContextMenuExport.Size = new System.Drawing.Size(138, 22);
+            this.PurchaseRequestsContextMenuExport.Text = "Экспортировать";
+            this.PurchaseRequestsContextMenuExport.Click += new System.EventHandler(this.PurchaseRequestsContextMenuExport_Click);
+            // 
+            // StatementsTableContextMenu
+            // 
+            this.StatementsTableContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.StatementsTableContextMenuCreate,
+            this.StatementsTableContextMenuAlter,
+            this.StatementsTableContextMenuDelete,
+            this.StatementsTableContextMenuSeparator,
+            this.StatementsTableContextMenuExport});
+            this.StatementsTableContextMenu.Name = "StatementsContextMenu";
+            this.StatementsTableContextMenu.ShowImageMargin = false;
+            this.StatementsTableContextMenu.Size = new System.Drawing.Size(139, 98);
+            // 
+            // StatementsTableContextMenuCreate
+            // 
+            this.StatementsTableContextMenuCreate.Name = "StatementsTableContextMenuCreate";
+            this.StatementsTableContextMenuCreate.Size = new System.Drawing.Size(138, 22);
+            this.StatementsTableContextMenuCreate.Text = "Создать";
+            this.StatementsTableContextMenuCreate.Click += new System.EventHandler(this.StatementsTableContextMenuCreate_Click);
+            // 
+            // StatementsTableContextMenuAlter
+            // 
+            this.StatementsTableContextMenuAlter.Name = "StatementsTableContextMenuAlter";
+            this.StatementsTableContextMenuAlter.Size = new System.Drawing.Size(138, 22);
+            this.StatementsTableContextMenuAlter.Text = "Изменить";
+            this.StatementsTableContextMenuAlter.Click += new System.EventHandler(this.StatementsTableContextMenuAlter_Click);
+            // 
+            // StatementsTableContextMenuDelete
+            // 
+            this.StatementsTableContextMenuDelete.Name = "StatementsTableContextMenuDelete";
+            this.StatementsTableContextMenuDelete.Size = new System.Drawing.Size(138, 22);
+            this.StatementsTableContextMenuDelete.Text = "Удалить";
+            this.StatementsTableContextMenuDelete.Click += new System.EventHandler(this.StatementsTableContextMenuDelete_Click);
+            // 
+            // StatementsTableContextMenuSeparator
+            // 
+            this.StatementsTableContextMenuSeparator.Name = "StatementsTableContextMenuSeparator";
+            this.StatementsTableContextMenuSeparator.Size = new System.Drawing.Size(135, 6);
+            // 
+            // StatementsTableContextMenuExport
+            // 
+            this.StatementsTableContextMenuExport.Name = "StatementsTableContextMenuExport";
+            this.StatementsTableContextMenuExport.Size = new System.Drawing.Size(138, 22);
+            this.StatementsTableContextMenuExport.Text = "Экспортировать";
+            this.StatementsTableContextMenuExport.Click += new System.EventHandler(this.StatementsTableContextMenuExport_Click);
+            // 
+            // InvoicesTableContextMenu
+            // 
+            this.InvoicesTableContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.InvoicesTableContextMenuCreate,
+            this.InvoicesTableContextMenuAlter,
+            this.InvoicesTableContextMenuDelete,
+            this.InvoicesTableContextMenuSeparator,
+            this.InvoicesTableContextMenuExport});
+            this.InvoicesTableContextMenu.Name = "InvoicesTableContextMenu";
+            this.InvoicesTableContextMenu.ShowImageMargin = false;
+            this.InvoicesTableContextMenu.Size = new System.Drawing.Size(139, 98);
+            // 
+            // InvoicesTableContextMenuCreate
+            // 
+            this.InvoicesTableContextMenuCreate.Name = "InvoicesTableContextMenuCreate";
+            this.InvoicesTableContextMenuCreate.Size = new System.Drawing.Size(138, 22);
+            this.InvoicesTableContextMenuCreate.Text = "Внести";
+            this.InvoicesTableContextMenuCreate.Click += new System.EventHandler(this.InvoicesTableContextMenuCreate_Click);
+            // 
+            // InvoicesTableContextMenuAlter
+            // 
+            this.InvoicesTableContextMenuAlter.Name = "InvoicesTableContextMenuAlter";
+            this.InvoicesTableContextMenuAlter.Size = new System.Drawing.Size(138, 22);
+            this.InvoicesTableContextMenuAlter.Text = "Изменить";
+            this.InvoicesTableContextMenuAlter.Click += new System.EventHandler(this.InvoicesTableContextMenuAlter_Click);
+            // 
+            // InvoicesTableContextMenuDelete
+            // 
+            this.InvoicesTableContextMenuDelete.Name = "InvoicesTableContextMenuDelete";
+            this.InvoicesTableContextMenuDelete.Size = new System.Drawing.Size(138, 22);
+            this.InvoicesTableContextMenuDelete.Text = "Удалить";
+            this.InvoicesTableContextMenuDelete.Click += new System.EventHandler(this.InvoicesTableContextMenuDelete_Click);
+            // 
+            // InvoicesTableContextMenuSeparator
+            // 
+            this.InvoicesTableContextMenuSeparator.Name = "InvoicesTableContextMenuSeparator";
+            this.InvoicesTableContextMenuSeparator.Size = new System.Drawing.Size(135, 6);
+            // 
+            // InvoicesTableContextMenuExport
+            // 
+            this.InvoicesTableContextMenuExport.Name = "InvoicesTableContextMenuExport";
+            this.InvoicesTableContextMenuExport.Size = new System.Drawing.Size(138, 22);
+            this.InvoicesTableContextMenuExport.Text = "Экспортировать";
+            this.InvoicesTableContextMenuExport.Click += new System.EventHandler(this.InvoicesTableContextMenuExport_Click);
+            // 
+            // ProvidersTableContextMenu
+            // 
+            this.ProvidersTableContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ProvidersTableContextMenuCreate,
+            this.ProvidersTableContextMenuAlter,
+            this.ProvidersTableContextMenuDelete,
+            this.ProvidersTableContextMenuSeparator,
+            this.ProvidersTableContextMenuCreateStatement});
+            this.ProvidersTableContextMenu.Name = "ProvidersTableContextMenu";
+            this.ProvidersTableContextMenu.ShowImageMargin = false;
+            this.ProvidersTableContextMenu.Size = new System.Drawing.Size(154, 98);
+            // 
+            // ProvidersTableContextMenuCreate
+            // 
+            this.ProvidersTableContextMenuCreate.Name = "ProvidersTableContextMenuCreate";
+            this.ProvidersTableContextMenuCreate.Size = new System.Drawing.Size(153, 22);
+            this.ProvidersTableContextMenuCreate.Text = "Создать";
+            this.ProvidersTableContextMenuCreate.Click += new System.EventHandler(this.ProvidersTableContextMenuCreate_Click);
+            // 
+            // ProvidersTableContextMenuAlter
+            // 
+            this.ProvidersTableContextMenuAlter.Name = "ProvidersTableContextMenuAlter";
+            this.ProvidersTableContextMenuAlter.Size = new System.Drawing.Size(153, 22);
+            this.ProvidersTableContextMenuAlter.Text = "Изменить";
+            this.ProvidersTableContextMenuAlter.Click += new System.EventHandler(this.ProvidersTableContextMenuAlter_Click);
+            // 
+            // ProvidersTableContextMenuDelete
+            // 
+            this.ProvidersTableContextMenuDelete.Name = "ProvidersTableContextMenuDelete";
+            this.ProvidersTableContextMenuDelete.Size = new System.Drawing.Size(153, 22);
+            this.ProvidersTableContextMenuDelete.Text = "Удалить";
+            this.ProvidersTableContextMenuDelete.Click += new System.EventHandler(this.ProvidersTableContextMenuDelete_Click);
+            // 
+            // ProvidersTableContextMenuSeparator
+            // 
+            this.ProvidersTableContextMenuSeparator.Name = "ProvidersTableContextMenuSeparator";
+            this.ProvidersTableContextMenuSeparator.Size = new System.Drawing.Size(150, 6);
+            // 
+            // ProvidersTableContextMenuCreateStatement
+            // 
+            this.ProvidersTableContextMenuCreateStatement.Name = "ProvidersTableContextMenuCreateStatement";
+            this.ProvidersTableContextMenuCreateStatement.Size = new System.Drawing.Size(153, 22);
+            this.ProvidersTableContextMenuCreateStatement.Text = "Создать ведомость";
+            this.ProvidersTableContextMenuCreateStatement.ToolTipText = "Создать ведомость поставки от выбранного поставщика";
+            this.ProvidersTableContextMenuCreateStatement.Click += new System.EventHandler(this.ProvidersTableContextMenuCreateStatement_Click);
+            // 
+            // balanceIDDataGridViewTextBoxColumn
+            // 
+            this.balanceIDDataGridViewTextBoxColumn.DataPropertyName = "BalanceID";
+            this.balanceIDDataGridViewTextBoxColumn.HeaderText = "BalanceID";
+            this.balanceIDDataGridViewTextBoxColumn.Name = "balanceIDDataGridViewTextBoxColumn";
+            this.balanceIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.balanceIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nomenclatureNumberDataGridViewTextBoxColumn2
+            // 
+            this.nomenclatureNumberDataGridViewTextBoxColumn2.DataPropertyName = "NomenclatureNumber";
+            this.nomenclatureNumberDataGridViewTextBoxColumn2.HeaderText = "Номенклатурный номер";
+            this.nomenclatureNumberDataGridViewTextBoxColumn2.Name = "nomenclatureNumberDataGridViewTextBoxColumn2";
+            // 
+            // storageIDDataGridViewTextBoxColumn
+            // 
+            this.storageIDDataGridViewTextBoxColumn.DataPropertyName = "StorageID";
+            this.storageIDDataGridViewTextBoxColumn.HeaderText = "Номер склада";
+            this.storageIDDataGridViewTextBoxColumn.Name = "storageIDDataGridViewTextBoxColumn";
+            // 
+            // balanceDateDataGridViewTextBoxColumn
+            // 
+            this.balanceDateDataGridViewTextBoxColumn.DataPropertyName = "BalanceDate";
+            this.balanceDateDataGridViewTextBoxColumn.HeaderText = "Дата";
+            this.balanceDateDataGridViewTextBoxColumn.Name = "balanceDateDataGridViewTextBoxColumn";
+            // 
+            // batchNumberDataGridViewTextBoxColumn
+            // 
+            this.batchNumberDataGridViewTextBoxColumn.DataPropertyName = "BatchNumber";
+            this.batchNumberDataGridViewTextBoxColumn.HeaderText = "Номер партии";
+            this.batchNumberDataGridViewTextBoxColumn.Name = "batchNumberDataGridViewTextBoxColumn";
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Учетная цена";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            // 
+            // accountDataGridViewTextBoxColumn
+            // 
+            this.accountDataGridViewTextBoxColumn.DataPropertyName = "Account";
+            this.accountDataGridViewTextBoxColumn.HeaderText = "Балансовый счет";
+            this.accountDataGridViewTextBoxColumn.Name = "accountDataGridViewTextBoxColumn";
+            // 
             // Inj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3150,6 +3598,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.NomenTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nomenclatureViewBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).EndInit();
+            this.InjAnalogPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.AnalogCompareTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.analogTools1DataTable1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.analogTools1BindingSource)).EndInit();
+            this.AnalogsSearchGroup.ResumeLayout(false);
+            this.AnalogsSearchGroup.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AnalogListTable)).EndInit();
             this.InjGroupsPage.ResumeLayout(false);
             this.GroupsSearchGroup.ResumeLayout(false);
             this.GroupsSearchGroup.PerformLayout();
@@ -3188,13 +3643,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.HistoryTable)).EndInit();
             this.HistorySearchGroup.ResumeLayout(false);
             this.HistorySearchGroup.PerformLayout();
-            this.InjAnalogPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.AnalogCompareTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.analogTools1DataTable1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.analogTools1BindingSource)).EndInit();
-            this.AnalogsSearchGroup.ResumeLayout(false);
-            this.AnalogsSearchGroup.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AnalogListTable)).EndInit();
             this.InjProvidersPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ProvidersTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.suppliersBindingSource)).EndInit();
@@ -3215,6 +3663,14 @@
             this.Menu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.analogToolsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolaccountingDataSet1)).EndInit();
+            this.NomenTableContextMenu.ResumeLayout(false);
+            this.AnalogsTableContextMenu.ResumeLayout(false);
+            this.GroupsTableContextMenu.ResumeLayout(false);
+            this.ReceivingRequestsContextMenu.ResumeLayout(false);
+            this.PurchaseRequestsContextMenu.ResumeLayout(false);
+            this.StatementsTableContextMenu.ResumeLayout(false);
+            this.InvoicesTableContextMenu.ResumeLayout(false);
+            this.ProvidersTableContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3393,13 +3849,6 @@
         private System.Windows.Forms.TextBox LogValue;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox OstatkiStorage;
-        private System.Windows.Forms.DataGridViewTextBoxColumn balanceIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn storageIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn balanceDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn batchNumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn accountDataGridViewTextBoxColumn;
         private System.Windows.Forms.MaskedTextBox HistoryNumber;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.BindingSource receivingRequestsInjBindingSource;
@@ -3475,5 +3924,62 @@
         private System.Windows.Forms.ToolStripMenuItem ResetSearchGroup;
         private System.Windows.Forms.ContextMenuStrip SearchFieldsContextMenu;
         private System.Windows.Forms.ToolStripMenuItem ResetSearchField;
+        private System.Windows.Forms.ContextMenuStrip NomenTableContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem NomenTableContexMenuCreate;
+        private System.Windows.Forms.ToolStripMenuItem NomenTableContexMenuAlter;
+        private System.Windows.Forms.ToolStripMenuItem NomenTableContexMenuDelete;
+        private System.Windows.Forms.ToolStripSeparator NomenTableContexMenuSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem NomenTableContexMenuOstatki;
+        private System.Windows.Forms.ToolStripMenuItem NomenTableContexMenuHistory;
+        private System.Windows.Forms.ToolStripMenuItem NomenTableContexMenuLogs;
+        private System.Windows.Forms.ToolStripSeparator NomenTableContexMenuSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem NomenTableContexMenuFindAnalogs;
+        private System.Windows.Forms.ToolStripMenuItem NomenTableContexMenuAddAnalog;
+        private System.Windows.Forms.ContextMenuStrip AnalogsTableContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem AnalogsTableContextMenuCreate;
+        private System.Windows.Forms.ToolStripMenuItem AnalogsTableContextMenuAlter;
+        private System.Windows.Forms.ToolStripMenuItem AnalogsTableContextMenuDelete;
+        private System.Windows.Forms.ContextMenuStrip GroupsTableContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem GroupTableContextMenuCreate;
+        private System.Windows.Forms.ToolStripMenuItem GroupTableContextMenuAlter;
+        private System.Windows.Forms.ToolStripMenuItem GroupTableContextMenuDelete;
+        private System.Windows.Forms.ToolStripSeparator GroupTableContextMenuSeparator;
+        private System.Windows.Forms.ToolStripMenuItem GroupTableContextMenuFindNomen;
+        private System.Windows.Forms.ToolStripMenuItem GroupTableContextMenuAddNomen;
+        private System.Windows.Forms.ContextMenuStrip ReceivingRequestsContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem ReceivingRequestsContextMenuConsider;
+        private System.Windows.Forms.ToolStripMenuItem ReceivingRequestsContextMenuAlter;
+        private System.Windows.Forms.ToolStripMenuItem ReceivingRequestsContextMenuCancel;
+        private System.Windows.Forms.ContextMenuStrip PurchaseRequestsContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem PurchaseRequestsContextMenuCreate;
+        private System.Windows.Forms.ToolStripMenuItem PurchaseRequestsContextMenuAlter;
+        private System.Windows.Forms.ToolStripMenuItem PurchaseRequestsContextMenuDelete;
+        private System.Windows.Forms.ToolStripSeparator PurchaseRequestsContextMenuSeparator;
+        private System.Windows.Forms.ToolStripMenuItem PurchaseRequestsContextMenuExport;
+        private System.Windows.Forms.ContextMenuStrip StatementsTableContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem StatementsTableContextMenuCreate;
+        private System.Windows.Forms.ToolStripMenuItem StatementsTableContextMenuAlter;
+        private System.Windows.Forms.ToolStripMenuItem StatementsTableContextMenuDelete;
+        private System.Windows.Forms.ToolStripSeparator StatementsTableContextMenuSeparator;
+        private System.Windows.Forms.ToolStripMenuItem StatementsTableContextMenuExport;
+        private System.Windows.Forms.ContextMenuStrip InvoicesTableContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem InvoicesTableContextMenuCreate;
+        private System.Windows.Forms.ToolStripMenuItem InvoicesTableContextMenuAlter;
+        private System.Windows.Forms.ToolStripMenuItem InvoicesTableContextMenuDelete;
+        private System.Windows.Forms.ToolStripSeparator InvoicesTableContextMenuSeparator;
+        private System.Windows.Forms.ToolStripMenuItem InvoicesTableContextMenuExport;
+        private System.Windows.Forms.ContextMenuStrip ProvidersTableContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem ProvidersTableContextMenuCreate;
+        private System.Windows.Forms.ToolStripMenuItem ProvidersTableContextMenuAlter;
+        private System.Windows.Forms.ToolStripMenuItem ProvidersTableContextMenuDelete;
+        private System.Windows.Forms.ToolStripSeparator ProvidersTableContextMenuSeparator;
+        private System.Windows.Forms.ToolStripMenuItem ProvidersTableContextMenuCreateStatement;
+        private System.Windows.Forms.DataGridViewTextBoxColumn balanceIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn storageIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn balanceDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn batchNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accountDataGridViewTextBoxColumn;
     }
 }

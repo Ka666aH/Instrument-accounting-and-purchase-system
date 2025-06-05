@@ -55,7 +55,6 @@ namespace Система_учёта_и_приобретения_инструме
             ImportForm importForm = new ImportForm(tOOLACCOUNTINGDataSet);
             importForm.Owner = this;
             importForm.ShowDialog();
-
         }
 
         public string ImportRefresh(string tableName)
@@ -150,6 +149,26 @@ namespace Система_учёта_и_приобретения_инструме
         {
 
         }
+
+        //private void AnalogListTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        //{
+        //    if (e.Button == MouseButtons.Right)
+        //    {
+        //        if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && !NomenTable.Rows[e.RowIndex].IsNewRow)
+        //        {
+        //            AnalogListTable.Rows[e.RowIndex].Selected = true;
+        //            SetAnalogContextMenuItems(true);
+        //        }
+        //        else SetAnalogContextMenuItems(false);
+        //        AnalogsTableContextMenu.Show(Cursor.Position);
+        //    }
+        //}
+        //private void SetAnalogContextMenuItems(bool isRow)
+        //{
+        //    AnalogsTableContextMenuAlter.Visible = isRow;
+        //    AnalogsTableContextMenuDelete.Visible = isRow;
+        //}
+
         #region Номенклатура инструмента
 
         public void SetNomenButtonsState()
@@ -283,7 +302,6 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private TOOLACCOUNTINGDataSet.NomenclatureRow nomenOriginRow = null;
         private bool nomenUserEditing = false;
-
         private void NomenTable_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             nomenUserEditing = true;
@@ -300,7 +318,6 @@ namespace Система_учёта_и_приобретения_инструме
             }
 
         }
-
         private void NomenTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             if (!nomenUserEditing) return;
@@ -357,7 +374,6 @@ namespace Система_учёта_и_приобретения_инструме
                     break;
             }
         }
-
         private void NomenTable_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (!nomenUserEditing) return;
@@ -403,7 +419,6 @@ namespace Система_учёта_и_приобретения_инструме
                 MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
         private void NomenFillFields(NomenclatureRow row, NomenclatureViewRow nomenViewRow)
         {
             row.Designation = nomenViewRow.Designation;
@@ -415,8 +430,6 @@ namespace Система_учёта_и_приобретения_инструме
             row.UsageFlag = nomenViewRow.UsageFlag;
             row.MinStock = nomenViewRow.MinStock;
         }
-
-
         private void NomenTable_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
             nomenUserEditing = false;
@@ -449,6 +462,350 @@ namespace Система_учёта_и_приобретения_инструме
             NomenResetSearch();
         }
 
+        private void NomenTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && !NomenTable.Rows[e.RowIndex].IsNewRow)
+                {
+                    //NomenTable.ClearSelection();
+                    NomenTable.Rows[e.RowIndex].Selected = true;
+                    SetNomenContextMenuItems(true);
+                }
+                else SetNomenContextMenuItems(false);
+                NomenTableContextMenu.Show(Cursor.Position);
+            }
+        }
+        private void SetNomenContextMenuItems(bool isRow)
+        {
+            NomenTableContexMenuAlter.Visible = isRow;
+            NomenTableContexMenuDelete.Visible = isRow;
+            NomenTableContexMenuSeparator1.Visible = isRow;
+            NomenTableContexMenuOstatki.Visible = isRow;
+            NomenTableContexMenuHistory.Visible = isRow;
+            NomenTableContexMenuLogs.Visible = isRow;
+            NomenTableContexMenuSeparator2.Visible = isRow;
+            NomenTableContexMenuFindAnalogs.Visible = isRow;
+            NomenTableContexMenuAddAnalog.Visible = isRow;
+        }
+        private void NomenTableContexMenuCreate_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+
+        private void NomenTableContexMenuAlter_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+
+        private void NomenTableContexMenuDelete_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+
+        private void NomenTableContexMenuOstatki_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+
+        private void NomenTableContexMenuHistory_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+
+        private void NomenTableContexMenuLogs_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+
+        private void NomenTableContexMenuFindAnalogs_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+
+        private void NomenTableContexMenuAddAnalog_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        #endregion
+
+        #region Аналоги инструментов
+
+        public void SetAnalogsButtonsState()
+        {
+            try
+            {
+                bool state =
+                    AnalogListTable.CurrentRow != null &&
+                    !string.IsNullOrEmpty(AnalogListTable.CurrentRow.Cells[0].Value.ToString()) &&
+                    !AnalogListTable.CurrentRow.IsNewRow;
+                AnalogButtonAlter.Enabled = state;
+                AnalogButtonDelete.Enabled = state;
+            }
+            catch { }
+        }
+        private void AnalogButtonCreate_Click(object sender, EventArgs e)
+        {
+            AnalogForm analogForm = new AnalogForm(tOOLACCOUNTINGDataSet, analogToolsTableAdapter);
+            analogForm.ShowDialog();
+        }
+        private void AnalogButtonAlter_Click(object sender, EventArgs e)
+        {
+            SetAnalogsButtonsState();
+            if (AnalogListTable.CurrentRow.DataBoundItem as DataRowView == null) return;
+            var selectedRow = AnalogListTable.CurrentRow.DataBoundItem as DataRowView;
+            var analogRow = selectedRow.Row as TOOLACCOUNTINGDataSet.AnalogTools1Row;
+            AnalogForm analogForm = new AnalogForm(tOOLACCOUNTINGDataSet, analogToolsTableAdapter, FormMode.Edit, analogRow);
+            analogForm.ShowDialog();
+        }
+        private void AnalogButtonDelete_Click(object sender, EventArgs e)
+        {
+            AnalogsDelete();
+        }
+        private bool AnalogsDelete()
+        {
+            SetAnalogsButtonsState();
+            if (AnalogListTable.CurrentRow.DataBoundItem as DataRowView == null) return false;
+            DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту запись?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No) return false;
+
+            try
+            {
+                var selectedRow = AnalogListTable.CurrentRow.DataBoundItem as DataRowView;
+                var analog1Row = selectedRow.Row as TOOLACCOUNTINGDataSet.AnalogTools1Row;
+                var analog1RowId = analog1Row.ID;
+
+                var analogRow = tOOLACCOUNTINGDataSet.AnalogTools.FindByID(analog1RowId);
+                analogRow.Delete();
+                analogToolsTableAdapter.Update(tOOLACCOUNTINGDataSet.AnalogTools);
+                analogToolsTableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools);
+                analogTools1TableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools1);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                tOOLACCOUNTINGDataSet.RejectChanges();
+                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+        private void AnalogListTable_CurrentCellChanged(object sender, EventArgs e)
+        {
+            SetAnalogsButtonsState();
+        }
+        private void AnalogListTable_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            //if (AnalogListTable.CurrentCell.ColumnIndex == 1 || AnalogListTable.CurrentCell.ColumnIndex == 2)
+            //{
+            if (e.Control is TextBox textBox)
+            {
+                textBox.KeyPress -= Digits_KeyPress;
+                textBox.KeyPress += Digits_KeyPress;
+            }
+            //}
+
+        }
+        private void AnalogListTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            if (!AnalogsDelete()) e.Cancel = true;
+        }
+        private TOOLACCOUNTINGDataSet.AnalogToolsRow analogOriginRow = null;
+        private bool analogUserEditing = false;
+        private void AnalogListTable_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            analogUserEditing = true;
+            var dataRowView = AnalogListTable.Rows[e.RowIndex].DataBoundItem as DataRowView;
+            analogOriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.AnalogToolsRow;
+        }
+        private void AnalogListTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (!analogUserEditing) return;
+            if (AnalogListTable.Rows[e.RowIndex] == null) return;
+            var row = AnalogListTable.Rows[e.RowIndex];
+            var cell = row.Cells[e.ColumnIndex];
+            switch (e.ColumnIndex)
+            {
+                case 1:
+                case 2:
+
+                    string nomenclatureNumber = cell.EditedFormattedValue as string;
+                    //FormMode mode;
+                    //if (analogOriginRow == null) mode = FormMode.Add;
+                    //else mode = FormMode.Edit;
+                    string originalNum = row.Cells[1].Value?.ToString();
+                    string analogNum = row.Cells[2].Value?.ToString();
+                    if (!Validation.IsNomenclatureNumberCorrect(nomenclatureNumber)) e.Cancel = true;
+                    if (!Validation.IsNomenclatureNumberValid(nomenclatureNumber, tOOLACCOUNTINGDataSet)) e.Cancel = true;
+                    if (!Validation.IsNomenclatureNumberExist(nomenclatureNumber, tOOLACCOUNTINGDataSet)) e.Cancel = true;
+                    //if (originalNum == analogNum && (!string.IsNullOrEmpty(originalNum) || !string.IsNullOrEmpty(analogNum)))
+                    //{
+                    //    MessageBox.Show("Номенклатурные номера основного и аналогичного инструмента не могут совпадать.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //    e.Cancel = true;
+                    //}
+
+                    //bool exists = false;
+                    //if (mode == FormMode.Add)
+                    //{
+                    //    exists = tOOLACCOUNTINGDataSet.AnalogTools
+                    //        .Any(r =>
+                    //        r.OriginalNomenclatureNumber == originalNum &&
+                    //        r.AnalogNomenclatureNumber == analogNum);
+                    //}
+                    //if (mode == FormMode.Edit)
+                    //{
+                    //    exists = tOOLACCOUNTINGDataSet.AnalogTools
+                    //        .Any(r =>
+                    //        r.OriginalNomenclatureNumber == originalNum &&
+                    //        r.AnalogNomenclatureNumber == analogNum &&
+                    //        r.ID != analogOriginRow.ID);
+                    //}
+                    //if (exists)
+                    //{
+                    //    e.Cancel = true;
+                    //    MessageBox.Show("Такая пара аналогов уже существует.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //}
+
+                    break;
+                default: break;
+            }
+        }
+        private void AnalogListTable_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            analogUserEditing = false;
+        }
+        private void AnalogListTable_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (!analogUserEditing /*|| e.RowIndex < 0*/) return;
+
+            DataGridViewRow row = null;
+            try
+            {
+                row = AnalogListTable.Rows[e.RowIndex];
+                string originalNum = row.Cells[1].Value?.ToString();
+                string analogNum = row.Cells[2].Value?.ToString();
+
+                if (string.IsNullOrEmpty(originalNum) ||
+                    string.IsNullOrEmpty(analogNum)) return;
+
+                if (originalNum == analogNum) throw new Exception("Номенклатурные номера основного и аналогичного инструмента не могут совпадать.");
+
+
+                DataRowView rowView = row.DataBoundItem as DataRowView;
+                var analogTools1Row = rowView.Row as TOOLACCOUNTINGDataSet.AnalogTools1Row;
+                int relationId = analogTools1Row.ID;
+                var analogToolsRow = tOOLACCOUNTINGDataSet.AnalogTools.FindByID(relationId);
+
+                if (analogToolsRow != null)
+                {
+                    bool exists = tOOLACCOUNTINGDataSet.AnalogTools
+                        .Any(r =>
+                        r.OriginalNomenclatureNumber == originalNum &&
+                        r.AnalogNomenclatureNumber == analogNum &&
+                        r.ID != relationId);
+
+                    if (exists)
+                    {
+                        throw new Exception("Такая пара аналогов уже существует.");
+                    }
+
+                    analogToolsRow.BeginEdit();
+                    analogToolsRow.OriginalNomenclatureNumber = originalNum;
+                    analogToolsRow.AnalogNomenclatureNumber = analogNum;
+                    analogToolsRow.EndEdit();
+                }
+                else
+                {
+                    bool exists = tOOLACCOUNTINGDataSet.AnalogTools
+                        .Any(r =>
+                        r.OriginalNomenclatureNumber == originalNum &&
+                        r.AnalogNomenclatureNumber == analogNum);
+
+                    if (exists)
+                    {
+                        throw new Exception("Такая пара аналогов уже существует.");
+                    }
+
+                    var newRow = tOOLACCOUNTINGDataSet.AnalogTools.NewAnalogToolsRow();
+                    newRow.OriginalNomenclatureNumber = originalNum;
+                    newRow.AnalogNomenclatureNumber = analogNum;
+                    tOOLACCOUNTINGDataSet.AnalogTools.Rows.Add(newRow);
+                }
+                analogToolsTableAdapter.Update(tOOLACCOUNTINGDataSet.AnalogTools);
+                analogToolsTableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools);
+                analogTools1TableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools1);
+                dataTable1TableAdapter.Fill(tOOLACCOUNTINGDataSet.DataTable1);
+
+            }
+            catch (Exception ex)
+            {
+                e.Cancel = true;
+                //tOOLACCOUNTINGDataSet.AnalogTools.RejectChanges();
+                MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            //finally
+            //{
+            //    //analogUserEditing = false;
+            //    //e.Cancel = true;
+            //}
+        }
+        private void Analog_TextChanged(object sender, EventArgs e)
+        {
+            if (isSearchReseting) return;
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(AnalogMainNumber.Text)) parameters.Add(new SearchParameter("OriginalNomenclatureNumber", AnalogMainNumber.Text, true));
+            if (!string.IsNullOrEmpty(AnalogAnalogNumber.Text)) parameters.Add(new SearchParameter("AnalogNomenclatureNumber", AnalogAnalogNumber.Text, true));
+            if (!string.IsNullOrEmpty(AnalogMainName.Text)) parameters.Add(new SearchParameter("OriginalFullName", AnalogMainName.Text, true));
+            if (!string.IsNullOrEmpty(AnalogMainName.Text)) parameters.Add(new SearchParameter("AnalogFullName", AnalogAnalogName.Text, true));
+            //at.ID, at.OriginalNomenclatureNumber, n1.FullName AS OriginalFullName, at.AnalogNomenclatureNumber, n2.FullName AS AnalogFullName
+            try
+            {
+                string filter = Search.Filter(parameters);
+                AnalogListTable.SuspendLayout();
+                //AnalogCompareTable.SuspendLayout();
+                analogTools1BindingSource.Filter = filter;
+                AnalogListTable.ResumeLayout();
+                //AnalogCompareTable.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void AnalogButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            AnalogsResetSearch();
+        }
+        private void AnalogListTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && !AnalogListTable.Rows[e.RowIndex].IsNewRow)
+                {
+                    AnalogListTable.Rows[e.RowIndex].Selected = true;
+                    SetAnalogContextMenuItems(true);
+                }
+                else SetAnalogContextMenuItems(false);
+                AnalogsTableContextMenu.Show(Cursor.Position);
+            }
+        }
+        private void SetAnalogContextMenuItems(bool isRow)
+        {
+            AnalogsTableContextMenuAlter.Visible = isRow;
+            AnalogsTableContextMenuDelete.Visible = isRow;
+        }
+        private void AnalogsTableContextMenuCreate_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void AnalogsTableContextMenuAlter_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void AnalogsTableContextMenuDelete_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+
         #endregion
 
         #region Группы инструментов
@@ -463,13 +820,11 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch { }
         }
-
         private void GroupsButtonCreate_Click(object sender, EventArgs e)
         {
             GroupForm groupForm = new GroupForm(tOOLACCOUNTINGDataSet, groupsTableAdapter);
             groupForm.ShowDialog();
         }
-
         private void GroupsButtonAlter_Click(object sender, EventArgs e)
         {
             SetGroupsButtonsState();
@@ -479,12 +834,10 @@ namespace Система_учёта_и_приобретения_инструме
             GroupForm groupForm = new GroupForm(tOOLACCOUNTINGDataSet, groupsTableAdapter, FormMode.Edit, groupRow);
             groupForm.ShowDialog();
         }
-
         private void GroupsButtonDelete_Click(object sender, EventArgs e)
         {
             GroupsDelete();
         }
-
         private bool GroupsDelete()
         {
             SetGroupsButtonsState();
@@ -508,12 +861,10 @@ namespace Система_учёта_и_приобретения_инструме
                 return false;
             }
         }
-
         private void GroupsTable_CurrentCellChanged(object sender, EventArgs e)
         {
             SetGroupsButtonsState();
         }
-
         private void GroupsTable_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             if (GroupsTable.CurrentCell.ColumnIndex == 0)
@@ -529,12 +880,10 @@ namespace Система_учёта_и_приобретения_инструме
                 if (e.Control is TextBox textBox) textBox.KeyPress -= Digits_KeyPress;
             }
         }
-
         private void GroupsTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             if (!GroupsDelete()) e.Cancel = true;
         }
-
         private TOOLACCOUNTINGDataSet.GroupsRow groupOriginRow = null;
         private bool groupUserEditing = false;
         private void GroupsTable_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
@@ -543,7 +892,6 @@ namespace Система_учёта_и_приобретения_инструме
             var dataRowView = GroupsTable.Rows[e.RowIndex].DataBoundItem as DataRowView;
             groupOriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.GroupsRow;
         }
-
         private void GroupsTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             if (!groupUserEditing) return;
@@ -588,7 +936,6 @@ namespace Система_учёта_и_приобретения_инструме
             }
             groupUserEditing = false;
         }
-
         private void Groups_TextChanged(object sender, EventArgs e)
         {
             if (isSearchReseting) return;
@@ -610,8 +957,48 @@ namespace Система_учёта_и_приобретения_инструме
         {
             GroupsResetSearch();
         }
-
-
+        private void GroupsTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && !GroupsTable.Rows[e.RowIndex].IsNewRow)
+                {
+                    //NomenTable.ClearSelection();
+                    GroupsTable.Rows[e.RowIndex].Selected = true;
+                    SetGroupContextMenuItems(true);
+                }
+                else SetGroupContextMenuItems(false);
+                GroupsTableContextMenu.Show(Cursor.Position);
+            }
+        }
+        private void SetGroupContextMenuItems(bool isRow)
+        {
+            GroupTableContextMenuAlter.Visible = isRow;
+            GroupTableContextMenuDelete.Visible = isRow;
+            GroupTableContextMenuSeparator.Visible = isRow;
+            GroupTableContextMenuFindNomen.Visible = isRow;
+            GroupTableContextMenuAddNomen.Visible = isRow;
+        }
+        private void GroupTableContextMenuCreate_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void GroupTableContextMenuAlter_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void GroupTableContextMenuDelete_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void GroupTableContextMenuFindNomen_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void GroupTableContextMenuAddNomen_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
         #endregion
 
         #region Приобретение инструмента
@@ -714,6 +1101,37 @@ namespace Система_учёта_и_приобретения_инструме
         {
             ReceivingRequestsResetSearch();
         }
+        private void ReceivingRequestsRequestsTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && !ReceivingRequestsRequestsTable.Rows[e.RowIndex].IsNewRow)
+                {
+                    ReceivingRequestsRequestsTable.Rows[e.RowIndex].Selected = true;
+                    SetReceivingRequestsContextMenuItems(true);
+                }
+                else SetReceivingRequestsContextMenuItems(false);
+                ReceivingRequestsContextMenu.Show(Cursor.Position);
+            }
+        }
+        private void SetReceivingRequestsContextMenuItems(bool isRow)
+        {
+            ReceivingRequestsContextMenuConsider.Visible = isRow;
+            ReceivingRequestsContextMenuAlter.Visible = isRow;
+            ReceivingRequestsContextMenuCancel.Visible = isRow;
+        }
+        private void ReceivingRequestsContextMenuConsider_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void ReceivingRequestsContextMenuAlter_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void ReceivingRequestsContextMenuCancel_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
         #endregion
 
         #region Заявки на приобретение
@@ -723,13 +1141,85 @@ namespace Система_учёта_и_приобретения_инструме
         {
             PurchaseRequestsResetSearch();
         }
+        private void PurchaseRequestsPurchaseRequestsTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && !PurchaseRequestsPurchaseRequestsTable.Rows[e.RowIndex].IsNewRow)
+                {
+                    PurchaseRequestsPurchaseRequestsTable.Rows[e.RowIndex].Selected = true;
+                    SetPurchaseRequestsContextMenuItems(true);
+                }
+                else SetPurchaseRequestsContextMenuItems(false);
+                PurchaseRequestsContextMenu.Show(Cursor.Position);
+            }
+        }
+        private void SetPurchaseRequestsContextMenuItems(bool isRow)
+        {
+            PurchaseRequestsContextMenuAlter.Visible = isRow;
+            PurchaseRequestsContextMenuDelete.Visible = isRow;
+            PurchaseRequestsContextMenuSeparator.Visible = isRow;
+            PurchaseRequestsContextMenuExport.Visible = isRow;
+        }
 
+        private void PurchaseRequestsContextMenuCreate_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void PurchaseRequestsContextMenuAlter_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void PurchaseRequestsContextMenuDelete_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void PurchaseRequestsContextMenuExport_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
         #endregion
 
         #region Ведомости поставки
         private void StatementsButtonResetSearch_Click(object sender, EventArgs e)
         {
             StatementsResetSearch();
+        }
+        private void StatementsStatementsTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && !StatementsStatementsTable.Rows[e.RowIndex].IsNewRow)
+                {
+                    StatementsStatementsTable.Rows[e.RowIndex].Selected = true;
+                    SetStatementsTableContextMenuItems(true);
+                }
+                else SetStatementsTableContextMenuItems(false);
+                StatementsTableContextMenu.Show(Cursor.Position);
+            }
+        }
+        private void SetStatementsTableContextMenuItems(bool isRow)
+        {
+            StatementsTableContextMenuAlter.Visible = isRow;
+            StatementsTableContextMenuDelete.Visible = isRow;
+            StatementsTableContextMenuSeparator.Visible = isRow;
+            StatementsTableContextMenuExport.Visible = isRow;
+        }
+        private void StatementsTableContextMenuCreate_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void StatementsTableContextMenuAlter_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void StatementsTableContextMenuDelete_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void StatementsTableContextMenuExport_Click(object sender, EventArgs e)
+        {
+            //fill
         }
         #endregion
 
@@ -738,7 +1228,42 @@ namespace Система_учёта_и_приобретения_инструме
         {
             InvoicesResetSearch();
         }
-
+        private void InvoicesInvoicesTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && !InvoicesInvoicesTable.Rows[e.RowIndex].IsNewRow)
+                {
+                    InvoicesInvoicesTable.Rows[e.RowIndex].Selected = true;
+                    SetInvoicesContextMenuItems(true);
+                }
+                else SetInvoicesContextMenuItems(false);
+                InvoicesTableContextMenu.Show(Cursor.Position);
+            }
+        }
+        private void SetInvoicesContextMenuItems(bool isRow)
+        {
+            InvoicesTableContextMenuAlter.Visible = isRow;
+            InvoicesTableContextMenuDelete.Visible = isRow;
+            InvoicesTableContextMenuSeparator.Visible = isRow;
+            InvoicesTableContextMenuExport.Visible = isRow;
+        }
+        private void InvoicesTableContextMenuCreate_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void InvoicesTableContextMenuAlter_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void InvoicesTableContextMenuDelete_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void InvoicesTableContextMenuExport_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
         #endregion
 
         #region История поступлений
@@ -754,265 +1279,6 @@ namespace Система_учёта_и_приобретения_инструме
         //private void PurchaseRequestsResetEnd() { PurchaseRequestsEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1); PurchaseRequestsEnd.Checked = false; }
         #endregion
 
-        #endregion
-
-        #region Аналоги инструментов
-
-        public void SetAnalogsButtonsState()
-        {
-            try
-            {
-                bool state =
-                    AnalogListTable.CurrentRow != null &&
-                    !string.IsNullOrEmpty(AnalogListTable.CurrentRow.Cells[0].Value.ToString()) &&
-                    !AnalogListTable.CurrentRow.IsNewRow;
-                AnalogButtonAlter.Enabled = state;
-                AnalogButtonDelete.Enabled = state;
-            }
-            catch { }
-        }
-
-        private void AnalogButtonCreate_Click(object sender, EventArgs e)
-        {
-            AnalogForm analogForm = new AnalogForm(tOOLACCOUNTINGDataSet, analogToolsTableAdapter);
-            analogForm.ShowDialog();
-        }
-
-        private void AnalogButtonAlter_Click(object sender, EventArgs e)
-        {
-            SetAnalogsButtonsState();
-            if (AnalogListTable.CurrentRow.DataBoundItem as DataRowView == null) return;
-            var selectedRow = AnalogListTable.CurrentRow.DataBoundItem as DataRowView;
-            var analogRow = selectedRow.Row as TOOLACCOUNTINGDataSet.AnalogTools1Row;
-            AnalogForm analogForm = new AnalogForm(tOOLACCOUNTINGDataSet, analogToolsTableAdapter, FormMode.Edit, analogRow);
-            analogForm.ShowDialog();
-        }
-
-        private void AnalogButtonDelete_Click(object sender, EventArgs e)
-        {
-            AnalogsDelete();
-        }
-
-        private bool AnalogsDelete()
-        {
-            SetAnalogsButtonsState();
-            if (AnalogListTable.CurrentRow.DataBoundItem as DataRowView == null) return false;
-            DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить эту запись?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.No) return false;
-
-            try
-            {
-                var selectedRow = AnalogListTable.CurrentRow.DataBoundItem as DataRowView;
-                var analog1Row = selectedRow.Row as TOOLACCOUNTINGDataSet.AnalogTools1Row;
-                var analog1RowId = analog1Row.ID;
-
-                var analogRow = tOOLACCOUNTINGDataSet.AnalogTools.FindByID(analog1RowId);
-                analogRow.Delete();
-                analogToolsTableAdapter.Update(tOOLACCOUNTINGDataSet.AnalogTools);
-                analogToolsTableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools);
-                analogTools1TableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools1);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                tOOLACCOUNTINGDataSet.RejectChanges();
-                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        private void AnalogListTable_CurrentCellChanged(object sender, EventArgs e)
-        {
-            SetAnalogsButtonsState();
-        }
-        private void AnalogListTable_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            //if (AnalogListTable.CurrentCell.ColumnIndex == 1 || AnalogListTable.CurrentCell.ColumnIndex == 2)
-            //{
-            if (e.Control is TextBox textBox)
-            {
-                textBox.KeyPress -= Digits_KeyPress;
-                textBox.KeyPress += Digits_KeyPress;
-            }
-            //}
-
-        }
-
-        private void AnalogListTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            if (!AnalogsDelete()) e.Cancel = true;
-        }
-
-        private TOOLACCOUNTINGDataSet.AnalogToolsRow analogOriginRow = null;
-        private bool analogUserEditing = false;
-        private void AnalogListTable_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-            analogUserEditing = true;
-            var dataRowView = AnalogListTable.Rows[e.RowIndex].DataBoundItem as DataRowView;
-            analogOriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.AnalogToolsRow;
-        }
-
-        private void AnalogListTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            if (!analogUserEditing) return;
-            if (AnalogListTable.Rows[e.RowIndex] == null) return;
-            var row = AnalogListTable.Rows[e.RowIndex];
-            var cell = row.Cells[e.ColumnIndex];
-            switch (e.ColumnIndex)
-            {
-                case 1:
-                case 2:
-
-                    string nomenclatureNumber = cell.EditedFormattedValue as string;
-                    //FormMode mode;
-                    //if (analogOriginRow == null) mode = FormMode.Add;
-                    //else mode = FormMode.Edit;
-                    string originalNum = row.Cells[1].Value?.ToString();
-                    string analogNum = row.Cells[2].Value?.ToString();
-                    if (!Validation.IsNomenclatureNumberCorrect(nomenclatureNumber)) e.Cancel = true;
-                    if (!Validation.IsNomenclatureNumberValid(nomenclatureNumber, tOOLACCOUNTINGDataSet)) e.Cancel = true;
-                    if (!Validation.IsNomenclatureNumberExist(nomenclatureNumber, tOOLACCOUNTINGDataSet)) e.Cancel = true;
-                    //if (originalNum == analogNum && (!string.IsNullOrEmpty(originalNum) || !string.IsNullOrEmpty(analogNum)))
-                    //{
-                    //    MessageBox.Show("Номенклатурные номера основного и аналогичного инструмента не могут совпадать.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //    e.Cancel = true;
-                    //}
-
-                    //bool exists = false;
-                    //if (mode == FormMode.Add)
-                    //{
-                    //    exists = tOOLACCOUNTINGDataSet.AnalogTools
-                    //        .Any(r =>
-                    //        r.OriginalNomenclatureNumber == originalNum &&
-                    //        r.AnalogNomenclatureNumber == analogNum);
-                    //}
-                    //if (mode == FormMode.Edit)
-                    //{
-                    //    exists = tOOLACCOUNTINGDataSet.AnalogTools
-                    //        .Any(r =>
-                    //        r.OriginalNomenclatureNumber == originalNum &&
-                    //        r.AnalogNomenclatureNumber == analogNum &&
-                    //        r.ID != analogOriginRow.ID);
-                    //}
-                    //if (exists)
-                    //{
-                    //    e.Cancel = true;
-                    //    MessageBox.Show("Такая пара аналогов уже существует.", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //}
-
-                    break;
-                default: break;
-            }
-        }
-
-        private void AnalogListTable_RowValidated(object sender, DataGridViewCellEventArgs e)
-        {
-            analogUserEditing = false;
-        }
-
-        private void AnalogListTable_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
-        {
-            if (!analogUserEditing /*|| e.RowIndex < 0*/) return;
-
-            DataGridViewRow row = null;
-            try
-            {
-                row = AnalogListTable.Rows[e.RowIndex];
-                string originalNum = row.Cells[1].Value?.ToString();
-                string analogNum = row.Cells[2].Value?.ToString();
-
-                if (string.IsNullOrEmpty(originalNum) ||
-                    string.IsNullOrEmpty(analogNum)) return;
-
-                if (originalNum == analogNum) throw new Exception("Номенклатурные номера основного и аналогичного инструмента не могут совпадать.");
-
-
-                DataRowView rowView = row.DataBoundItem as DataRowView;
-                var analogTools1Row = rowView.Row as TOOLACCOUNTINGDataSet.AnalogTools1Row;
-                int relationId = analogTools1Row.ID;
-                var analogToolsRow = tOOLACCOUNTINGDataSet.AnalogTools.FindByID(relationId);
-
-                if (analogToolsRow != null)
-                {
-                    bool exists = tOOLACCOUNTINGDataSet.AnalogTools
-                        .Any(r =>
-                        r.OriginalNomenclatureNumber == originalNum &&
-                        r.AnalogNomenclatureNumber == analogNum &&
-                        r.ID != relationId);
-
-                    if (exists)
-                    {
-                        throw new Exception("Такая пара аналогов уже существует.");
-                    }
-
-                    analogToolsRow.BeginEdit();
-                    analogToolsRow.OriginalNomenclatureNumber = originalNum;
-                    analogToolsRow.AnalogNomenclatureNumber = analogNum;
-                    analogToolsRow.EndEdit();
-                }
-                else
-                {
-                    bool exists = tOOLACCOUNTINGDataSet.AnalogTools
-                        .Any(r =>
-                        r.OriginalNomenclatureNumber == originalNum &&
-                        r.AnalogNomenclatureNumber == analogNum);
-
-                    if (exists)
-                    {
-                        throw new Exception("Такая пара аналогов уже существует.");
-                    }
-
-                    var newRow = tOOLACCOUNTINGDataSet.AnalogTools.NewAnalogToolsRow();
-                    newRow.OriginalNomenclatureNumber = originalNum;
-                    newRow.AnalogNomenclatureNumber = analogNum;
-                    tOOLACCOUNTINGDataSet.AnalogTools.Rows.Add(newRow);
-                }
-                analogToolsTableAdapter.Update(tOOLACCOUNTINGDataSet.AnalogTools);
-                analogToolsTableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools);
-                analogTools1TableAdapter.Fill(tOOLACCOUNTINGDataSet.AnalogTools1);
-                dataTable1TableAdapter.Fill(tOOLACCOUNTINGDataSet.DataTable1);
-
-            }
-            catch (Exception ex)
-            {
-                e.Cancel = true;
-                //tOOLACCOUNTINGDataSet.AnalogTools.RejectChanges();
-                MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            //finally
-            //{
-            //    //analogUserEditing = false;
-            //    //e.Cancel = true;
-            //}
-        }
-
-        private void Analog_TextChanged(object sender, EventArgs e)
-        {
-            if (isSearchReseting) return;
-            var parameters = new List<SearchParameter>();
-            if (!string.IsNullOrEmpty(AnalogMainNumber.Text)) parameters.Add(new SearchParameter("OriginalNomenclatureNumber", AnalogMainNumber.Text, true));
-            if (!string.IsNullOrEmpty(AnalogAnalogNumber.Text)) parameters.Add(new SearchParameter("AnalogNomenclatureNumber", AnalogAnalogNumber.Text, true));
-            if (!string.IsNullOrEmpty(AnalogMainName.Text)) parameters.Add(new SearchParameter("OriginalFullName", AnalogMainName.Text, true));
-            if (!string.IsNullOrEmpty(AnalogMainName.Text)) parameters.Add(new SearchParameter("AnalogFullName", AnalogAnalogName.Text, true));
-            //at.ID, at.OriginalNomenclatureNumber, n1.FullName AS OriginalFullName, at.AnalogNomenclatureNumber, n2.FullName AS AnalogFullName
-            try
-            {
-                string filter = Search.Filter(parameters);
-                AnalogListTable.SuspendLayout();
-                //AnalogCompareTable.SuspendLayout();
-                analogTools1BindingSource.Filter = filter;
-                AnalogListTable.ResumeLayout();
-                //AnalogCompareTable.ResumeLayout();
-            }
-            catch (ArgumentException ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void AnalogButtonResetSearch_Click(object sender, EventArgs e)
-        {
-            AnalogsResetSearch();
-        }
         #endregion
 
         #region Поставщики
@@ -1176,7 +1442,42 @@ namespace Система_учёта_и_приобретения_инструме
         {
             ProvidersResetSearch();
         }
-
+        private void ProvidersTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && !ProvidersTable.Rows[e.RowIndex].IsNewRow)
+                {
+                    ProvidersTable.Rows[e.RowIndex].Selected = true;
+                    SetProvidersContextMenuItems(true);
+                }
+                else SetProvidersContextMenuItems(false);
+                ProvidersTableContextMenu.Show(Cursor.Position);
+            }
+        }
+        private void SetProvidersContextMenuItems(bool isRow)
+        {
+            ProvidersTableContextMenuAlter.Visible = isRow;
+            ProvidersTableContextMenuDelete.Visible = isRow;
+            ProvidersTableContextMenuSeparator.Visible = isRow;
+            ProvidersTableContextMenuCreateStatement.Visible = isRow;
+        }
+        private void ProvidersTableContextMenuCreate_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void ProvidersTableContextMenuAlter_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void ProvidersTableContextMenuDelete_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
+        private void ProvidersTableContextMenuCreateStatement_Click(object sender, EventArgs e)
+        {
+            //fill
+        }
         #endregion
 
         #region Логи корректировок
