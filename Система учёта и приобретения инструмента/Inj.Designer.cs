@@ -183,7 +183,6 @@
             this.StatementsDate = new System.Windows.Forms.DateTimePicker();
             this.label46 = new System.Windows.Forms.Label();
             this.Invoices = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
             this.InvoicesContentTable = new System.Windows.Forms.DataGridView();
             this.label15 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -318,8 +317,6 @@
             this.InvoicesTableContextMenuCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.InvoicesTableContextMenuAlter = new System.Windows.Forms.ToolStripMenuItem();
             this.InvoicesTableContextMenuDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.InvoicesTableContextMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.InvoicesTableContextMenuExport = new System.Windows.Forms.ToolStripMenuItem();
             this.ProvidersTableContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ProvidersTableContextMenuCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.ProvidersTableContextMenuAlter = new System.Windows.Forms.ToolStripMenuItem();
@@ -2061,7 +2058,7 @@
             this.StatementsContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StatementsContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.StatementsContentTable.Location = new System.Drawing.Point(4, 323);
+            this.StatementsContentTable.Location = new System.Drawing.Point(7, 323);
             this.StatementsContentTable.Name = "StatementsContentTable";
             this.StatementsContentTable.ReadOnly = true;
             this.StatementsContentTable.Size = new System.Drawing.Size(1044, 264);
@@ -2072,7 +2069,7 @@
             this.label50.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label50.AutoSize = true;
             this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label50.Location = new System.Drawing.Point(4, 296);
+            this.label50.Location = new System.Drawing.Point(7, 296);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(268, 24);
             this.label50.TabIndex = 40;
@@ -2178,7 +2175,6 @@
             // 
             // Invoices
             // 
-            this.Invoices.Controls.Add(this.button1);
             this.Invoices.Controls.Add(this.InvoicesContentTable);
             this.Invoices.Controls.Add(this.label15);
             this.Invoices.Controls.Add(this.label26);
@@ -2194,17 +2190,6 @@
             this.Invoices.Text = "Товарные накладные";
             this.Invoices.UseVisualStyleBackColor = true;
             // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(1057, 249);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(182, 44);
-            this.button1.TabIndex = 57;
-            this.button1.Text = "Экспортировать";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // InvoicesContentTable
             // 
             this.InvoicesContentTable.AllowUserToAddRows = false;
@@ -2212,7 +2197,7 @@
             this.InvoicesContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.InvoicesContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.InvoicesContentTable.Location = new System.Drawing.Point(6, 323);
+            this.InvoicesContentTable.Location = new System.Drawing.Point(7, 323);
             this.InvoicesContentTable.Name = "InvoicesContentTable";
             this.InvoicesContentTable.ReadOnly = true;
             this.InvoicesContentTable.Size = new System.Drawing.Size(1044, 264);
@@ -2223,7 +2208,7 @@
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(6, 296);
+            this.label15.Location = new System.Drawing.Point(7, 296);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(268, 24);
             this.label15.TabIndex = 54;
@@ -3071,8 +3056,8 @@
             this.выходToolStripMenuItem});
             this.файлToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
-            this.файлToolStripMenuItem.Text = "Файл";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(103, 24);
+            this.файлToolStripMenuItem.Text = "Программа";
             // 
             // сменитьПользователяToolStripMenuItem
             // 
@@ -3445,12 +3430,10 @@
             this.InvoicesTableContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.InvoicesTableContextMenuCreate,
             this.InvoicesTableContextMenuAlter,
-            this.InvoicesTableContextMenuDelete,
-            this.InvoicesTableContextMenuSeparator,
-            this.InvoicesTableContextMenuExport});
+            this.InvoicesTableContextMenuDelete});
             this.InvoicesTableContextMenu.Name = "InvoicesTableContextMenu";
             this.InvoicesTableContextMenu.ShowImageMargin = false;
-            this.InvoicesTableContextMenu.Size = new System.Drawing.Size(139, 98);
+            this.InvoicesTableContextMenu.Size = new System.Drawing.Size(156, 92);
             // 
             // InvoicesTableContextMenuCreate
             // 
@@ -3472,18 +3455,6 @@
             this.InvoicesTableContextMenuDelete.Size = new System.Drawing.Size(138, 22);
             this.InvoicesTableContextMenuDelete.Text = "Удалить";
             this.InvoicesTableContextMenuDelete.Click += new System.EventHandler(this.InvoicesTableContextMenuDelete_Click);
-            // 
-            // InvoicesTableContextMenuSeparator
-            // 
-            this.InvoicesTableContextMenuSeparator.Name = "InvoicesTableContextMenuSeparator";
-            this.InvoicesTableContextMenuSeparator.Size = new System.Drawing.Size(135, 6);
-            // 
-            // InvoicesTableContextMenuExport
-            // 
-            this.InvoicesTableContextMenuExport.Name = "InvoicesTableContextMenuExport";
-            this.InvoicesTableContextMenuExport.Size = new System.Drawing.Size(138, 22);
-            this.InvoicesTableContextMenuExport.Text = "Экспортировать";
-            this.InvoicesTableContextMenuExport.Click += new System.EventHandler(this.InvoicesTableContextMenuExport_Click);
             // 
             // ProvidersTableContextMenu
             // 
@@ -3907,7 +3878,6 @@
         private System.Windows.Forms.Button PurchaseRequestsButtonCreate;
         private System.Windows.Forms.Button PurchaseRequestsButtonExport;
         private System.Windows.Forms.Button StatementsButtonExport;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button ReceivingRequestsButtonAlter;
         private System.Windows.Forms.Button NomenButtonResetSearch;
         private System.Windows.Forms.Button GroupsButtonResetSearch;
@@ -3966,8 +3936,6 @@
         private System.Windows.Forms.ToolStripMenuItem InvoicesTableContextMenuCreate;
         private System.Windows.Forms.ToolStripMenuItem InvoicesTableContextMenuAlter;
         private System.Windows.Forms.ToolStripMenuItem InvoicesTableContextMenuDelete;
-        private System.Windows.Forms.ToolStripSeparator InvoicesTableContextMenuSeparator;
-        private System.Windows.Forms.ToolStripMenuItem InvoicesTableContextMenuExport;
         private System.Windows.Forms.ContextMenuStrip ProvidersTableContextMenu;
         private System.Windows.Forms.ToolStripMenuItem ProvidersTableContextMenuCreate;
         private System.Windows.Forms.ToolStripMenuItem ProvidersTableContextMenuAlter;

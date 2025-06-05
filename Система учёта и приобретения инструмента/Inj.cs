@@ -1245,8 +1245,8 @@ namespace Система_учёта_и_приобретения_инструме
         {
             InvoicesTableContextMenuAlter.Visible = isRow;
             InvoicesTableContextMenuDelete.Visible = isRow;
-            InvoicesTableContextMenuSeparator.Visible = isRow;
-            InvoicesTableContextMenuExport.Visible = isRow;
+            //InvoicesTableContextMenuSeparator.Visible = isRow;
+            //InvoicesTableContextMenuExport.Visible = isRow;
         }
         private void InvoicesTableContextMenuCreate_Click(object sender, EventArgs e)
         {
@@ -1257,10 +1257,6 @@ namespace Система_учёта_и_приобретения_инструме
             //fill
         }
         private void InvoicesTableContextMenuDelete_Click(object sender, EventArgs e)
-        {
-            //fill
-        }
-        private void InvoicesTableContextMenuExport_Click(object sender, EventArgs e)
         {
             //fill
         }
