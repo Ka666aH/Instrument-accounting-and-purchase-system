@@ -79,14 +79,14 @@
             this.InjZayavkiPage = new System.Windows.Forms.TabPage();
             this.InjLevel2 = new System.Windows.Forms.TabControl();
             this.WorkshopsRequests = new System.Windows.Forms.TabPage();
-            this.WorkshopsRequestsContentTable = new System.Windows.Forms.DataGridView();
+            this.ReceivingRequestsContentTable = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receivingRequestsInjReceivingRequestsContentInjBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.receivingRequestsInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.WorkshopsRequestsRequestsTable = new System.Windows.Forms.DataGridView();
+            this.ReceivingRequestsRequestsTable = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,49 +94,36 @@
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
+            this.ReceivingRequestsButtonConsider = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.ReceivingRequestsButtonDelete = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
-            this.WorkshopsRequestsWorkshop = new System.Windows.Forms.TextBox();
-            this.WorkshopsRequestsStatus = new System.Windows.Forms.TextBox();
+            this.ReceivingRequestsWorkshop = new System.Windows.Forms.TextBox();
+            this.ReceivingRequestsStatus = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
-            this.CreateRequest = new System.Windows.Forms.TabPage();
-            this.CreateRequestButtonCreate = new System.Windows.Forms.Button();
-            this.CreateRequestButtonAdd = new System.Windows.Forms.Button();
-            this.CreateRequestButtonDelete = new System.Windows.Forms.Button();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.CreateRequestContentTable = new System.Windows.Forms.DataGridView();
-            this.CreateRequestRequestsTable = new System.Windows.Forms.DataGridView();
-            this.CreateRequestDate = new System.Windows.Forms.TextBox();
-            this.CreateRequestNumber = new System.Windows.Forms.TextBox();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
             this.RequestsList = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.RequestsListButtonAlter = new System.Windows.Forms.Button();
-            this.RequestsListButtonDelete = new System.Windows.Forms.Button();
-            this.RequestsListAcceptedWorkshopRequestsTable = new System.Windows.Forms.DataGridView();
+            this.PurchaseRequestsButtonCreate = new System.Windows.Forms.Button();
+            this.PurchaseRequestsButtonAlter = new System.Windows.Forms.Button();
+            this.PurchaseRequestsButtonDelete = new System.Windows.Forms.Button();
+            this.PurchaseRequestsReceivingRequestsTable = new System.Windows.Forms.DataGridView();
             this.label42 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
-            this.RequestsListPurchaseRequestsTable = new System.Windows.Forms.DataGridView();
-            this.RequestsListContentTable = new System.Windows.Forms.DataGridView();
+            this.PurchaseRequestsPurchaseRequestsTable = new System.Windows.Forms.DataGridView();
+            this.PurchaseRequestsContentTable = new System.Windows.Forms.DataGridView();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.RequestsListStatus = new System.Windows.Forms.TextBox();
+            this.PurchaseRequestsStatus = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.RequestsListEnd = new System.Windows.Forms.DateTimePicker();
+            this.PurchaseRequestsEnd = new System.Windows.Forms.DateTimePicker();
             this.label44 = new System.Windows.Forms.Label();
-            this.RequestsListStart = new System.Windows.Forms.DateTimePicker();
+            this.PurchaseRequestsStart = new System.Windows.Forms.DateTimePicker();
             this.Statements = new System.Windows.Forms.TabPage();
             this.StatementsButtonDelete = new System.Windows.Forms.Button();
             this.StatementsButtonAlter = new System.Windows.Forms.Button();
@@ -161,7 +148,6 @@
             this.InvoicesButtonEnter = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.label55 = new System.Windows.Forms.Label();
-            this.InvoicesStatementDate = new System.Windows.Forms.DateTimePicker();
             this.label56 = new System.Windows.Forms.Label();
             this.InvoicesDate = new System.Windows.Forms.DateTimePicker();
             this.History = new System.Windows.Forms.TabPage();
@@ -280,6 +266,11 @@
             this.receivingRequestsInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsInjTableAdapter();
             this.receivingRequestsContentInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentInjTableAdapter();
             this.toolaccountingDataSet1 = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
+            this.PurchaseRequestsButtonExport = new System.Windows.Forms.Button();
+            this.StatementsButtonExport = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.ReceivingRequestsButtonAlter = new System.Windows.Forms.Button();
+            this.InvoicesStatementNumber = new System.Windows.Forms.TextBox();
             this.InjLevel1.SuspendLayout();
             this.InjNomenPage.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -293,18 +284,15 @@
             this.InjZayavkiPage.SuspendLayout();
             this.InjLevel2.SuspendLayout();
             this.WorkshopsRequests.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WorkshopsRequestsContentTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReceivingRequestsContentTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsInjReceivingRequestsContentInjBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsInjBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WorkshopsRequestsRequestsTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReceivingRequestsRequestsTable)).BeginInit();
             this.groupBox7.SuspendLayout();
-            this.CreateRequest.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CreateRequestContentTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CreateRequestRequestsTable)).BeginInit();
             this.RequestsList.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RequestsListAcceptedWorkshopRequestsTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RequestsListPurchaseRequestsTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RequestsListContentTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseRequestsReceivingRequestsTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseRequestsPurchaseRequestsTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseRequestsContentTable)).BeginInit();
             this.groupBox9.SuspendLayout();
             this.Statements.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StatementsContentTable)).BeginInit();
@@ -887,7 +875,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.InjLevel2.Controls.Add(this.WorkshopsRequests);
-            this.InjLevel2.Controls.Add(this.CreateRequest);
             this.InjLevel2.Controls.Add(this.RequestsList);
             this.InjLevel2.Controls.Add(this.Statements);
             this.InjLevel2.Controls.Add(this.Invoices);
@@ -900,13 +887,13 @@
             // 
             // WorkshopsRequests
             // 
-            this.WorkshopsRequests.Controls.Add(this.WorkshopsRequestsContentTable);
-            this.WorkshopsRequests.Controls.Add(this.WorkshopsRequestsRequestsTable);
-            this.WorkshopsRequests.Controls.Add(this.button2);
+            this.WorkshopsRequests.Controls.Add(this.ReceivingRequestsButtonAlter);
+            this.WorkshopsRequests.Controls.Add(this.ReceivingRequestsContentTable);
+            this.WorkshopsRequests.Controls.Add(this.ReceivingRequestsRequestsTable);
+            this.WorkshopsRequests.Controls.Add(this.ReceivingRequestsButtonConsider);
             this.WorkshopsRequests.Controls.Add(this.label1);
             this.WorkshopsRequests.Controls.Add(this.label3);
-            this.WorkshopsRequests.Controls.Add(this.button3);
-            this.WorkshopsRequests.Controls.Add(this.button4);
+            this.WorkshopsRequests.Controls.Add(this.ReceivingRequestsButtonDelete);
             this.WorkshopsRequests.Controls.Add(this.groupBox7);
             this.WorkshopsRequests.Location = new System.Drawing.Point(4, 29);
             this.WorkshopsRequests.Name = "WorkshopsRequests";
@@ -915,31 +902,31 @@
             this.WorkshopsRequests.Text = "Заявки от цехов";
             this.WorkshopsRequests.UseVisualStyleBackColor = true;
             // 
-            // WorkshopsRequestsContentTable
+            // ReceivingRequestsContentTable
             // 
-            this.WorkshopsRequestsContentTable.AllowUserToAddRows = false;
-            this.WorkshopsRequestsContentTable.AllowUserToDeleteRows = false;
-            this.WorkshopsRequestsContentTable.AllowUserToResizeRows = false;
-            this.WorkshopsRequestsContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ReceivingRequestsContentTable.AllowUserToAddRows = false;
+            this.ReceivingRequestsContentTable.AllowUserToDeleteRows = false;
+            this.ReceivingRequestsContentTable.AllowUserToResizeRows = false;
+            this.ReceivingRequestsContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.WorkshopsRequestsContentTable.AutoGenerateColumns = false;
-            this.WorkshopsRequestsContentTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.WorkshopsRequestsContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.WorkshopsRequestsContentTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ReceivingRequestsContentTable.AutoGenerateColumns = false;
+            this.ReceivingRequestsContentTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ReceivingRequestsContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ReceivingRequestsContentTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn15});
-            this.WorkshopsRequestsContentTable.DataSource = this.receivingRequestsInjReceivingRequestsContentInjBindingSource1;
-            this.WorkshopsRequestsContentTable.Location = new System.Drawing.Point(7, 397);
-            this.WorkshopsRequestsContentTable.MultiSelect = false;
-            this.WorkshopsRequestsContentTable.Name = "WorkshopsRequestsContentTable";
-            this.WorkshopsRequestsContentTable.ReadOnly = true;
-            this.WorkshopsRequestsContentTable.RowHeadersVisible = false;
-            this.WorkshopsRequestsContentTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.WorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 183);
-            this.WorkshopsRequestsContentTable.TabIndex = 51;
+            this.ReceivingRequestsContentTable.DataSource = this.receivingRequestsInjReceivingRequestsContentInjBindingSource1;
+            this.ReceivingRequestsContentTable.Location = new System.Drawing.Point(7, 397);
+            this.ReceivingRequestsContentTable.MultiSelect = false;
+            this.ReceivingRequestsContentTable.Name = "ReceivingRequestsContentTable";
+            this.ReceivingRequestsContentTable.ReadOnly = true;
+            this.ReceivingRequestsContentTable.RowHeadersVisible = false;
+            this.ReceivingRequestsContentTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ReceivingRequestsContentTable.Size = new System.Drawing.Size(1037, 194);
+            this.ReceivingRequestsContentTable.TabIndex = 51;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -980,17 +967,17 @@
             this.receivingRequestsInjBindingSource.DataMember = "ReceivingRequestsInj";
             this.receivingRequestsInjBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
             // 
-            // WorkshopsRequestsRequestsTable
+            // ReceivingRequestsRequestsTable
             // 
-            this.WorkshopsRequestsRequestsTable.AllowUserToAddRows = false;
-            this.WorkshopsRequestsRequestsTable.AllowUserToDeleteRows = false;
-            this.WorkshopsRequestsRequestsTable.AllowUserToResizeRows = false;
-            this.WorkshopsRequestsRequestsTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.ReceivingRequestsRequestsTable.AllowUserToAddRows = false;
+            this.ReceivingRequestsRequestsTable.AllowUserToDeleteRows = false;
+            this.ReceivingRequestsRequestsTable.AllowUserToResizeRows = false;
+            this.ReceivingRequestsRequestsTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.WorkshopsRequestsRequestsTable.AutoGenerateColumns = false;
-            this.WorkshopsRequestsRequestsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.WorkshopsRequestsRequestsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.WorkshopsRequestsRequestsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ReceivingRequestsRequestsTable.AutoGenerateColumns = false;
+            this.ReceivingRequestsRequestsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ReceivingRequestsRequestsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ReceivingRequestsRequestsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn16,
             this.dataGridViewTextBoxColumn17,
             this.dataGridViewTextBoxColumn18,
@@ -998,15 +985,15 @@
             this.dataGridViewTextBoxColumn20,
             this.dataGridViewTextBoxColumn21,
             this.dataGridViewTextBoxColumn22});
-            this.WorkshopsRequestsRequestsTable.DataSource = this.receivingRequestsInjBindingSource;
-            this.WorkshopsRequestsRequestsTable.Location = new System.Drawing.Point(7, 145);
-            this.WorkshopsRequestsRequestsTable.MultiSelect = false;
-            this.WorkshopsRequestsRequestsTable.Name = "WorkshopsRequestsRequestsTable";
-            this.WorkshopsRequestsRequestsTable.ReadOnly = true;
-            this.WorkshopsRequestsRequestsTable.RowHeadersVisible = false;
-            this.WorkshopsRequestsRequestsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.WorkshopsRequestsRequestsTable.Size = new System.Drawing.Size(1037, 220);
-            this.WorkshopsRequestsRequestsTable.TabIndex = 50;
+            this.ReceivingRequestsRequestsTable.DataSource = this.receivingRequestsInjBindingSource;
+            this.ReceivingRequestsRequestsTable.Location = new System.Drawing.Point(7, 145);
+            this.ReceivingRequestsRequestsTable.MultiSelect = false;
+            this.ReceivingRequestsRequestsTable.Name = "ReceivingRequestsRequestsTable";
+            this.ReceivingRequestsRequestsTable.ReadOnly = true;
+            this.ReceivingRequestsRequestsTable.RowHeadersVisible = false;
+            this.ReceivingRequestsRequestsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ReceivingRequestsRequestsTable.Size = new System.Drawing.Size(1037, 220);
+            this.ReceivingRequestsRequestsTable.TabIndex = 50;
             // 
             // dataGridViewTextBoxColumn16
             // 
@@ -1069,16 +1056,16 @@
             this.dataGridViewTextBoxColumn22.ReadOnly = true;
             this.dataGridViewTextBoxColumn22.Width = 87;
             // 
-            // button2
+            // ReceivingRequestsButtonConsider
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(1059, 145);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(182, 44);
-            this.button2.TabIndex = 49;
-            this.button2.Text = "Рассмотреть заявку";
-            this.button2.UseVisualStyleBackColor = true;
+            this.ReceivingRequestsButtonConsider.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReceivingRequestsButtonConsider.Enabled = false;
+            this.ReceivingRequestsButtonConsider.Location = new System.Drawing.Point(1059, 145);
+            this.ReceivingRequestsButtonConsider.Name = "ReceivingRequestsButtonConsider";
+            this.ReceivingRequestsButtonConsider.Size = new System.Drawing.Size(182, 44);
+            this.ReceivingRequestsButtonConsider.TabIndex = 49;
+            this.ReceivingRequestsButtonConsider.Text = "Рассмотреть заявку";
+            this.ReceivingRequestsButtonConsider.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -1100,27 +1087,16 @@
             this.label3.TabIndex = 47;
             this.label3.Text = "Принятые заявки на получение от цехов";
             // 
-            // button3
+            // ReceivingRequestsButtonDelete
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(1059, 253);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(182, 44);
-            this.button3.TabIndex = 46;
-            this.button3.Text = "Отменить обработку";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Enabled = false;
-            this.button4.Location = new System.Drawing.Point(1059, 195);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(182, 52);
-            this.button4.TabIndex = 45;
-            this.button4.Text = "Изменить рассмотрение заявки";
-            this.button4.UseVisualStyleBackColor = true;
+            this.ReceivingRequestsButtonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReceivingRequestsButtonDelete.Enabled = false;
+            this.ReceivingRequestsButtonDelete.Location = new System.Drawing.Point(1059, 252);
+            this.ReceivingRequestsButtonDelete.Name = "ReceivingRequestsButtonDelete";
+            this.ReceivingRequestsButtonDelete.Size = new System.Drawing.Size(182, 44);
+            this.ReceivingRequestsButtonDelete.TabIndex = 46;
+            this.ReceivingRequestsButtonDelete.Text = "Отменить обработку";
+            this.ReceivingRequestsButtonDelete.UseVisualStyleBackColor = true;
             // 
             // groupBox7
             // 
@@ -1130,8 +1106,8 @@
             this.groupBox7.Controls.Add(this.radioButton2);
             this.groupBox7.Controls.Add(this.radioButton1);
             this.groupBox7.Controls.Add(this.label7);
-            this.groupBox7.Controls.Add(this.WorkshopsRequestsWorkshop);
-            this.groupBox7.Controls.Add(this.WorkshopsRequestsStatus);
+            this.groupBox7.Controls.Add(this.ReceivingRequestsWorkshop);
+            this.groupBox7.Controls.Add(this.ReceivingRequestsStatus);
             this.groupBox7.Controls.Add(this.label27);
             this.groupBox7.Controls.Add(this.label31);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1187,26 +1163,26 @@
             this.label7.TabIndex = 18;
             this.label7.Text = "Тип заявки";
             // 
-            // WorkshopsRequestsWorkshop
+            // ReceivingRequestsWorkshop
             // 
-            this.WorkshopsRequestsWorkshop.Location = new System.Drawing.Point(130, 16);
-            this.WorkshopsRequestsWorkshop.Name = "WorkshopsRequestsWorkshop";
-            this.WorkshopsRequestsWorkshop.Size = new System.Drawing.Size(373, 29);
-            this.WorkshopsRequestsWorkshop.TabIndex = 17;
+            this.ReceivingRequestsWorkshop.Location = new System.Drawing.Point(130, 16);
+            this.ReceivingRequestsWorkshop.Name = "ReceivingRequestsWorkshop";
+            this.ReceivingRequestsWorkshop.Size = new System.Drawing.Size(373, 29);
+            this.ReceivingRequestsWorkshop.TabIndex = 17;
             // 
-            // WorkshopsRequestsStatus
+            // ReceivingRequestsStatus
             // 
-            this.WorkshopsRequestsStatus.AutoCompleteCustomSource.AddRange(new string[] {
+            this.ReceivingRequestsStatus.AutoCompleteCustomSource.AddRange(new string[] {
             "Не обработана",
             "В работе",
             "Исполнена частично",
             "Исполнена полностью"});
-            this.WorkshopsRequestsStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.WorkshopsRequestsStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.WorkshopsRequestsStatus.Location = new System.Drawing.Point(130, 51);
-            this.WorkshopsRequestsStatus.Name = "WorkshopsRequestsStatus";
-            this.WorkshopsRequestsStatus.Size = new System.Drawing.Size(373, 29);
-            this.WorkshopsRequestsStatus.TabIndex = 16;
+            this.ReceivingRequestsStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ReceivingRequestsStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.ReceivingRequestsStatus.Location = new System.Drawing.Point(130, 51);
+            this.ReceivingRequestsStatus.Name = "ReceivingRequestsStatus";
+            this.ReceivingRequestsStatus.Size = new System.Drawing.Size(373, 29);
+            this.ReceivingRequestsStatus.TabIndex = 16;
             // 
             // label27
             // 
@@ -1228,156 +1204,18 @@
             this.label31.TabIndex = 9;
             this.label31.Text = "Цех";
             // 
-            // CreateRequest
-            // 
-            this.CreateRequest.Controls.Add(this.CreateRequestButtonCreate);
-            this.CreateRequest.Controls.Add(this.CreateRequestButtonAdd);
-            this.CreateRequest.Controls.Add(this.CreateRequestButtonDelete);
-            this.CreateRequest.Controls.Add(this.label39);
-            this.CreateRequest.Controls.Add(this.label59);
-            this.CreateRequest.Controls.Add(this.CreateRequestContentTable);
-            this.CreateRequest.Controls.Add(this.CreateRequestRequestsTable);
-            this.CreateRequest.Controls.Add(this.CreateRequestDate);
-            this.CreateRequest.Controls.Add(this.CreateRequestNumber);
-            this.CreateRequest.Controls.Add(this.label38);
-            this.CreateRequest.Controls.Add(this.label32);
-            this.CreateRequest.Location = new System.Drawing.Point(4, 29);
-            this.CreateRequest.Name = "CreateRequest";
-            this.CreateRequest.Padding = new System.Windows.Forms.Padding(3);
-            this.CreateRequest.Size = new System.Drawing.Size(1252, 600);
-            this.CreateRequest.TabIndex = 0;
-            this.CreateRequest.Text = "Создание заявки на приобретение";
-            this.CreateRequest.UseVisualStyleBackColor = true;
-            // 
-            // CreateRequestButtonCreate
-            // 
-            this.CreateRequestButtonCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CreateRequestButtonCreate.Enabled = false;
-            this.CreateRequestButtonCreate.Location = new System.Drawing.Point(1063, 6);
-            this.CreateRequestButtonCreate.Name = "CreateRequestButtonCreate";
-            this.CreateRequestButtonCreate.Size = new System.Drawing.Size(182, 44);
-            this.CreateRequestButtonCreate.TabIndex = 53;
-            this.CreateRequestButtonCreate.Text = "Создать";
-            this.CreateRequestButtonCreate.UseVisualStyleBackColor = true;
-            // 
-            // CreateRequestButtonAdd
-            // 
-            this.CreateRequestButtonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CreateRequestButtonAdd.Enabled = false;
-            this.CreateRequestButtonAdd.Location = new System.Drawing.Point(1063, 105);
-            this.CreateRequestButtonAdd.Name = "CreateRequestButtonAdd";
-            this.CreateRequestButtonAdd.Size = new System.Drawing.Size(182, 44);
-            this.CreateRequestButtonAdd.TabIndex = 52;
-            this.CreateRequestButtonAdd.Text = "Добавить";
-            this.CreateRequestButtonAdd.UseVisualStyleBackColor = true;
-            // 
-            // CreateRequestButtonDelete
-            // 
-            this.CreateRequestButtonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CreateRequestButtonDelete.Enabled = false;
-            this.CreateRequestButtonDelete.Location = new System.Drawing.Point(1063, 155);
-            this.CreateRequestButtonDelete.Name = "CreateRequestButtonDelete";
-            this.CreateRequestButtonDelete.Size = new System.Drawing.Size(182, 44);
-            this.CreateRequestButtonDelete.TabIndex = 51;
-            this.CreateRequestButtonDelete.Text = "Удалить";
-            this.CreateRequestButtonDelete.UseVisualStyleBackColor = true;
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label39.Location = new System.Drawing.Point(9, 331);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(504, 24);
-            this.label39.TabIndex = 43;
-            this.label39.Text = "Инструменты входящие в данную заявку на получение";
-            // 
-            // label59
-            // 
-            this.label59.AutoSize = true;
-            this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label59.Location = new System.Drawing.Point(9, 79);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(377, 24);
-            this.label59.TabIndex = 42;
-            this.label59.Text = "Принятые заявки на получение от цехов";
-            // 
-            // CreateRequestContentTable
-            // 
-            this.CreateRequestContentTable.AllowUserToAddRows = false;
-            this.CreateRequestContentTable.AllowUserToDeleteRows = false;
-            this.CreateRequestContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CreateRequestContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CreateRequestContentTable.Location = new System.Drawing.Point(9, 357);
-            this.CreateRequestContentTable.Name = "CreateRequestContentTable";
-            this.CreateRequestContentTable.ReadOnly = true;
-            this.CreateRequestContentTable.Size = new System.Drawing.Size(1048, 241);
-            this.CreateRequestContentTable.TabIndex = 41;
-            // 
-            // CreateRequestRequestsTable
-            // 
-            this.CreateRequestRequestsTable.AllowUserToAddRows = false;
-            this.CreateRequestRequestsTable.AllowUserToDeleteRows = false;
-            this.CreateRequestRequestsTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CreateRequestRequestsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CreateRequestRequestsTable.Location = new System.Drawing.Point(9, 105);
-            this.CreateRequestRequestsTable.Name = "CreateRequestRequestsTable";
-            this.CreateRequestRequestsTable.ReadOnly = true;
-            this.CreateRequestRequestsTable.Size = new System.Drawing.Size(1048, 220);
-            this.CreateRequestRequestsTable.TabIndex = 40;
-            // 
-            // CreateRequestDate
-            // 
-            this.CreateRequestDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CreateRequestDate.Location = new System.Drawing.Point(71, 37);
-            this.CreateRequestDate.Name = "CreateRequestDate";
-            this.CreateRequestDate.ReadOnly = true;
-            this.CreateRequestDate.Size = new System.Drawing.Size(253, 29);
-            this.CreateRequestDate.TabIndex = 10;
-            // 
-            // CreateRequestNumber
-            // 
-            this.CreateRequestNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CreateRequestNumber.Location = new System.Drawing.Point(71, 5);
-            this.CreateRequestNumber.Name = "CreateRequestNumber";
-            this.CreateRequestNumber.ReadOnly = true;
-            this.CreateRequestNumber.Size = new System.Drawing.Size(253, 29);
-            this.CreateRequestNumber.TabIndex = 8;
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label38.Location = new System.Drawing.Point(6, 46);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(48, 20);
-            this.label38.TabIndex = 9;
-            this.label38.Text = "Дата";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label32.Location = new System.Drawing.Point(6, 14);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(59, 20);
-            this.label32.TabIndex = 7;
-            this.label32.Text = "Номер";
-            // 
             // RequestsList
             // 
-            this.RequestsList.Controls.Add(this.button1);
-            this.RequestsList.Controls.Add(this.RequestsListButtonAlter);
-            this.RequestsList.Controls.Add(this.RequestsListButtonDelete);
-            this.RequestsList.Controls.Add(this.RequestsListAcceptedWorkshopRequestsTable);
+            this.RequestsList.Controls.Add(this.PurchaseRequestsButtonExport);
+            this.RequestsList.Controls.Add(this.PurchaseRequestsButtonCreate);
+            this.RequestsList.Controls.Add(this.PurchaseRequestsButtonAlter);
+            this.RequestsList.Controls.Add(this.PurchaseRequestsButtonDelete);
+            this.RequestsList.Controls.Add(this.PurchaseRequestsReceivingRequestsTable);
             this.RequestsList.Controls.Add(this.label42);
             this.RequestsList.Controls.Add(this.label41);
             this.RequestsList.Controls.Add(this.label40);
-            this.RequestsList.Controls.Add(this.RequestsListPurchaseRequestsTable);
-            this.RequestsList.Controls.Add(this.RequestsListContentTable);
+            this.RequestsList.Controls.Add(this.PurchaseRequestsPurchaseRequestsTable);
+            this.RequestsList.Controls.Add(this.PurchaseRequestsContentTable);
             this.RequestsList.Controls.Add(this.groupBox9);
             this.RequestsList.Location = new System.Drawing.Point(4, 29);
             this.RequestsList.Name = "RequestsList";
@@ -1387,57 +1225,57 @@
             this.RequestsList.Text = "Заявки на приобретение";
             this.RequestsList.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // PurchaseRequestsButtonCreate
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(1064, 141);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(182, 44);
-            this.button1.TabIndex = 54;
-            this.button1.Text = "Создать";
-            this.button1.UseVisualStyleBackColor = true;
+            this.PurchaseRequestsButtonCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PurchaseRequestsButtonCreate.Enabled = false;
+            this.PurchaseRequestsButtonCreate.Location = new System.Drawing.Point(1064, 141);
+            this.PurchaseRequestsButtonCreate.Name = "PurchaseRequestsButtonCreate";
+            this.PurchaseRequestsButtonCreate.Size = new System.Drawing.Size(182, 44);
+            this.PurchaseRequestsButtonCreate.TabIndex = 54;
+            this.PurchaseRequestsButtonCreate.Text = "Создать";
+            this.PurchaseRequestsButtonCreate.UseVisualStyleBackColor = true;
             // 
-            // RequestsListButtonAlter
+            // PurchaseRequestsButtonAlter
             // 
-            this.RequestsListButtonAlter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.RequestsListButtonAlter.Enabled = false;
-            this.RequestsListButtonAlter.Location = new System.Drawing.Point(1064, 191);
-            this.RequestsListButtonAlter.Name = "RequestsListButtonAlter";
-            this.RequestsListButtonAlter.Size = new System.Drawing.Size(182, 44);
-            this.RequestsListButtonAlter.TabIndex = 46;
-            this.RequestsListButtonAlter.Text = "Изменить";
-            this.RequestsListButtonAlter.UseVisualStyleBackColor = true;
+            this.PurchaseRequestsButtonAlter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PurchaseRequestsButtonAlter.Enabled = false;
+            this.PurchaseRequestsButtonAlter.Location = new System.Drawing.Point(1064, 191);
+            this.PurchaseRequestsButtonAlter.Name = "PurchaseRequestsButtonAlter";
+            this.PurchaseRequestsButtonAlter.Size = new System.Drawing.Size(182, 44);
+            this.PurchaseRequestsButtonAlter.TabIndex = 46;
+            this.PurchaseRequestsButtonAlter.Text = "Изменить";
+            this.PurchaseRequestsButtonAlter.UseVisualStyleBackColor = true;
             // 
-            // RequestsListButtonDelete
+            // PurchaseRequestsButtonDelete
             // 
-            this.RequestsListButtonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.RequestsListButtonDelete.Enabled = false;
-            this.RequestsListButtonDelete.Location = new System.Drawing.Point(1064, 241);
-            this.RequestsListButtonDelete.Name = "RequestsListButtonDelete";
-            this.RequestsListButtonDelete.Size = new System.Drawing.Size(182, 44);
-            this.RequestsListButtonDelete.TabIndex = 45;
-            this.RequestsListButtonDelete.Text = "Удалить";
-            this.RequestsListButtonDelete.UseVisualStyleBackColor = true;
+            this.PurchaseRequestsButtonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PurchaseRequestsButtonDelete.Enabled = false;
+            this.PurchaseRequestsButtonDelete.Location = new System.Drawing.Point(1064, 241);
+            this.PurchaseRequestsButtonDelete.Name = "PurchaseRequestsButtonDelete";
+            this.PurchaseRequestsButtonDelete.Size = new System.Drawing.Size(182, 44);
+            this.PurchaseRequestsButtonDelete.TabIndex = 45;
+            this.PurchaseRequestsButtonDelete.Text = "Удалить";
+            this.PurchaseRequestsButtonDelete.UseVisualStyleBackColor = true;
             // 
-            // RequestsListAcceptedWorkshopRequestsTable
+            // PurchaseRequestsReceivingRequestsTable
             // 
-            this.RequestsListAcceptedWorkshopRequestsTable.AllowUserToAddRows = false;
-            this.RequestsListAcceptedWorkshopRequestsTable.AllowUserToDeleteRows = false;
-            this.RequestsListAcceptedWorkshopRequestsTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.PurchaseRequestsReceivingRequestsTable.AllowUserToAddRows = false;
+            this.PurchaseRequestsReceivingRequestsTable.AllowUserToDeleteRows = false;
+            this.PurchaseRequestsReceivingRequestsTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RequestsListAcceptedWorkshopRequestsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.RequestsListAcceptedWorkshopRequestsTable.Location = new System.Drawing.Point(350, 141);
-            this.RequestsListAcceptedWorkshopRequestsTable.Name = "RequestsListAcceptedWorkshopRequestsTable";
-            this.RequestsListAcceptedWorkshopRequestsTable.ReadOnly = true;
-            this.RequestsListAcceptedWorkshopRequestsTable.Size = new System.Drawing.Size(708, 218);
-            this.RequestsListAcceptedWorkshopRequestsTable.TabIndex = 29;
+            this.PurchaseRequestsReceivingRequestsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PurchaseRequestsReceivingRequestsTable.Location = new System.Drawing.Point(350, 141);
+            this.PurchaseRequestsReceivingRequestsTable.Name = "PurchaseRequestsReceivingRequestsTable";
+            this.PurchaseRequestsReceivingRequestsTable.ReadOnly = true;
+            this.PurchaseRequestsReceivingRequestsTable.Size = new System.Drawing.Size(708, 194);
+            this.PurchaseRequestsReceivingRequestsTable.TabIndex = 29;
             // 
             // label42
             // 
             this.label42.AutoSize = true;
             this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label42.Location = new System.Drawing.Point(350, 368);
+            this.label42.Location = new System.Drawing.Point(350, 338);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(504, 24);
             this.label42.TabIndex = 34;
@@ -1463,43 +1301,43 @@
             this.label40.TabIndex = 32;
             this.label40.Text = "Заявки на приобретение";
             // 
-            // RequestsListPurchaseRequestsTable
+            // PurchaseRequestsPurchaseRequestsTable
             // 
-            this.RequestsListPurchaseRequestsTable.AllowUserToAddRows = false;
-            this.RequestsListPurchaseRequestsTable.AllowUserToDeleteRows = false;
-            this.RequestsListPurchaseRequestsTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.PurchaseRequestsPurchaseRequestsTable.AllowUserToAddRows = false;
+            this.PurchaseRequestsPurchaseRequestsTable.AllowUserToDeleteRows = false;
+            this.PurchaseRequestsPurchaseRequestsTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.RequestsListPurchaseRequestsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.RequestsListPurchaseRequestsTable.Location = new System.Drawing.Point(6, 141);
-            this.RequestsListPurchaseRequestsTable.Name = "RequestsListPurchaseRequestsTable";
-            this.RequestsListPurchaseRequestsTable.ReadOnly = true;
-            this.RequestsListPurchaseRequestsTable.Size = new System.Drawing.Size(338, 460);
-            this.RequestsListPurchaseRequestsTable.TabIndex = 31;
+            this.PurchaseRequestsPurchaseRequestsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PurchaseRequestsPurchaseRequestsTable.Location = new System.Drawing.Point(6, 141);
+            this.PurchaseRequestsPurchaseRequestsTable.Name = "PurchaseRequestsPurchaseRequestsTable";
+            this.PurchaseRequestsPurchaseRequestsTable.ReadOnly = true;
+            this.PurchaseRequestsPurchaseRequestsTable.Size = new System.Drawing.Size(338, 450);
+            this.PurchaseRequestsPurchaseRequestsTable.TabIndex = 31;
             // 
-            // RequestsListContentTable
+            // PurchaseRequestsContentTable
             // 
-            this.RequestsListContentTable.AllowUserToAddRows = false;
-            this.RequestsListContentTable.AllowUserToDeleteRows = false;
-            this.RequestsListContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.PurchaseRequestsContentTable.AllowUserToAddRows = false;
+            this.PurchaseRequestsContentTable.AllowUserToDeleteRows = false;
+            this.PurchaseRequestsContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RequestsListContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.RequestsListContentTable.Location = new System.Drawing.Point(350, 394);
-            this.RequestsListContentTable.Name = "RequestsListContentTable";
-            this.RequestsListContentTable.ReadOnly = true;
-            this.RequestsListContentTable.Size = new System.Drawing.Size(708, 207);
-            this.RequestsListContentTable.TabIndex = 30;
+            this.PurchaseRequestsContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PurchaseRequestsContentTable.Location = new System.Drawing.Point(350, 365);
+            this.PurchaseRequestsContentTable.Name = "PurchaseRequestsContentTable";
+            this.PurchaseRequestsContentTable.ReadOnly = true;
+            this.PurchaseRequestsContentTable.Size = new System.Drawing.Size(708, 226);
+            this.PurchaseRequestsContentTable.TabIndex = 30;
             // 
             // groupBox9
             // 
             this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox9.Controls.Add(this.RequestsListStatus);
+            this.groupBox9.Controls.Add(this.PurchaseRequestsStatus);
             this.groupBox9.Controls.Add(this.label45);
             this.groupBox9.Controls.Add(this.label43);
-            this.groupBox9.Controls.Add(this.RequestsListEnd);
+            this.groupBox9.Controls.Add(this.PurchaseRequestsEnd);
             this.groupBox9.Controls.Add(this.label44);
-            this.groupBox9.Controls.Add(this.RequestsListStart);
+            this.groupBox9.Controls.Add(this.PurchaseRequestsStart);
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox9.Location = new System.Drawing.Point(7, 7);
             this.groupBox9.Name = "groupBox9";
@@ -1508,21 +1346,21 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Поиск";
             // 
-            // RequestsListStatus
+            // PurchaseRequestsStatus
             // 
-            this.RequestsListStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.PurchaseRequestsStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RequestsListStatus.AutoCompleteCustomSource.AddRange(new string[] {
+            this.PurchaseRequestsStatus.AutoCompleteCustomSource.AddRange(new string[] {
             "Не обработана",
             "В работе",
             "Исполнена частично",
             "Исполнена полностью"});
-            this.RequestsListStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.RequestsListStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.RequestsListStatus.Location = new System.Drawing.Point(616, 21);
-            this.RequestsListStatus.Name = "RequestsListStatus";
-            this.RequestsListStatus.Size = new System.Drawing.Size(617, 29);
-            this.RequestsListStatus.TabIndex = 20;
+            this.PurchaseRequestsStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.PurchaseRequestsStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.PurchaseRequestsStatus.Location = new System.Drawing.Point(616, 21);
+            this.PurchaseRequestsStatus.Name = "PurchaseRequestsStatus";
+            this.PurchaseRequestsStatus.Size = new System.Drawing.Size(617, 29);
+            this.PurchaseRequestsStatus.TabIndex = 20;
             // 
             // label45
             // 
@@ -1546,13 +1384,13 @@
             this.label43.TabIndex = 17;
             this.label43.Text = "Конец временного диапазона";
             // 
-            // RequestsListEnd
+            // PurchaseRequestsEnd
             // 
-            this.RequestsListEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.RequestsListEnd.Location = new System.Drawing.Point(259, 56);
-            this.RequestsListEnd.Name = "RequestsListEnd";
-            this.RequestsListEnd.Size = new System.Drawing.Size(227, 29);
-            this.RequestsListEnd.TabIndex = 16;
+            this.PurchaseRequestsEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.PurchaseRequestsEnd.Location = new System.Drawing.Point(259, 56);
+            this.PurchaseRequestsEnd.Name = "PurchaseRequestsEnd";
+            this.PurchaseRequestsEnd.Size = new System.Drawing.Size(227, 29);
+            this.PurchaseRequestsEnd.TabIndex = 16;
             // 
             // label44
             // 
@@ -1566,16 +1404,17 @@
             this.label44.TabIndex = 15;
             this.label44.Text = "Начало временного диапазона";
             // 
-            // RequestsListStart
+            // PurchaseRequestsStart
             // 
-            this.RequestsListStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.RequestsListStart.Location = new System.Drawing.Point(259, 21);
-            this.RequestsListStart.Name = "RequestsListStart";
-            this.RequestsListStart.Size = new System.Drawing.Size(227, 29);
-            this.RequestsListStart.TabIndex = 13;
+            this.PurchaseRequestsStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.PurchaseRequestsStart.Location = new System.Drawing.Point(259, 21);
+            this.PurchaseRequestsStart.Name = "PurchaseRequestsStart";
+            this.PurchaseRequestsStart.Size = new System.Drawing.Size(227, 29);
+            this.PurchaseRequestsStart.TabIndex = 13;
             // 
             // Statements
             // 
+            this.Statements.Controls.Add(this.StatementsButtonExport);
             this.Statements.Controls.Add(this.StatementsButtonDelete);
             this.Statements.Controls.Add(this.StatementsButtonAlter);
             this.Statements.Controls.Add(this.StatementsButtonCreate);
@@ -1628,7 +1467,7 @@
             // 
             this.StatementsButtonToInvoices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.StatementsButtonToInvoices.Enabled = false;
-            this.StatementsButtonToInvoices.Location = new System.Drawing.Point(1057, 311);
+            this.StatementsButtonToInvoices.Location = new System.Drawing.Point(1057, 299);
             this.StatementsButtonToInvoices.Name = "StatementsButtonToInvoices";
             this.StatementsButtonToInvoices.Size = new System.Drawing.Size(182, 55);
             this.StatementsButtonToInvoices.TabIndex = 42;
@@ -1643,17 +1482,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StatementsContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.StatementsContentTable.Location = new System.Drawing.Point(7, 396);
+            this.StatementsContentTable.Location = new System.Drawing.Point(7, 384);
             this.StatementsContentTable.Name = "StatementsContentTable";
             this.StatementsContentTable.ReadOnly = true;
-            this.StatementsContentTable.Size = new System.Drawing.Size(1044, 205);
+            this.StatementsContentTable.Size = new System.Drawing.Size(1044, 207);
             this.StatementsContentTable.TabIndex = 37;
             // 
             // label50
             // 
             this.label50.AutoSize = true;
             this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label50.Location = new System.Drawing.Point(7, 369);
+            this.label50.Location = new System.Drawing.Point(7, 357);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(268, 24);
             this.label50.TabIndex = 40;
@@ -1679,7 +1518,7 @@
             this.StatementsStatementsTable.Location = new System.Drawing.Point(7, 99);
             this.StatementsStatementsTable.Name = "StatementsStatementsTable";
             this.StatementsStatementsTable.ReadOnly = true;
-            this.StatementsStatementsTable.Size = new System.Drawing.Size(1044, 281);
+            this.StatementsStatementsTable.Size = new System.Drawing.Size(1044, 255);
             this.StatementsStatementsTable.TabIndex = 38;
             // 
             // groupBox10
@@ -1741,6 +1580,7 @@
             // 
             // Invoices
             // 
+            this.Invoices.Controls.Add(this.button1);
             this.Invoices.Controls.Add(this.InvoicesContentTable);
             this.Invoices.Controls.Add(this.label15);
             this.Invoices.Controls.Add(this.label26);
@@ -1764,17 +1604,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.InvoicesContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.InvoicesContentTable.Location = new System.Drawing.Point(7, 402);
+            this.InvoicesContentTable.Location = new System.Drawing.Point(6, 323);
             this.InvoicesContentTable.Name = "InvoicesContentTable";
             this.InvoicesContentTable.ReadOnly = true;
-            this.InvoicesContentTable.Size = new System.Drawing.Size(1044, 205);
+            this.InvoicesContentTable.Size = new System.Drawing.Size(1044, 264);
             this.InvoicesContentTable.TabIndex = 51;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(7, 375);
+            this.label15.Location = new System.Drawing.Point(6, 296);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(268, 24);
             this.label15.TabIndex = 54;
@@ -1784,7 +1624,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label26.Location = new System.Drawing.Point(7, 79);
+            this.label26.Location = new System.Drawing.Point(7, 73);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(202, 24);
             this.label26.TabIndex = 53;
@@ -1797,17 +1637,17 @@
             this.InvoicesInvoicesTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.InvoicesInvoicesTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.InvoicesInvoicesTable.Location = new System.Drawing.Point(7, 105);
+            this.InvoicesInvoicesTable.Location = new System.Drawing.Point(7, 99);
             this.InvoicesInvoicesTable.Name = "InvoicesInvoicesTable";
             this.InvoicesInvoicesTable.ReadOnly = true;
-            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(1044, 281);
+            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(1044, 194);
             this.InvoicesInvoicesTable.TabIndex = 52;
             // 
             // InvoicesButtonDelete
             // 
             this.InvoicesButtonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.InvoicesButtonDelete.Enabled = false;
-            this.InvoicesButtonDelete.Location = new System.Drawing.Point(1064, 205);
+            this.InvoicesButtonDelete.Location = new System.Drawing.Point(1057, 199);
             this.InvoicesButtonDelete.Name = "InvoicesButtonDelete";
             this.InvoicesButtonDelete.Size = new System.Drawing.Size(182, 44);
             this.InvoicesButtonDelete.TabIndex = 50;
@@ -1818,7 +1658,7 @@
             // 
             this.InvoicesButtonAlter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.InvoicesButtonAlter.Enabled = false;
-            this.InvoicesButtonAlter.Location = new System.Drawing.Point(1064, 155);
+            this.InvoicesButtonAlter.Location = new System.Drawing.Point(1057, 149);
             this.InvoicesButtonAlter.Name = "InvoicesButtonAlter";
             this.InvoicesButtonAlter.Size = new System.Drawing.Size(182, 44);
             this.InvoicesButtonAlter.TabIndex = 49;
@@ -1828,7 +1668,7 @@
             // InvoicesButtonEnter
             // 
             this.InvoicesButtonEnter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.InvoicesButtonEnter.Location = new System.Drawing.Point(1064, 105);
+            this.InvoicesButtonEnter.Location = new System.Drawing.Point(1057, 99);
             this.InvoicesButtonEnter.Name = "InvoicesButtonEnter";
             this.InvoicesButtonEnter.Size = new System.Drawing.Size(182, 44);
             this.InvoicesButtonEnter.TabIndex = 48;
@@ -1839,14 +1679,14 @@
             // 
             this.groupBox11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox11.Controls.Add(this.InvoicesStatementNumber);
             this.groupBox11.Controls.Add(this.label55);
-            this.groupBox11.Controls.Add(this.InvoicesStatementDate);
             this.groupBox11.Controls.Add(this.label56);
             this.groupBox11.Controls.Add(this.InvoicesDate);
             this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox11.Location = new System.Drawing.Point(7, 7);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(1232, 69);
+            this.groupBox11.Size = new System.Drawing.Size(1232, 63);
             this.groupBox11.TabIndex = 42;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Поиск";
@@ -1859,17 +1699,9 @@
             this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label55.Location = new System.Drawing.Point(614, 30);
             this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(136, 20);
+            this.label55.Size = new System.Drawing.Size(147, 20);
             this.label55.TabIndex = 21;
-            this.label55.Text = "Дата ведомости";
-            // 
-            // InvoicesStatementDate
-            // 
-            this.InvoicesStatementDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.InvoicesStatementDate.Location = new System.Drawing.Point(756, 25);
-            this.InvoicesStatementDate.Name = "InvoicesStatementDate";
-            this.InvoicesStatementDate.Size = new System.Drawing.Size(470, 29);
-            this.InvoicesStatementDate.TabIndex = 20;
+            this.label55.Text = "Номер ведомости";
             // 
             // label56
             // 
@@ -1888,7 +1720,7 @@
             this.InvoicesDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.InvoicesDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.InvoicesDate.Location = new System.Drawing.Point(147, 25);
+            this.InvoicesDate.Location = new System.Drawing.Point(147, 21);
             this.InvoicesDate.Name = "InvoicesDate";
             this.InvoicesDate.Size = new System.Drawing.Size(461, 29);
             this.InvoicesDate.TabIndex = 18;
@@ -1915,7 +1747,7 @@
             this.HistoryTable.Location = new System.Drawing.Point(7, 117);
             this.HistoryTable.Name = "HistoryTable";
             this.HistoryTable.ReadOnly = true;
-            this.HistoryTable.Size = new System.Drawing.Size(1239, 484);
+            this.HistoryTable.Size = new System.Drawing.Size(1239, 470);
             this.HistoryTable.TabIndex = 13;
             // 
             // groupBox12
@@ -1938,7 +1770,7 @@
             // 
             // HistoryNumber
             // 
-            this.HistoryNumber.Location = new System.Drawing.Point(203, 21);
+            this.HistoryNumber.Location = new System.Drawing.Point(697, 16);
             this.HistoryNumber.Mask = "000000000";
             this.HistoryNumber.Name = "HistoryNumber";
             this.HistoryNumber.Size = new System.Drawing.Size(536, 29);
@@ -1949,7 +1781,7 @@
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label29.Location = new System.Drawing.Point(6, 30);
+            this.label29.Location = new System.Drawing.Point(500, 25);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(191, 20);
             this.label29.TabIndex = 22;
@@ -1961,7 +1793,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label54.AutoSize = true;
             this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label54.Location = new System.Drawing.Point(745, 64);
+            this.label54.Location = new System.Drawing.Point(6, 59);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(235, 20);
             this.label54.TabIndex = 21;
@@ -1969,8 +1801,10 @@
             // 
             // HistoryEnd
             // 
+            this.HistoryEnd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.HistoryEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.HistoryEnd.Location = new System.Drawing.Point(998, 55);
+            this.HistoryEnd.Location = new System.Drawing.Point(259, 50);
             this.HistoryEnd.Name = "HistoryEnd";
             this.HistoryEnd.Size = new System.Drawing.Size(235, 29);
             this.HistoryEnd.TabIndex = 20;
@@ -1981,7 +1815,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label58.AutoSize = true;
             this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label58.Location = new System.Drawing.Point(745, 30);
+            this.label58.Location = new System.Drawing.Point(6, 25);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(247, 20);
             this.label58.TabIndex = 19;
@@ -1989,8 +1823,10 @@
             // 
             // HistoryStart
             // 
+            this.HistoryStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.HistoryStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.HistoryStart.Location = new System.Drawing.Point(998, 21);
+            this.HistoryStart.Location = new System.Drawing.Point(259, 16);
             this.HistoryStart.Name = "HistoryStart";
             this.HistoryStart.Size = new System.Drawing.Size(235, 29);
             this.HistoryStart.TabIndex = 18;
@@ -3004,6 +2840,57 @@
             this.toolaccountingDataSet1.DataSetName = "TOOLACCOUNTINGDataSet";
             this.toolaccountingDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // PurchaseRequestsButtonExport
+            // 
+            this.PurchaseRequestsButtonExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PurchaseRequestsButtonExport.Enabled = false;
+            this.PurchaseRequestsButtonExport.Location = new System.Drawing.Point(1064, 291);
+            this.PurchaseRequestsButtonExport.Name = "PurchaseRequestsButtonExport";
+            this.PurchaseRequestsButtonExport.Size = new System.Drawing.Size(182, 44);
+            this.PurchaseRequestsButtonExport.TabIndex = 55;
+            this.PurchaseRequestsButtonExport.Text = "Экспорт";
+            this.PurchaseRequestsButtonExport.UseVisualStyleBackColor = true;
+            // 
+            // StatementsButtonExport
+            // 
+            this.StatementsButtonExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StatementsButtonExport.Enabled = false;
+            this.StatementsButtonExport.Location = new System.Drawing.Point(1057, 249);
+            this.StatementsButtonExport.Name = "StatementsButtonExport";
+            this.StatementsButtonExport.Size = new System.Drawing.Size(182, 44);
+            this.StatementsButtonExport.TabIndex = 56;
+            this.StatementsButtonExport.Text = "Экспорт";
+            this.StatementsButtonExport.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(1057, 249);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(182, 44);
+            this.button1.TabIndex = 57;
+            this.button1.Text = "Экспорт";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // ReceivingRequestsButtonAlter
+            // 
+            this.ReceivingRequestsButtonAlter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReceivingRequestsButtonAlter.Enabled = false;
+            this.ReceivingRequestsButtonAlter.Location = new System.Drawing.Point(1059, 195);
+            this.ReceivingRequestsButtonAlter.Name = "ReceivingRequestsButtonAlter";
+            this.ReceivingRequestsButtonAlter.Size = new System.Drawing.Size(182, 51);
+            this.ReceivingRequestsButtonAlter.TabIndex = 52;
+            this.ReceivingRequestsButtonAlter.Text = "Изменить рассмотрение заявки";
+            this.ReceivingRequestsButtonAlter.UseVisualStyleBackColor = true;
+            // 
+            // InvoicesStatementNumber
+            // 
+            this.InvoicesStatementNumber.Location = new System.Drawing.Point(767, 21);
+            this.InvoicesStatementNumber.Name = "InvoicesStatementNumber";
+            this.InvoicesStatementNumber.Size = new System.Drawing.Size(459, 29);
+            this.InvoicesStatementNumber.TabIndex = 22;
+            // 
             // Inj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3034,21 +2921,17 @@
             this.InjLevel2.ResumeLayout(false);
             this.WorkshopsRequests.ResumeLayout(false);
             this.WorkshopsRequests.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WorkshopsRequestsContentTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReceivingRequestsContentTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsInjReceivingRequestsContentInjBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsInjBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WorkshopsRequestsRequestsTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReceivingRequestsRequestsTable)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            this.CreateRequest.ResumeLayout(false);
-            this.CreateRequest.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CreateRequestContentTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CreateRequestRequestsTable)).EndInit();
             this.RequestsList.ResumeLayout(false);
             this.RequestsList.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RequestsListAcceptedWorkshopRequestsTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RequestsListPurchaseRequestsTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RequestsListContentTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseRequestsReceivingRequestsTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseRequestsPurchaseRequestsTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseRequestsContentTable)).EndInit();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.Statements.ResumeLayout(false);
@@ -3177,28 +3060,22 @@
         private System.Windows.Forms.Button ProvidersButtonCreate;
         private System.Windows.Forms.TabControl InjLevel2;
         private System.Windows.Forms.TabPage WorkshopsRequests;
-        private System.Windows.Forms.TabPage CreateRequest;
-        private System.Windows.Forms.TextBox CreateRequestDate;
-        private System.Windows.Forms.TextBox CreateRequestNumber;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label32;
         private System.Windows.Forms.TabPage RequestsList;
-        private System.Windows.Forms.DataGridView RequestsListAcceptedWorkshopRequestsTable;
+        private System.Windows.Forms.DataGridView PurchaseRequestsReceivingRequestsTable;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.DataGridView RequestsListPurchaseRequestsTable;
-        private System.Windows.Forms.DataGridView RequestsListContentTable;
+        private System.Windows.Forms.DataGridView PurchaseRequestsPurchaseRequestsTable;
+        private System.Windows.Forms.DataGridView PurchaseRequestsContentTable;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.DateTimePicker RequestsListEnd;
+        private System.Windows.Forms.DateTimePicker PurchaseRequestsEnd;
         private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.DateTimePicker RequestsListStart;
+        private System.Windows.Forms.DateTimePicker PurchaseRequestsStart;
         private System.Windows.Forms.TabPage Invoices;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.DateTimePicker InvoicesStatementDate;
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.DateTimePicker InvoicesDate;
         private System.Windows.Forms.TabPage History;
@@ -3208,12 +3085,8 @@
         private System.Windows.Forms.DateTimePicker HistoryEnd;
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.DateTimePicker HistoryStart;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.DataGridView CreateRequestContentTable;
-        private System.Windows.Forms.DataGridView CreateRequestRequestsTable;
-        private System.Windows.Forms.Button RequestsListButtonAlter;
-        private System.Windows.Forms.Button RequestsListButtonDelete;
+        private System.Windows.Forms.Button PurchaseRequestsButtonAlter;
+        private System.Windows.Forms.Button PurchaseRequestsButtonDelete;
         private TOOLACCOUNTINGDataSet tOOLACCOUNTINGDataSet;
         private System.Windows.Forms.BindingSource suppliersBindingSource;
         private TOOLACCOUNTINGDataSetTableAdapters.SuppliersTableAdapter suppliersTableAdapter;
@@ -3297,12 +3170,12 @@
         private System.Windows.Forms.BindingSource receivingRequestsInjReceivingRequestsContentInjBindingSource;
         private TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentInjTableAdapter receivingRequestsContentInjTableAdapter;
         private System.Windows.Forms.BindingSource receivingRequestsInjReceivingRequestsContentInjBindingSource1;
-        private System.Windows.Forms.DataGridView WorkshopsRequestsContentTable;
+        private System.Windows.Forms.DataGridView ReceivingRequestsContentTable;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridView WorkshopsRequestsRequestsTable;
+        private System.Windows.Forms.DataGridView ReceivingRequestsRequestsTable;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
@@ -3310,25 +3183,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button ReceivingRequestsButtonConsider;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button ReceivingRequestsButtonDelete;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.TextBox WorkshopsRequestsStatus;
+        private System.Windows.Forms.TextBox ReceivingRequestsStatus;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.TextBox WorkshopsRequestsWorkshop;
+        private System.Windows.Forms.TextBox ReceivingRequestsWorkshop;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private TOOLACCOUNTINGDataSet toolaccountingDataSet1;
-        private System.Windows.Forms.Button CreateRequestButtonAdd;
-        private System.Windows.Forms.Button CreateRequestButtonDelete;
-        private System.Windows.Forms.Button CreateRequestButtonCreate;
-        private System.Windows.Forms.TextBox RequestsListStatus;
+        private System.Windows.Forms.TextBox PurchaseRequestsStatus;
         private System.Windows.Forms.TabPage Statements;
         private System.Windows.Forms.Button StatementsButtonDelete;
         private System.Windows.Forms.Button StatementsButtonAlter;
@@ -3350,6 +3219,11 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.DataGridView InvoicesInvoicesTable;
+        private System.Windows.Forms.Button PurchaseRequestsButtonCreate;
+        private System.Windows.Forms.Button PurchaseRequestsButtonExport;
+        private System.Windows.Forms.Button StatementsButtonExport;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ReceivingRequestsButtonAlter;
+        private System.Windows.Forms.TextBox InvoicesStatementNumber;
     }
 }

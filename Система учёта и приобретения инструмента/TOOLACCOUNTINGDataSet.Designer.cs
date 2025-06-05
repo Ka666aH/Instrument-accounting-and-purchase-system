@@ -102,8 +102,6 @@ namespace Система_учёта_и_приобретения_инструме
         
         private global::System.Data.DataRelation relationFK__DeliveryL__Purch__656C112C;
         
-        private global::System.Data.DataRelation relationFK__Invoices__Delive__693CA210;
-        
         private global::System.Data.DataRelation relationFK__InvoicesC__Deliv__6D0D32F4;
         
         private global::System.Data.DataRelation relationFK__InvoicesC__Invoi__6C190EBB;
@@ -963,7 +961,6 @@ namespace Система_учёта_и_приобретения_инструме
             this.relationFK__DeliveryL__Suppl__619B8048 = this.Relations["FK__DeliveryL__Suppl__619B8048"];
             this.relationFK__DeliveryL__Deliv__6477ECF3 = this.Relations["FK__DeliveryL__Deliv__6477ECF3"];
             this.relationFK__DeliveryL__Purch__656C112C = this.Relations["FK__DeliveryL__Purch__656C112C"];
-            this.relationFK__Invoices__Delive__693CA210 = this.Relations["FK__Invoices__Delive__693CA210"];
             this.relationFK__InvoicesC__Deliv__6D0D32F4 = this.Relations["FK__InvoicesC__Deliv__6D0D32F4"];
             this.relationFK__InvoicesC__Invoi__6C190EBB = this.Relations["FK__InvoicesC__Invoi__6C190EBB"];
             this.relationFK__PurchaseR__Donor__5CD6CB2B = this.Relations["FK__PurchaseR__Donor__5CD6CB2B"];
@@ -1092,10 +1089,6 @@ namespace Система_учёта_и_приобретения_инструме
                         this.tablePurchaseRequestsContent.PurchaseContentIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableDeliveryListsContent.PurchaseContentIDColumn}, false);
             this.Relations.Add(this.relationFK__DeliveryL__Purch__656C112C);
-            this.relationFK__Invoices__Delive__693CA210 = new global::System.Data.DataRelation("FK__Invoices__Delive__693CA210", new global::System.Data.DataColumn[] {
-                        this.tableDeliveryLists.DeliveryListIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableInvoices.DeliveryListIDColumn}, false);
-            this.Relations.Add(this.relationFK__Invoices__Delive__693CA210);
             this.relationFK__InvoicesC__Deliv__6D0D32F4 = new global::System.Data.DataRelation("FK__InvoicesC__Deliv__6D0D32F4", new global::System.Data.DataColumn[] {
                         this.tableDeliveryListsContent.DeliveryContentIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableInvoicesContent.DeliveryContentIDColumn}, false);
@@ -3503,8 +3496,6 @@ namespace Система_учёта_и_приобретения_инструме
             
             private global::System.Data.DataColumn columnInvoiceDate;
             
-            private global::System.Data.DataColumn columnDeliveryListID;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public InvoicesDataTable() {
@@ -3556,14 +3547,6 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn DeliveryListIDColumn {
-                get {
-                    return this.columnDeliveryListID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3599,15 +3582,11 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public InvoicesRow AddInvoicesRow(System.DateTime InvoiceDate, DeliveryListsRow parentDeliveryListsRowByFK__Invoices__Delive__693CA210) {
+            public InvoicesRow AddInvoicesRow(System.DateTime InvoiceDate) {
                 InvoicesRow rowInvoicesRow = ((InvoicesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        InvoiceDate,
-                        null};
-                if ((parentDeliveryListsRowByFK__Invoices__Delive__693CA210 != null)) {
-                    columnValuesArray[2] = parentDeliveryListsRowByFK__Invoices__Delive__693CA210[0];
-                }
+                        InvoiceDate};
                 rowInvoicesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowInvoicesRow);
                 return rowInvoicesRow;
@@ -3639,7 +3618,6 @@ namespace Система_учёта_и_приобретения_инструме
             internal void InitVars() {
                 this.columnInvoiceID = base.Columns["InvoiceID"];
                 this.columnInvoiceDate = base.Columns["InvoiceDate"];
-                this.columnDeliveryListID = base.Columns["DeliveryListID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3649,8 +3627,6 @@ namespace Система_учёта_и_приобретения_инструме
                 base.Columns.Add(this.columnInvoiceID);
                 this.columnInvoiceDate = new global::System.Data.DataColumn("InvoiceDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInvoiceDate);
-                this.columnDeliveryListID = new global::System.Data.DataColumn("DeliveryListID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDeliveryListID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnInvoiceID}, true));
                 this.columnInvoiceID.AutoIncrement = true;
@@ -3660,7 +3636,6 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnInvoiceID.ReadOnly = true;
                 this.columnInvoiceID.Unique = true;
                 this.columnInvoiceDate.AllowDBNull = false;
-                this.columnDeliveryListID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11877,17 +11852,6 @@ namespace Система_учёта_и_приобретения_инструме
                     return ((DeliveryListsContentRow[])(base.GetChildRows(this.Table.ChildRelations["FK__DeliveryL__Deliv__6477ECF3"])));
                 }
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public InvoicesRow[] GetInvoicesRows() {
-                if ((this.Table.ChildRelations["FK__Invoices__Delive__693CA210"] == null)) {
-                    return new InvoicesRow[0];
-                }
-                else {
-                    return ((InvoicesRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Invoices__Delive__693CA210"])));
-                }
-            }
         }
         
         /// <summary>
@@ -12113,28 +12077,6 @@ namespace Система_учёта_и_приобретения_инструме
                 }
                 set {
                     this[this.tableInvoices.InvoiceDateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int DeliveryListID {
-                get {
-                    return ((int)(this[this.tableInvoices.DeliveryListIDColumn]));
-                }
-                set {
-                    this[this.tableInvoices.DeliveryListIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DeliveryListsRow DeliveryListsRow {
-                get {
-                    return ((DeliveryListsRow)(this.GetParentRow(this.Table.ParentRelations["FK__Invoices__Delive__693CA210"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Invoices__Delive__693CA210"]);
                 }
             }
             
@@ -18595,35 +18537,23 @@ SELECT DeliveryContentID, DeliveryListID, PurchaseContentID, DeliveryContentDate
             tableMapping.DataSetTable = "Invoices";
             tableMapping.ColumnMappings.Add("InvoiceID", "InvoiceID");
             tableMapping.ColumnMappings.Add("InvoiceDate", "InvoiceDate");
-            tableMapping.ColumnMappings.Add("DeliveryListID", "DeliveryListID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Invoices] WHERE (([InvoiceID] = @Original_InvoiceID) AND ([Inv" +
-                "oiceDate] = @Original_InvoiceDate) AND ([DeliveryListID] = @Original_DeliveryLis" +
-                "tID))";
+                "oiceDate] = @Original_InvoiceDate))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InvoiceID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InvoiceDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DeliveryListID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeliveryListID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Invoices] ([InvoiceDate], [DeliveryListID]) VALUES (@InvoiceDa" +
-                "te, @DeliveryListID);\r\nSELECT InvoiceID, InvoiceDate, DeliveryListID FROM Invoic" +
-                "es WHERE (InvoiceID = SCOPE_IDENTITY())";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DeliveryListID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeliveryListID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Invoices] SET [InvoiceDate] = @InvoiceDate, [DeliveryListID] = @DeliveryListID WHERE (([InvoiceID] = @Original_InvoiceID) AND ([InvoiceDate] = @Original_InvoiceDate) AND ([DeliveryListID] = @Original_DeliveryListID));
-SELECT InvoiceID, InvoiceDate, DeliveryListID FROM Invoices WHERE (InvoiceID = @InvoiceID)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Invoices] SET [InvoiceDate] = @InvoiceDate WHERE (([InvoiceID] = @O" +
+                "riginal_InvoiceID) AND ([InvoiceDate] = @Original_InvoiceDate));\r\nSELECT Invoice" +
+                "ID, InvoiceDate FROM Invoices WHERE (InvoiceID = @InvoiceID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DeliveryListID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeliveryListID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InvoiceID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InvoiceDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DeliveryListID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeliveryListID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -18640,7 +18570,7 @@ SELECT InvoiceID, InvoiceDate, DeliveryListID FROM Invoices WHERE (InvoiceID = @
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT InvoiceID, InvoiceDate, DeliveryListID FROM dbo.Invoices";
+            this._commandCollection[0].CommandText = "SELECT InvoiceID, InvoiceDate FROM dbo.Invoices";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -18701,10 +18631,9 @@ SELECT InvoiceID, InvoiceDate, DeliveryListID FROM Invoices WHERE (InvoiceID = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_InvoiceID, System.DateTime Original_InvoiceDate, int Original_DeliveryListID) {
+        public virtual int Delete(int Original_InvoiceID, System.DateTime Original_InvoiceDate) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_InvoiceID));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_InvoiceDate));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_DeliveryListID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -18724,37 +18653,12 @@ SELECT InvoiceID, InvoiceDate, DeliveryListID FROM Invoices WHERE (InvoiceID = @
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.DateTime InvoiceDate, int DeliveryListID) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(InvoiceDate));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(DeliveryListID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.DateTime InvoiceDate, int DeliveryListID, int Original_InvoiceID, System.DateTime Original_InvoiceDate, int Original_DeliveryListID, int InvoiceID) {
+        public virtual int Update(System.DateTime InvoiceDate, int Original_InvoiceID, System.DateTime Original_InvoiceDate, int InvoiceID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(InvoiceDate));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(DeliveryListID));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_InvoiceID));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(Original_InvoiceDate));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_DeliveryListID));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(InvoiceID));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_InvoiceID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(Original_InvoiceDate));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(InvoiceID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -18775,8 +18679,8 @@ SELECT InvoiceID, InvoiceDate, DeliveryListID FROM Invoices WHERE (InvoiceID = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.DateTime InvoiceDate, int DeliveryListID, int Original_InvoiceID, System.DateTime Original_InvoiceDate, int Original_DeliveryListID) {
-            return this.Update(InvoiceDate, DeliveryListID, Original_InvoiceID, Original_InvoiceDate, Original_DeliveryListID, Original_InvoiceID);
+        public virtual int Update(System.DateTime InvoiceDate, int Original_InvoiceID, System.DateTime Original_InvoiceDate) {
+            return this.Update(InvoiceDate, Original_InvoiceID, Original_InvoiceDate, Original_InvoiceID);
         }
     }
     

@@ -609,7 +609,7 @@ namespace Система_учёта_и_приобретения_инструме
         {
             try
             {
-                bool state = WorkshopsRequestsRequestsTable.CurrentRow != null && !string.IsNullOrEmpty(WorkshopsRequestsRequestsTable.CurrentRow.Cells[0].Value.ToString());
+                bool state = ReceivingRequestsRequestsTable.CurrentRow != null && !string.IsNullOrEmpty(ReceivingRequestsRequestsTable.CurrentRow.Cells[0].Value.ToString());
                 //WorkshopsRequestsButtonConsider.Enabled = state;
             }
             catch { }
@@ -622,8 +622,8 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void WorkshopsRequestsButtonConsider_Click(object sender, EventArgs e)
         {
-            if(WorkshopsRequestsRequestsTable.CurrentRow == null) return;
-            int requestNumber = int.Parse(WorkshopsRequestsRequestsTable.CurrentRow.Cells[0].Value.ToString());
+            if(ReceivingRequestsRequestsTable.CurrentRow == null) return;
+            int requestNumber = int.Parse(ReceivingRequestsRequestsTable.CurrentRow.Cells[0].Value.ToString());
             RequestConsideration requestConsideration = new RequestConsideration(requestNumber, FormMode.Add);
             requestConsideration.ShowDialog();
         }
@@ -633,17 +633,17 @@ namespace Система_учёта_и_приобретения_инструме
             var parameters = new List<SearchParameter>();
             //if (!string.IsNullOrEmpty(WorkshopsRequestsName.Text)) parameters.Add(new SearchParameter("FullName", WorkshopsRequestsName.Text, false)); //поиск по дочерней
             //if (!string.IsNullOrEmpty(WorkshopsRequestsNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", WorkshopsRequestsNumber.Text)); //поиск по дочерней
-            if (!string.IsNullOrEmpty(WorkshopsRequestsWorkshop.Text)) parameters.Add(new SearchParameter("WorkshopNumberName", WorkshopsRequestsWorkshop.Text, false));
-            if (!string.IsNullOrEmpty(WorkshopsRequestsStatus.Text)) parameters.Add(new SearchParameter("Status", WorkshopsRequestsStatus.Text));
+            if (!string.IsNullOrEmpty(ReceivingRequestsWorkshop.Text)) parameters.Add(new SearchParameter("WorkshopNumberName", ReceivingRequestsWorkshop.Text, false));
+            if (!string.IsNullOrEmpty(ReceivingRequestsStatus.Text)) parameters.Add(new SearchParameter("Status", ReceivingRequestsStatus.Text));
 
             try
             {
                 string filter = Search.Filter(parameters);
-                WorkshopsRequestsRequestsTable.SuspendLayout();
-                WorkshopsRequestsContentTable.SuspendLayout();
+                ReceivingRequestsRequestsTable.SuspendLayout();
+                ReceivingRequestsContentTable.SuspendLayout();
                 //что тут?
-                WorkshopsRequestsRequestsTable.ResumeLayout();
-                WorkshopsRequestsContentTable.ResumeLayout();
+                ReceivingRequestsRequestsTable.ResumeLayout();
+                ReceivingRequestsContentTable.ResumeLayout();
             }
             catch (ArgumentException ex)
             {
@@ -699,15 +699,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         #endregion
 
-        #region Принятые заявки от цехов
-
-        #endregion
-
-        #region Создание заявки на приобретение
-
-        #endregion
-
-        #region Список заявок на приобретение
+        #region Заявки на приобретение
 
         #endregion
 

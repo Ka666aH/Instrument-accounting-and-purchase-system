@@ -139,7 +139,7 @@ CREATE TABLE DeliveryListsContent (
 CREATE TABLE Invoices (
     InvoiceID INT IDENTITY(1,1) PRIMARY KEY,
     InvoiceDate DATE NOT NULL,
-    DeliveryListID INT NOT NULL FOREIGN KEY REFERENCES DeliveryLists(DeliveryListID)
+    --DeliveryListID INT NOT NULL FOREIGN KEY REFERENCES DeliveryLists(DeliveryListID)
 );
 
 
