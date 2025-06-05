@@ -1,4 +1,5 @@
-﻿using System;
+﻿//using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet;
 
 namespace Система_учёта_и_приобретения_инструмента
@@ -134,20 +136,20 @@ namespace Система_учёта_и_приобретения_инструме
 
             WindowState = FormWindowState.Maximized;
 
-            //ProvidersTable.Rows[0].Selected = true;
-
-            LogStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
-            LogEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1);
-
-
-            //AnalogCompareTable.RowTemplate.Height = (AnalogCompareTable.Height-AnalogCompareTable.ColumnHeadersHeight-10)/2;
+            //Установка дат во вкладках с диапазоном
+            PurchaseRequestsResetStart();
+            PurchaseRequestsResetEnd();
+            HistoryResetStart();
+            HistoryResetEnd();
+            LogResetStart();
+            LogResetEnd();
         }
+        private bool isSearchReseting = false;
 
         private void InjLevel1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-        private bool isSearchReseting = false;
         #region Номенклатура инструмента
 
         public void SetNomenButtonsState()
@@ -447,27 +449,6 @@ namespace Система_учёта_и_приобретения_инструме
             NomenResetSearch();
         }
 
-        private void NomenResetSearch()
-        {
-            isSearchReseting = true;
-            NomenResetSearchNumber();
-NomenResetSearchName();
-            NomenResetSearchSize();
-            NomenResetSearchMaterial();
-            NomenResetSearchProducer();
-            NomenResetSearchUsage();
-            isSearchReseting = false;
-        }
-
-        private void NomenResetSearchNumber() { NomenNumber.Text = string.Empty; }
-        private void NomenResetSearchName() { NomenName.Text = string.Empty; }
-        private void NomenResetSearchSize() { NomenSize.Text = string.Empty; }
-        private void NomenResetSearchMaterial() { NomenMaterial.Text = string.Empty; }
-        private void NomenResetSearchProducer() { NomenProducer.Text = string.Empty; }
-        private void NomenResetSearchUsage() { NomenUsage.SelectedIndex = 0; }
-
-
-
         #endregion
 
         #region Группы инструментов
@@ -627,8 +608,9 @@ NomenResetSearchName();
         }
         private void GroupsButtonResetSearch_Click(object sender, EventArgs e)
         {
-            GroupsName.Text = string.Empty;
+            GroupsResetSearch();
         }
+
 
         #endregion
 
@@ -728,23 +710,48 @@ NomenResetSearchName();
         //        MessageBox.Show(ex.Message, "Ошибка фильтрации", MessageBoxButtons.OK, MessageBoxIcon.Error);
         //    }
         //}
-
+        private void ReceivingRequestsButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            ReceivingRequestsResetSearch();
+        }
         #endregion
 
         #region Заявки на приобретение
 
+
+        private void PurchaseRequestsButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            PurchaseRequestsResetSearch();
+        }
+
         #endregion
 
         #region Ведомости поставки
-
+        private void StatementsButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            StatementsResetSearch();
+        }
         #endregion
 
         #region Товарные накладные
+        private void InvoicesButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            InvoicesResetSearch();
+        }
 
         #endregion
 
         #region История поступлений
 
+
+        private void HistoryButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            HistoryResetSearch();
+        }
+
+
+        //private void PurchaseRequestsResetStart() { PurchaseRequestsStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1); PurchaseRequestsStart.Checked = false; }
+        //private void PurchaseRequestsResetEnd() { PurchaseRequestsEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1); PurchaseRequestsEnd.Checked = false; }
         #endregion
 
         #endregion
@@ -1002,6 +1009,10 @@ NomenResetSearchName();
                 MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void AnalogButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            AnalogsResetSearch();
+        }
         #endregion
 
         #region Поставщики
@@ -1161,6 +1172,10 @@ NomenResetSearchName();
                 MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        private void ProvidersButtonReserSearch_Click(object sender, EventArgs e)
+        {
+            ProvidersResetSearch();
+        }
 
         #endregion
 
@@ -1264,10 +1279,15 @@ NomenResetSearchName();
 
                 string date1 = $"{LogStart.Value.ToString("yyyy-MM-dd")}";
                 string date2 = $"{LogEnd.Value.AddDays(1).ToString("yyyy-MM-dd")}";
-                if (!string.IsNullOrEmpty(date1) && !string.IsNullOrEmpty(date2))
+                if (LogStart.Checked)
                 {
                     if (!string.IsNullOrEmpty(filter)) filter += " AND ";
-                    filter += $"ChangedDate >= '{date1}' AND ChangedDate <'{date2}'";
+                    filter += $"ChangedDate >= '{date1}'";
+                }
+                if (LogEnd.Checked)
+                {
+                    if (!string.IsNullOrEmpty(filter)) filter += " AND ";
+                    filter += $"ChangedDate <'{date2}'";
                 }
 
                 LogTable.SuspendLayout();
@@ -1281,11 +1301,17 @@ NomenResetSearchName();
                 MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private void LogButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            LogResetSearch();
+        }
         #endregion
 
         #region Остатки номенклатуры
-
+        private void OstatkiButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            OstatkiResetSearch();
+        }
         #endregion
 
         //private void maskedTextBox_Enter(object sender, EventArgs e)
@@ -1294,12 +1320,233 @@ NomenResetSearchName();
         //    maskedTextBox.SelectionStart = 0;
         //    maskedTextBox.SelectionLength = 0;
         //}
+
+        #region Сброс поиска
+
+        private void NomenResetSearch()
+        {
+            isSearchReseting = true;
+            NomenResetSearchNumber();
+            NomenResetSearchName();
+            NomenResetSearchSize();
+            NomenResetSearchMaterial();
+            NomenResetSearchProducer();
+            NomenResetSearchUsage();
+            isSearchReseting = false;
+            nomenclatureViewBindingSource.RemoveFilter();
+        }
+        private void NomenResetSearchNumber() { NomenNumber.Text = string.Empty; }
+        private void NomenResetSearchName() { NomenName.Text = string.Empty; }
+        private void NomenResetSearchSize() { NomenSize.Text = string.Empty; }
+        private void NomenResetSearchMaterial() { NomenMaterial.Text = string.Empty; }
+        private void NomenResetSearchProducer() { NomenProducer.Text = string.Empty; }
+        private void NomenResetSearchUsage() { NomenUsage.SelectedIndex = 0; }
+
+        private void GroupsResetSearch()
+        {
+            isSearchReseting = true;
+            GroupsResetName();
+            isSearchReseting = false;
+            groupsBindingSource.RemoveFilter();
+        }
+        private void GroupsResetName() { GroupsName.Text = string.Empty; }
+
+        //remove filter #fix
+        private void ReceivingRequestsResetSearch()
+        {
+            isSearchReseting = true;
+            ReceivingRequestsResetWorkshop();
+            ReceivingRequestsResetStatus();
+            ReceivingRequestsResetType();
+            isSearchReseting = false;
+        }
+        private void ReceivingRequestsResetWorkshop() { ReceivingRequestsWorkshop.Text = string.Empty; }
+        private void ReceivingRequestsResetStatus() { ReceivingRequestsStatus.Text = string.Empty; }
+        private void ReceivingRequestsResetType() { ReceivingRequestsAll.Checked = true; }
+        //remove filter #fix
+        private void PurchaseRequestsResetSearch()
+        {
+            isSearchReseting = true;
+            PurchaseRequestsResetStart();
+            PurchaseRequestsResetEnd();
+            PurchaseRequestsResetStatus();
+            isSearchReseting = false;
+        }
+        private void PurchaseRequestsResetStart() { PurchaseRequestsStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1); PurchaseRequestsStart.Checked = false; }
+        private void PurchaseRequestsResetEnd() { PurchaseRequestsEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1); PurchaseRequestsEnd.Checked = false; }
+        private void PurchaseRequestsResetStatus() { PurchaseRequestsStatus.Text = string.Empty; }
+        //remove filter #fix
+        private void StatementsResetSearch()
+        {
+            isSearchReseting = true;
+            StatementsResetName();
+            StatementsResetDate();
+            isSearchReseting = false;
+        }
+        private void StatementsResetName() { StatementsProvider.Text = string.Empty; }
+        private void StatementsResetDate() { StatementsDate.Value = DateTime.Today; StatementsDate.Checked = false; }
+        //remove filter #fix
+        private void InvoicesResetSearch()
+        {
+            isSearchReseting = true;
+            InvoicesResetDate();
+            isSearchReseting = false;
+        }
+        private void InvoicesResetDate() { InvoicesDate.Value = DateTime.Today; InvoicesDate.Checked = false; }
+        //remove filter #fix
+        private void HistoryResetSearch()
+        {
+            isSearchReseting = true;
+            HistoryResetStart();
+            HistoryResetEnd();
+            HistoryResetNumber();
+            isSearchReseting = false;
+        }
+        private void HistoryResetStart() { HistoryStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1); HistoryStart.Checked = false; }
+        private void HistoryResetEnd() { HistoryEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1); HistoryEnd.Checked = false; }
+        private void HistoryResetNumber() { HistoryNumber.Text = string.Empty; }
+
+        private void AnalogsResetSearch()
+        {
+            isSearchReseting = true;
+            AnalogsResetMainName();
+            AnalogsResetMainNumber();
+            AnalogsResetAnalogName();
+            AnalogsResetAnalogNumber();
+            isSearchReseting = false;
+            analogTools1BindingSource.RemoveFilter();
+        }
+        private void AnalogsResetMainName() { AnalogMainName.Text = string.Empty; }
+        private void AnalogsResetMainNumber() { AnalogMainNumber.Text = string.Empty; }
+        private void AnalogsResetAnalogName() { AnalogAnalogName.Text = string.Empty; }
+        private void AnalogsResetAnalogNumber() { AnalogAnalogNumber.Text = string.Empty; }
+
+        private void ProvidersResetSearch()
+        {
+            isSearchReseting = true;
+            ProvidersResetName();
+            ProvidersResetINN();
+            isSearchReseting = false;
+            suppliersBindingSource.RemoveFilter();
+        }
+        private void ProvidersResetName() { ProvidersName.Text = string.Empty; }
+        private void ProvidersResetINN() { ProvidersINN.Text = string.Empty; }
+
+        private void LogResetSearch()
+        {
+            isSearchReseting = true;
+            LogResetNumber();
+            LogResetField();
+            LogResetValue();
+            LogResetExecutor();
+            LogResetStart();
+            LogResetEnd();
+            isSearchReseting = false;
+            nomenclatureLogsBindingSource.RemoveFilter();
+        }
+        private void LogResetNumber() { LogNumber.Text = string.Empty; }
+        private void LogResetField() { LogField.Text = string.Empty; }
+        private void LogResetValue() { LogValue.Text = string.Empty; }
+        private void LogResetExecutor() { LogUser.Text = string.Empty; }
+        private void LogResetStart() { LogStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1); LogStart.Checked = false; }
+        private void LogResetEnd() { LogEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1); LogEnd.Checked = false; }
+        //remove filter #fix
+        private void OstatkiResetSearch()
+        {
+            isSearchReseting = true;
+            OstatkiResetNumber();
+            OstatkiResetStorage();
+            OstatkiResetPrice();
+            isSearchReseting = false;
+        }
+        private void OstatkiResetNumber() { OstatkiNumber.Text = string.Empty; }
+        private void OstatkiResetStorage() { OstatkiStorage.Text = string.Empty; }
+        private void OstatkiResetPrice() { OstatkiPrice.Checked = false; }
+
+        private void ResetSearchGroup_Click(object sender, EventArgs e)
+        {
+            if (!(sender is ToolStripItem item)) return;
+            if (!(item.Owner is ContextMenuStrip menu && menu.SourceControl is Control control)) return;
+            if (!(control is System.Windows.Forms.GroupBox groupBox)) return;
+
+            string groupName = groupBox.Name;
+
+            switch (groupName)
+            {
+                case "NomenSearchGroup": NomenResetSearch(); break;
+                case "GroupsSearchGroup": GroupsResetSearch(); break;
+                case "ReceivingRequestsSearchGroup": ReceivingRequestsResetSearch(); break;
+                case "PurchaseRequestsSearchGroup": PurchaseRequestsResetSearch(); break;
+                case "StatementsSearchGroup": StatementsResetSearch(); break;
+                case "InvoicesSearchGroup": InvoicesResetSearch(); break;
+                case "HistorySearchGroup": HistoryResetSearch(); break;
+                case "AnalogsSearchGroup": AnalogsResetSearch(); break;
+                case "ProvidersSearchGroup": ProvidersResetSearch(); break;
+                case "LogSearchGroup": LogResetSearch(); break;
+                case "OstatkiSearchGroup": OstatkiResetSearch(); break;
+                default: break;
+            }
+        }
+        private void ResetSearchField_Click(object sender, EventArgs e)
+        {
+            if (!(sender is ToolStripItem item)) return;
+            if (!(item.Owner is ContextMenuStrip menu && menu.SourceControl is Control field)) return;
+            string fieldName = field.Name;
+            switch (fieldName)
+            {
+                case "NomenNumber": NomenResetSearchNumber(); break;
+                case "NomenName": NomenResetSearchName(); break;
+                case "NomenSize": NomenResetSearchSize(); break;
+                case "NomenMaterial": NomenResetSearchMaterial(); break;
+                case "NomenProducer": NomenResetSearchProducer(); break;
+                case "NomenUsage": NomenResetSearchUsage(); break;
+
+                case "GroupsName": GroupsResetName(); break;
+
+                case "ReceivingRequestsWorkshop": ReceivingRequestsResetWorkshop(); break;
+                case "ReceivingRequestsStatus": ReceivingRequestsResetStatus(); break;
+
+                case "PurchaseRequestsStart": PurchaseRequestsResetStart(); break;
+                case "PurchaseRequestsEnd": PurchaseRequestsResetEnd(); break;
+                case "PurchaseRequestsStatus": PurchaseRequestsResetStatus(); break;
+
+                case "StatementsProvider": StatementsResetName(); break;
+                case "StatementsDate": StatementsResetDate(); break;
+
+                case "InvoicesDate": InvoicesResetDate(); break;
+
+                case "HistoryStart": HistoryResetStart(); break;
+                case "HistoryEnd": HistoryResetEnd(); break;
+                case "HistoryNumber": HistoryResetNumber(); break;
+
+                case "AnalogMainName": AnalogsResetMainName(); break;
+                case "AnalogMainNumber": AnalogsResetMainNumber(); break;
+                case "AnalogAnalogName": AnalogsResetAnalogName(); break;
+                case "AnalogAnalogNumber": AnalogsResetAnalogNumber(); break;
+
+                case "ProvidersName": ProvidersResetName(); break;
+                case "ProvidersINN": ProvidersResetINN(); break;
+
+                case "LogNumber": LogResetNumber(); break;
+                case "LogField": LogResetField(); break;
+                case "LogValue": LogResetValue(); break;
+                case "LogUser": LogResetExecutor(); break;
+                case "LogStart": LogResetStart(); break;
+                case "LogEnd": LogResetEnd(); break;
+
+                case "OstatkiNumber": OstatkiResetNumber(); break;
+                case "OstatkiStorage": OstatkiResetStorage(); break;
+                case "OstatkiPrice": OstatkiResetPrice(); break;
+
+                default: break;
+            }
+        }
+        #endregion
+
         private void Digits_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
         }
-
-
     }
     public static class Logs
     {
