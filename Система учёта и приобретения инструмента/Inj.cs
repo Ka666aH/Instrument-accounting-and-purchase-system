@@ -610,7 +610,7 @@ namespace Система_учёта_и_приобретения_инструме
             try
             {
                 bool state = WorkshopsRequestsRequestsTable.CurrentRow != null && !string.IsNullOrEmpty(WorkshopsRequestsRequestsTable.CurrentRow.Cells[0].Value.ToString());
-                WorkshopsRequestsButtonConsider.Enabled = state;
+                //WorkshopsRequestsButtonConsider.Enabled = state;
             }
             catch { }
         }
@@ -631,8 +631,8 @@ namespace Система_учёта_и_приобретения_инструме
         private void WorkshopsRequests_TextChanged(object sender, EventArgs e)
         {
             var parameters = new List<SearchParameter>();
-            if (!string.IsNullOrEmpty(WorkshopsRequestsName.Text)) parameters.Add(new SearchParameter("FullName", WorkshopsRequestsName.Text, false)); //поиск по дочерней
-            if (!string.IsNullOrEmpty(WorkshopsRequestsNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", WorkshopsRequestsNumber.Text)); //поиск по дочерней
+            //if (!string.IsNullOrEmpty(WorkshopsRequestsName.Text)) parameters.Add(new SearchParameter("FullName", WorkshopsRequestsName.Text, false)); //поиск по дочерней
+            //if (!string.IsNullOrEmpty(WorkshopsRequestsNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", WorkshopsRequestsNumber.Text)); //поиск по дочерней
             if (!string.IsNullOrEmpty(WorkshopsRequestsWorkshop.Text)) parameters.Add(new SearchParameter("WorkshopNumberName", WorkshopsRequestsWorkshop.Text, false));
             if (!string.IsNullOrEmpty(WorkshopsRequestsStatus.Text)) parameters.Add(new SearchParameter("Status", WorkshopsRequestsStatus.Text));
 

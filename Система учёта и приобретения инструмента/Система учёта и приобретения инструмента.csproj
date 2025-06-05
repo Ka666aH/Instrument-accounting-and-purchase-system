@@ -79,6 +79,12 @@
       <DependentUpon>ImportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="NotificationService.cs" />
+    <Compile Include="PurchaseRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseRequest.Designer.cs">
+      <DependentUpon>PurchaseRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="RequestConsideration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +197,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="PurchaseRequest.resx">
+      <DependentUpon>PurchaseRequest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RequestConsideration.resx">
       <DependentUpon>RequestConsideration.cs</DependentUpon>
     </EmbeddedResource>
