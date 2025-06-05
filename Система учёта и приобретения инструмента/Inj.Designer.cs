@@ -349,9 +349,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.InjLevel1.Controls.Add(this.InjNomenPage);
+            this.InjLevel1.Controls.Add(this.InjAnalogPage);
             this.InjLevel1.Controls.Add(this.InjGroupsPage);
             this.InjLevel1.Controls.Add(this.InjZayavkiPage);
-            this.InjLevel1.Controls.Add(this.InjAnalogPage);
             this.InjLevel1.Controls.Add(this.InjProvidersPage);
             this.InjLevel1.Controls.Add(this.InjLogPage);
             this.InjLevel1.Controls.Add(this.InjOstatkiPage);
@@ -490,13 +490,13 @@
             this.ResetSearchGroup});
             this.SearchGroupContextMenu.Name = "NomenSearchGroupContextMenu";
             this.SearchGroupContextMenu.ShowImageMargin = false;
-            this.SearchGroupContextMenu.Size = new System.Drawing.Size(156, 48);
+            this.SearchGroupContextMenu.Size = new System.Drawing.Size(127, 26);
             // 
             // ResetSearchGroup
             // 
             this.ResetSearchGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.ResetSearchGroup.Name = "ResetSearchGroup";
-            this.ResetSearchGroup.Size = new System.Drawing.Size(155, 22);
+            this.ResetSearchGroup.Size = new System.Drawing.Size(126, 22);
             this.ResetSearchGroup.Text = "Сброс поиска";
             this.ResetSearchGroup.Click += new System.EventHandler(this.ResetSearchGroup_Click);
             // 
@@ -1627,10 +1627,10 @@
             this.StatementsContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StatementsContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.StatementsContentTable.Location = new System.Drawing.Point(7, 375);
+            this.StatementsContentTable.Location = new System.Drawing.Point(7, 323);
             this.StatementsContentTable.Name = "StatementsContentTable";
             this.StatementsContentTable.ReadOnly = true;
-            this.StatementsContentTable.Size = new System.Drawing.Size(1044, 212);
+            this.StatementsContentTable.Size = new System.Drawing.Size(1044, 264);
             this.StatementsContentTable.TabIndex = 37;
             // 
             // label50
@@ -1638,7 +1638,7 @@
             this.label50.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label50.AutoSize = true;
             this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label50.Location = new System.Drawing.Point(7, 348);
+            this.label50.Location = new System.Drawing.Point(7, 296);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(268, 24);
             this.label50.TabIndex = 40;
@@ -1665,7 +1665,7 @@
             this.StatementsStatementsTable.Location = new System.Drawing.Point(7, 99);
             this.StatementsStatementsTable.Name = "StatementsStatementsTable";
             this.StatementsStatementsTable.ReadOnly = true;
-            this.StatementsStatementsTable.Size = new System.Drawing.Size(1044, 246);
+            this.StatementsStatementsTable.Size = new System.Drawing.Size(1044, 194);
             this.StatementsStatementsTable.TabIndex = 38;
             // 
             // StatementsSearchGroup
@@ -1777,10 +1777,10 @@
             this.InvoicesContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.InvoicesContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.InvoicesContentTable.Location = new System.Drawing.Point(7, 375);
+            this.InvoicesContentTable.Location = new System.Drawing.Point(4, 323);
             this.InvoicesContentTable.Name = "InvoicesContentTable";
             this.InvoicesContentTable.ReadOnly = true;
-            this.InvoicesContentTable.Size = new System.Drawing.Size(1044, 212);
+            this.InvoicesContentTable.Size = new System.Drawing.Size(1044, 264);
             this.InvoicesContentTable.TabIndex = 51;
             // 
             // label15
@@ -1788,7 +1788,7 @@
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(7, 348);
+            this.label15.Location = new System.Drawing.Point(4, 296);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(268, 24);
             this.label15.TabIndex = 54;
@@ -1815,7 +1815,7 @@
             this.InvoicesInvoicesTable.Location = new System.Drawing.Point(7, 99);
             this.InvoicesInvoicesTable.Name = "InvoicesInvoicesTable";
             this.InvoicesInvoicesTable.ReadOnly = true;
-            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(1044, 246);
+            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(1044, 194);
             this.InvoicesInvoicesTable.TabIndex = 52;
             // 
             // InvoicesButtonDelete
