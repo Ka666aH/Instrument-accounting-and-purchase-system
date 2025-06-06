@@ -195,6 +195,7 @@
             this.label56 = new System.Windows.Forms.Label();
             this.InvoicesDate = new System.Windows.Forms.DateTimePicker();
             this.History = new System.Windows.Forms.TabPage();
+            this.HistoryButtonExport = new System.Windows.Forms.Button();
             this.HistoryTable = new System.Windows.Forms.DataGridView();
             this.HistorySearchGroup = new System.Windows.Forms.GroupBox();
             this.HistoryButtonResetSearch = new System.Windows.Forms.Button();
@@ -247,6 +248,13 @@
             this.label13 = new System.Windows.Forms.Label();
             this.InjOstatkiPage = new System.Windows.Forms.TabPage();
             this.OstatkiTable = new System.Windows.Forms.DataGridView();
+            this.balanceIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomenclatureNumberDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.storageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.balanceDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.batchNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.balancesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.OstatkiSearchGroup = new System.Windows.Forms.GroupBox();
             this.OstatkiButtonResetSearch = new System.Windows.Forms.Button();
@@ -323,13 +331,10 @@
             this.ProvidersTableContextMenuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.ProvidersTableContextMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.ProvidersTableContextMenuCreateStatement = new System.Windows.Forms.ToolStripMenuItem();
-            this.balanceIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomenclatureNumberDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.storageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.balanceDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.batchNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OstatkiButtonExport = new System.Windows.Forms.Button();
+            this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.остаткиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.историяПоступленийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InjLevel1.SuspendLayout();
             this.InjNomenPage.SuspendLayout();
             this.NomenSearchGroup.SuspendLayout();
@@ -1867,7 +1872,7 @@
             this.PurchaseRequestsPurchaseRequestsTable.Location = new System.Drawing.Point(6, 141);
             this.PurchaseRequestsPurchaseRequestsTable.Name = "PurchaseRequestsPurchaseRequestsTable";
             this.PurchaseRequestsPurchaseRequestsTable.ReadOnly = true;
-            this.PurchaseRequestsPurchaseRequestsTable.Size = new System.Drawing.Size(338, 446);
+            this.PurchaseRequestsPurchaseRequestsTable.Size = new System.Drawing.Size(338, 460);
             this.PurchaseRequestsPurchaseRequestsTable.TabIndex = 31;
             this.PurchaseRequestsPurchaseRequestsTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.PurchaseRequestsPurchaseRequestsTable_CellMouseClick);
             // 
@@ -1882,7 +1887,7 @@
             this.PurchaseRequestsContentTable.Location = new System.Drawing.Point(350, 365);
             this.PurchaseRequestsContentTable.Name = "PurchaseRequestsContentTable";
             this.PurchaseRequestsContentTable.ReadOnly = true;
-            this.PurchaseRequestsContentTable.Size = new System.Drawing.Size(708, 222);
+            this.PurchaseRequestsContentTable.Size = new System.Drawing.Size(708, 236);
             this.PurchaseRequestsContentTable.TabIndex = 30;
             // 
             // PurchaseRequestsSearchGroup
@@ -2058,7 +2063,7 @@
             this.StatementsContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StatementsContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.StatementsContentTable.Location = new System.Drawing.Point(7, 323);
+            this.StatementsContentTable.Location = new System.Drawing.Point(7, 337);
             this.StatementsContentTable.Name = "StatementsContentTable";
             this.StatementsContentTable.ReadOnly = true;
             this.StatementsContentTable.Size = new System.Drawing.Size(1044, 264);
@@ -2069,7 +2074,7 @@
             this.label50.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label50.AutoSize = true;
             this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label50.Location = new System.Drawing.Point(7, 296);
+            this.label50.Location = new System.Drawing.Point(7, 310);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(268, 24);
             this.label50.TabIndex = 40;
@@ -2096,7 +2101,7 @@
             this.StatementsStatementsTable.Location = new System.Drawing.Point(7, 99);
             this.StatementsStatementsTable.Name = "StatementsStatementsTable";
             this.StatementsStatementsTable.ReadOnly = true;
-            this.StatementsStatementsTable.Size = new System.Drawing.Size(1044, 194);
+            this.StatementsStatementsTable.Size = new System.Drawing.Size(1044, 208);
             this.StatementsStatementsTable.TabIndex = 38;
             this.StatementsStatementsTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.StatementsStatementsTable_CellMouseClick);
             // 
@@ -2197,7 +2202,7 @@
             this.InvoicesContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.InvoicesContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.InvoicesContentTable.Location = new System.Drawing.Point(7, 323);
+            this.InvoicesContentTable.Location = new System.Drawing.Point(7, 337);
             this.InvoicesContentTable.Name = "InvoicesContentTable";
             this.InvoicesContentTable.ReadOnly = true;
             this.InvoicesContentTable.Size = new System.Drawing.Size(1044, 264);
@@ -2208,7 +2213,7 @@
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(7, 296);
+            this.label15.Location = new System.Drawing.Point(7, 310);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(268, 24);
             this.label15.TabIndex = 54;
@@ -2235,7 +2240,7 @@
             this.InvoicesInvoicesTable.Location = new System.Drawing.Point(7, 99);
             this.InvoicesInvoicesTable.Name = "InvoicesInvoicesTable";
             this.InvoicesInvoicesTable.ReadOnly = true;
-            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(1044, 194);
+            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(1044, 208);
             this.InvoicesInvoicesTable.TabIndex = 52;
             this.InvoicesInvoicesTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.InvoicesInvoicesTable_CellMouseClick);
             // 
@@ -2326,6 +2331,7 @@
             // 
             // History
             // 
+            this.History.Controls.Add(this.HistoryButtonExport);
             this.History.Controls.Add(this.HistoryTable);
             this.History.Controls.Add(this.HistorySearchGroup);
             this.History.Location = new System.Drawing.Point(4, 29);
@@ -2334,6 +2340,17 @@
             this.History.TabIndex = 5;
             this.History.Text = "История поступлений";
             this.History.UseVisualStyleBackColor = true;
+            // 
+            // HistoryButtonExport
+            // 
+            this.HistoryButtonExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.HistoryButtonExport.Enabled = false;
+            this.HistoryButtonExport.Location = new System.Drawing.Point(1057, 113);
+            this.HistoryButtonExport.Name = "HistoryButtonExport";
+            this.HistoryButtonExport.Size = new System.Drawing.Size(182, 44);
+            this.HistoryButtonExport.TabIndex = 57;
+            this.HistoryButtonExport.Text = "Экспортировать";
+            this.HistoryButtonExport.UseVisualStyleBackColor = true;
             // 
             // HistoryTable
             // 
@@ -2346,7 +2363,7 @@
             this.HistoryTable.Location = new System.Drawing.Point(7, 113);
             this.HistoryTable.Name = "HistoryTable";
             this.HistoryTable.ReadOnly = true;
-            this.HistoryTable.Size = new System.Drawing.Size(1239, 474);
+            this.HistoryTable.Size = new System.Drawing.Size(1044, 488);
             this.HistoryTable.TabIndex = 13;
             // 
             // HistorySearchGroup
@@ -2907,6 +2924,7 @@
             // 
             // InjOstatkiPage
             // 
+            this.InjOstatkiPage.Controls.Add(this.OstatkiButtonExport);
             this.InjOstatkiPage.Controls.Add(this.OstatkiTable);
             this.InjOstatkiPage.Controls.Add(this.OstatkiSearchGroup);
             this.InjOstatkiPage.Location = new System.Drawing.Point(4, 29);
@@ -2936,8 +2954,52 @@
             this.OstatkiTable.Location = new System.Drawing.Point(7, 117);
             this.OstatkiTable.Name = "OstatkiTable";
             this.OstatkiTable.RowHeadersVisible = false;
-            this.OstatkiTable.Size = new System.Drawing.Size(1241, 498);
+            this.OstatkiTable.Size = new System.Drawing.Size(1053, 498);
             this.OstatkiTable.TabIndex = 11;
+            // 
+            // balanceIDDataGridViewTextBoxColumn
+            // 
+            this.balanceIDDataGridViewTextBoxColumn.DataPropertyName = "BalanceID";
+            this.balanceIDDataGridViewTextBoxColumn.HeaderText = "BalanceID";
+            this.balanceIDDataGridViewTextBoxColumn.Name = "balanceIDDataGridViewTextBoxColumn";
+            this.balanceIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.balanceIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nomenclatureNumberDataGridViewTextBoxColumn2
+            // 
+            this.nomenclatureNumberDataGridViewTextBoxColumn2.DataPropertyName = "NomenclatureNumber";
+            this.nomenclatureNumberDataGridViewTextBoxColumn2.HeaderText = "Номенклатурный номер";
+            this.nomenclatureNumberDataGridViewTextBoxColumn2.Name = "nomenclatureNumberDataGridViewTextBoxColumn2";
+            // 
+            // storageIDDataGridViewTextBoxColumn
+            // 
+            this.storageIDDataGridViewTextBoxColumn.DataPropertyName = "StorageID";
+            this.storageIDDataGridViewTextBoxColumn.HeaderText = "Номер склада";
+            this.storageIDDataGridViewTextBoxColumn.Name = "storageIDDataGridViewTextBoxColumn";
+            // 
+            // balanceDateDataGridViewTextBoxColumn
+            // 
+            this.balanceDateDataGridViewTextBoxColumn.DataPropertyName = "BalanceDate";
+            this.balanceDateDataGridViewTextBoxColumn.HeaderText = "Дата";
+            this.balanceDateDataGridViewTextBoxColumn.Name = "balanceDateDataGridViewTextBoxColumn";
+            // 
+            // batchNumberDataGridViewTextBoxColumn
+            // 
+            this.batchNumberDataGridViewTextBoxColumn.DataPropertyName = "BatchNumber";
+            this.batchNumberDataGridViewTextBoxColumn.HeaderText = "Номер партии";
+            this.batchNumberDataGridViewTextBoxColumn.Name = "batchNumberDataGridViewTextBoxColumn";
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Учетная цена";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            // 
+            // accountDataGridViewTextBoxColumn
+            // 
+            this.accountDataGridViewTextBoxColumn.DataPropertyName = "Account";
+            this.accountDataGridViewTextBoxColumn.HeaderText = "Балансовый счет";
+            this.accountDataGridViewTextBoxColumn.Name = "accountDataGridViewTextBoxColumn";
             // 
             // balancesBindingSource
             // 
@@ -3042,7 +3104,8 @@
             // 
             this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
-            this.импортToolStripMenuItem});
+            this.импортToolStripMenuItem,
+            this.отчетыToolStripMenuItem});
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
             this.Menu.Size = new System.Drawing.Size(1264, 28);
@@ -3433,26 +3496,26 @@
             this.InvoicesTableContextMenuDelete});
             this.InvoicesTableContextMenu.Name = "InvoicesTableContextMenu";
             this.InvoicesTableContextMenu.ShowImageMargin = false;
-            this.InvoicesTableContextMenu.Size = new System.Drawing.Size(156, 92);
+            this.InvoicesTableContextMenu.Size = new System.Drawing.Size(104, 70);
             // 
             // InvoicesTableContextMenuCreate
             // 
             this.InvoicesTableContextMenuCreate.Name = "InvoicesTableContextMenuCreate";
-            this.InvoicesTableContextMenuCreate.Size = new System.Drawing.Size(138, 22);
+            this.InvoicesTableContextMenuCreate.Size = new System.Drawing.Size(103, 22);
             this.InvoicesTableContextMenuCreate.Text = "Внести";
             this.InvoicesTableContextMenuCreate.Click += new System.EventHandler(this.InvoicesTableContextMenuCreate_Click);
             // 
             // InvoicesTableContextMenuAlter
             // 
             this.InvoicesTableContextMenuAlter.Name = "InvoicesTableContextMenuAlter";
-            this.InvoicesTableContextMenuAlter.Size = new System.Drawing.Size(138, 22);
+            this.InvoicesTableContextMenuAlter.Size = new System.Drawing.Size(103, 22);
             this.InvoicesTableContextMenuAlter.Text = "Изменить";
             this.InvoicesTableContextMenuAlter.Click += new System.EventHandler(this.InvoicesTableContextMenuAlter_Click);
             // 
             // InvoicesTableContextMenuDelete
             // 
             this.InvoicesTableContextMenuDelete.Name = "InvoicesTableContextMenuDelete";
-            this.InvoicesTableContextMenuDelete.Size = new System.Drawing.Size(138, 22);
+            this.InvoicesTableContextMenuDelete.Size = new System.Drawing.Size(103, 22);
             this.InvoicesTableContextMenuDelete.Text = "Удалить";
             this.InvoicesTableContextMenuDelete.Click += new System.EventHandler(this.InvoicesTableContextMenuDelete_Click);
             // 
@@ -3502,49 +3565,38 @@
             this.ProvidersTableContextMenuCreateStatement.ToolTipText = "Создать ведомость поставки от выбранного поставщика";
             this.ProvidersTableContextMenuCreateStatement.Click += new System.EventHandler(this.ProvidersTableContextMenuCreateStatement_Click);
             // 
-            // balanceIDDataGridViewTextBoxColumn
+            // OstatkiButtonExport
             // 
-            this.balanceIDDataGridViewTextBoxColumn.DataPropertyName = "BalanceID";
-            this.balanceIDDataGridViewTextBoxColumn.HeaderText = "BalanceID";
-            this.balanceIDDataGridViewTextBoxColumn.Name = "balanceIDDataGridViewTextBoxColumn";
-            this.balanceIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.balanceIDDataGridViewTextBoxColumn.Visible = false;
+            this.OstatkiButtonExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.OstatkiButtonExport.Enabled = false;
+            this.OstatkiButtonExport.Location = new System.Drawing.Point(1066, 117);
+            this.OstatkiButtonExport.Name = "OstatkiButtonExport";
+            this.OstatkiButtonExport.Size = new System.Drawing.Size(182, 44);
+            this.OstatkiButtonExport.TabIndex = 57;
+            this.OstatkiButtonExport.Text = "Экспортировать";
+            this.OstatkiButtonExport.UseVisualStyleBackColor = true;
             // 
-            // nomenclatureNumberDataGridViewTextBoxColumn2
+            // отчетыToolStripMenuItem
             // 
-            this.nomenclatureNumberDataGridViewTextBoxColumn2.DataPropertyName = "NomenclatureNumber";
-            this.nomenclatureNumberDataGridViewTextBoxColumn2.HeaderText = "Номенклатурный номер";
-            this.nomenclatureNumberDataGridViewTextBoxColumn2.Name = "nomenclatureNumberDataGridViewTextBoxColumn2";
+            this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.остаткиToolStripMenuItem,
+            this.историяПоступленийToolStripMenuItem});
+            this.отчетыToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
+            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(71, 24);
+            this.отчетыToolStripMenuItem.Text = "Отчеты";
             // 
-            // storageIDDataGridViewTextBoxColumn
+            // остаткиToolStripMenuItem
             // 
-            this.storageIDDataGridViewTextBoxColumn.DataPropertyName = "StorageID";
-            this.storageIDDataGridViewTextBoxColumn.HeaderText = "Номер склада";
-            this.storageIDDataGridViewTextBoxColumn.Name = "storageIDDataGridViewTextBoxColumn";
+            this.остаткиToolStripMenuItem.Name = "остаткиToolStripMenuItem";
+            this.остаткиToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
+            this.остаткиToolStripMenuItem.Text = "Остатки";
             // 
-            // balanceDateDataGridViewTextBoxColumn
+            // историяПоступленийToolStripMenuItem
             // 
-            this.balanceDateDataGridViewTextBoxColumn.DataPropertyName = "BalanceDate";
-            this.balanceDateDataGridViewTextBoxColumn.HeaderText = "Дата";
-            this.balanceDateDataGridViewTextBoxColumn.Name = "balanceDateDataGridViewTextBoxColumn";
-            // 
-            // batchNumberDataGridViewTextBoxColumn
-            // 
-            this.batchNumberDataGridViewTextBoxColumn.DataPropertyName = "BatchNumber";
-            this.batchNumberDataGridViewTextBoxColumn.HeaderText = "Номер партии";
-            this.batchNumberDataGridViewTextBoxColumn.Name = "batchNumberDataGridViewTextBoxColumn";
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Учетная цена";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            // 
-            // accountDataGridViewTextBoxColumn
-            // 
-            this.accountDataGridViewTextBoxColumn.DataPropertyName = "Account";
-            this.accountDataGridViewTextBoxColumn.HeaderText = "Балансовый счет";
-            this.accountDataGridViewTextBoxColumn.Name = "accountDataGridViewTextBoxColumn";
+            this.историяПоступленийToolStripMenuItem.Name = "историяПоступленийToolStripMenuItem";
+            this.историяПоступленийToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
+            this.историяПоступленийToolStripMenuItem.Text = "История поступлений";
             // 
             // Inj
             // 
@@ -3949,5 +4001,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn batchNumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button HistoryButtonExport;
+        private System.Windows.Forms.Button OstatkiButtonExport;
+        private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem остаткиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem историяПоступленийToolStripMenuItem;
     }
 }
