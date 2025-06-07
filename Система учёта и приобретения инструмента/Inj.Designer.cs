@@ -620,13 +620,13 @@
             this.ResetSearchField});
             this.SearchFieldsContextMenu.Name = "SearchFieldsContextMenu";
             this.SearchFieldsContextMenu.ShowImageMargin = false;
-            this.SearchFieldsContextMenu.Size = new System.Drawing.Size(127, 26);
+            this.SearchFieldsContextMenu.Size = new System.Drawing.Size(115, 26);
             // 
             // ResetSearchField
             // 
             this.ResetSearchField.Name = "ResetSearchField";
-            this.ResetSearchField.Size = new System.Drawing.Size(126, 22);
-            this.ResetSearchField.Text = "Сброс поиска";
+            this.ResetSearchField.Size = new System.Drawing.Size(114, 22);
+            this.ResetSearchField.Text = "Сброс поля";
             this.ResetSearchField.Click += new System.EventHandler(this.ResetSearchField_Click);
             // 
             // NomenName
@@ -1204,6 +1204,7 @@
             this.analogFullNameDataGridViewTextBoxColumn});
             this.AnalogListTable.DataSource = this.analogTools1BindingSource;
             this.AnalogListTable.Location = new System.Drawing.Point(7, 113);
+            this.AnalogListTable.MultiSelect = false;
             this.AnalogListTable.Name = "AnalogListTable";
             this.AnalogListTable.RowHeadersVisible = false;
             this.AnalogListTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1812,7 +1813,7 @@
             this.PurchaseRequestsButtonExport.Name = "PurchaseRequestsButtonExport";
             this.PurchaseRequestsButtonExport.Size = new System.Drawing.Size(175, 44);
             this.PurchaseRequestsButtonExport.TabIndex = 55;
-            this.PurchaseRequestsButtonExport.Text = "Экспорт";
+            this.PurchaseRequestsButtonExport.Text = "Экспортировать";
             this.PurchaseRequestsButtonExport.UseVisualStyleBackColor = true;
             // 
             // PurchaseRequestsButtonCreate

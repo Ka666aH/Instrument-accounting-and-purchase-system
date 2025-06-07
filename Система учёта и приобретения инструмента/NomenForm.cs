@@ -207,7 +207,7 @@ private AutoCompleteStringCollection NomenclatureSource(NomenclatureViewTableAda
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }
@@ -238,11 +238,11 @@ private AutoCompleteStringCollection NomenclatureSource(NomenclatureViewTableAda
             try
             {
                 var newRow = toolAccounting.Nomenclature.NewNomenclatureRow();
-                FillFields(newRow);
+                FillFields(newRow); //заполнение полей
                 toolAccounting.Nomenclature.Rows.Add(newRow);
-                Logging(true, newRow);
-                UpdateTable();
-                UpdateLogs();
+                Logging(true, newRow); //созданние логов корректировки
+                UpdateTable(); // обновление таблицы номенклатуры
+                UpdateLogs(); // обновление таблицы логов
             }
             catch (Exception ex)
             {
@@ -405,7 +405,7 @@ private AutoCompleteStringCollection NomenclatureSource(NomenclatureViewTableAda
             NomenFormClose.Focus();
             if (!AllFieldsEmpty())
             {
-                DialogResult result = MessageBox.Show("Вы уверены, что закрыть форму? Все несохранённые данные будут потеряны.", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("Вы уверены, что хотите закрыть форму? Все несохранённые данные будут потеряны.", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.No) return;
             }
         }
