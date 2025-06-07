@@ -19,10 +19,13 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void AddApplications_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.NomenclatureView". При необходимости она может быть перемещена или удалена.
+            this.nomenclatureViewTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NomenclatureView);
             ApplicationDate.Text = DateTime.Today.ToShortDateString();
             ApplicationType.SelectedIndex = 0;
             dateTimePicker1.MinDate = DateTime.Today;
             dateTimePicker1.Value = new DateTime(DateTime.Today.Year, DateTime.Today.AddMonths(3).Month, 1);
+            ApplicationDate.Text = DateTime.Today.ToShortDateString();
         }
 
         private void Reason_SelectedIndexChanged(object sender, EventArgs e)
