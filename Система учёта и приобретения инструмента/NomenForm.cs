@@ -155,7 +155,10 @@ private AutoCompleteStringCollection NomenclatureSource(NomenclatureViewTableAda
 
             FillFullName();
         }
-
+        private void NomenFormOboz_Leave(object sender, EventArgs e)
+        {
+            FillFullName();
+        }
         private void NomenFormUnits_Leave(object sender, EventArgs e)
         {
             FindInSource(sender as System.Windows.Forms.ComboBox, unitSource);
@@ -405,8 +408,8 @@ private AutoCompleteStringCollection NomenclatureSource(NomenclatureViewTableAda
             NomenFormClose.Focus();
             if (!AllFieldsEmpty())
             {
-                DialogResult result = MessageBox.Show("Вы уверены, что хотите закрыть форму? Все несохранённые данные будут потеряны.", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.No) return;
+                DialogResult result = MessageBox.Show("Вы уверены, что хотите закрыть форму? Все несохраненные данные будут потеряны.", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.No) e.Cancel = true;
             }
         }
         private bool AllFieldsEmpty()

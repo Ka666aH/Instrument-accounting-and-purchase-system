@@ -168,7 +168,7 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!AllFieldsEmpty())
             {
-                DialogResult result = MessageBox.Show("Вы уверены, что хотите закрыть форму? Все несохранённые данные будут потеряны.", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("Вы уверены, что хотите закрыть форму? Все несохраненные данные будут потеряны.", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.No) e.Cancel = true;
             }
         }

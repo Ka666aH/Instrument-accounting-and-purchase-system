@@ -99,6 +99,7 @@
             this.NomenFormOboz.Name = "NomenFormOboz";
             this.NomenFormOboz.Size = new System.Drawing.Size(475, 26);
             this.NomenFormOboz.TabIndex = 2;
+            this.NomenFormOboz.Leave += new System.EventHandler(this.NomenFormOboz_Leave);
             // 
             // NomenFormUnits
             // 
