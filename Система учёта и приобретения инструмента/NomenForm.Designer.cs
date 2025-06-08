@@ -29,11 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NomenForm));
-            this.NomenFormGroup = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.NomenFormOboz = new System.Windows.Forms.TextBox();
-            this.NomenFormUnits = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,28 +46,17 @@
             this.NomenFormSave = new System.Windows.Forms.Button();
             this.NomenFormSaveClose = new System.Windows.Forms.Button();
             this.NomenFormClose = new System.Windows.Forms.Button();
-            this.NomenFormSize = new System.Windows.Forms.ComboBox();
-            this.NomenFormMaterial = new System.Windows.Forms.ComboBox();
-            this.NomenFormDocument = new System.Windows.Forms.ComboBox();
-            this.NomenFormProducer = new System.Windows.Forms.ComboBox();
             this.NomenFormAddGroup = new System.Windows.Forms.Button();
             this.NomenFormNumber = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.NomenFormGroup = new System.Windows.Forms.TextBox();
+            this.NomenFormUnits = new System.Windows.Forms.TextBox();
+            this.NomenFormSize = new System.Windows.Forms.TextBox();
+            this.NomenFormMaterial = new System.Windows.Forms.TextBox();
+            this.NomenFormDocument = new System.Windows.Forms.TextBox();
+            this.NomenFormProducer = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.NomenFormOstatok)).BeginInit();
             this.SuspendLayout();
-            // 
-            // NomenFormGroup
-            // 
-            this.NomenFormGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenFormGroup.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.NomenFormGroup.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.NomenFormGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NomenFormGroup.FormattingEnabled = true;
-            this.NomenFormGroup.Location = new System.Drawing.Point(270, 16);
-            this.NomenFormGroup.Name = "NomenFormGroup";
-            this.NomenFormGroup.Size = new System.Drawing.Size(441, 28);
-            this.NomenFormGroup.TabIndex = 1;
-            this.NomenFormGroup.Leave += new System.EventHandler(this.NomenFormGroup_Leave);
             // 
             // label2
             // 
@@ -95,24 +82,11 @@
             // 
             this.NomenFormOboz.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.NomenFormOboz.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NomenFormOboz.Location = new System.Drawing.Point(269, 114);
+            this.NomenFormOboz.Location = new System.Drawing.Point(270, 114);
             this.NomenFormOboz.Name = "NomenFormOboz";
             this.NomenFormOboz.Size = new System.Drawing.Size(475, 26);
             this.NomenFormOboz.TabIndex = 2;
             this.NomenFormOboz.Leave += new System.EventHandler(this.NomenFormOboz_Leave);
-            // 
-            // NomenFormUnits
-            // 
-            this.NomenFormUnits.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenFormUnits.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.NomenFormUnits.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.NomenFormUnits.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NomenFormUnits.FormattingEnabled = true;
-            this.NomenFormUnits.Location = new System.Drawing.Point(269, 160);
-            this.NomenFormUnits.Name = "NomenFormUnits";
-            this.NomenFormUnits.Size = new System.Drawing.Size(475, 28);
-            this.NomenFormUnits.TabIndex = 3;
-            this.NomenFormUnits.Leave += new System.EventHandler(this.NomenFormUnits_Leave);
             // 
             // label3
             // 
@@ -168,7 +142,7 @@
             // 
             this.NomenFormFullName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.NomenFormFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NomenFormFullName.Location = new System.Drawing.Point(269, 402);
+            this.NomenFormFullName.Location = new System.Drawing.Point(270, 402);
             this.NomenFormFullName.Name = "NomenFormFullName";
             this.NomenFormFullName.ReadOnly = true;
             this.NomenFormFullName.Size = new System.Drawing.Size(475, 26);
@@ -196,7 +170,7 @@
             "0 – Используется и покупается",
             "1 – Используется и не покупается",
             "2 – Не используется и не покупается"});
-            this.NomenFormUsage.Location = new System.Drawing.Point(269, 448);
+            this.NomenFormUsage.Location = new System.Drawing.Point(270, 448);
             this.NomenFormUsage.Name = "NomenFormUsage";
             this.NomenFormUsage.Size = new System.Drawing.Size(475, 28);
             this.NomenFormUsage.TabIndex = 8;
@@ -272,58 +246,6 @@
             this.NomenFormClose.UseVisualStyleBackColor = true;
             this.NomenFormClose.Click += new System.EventHandler(this.NomenFormClose_Click);
             // 
-            // NomenFormSize
-            // 
-            this.NomenFormSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenFormSize.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.NomenFormSize.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.NomenFormSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NomenFormSize.FormattingEnabled = true;
-            this.NomenFormSize.Location = new System.Drawing.Point(269, 208);
-            this.NomenFormSize.Name = "NomenFormSize";
-            this.NomenFormSize.Size = new System.Drawing.Size(474, 28);
-            this.NomenFormSize.TabIndex = 4;
-            this.NomenFormSize.Leave += new System.EventHandler(this.NomenFormSize_Leave);
-            // 
-            // NomenFormMaterial
-            // 
-            this.NomenFormMaterial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenFormMaterial.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.NomenFormMaterial.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.NomenFormMaterial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NomenFormMaterial.FormattingEnabled = true;
-            this.NomenFormMaterial.Location = new System.Drawing.Point(268, 256);
-            this.NomenFormMaterial.Name = "NomenFormMaterial";
-            this.NomenFormMaterial.Size = new System.Drawing.Size(474, 28);
-            this.NomenFormMaterial.TabIndex = 5;
-            this.NomenFormMaterial.Leave += new System.EventHandler(this.NomenFormMaterial_Leave);
-            // 
-            // NomenFormDocument
-            // 
-            this.NomenFormDocument.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenFormDocument.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.NomenFormDocument.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.NomenFormDocument.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NomenFormDocument.FormattingEnabled = true;
-            this.NomenFormDocument.Location = new System.Drawing.Point(269, 304);
-            this.NomenFormDocument.Name = "NomenFormDocument";
-            this.NomenFormDocument.Size = new System.Drawing.Size(474, 28);
-            this.NomenFormDocument.TabIndex = 6;
-            this.NomenFormDocument.Leave += new System.EventHandler(this.NomenFormDocument_Leave);
-            // 
-            // NomenFormProducer
-            // 
-            this.NomenFormProducer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NomenFormProducer.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.NomenFormProducer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.NomenFormProducer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NomenFormProducer.FormattingEnabled = true;
-            this.NomenFormProducer.Location = new System.Drawing.Point(268, 352);
-            this.NomenFormProducer.Name = "NomenFormProducer";
-            this.NomenFormProducer.Size = new System.Drawing.Size(474, 28);
-            this.NomenFormProducer.TabIndex = 7;
-            this.NomenFormProducer.Leave += new System.EventHandler(this.NomenFormProducer_Leave);
-            // 
             // NomenFormAddGroup
             // 
             this.NomenFormAddGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -357,18 +279,92 @@
             this.label11.TabIndex = 29;
             this.label11.Text = "Номенклатурный номер *";
             // 
+            // NomenFormGroup
+            // 
+            this.NomenFormGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NomenFormGroup.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.NomenFormGroup.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.NomenFormGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NomenFormGroup.Location = new System.Drawing.Point(270, 18);
+            this.NomenFormGroup.Name = "NomenFormGroup";
+            this.NomenFormGroup.Size = new System.Drawing.Size(441, 26);
+            this.NomenFormGroup.TabIndex = 1;
+            this.NomenFormGroup.Leave += new System.EventHandler(this.NomenFormGroup_Leave);
+            // 
+            // NomenFormUnits
+            // 
+            this.NomenFormUnits.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NomenFormUnits.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.NomenFormUnits.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.NomenFormUnits.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NomenFormUnits.Location = new System.Drawing.Point(270, 162);
+            this.NomenFormUnits.Name = "NomenFormUnits";
+            this.NomenFormUnits.Size = new System.Drawing.Size(475, 26);
+            this.NomenFormUnits.TabIndex = 3;
+            this.NomenFormUnits.Leave += new System.EventHandler(this.NomenFormUnits_Leave);
+            // 
+            // NomenFormSize
+            // 
+            this.NomenFormSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NomenFormSize.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.NomenFormSize.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.NomenFormSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NomenFormSize.Location = new System.Drawing.Point(270, 210);
+            this.NomenFormSize.Name = "NomenFormSize";
+            this.NomenFormSize.Size = new System.Drawing.Size(475, 26);
+            this.NomenFormSize.TabIndex = 4;
+            this.NomenFormSize.Leave += new System.EventHandler(this.NomenFormSize_Leave);
+            // 
+            // NomenFormMaterial
+            // 
+            this.NomenFormMaterial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NomenFormMaterial.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.NomenFormMaterial.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.NomenFormMaterial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NomenFormMaterial.Location = new System.Drawing.Point(270, 258);
+            this.NomenFormMaterial.Name = "NomenFormMaterial";
+            this.NomenFormMaterial.Size = new System.Drawing.Size(475, 26);
+            this.NomenFormMaterial.TabIndex = 5;
+            this.NomenFormMaterial.Leave += new System.EventHandler(this.NomenFormMaterial_Leave);
+            // 
+            // NomenFormDocument
+            // 
+            this.NomenFormDocument.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NomenFormDocument.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.NomenFormDocument.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.NomenFormDocument.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NomenFormDocument.Location = new System.Drawing.Point(270, 306);
+            this.NomenFormDocument.Name = "NomenFormDocument";
+            this.NomenFormDocument.Size = new System.Drawing.Size(475, 26);
+            this.NomenFormDocument.TabIndex = 6;
+            this.NomenFormDocument.Leave += new System.EventHandler(this.NomenFormDocument_Leave);
+            // 
+            // NomenFormProducer
+            // 
+            this.NomenFormProducer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NomenFormProducer.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.NomenFormProducer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.NomenFormProducer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NomenFormProducer.Location = new System.Drawing.Point(270, 354);
+            this.NomenFormProducer.Name = "NomenFormProducer";
+            this.NomenFormProducer.Size = new System.Drawing.Size(475, 26);
+            this.NomenFormProducer.TabIndex = 7;
+            this.NomenFormProducer.Leave += new System.EventHandler(this.NomenFormProducer_Leave);
+            // 
             // NomenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(756, 580);
-            this.Controls.Add(this.NomenFormNumber);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.NomenFormAddGroup);
             this.Controls.Add(this.NomenFormProducer);
             this.Controls.Add(this.NomenFormDocument);
             this.Controls.Add(this.NomenFormMaterial);
             this.Controls.Add(this.NomenFormSize);
+            this.Controls.Add(this.NomenFormUnits);
+            this.Controls.Add(this.NomenFormGroup);
+            this.Controls.Add(this.NomenFormNumber);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.NomenFormAddGroup);
             this.Controls.Add(this.NomenFormClose);
             this.Controls.Add(this.NomenFormSaveClose);
             this.Controls.Add(this.NomenFormSave);
@@ -382,11 +378,9 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.NomenFormUnits);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.NomenFormOboz);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.NomenFormGroup);
             this.Controls.Add(this.label2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NomenForm";
@@ -403,7 +397,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox NomenFormOboz;
-        private System.Windows.Forms.ComboBox NomenFormUnits;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -418,13 +411,14 @@
         private System.Windows.Forms.Button NomenFormSave;
         private System.Windows.Forms.Button NomenFormSaveClose;
         private System.Windows.Forms.Button NomenFormClose;
-        private System.Windows.Forms.ComboBox NomenFormSize;
-        private System.Windows.Forms.ComboBox NomenFormMaterial;
-        private System.Windows.Forms.ComboBox NomenFormDocument;
-        private System.Windows.Forms.ComboBox NomenFormProducer;
         private System.Windows.Forms.Button NomenFormAddGroup;
         private System.Windows.Forms.TextBox NomenFormNumber;
         private System.Windows.Forms.Label label11;
-        public System.Windows.Forms.ComboBox NomenFormGroup;
+        public System.Windows.Forms.TextBox NomenFormGroup;
+        private System.Windows.Forms.TextBox NomenFormUnits;
+        private System.Windows.Forms.TextBox NomenFormSize;
+        private System.Windows.Forms.TextBox NomenFormMaterial;
+        private System.Windows.Forms.TextBox NomenFormDocument;
+        private System.Windows.Forms.TextBox NomenFormProducer;
     }
 }
