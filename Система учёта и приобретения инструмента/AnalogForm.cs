@@ -58,15 +58,15 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void AnalogFormOrigiinalName_Leave(object sender, EventArgs e)
         {
-            FindNomenclatureNumber(sender as System.Windows.Forms.ComboBox, true);
+            FindNomenclatureNumber(sender as System.Windows.Forms.TextBox, true);
         }
 
         private void AnalogFormAnalogName_Leave(object sender, EventArgs e)
         {
-            FindNomenclatureNumber(sender as System.Windows.Forms.ComboBox, false);
+            FindNomenclatureNumber(sender as System.Windows.Forms.TextBox, false);
         }
 
-        private void FindNomenclatureNumber(System.Windows.Forms.ComboBox sender, bool isOriginal)
+        private void FindNomenclatureNumber(System.Windows.Forms.TextBox sender, bool isOriginal)
         {
             string selectedText = sender.Text;
             sender.Text = new List<string>(source.Cast<string>()).Where(x => x.ToLower() == selectedText.ToLower()).FirstOrDefault();

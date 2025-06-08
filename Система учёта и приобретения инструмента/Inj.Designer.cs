@@ -251,7 +251,6 @@
             this.ProvidersSearchGroup = new System.Windows.Forms.GroupBox();
             this.ProvidersButtonReserSearch = new System.Windows.Forms.Button();
             this.ProvidersINN = new System.Windows.Forms.MaskedTextBox();
-            this.ProvidersName = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.InjLogPage = new System.Windows.Forms.TabPage();
@@ -363,6 +362,7 @@
             this.ProvidersTableContextMenuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.ProvidersTableContextMenuSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.ProvidersTableContextMenuCreateStatement = new System.Windows.Forms.ToolStripMenuItem();
+            this.ProvidersName = new System.Windows.Forms.TextBox();
             this.InjLevel1.SuspendLayout();
             this.InjNomenPage.SuspendLayout();
             this.NomenSearchGroup.SuspendLayout();
@@ -1336,6 +1336,8 @@
             // 
             // GroupsName
             // 
+            this.GroupsName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.GroupsName.ContextMenuStrip = this.SearchFieldsContextMenu;
             this.GroupsName.Location = new System.Drawing.Point(134, 21);
             this.GroupsName.Name = "GroupsName";
@@ -2920,9 +2922,9 @@
             this.ProvidersSearchGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ProvidersSearchGroup.ContextMenuStrip = this.SearchGroupContextMenu;
+            this.ProvidersSearchGroup.Controls.Add(this.ProvidersName);
             this.ProvidersSearchGroup.Controls.Add(this.ProvidersButtonReserSearch);
             this.ProvidersSearchGroup.Controls.Add(this.ProvidersINN);
-            this.ProvidersSearchGroup.Controls.Add(this.ProvidersName);
             this.ProvidersSearchGroup.Controls.Add(this.label23);
             this.ProvidersSearchGroup.Controls.Add(this.label25);
             this.ProvidersSearchGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -2954,18 +2956,6 @@
             this.ProvidersINN.Size = new System.Drawing.Size(349, 29);
             this.ProvidersINN.TabIndex = 3;
             this.ProvidersINN.TextChanged += new System.EventHandler(this.SuppliersTextChanged);
-            // 
-            // ProvidersName
-            // 
-            this.ProvidersName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProvidersName.ContextMenuStrip = this.SearchFieldsContextMenu;
-            this.ProvidersName.FormattingEnabled = true;
-            this.ProvidersName.Location = new System.Drawing.Point(134, 18);
-            this.ProvidersName.Name = "ProvidersName";
-            this.ProvidersName.Size = new System.Drawing.Size(618, 32);
-            this.ProvidersName.TabIndex = 1;
-            this.ProvidersName.TextChanged += new System.EventHandler(this.SuppliersTextChanged);
             // 
             // label23
             // 
@@ -3903,6 +3893,17 @@
             this.ProvidersTableContextMenuCreateStatement.ToolTipText = "Создать ведомость поставки от выбранного поставщика";
             this.ProvidersTableContextMenuCreateStatement.Click += new System.EventHandler(this.ProvidersTableContextMenuCreateStatement_Click);
             // 
+            // ProvidersName
+            // 
+            this.ProvidersName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProvidersName.ContextMenuStrip = this.SearchFieldsContextMenu;
+            this.ProvidersName.Location = new System.Drawing.Point(134, 21);
+            this.ProvidersName.Name = "ProvidersName";
+            this.ProvidersName.Size = new System.Drawing.Size(618, 29);
+            this.ProvidersName.TabIndex = 1;
+            this.ProvidersName.TextChanged += new System.EventHandler(this.SuppliersTextChanged);
+            // 
             // Inj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4048,7 +4049,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView LogTable;
         private System.Windows.Forms.GroupBox ProvidersSearchGroup;
-        private System.Windows.Forms.ComboBox ProvidersName;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.MaskedTextBox ProvidersINN;
@@ -4338,5 +4338,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
+        private System.Windows.Forms.TextBox ProvidersName;
     }
 }
