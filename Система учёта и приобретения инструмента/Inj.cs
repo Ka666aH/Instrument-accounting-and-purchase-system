@@ -298,7 +298,8 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void NomenTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (!NomenDelete()) e.Cancel = true;
+            NomenDelete();
+            e.Cancel = true;
         }
         private TOOLACCOUNTINGDataSet.NomenclatureRow nomenOriginRow = null;
         private bool nomenUserEditing = false;
@@ -607,7 +608,8 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void AnalogListTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (!AnalogsDelete()) e.Cancel = true;
+            AnalogsDelete();
+            e.Cancel = true;
         }
         private TOOLACCOUNTINGDataSet.AnalogToolsRow analogOriginRow = null;
         private bool analogUserEditing = false;
@@ -882,7 +884,8 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void GroupsTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (!GroupsDelete()) e.Cancel = true;
+            GroupsDelete();
+                e.Cancel = true;
         }
         private TOOLACCOUNTINGDataSet.GroupsRow groupOriginRow = null;
         private bool groupUserEditing = false;
@@ -1373,7 +1376,8 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void ProvidersTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (!ProvidersDelete()) e.Cancel = true;
+            ProvidersDelete();
+                e.Cancel = true;
         }
 
         private TOOLACCOUNTINGDataSet.SuppliersRow supplierOriginRow = null;
