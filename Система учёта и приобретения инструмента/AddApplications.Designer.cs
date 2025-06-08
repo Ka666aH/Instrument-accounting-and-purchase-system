@@ -48,14 +48,14 @@
             this.WorkshopFormSaveClose = new System.Windows.Forms.Button();
             this.WorkshopFormSave = new System.Windows.Forms.Button();
             this.ApplicationsCompound = new System.Windows.Forms.DataGridView();
+            this.receivingRequestsContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
+            this.receivingRequestsContentTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter();
             this.receivingContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receivingRequestIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receivingRequestsContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
-            this.receivingRequestsContentTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.ApplicationsCompound)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
@@ -308,18 +308,34 @@
             this.ApplicationsCompound.TabIndex = 2;
             this.ApplicationsCompound.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.ApplicationsCompound_CellValidated);
             // 
+            // receivingRequestsContentBindingSource
+            // 
+            this.receivingRequestsContentBindingSource.DataMember = "ReceivingRequestsContent";
+            this.receivingRequestsContentBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
+            // 
+            // tOOLACCOUNTINGDataSet
+            // 
+            this.tOOLACCOUNTINGDataSet.DataSetName = "TOOLACCOUNTINGDataSet";
+            this.tOOLACCOUNTINGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // receivingRequestsContentTableAdapter
+            // 
+            this.receivingRequestsContentTableAdapter.ClearBeforeFill = true;
+            // 
             // receivingContentIDDataGridViewTextBoxColumn
             // 
             this.receivingContentIDDataGridViewTextBoxColumn.DataPropertyName = "ReceivingContentID";
             this.receivingContentIDDataGridViewTextBoxColumn.HeaderText = "ReceivingContentID";
             this.receivingContentIDDataGridViewTextBoxColumn.Name = "receivingContentIDDataGridViewTextBoxColumn";
             this.receivingContentIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.receivingContentIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // receivingRequestIDDataGridViewTextBoxColumn
             // 
             this.receivingRequestIDDataGridViewTextBoxColumn.DataPropertyName = "ReceivingRequestID";
             this.receivingRequestIDDataGridViewTextBoxColumn.HeaderText = "ReceivingRequestID";
             this.receivingRequestIDDataGridViewTextBoxColumn.Name = "receivingRequestIDDataGridViewTextBoxColumn";
+            this.receivingRequestIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // nomenclatureNumberDataGridViewTextBoxColumn
             // 
@@ -340,20 +356,6 @@
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Количество";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            // 
-            // receivingRequestsContentBindingSource
-            // 
-            this.receivingRequestsContentBindingSource.DataMember = "ReceivingRequestsContent";
-            this.receivingRequestsContentBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
-            // 
-            // tOOLACCOUNTINGDataSet
-            // 
-            this.tOOLACCOUNTINGDataSet.DataSetName = "TOOLACCOUNTINGDataSet";
-            this.tOOLACCOUNTINGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // receivingRequestsContentTableAdapter
-            // 
-            this.receivingRequestsContentTableAdapter.ClearBeforeFill = true;
             // 
             // AddApplications
             // 
