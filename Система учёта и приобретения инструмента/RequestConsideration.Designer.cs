@@ -41,6 +41,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.RequestConsiderationFixationTable = new System.Windows.Forms.DataGridView();
+            this.receivingContentIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.analogNomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receivingRequestsContentInjReplacementFixationInjBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.receivingRequestsContentInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentInjTableAdapter();
             this.replacementFixationInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReplacementFixationInjTableAdapter();
             this.RequestConsiderationButtonDelete = new System.Windows.Forms.Button();
@@ -50,16 +54,12 @@
             this.RequestConsiderationButtonSaveClose = new System.Windows.Forms.Button();
             this.RequestConsiderationButtonSave = new System.Windows.Forms.Button();
             this.receivingRequestsContentInjReplacementFixationInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.receivingRequestsContentInjReplacementFixationInjBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.receivingContentIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.RequestConsiderationContentTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentInjBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RequestConsiderationFixationTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentInjReplacementFixationInjBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentInjReplacementFixationInjBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentInjReplacementFixationInjBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // RequestConsiderationContentTable
@@ -179,6 +179,36 @@
             this.RequestConsiderationFixationTable.TabIndex = 37;
             this.RequestConsiderationFixationTable.CurrentCellChanged += new System.EventHandler(this.RequestConsiderationFixationTable_CurrentCellChanged);
             // 
+            // receivingContentIDDataGridViewTextBoxColumn1
+            // 
+            this.receivingContentIDDataGridViewTextBoxColumn1.DataPropertyName = "ReceivingContentID";
+            this.receivingContentIDDataGridViewTextBoxColumn1.HeaderText = "ReceivingContentID";
+            this.receivingContentIDDataGridViewTextBoxColumn1.Name = "receivingContentIDDataGridViewTextBoxColumn1";
+            this.receivingContentIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.receivingContentIDDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // analogNomenclatureNumberDataGridViewTextBoxColumn
+            // 
+            this.analogNomenclatureNumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.analogNomenclatureNumberDataGridViewTextBoxColumn.DataPropertyName = "AnalogNomenclatureNumber";
+            this.analogNomenclatureNumberDataGridViewTextBoxColumn.HeaderText = "Номенклатурный номер аналога";
+            this.analogNomenclatureNumberDataGridViewTextBoxColumn.Name = "analogNomenclatureNumberDataGridViewTextBoxColumn";
+            this.analogNomenclatureNumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quantityDataGridViewTextBoxColumn1
+            // 
+            this.quantityDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.quantityDataGridViewTextBoxColumn1.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn1.HeaderText = "Количество";
+            this.quantityDataGridViewTextBoxColumn1.Name = "quantityDataGridViewTextBoxColumn1";
+            this.quantityDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.quantityDataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // receivingRequestsContentInjReplacementFixationInjBindingSource1
+            // 
+            this.receivingRequestsContentInjReplacementFixationInjBindingSource1.DataMember = "ReceivingRequestsContentInj_ReplacementFixationInj";
+            this.receivingRequestsContentInjReplacementFixationInjBindingSource1.DataSource = this.receivingRequestsContentInjBindingSource;
+            // 
             // receivingRequestsContentInjTableAdapter
             // 
             this.receivingRequestsContentInjTableAdapter.ClearBeforeFill = true;
@@ -262,36 +292,6 @@
             this.receivingRequestsContentInjReplacementFixationInjBindingSource.DataMember = "ReceivingRequestsContentInj_ReplacementFixationInj";
             this.receivingRequestsContentInjReplacementFixationInjBindingSource.DataSource = this.receivingRequestsContentInjBindingSource;
             // 
-            // receivingRequestsContentInjReplacementFixationInjBindingSource1
-            // 
-            this.receivingRequestsContentInjReplacementFixationInjBindingSource1.DataMember = "ReceivingRequestsContentInj_ReplacementFixationInj";
-            this.receivingRequestsContentInjReplacementFixationInjBindingSource1.DataSource = this.receivingRequestsContentInjBindingSource;
-            // 
-            // receivingContentIDDataGridViewTextBoxColumn1
-            // 
-            this.receivingContentIDDataGridViewTextBoxColumn1.DataPropertyName = "ReceivingContentID";
-            this.receivingContentIDDataGridViewTextBoxColumn1.HeaderText = "ReceivingContentID";
-            this.receivingContentIDDataGridViewTextBoxColumn1.Name = "receivingContentIDDataGridViewTextBoxColumn1";
-            this.receivingContentIDDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.receivingContentIDDataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // analogNomenclatureNumberDataGridViewTextBoxColumn
-            // 
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn.DataPropertyName = "AnalogNomenclatureNumber";
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn.HeaderText = "Номенклатурный номер аналога";
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn.Name = "analogNomenclatureNumberDataGridViewTextBoxColumn";
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quantityDataGridViewTextBoxColumn1
-            // 
-            this.quantityDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.quantityDataGridViewTextBoxColumn1.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn1.HeaderText = "Количество";
-            this.quantityDataGridViewTextBoxColumn1.Name = "quantityDataGridViewTextBoxColumn1";
-            this.quantityDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.quantityDataGridViewTextBoxColumn1.Width = 125;
-            // 
             // RequestConsideration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -310,6 +310,8 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximumSize = new System.Drawing.Size(923, 645);
+            this.MinimumSize = new System.Drawing.Size(923, 645);
             this.Name = "RequestConsideration";
             this.Text = "Форма рассмотрения заявки на получение – Информационная система учета и приобрете" +
     "ния инструмента";
@@ -318,8 +320,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentInjBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RequestConsiderationFixationTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentInjReplacementFixationInjBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentInjReplacementFixationInjBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentInjReplacementFixationInjBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

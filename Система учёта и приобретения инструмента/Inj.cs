@@ -298,7 +298,8 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void NomenTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (!NomenDelete()) e.Cancel = true;
+            NomenDelete();
+            e.Cancel = true;
         }
         private TOOLACCOUNTINGDataSet.NomenclatureRow nomenOriginRow = null;
         private bool nomenUserEditing = false;
@@ -316,7 +317,6 @@ namespace Система_учёта_и_приобретения_инструме
                 nomenUserEditing = false;
                 e.Cancel = true;
             }
-
         }
         private void NomenTable_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
@@ -490,42 +490,50 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void NomenTableContexMenuCreate_Click(object sender, EventArgs e)
         {
-            //fill
+            NomenButtonCreate.PerformClick();
         }
 
         private void NomenTableContexMenuAlter_Click(object sender, EventArgs e)
         {
-            //fill
+            NomenButtonAlter.PerformClick();
         }
 
         private void NomenTableContexMenuDelete_Click(object sender, EventArgs e)
         {
-            //fill
+            NomenButtonDelete.PerformClick();
         }
 
         private void NomenTableContexMenuOstatki_Click(object sender, EventArgs e)
         {
-            //fill
+            NomenButtonOstatki.PerformClick();
         }
 
         private void NomenTableContexMenuHistory_Click(object sender, EventArgs e)
         {
-            //fill
+            NomenButtonHistory.PerformClick();
         }
 
         private void NomenTableContexMenuLogs_Click(object sender, EventArgs e)
         {
-            //fill
+            NomenButtonLog.PerformClick();
         }
 
         private void NomenTableContexMenuFindAnalogs_Click(object sender, EventArgs e)
         {
-            //fill
+            SetNomenButtonsState();
+            if (NomenTable.CurrentRow.DataBoundItem as DataRowView == null) return;
+            AnalogMainNumber.Text = NomenTable.CurrentRow.Cells[0].Value.ToString();
+            InjLevel1.SelectedTab = InjAnalogPage;
         }
 
         private void NomenTableContexMenuAddAnalog_Click(object sender, EventArgs e)
         {
-            //fill
+            if (NomenTable.CurrentRow.DataBoundItem as DataRowView == null) return;
+            AnalogForm analogForm = new AnalogForm(tOOLACCOUNTINGDataSet, analogToolsTableAdapter);
+            analogForm.AnalogFormOrigiinalName.Text = NomenTable.CurrentRow.Cells[8].Value.ToString().Trim();
+            analogForm.AnalogFormOrigiinalNumber.Text = NomenTable.CurrentRow.Cells[0].Value.ToString().Trim();
+            analogForm.AnalogFormAnalogName.TabIndex = 0;
+            analogForm.ShowDialog();
         }
         #endregion
 
@@ -607,7 +615,8 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void AnalogListTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (!AnalogsDelete()) e.Cancel = true;
+            AnalogsDelete();
+            e.Cancel = true;
         }
         private TOOLACCOUNTINGDataSet.AnalogToolsRow analogOriginRow = null;
         private bool analogUserEditing = false;
@@ -763,6 +772,7 @@ namespace Система_учёта_и_приобретения_инструме
                 AnalogListTable.SuspendLayout();
                 //AnalogCompareTable.SuspendLayout();
                 analogTools1BindingSource.Filter = filter;
+                AnalogListTable.Columns[0].Visible = false;
                 AnalogListTable.ResumeLayout();
                 //AnalogCompareTable.ResumeLayout();
             }
@@ -795,15 +805,15 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void AnalogsTableContextMenuCreate_Click(object sender, EventArgs e)
         {
-            //fill
+            AnalogButtonCreate.PerformClick();
         }
         private void AnalogsTableContextMenuAlter_Click(object sender, EventArgs e)
         {
-            //fill
+            AnalogButtonAlter.PerformClick();
         }
         private void AnalogsTableContextMenuDelete_Click(object sender, EventArgs e)
         {
-            //fill
+            AnalogButtonDelete.PerformClick();
         }
 
         #endregion
@@ -849,6 +859,9 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 var selectedRow = GroupsTable.CurrentRow.DataBoundItem as DataRowView;
                 var groupRow = selectedRow.Row as TOOLACCOUNTINGDataSet.GroupsRow;
+
+                if (tOOLACCOUNTINGDataSet.Nomenclature.Any(n => n.NomenclatureNumber.Substring(0, 4) == groupRow.RangeStart)) throw new Exception("Невозможно удалить эту группу, так к ней как привязаны инструменты.");
+
                 groupRow.Delete();
                 groupsTableAdapter.Update(tOOLACCOUNTINGDataSet.Groups);
                 groupsTableAdapter.Fill(tOOLACCOUNTINGDataSet.Groups);
@@ -882,7 +895,8 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void GroupsTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (!GroupsDelete()) e.Cancel = true;
+            GroupsDelete();
+                e.Cancel = true;
         }
         private TOOLACCOUNTINGDataSet.GroupsRow groupOriginRow = null;
         private bool groupUserEditing = false;
@@ -981,23 +995,33 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void GroupTableContextMenuCreate_Click(object sender, EventArgs e)
         {
-            //fill
+            GroupsButtonCreate.PerformClick();
         }
         private void GroupTableContextMenuAlter_Click(object sender, EventArgs e)
         {
-            //fill
+            GroupsButtonAlter.PerformClick();
         }
         private void GroupTableContextMenuDelete_Click(object sender, EventArgs e)
         {
-            //fill
+            GroupsButtonDelete.PerformClick();
         }
         private void GroupTableContextMenuFindNomen_Click(object sender, EventArgs e)
         {
-            //fill
+            if (GroupsTable.CurrentRow.DataBoundItem as DataRowView == null) return;
+            NomenName.Text = GroupsTable.CurrentRow.Cells[1].Value.ToString();
+            InjLevel1.SelectedTab = InjNomenPage;
         }
         private void GroupTableContextMenuAddNomen_Click(object sender, EventArgs e)
         {
-            //fill
+            if (GroupsTable.CurrentRow.DataBoundItem as DataRowView == null) return;
+            NomenForm nomenForm = new NomenForm(tOOLACCOUNTINGDataSet, nomenclatureTableAdapter);
+            nomenForm.NomenFormGroup.Text = GroupsTable.CurrentRow.Cells[1].Value.ToString().Trim();
+            nomenForm.ShowDialog();
+            //NomenForm analogForm = new NomenForm(tOOLACCOUNTINGDataSet, );
+            //analogForm.AnalogFormOrigiinalName.Text = NomenTable.CurrentRow.Cells[8].Value.ToString().Trim();
+            //analogForm.AnalogFormOrigiinalNumber.Text = NomenTable.CurrentRow.Cells[0].Value.ToString().Trim();
+            //analogForm.AnalogFormAnalogName.TabIndex = 0;
+            //analogForm.ShowDialog();
         }
         #endregion
 
@@ -1122,15 +1146,15 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void ReceivingRequestsContextMenuConsider_Click(object sender, EventArgs e)
         {
-            //fill
+            ReceivingRequestsButtonConsider.PerformClick();
         }
         private void ReceivingRequestsContextMenuAlter_Click(object sender, EventArgs e)
         {
-            //fill
+            ReceivingRequestsButtonAlter.PerformClick();
         }
         private void ReceivingRequestsContextMenuCancel_Click(object sender, EventArgs e)
         {
-            //fill
+            ReceivingRequestsButtonDelete.PerformClick();
         }
         #endregion
 
@@ -1164,19 +1188,19 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void PurchaseRequestsContextMenuCreate_Click(object sender, EventArgs e)
         {
-            //fill
+            PurchaseRequestsButtonCreate.PerformClick();
         }
         private void PurchaseRequestsContextMenuAlter_Click(object sender, EventArgs e)
         {
-            //fill
+            PurchaseRequestsButtonAlter.PerformClick();
         }
         private void PurchaseRequestsContextMenuDelete_Click(object sender, EventArgs e)
         {
-            //fill
+            PurchaseRequestsButtonDelete.PerformClick();
         }
         private void PurchaseRequestsContextMenuExport_Click(object sender, EventArgs e)
         {
-            //fill
+            PurchaseRequestsButtonExport.PerformClick();
         }
         #endregion
 
@@ -1207,19 +1231,19 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void StatementsTableContextMenuCreate_Click(object sender, EventArgs e)
         {
-            //fill
+            StatementsButtonCreate.PerformClick();
         }
         private void StatementsTableContextMenuAlter_Click(object sender, EventArgs e)
         {
-            //fill
+            StatementsButtonAlter.PerformClick();
         }
         private void StatementsTableContextMenuDelete_Click(object sender, EventArgs e)
         {
-            //fill
+            StatementsButtonDelete.PerformClick();
         }
         private void StatementsTableContextMenuExport_Click(object sender, EventArgs e)
         {
-            //fill
+            StatementsButtonExport.PerformClick();
         }
         #endregion
 
@@ -1250,15 +1274,15 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void InvoicesTableContextMenuCreate_Click(object sender, EventArgs e)
         {
-            //fill
+            InvoicesButtonEnter.PerformClick();
         }
         private void InvoicesTableContextMenuAlter_Click(object sender, EventArgs e)
         {
-            //fill
+            InvoicesButtonAlter.PerformClick();
         }
         private void InvoicesTableContextMenuDelete_Click(object sender, EventArgs e)
         {
-            //fill
+            InvoicesButtonDelete.PerformClick();
         }
         #endregion
 
@@ -1373,7 +1397,8 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void ProvidersTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (!ProvidersDelete()) e.Cancel = true;
+            ProvidersDelete();
+                e.Cancel = true;
         }
 
         private TOOLACCOUNTINGDataSet.SuppliersRow supplierOriginRow = null;
@@ -1460,15 +1485,15 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void ProvidersTableContextMenuCreate_Click(object sender, EventArgs e)
         {
-            //fill
+            ProvidersButtonCreate.PerformClick();
         }
         private void ProvidersTableContextMenuAlter_Click(object sender, EventArgs e)
         {
-            //fill
+            ProvidersButtonAlter.PerformClick();
         }
         private void ProvidersTableContextMenuDelete_Click(object sender, EventArgs e)
         {
-            //fill
+            ProvidersButtonDelete.PerformClick();
         }
         private void ProvidersTableContextMenuCreateStatement_Click(object sender, EventArgs e)
         {
@@ -1712,6 +1737,7 @@ namespace Система_учёта_и_приобретения_инструме
             AnalogsResetAnalogNumber();
             isSearchReseting = false;
             analogTools1BindingSource.RemoveFilter();
+            AnalogListTable.Columns[0].Visible = false;
         }
         private void AnalogsResetMainName() { AnalogMainName.Text = string.Empty; }
         private void AnalogsResetMainNumber() { AnalogMainNumber.Text = string.Empty; }
@@ -1740,6 +1766,7 @@ namespace Система_учёта_и_приобретения_инструме
             LogResetEnd();
             isSearchReseting = false;
             nomenclatureLogsBindingSource.RemoveFilter();
+            LogTable.Columns[0].Visible = false;
         }
         private void LogResetNumber() { LogNumber.Text = string.Empty; }
         private void LogResetField() { LogField.Text = string.Empty; }

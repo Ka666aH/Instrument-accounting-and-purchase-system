@@ -110,7 +110,7 @@ private AutoCompleteStringCollection NomenclatureSource(NomenclatureViewTableAda
             return source;
         }
 
-        private void FindInSource(System.Windows.Forms.ComboBox sender, AutoCompleteStringCollection source)
+        private void FindInSource(System.Windows.Forms.TextBox sender, AutoCompleteStringCollection source)
         {
             string selectedText = sender.Text;
             sender.Text = new List<string>(source.Cast<string>()).Where(x => x.ToLower() == selectedText.ToLower()).FirstOrDefault();
@@ -123,7 +123,7 @@ private AutoCompleteStringCollection NomenclatureSource(NomenclatureViewTableAda
         #region Leave
         private void NomenFormGroup_Leave(object sender, EventArgs e)
         {
-            FindInSource(sender as System.Windows.Forms.ComboBox, groupSource);
+            FindInSource(sender as System.Windows.Forms.TextBox, groupSource);
 
             if (string.IsNullOrEmpty(NomenFormGroup.Text) || mode == FormMode.Edit) return;
 
@@ -161,30 +161,30 @@ private AutoCompleteStringCollection NomenclatureSource(NomenclatureViewTableAda
         }
         private void NomenFormUnits_Leave(object sender, EventArgs e)
         {
-            FindInSource(sender as System.Windows.Forms.ComboBox, unitSource);
+            FindInSource(sender as System.Windows.Forms.TextBox, unitSource);
             FillFullName();
         }
 
         private void NomenFormSize_Leave(object sender, EventArgs e)
         {
-            FindInSource(sender as System.Windows.Forms.ComboBox, sizesSource);
+            FindInSource(sender as System.Windows.Forms.TextBox, sizesSource);
             FillFullName();
         }
 
         private void NomenFormMaterial_Leave(object sender, EventArgs e)
         {
-            FindInSource(sender as System.Windows.Forms.ComboBox, materialSource);
+            FindInSource(sender as System.Windows.Forms.TextBox, materialSource);
             FillFullName();
         }
 
         private void NomenFormDocument_Leave(object sender, EventArgs e)
         {
-            FindInSource(sender as System.Windows.Forms.ComboBox, docSource);
+            FindInSource(sender as System.Windows.Forms.TextBox, docSource);
             FillFullName();
         }
         private void NomenFormProducer_Leave(object sender, EventArgs e)
         {
-            FindInSource(sender as System.Windows.Forms.ComboBox, producerSource);
+            FindInSource(sender as System.Windows.Forms.TextBox, producerSource);
         }
         #endregion
 

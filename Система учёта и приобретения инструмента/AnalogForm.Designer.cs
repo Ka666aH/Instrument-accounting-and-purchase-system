@@ -35,15 +35,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.AnalogFormOrigiinalName = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.AnalogFormOrigiinalNumber = new System.Windows.Forms.MaskedTextBox();
             this.AnalogFormAnalogNumber = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.AnalogFormAnalogName = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.AnalogFormOrigiinalName = new System.Windows.Forms.TextBox();
+            this.AnalogFormAnalogName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // AnalogFormClose
@@ -115,17 +115,6 @@
             this.label3.TabIndex = 37;
             this.label3.Text = "Полное наименование";
             // 
-            // AnalogFormOrigiinalName
-            // 
-            this.AnalogFormOrigiinalName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.AnalogFormOrigiinalName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.AnalogFormOrigiinalName.FormattingEnabled = true;
-            this.AnalogFormOrigiinalName.Location = new System.Drawing.Point(210, 41);
-            this.AnalogFormOrigiinalName.Name = "AnalogFormOrigiinalName";
-            this.AnalogFormOrigiinalName.Size = new System.Drawing.Size(471, 28);
-            this.AnalogFormOrigiinalName.TabIndex = 1;
-            this.AnalogFormOrigiinalName.Leave += new System.EventHandler(this.AnalogFormOrigiinalName_Leave);
-            // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -188,17 +177,6 @@
             this.label7.TabIndex = 46;
             this.label7.Text = "Номенклатурный номер";
             // 
-            // AnalogFormAnalogName
-            // 
-            this.AnalogFormAnalogName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.AnalogFormAnalogName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.AnalogFormAnalogName.FormattingEnabled = true;
-            this.AnalogFormAnalogName.Location = new System.Drawing.Point(210, 180);
-            this.AnalogFormAnalogName.Name = "AnalogFormAnalogName";
-            this.AnalogFormAnalogName.Size = new System.Drawing.Size(471, 28);
-            this.AnalogFormAnalogName.TabIndex = 2;
-            this.AnalogFormAnalogName.Leave += new System.EventHandler(this.AnalogFormAnalogName_Leave);
-            // 
             // label8
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -210,20 +188,40 @@
             this.label8.TabIndex = 44;
             this.label8.Text = "Полное наименование";
             // 
+            // AnalogFormOrigiinalName
+            // 
+            this.AnalogFormOrigiinalName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.AnalogFormOrigiinalName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.AnalogFormOrigiinalName.Location = new System.Drawing.Point(210, 43);
+            this.AnalogFormOrigiinalName.Name = "AnalogFormOrigiinalName";
+            this.AnalogFormOrigiinalName.Size = new System.Drawing.Size(471, 26);
+            this.AnalogFormOrigiinalName.TabIndex = 1;
+            this.AnalogFormOrigiinalName.Leave += new System.EventHandler(this.AnalogFormOrigiinalName_Leave);
+            // 
+            // AnalogFormAnalogName
+            // 
+            this.AnalogFormAnalogName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.AnalogFormAnalogName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.AnalogFormAnalogName.Location = new System.Drawing.Point(210, 182);
+            this.AnalogFormAnalogName.Name = "AnalogFormAnalogName";
+            this.AnalogFormAnalogName.Size = new System.Drawing.Size(471, 26);
+            this.AnalogFormAnalogName.TabIndex = 2;
+            this.AnalogFormAnalogName.Leave += new System.EventHandler(this.AnalogFormAnalogName_Leave);
+            // 
             // AnalogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(693, 331);
+            this.Controls.Add(this.AnalogFormAnalogName);
+            this.Controls.Add(this.AnalogFormOrigiinalName);
             this.Controls.Add(this.AnalogFormAnalogNumber);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.AnalogFormAnalogName);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.AnalogFormOrigiinalNumber);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.AnalogFormOrigiinalName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -251,14 +249,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox AnalogFormOrigiinalName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.MaskedTextBox AnalogFormOrigiinalNumber;
         private System.Windows.Forms.MaskedTextBox AnalogFormAnalogNumber;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox AnalogFormAnalogName;
         private System.Windows.Forms.Label label8;
+        public System.Windows.Forms.MaskedTextBox AnalogFormOrigiinalNumber;
+        public System.Windows.Forms.TextBox AnalogFormOrigiinalName;
+        public System.Windows.Forms.TextBox AnalogFormAnalogName;
     }
 }
