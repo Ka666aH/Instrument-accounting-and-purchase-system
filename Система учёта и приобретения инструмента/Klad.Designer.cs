@@ -250,6 +250,8 @@
             this.workshopsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.WorkshopsTableAdapter();
             this.receivingRequests1TableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequests1TableAdapter();
             this.receivingRequestsContent1TableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContent1TableAdapter();
+            this.receivingRequestsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsTableAdapter();
+            this.receivingRequestsContentTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter();
             this.tabPage4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -2482,6 +2484,14 @@
             // 
             this.receivingRequestsContent1TableAdapter.ClearBeforeFill = true;
             // 
+            // receivingRequestsTableAdapter
+            // 
+            this.receivingRequestsTableAdapter.ClearBeforeFill = true;
+            // 
+            // receivingRequestsContentTableAdapter
+            // 
+            this.receivingRequestsContentTableAdapter.ClearBeforeFill = true;
+            // 
             // Klad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2769,5 +2779,7 @@
         private System.Windows.Forms.ToolStripMenuItem отчетПоОстаткамToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отчетПоДефектнымВедомостямToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отчетПоЗаявкамToolStripMenuItem;
+        private TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsTableAdapter receivingRequestsTableAdapter;
+        private TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter receivingRequestsContentTableAdapter;
     }
 }

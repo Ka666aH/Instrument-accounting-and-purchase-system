@@ -82,20 +82,31 @@ namespace Система_учёта_и_приобретения_инструме
             }
             else
             {
-                int newNumber = 1;
-                if (dataSet.ReceivingRequests.Rows.Count > 0)
-                {
-                    newNumber = dataSet.ReceivingRequests.Max(r => ((TOOLACCOUNTINGDataSet.ReceivingRequestsRow)r).ReceivingRequestID) + 1;
-                }
+                // Обновляем данные из базы перед проверкой
+                var requestsAdapter = new ReceivingRequestsTableAdapter();
+                requestsAdapter.Fill(dataSet.ReceivingRequests);
+                
+                int newNumber;
+                if (dataSet.ReceivingRequests.Count == 0)
+                    newNumber = 1;
+                else
+                    newNumber = dataSet.ReceivingRequests.Max(r => r.ReceivingRequestID) + 1;
                 textBox1.Text = newNumber.ToString();
             }
 
             UpdateReasonItems();
             ApplicationType.SelectedIndexChanged += ApplicationType_SelectedIndexChanged;
+
+            // Подписка на автодополнение
+            ApplicationsCompound.EditingControlShowing += ApplicationsCompound_EditingControlShowing;
+            // Подписка на автоподстановку
+            ApplicationsCompound.CellValueChanged += ApplicationsCompound_CellValueChanged;
         }
 
         private void CloseNewApplication_Click(object sender, EventArgs e)
         {
+            new ReceivingRequests1TableAdapter().Fill(tOOLACCOUNTINGDataSet.ReceivingRequests1);
+            new ReceivingRequestsContent1TableAdapter().Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsContent1);
             this.Close();
         }
 
@@ -104,7 +115,7 @@ namespace Система_учёта_и_приобретения_инструме
             bool isReturn = Workshop.SelectedValue != null &&
                 !string.IsNullOrWhiteSpace(ApplicationType.Text) &&
                 !string.IsNullOrWhiteSpace(Reason.Text) &&
-                dataSet.ReceivingRequestsContent.Rows.Count > 0;
+                ApplicationsCompound.Rows.Count > 0;
             if (!isReturn)
                 NotificationService.Notify("Предупреждение", "Необходимо заполнить все обязательные поля и добавить хотя бы одну позицию.", ToolTipIcon.Warning);
             return isReturn;
@@ -139,6 +150,7 @@ namespace Система_учёта_и_приобретения_инструме
             try
             {
                 var newRequest = dataSet.ReceivingRequests.NewReceivingRequestsRow();
+                newRequest.ReceivingRequestID = Convert.ToInt32(textBox1.Text);
                 newRequest.ReceivingRequestDate = requestDate;
                 newRequest.WorkshopID = workshopId;
                 newRequest.PlannedDate = plannedDate;
@@ -149,10 +161,17 @@ namespace Система_учёта_и_приобретения_инструме
                 var requestsAdapter = new ReceivingRequestsTableAdapter();
                 requestsAdapter.Update(dataSet.ReceivingRequests);
                 requestsAdapter.Fill(dataSet.ReceivingRequests);
-                int requestId = newRequest.ReceivingRequestID;
+                int requestId = Convert.ToInt32(textBox1.Text);
 
-                foreach (TOOLACCOUNTINGDataSet.ReceivingRequestsContentRow row in dataSet.ReceivingRequestsContent.Rows)
+                foreach (DataGridViewRow dataGridRow in ApplicationsCompound.Rows)
                 {
+                    if (dataGridRow.IsNewRow)
+                        continue;
+                    
+                    var dataRowView = dataGridRow.DataBoundItem as DataRowView;
+                    var row = dataRowView?.Row as TOOLACCOUNTINGDataSet.ReceivingRequestsContentRow;
+                    if (row == null) continue;
+
                     TOOLACCOUNTINGDataSet.ReceivingRequestsContentRow newRow;
                     if (dataSet.ReceivingRequestsContent.Any(l => l.ReceivingContentID == row.ReceivingContentID))
                     {
@@ -173,11 +192,11 @@ namespace Система_учёта_и_приобретения_инструме
                     receivingRequestsContentTableAdapter.Update(dataSet.ReceivingRequestsContent);
                     receivingRequestsContentTableAdapter.Fill(dataSet.ReceivingRequestsContent);
                 }
-                new ReceivingRequestsContentTableAdapter().Update(dataSet.ReceivingRequestsContent);
+                //new ReceivingRequestsContentTableAdapter().Update(dataSet.ReceivingRequestsContent);
                 NotificationService.Notify("Успех", "Заявка успешно добавлена!", ToolTipIcon.Info);
                 ClearForm();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                new ReceivingRequests1TableAdapter().Fill(dataSet.ReceivingRequests1);
+                new ReceivingRequestsContent1TableAdapter().Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsContent1);
                 return true;
             }
             catch (Exception ex)
@@ -206,10 +225,6 @@ namespace Система_учёта_и_приобретения_инструме
             }
         }
 
-        private void ApplicationsCompound_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void WorkshopFormClose_Click(object sender, EventArgs e)
         {
@@ -217,7 +232,7 @@ namespace Система_учёта_и_приобретения_инструме
             this.Close();
         }
 
-        // Автоподстановка и фильтрация по вводу в ApplicationsCompound
+        // Автодополнение для DataGridView по справочнику номенклатуры
         private void ApplicationsCompound_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             if (ApplicationsCompound.CurrentCell == null) return;
@@ -245,6 +260,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
         }
 
+        // Автоподстановка по номенклатурному номеру или полному наименованию
         private void ApplicationsCompound_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -390,28 +406,40 @@ namespace Система_учёта_и_приобретения_инструме
         private void ApplicationsCompound_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             // Генерируем новый ReceivingContentID
-            int newContentId = 1;
-            if (dataSet.ReceivingRequestsContent.Rows.Count > 0)
-            {
-                newContentId = dataSet.ReceivingRequestsContent.Max(r => ((TOOLACCOUNTINGDataSet.ReceivingRequestsContentRow)r).ReceivingContentID) + 1;
-            }
-            e.Row.Cells["receivingContentIDDataGridViewTextBoxColumn"].Value = newContentId;
+            //int newContentId = 1;
+            //if (dataSet.ReceivingRequestsContent.Rows.Count > 0)
+            //{
+            //    newContentId = dataSet.ReceivingRequestsContent.Max(r => ((TOOLACCOUNTINGDataSet.ReceivingRequestsContentRow)r).ReceivingContentID) + 1;
+            //}
+            //e.Row.Cells["receivingContentIDDataGridViewTextBoxColumn"].Value = newContentId;
 
             // Устанавливаем ReceivingRequestID равным текущему ID заявки
-            if (editingRequestId.HasValue)
-            {
-                e.Row.Cells["receivingRequestIDDataGridViewTextBoxColumn"].Value = editingRequestId.Value;
-            }
-            else if (!string.IsNullOrEmpty(textBox1.Text))
-            {
-                e.Row.Cells["receivingRequestIDDataGridViewTextBoxColumn"].Value = Convert.ToInt32(textBox1.Text);
-            }
+            //if (editingRequestId.HasValue)
+            //{
+            //    e.Row.Cells["receivingRequestIDDataGridViewTextBoxColumn"].Value = editingRequestId.Value;
+            //}
+            //else if (!string.IsNullOrEmpty(textBox1.Text))
+            //{
+            //    e.Row.Cells["receivingRequestIDDataGridViewTextBoxColumn"].Value = Convert.ToInt32(textBox1.Text);
+            //}
         }
 
         private void WorkshopFormSaveClose_Click(object sender, EventArgs e)
         {
             if (TrySave())
                 Close();
+        }
+
+        private void ApplicationsCompound_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            if (ApplicationsCompound.Rows[e.RowIndex].IsNewRow || ApplicationsCompound.Rows[e.RowIndex].DataBoundItem == null)
+            {
+                return;
+            }
+
+            var dataRowView = ApplicationsCompound.Rows[e.RowIndex].DataBoundItem as DataRowView;
+            var row = dataRowView?.Row as TOOLACCOUNTINGDataSet.ReceivingRequestsContentRow;
+            row.ReceivingRequestID = Convert.ToInt32(textBox1.Text);
         }
     }
 }

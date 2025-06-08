@@ -306,6 +306,7 @@
             this.ApplicationsCompound.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ApplicationsCompound.Size = new System.Drawing.Size(760, 328);
             this.ApplicationsCompound.TabIndex = 2;
+            this.ApplicationsCompound.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.ApplicationsCompound_CellValidated);
             // 
             // receivingContentIDDataGridViewTextBoxColumn
             // 
@@ -313,14 +314,12 @@
             this.receivingContentIDDataGridViewTextBoxColumn.HeaderText = "ReceivingContentID";
             this.receivingContentIDDataGridViewTextBoxColumn.Name = "receivingContentIDDataGridViewTextBoxColumn";
             this.receivingContentIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.receivingContentIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // receivingRequestIDDataGridViewTextBoxColumn
             // 
             this.receivingRequestIDDataGridViewTextBoxColumn.DataPropertyName = "ReceivingRequestID";
             this.receivingRequestIDDataGridViewTextBoxColumn.HeaderText = "ReceivingRequestID";
             this.receivingRequestIDDataGridViewTextBoxColumn.Name = "receivingRequestIDDataGridViewTextBoxColumn";
-            this.receivingRequestIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // nomenclatureNumberDataGridViewTextBoxColumn
             // 

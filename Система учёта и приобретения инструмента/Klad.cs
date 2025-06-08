@@ -134,9 +134,13 @@ namespace Система_учёта_и_приобретения_инструме
         {
             AddApplications addApplications = new AddApplications(tOOLACCOUNTINGDataSet);
             addApplications.ShowDialog();
+         
+            receivingRequestsTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequests);
+            receivingRequestsContentTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsContent);
             // После закрытия формы — обновляем таблицы заявок на получение
             receivingRequests1TableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequests1);
             receivingRequestsContent1TableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsContent1);
+            
         }
 
         private void AddMoving_Click(object sender, EventArgs e)
