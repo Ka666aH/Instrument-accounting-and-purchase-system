@@ -266,6 +266,7 @@ namespace Система_учёта_и_приобретения_инструме
                         if (!isDuplicate)
                         {
                             table.Rows.Add(newRow);
+                            // Добавить логгирование //add
                             if (UpdateMainForm(tableName) != null) throw new Exception(UpdateMainForm(tableName));
                             importedRows++;
                         }
@@ -299,7 +300,6 @@ namespace Система_учёта_и_приобретения_инструме
                 default: throw new Exception("Вызов с неизвестной формы."); //bug?
             }
         }
-
         private void ImportForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (workbook != null)
