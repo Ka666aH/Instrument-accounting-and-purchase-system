@@ -33,7 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
             this.ApplicationType = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.ApplicationDate = new System.Windows.Forms.TextBox();
@@ -49,16 +48,17 @@
             this.WorkshopFormSaveClose = new System.Windows.Forms.Button();
             this.WorkshopFormSave = new System.Windows.Forms.Button();
             this.ApplicationsCompound = new System.Windows.Forms.DataGridView();
-            this.receivingRequestsContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.receivingRequestsContentTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter();
             this.receivingContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receivingRequestIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.nomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
+            this.receivingRequestsContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
+            this.receivingRequestsContentTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.ApplicationsCompound)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -98,11 +98,6 @@
             this.label2.Size = new System.Drawing.Size(34, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "От:";
-            // 
-            // tOOLACCOUNTINGDataSet
-            // 
-            this.tOOLACCOUNTINGDataSet.DataSetName = "TOOLACCOUNTINGDataSet";
-            this.tOOLACCOUNTINGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // ApplicationType
             // 
@@ -276,6 +271,7 @@
             this.WorkshopFormSaveClose.TabIndex = 36;
             this.WorkshopFormSaveClose.Text = "Сохранить и закрыть";
             this.WorkshopFormSaveClose.UseVisualStyleBackColor = true;
+            this.WorkshopFormSaveClose.Click += new System.EventHandler(this.WorkshopFormSaveClose_Click);
             // 
             // WorkshopFormSave
             // 
@@ -304,22 +300,12 @@
             this.quantityDataGridViewTextBoxColumn});
             this.ApplicationsCompound.DataSource = this.receivingRequestsContentBindingSource;
             this.ApplicationsCompound.Location = new System.Drawing.Point(12, 188);
+            this.ApplicationsCompound.MultiSelect = false;
             this.ApplicationsCompound.Name = "ApplicationsCompound";
             this.ApplicationsCompound.RowHeadersVisible = false;
             this.ApplicationsCompound.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ApplicationsCompound.Size = new System.Drawing.Size(760, 328);
             this.ApplicationsCompound.TabIndex = 2;
-            this.ApplicationsCompound.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ApplicationsCompound_CellContentClick);
-            this.ApplicationsCompound.AllowUserToAddRows = true;
-            // 
-            // receivingRequestsContentBindingSource
-            // 
-            this.receivingRequestsContentBindingSource.DataMember = "ReceivingRequestsContent";
-            this.receivingRequestsContentBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
-            // 
-            // receivingRequestsContentTableAdapter
-            // 
-            this.receivingRequestsContentTableAdapter.ClearBeforeFill = true;
             // 
             // receivingContentIDDataGridViewTextBoxColumn
             // 
@@ -342,7 +328,6 @@
             this.nomenclatureNumberDataGridViewTextBoxColumn.HeaderText = "Номенклатурный номер";
             this.nomenclatureNumberDataGridViewTextBoxColumn.Name = "nomenclatureNumberDataGridViewTextBoxColumn";
             this.nomenclatureNumberDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.nomenclatureNumberDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // fullNameDataGridViewTextBoxColumn
             // 
@@ -350,13 +335,26 @@
             this.fullNameDataGridViewTextBoxColumn.HeaderText = "Полное наименование";
             this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
             this.fullNameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.fullNameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Количество";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            // 
+            // receivingRequestsContentBindingSource
+            // 
+            this.receivingRequestsContentBindingSource.DataMember = "ReceivingRequestsContent";
+            this.receivingRequestsContentBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
+            // 
+            // tOOLACCOUNTINGDataSet
+            // 
+            this.tOOLACCOUNTINGDataSet.DataSetName = "TOOLACCOUNTINGDataSet";
+            this.tOOLACCOUNTINGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // receivingRequestsContentTableAdapter
+            // 
+            this.receivingRequestsContentTableAdapter.ClearBeforeFill = true;
             // 
             // AddApplications
             // 
@@ -387,9 +385,9 @@
             this.Name = "AddApplications";
             this.Text = "Создание заявки";
             this.Load += new System.EventHandler(this.AddApplications_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ApplicationsCompound)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,8 +418,8 @@
         private TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter receivingRequestsContentTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn receivingContentIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn receivingRequestIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn nomenclatureNumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn fullNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
     }
 }

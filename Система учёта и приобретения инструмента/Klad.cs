@@ -132,8 +132,11 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void AddApplication_Click(object sender, EventArgs e)
         {
-            AddApplications addApplications = new AddApplications();
+            AddApplications addApplications = new AddApplications(tOOLACCOUNTINGDataSet);
             addApplications.ShowDialog();
+            // После закрытия формы — обновляем таблицы заявок на получение
+            receivingRequests1TableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequests1);
+            receivingRequestsContent1TableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsContent1);
         }
 
         private void AddMoving_Click(object sender, EventArgs e)
@@ -281,6 +284,11 @@ namespace Система_учёта_и_приобретения_инструме
                     FormMode mode;
                     if (storagesOriginRow == null) mode = FormMode.Add;
                     else mode = FormMode.Edit;
+                    if (string.IsNullOrWhiteSpace(storageNum)) {
+                        e.Cancel = true;
+                        NotificationService.Notify("Предупреждение", "Это поле не может быть пустым.", ToolTipIcon.Warning);
+                        break;
+                    }
                     if (!Validation.IsStorageUnique(storageNum, tOOLACCOUNTINGDataSet, mode, storagesOriginRow)) e.Cancel = true;
                     break;
                 case 2:
@@ -503,6 +511,12 @@ namespace Система_учёта_и_приобретения_инструме
                     FormMode mode;
                     if (workshopsOriginRow == null) mode = FormMode.Add;
                     else mode = FormMode.Edit;
+                    if (string.IsNullOrWhiteSpace(workshopNum))
+                    {
+                        e.Cancel = true;
+                        NotificationService.Notify("Предупреждение", "Это поле не может быть пустым.", ToolTipIcon.Warning);
+                        break;
+                    }
                     if (!Validation.IsWorkshopUnique(workshopNum, tOOLACCOUNTINGDataSet, mode, workshopsOriginRow)) e.Cancel = true;
                     break;
                 default:
@@ -630,6 +644,17 @@ namespace Система_учёта_и_приобретения_инструме
         private void Digits_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
+        }
+
+        private void AlterReceiving_Click(object sender, EventArgs e)
+        {
+            ////SetWorkshopsButtonsState();
+            //if (WorkshopsMain.CurrentRow.DataBoundItem as DataRowView == null) return;
+            //var selectedRow = WorkshopsMain.CurrentRow.DataBoundItem as DataRowView;
+            //var workshopRow = selectedRow.Row as TOOLACCOUNTINGDataSet.Workshops1Row;
+
+            //AddApplications addApplications = new AddApplications(tOOLACCOUNTINGDataSet, workshopsTableAdapter, FormMode.Edit, workshopRow);
+            //addApplications.ShowDialog();
         }
     }
 

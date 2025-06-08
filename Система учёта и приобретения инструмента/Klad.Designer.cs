@@ -1256,6 +1256,7 @@
             this.AlterReceiving.TabIndex = 18;
             this.AlterReceiving.Text = "Изменить";
             this.AlterReceiving.UseVisualStyleBackColor = true;
+            this.AlterReceiving.Click += new System.EventHandler(this.AlterReceiving_Click);
             // 
             // CreateReceiving
             // 

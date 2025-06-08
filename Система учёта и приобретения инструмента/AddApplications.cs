@@ -7,35 +7,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters;
 
 namespace Система_учёта_и_приобретения_инструмента
 {
     public partial class AddApplications : Form
     {
         private TOOLACCOUNTINGDataSet dataSet;
-        private TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsTableAdapter requestsAdapter;
-        private TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter contentAdapter;
-        private TOOLACCOUNTINGDataSetTableAdapters.NomenclatureViewTableAdapter nomenclatureViewAdapter;
-        private TOOLACCOUNTINGDataSetTableAdapters.WorkshopsTableAdapter workshopsAdapter;
         private int? editingRequestId = null;
+        private FormMode mode;
+        private TOOLACCOUNTINGDataSet.ReceivingRequestsRow editRow;
 
-        public AddApplications()
+        public AddApplications(
+            TOOLACCOUNTINGDataSet _dataSet,
+            FormMode _mode = FormMode.Add,
+            TOOLACCOUNTINGDataSet.ReceivingRequests1Row _editRow = null)
         {
             InitializeComponent();
+            dataSet = _dataSet;
+            mode = _mode;
+            if (_editRow != null)
+            {
+                editRow = dataSet.ReceivingRequests.Where(s => s.ReceivingRequestID == _editRow.ReceivingRequestID).FirstOrDefault();
+            }
+            else
+            {
+                editRow = null;
+            }
             this.FormClosing += AddApplications_FormClosing;
         }
-
+        NomenclatureViewTableAdapter nomenclatureViewAdapter = new NomenclatureViewTableAdapter();
+        WorkshopsTableAdapter workshopTableAdapter = new WorkshopsTableAdapter();
         private void AddApplications_Load(object sender, EventArgs e)
         {
-            dataSet = new TOOLACCOUNTINGDataSet();
-            requestsAdapter = new TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsTableAdapter();
-            contentAdapter = new TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter();
-            nomenclatureViewAdapter = new TOOLACCOUNTINGDataSetTableAdapters.NomenclatureViewTableAdapter();
-            workshopsAdapter = new TOOLACCOUNTINGDataSetTableAdapters.WorkshopsTableAdapter();
-
-            nomenclatureViewAdapter.Fill(dataSet.NomenclatureView);
-            requestsAdapter.Fill(dataSet.ReceivingRequests);
-            workshopsAdapter.Fill(dataSet.Workshops);
+            
 
             // Формируем список для ComboBox Workshop
             var workshopList = dataSet.Workshops
@@ -52,17 +57,23 @@ namespace Система_учёта_и_приобретения_инструме
             Workshop.ValueMember = "WorkshopID";
             Workshop.SelectedIndex = -1;
 
-            ApplicationsCompound.AutoGenerateColumns = false;
-            ApplicationsCompound.DataSource = receivingRequestsContentBindingSource;
-            ApplicationsCompound.AllowUserToAddRows = false;
-            ApplicationsCompound.DataError += ApplicationsCompound_DataError;
-            ApplicationsCompound.UserDeletingRow += ApplicationsCompound_UserDeletingRow;
-
-            ApplicationDate.Text = DateTime.Today.ToShortDateString();
-            ApplicationType.SelectedIndex = 0;
-            dateTimePicker1.MinDate = DateTime.Today;
-            dateTimePicker1.Value = new DateTime(DateTime.Today.Year, DateTime.Today.AddMonths(3).Month, 1);
-            ApplicationDate.Text = DateTime.Today.ToShortDateString();
+            if (mode == FormMode.Edit && editRow != null)
+            {
+                // Заполняем поля формы из editRow
+                textBox1.Text = editRow.ReceivingRequestID.ToString();
+                ApplicationDate.Text = editRow.ReceivingRequestDate.ToShortDateString();
+                Workshop.SelectedValue = editRow.WorkshopID;
+                dateTimePicker1.Value = editRow.PlannedDate;
+                ApplicationType.Text = editRow.ReceivingRequestType;
+                Reason.Text = editRow.Reason;
+            }
+            else
+            {
+                ApplicationDate.Text = DateTime.Today.ToShortDateString();
+                ApplicationType.SelectedIndex = 0;
+                dateTimePicker1.MinDate = DateTime.Today;
+                dateTimePicker1.Value = new DateTime(DateTime.Today.Year, DateTime.Today.AddMonths(3).Month, 1);
+            }
 
             // Автоматическая подстановка номера заявки
             if (editingRequestId.HasValue)
@@ -102,11 +113,24 @@ namespace Система_учёта_и_приобретения_инструме
         private bool TrySave()
         {
             if (!AllRequiredFieldsFilled()) return false;
-            int workshopId = Convert.ToInt32(Workshop.SelectedValue);
-            DateTime plannedDate = dateTimePicker1.Value;
+            int workshopId = Convert.ToInt32(Workshop.SelectedValue.ToString());
+            DateTime plannedDate = dateTimePicker1.Value.Date;
             string requestType = ApplicationType.Text;
             string reason = Reason.Text;
-            string status = "Создана";
+            string status;
+            if (editingRequestId.HasValue)
+            {
+                // Если редактирование — оставляем старый статус
+                var existingRow = dataSet.ReceivingRequests
+                    .Cast<TOOLACCOUNTINGDataSet.ReceivingRequestsRow>()
+                    .FirstOrDefault(r => r.ReceivingRequestID == editingRequestId.Value);
+                status = existingRow != null ? existingRow.Status : "Не обработана";
+            }
+            else
+            {
+                // Если создание — всегда 'Не обработана'
+                status = "Не обработана";
+            }
             DateTime requestDate = DateTime.Now;
 
             if (!Validation.IsReceivingRequestValid(workshopId, plannedDate, requestType, reason))
@@ -122,14 +146,34 @@ namespace Система_учёта_и_приобретения_инструме
                 newRequest.Reason = reason;
                 newRequest.Status = status;
                 dataSet.ReceivingRequests.Rows.Add(newRequest);
+                var requestsAdapter = new ReceivingRequestsTableAdapter();
                 requestsAdapter.Update(dataSet.ReceivingRequests);
                 requestsAdapter.Fill(dataSet.ReceivingRequests);
                 int requestId = newRequest.ReceivingRequestID;
+
                 foreach (TOOLACCOUNTINGDataSet.ReceivingRequestsContentRow row in dataSet.ReceivingRequestsContent.Rows)
                 {
-                    row.ReceivingRequestID = requestId;
+                    TOOLACCOUNTINGDataSet.ReceivingRequestsContentRow newRow;
+                    if (dataSet.ReceivingRequestsContent.Any(l => l.ReceivingContentID == row.ReceivingContentID))
+                    {
+                        newRow = dataSet.ReceivingRequestsContent.First(l => l.ReceivingContentID == row.ReceivingContentID);
+                    }
+                    else
+                    {
+                        newRow = dataSet.ReceivingRequestsContent.NewReceivingRequestsContentRow();
+                    }
+                    newRow.ReceivingRequestID = requestId;
+                    newRow.NomenclatureNumber = row.NomenclatureNumber;
+                    newRow.FullName = row.FullName;
+                    newRow.Quantity = row.Quantity;
+                    if(!dataSet.ReceivingRequestsContent.Any(l => l.ReceivingContentID == row.ReceivingContentID))
+                    {
+                        dataSet.ReceivingRequestsContent.AddReceivingRequestsContentRow(newRow);
+                    }
+                    receivingRequestsContentTableAdapter.Update(dataSet.ReceivingRequestsContent);
+                    receivingRequestsContentTableAdapter.Fill(dataSet.ReceivingRequestsContent);
                 }
-                contentAdapter.Update(dataSet.ReceivingRequestsContent);
+                new ReceivingRequestsContentTableAdapter().Update(dataSet.ReceivingRequestsContent);
                 NotificationService.Notify("Успех", "Заявка успешно добавлена!", ToolTipIcon.Info);
                 ClearForm();
                 this.DialogResult = DialogResult.OK;
@@ -176,24 +220,28 @@ namespace Система_учёта_и_приобретения_инструме
         // Автоподстановка и фильтрация по вводу в ApplicationsCompound
         private void ApplicationsCompound_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if (e.Control is TextBox tb)
+            if (ApplicationsCompound.CurrentCell == null) return;
+            var col = ApplicationsCompound.CurrentCell.OwningColumn;
+            if (col.Name == "nomenclatureNumberDataGridViewTextBoxColumn" || col.Name == "fullNameDataGridViewTextBoxColumn")
             {
-                tb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                tb.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                var col = ApplicationsCompound.CurrentCell.ColumnIndex;
-                var autoSource = new AutoCompleteStringCollection();
-                var nomenTable = nomenclatureViewAdapter.GetData();
-                if (col == ApplicationsCompound.Columns["nomenclatureNumberDataGridViewTextBoxColumn"].Index)
+                if (e.Control is TextBox tb)
                 {
-                    foreach (DataRow row in nomenTable.Rows)
-                        autoSource.Add(row["NomenclatureNumber"].ToString());
+                    tb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    tb.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                    var autoSource = new AutoCompleteStringCollection();
+                    var nomenTable = nomenclatureViewAdapter.GetData();
+                    if (col.Name == "nomenclatureNumberDataGridViewTextBoxColumn")
+                    {
+                        foreach (DataRow row in nomenTable.Rows)
+                            autoSource.Add(row["NomenclatureNumber"].ToString());
+                    }
+                    else if (col.Name == "fullNameDataGridViewTextBoxColumn")
+                    {
+                        foreach (DataRow row in nomenTable.Rows)
+                            autoSource.Add(row["FullName"].ToString());
+                    }
+                    tb.AutoCompleteCustomSource = autoSource;
                 }
-                else if (col == ApplicationsCompound.Columns["fullNameDataGridViewTextBoxColumn"].Index)
-                {
-                    foreach (DataRow row in nomenTable.Rows)
-                        autoSource.Add(row["FullName"].ToString());
-                }
-                tb.AutoCompleteCustomSource = autoSource;
             }
         }
 
@@ -202,6 +250,8 @@ namespace Система_учёта_и_приобретения_инструме
             if (e.RowIndex < 0) return;
             var row = ApplicationsCompound.Rows[e.RowIndex];
             var nomenTable = nomenclatureViewAdapter.GetData();
+
+            // Если изменился номер номенклатуры
             if (ApplicationsCompound.Columns[e.ColumnIndex].Name == "nomenclatureNumberDataGridViewTextBoxColumn")
             {
                 var val = row.Cells["nomenclatureNumberDataGridViewTextBoxColumn"].Value?.ToString();
@@ -212,6 +262,7 @@ namespace Система_учёта_и_приобретения_инструме
                         row.Cells["fullNameDataGridViewTextBoxColumn"].Value = found["FullName"].ToString();
                 }
             }
+            // Если изменилось полное наименование
             else if (ApplicationsCompound.Columns[e.ColumnIndex].Name == "fullNameDataGridViewTextBoxColumn")
             {
                 var val = row.Cells["fullNameDataGridViewTextBoxColumn"].Value?.ToString();
@@ -285,7 +336,7 @@ namespace Система_учёта_и_приобретения_инструме
         private void ApplicationsCompound_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             // Просто подавляем ошибку, можно добавить логирование
-            e.ThrowException = false;
+            //e.ThrowException = false;
         }
 
         private void ApplicationsCompound_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
@@ -304,5 +355,64 @@ namespace Система_учёта_и_приобретения_инструме
                 }
             }
         }
+
+        private void ApplicationsCompound_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            var col = ApplicationsCompound.Columns[e.ColumnIndex];
+            var row = ApplicationsCompound.Rows[e.RowIndex];
+            var nomenTable = nomenclatureViewAdapter.GetData();
+
+            if (col.Name == "nomenclatureNumberDataGridViewTextBoxColumn")
+            {
+                var val = row.Cells["nomenclatureNumberDataGridViewTextBoxColumn"].Value?.ToString();
+                if (!string.IsNullOrEmpty(val))
+                {
+                    var found = nomenTable.Rows.Cast<DataRow>().FirstOrDefault(n => n["NomenclatureNumber"].ToString() == val);
+                    if (found != null)
+                        row.Cells["fullNameDataGridViewTextBoxColumn"].Value = found["FullName"].ToString();
+                    // Если не найдено — ничего не делаем, пользовательский ввод сохраняется
+                }
+            }
+            else if (col.Name == "fullNameDataGridViewTextBoxColumn")
+            {
+                var val = row.Cells["fullNameDataGridViewTextBoxColumn"].Value?.ToString();
+                if (!string.IsNullOrEmpty(val))
+                {
+                    var found = nomenTable.Rows.Cast<DataRow>().FirstOrDefault(n => n["FullName"].ToString() == val);
+                    if (found != null)
+                        row.Cells["nomenclatureNumberDataGridViewTextBoxColumn"].Value = found["NomenclatureNumber"].ToString();
+                    // Если не найдено — ничего не делаем, пользовательский ввод сохраняется
+                }
+            }
+        }
+
+        private void ApplicationsCompound_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        {
+            // Генерируем новый ReceivingContentID
+            int newContentId = 1;
+            if (dataSet.ReceivingRequestsContent.Rows.Count > 0)
+            {
+                newContentId = dataSet.ReceivingRequestsContent.Max(r => ((TOOLACCOUNTINGDataSet.ReceivingRequestsContentRow)r).ReceivingContentID) + 1;
+            }
+            e.Row.Cells["receivingContentIDDataGridViewTextBoxColumn"].Value = newContentId;
+
+            // Устанавливаем ReceivingRequestID равным текущему ID заявки
+            if (editingRequestId.HasValue)
+            {
+                e.Row.Cells["receivingRequestIDDataGridViewTextBoxColumn"].Value = editingRequestId.Value;
+            }
+            else if (!string.IsNullOrEmpty(textBox1.Text))
+            {
+                e.Row.Cells["receivingRequestIDDataGridViewTextBoxColumn"].Value = Convert.ToInt32(textBox1.Text);
+            }
+        }
+
+        private void WorkshopFormSaveClose_Click(object sender, EventArgs e)
+        {
+            if (TrySave())
+                Close();
+        }
     }
 }
+
