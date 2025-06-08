@@ -400,8 +400,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox NomenFormGroup;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox NomenFormOboz;
@@ -427,5 +425,6 @@
         private System.Windows.Forms.Button NomenFormAddGroup;
         private System.Windows.Forms.TextBox NomenFormNumber;
         private System.Windows.Forms.Label label11;
+        public System.Windows.Forms.ComboBox NomenFormGroup;
     }
 }

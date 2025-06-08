@@ -251,14 +251,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox AnalogFormOrigiinalName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.MaskedTextBox AnalogFormOrigiinalNumber;
         private System.Windows.Forms.MaskedTextBox AnalogFormAnalogNumber;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox AnalogFormAnalogName;
         private System.Windows.Forms.Label label8;
+        public System.Windows.Forms.MaskedTextBox AnalogFormOrigiinalNumber;
+        public System.Windows.Forms.ComboBox AnalogFormOrigiinalName;
+        public System.Windows.Forms.ComboBox AnalogFormAnalogName;
     }
 }
