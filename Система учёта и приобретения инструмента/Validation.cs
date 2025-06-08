@@ -203,13 +203,44 @@ namespace Система_учёта_и_приобретения_инструме
             return isReturn;
         }
 
-        public static bool IsStorageConnectedToWorkshop(int ID ,TOOLACCOUNTINGDataSet toolAccounting, FormMode mode, TOOLACCOUNTINGDataSet.StoragesRow originRow = null)
+        public static bool IsStorageConnectedToWorkshop(int ID, TOOLACCOUNTINGDataSet toolAccounting, FormMode mode, TOOLACCOUNTINGDataSet.StoragesRow originRow = null)
         {
             bool isReturn = true;
             isReturn = toolAccounting.Workshops.Any(s => s.WorkshopID == ID);
             if (!isReturn) NotificationService.Notify("Предупреждение", "Склад не связан с цехом, либо связан с несуществующим цехом.", ToolTipIcon.Warning);
             return isReturn;
         }
+        #endregion
+
+        #region Заявка на получение
+        public static bool IsReceivingRequestValid(int? workshopId, DateTime? plannedDate, string requestType, string reason)
+        {
+            if (workshopId == null || workshopId <= 0)
+            {
+                NotificationService.Notify("Предупреждение", "Выберите цех.", ToolTipIcon.Warning);
+                return false;
+            }
+            if (plannedDate == null || plannedDate < DateTime.Today)
+            {
+                NotificationService.Notify("Предупреждение", "Плановая дата должна быть не раньше сегодняшней.", ToolTipIcon.Warning);
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(requestType))
+            {
+                NotificationService.Notify("Предупреждение", "Выберите тип заявки.", ToolTipIcon.Warning);
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(reason))
+            {
+                NotificationService.Notify("Предупреждение", "Укажите причину заявки.", ToolTipIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+        #endregion
+
+        #region Дефектная ведомость
+
         #endregion
 
     }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DefAdd));
             this.ApplicationDate = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -47,7 +48,23 @@
             this.GroupFormClose = new System.Windows.Forms.Button();
             this.GroupFormSaveClose = new System.Windows.Forms.Button();
             this.GroupFormSave = new System.Windows.Forms.Button();
+            this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
+            this.nomenclatureViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nomenclatureViewTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.NomenclatureViewTableAdapter();
+            this.nomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.designationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dimensionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuttingMaterialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.regulatoryDocDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.producerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usageFlagDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.minStockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nomenclatureViewBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // ApplicationDate
@@ -208,8 +225,22 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nomenclatureNumberDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.designationDataGridViewTextBoxColumn,
+            this.unitDataGridViewTextBoxColumn,
+            this.dimensionsDataGridViewTextBoxColumn,
+            this.cuttingMaterialDataGridViewTextBoxColumn,
+            this.regulatoryDocDataGridViewTextBoxColumn,
+            this.producerDataGridViewTextBoxColumn,
+            this.fullNameDataGridViewTextBoxColumn,
+            this.usageFlagDataGridViewTextBoxColumn,
+            this.minStockDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.nomenclatureViewBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 188);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
@@ -249,6 +280,90 @@
             this.GroupFormSave.Text = "Сохранить";
             this.GroupFormSave.UseVisualStyleBackColor = true;
             // 
+            // tOOLACCOUNTINGDataSet
+            // 
+            this.tOOLACCOUNTINGDataSet.DataSetName = "TOOLACCOUNTINGDataSet";
+            this.tOOLACCOUNTINGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // nomenclatureViewBindingSource
+            // 
+            this.nomenclatureViewBindingSource.DataMember = "NomenclatureView";
+            this.nomenclatureViewBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
+            // 
+            // nomenclatureViewTableAdapter
+            // 
+            this.nomenclatureViewTableAdapter.ClearBeforeFill = true;
+            // 
+            // nomenclatureNumberDataGridViewTextBoxColumn
+            // 
+            this.nomenclatureNumberDataGridViewTextBoxColumn.DataPropertyName = "NomenclatureNumber";
+            this.nomenclatureNumberDataGridViewTextBoxColumn.HeaderText = "Номенклатурный номер";
+            this.nomenclatureNumberDataGridViewTextBoxColumn.Name = "nomenclatureNumberDataGridViewTextBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // designationDataGridViewTextBoxColumn
+            // 
+            this.designationDataGridViewTextBoxColumn.DataPropertyName = "Designation";
+            this.designationDataGridViewTextBoxColumn.HeaderText = "";
+            this.designationDataGridViewTextBoxColumn.Name = "designationDataGridViewTextBoxColumn";
+            this.designationDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // unitDataGridViewTextBoxColumn
+            // 
+            this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
+            this.unitDataGridViewTextBoxColumn.HeaderText = "Единицы измерения";
+            this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
+            // 
+            // dimensionsDataGridViewTextBoxColumn
+            // 
+            this.dimensionsDataGridViewTextBoxColumn.DataPropertyName = "Dimensions";
+            this.dimensionsDataGridViewTextBoxColumn.HeaderText = "Типоразмер";
+            this.dimensionsDataGridViewTextBoxColumn.Name = "dimensionsDataGridViewTextBoxColumn";
+            // 
+            // cuttingMaterialDataGridViewTextBoxColumn
+            // 
+            this.cuttingMaterialDataGridViewTextBoxColumn.DataPropertyName = "CuttingMaterial";
+            this.cuttingMaterialDataGridViewTextBoxColumn.HeaderText = "Материал режущей части";
+            this.cuttingMaterialDataGridViewTextBoxColumn.Name = "cuttingMaterialDataGridViewTextBoxColumn";
+            // 
+            // regulatoryDocDataGridViewTextBoxColumn
+            // 
+            this.regulatoryDocDataGridViewTextBoxColumn.DataPropertyName = "RegulatoryDoc";
+            this.regulatoryDocDataGridViewTextBoxColumn.HeaderText = "RegulatoryDoc";
+            this.regulatoryDocDataGridViewTextBoxColumn.Name = "regulatoryDocDataGridViewTextBoxColumn";
+            this.regulatoryDocDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // producerDataGridViewTextBoxColumn
+            // 
+            this.producerDataGridViewTextBoxColumn.DataPropertyName = "Producer";
+            this.producerDataGridViewTextBoxColumn.HeaderText = "Производитель";
+            this.producerDataGridViewTextBoxColumn.Name = "producerDataGridViewTextBoxColumn";
+            // 
+            // fullNameDataGridViewTextBoxColumn
+            // 
+            this.fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
+            this.fullNameDataGridViewTextBoxColumn.HeaderText = "Полное наименование";
+            this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
+            this.fullNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // usageFlagDataGridViewTextBoxColumn
+            // 
+            this.usageFlagDataGridViewTextBoxColumn.DataPropertyName = "UsageFlag";
+            this.usageFlagDataGridViewTextBoxColumn.HeaderText = "Признак использования";
+            this.usageFlagDataGridViewTextBoxColumn.Name = "usageFlagDataGridViewTextBoxColumn";
+            // 
+            // minStockDataGridViewTextBoxColumn
+            // 
+            this.minStockDataGridViewTextBoxColumn.DataPropertyName = "MinStock";
+            this.minStockDataGridViewTextBoxColumn.HeaderText = "Неснижаемый остаток";
+            this.minStockDataGridViewTextBoxColumn.Name = "minStockDataGridViewTextBoxColumn";
+            // 
             // DefAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,7 +392,10 @@
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "DefAdd";
             this.Text = "Создание дефектной ведомости";
+            this.Load += new System.EventHandler(this.DefAdd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nomenclatureViewBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,5 +421,19 @@
         private System.Windows.Forms.Button GroupFormClose;
         private System.Windows.Forms.Button GroupFormSaveClose;
         private System.Windows.Forms.Button GroupFormSave;
+        private TOOLACCOUNTINGDataSet tOOLACCOUNTINGDataSet;
+        private System.Windows.Forms.BindingSource nomenclatureViewBindingSource;
+        private TOOLACCOUNTINGDataSetTableAdapters.NomenclatureViewTableAdapter nomenclatureViewTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn designationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dimensionsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuttingMaterialDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn regulatoryDocDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn producerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn usageFlagDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn minStockDataGridViewTextBoxColumn;
     }
 }

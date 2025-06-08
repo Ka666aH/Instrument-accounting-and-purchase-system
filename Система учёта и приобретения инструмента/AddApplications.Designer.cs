@@ -33,7 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.ApplicationsCompound = new System.Windows.Forms.DataGridView();
             this.ApplicationType = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.ApplicationDate = new System.Windows.Forms.TextBox();
@@ -45,26 +44,21 @@
             this.Reason = new System.Windows.Forms.ComboBox();
             this.OtherReasonText = new System.Windows.Forms.Label();
             this.OtherReason = new System.Windows.Forms.TextBox();
-            this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
-            this.nomenclatureViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nomenclatureViewTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.NomenclatureViewTableAdapter();
-            this.nomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.designationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dimensionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuttingMaterialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.regulatoryDocDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.producerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usageFlagDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.minStockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WorkshopFormClose = new System.Windows.Forms.Button();
             this.WorkshopFormSaveClose = new System.Windows.Forms.Button();
             this.WorkshopFormSave = new System.Windows.Forms.Button();
+            this.ApplicationsCompound = new System.Windows.Forms.DataGridView();
+            this.receivingContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receivingRequestIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receivingRequestsContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
+            this.receivingRequestsContentTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.ApplicationsCompound)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nomenclatureViewBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -104,35 +98,6 @@
             this.label2.Size = new System.Drawing.Size(34, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "От:";
-            // 
-            // ApplicationsCompound
-            // 
-            this.ApplicationsCompound.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ApplicationsCompound.AutoGenerateColumns = false;
-            this.ApplicationsCompound.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ApplicationsCompound.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ApplicationsCompound.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nomenclatureNumberDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.designationDataGridViewTextBoxColumn,
-            this.unitDataGridViewTextBoxColumn,
-            this.dimensionsDataGridViewTextBoxColumn,
-            this.cuttingMaterialDataGridViewTextBoxColumn,
-            this.regulatoryDocDataGridViewTextBoxColumn,
-            this.producerDataGridViewTextBoxColumn,
-            this.fullNameDataGridViewTextBoxColumn,
-            this.usageFlagDataGridViewTextBoxColumn,
-            this.minStockDataGridViewTextBoxColumn});
-            this.ApplicationsCompound.DataSource = this.nomenclatureViewBindingSource;
-            this.ApplicationsCompound.Location = new System.Drawing.Point(12, 188);
-            this.ApplicationsCompound.Name = "ApplicationsCompound";
-            this.ApplicationsCompound.RowHeadersVisible = false;
-            this.ApplicationsCompound.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ApplicationsCompound.Size = new System.Drawing.Size(760, 328);
-            this.ApplicationsCompound.TabIndex = 2;
-            this.ApplicationsCompound.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ApplicationsCompound_CellContentClick);
             // 
             // ApplicationType
             // 
@@ -284,93 +249,6 @@
             this.OtherReason.TabIndex = 6;
             this.OtherReason.Visible = false;
             // 
-            // tOOLACCOUNTINGDataSet
-            // 
-            this.tOOLACCOUNTINGDataSet.DataSetName = "TOOLACCOUNTINGDataSet";
-            this.tOOLACCOUNTINGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // nomenclatureViewBindingSource
-            // 
-            this.nomenclatureViewBindingSource.DataMember = "NomenclatureView";
-            this.nomenclatureViewBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
-            // 
-            // nomenclatureViewTableAdapter
-            // 
-            this.nomenclatureViewTableAdapter.ClearBeforeFill = true;
-            // 
-            // nomenclatureNumberDataGridViewTextBoxColumn
-            // 
-            this.nomenclatureNumberDataGridViewTextBoxColumn.DataPropertyName = "NomenclatureNumber";
-            this.nomenclatureNumberDataGridViewTextBoxColumn.HeaderText = "Номенклатурный номер";
-            this.nomenclatureNumberDataGridViewTextBoxColumn.Name = "nomenclatureNumberDataGridViewTextBoxColumn";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // designationDataGridViewTextBoxColumn
-            // 
-            this.designationDataGridViewTextBoxColumn.DataPropertyName = "Designation";
-            this.designationDataGridViewTextBoxColumn.HeaderText = "Designation";
-            this.designationDataGridViewTextBoxColumn.Name = "designationDataGridViewTextBoxColumn";
-            this.designationDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // unitDataGridViewTextBoxColumn
-            // 
-            this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
-            this.unitDataGridViewTextBoxColumn.HeaderText = "Единицы измерения";
-            this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
-            // 
-            // dimensionsDataGridViewTextBoxColumn
-            // 
-            this.dimensionsDataGridViewTextBoxColumn.DataPropertyName = "Dimensions";
-            this.dimensionsDataGridViewTextBoxColumn.HeaderText = "Типоразмер";
-            this.dimensionsDataGridViewTextBoxColumn.Name = "dimensionsDataGridViewTextBoxColumn";
-            // 
-            // cuttingMaterialDataGridViewTextBoxColumn
-            // 
-            this.cuttingMaterialDataGridViewTextBoxColumn.DataPropertyName = "CuttingMaterial";
-            this.cuttingMaterialDataGridViewTextBoxColumn.HeaderText = "Материал режущей части";
-            this.cuttingMaterialDataGridViewTextBoxColumn.Name = "cuttingMaterialDataGridViewTextBoxColumn";
-            // 
-            // regulatoryDocDataGridViewTextBoxColumn
-            // 
-            this.regulatoryDocDataGridViewTextBoxColumn.DataPropertyName = "RegulatoryDoc";
-            this.regulatoryDocDataGridViewTextBoxColumn.HeaderText = "RegulatoryDoc";
-            this.regulatoryDocDataGridViewTextBoxColumn.Name = "regulatoryDocDataGridViewTextBoxColumn";
-            this.regulatoryDocDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // producerDataGridViewTextBoxColumn
-            // 
-            this.producerDataGridViewTextBoxColumn.DataPropertyName = "Producer";
-            this.producerDataGridViewTextBoxColumn.HeaderText = "Producer";
-            this.producerDataGridViewTextBoxColumn.Name = "producerDataGridViewTextBoxColumn";
-            this.producerDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // fullNameDataGridViewTextBoxColumn
-            // 
-            this.fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
-            this.fullNameDataGridViewTextBoxColumn.HeaderText = "Полное наименование";
-            this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
-            this.fullNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // usageFlagDataGridViewTextBoxColumn
-            // 
-            this.usageFlagDataGridViewTextBoxColumn.DataPropertyName = "UsageFlag";
-            this.usageFlagDataGridViewTextBoxColumn.HeaderText = "UsageFlag";
-            this.usageFlagDataGridViewTextBoxColumn.Name = "usageFlagDataGridViewTextBoxColumn";
-            this.usageFlagDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // minStockDataGridViewTextBoxColumn
-            // 
-            this.minStockDataGridViewTextBoxColumn.DataPropertyName = "MinStock";
-            this.minStockDataGridViewTextBoxColumn.HeaderText = "MinStock";
-            this.minStockDataGridViewTextBoxColumn.Name = "minStockDataGridViewTextBoxColumn";
-            this.minStockDataGridViewTextBoxColumn.Visible = false;
-            // 
             // WorkshopFormClose
             // 
             this.WorkshopFormClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -382,6 +260,7 @@
             this.WorkshopFormClose.TabIndex = 37;
             this.WorkshopFormClose.Text = "Закрыть";
             this.WorkshopFormClose.UseVisualStyleBackColor = true;
+            this.WorkshopFormClose.Click += new System.EventHandler(this.CloseNewApplication_Click);
             // 
             // WorkshopFormSaveClose
             // 
@@ -392,6 +271,7 @@
             this.WorkshopFormSaveClose.TabIndex = 36;
             this.WorkshopFormSaveClose.Text = "Сохранить и закрыть";
             this.WorkshopFormSaveClose.UseVisualStyleBackColor = true;
+            this.WorkshopFormSaveClose.Click += new System.EventHandler(this.WorkshopFormSaveClose_Click);
             // 
             // WorkshopFormSave
             // 
@@ -402,6 +282,79 @@
             this.WorkshopFormSave.TabIndex = 35;
             this.WorkshopFormSave.Text = "Сохранить";
             this.WorkshopFormSave.UseVisualStyleBackColor = true;
+            this.WorkshopFormSave.Click += new System.EventHandler(this.WorkshopFormSave_Click);
+            // 
+            // ApplicationsCompound
+            // 
+            this.ApplicationsCompound.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ApplicationsCompound.AutoGenerateColumns = false;
+            this.ApplicationsCompound.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ApplicationsCompound.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ApplicationsCompound.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.receivingContentIDDataGridViewTextBoxColumn,
+            this.receivingRequestIDDataGridViewTextBoxColumn,
+            this.nomenclatureNumberDataGridViewTextBoxColumn,
+            this.fullNameDataGridViewTextBoxColumn,
+            this.quantityDataGridViewTextBoxColumn});
+            this.ApplicationsCompound.DataSource = this.receivingRequestsContentBindingSource;
+            this.ApplicationsCompound.Location = new System.Drawing.Point(12, 188);
+            this.ApplicationsCompound.MultiSelect = false;
+            this.ApplicationsCompound.Name = "ApplicationsCompound";
+            this.ApplicationsCompound.RowHeadersVisible = false;
+            this.ApplicationsCompound.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ApplicationsCompound.Size = new System.Drawing.Size(760, 328);
+            this.ApplicationsCompound.TabIndex = 2;
+            // 
+            // receivingContentIDDataGridViewTextBoxColumn
+            // 
+            this.receivingContentIDDataGridViewTextBoxColumn.DataPropertyName = "ReceivingContentID";
+            this.receivingContentIDDataGridViewTextBoxColumn.HeaderText = "ReceivingContentID";
+            this.receivingContentIDDataGridViewTextBoxColumn.Name = "receivingContentIDDataGridViewTextBoxColumn";
+            this.receivingContentIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.receivingContentIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // receivingRequestIDDataGridViewTextBoxColumn
+            // 
+            this.receivingRequestIDDataGridViewTextBoxColumn.DataPropertyName = "ReceivingRequestID";
+            this.receivingRequestIDDataGridViewTextBoxColumn.HeaderText = "ReceivingRequestID";
+            this.receivingRequestIDDataGridViewTextBoxColumn.Name = "receivingRequestIDDataGridViewTextBoxColumn";
+            this.receivingRequestIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nomenclatureNumberDataGridViewTextBoxColumn
+            // 
+            this.nomenclatureNumberDataGridViewTextBoxColumn.DataPropertyName = "NomenclatureNumber";
+            this.nomenclatureNumberDataGridViewTextBoxColumn.HeaderText = "Номенклатурный номер";
+            this.nomenclatureNumberDataGridViewTextBoxColumn.Name = "nomenclatureNumberDataGridViewTextBoxColumn";
+            this.nomenclatureNumberDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // fullNameDataGridViewTextBoxColumn
+            // 
+            this.fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
+            this.fullNameDataGridViewTextBoxColumn.HeaderText = "Полное наименование";
+            this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
+            this.fullNameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Количество";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            // 
+            // receivingRequestsContentBindingSource
+            // 
+            this.receivingRequestsContentBindingSource.DataMember = "ReceivingRequestsContent";
+            this.receivingRequestsContentBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
+            // 
+            // tOOLACCOUNTINGDataSet
+            // 
+            this.tOOLACCOUNTINGDataSet.DataSetName = "TOOLACCOUNTINGDataSet";
+            this.tOOLACCOUNTINGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // receivingRequestsContentTableAdapter
+            // 
+            this.receivingRequestsContentTableAdapter.ClearBeforeFill = true;
             // 
             // AddApplications
             // 
@@ -433,8 +386,8 @@
             this.Text = "Создание заявки";
             this.Load += new System.EventHandler(this.AddApplications_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ApplicationsCompound)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nomenclatureViewBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -445,7 +398,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView ApplicationsCompound;
         private System.Windows.Forms.ComboBox ApplicationType;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox ApplicationDate;
@@ -458,21 +410,16 @@
         private System.Windows.Forms.Label OtherReasonText;
         private System.Windows.Forms.TextBox OtherReason;
         private TOOLACCOUNTINGDataSet tOOLACCOUNTINGDataSet;
-        private System.Windows.Forms.BindingSource nomenclatureViewBindingSource;
-        private TOOLACCOUNTINGDataSetTableAdapters.NomenclatureViewTableAdapter nomenclatureViewTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn designationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dimensionsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cuttingMaterialDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn regulatoryDocDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn producerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usageFlagDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn minStockDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button WorkshopFormClose;
         private System.Windows.Forms.Button WorkshopFormSaveClose;
         private System.Windows.Forms.Button WorkshopFormSave;
+        private System.Windows.Forms.DataGridView ApplicationsCompound;
+        private System.Windows.Forms.BindingSource receivingRequestsContentBindingSource;
+        private TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter receivingRequestsContentTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn receivingContentIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn receivingRequestIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
     }
 }

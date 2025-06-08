@@ -32,8 +32,8 @@ namespace Система_учёта_и_приобретения_инструме
             if (_editRow != null)
             {
                 editRow = toolAccounting.Storages.Where(s => s.StorageID == _editRow.StorageID).FirstOrDefault();
-                //editRow.WorkshopID = _editRow.WorkshopID;
-                //editRow.Name = _editRow.Name;
+                editRow.WorkshopID = _editRow.WorkshopID;
+                editRow.Name = _editRow.Name;
             }
             else
             {
@@ -141,6 +141,7 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 StorageNumber.Text = editRow.StorageID.ToString();
                 StorageName.Text = editRow.Name;
+                WorkshopNumber.Text = editRow.WorkshopID.ToString();
             }
         }
 
