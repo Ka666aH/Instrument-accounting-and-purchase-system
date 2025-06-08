@@ -296,7 +296,7 @@ namespace Система_учёта_и_приобретения_инструме
                     Klad kladForm = Owner as Klad;
                     return kladForm.ImportRefresh(tableName);
 
-                default: throw new Exception("Вызов с неизвестной формы.");
+                default: throw new Exception("Вызов с неизвестной формы."); //bug?
             }
         }
 

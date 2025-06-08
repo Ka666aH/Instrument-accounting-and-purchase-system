@@ -168,7 +168,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -190,7 +190,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         #endregion
@@ -377,7 +377,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         #endregion
@@ -398,7 +398,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         #endregion
@@ -463,7 +463,7 @@ namespace Система_учёта_и_приобретения_инструме
             catch (Exception ex)
             {
                 tOOLACCOUNTINGDataSet.RejectChanges();
-                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }
@@ -596,7 +596,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

@@ -113,7 +113,7 @@ namespace Система_учёта_и_приобретения_инструме
             catch (Exception ex)
             {
                 toolAccounting.AnalogTools.RejectChanges();
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }
@@ -204,8 +204,8 @@ namespace Система_учёта_и_приобретения_инструме
             AnalogFormClose.Focus();
             if (!AllFieldsEmpty())
             {
-                DialogResult result = MessageBox.Show("Вы уверены, что закрыть форму? Все несохранённые данные будут потеряны.", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.No) return;
+                DialogResult result = MessageBox.Show("Вы уверены, что хотите закрыть форму? Все несохраненные данные будут потеряны.", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.No) e.Cancel = true;
             }
         }
         private bool AllFieldsEmpty()

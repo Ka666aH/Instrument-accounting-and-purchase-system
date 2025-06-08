@@ -241,7 +241,7 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 tOOLACCOUNTINGDataSet.Nomenclature.RejectChanges();
                 tOOLACCOUNTINGDataSet.NomenclatureLogs.RejectChanges();
-                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }
@@ -454,7 +454,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void NomenButtonResetSearch_Click(object sender, EventArgs e)
@@ -585,7 +585,7 @@ namespace Система_учёта_и_приобретения_инструме
             catch (Exception ex)
             {
                 tOOLACCOUNTINGDataSet.RejectChanges();
-                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }
@@ -768,7 +768,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void AnalogButtonResetSearch_Click(object sender, EventArgs e)
@@ -857,7 +857,7 @@ namespace Система_учёта_и_приобретения_инструме
             catch (Exception ex)
             {
                 tOOLACCOUNTINGDataSet.RejectChanges();
-                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }
@@ -950,7 +950,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void GroupsButtonResetSearch_Click(object sender, EventArgs e)
@@ -1048,7 +1048,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         //Возможный вариант поиска
@@ -1094,7 +1094,7 @@ namespace Система_учёта_и_приобретения_инструме
         //    }
         //    catch (Exception ex)
         //    {
-        //        MessageBox.Show(ex.Message, "Ошибка фильтрации", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        MessageBox.Show(ex.Message, "Ошибка фильтрации", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         //    }
         //}
         private void ReceivingRequestsButtonResetSearch_Click(object sender, EventArgs e)
@@ -1326,7 +1326,7 @@ namespace Система_учёта_и_приобретения_инструме
             catch (Exception ex)
             {
                 tOOLACCOUNTINGDataSet.RejectChanges();
-                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }
@@ -1350,7 +1350,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -1595,7 +1595,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void LogButtonResetSearch_Click(object sender, EventArgs e)
