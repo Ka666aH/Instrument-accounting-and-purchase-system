@@ -37,7 +37,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.textBox13 = new System.Windows.Forms.TextBox();
@@ -74,7 +73,6 @@
             this.Passage = new System.Windows.Forms.CheckBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.WarehouseSender = new System.Windows.Forms.ComboBox();
-            this.MoveType = new System.Windows.Forms.ComboBox();
             this.WarehouseRecipient = new System.Windows.Forms.ComboBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -131,7 +129,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.ApplicationNeedDate = new System.Windows.Forms.DateTimePicker();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.ApplicationStatusSearch = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -224,11 +221,9 @@
             this.button6 = new System.Windows.Forms.Button();
             this.OstatkiPrice = new System.Windows.Forms.CheckBox();
             this.label37 = new System.Windows.Forms.Label();
-            this.OstatkiStorage = new System.Windows.Forms.ComboBox();
             this.label38 = new System.Windows.Forms.Label();
             this.OstatkiNumber = new System.Windows.Forms.MaskedTextBox();
             this.label39 = new System.Windows.Forms.Label();
-            this.OstatkiName = new System.Windows.Forms.ComboBox();
             this.label40 = new System.Windows.Forms.Label();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -252,6 +247,12 @@
             this.receivingRequestsContent1TableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContent1TableAdapter();
             this.receivingRequestsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsTableAdapter();
             this.receivingRequestsContentTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.Planned = new System.Windows.Forms.RadioButton();
+            this.NonPlanned = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.tabPage4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -344,7 +345,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.button5);
             this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.radioButton3);
             this.groupBox3.Controls.Add(this.radioButton2);
             this.groupBox3.Controls.Add(this.radioButton1);
             this.groupBox3.Controls.Add(this.textBox13);
@@ -377,6 +377,7 @@
             this.button5.TabIndex = 43;
             this.button5.Text = "Сброс";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.DefectiveResetButton_Click);
             // 
             // textBox1
             // 
@@ -386,43 +387,33 @@
             this.textBox1.Size = new System.Drawing.Size(267, 29);
             this.textBox1.TabIndex = 42;
             // 
-            // radioButton3
-            // 
-            this.radioButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Checked = true;
-            this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton3.Location = new System.Drawing.Point(908, 25);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(57, 24);
-            this.radioButton3.TabIndex = 41;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Нет";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
             // radioButton2
             // 
             this.radioButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton2.Location = new System.Drawing.Point(1070, 25);
+            this.radioButton2.Location = new System.Drawing.Point(1012, 25);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(84, 24);
             this.radioButton2.TabIndex = 40;
             this.radioButton2.Text = "Ремонт";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.textBox11_TextChanged);
+            this.radioButton2.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
             // 
             // radioButton1
             // 
             this.radioButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButton1.AutoSize = true;
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton1.Location = new System.Drawing.Point(968, 25);
+            this.radioButton1.Location = new System.Drawing.Point(910, 25);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(100, 24);
             this.radioButton1.TabIndex = 40;
             this.radioButton1.Text = "Списание";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.textBox11_TextChanged);
+            this.radioButton1.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
             // 
             // textBox13
             // 
@@ -432,6 +423,7 @@
             this.textBox13.Size = new System.Drawing.Size(280, 29);
             this.textBox13.TabIndex = 39;
             this.textBox13.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
+            this.textBox13.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Digits_KeyPress);
             // 
             // label25
             // 
@@ -702,12 +694,13 @@
             // 
             this.SearchMoving.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchMoving.Controls.Add(this.radioButton4);
+            this.SearchMoving.Controls.Add(this.radioButton3);
             this.SearchMoving.Controls.Add(this.button4);
             this.SearchMoving.Controls.Add(this.maskedTextBox1);
             this.SearchMoving.Controls.Add(this.Passage);
             this.SearchMoving.Controls.Add(this.dateTimePicker1);
             this.SearchMoving.Controls.Add(this.WarehouseSender);
-            this.SearchMoving.Controls.Add(this.MoveType);
             this.SearchMoving.Controls.Add(this.WarehouseRecipient);
             this.SearchMoving.Controls.Add(this.textBox10);
             this.SearchMoving.Controls.Add(this.label10);
@@ -741,7 +734,7 @@
             // maskedTextBox1
             // 
             this.maskedTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(571, 65);
+            this.maskedTextBox1.Location = new System.Drawing.Point(571, 25);
             this.maskedTextBox1.Mask = "000000000";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(243, 29);
@@ -751,7 +744,7 @@
             // 
             this.Passage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Passage.AutoSize = true;
-            this.Passage.Location = new System.Drawing.Point(943, 69);
+            this.Passage.Location = new System.Drawing.Point(946, 68);
             this.Passage.Name = "Passage";
             this.Passage.Size = new System.Drawing.Size(15, 14);
             this.Passage.TabIndex = 37;
@@ -779,16 +772,6 @@
             this.WarehouseSender.Size = new System.Drawing.Size(226, 32);
             this.WarehouseSender.TabIndex = 29;
             // 
-            // MoveType
-            // 
-            this.MoveType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MoveType.FormattingEnabled = true;
-            this.MoveType.Location = new System.Drawing.Point(571, 25);
-            this.MoveType.Name = "MoveType";
-            this.MoveType.Size = new System.Drawing.Size(243, 32);
-            this.MoveType.TabIndex = 29;
-            this.MoveType.Text = " ";
-            // 
             // WarehouseRecipient
             // 
             this.WarehouseRecipient.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -803,9 +786,9 @@
             // textBox10
             // 
             this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox10.Location = new System.Drawing.Point(943, 25);
+            this.textBox10.Location = new System.Drawing.Point(571, 96);
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(216, 29);
+            this.textBox10.Size = new System.Drawing.Size(242, 29);
             this.textBox10.TabIndex = 31;
             // 
             // label10
@@ -836,7 +819,7 @@
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label14.Location = new System.Drawing.Point(820, 30);
+            this.label14.Location = new System.Drawing.Point(416, 101);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(111, 20);
             this.label14.TabIndex = 35;
@@ -845,7 +828,7 @@
             // ButchNumber
             // 
             this.ButchNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButchNumber.Location = new System.Drawing.Point(571, 100);
+            this.ButchNumber.Location = new System.Drawing.Point(571, 62);
             this.ButchNumber.Name = "ButchNumber";
             this.ButchNumber.Size = new System.Drawing.Size(243, 29);
             this.ButchNumber.TabIndex = 28;
@@ -855,7 +838,7 @@
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.Location = new System.Drawing.Point(407, 30);
+            this.label16.Location = new System.Drawing.Point(820, 30);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(120, 20);
             this.label16.TabIndex = 30;
@@ -866,7 +849,7 @@
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label19.Location = new System.Drawing.Point(410, 105);
+            this.label19.Location = new System.Drawing.Point(416, 65);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(117, 20);
             this.label19.TabIndex = 34;
@@ -901,7 +884,7 @@
             this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label23.Location = new System.Drawing.Point(407, 65);
+            this.label23.Location = new System.Drawing.Point(416, 30);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(120, 20);
             this.label23.TabIndex = 32;
@@ -1275,10 +1258,11 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.NonPlanned);
+            this.groupBox2.Controls.Add(this.Planned);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.ApplicationNeedDate);
             this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Controls.Add(this.comboBox3);
             this.groupBox2.Controls.Add(this.ApplicationStatusSearch);
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.label21);
@@ -1306,7 +1290,7 @@
             this.button3.TabIndex = 40;
             this.button3.Text = "Сброс";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.ReceivingResetButton_Click);
             // 
             // ApplicationNeedDate
             // 
@@ -1324,19 +1308,10 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(657, 62);
             this.comboBox1.Name = "comboBox1";
+            this.comboBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.comboBox1.Size = new System.Drawing.Size(507, 32);
             this.comboBox1.TabIndex = 20;
             this.comboBox1.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(657, 25);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(507, 32);
-            this.comboBox3.TabIndex = 20;
-            this.comboBox3.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
             // ApplicationStatusSearch
             // 
@@ -1408,6 +1383,7 @@
             this.textBox8.Size = new System.Drawing.Size(368, 29);
             this.textBox8.TabIndex = 17;
             this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
+            this.textBox8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Digits_KeyPress);
             // 
             // label15
             // 
@@ -1591,6 +1567,7 @@
             this.NomenButtonResetSearch.TabIndex = 15;
             this.NomenButtonResetSearch.Text = "Сброс";
             this.NomenButtonResetSearch.UseVisualStyleBackColor = true;
+            this.NomenButtonResetSearch.Click += new System.EventHandler(this.button3_Click);
             // 
             // NomenNumber
             // 
@@ -1601,7 +1578,6 @@
             this.NomenNumber.Name = "NomenNumber";
             this.NomenNumber.Size = new System.Drawing.Size(211, 29);
             this.NomenNumber.TabIndex = 22;
-            this.NomenNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.NomenNumber.TextChanged += new System.EventHandler(this.Nomen_TextChanged);
             // 
             // textBox6
@@ -1736,12 +1712,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tabControl1.Location = new System.Drawing.Point(0, 25);
             this.tabControl1.Name = "tabControl1";
@@ -1848,6 +1824,7 @@
             this.button1.TabIndex = 21;
             this.button1.Text = "Сброс";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.WorkshopsResetButton_Click);
             // 
             // textBox3
             // 
@@ -1858,6 +1835,7 @@
             this.textBox3.Size = new System.Drawing.Size(296, 29);
             this.textBox3.TabIndex = 20;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Digits_KeyPress);
             // 
             // GroupsName
             // 
@@ -1941,6 +1919,8 @@
             // 
             // WorkshopsMain
             // 
+            this.WorkshopsMain.AllowUserToAddRows = false;
+            this.WorkshopsMain.AllowUserToDeleteRows = false;
             this.WorkshopsMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1954,6 +1934,7 @@
             this.WorkshopsMain.Location = new System.Drawing.Point(8, 110);
             this.WorkshopsMain.MultiSelect = false;
             this.WorkshopsMain.Name = "WorkshopsMain";
+            this.WorkshopsMain.ReadOnly = true;
             this.WorkshopsMain.RowHeadersVisible = false;
             this.WorkshopsMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.WorkshopsMain.Size = new System.Drawing.Size(1021, 275);
@@ -1968,12 +1949,14 @@
             this.workshopIDDataGridViewTextBoxColumn.DataPropertyName = "WorkshopID";
             this.workshopIDDataGridViewTextBoxColumn.HeaderText = "Номер цеха";
             this.workshopIDDataGridViewTextBoxColumn.Name = "workshopIDDataGridViewTextBoxColumn";
+            this.workshopIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // nameDataGridViewTextBoxColumn1
             // 
             this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
             this.nameDataGridViewTextBoxColumn1.HeaderText = "Наименование";
             this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // tabPage6
             // 
@@ -2053,6 +2036,7 @@
             this.button2.TabIndex = 21;
             this.button2.Text = "Сброс";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.StoragesResetButton_Click);
             // 
             // textBox5
             // 
@@ -2062,6 +2046,7 @@
             this.textBox5.Size = new System.Drawing.Size(335, 29);
             this.textBox5.TabIndex = 20;
             this.textBox5.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Digits_KeyPress);
             // 
             // textBox4
             // 
@@ -2080,6 +2065,7 @@
             this.textBox2.Size = new System.Drawing.Size(208, 29);
             this.textBox2.TabIndex = 20;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Digits_KeyPress);
             // 
             // label36
             // 
@@ -2116,6 +2102,8 @@
             // 
             // StoragesTable
             // 
+            this.StoragesTable.AllowUserToAddRows = false;
+            this.StoragesTable.AllowUserToDeleteRows = false;
             this.StoragesTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -2130,6 +2118,7 @@
             this.StoragesTable.Location = new System.Drawing.Point(8, 78);
             this.StoragesTable.MultiSelect = false;
             this.StoragesTable.Name = "StoragesTable";
+            this.StoragesTable.ReadOnly = true;
             this.StoragesTable.RowHeadersVisible = false;
             this.StoragesTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.StoragesTable.Size = new System.Drawing.Size(1021, 537);
@@ -2147,18 +2136,21 @@
             this.storageIDDataGridViewTextBoxColumn1.DataPropertyName = "StorageID";
             this.storageIDDataGridViewTextBoxColumn1.HeaderText = "Номер склада";
             this.storageIDDataGridViewTextBoxColumn1.Name = "storageIDDataGridViewTextBoxColumn1";
+            this.storageIDDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // nameDataGridViewTextBoxColumn3
             // 
             this.nameDataGridViewTextBoxColumn3.DataPropertyName = "Name";
             this.nameDataGridViewTextBoxColumn3.HeaderText = "Наименование";
             this.nameDataGridViewTextBoxColumn3.Name = "nameDataGridViewTextBoxColumn3";
+            this.nameDataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // workshopIDDataGridViewTextBoxColumn2
             // 
             this.workshopIDDataGridViewTextBoxColumn2.DataPropertyName = "WorkshopID";
             this.workshopIDDataGridViewTextBoxColumn2.HeaderText = "Номер цеха";
             this.workshopIDDataGridViewTextBoxColumn2.Name = "workshopIDDataGridViewTextBoxColumn2";
+            this.workshopIDDataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // storagesBindingSource
             // 
@@ -2264,14 +2256,14 @@
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.textBox12);
+            this.groupBox6.Controls.Add(this.textBox7);
             this.groupBox6.Controls.Add(this.button6);
             this.groupBox6.Controls.Add(this.OstatkiPrice);
             this.groupBox6.Controls.Add(this.label37);
-            this.groupBox6.Controls.Add(this.OstatkiStorage);
             this.groupBox6.Controls.Add(this.label38);
             this.groupBox6.Controls.Add(this.OstatkiNumber);
             this.groupBox6.Controls.Add(this.label39);
-            this.groupBox6.Controls.Add(this.OstatkiName);
             this.groupBox6.Controls.Add(this.label40);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox6.Location = new System.Drawing.Point(6, 6);
@@ -2311,16 +2303,6 @@
             this.label37.TabIndex = 10;
             this.label37.Text = "С учетом цены";
             // 
-            // OstatkiStorage
-            // 
-            this.OstatkiStorage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.OstatkiStorage.FormattingEnabled = true;
-            this.OstatkiStorage.Location = new System.Drawing.Point(988, 25);
-            this.OstatkiStorage.Name = "OstatkiStorage";
-            this.OstatkiStorage.Size = new System.Drawing.Size(158, 32);
-            this.OstatkiStorage.TabIndex = 8;
-            // 
             // label38
             // 
             this.label38.AutoSize = true;
@@ -2348,14 +2330,6 @@
             this.label39.Size = new System.Drawing.Size(191, 20);
             this.label39.TabIndex = 7;
             this.label39.Text = "Номенклатурный номер";
-            // 
-            // OstatkiName
-            // 
-            this.OstatkiName.FormattingEnabled = true;
-            this.OstatkiName.Location = new System.Drawing.Point(203, 25);
-            this.OstatkiName.Name = "OstatkiName";
-            this.OstatkiName.Size = new System.Drawing.Size(653, 32);
-            this.OstatkiName.TabIndex = 4;
             // 
             // label40
             // 
@@ -2493,6 +2467,70 @@
             // 
             this.receivingRequestsContentTableAdapter.ClearBeforeFill = true;
             // 
+            // textBox7
+            // 
+            this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox7.Location = new System.Drawing.Point(988, 25);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(167, 29);
+            this.textBox7.TabIndex = 17;
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(203, 25);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(653, 29);
+            this.textBox12.TabIndex = 18;
+            // 
+            // Planned
+            // 
+            this.Planned.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Planned.AutoSize = true;
+            this.Planned.Location = new System.Drawing.Point(657, 25);
+            this.Planned.Name = "Planned";
+            this.Planned.Size = new System.Drawing.Size(114, 28);
+            this.Planned.TabIndex = 41;
+            this.Planned.Text = "Плановая";
+            this.Planned.UseVisualStyleBackColor = true;
+            this.Planned.CheckedChanged += new System.EventHandler(this.textBox8_TextChanged);
+            // 
+            // NonPlanned
+            // 
+            this.NonPlanned.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NonPlanned.AutoSize = true;
+            this.NonPlanned.Location = new System.Drawing.Point(793, 24);
+            this.NonPlanned.Name = "NonPlanned";
+            this.NonPlanned.Size = new System.Drawing.Size(146, 28);
+            this.NonPlanned.TabIndex = 41;
+            this.NonPlanned.Text = "Внеплановая";
+            this.NonPlanned.UseVisualStyleBackColor = true;
+            this.NonPlanned.CheckedChanged += new System.EventHandler(this.textBox8_TextChanged);
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(1048, 26);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(93, 28);
+            this.radioButton3.TabIndex = 40;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Расход";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(946, 26);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(96, 28);
+            this.radioButton4.TabIndex = 40;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "Приход";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
             // Klad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2570,7 +2608,6 @@
         private System.Windows.Forms.CheckBox Passage;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.ComboBox WarehouseSender;
-        private System.Windows.Forms.ComboBox MoveType;
         private System.Windows.Forms.ComboBox WarehouseRecipient;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Label label10;
@@ -2589,7 +2626,6 @@
         private System.Windows.Forms.Button CreateReceiving;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DateTimePicker ApplicationNeedDate;
-        private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox ApplicationStatusSearch;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label13;
@@ -2640,7 +2676,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem импортToolStripMenuItem;
         private System.Windows.Forms.MenuStrip Menu;
-        private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Button DeleteWorkshop;
@@ -2668,11 +2703,9 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.CheckBox OstatkiPrice;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.ComboBox OstatkiStorage;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.MaskedTextBox OstatkiNumber;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.ComboBox OstatkiName;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox textBox8;
@@ -2782,5 +2815,11 @@
         private System.Windows.Forms.ToolStripMenuItem отчетПоЗаявкамToolStripMenuItem;
         private TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsTableAdapter receivingRequestsTableAdapter;
         private TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter receivingRequestsContentTableAdapter;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.RadioButton NonPlanned;
+        private System.Windows.Forms.RadioButton Planned;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioButton3;
     }
 }

@@ -56,6 +56,7 @@
             this.nomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ApplicationsCompound)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
@@ -299,12 +300,12 @@
             this.fullNameDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn});
             this.ApplicationsCompound.DataSource = this.receivingRequestsContentBindingSource;
-            this.ApplicationsCompound.Location = new System.Drawing.Point(12, 188);
+            this.ApplicationsCompound.Location = new System.Drawing.Point(12, 209);
             this.ApplicationsCompound.MultiSelect = false;
             this.ApplicationsCompound.Name = "ApplicationsCompound";
             this.ApplicationsCompound.RowHeadersVisible = false;
             this.ApplicationsCompound.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ApplicationsCompound.Size = new System.Drawing.Size(760, 328);
+            this.ApplicationsCompound.Size = new System.Drawing.Size(760, 307);
             this.ApplicationsCompound.TabIndex = 2;
             this.ApplicationsCompound.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.ApplicationsCompound_CellValidated);
             this.ApplicationsCompound.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.ApplicationsCompound_RowValidating);
@@ -358,6 +359,19 @@
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Количество";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(12, 186);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(199, 20);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Содержимое заявки:";
+            this.label7.Visible = false;
+            // 
             // AddApplications
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -376,6 +390,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.OtherReasonText);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
@@ -423,5 +438,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label7;
     }
 }

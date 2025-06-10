@@ -16,6 +16,7 @@ namespace Система_учёта_и_приобретения_инструме
     {
         LoginForm login;
         bool changeUser = false;
+        private bool receivingSearchReseting = false;
         public Klad(LoginForm _login)
         {
             InitializeComponent();
@@ -74,7 +75,8 @@ namespace Система_учёта_и_приобретения_инструме
             SetupClearableControl(textBox8);
             SetupClearableControl(textBox9);
             SetupClearableControl(comboBox1);
-            SetupClearableControl(comboBox3);
+            SetupClearableControl(Planned);
+            SetupClearableControl(NonPlanned);
             SetupClearableControl(ApplicationStatusSearch);
 
             // Defective lists controls
@@ -235,9 +237,9 @@ namespace Система_учёта_и_приобретения_инструме
         }
         public void SetStoragesButtonsState()
         {
-            bool state = StoragesTable.CurrentRow != null && !StoragesTable.CurrentRow.IsNewRow && !string.IsNullOrEmpty(StoragesTable.CurrentRow.Cells[0].Value.ToString()) ; 
-            AlterStorage.Enabled = state;
-            DeleteStorage.Enabled = state;
+            bool state = StoragesTable.CurrentRow != null && !StoragesTable.CurrentRow.IsNewRow && !string.IsNullOrEmpty(StoragesTable.CurrentRow.Cells[0].Value.ToString());
+            AlterStorage.Enabled = false;
+            DeleteStorage.Enabled = false;
         }
         private void StoragesTable_CurrentCellChanged(object sender, EventArgs e)
         {
@@ -400,12 +402,14 @@ namespace Система_учёта_и_приобретения_инструме
         #region ReceivingReq
         private void textBox8_TextChanged(object sender, EventArgs e)
         {
+            if (receivingSearchReseting) return;
             var parameters = new List<SearchParameter>();
-            if (!string.IsNullOrEmpty(ApplicationNeedDate.Text)) parameters.Add(new SearchParameter("ReceivingRequestDate", ApplicationNeedDate.Value, true));
-            if (!string.IsNullOrEmpty(textBox8.Text)) parameters.Add(new SearchParameter("ReceivingRequestID", textBox8.Text, true));
-            if (!string.IsNullOrEmpty(textBox9.Text)) parameters.Add(new SearchParameter("WorkshopID", textBox9.Text, true));
+            if (ApplicationNeedDate.Checked) parameters.Add(new SearchParameter("ReceivingRequestDate", ApplicationNeedDate.Value, true));
+            if (!string.IsNullOrEmpty(textBox8.Text)) parameters.Add(new SearchParameter("ReceivingRequestID", Convert.ToInt32(textBox8.Text), true));
+            if (!string.IsNullOrEmpty(textBox9.Text)) parameters.Add(new SearchParameter("WorkshopID", Convert.ToInt32(textBox9.Text), true));
             if (!string.IsNullOrEmpty(comboBox1.Text)) parameters.Add(new SearchParameter("Reason", comboBox1.Text, false));
-            if (!string.IsNullOrEmpty(comboBox3.Text)) parameters.Add(new SearchParameter("ReceivingRequestType", comboBox3.Text, true));
+            if (Planned.Checked) parameters.Add(new SearchParameter("ReceivingRequestType", "Плановая", true));
+            if (NonPlanned.Checked) parameters.Add(new SearchParameter("ReceivingRequestType", "Внеплановая", true));
             if (!string.IsNullOrEmpty(ApplicationStatusSearch.Text)) parameters.Add(new SearchParameter("Status", ApplicationStatusSearch.Text, true));
             try
             {
@@ -445,9 +449,9 @@ namespace Система_учёта_и_приобретения_инструме
         #region Цеха
         public void SetWorkshopsButtonsState()
         {
-            bool state = WorkshopsMain.CurrentRow != null && !string.IsNullOrEmpty(WorkshopsMain.CurrentRow.Cells[0].Value.ToString())  ;
-            AlterWorkshop.Enabled = state;
-            DeleteWorkshop.Enabled = state;
+            bool state = WorkshopsMain.CurrentRow != null && !string.IsNullOrEmpty(WorkshopsMain.CurrentRow.Cells[0].Value.ToString());
+            AlterWorkshop.Enabled = false;
+            DeleteWorkshop.Enabled = false;
         }
         private void dataGridView1_CurrentCellChanged(object sender, EventArgs e)
         {
@@ -513,8 +517,8 @@ namespace Система_учёта_и_приобретения_инструме
         {
             workshopsUserEditing = true;
             var dataRowView = WorkshopsMain.Rows[e.RowIndex].DataBoundItem as DataRowView;
-            var workshop1OriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.Workshops1Row;   
-    
+            var workshop1OriginRow = dataRowView?.Row as TOOLACCOUNTINGDataSet.Workshops1Row;
+
 
             if (workshop1OriginRow != null) workshopsOriginRow = tOOLACCOUNTINGDataSet.Workshops.Where(s => s.WorkshopID == workshop1OriginRow.WorkshopID).FirstOrDefault();
             else workshopsOriginRow = null;
@@ -590,12 +594,12 @@ namespace Система_учёта_и_приобретения_инструме
                     newRow.WorkshopID = workshop1Row.WorkshopID;
                     newRow.Name = workshop1Row.Name;
                     tOOLACCOUNTINGDataSet.Workshops.Rows.Add(newRow);
-         
+
                 }
                 workshopsTableAdapter.Update(tOOLACCOUNTINGDataSet.Workshops);
                 workshopsTableAdapter.Fill(tOOLACCOUNTINGDataSet.Workshops);
                 workshops1TableAdapter.Fill(tOOLACCOUNTINGDataSet.Workshops1);
-                storages1TableAdapter.Fill(tOOLACCOUNTINGDataSet.Storages1);    
+                storages1TableAdapter.Fill(tOOLACCOUNTINGDataSet.Storages1);
             }
             catch (Exception ex)
             {
@@ -646,15 +650,6 @@ namespace Система_учёта_и_приобретения_инструме
         }
 
 
-
-
-
-
-
-
-
-
-
         #endregion
 
         private void StoragesTable_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -690,11 +685,11 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void RefreshReceivingRequestsTables()
         {
-            try 
+            try
             {
                 this.receivingRequests1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.ReceivingRequests1);
                 this.receivingRequestsContent1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.ReceivingRequestsContent1);
-                
+
                 // Обновляем привязку данных
                 receivingRequests1BindingSource.ResetBindings(false);
                 receivingRequests1ReceivingRequestsContent1BindingSource.ResetBindings(false);
@@ -714,7 +709,8 @@ namespace Система_учёта_и_приобретения_инструме
             var cms = new ContextMenuStrip();
             cms.Items.Add("Очистить", null, (s, e) => ClearControl(control));
             control.ContextMenuStrip = cms;
-
+            if (control is RadioButton)
+                return;
             // Создаём кнопку-крестик
             Button btn = new Button();
             btn.Size = new Size(17, control.Height - 2);
@@ -742,6 +738,8 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (ctl is TextBox tb)
                 tb.Text = string.Empty;
+            if (ctl is MaskedTextBox mtb)
+                mtb.Text = string.Empty;
             else if (ctl is ComboBox cb)
                 cb.SelectedIndex = -1;
             else if (ctl is DateTimePicker dtp)
@@ -809,20 +807,22 @@ namespace Система_учёта_и_приобретения_инструме
         #endregion
 
         #region Сброс поиска – Receiving Requests
-        private void ReceivingResetSearchDate() { ApplicationNeedDate.Value = DateTime.Today; }
+        private void ReceivingResetSearchDate() { ApplicationNeedDate.Checked = false; }
         private void ReceivingResetSearchID() { textBox8.Text = string.Empty; }
         private void ReceivingResetSearchWorkshop() { textBox9.Text = string.Empty; }
         private void ReceivingResetSearchReason() { comboBox1.SelectedIndex = -1; }
-        private void ReceivingResetSearchType() { comboBox3.SelectedIndex = -1; }
+        private void ReceivingResetSearchType() { Planned.Checked = false; NonPlanned.Checked = false; }
         private void ReceivingResetSearchStatus() { ApplicationStatusSearch.SelectedIndex = -1; }
         private void ReceivingResetSearch()
         {
+            receivingSearchReseting = true;
             ReceivingResetSearchDate();
             ReceivingResetSearchID();
             ReceivingResetSearchWorkshop();
             ReceivingResetSearchReason();
             ReceivingResetSearchType();
             ReceivingResetSearchStatus();
+            receivingSearchReseting = false;
             receivingRequests1BindingSource.RemoveFilter();
         }
         private void ReceivingResetButton_Click(object sender, EventArgs e)
