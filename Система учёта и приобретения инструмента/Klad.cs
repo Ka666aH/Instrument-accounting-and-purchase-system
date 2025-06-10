@@ -51,6 +51,38 @@ namespace Система_учёта_и_приобретения_инструме
             this.nomenclatureViewTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NomenclatureView);
 
             this.WindowState = FormWindowState.Maximized;
+
+            // Настраиваем очищаемые контроли
+            // Nomen controls
+            SetupClearableControl(NomenNumber);
+            SetupClearableControl(textBox6);
+            SetupClearableControl(NomenSize);
+            SetupClearableControl(NomenMaterial);
+            SetupClearableControl(NomenProducer);
+            SetupClearableControl(NomenUsage);
+
+            // Storages controls
+            SetupClearableControl(textBox2);
+            SetupClearableControl(textBox4);
+            SetupClearableControl(textBox5);
+
+            // Workshops controls
+            SetupClearableControl(textBox3);
+            SetupClearableControl(GroupsName);
+
+            // ReceivingReq controls
+            SetupClearableControl(textBox8);
+            SetupClearableControl(textBox9);
+            SetupClearableControl(comboBox1);
+            SetupClearableControl(comboBox3);
+            SetupClearableControl(ApplicationStatusSearch);
+
+            // Defective lists controls
+            SetupClearableControl(textBox1);
+            SetupClearableControl(textBox11);
+            SetupClearableControl(textBox14);
+            SetupClearableControl(textBox13);
+            SetupClearableControl(comboBox6);
         }
 
         private void Klad_FormClosed(object sender, FormClosedEventArgs e)
@@ -133,14 +165,9 @@ namespace Система_учёта_и_приобретения_инструме
         private void AddApplication_Click(object sender, EventArgs e)
         {
             AddApplications addApplications = new AddApplications(tOOLACCOUNTINGDataSet);
+            // Подписываемся на событие сохранения для обновления таблиц
+            addApplications.RequestSaved += (s, args) => RefreshReceivingRequestsTables();
             addApplications.ShowDialog();
-         
-            receivingRequestsTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequests);
-            receivingRequestsContentTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsContent);
-            // После закрытия формы — обновляем таблицы заявок на получение
-            receivingRequests1TableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequests1);
-            receivingRequestsContent1TableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsContent1);
-            
         }
 
         private void AddMoving_Click(object sender, EventArgs e)
@@ -660,6 +687,174 @@ namespace Система_учёта_и_приобретения_инструме
             //AddApplications addApplications = new AddApplications(tOOLACCOUNTINGDataSet, workshopsTableAdapter, FormMode.Edit, workshopRow);
             //addApplications.ShowDialog();
         }
+
+        private void RefreshReceivingRequestsTables()
+        {
+            try 
+            {
+                this.receivingRequests1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.ReceivingRequests1);
+                this.receivingRequestsContent1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet1.ReceivingRequestsContent1);
+                
+                // Обновляем привязку данных
+                receivingRequests1BindingSource.ResetBindings(false);
+                receivingRequests1ReceivingRequestsContent1BindingSource.ResetBindings(false);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка обновления таблиц: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        #region Search Clear Helpers
+        private Dictionary<Control, Button> clearButtons = new Dictionary<Control, Button>();
+        private void SetupClearableControl(Control control)
+        {
+            // Добавляем контекстное меню
+            var cms = new ContextMenuStrip();
+            cms.Items.Add("Очистить", null, (s, e) => ClearControl(control));
+            control.ContextMenuStrip = cms;
+
+            // Создаём кнопку-крестик
+            Button btn = new Button();
+            btn.Size = new Size(17, control.Height - 2);
+            btn.Text = "×"; // Символ крестика
+            btn.Font = new Font(btn.Font.FontFamily, 6);
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.FlatAppearance.BorderSize = 0;
+            btn.Cursor = Cursors.Hand;
+            btn.BackColor = Color.Transparent;
+            btn.TabStop = false;
+            btn.Click += (s, e) => ClearControl(control);
+            control.Parent.Controls.Add(btn);
+            btn.BringToFront();
+            PositionClearButton(control, btn);
+            clearButtons[control] = btn;
+            // Обновлять позицию при перемещении/изменении размера
+            control.Resize += (s, e) => PositionClearButton(control, btn);
+            control.LocationChanged += (s, e) => PositionClearButton(control, btn);
+        }
+        private void PositionClearButton(Control ctl, Button btn)
+        {
+            btn.Location = new Point(ctl.Right - btn.Width - 1, ctl.Top + 1);
+        }
+        private void ClearControl(Control ctl)
+        {
+            if (ctl is TextBox tb)
+                tb.Text = string.Empty;
+            else if (ctl is ComboBox cb)
+                cb.SelectedIndex = -1;
+            else if (ctl is DateTimePicker dtp)
+                dtp.Value = DateTime.Today;
+        }
+        #endregion
+
+        #region Сброс поиска – Nomen (ранее создан)
+        private bool isSearchReseting = false;
+        private void NomenResetSearchNumber() { NomenNumber.Text = string.Empty; }
+        private void NomenResetSearchName() { textBox6.Text = string.Empty; }
+        private void NomenResetSearchSize() { NomenSize.Text = string.Empty; }
+        private void NomenResetSearchMaterial() { NomenMaterial.Text = string.Empty; }
+        private void NomenResetSearchProducer() { NomenProducer.Text = string.Empty; }
+        private void NomenResetSearchUsage() { NomenUsage.SelectedIndex = 0; }
+        private void NomenResetSearch()
+        {
+            isSearchReseting = true;
+            NomenResetSearchNumber();
+            NomenResetSearchName();
+            NomenResetSearchSize();
+            NomenResetSearchMaterial();
+            NomenResetSearchProducer();
+            NomenResetSearchUsage();
+            isSearchReseting = false;
+            nomenclatureViewBindingSource.RemoveFilter();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            NomenResetSearch();
+        }
+        #endregion
+
+        #region Сброс поиска – Storages
+        private void StoragesResetSearchID() { textBox2.Text = string.Empty; }
+        private void StoragesResetSearchName() { textBox4.Text = string.Empty; }
+        private void StoragesResetSearchWorkshop() { textBox5.Text = string.Empty; }
+        private void StoragesResetSearch()
+        {
+            StoragesResetSearchID();
+            StoragesResetSearchName();
+            StoragesResetSearchWorkshop();
+            storagesBindingSource.RemoveFilter();
+        }
+        private void StoragesResetButton_Click(object sender, EventArgs e)
+        {
+            StoragesResetSearch();
+        }
+        #endregion
+
+        #region Сброс поиска – Workshops
+        private void WorkshopsResetSearchID() { textBox3.Text = string.Empty; }
+        private void WorkshopsResetSearchName() { GroupsName.Text = string.Empty; }
+        private void WorkshopsResetSearch()
+        {
+            WorkshopsResetSearchID();
+            WorkshopsResetSearchName();
+            workshops1BindingSource.RemoveFilter();
+        }
+        private void WorkshopsResetButton_Click(object sender, EventArgs e)
+        {
+            WorkshopsResetSearch();
+        }
+        #endregion
+
+        #region Сброс поиска – Receiving Requests
+        private void ReceivingResetSearchDate() { ApplicationNeedDate.Value = DateTime.Today; }
+        private void ReceivingResetSearchID() { textBox8.Text = string.Empty; }
+        private void ReceivingResetSearchWorkshop() { textBox9.Text = string.Empty; }
+        private void ReceivingResetSearchReason() { comboBox1.SelectedIndex = -1; }
+        private void ReceivingResetSearchType() { comboBox3.SelectedIndex = -1; }
+        private void ReceivingResetSearchStatus() { ApplicationStatusSearch.SelectedIndex = -1; }
+        private void ReceivingResetSearch()
+        {
+            ReceivingResetSearchDate();
+            ReceivingResetSearchID();
+            ReceivingResetSearchWorkshop();
+            ReceivingResetSearchReason();
+            ReceivingResetSearchType();
+            ReceivingResetSearchStatus();
+            receivingRequests1BindingSource.RemoveFilter();
+        }
+        private void ReceivingResetButton_Click(object sender, EventArgs e)
+        {
+            ReceivingResetSearch();
+        }
+        #endregion
+
+        #region Сброс поиска – DefectiveLists
+        private void DefectiveResetSearchDate() { dateTimePicker2.Value = DateTime.Today; }
+        private void DefectiveResetSearchWorkshop() { comboBox6.SelectedIndex = -1; }
+        private void DefectiveResetSearchNomen() { textBox1.Text = string.Empty; }
+        private void DefectiveResetSearchBatch() { textBox11.Text = string.Empty; }
+        private void DefectiveResetSearchPrice() { textBox14.Text = string.Empty; }
+        private void DefectiveResetSearchQuantity() { textBox13.Text = string.Empty; }
+        private void DefectiveResetSearchFlags() { radioButton1.Checked = radioButton2.Checked = false; }
+        private void DefectiveResetSearch()
+        {
+            DefectiveResetSearchDate();
+            DefectiveResetSearchWorkshop();
+            DefectiveResetSearchNomen();
+            DefectiveResetSearchBatch();
+            DefectiveResetSearchPrice();
+            DefectiveResetSearchQuantity();
+            DefectiveResetSearchFlags();
+            defectiveListsBindingSource.RemoveFilter();
+        }
+        private void DefectiveResetButton_Click(object sender, EventArgs e)
+        {
+            DefectiveResetSearch();
+        }
+        #endregion
     }
 
 }

@@ -1067,7 +1067,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(6, 397);
+            this.label3.Location = new System.Drawing.Point(6, 500);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(504, 24);
             this.label3.TabIndex = 39;
@@ -1100,13 +1100,13 @@
             this.fullNameDataGridViewTextBoxColumn1,
             this.quantityDataGridViewTextBoxColumn});
             this.WorkshopsRequestsContentTable.DataSource = this.receivingRequests1ReceivingRequestsContent1BindingSource;
-            this.WorkshopsRequestsContentTable.Location = new System.Drawing.Point(7, 423);
+            this.WorkshopsRequestsContentTable.Location = new System.Drawing.Point(7, 526);
             this.WorkshopsRequestsContentTable.MultiSelect = false;
             this.WorkshopsRequestsContentTable.Name = "WorkshopsRequestsContentTable";
             this.WorkshopsRequestsContentTable.ReadOnly = true;
             this.WorkshopsRequestsContentTable.RowHeadersVisible = false;
             this.WorkshopsRequestsContentTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.WorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 192);
+            this.WorkshopsRequestsContentTable.Size = new System.Drawing.Size(1037, 89);
             this.WorkshopsRequestsContentTable.TabIndex = 37;
             // 
             // receivingContentIDDataGridViewTextBoxColumn
@@ -1185,7 +1185,7 @@
             this.WorkshopsRequestsRequestsTable.ReadOnly = true;
             this.WorkshopsRequestsRequestsTable.RowHeadersVisible = false;
             this.WorkshopsRequestsRequestsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.WorkshopsRequestsRequestsTable.Size = new System.Drawing.Size(1037, 220);
+            this.WorkshopsRequestsRequestsTable.Size = new System.Drawing.Size(1037, 326);
             this.WorkshopsRequestsRequestsTable.TabIndex = 36;
             // 
             // receivingRequestIDDataGridViewTextBoxColumn
@@ -1306,6 +1306,7 @@
             this.button3.TabIndex = 40;
             this.button3.Text = "Сброс";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // ApplicationNeedDate
             // 

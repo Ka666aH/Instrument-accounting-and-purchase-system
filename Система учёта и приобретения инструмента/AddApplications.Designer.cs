@@ -124,9 +124,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(12, 119);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 20);
+            this.label3.Size = new System.Drawing.Size(47, 20);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Цех:";
+            this.label3.Text = "Цех *";
             // 
             // ApplicationDate
             // 
@@ -163,7 +163,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 31);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Тип:";
+            this.label4.Text = "Тип *";
             // 
             // dateTimePicker1
             // 
@@ -186,9 +186,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.Location = new System.Drawing.Point(28, 151);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(23, 20);
+            this.label5.Size = new System.Drawing.Size(29, 20);
             this.label5.TabIndex = 0;
-            this.label5.Text = "К:";
+            this.label5.Text = "К *";
             // 
             // label6
             // 
@@ -199,9 +199,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.Location = new System.Drawing.Point(249, 88);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 20);
+            this.label6.Size = new System.Drawing.Size(85, 20);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Причина:";
+            this.label6.Text = "Причина *";
             // 
             // Reason
             // 
@@ -307,6 +307,7 @@
             this.ApplicationsCompound.Size = new System.Drawing.Size(760, 328);
             this.ApplicationsCompound.TabIndex = 2;
             this.ApplicationsCompound.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.ApplicationsCompound_CellValidated);
+            this.ApplicationsCompound.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.ApplicationsCompound_RowValidating);
             // 
             // receivingRequestsContentBindingSource
             // 
