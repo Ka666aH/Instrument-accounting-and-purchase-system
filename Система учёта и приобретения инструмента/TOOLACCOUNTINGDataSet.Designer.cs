@@ -150,6 +150,8 @@ namespace Система_учёта_и_приобретения_инструме
         
         private global::System.Data.DataRelation relationFK__Balances__Nomenc__60A75C0F;
         
+        private global::System.Data.DataRelation relationFK__Balances__Storag__619B8048;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1010,6 +1012,7 @@ namespace Система_учёта_и_приобретения_инструме
             this.relationReceivingRequestsInj_ReceivingRequestsContentInj = this.Relations["ReceivingRequestsInj_ReceivingRequestsContentInj"];
             this.relationReceivingRequestsContentInj_ReplacementFixationInj = this.Relations["ReceivingRequestsContentInj_ReplacementFixationInj"];
             this.relationFK__Balances__Nomenc__60A75C0F = this.Relations["FK__Balances__Nomenc__60A75C0F"];
+            this.relationFK__Balances__Storag__619B8048 = this.Relations["FK__Balances__Storag__619B8048"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1210,6 +1213,10 @@ namespace Система_учёта_и_приобретения_инструме
                         this.tableNomenclature.NomenclatureNumberColumn}, new global::System.Data.DataColumn[] {
                         this.tableBalancesInj.NomenclatureNumberColumn}, false);
             this.Relations.Add(this.relationFK__Balances__Nomenc__60A75C0F);
+            this.relationFK__Balances__Storag__619B8048 = new global::System.Data.DataRelation("FK__Balances__Storag__619B8048", new global::System.Data.DataColumn[] {
+                        this.tableStorages1.StorageIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableBalances.StorageIDColumn}, false);
+            this.Relations.Add(this.relationFK__Balances__Storag__619B8048);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1867,6 +1874,8 @@ namespace Система_учёта_и_приобретения_инструме
             
             private global::System.Data.DataColumn columnAccount;
             
+            private global::System.Data.DataColumn columnQuantity;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public BalancesDataTable() {
@@ -1958,6 +1967,14 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn QuantityColumn {
+                get {
+                    return this.columnQuantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1993,7 +2010,7 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public BalancesRow AddBalancesRow(NomenclatureRow parentNomenclatureRowByFK__Balances__Nomenc__75A278F5, StoragesRow parentStoragesRowByFK__Balances__Storag__76969D2E, System.DateTime BalanceDate, string BatchNumber, decimal Price, string Account) {
+            public BalancesRow AddBalancesRow(NomenclatureRow parentNomenclatureRowByFK__Balances__Nomenc__75A278F5, StoragesRow parentStoragesRowByFK__Balances__Storag__76969D2E, System.DateTime BalanceDate, string BatchNumber, decimal Price, string Account, int Quantity) {
                 BalancesRow rowBalancesRow = ((BalancesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2002,7 +2019,8 @@ namespace Система_учёта_и_приобретения_инструме
                         BalanceDate,
                         BatchNumber,
                         Price,
-                        Account};
+                        Account,
+                        Quantity};
                 if ((parentNomenclatureRowByFK__Balances__Nomenc__75A278F5 != null)) {
                     columnValuesArray[1] = parentNomenclatureRowByFK__Balances__Nomenc__75A278F5[0];
                 }
@@ -2045,6 +2063,7 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnBatchNumber = base.Columns["BatchNumber"];
                 this.columnPrice = base.Columns["Price"];
                 this.columnAccount = base.Columns["Account"];
+                this.columnQuantity = base.Columns["Quantity"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2064,6 +2083,8 @@ namespace Система_учёта_и_приобретения_инструме
                 base.Columns.Add(this.columnPrice);
                 this.columnAccount = new global::System.Data.DataColumn("Account", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAccount);
+                this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQuantity);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnBalanceID}, true));
                 this.columnBalanceID.AutoIncrement = true;
@@ -2081,6 +2102,7 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnPrice.AllowDBNull = false;
                 this.columnAccount.AllowDBNull = false;
                 this.columnAccount.MaxLength = 50;
+                this.columnQuantity.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12071,6 +12093,17 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int Quantity {
+                get {
+                    return ((int)(this[this.tableBalances.QuantityColumn]));
+                }
+                set {
+                    this[this.tableBalances.QuantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public NomenclatureRow NomenclatureRow {
                 get {
                     return ((NomenclatureRow)(this.GetParentRow(this.Table.ParentRelations["FK__Balances__Nomenc__75A278F5"])));
@@ -12088,6 +12121,17 @@ namespace Система_учёта_и_приобретения_инструме
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK__Balances__Storag__76969D2E"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public Storages1Row Storages1Row {
+                get {
+                    return ((Storages1Row)(this.GetParentRow(this.Table.ParentRelations["FK__Balances__Storag__619B8048"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Balances__Storag__619B8048"]);
                 }
             }
         }
@@ -15299,6 +15343,17 @@ namespace Система_учёта_и_приобретения_инструме
                     this.SetParentRow(value, this.Table.ParentRelations["Workshops1_Storages1"]);
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public BalancesRow[] GetBalancesRows() {
+                if ((this.Table.ChildRelations["FK__Balances__Storag__619B8048"] == null)) {
+                    return new BalancesRow[0];
+                }
+                else {
+                    return ((BalancesRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Balances__Storag__619B8048"])));
+                }
+            }
         }
         
         /// <summary>
@@ -17336,10 +17391,11 @@ SELECT ID, OriginalNomenclatureNumber, AnalogNomenclatureNumber FROM AnalogTools
             tableMapping.ColumnMappings.Add("BatchNumber", "BatchNumber");
             tableMapping.ColumnMappings.Add("Price", "Price");
             tableMapping.ColumnMappings.Add("Account", "Account");
+            tableMapping.ColumnMappings.Add("Quantity", "Quantity");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Balances] WHERE (([BalanceID] = @Original_BalanceID) AND ([NomenclatureNumber] = @Original_NomenclatureNumber) AND ([StorageID] = @Original_StorageID) AND ([BalanceDate] = @Original_BalanceDate) AND ([BatchNumber] = @Original_BatchNumber) AND ([Price] = @Original_Price) AND ([Account] = @Original_Account))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Balances] WHERE (([BalanceID] = @Original_BalanceID) AND ([NomenclatureNumber] = @Original_NomenclatureNumber) AND ([StorageID] = @Original_StorageID) AND ([BalanceDate] = @Original_BalanceDate) AND ([BatchNumber] = @Original_BatchNumber) AND ([Price] = @Original_Price) AND ([Quantity] = @Original_Quantity) AND ([Account] = @Original_Account))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BalanceID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BalanceID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomenclatureNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -17347,28 +17403,31 @@ SELECT ID, OriginalNomenclatureNumber, AnalogNomenclatureNumber FROM AnalogTools
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BalanceDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BalanceDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BatchNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BatchNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Account", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Account", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Balances] ([NomenclatureNumber], [StorageID], [BalanceDate], [BatchNumber], [Price], [Account]) VALUES (@NomenclatureNumber, @StorageID, @BalanceDate, @BatchNumber, @Price, @Account);
-SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price, Account FROM Balances WHERE (BalanceID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Balances] ([NomenclatureNumber], [StorageID], [BalanceDate], [BatchNumber], [Price], [Quantity], [Account]) VALUES (@NomenclatureNumber, @StorageID, @BalanceDate, @BatchNumber, @Price, @Quantity, @Account);
+SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price, Quantity, Account FROM Balances WHERE (BalanceID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomenclatureNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StorageID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BalanceDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BalanceDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BatchNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BatchNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Account", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Account", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Balances] SET [NomenclatureNumber] = @NomenclatureNumber, [StorageID] = @StorageID, [BalanceDate] = @BalanceDate, [BatchNumber] = @BatchNumber, [Price] = @Price, [Account] = @Account WHERE (([BalanceID] = @Original_BalanceID) AND ([NomenclatureNumber] = @Original_NomenclatureNumber) AND ([StorageID] = @Original_StorageID) AND ([BalanceDate] = @Original_BalanceDate) AND ([BatchNumber] = @Original_BatchNumber) AND ([Price] = @Original_Price) AND ([Account] = @Original_Account));
-SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price, Account FROM Balances WHERE (BalanceID = @BalanceID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Balances] SET [NomenclatureNumber] = @NomenclatureNumber, [StorageID] = @StorageID, [BalanceDate] = @BalanceDate, [BatchNumber] = @BatchNumber, [Price] = @Price, [Quantity] = @Quantity, [Account] = @Account WHERE (([BalanceID] = @Original_BalanceID) AND ([NomenclatureNumber] = @Original_NomenclatureNumber) AND ([StorageID] = @Original_StorageID) AND ([BalanceDate] = @Original_BalanceDate) AND ([BatchNumber] = @Original_BatchNumber) AND ([Price] = @Original_Price) AND ([Quantity] = @Original_Quantity) AND ([Account] = @Original_Account));
+SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price, Quantity, Account FROM Balances WHERE (BalanceID = @BalanceID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomenclatureNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StorageID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BalanceDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BalanceDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BatchNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BatchNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Account", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Account", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BalanceID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BalanceID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomenclatureNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -17376,6 +17435,7 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BalanceDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BalanceDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BatchNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BatchNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Account", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Account", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BalanceID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "BalanceID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -17393,8 +17453,8 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price," +
-                " Account FROM dbo.Balances";
+            this._commandCollection[0].CommandText = "SELECT        BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber," +
+                " Price, Quantity, Account\r\nFROM            Balances";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -17455,7 +17515,7 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_BalanceID, string Original_NomenclatureNumber, int Original_StorageID, System.DateTime Original_BalanceDate, string Original_BatchNumber, decimal Original_Price, string Original_Account) {
+        public virtual int Delete(int Original_BalanceID, string Original_NomenclatureNumber, int Original_StorageID, System.DateTime Original_BalanceDate, string Original_BatchNumber, decimal Original_Price, int Original_Quantity, string Original_Account) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_BalanceID));
             if ((Original_NomenclatureNumber == null)) {
                 throw new global::System.ArgumentNullException("Original_NomenclatureNumber");
@@ -17472,11 +17532,12 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_BatchNumber));
             }
             this.Adapter.DeleteCommand.Parameters[5].Value = ((decimal)(Original_Price));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_Quantity));
             if ((Original_Account == null)) {
                 throw new global::System.ArgumentNullException("Original_Account");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Account));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_Account));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -17498,7 +17559,7 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string NomenclatureNumber, int StorageID, System.DateTime BalanceDate, string BatchNumber, decimal Price, string Account) {
+        public virtual int Insert(string NomenclatureNumber, int StorageID, System.DateTime BalanceDate, string BatchNumber, decimal Price, int Quantity, string Account) {
             if ((NomenclatureNumber == null)) {
                 throw new global::System.ArgumentNullException("NomenclatureNumber");
             }
@@ -17514,11 +17575,12 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
                 this.Adapter.InsertCommand.Parameters[3].Value = ((string)(BatchNumber));
             }
             this.Adapter.InsertCommand.Parameters[4].Value = ((decimal)(Price));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(Quantity));
             if ((Account == null)) {
                 throw new global::System.ArgumentNullException("Account");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Account));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Account));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -17540,7 +17602,23 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NomenclatureNumber, int StorageID, System.DateTime BalanceDate, string BatchNumber, decimal Price, string Account, int Original_BalanceID, string Original_NomenclatureNumber, int Original_StorageID, System.DateTime Original_BalanceDate, string Original_BatchNumber, decimal Original_Price, string Original_Account, int BalanceID) {
+        public virtual int Update(
+                    string NomenclatureNumber, 
+                    int StorageID, 
+                    System.DateTime BalanceDate, 
+                    string BatchNumber, 
+                    decimal Price, 
+                    int Quantity, 
+                    string Account, 
+                    int Original_BalanceID, 
+                    string Original_NomenclatureNumber, 
+                    int Original_StorageID, 
+                    System.DateTime Original_BalanceDate, 
+                    string Original_BatchNumber, 
+                    decimal Original_Price, 
+                    int Original_Quantity, 
+                    string Original_Account, 
+                    int BalanceID) {
             if ((NomenclatureNumber == null)) {
                 throw new global::System.ArgumentNullException("NomenclatureNumber");
             }
@@ -17556,35 +17634,37 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(BatchNumber));
             }
             this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(Price));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Quantity));
             if ((Account == null)) {
                 throw new global::System.ArgumentNullException("Account");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Account));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Account));
             }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_BalanceID));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_BalanceID));
             if ((Original_NomenclatureNumber == null)) {
                 throw new global::System.ArgumentNullException("Original_NomenclatureNumber");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_NomenclatureNumber));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_NomenclatureNumber));
             }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_StorageID));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_BalanceDate));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_StorageID));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(Original_BalanceDate));
             if ((Original_BatchNumber == null)) {
                 throw new global::System.ArgumentNullException("Original_BatchNumber");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_BatchNumber));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_BatchNumber));
             }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(Original_Price));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(Original_Price));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_Quantity));
             if ((Original_Account == null)) {
                 throw new global::System.ArgumentNullException("Original_Account");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Account));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_Account));
             }
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(BalanceID));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(BalanceID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -17605,8 +17685,8 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NomenclatureNumber, int StorageID, System.DateTime BalanceDate, string BatchNumber, decimal Price, string Account, int Original_BalanceID, string Original_NomenclatureNumber, int Original_StorageID, System.DateTime Original_BalanceDate, string Original_BatchNumber, decimal Original_Price, string Original_Account) {
-            return this.Update(NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price, Account, Original_BalanceID, Original_NomenclatureNumber, Original_StorageID, Original_BalanceDate, Original_BatchNumber, Original_Price, Original_Account, Original_BalanceID);
+        public virtual int Update(string NomenclatureNumber, int StorageID, System.DateTime BalanceDate, string BatchNumber, decimal Price, int Quantity, string Account, int Original_BalanceID, string Original_NomenclatureNumber, int Original_StorageID, System.DateTime Original_BalanceDate, string Original_BatchNumber, decimal Original_Price, int Original_Quantity, string Original_Account) {
+            return this.Update(NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price, Quantity, Account, Original_BalanceID, Original_NomenclatureNumber, Original_StorageID, Original_BalanceDate, Original_BatchNumber, Original_Price, Original_Quantity, Original_Account, Original_BalanceID);
         }
     }
     
@@ -27844,6 +27924,15 @@ INNER JOIN (
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._suppliersTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Suppliers.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._suppliersTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._receivingRequestsContentTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.ReceivingRequestsContent.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -27862,39 +27951,12 @@ INNER JOIN (
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._suppliersTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Suppliers.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._suppliersTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._deliveryListsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.DeliveryLists.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._deliveryListsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._purchaseRequestsContentTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.PurchaseRequestsContent.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._purchaseRequestsContentTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._movementTypesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.MovementTypes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._movementTypesTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -27907,21 +27969,12 @@ INNER JOIN (
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._invoicesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Invoices.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._purchaseRequestsContentTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.PurchaseRequestsContent.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._invoicesTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._deliveryListsContentTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.DeliveryListsContent.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._deliveryListsContentTableAdapter.Update(updatedRows));
+                    result = (result + this._purchaseRequestsContentTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -27934,6 +27987,15 @@ INNER JOIN (
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._movementTypesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.MovementTypes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._movementTypesTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._storagesTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Storages.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -27943,12 +28005,12 @@ INNER JOIN (
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._receivingRequestsContent1TableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ReceivingRequestsContent1.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._invoicesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Invoices.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._receivingRequestsContent1TableAdapter.Update(updatedRows));
+                    result = (result + this._invoicesTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -27958,6 +28020,24 @@ INNER JOIN (
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._storages1TableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._deliveryListsContentTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.DeliveryListsContent.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._deliveryListsContentTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._receivingRequestsContent1TableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ReceivingRequestsContent1.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._receivingRequestsContent1TableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -28067,6 +28147,14 @@ INNER JOIN (
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._suppliersTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Suppliers.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._suppliersTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._receivingRequestsContentTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ReceivingRequestsContent.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -28083,35 +28171,11 @@ INNER JOIN (
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._suppliersTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Suppliers.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._suppliersTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._deliveryListsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.DeliveryLists.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._deliveryListsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._purchaseRequestsContentTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.PurchaseRequestsContent.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._purchaseRequestsContentTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._movementTypesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.MovementTypes.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._movementTypesTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -28123,19 +28187,11 @@ INNER JOIN (
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._invoicesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Invoices.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._purchaseRequestsContentTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.PurchaseRequestsContent.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._invoicesTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._deliveryListsContentTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.DeliveryListsContent.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._deliveryListsContentTableAdapter.Update(addedRows));
+                    result = (result + this._purchaseRequestsContentTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -28147,6 +28203,14 @@ INNER JOIN (
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._movementTypesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.MovementTypes.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._movementTypesTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._storagesTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Storages.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -28155,11 +28219,11 @@ INNER JOIN (
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._receivingRequestsContent1TableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ReceivingRequestsContent1.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._invoicesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Invoices.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._receivingRequestsContent1TableAdapter.Update(addedRows));
+                    result = (result + this._invoicesTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -28168,6 +28232,22 @@ INNER JOIN (
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._storages1TableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._deliveryListsContentTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.DeliveryListsContent.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._deliveryListsContentTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._receivingRequestsContent1TableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ReceivingRequestsContent1.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._receivingRequestsContent1TableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -28309,35 +28389,11 @@ INNER JOIN (
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._storages1TableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._storages1TableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._receivingRequestsContent1TableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.ReceivingRequestsContent1.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._receivingRequestsContent1TableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._storagesTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Storages.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._storagesTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._receivingRequestsContentInjTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ReceivingRequestsContentInj.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._receivingRequestsContentInjTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -28349,6 +28405,14 @@ INNER JOIN (
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._storages1TableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._storages1TableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._invoicesTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Invoices.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -28357,11 +28421,11 @@ INNER JOIN (
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._workshops1TableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Workshops1.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._storagesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Storages.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._workshops1TableAdapter.Update(deletedRows));
+                    result = (result + this._storagesTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -28373,6 +28437,14 @@ INNER JOIN (
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._receivingRequestsContentInjTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ReceivingRequestsContentInj.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._receivingRequestsContentInjTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._purchaseRequestsContentTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.PurchaseRequestsContent.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -28381,19 +28453,19 @@ INNER JOIN (
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._workshops1TableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Workshops1.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._workshops1TableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._deliveryListsTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.DeliveryLists.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._deliveryListsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._suppliersTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Suppliers.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._suppliersTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -28410,6 +28482,14 @@ INNER JOIN (
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._receivingRequestsContentTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._suppliersTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Suppliers.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._suppliersTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
