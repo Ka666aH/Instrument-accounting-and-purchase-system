@@ -110,6 +110,7 @@ namespace Система_учёта_и_приобретения_инструме
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj". При необходимости она может быть перемещена или удалена.
             this.receivingRequestsContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj);
+            ReceivingRequestsContentTable.Columns[0].Visible = false;
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequestsInj". При необходимости она может быть перемещена или удалена.
             this.receivingRequestsInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.AnalogTools". При необходимости она может быть перемещена или удалена.
@@ -132,9 +133,9 @@ namespace Система_учёта_и_приобретения_инструме
             this.groupsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Groups);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.Suppliers". При необходимости она может быть перемещена или удалена.
             this.suppliersTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Suppliers);
-
             WindowState = FormWindowState.Maximized;
 
+            ReceivingRequestsResetStatus();
             //Установка дат во вкладках с диапазоном
             PurchaseRequestsResetStart();
             PurchaseRequestsResetEnd();
@@ -896,7 +897,7 @@ namespace Система_учёта_и_приобретения_инструме
         private void GroupsTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             GroupsDelete();
-                e.Cancel = true;
+            e.Cancel = true;
         }
         private TOOLACCOUNTINGDataSet.GroupsRow groupOriginRow = null;
         private bool groupUserEditing = false;
@@ -1029,22 +1030,51 @@ namespace Система_учёта_и_приобретения_инструме
 
         #region Заявки от цехов
 
-        public void SetReceivingRequestButtonsState()
+        public void SetReceivingRequestsButtonsState()
         {
             try
             {
-                bool state = ReceivingRequestsRequestsTable.CurrentRow != null && !string.IsNullOrEmpty(ReceivingRequestsRequestsTable.CurrentRow.Cells[0].Value.ToString());
-                //WorkshopsRequestsButtonConsider.Enabled = state;
+                //bool state = ReceivingRequestsRequestsTable.CurrentRow != null && !string.IsNullOrEmpty(ReceivingRequestsRequestsTable.CurrentRow.Cells[0].Value.ToString());
+                if (ReceivingRequestsRequestsTable.CurrentRow == null)
+                {
+                    ReceivingRequestsButtonConsider.Enabled = false;
+                    ReceivingRequestsButtonAlter.Enabled = false;
+                    ReceivingRequestsButtonDelete.Enabled = false;
+                    return;
+                }
+
+                string status = ReceivingRequestsRequestsTable.CurrentRow.Cells[6].Value.ToString();
+                if (status == "Не обработана" || status == "В работе")
+                {
+                    if (status == "Не обработана")
+                    {
+                        ReceivingRequestsButtonConsider.Enabled = true;
+                        ReceivingRequestsButtonAlter.Enabled = false;
+                        ReceivingRequestsButtonDelete.Enabled = false;
+                    }
+                    else
+                    {
+                        ReceivingRequestsButtonConsider.Enabled = false;
+                        ReceivingRequestsButtonAlter.Enabled = true;
+                        ReceivingRequestsButtonDelete.Enabled = true;
+                    }
+                }
+                else
+                {
+                    ReceivingRequestsButtonConsider.Enabled = false;
+                    ReceivingRequestsButtonAlter.Enabled = false;
+                    ReceivingRequestsButtonDelete.Enabled = false;
+                }
             }
             catch { }
         }
 
-        private void WorkshopsRequestsRequestsTable_CurrentCellChanged(object sender, EventArgs e)
+        private void ReceivingRequestsRequestsTable_CurrentCellChanged(object sender, EventArgs e)
         {
-            SetReceivingRequestButtonsState();
+            SetReceivingRequestsButtonsState();
         }
 
-        private void WorkshopsRequestsButtonConsider_Click(object sender, EventArgs e)
+        private void ReceivingRequestsButtonConsider_Click_1(object sender, EventArgs e)
         {
             if (ReceivingRequestsRequestsTable.CurrentRow == null) return;
             int requestNumber = int.Parse(ReceivingRequestsRequestsTable.CurrentRow.Cells[0].Value.ToString());
@@ -1052,21 +1082,31 @@ namespace Система_учёта_и_приобретения_инструме
             requestConsideration.ShowDialog();
         }
 
-        private void WorkshopsRequests_TextChanged(object sender, EventArgs e)
+        private void ReceivingRequestsButtonAlter_Click(object sender, EventArgs e)
+        {
+            //add
+        }
+
+        private void ReceivingRequestsButtonDelete_Click(object sender, EventArgs e)
+        {
+            //add
+        }
+
+        private void ReceivingRequests_TextChanged(object sender, EventArgs e)
         {
             if (isSearchReseting) return;
             var parameters = new List<SearchParameter>();
-            //if (!string.IsNullOrEmpty(WorkshopsRequestsName.Text)) parameters.Add(new SearchParameter("FullName", WorkshopsRequestsName.Text, false)); //поиск по дочерней
-            //if (!string.IsNullOrEmpty(WorkshopsRequestsNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", WorkshopsRequestsNumber.Text)); //поиск по дочерней
             if (!string.IsNullOrEmpty(ReceivingRequestsWorkshop.Text)) parameters.Add(new SearchParameter("WorkshopNumberName", ReceivingRequestsWorkshop.Text, false));
-            if (!string.IsNullOrEmpty(ReceivingRequestsStatus.Text)) parameters.Add(new SearchParameter("Status", ReceivingRequestsStatus.Text));
+            if (!string.IsNullOrEmpty(ReceivingRequestsStatus.Text) && ReceivingRequestsStatus.SelectedIndex > 0) parameters.Add(new SearchParameter("Status", ReceivingRequestsStatus.Text));
+            if (!ReceivingRequestsAll.Checked) parameters.Add(new SearchParameter("ReceivingRequestType", ReceivingRequestsSearchType()));
 
             try
             {
                 string filter = Search.Filter(parameters);
                 ReceivingRequestsRequestsTable.SuspendLayout();
                 ReceivingRequestsContentTable.SuspendLayout();
-                //что тут?
+                receivingRequestsInjBindingSource.Filter = filter;
+                ReceivingRequestsContentTable.Columns[0].Visible = false;
                 ReceivingRequestsRequestsTable.ResumeLayout();
                 ReceivingRequestsContentTable.ResumeLayout();
             }
@@ -1074,6 +1114,13 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private string ReceivingRequestsSearchType()
+        {
+            string type = "Плановая";
+            if (ReceivingRequestsOutPlanned.Checked) type = "Внеплановая";
+            return type;
         }
         //Возможный вариант поиска
         //private void WorkshopsRequests_TextChanged(object sender, EventArgs e)
@@ -1398,7 +1445,7 @@ namespace Система_учёта_и_приобретения_инструме
         private void ProvidersTable_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             ProvidersDelete();
-                e.Cancel = true;
+            e.Cancel = true;
         }
 
         private TOOLACCOUNTINGDataSet.SuppliersRow supplierOriginRow = null;
@@ -1673,7 +1720,6 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void GroupsResetName() { GroupsName.Text = string.Empty; }
 
-        //remove filter #fix
         private void ReceivingRequestsResetSearch()
         {
             isSearchReseting = true;
@@ -1681,9 +1727,10 @@ namespace Система_учёта_и_приобретения_инструме
             ReceivingRequestsResetStatus();
             ReceivingRequestsResetType();
             isSearchReseting = false;
+            receivingRequestsInjBindingSource.RemoveFilter();
         }
         private void ReceivingRequestsResetWorkshop() { ReceivingRequestsWorkshop.Text = string.Empty; }
-        private void ReceivingRequestsResetStatus() { ReceivingRequestsStatus.Text = string.Empty; }
+        private void ReceivingRequestsResetStatus() { ReceivingRequestsStatus.SelectedIndex = 1; }
         private void ReceivingRequestsResetType() { ReceivingRequestsAll.Checked = true; }
         //remove filter #fix
         private void PurchaseRequestsResetSearch()
@@ -1871,6 +1918,7 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
         }
+
     }
     public static class Logs
     {

@@ -10880,6 +10880,8 @@ namespace Система_учёта_и_приобретения_инструме
             
             private global::System.Data.DataColumn columnQuantity;
             
+            private global::System.Data.DataColumn columnFullName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ReplacementFixationInjDataTable() {
@@ -10939,6 +10941,14 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FullNameColumn {
+                get {
+                    return this.columnFullName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -10974,12 +10984,13 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReplacementFixationInjRow AddReplacementFixationInjRow(ReceivingRequestsContentInjRow parentReceivingRequestsContentInjRowByReceivingRequestsContentInj_ReplacementFixationInj, string AnalogNomenclatureNumber, int Quantity) {
+            public ReplacementFixationInjRow AddReplacementFixationInjRow(ReceivingRequestsContentInjRow parentReceivingRequestsContentInjRowByReceivingRequestsContentInj_ReplacementFixationInj, string AnalogNomenclatureNumber, int Quantity, string FullName) {
                 ReplacementFixationInjRow rowReplacementFixationInjRow = ((ReplacementFixationInjRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         AnalogNomenclatureNumber,
-                        Quantity};
+                        Quantity,
+                        FullName};
                 if ((parentReceivingRequestsContentInjRowByReceivingRequestsContentInj_ReplacementFixationInj != null)) {
                     columnValuesArray[0] = parentReceivingRequestsContentInjRowByReceivingRequestsContentInj_ReplacementFixationInj[0];
                 }
@@ -11008,6 +11019,7 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnReceivingContentID = base.Columns["ReceivingContentID"];
                 this.columnAnalogNomenclatureNumber = base.Columns["AnalogNomenclatureNumber"];
                 this.columnQuantity = base.Columns["Quantity"];
+                this.columnFullName = base.Columns["FullName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11019,10 +11031,14 @@ namespace Система_учёта_и_приобретения_инструме
                 base.Columns.Add(this.columnAnalogNomenclatureNumber);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
+                this.columnFullName = new global::System.Data.DataColumn("FullName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFullName);
                 this.columnReceivingContentID.AllowDBNull = false;
                 this.columnAnalogNomenclatureNumber.AllowDBNull = false;
                 this.columnAnalogNomenclatureNumber.MaxLength = 9;
                 this.columnQuantity.AllowDBNull = false;
+                this.columnFullName.ReadOnly = true;
+                this.columnFullName.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15062,6 +15078,22 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string FullName {
+                get {
+                    try {
+                        return ((string)(this[this.tableReplacementFixationInj.FullNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FullName\' в таблице \'ReplacementFixationInj\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReplacementFixationInj.FullNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ReceivingRequestsContentInjRow ReceivingRequestsContentInjRow {
                 get {
                     return ((ReceivingRequestsContentInjRow)(this.GetParentRow(this.Table.ParentRelations["ReceivingRequestsContentInj_ReplacementFixationInj"])));
@@ -15069,6 +15101,18 @@ namespace Система_учёта_и_приобретения_инструме
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["ReceivingRequestsContentInj_ReplacementFixationInj"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFullNameNull() {
+                return this.IsNull(this.tableReplacementFixationInj.FullNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFullNameNull() {
+                this[this.tableReplacementFixationInj.FullNameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -25906,16 +25950,8 @@ INNER JOIN
             tableMapping.ColumnMappings.Add("ReceivingContentID", "ReceivingContentID");
             tableMapping.ColumnMappings.Add("AnalogNomenclatureNumber", "AnalogNomenclatureNumber");
             tableMapping.ColumnMappings.Add("Quantity", "Quantity");
+            tableMapping.ColumnMappings.Add("FullName", "FullName");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [ReplacementFixation] ([ReceivingContentID], [AnalogNomenclatureNumbe" +
-                "r], [Quantity]) VALUES (@ReceivingContentID, @AnalogNomenclatureNumber, @Quantit" +
-                "y)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ReceivingContentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ReceivingContentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AnalogNomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AnalogNomenclatureNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -25931,8 +25967,33 @@ INNER JOIN
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        ReceivingContentID, AnalogNomenclatureNumber, Quantity\r\nFROM       " +
-                "     ReplacementFixation";
+            this._commandCollection[0].CommandText = @"SELECT 
+    rc.ReceivingContentID, 
+    rc.AnalogNomenclatureNumber, 
+    n.FullName,
+    rc.Quantity
+FROM ReplacementFixation rc
+LEFT JOIN (
+    SELECT 
+        n.NomenclatureNumber,
+        g.Name,
+        n.Designation,
+        n.Unit,
+        n.Dimensions,
+        n.CuttingMaterial,
+        n.RegulatoryDoc,
+        n.Producer,
+        FullName = 
+            COALESCE(g.Name + ' ', '') + 
+            COALESCE(n.Designation + ' ', '') + 
+            COALESCE(n.Dimensions + ' ', '') + 
+            COALESCE(n.CuttingMaterial + ' ', '') + 
+            COALESCE(n.RegulatoryDoc, ''),
+        n.UsageFlag,
+        n.MinStock
+    FROM Nomenclature n
+    LEFT JOIN Groups g ON g.RangeStart = LEFT(n.NomenclatureNumber, 4)
+) n ON n.NomenclatureNumber = rc.AnalogNomenclatureNumber;";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -25958,64 +26019,6 @@ INNER JOIN
             TOOLACCOUNTINGDataSet.ReplacementFixationInjDataTable dataTable = new TOOLACCOUNTINGDataSet.ReplacementFixationInjDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(TOOLACCOUNTINGDataSet.ReplacementFixationInjDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(TOOLACCOUNTINGDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "ReplacementFixationInj");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int ReceivingContentID, string AnalogNomenclatureNumber, int Quantity) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ReceivingContentID));
-            if ((AnalogNomenclatureNumber == null)) {
-                throw new global::System.ArgumentNullException("AnalogNomenclatureNumber");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(AnalogNomenclatureNumber));
-            }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Quantity));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
         }
     }
     
@@ -26433,8 +26436,6 @@ SELECT ReceivingContentID, ReceivingRequestID, NomenclatureNumber, FullName, Qua
         
         private Storages1TableAdapter _storages1TableAdapter;
         
-        private ReplacementFixationInjTableAdapter _replacementFixationInjTableAdapter;
-        
         private ReceivingRequestsContentInjTableAdapter _receivingRequestsContentInjTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
@@ -26779,20 +26780,6 @@ SELECT ReceivingContentID, ReceivingRequestID, NomenclatureNumber, FullName, Qua
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public ReplacementFixationInjTableAdapter ReplacementFixationInjTableAdapter {
-            get {
-                return this._replacementFixationInjTableAdapter;
-            }
-            set {
-                this._replacementFixationInjTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
         public ReceivingRequestsContentInjTableAdapter ReceivingRequestsContentInjTableAdapter {
             get {
                 return this._receivingRequestsContentInjTableAdapter;
@@ -26913,10 +26900,6 @@ SELECT ReceivingContentID, ReceivingRequestID, NomenclatureNumber, FullName, Qua
                             && (this._storages1TableAdapter.Connection != null))) {
                     return this._storages1TableAdapter.Connection;
                 }
-                if (((this._replacementFixationInjTableAdapter != null) 
-                            && (this._replacementFixationInjTableAdapter.Connection != null))) {
-                    return this._replacementFixationInjTableAdapter.Connection;
-                }
                 if (((this._receivingRequestsContentInjTableAdapter != null) 
                             && (this._receivingRequestsContentInjTableAdapter.Connection != null))) {
                     return this._receivingRequestsContentInjTableAdapter.Connection;
@@ -27001,9 +26984,6 @@ SELECT ReceivingContentID, ReceivingRequestID, NomenclatureNumber, FullName, Qua
                     count = (count + 1);
                 }
                 if ((this._storages1TableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._replacementFixationInjTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._receivingRequestsContentInjTableAdapter != null)) {
@@ -27143,15 +27123,6 @@ SELECT ReceivingContentID, ReceivingRequestID, NomenclatureNumber, FullName, Qua
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._deliveryListsContentTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._replacementFixationInjTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ReplacementFixationInj.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._replacementFixationInjTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -27367,14 +27338,6 @@ SELECT ReceivingContentID, ReceivingRequestID, NomenclatureNumber, FullName, Qua
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._replacementFixationInjTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ReplacementFixationInj.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._replacementFixationInjTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._replacementFixationTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ReplacementFixation.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -27542,14 +27505,6 @@ SELECT ReceivingContentID, ReceivingRequestID, NomenclatureNumber, FullName, Qua
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._replacementFixationTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._replacementFixationInjTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ReplacementFixationInj.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._replacementFixationInjTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -27819,11 +27774,6 @@ SELECT ReceivingContentID, ReceivingRequestID, NomenclatureNumber, FullName, Qua
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
-            if (((this._replacementFixationInjTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._replacementFixationInjTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
-                        "r, должны использовать одинаковую строку подключения.");
-            }
             if (((this._receivingRequestsContentInjTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._receivingRequestsContentInjTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
@@ -28068,15 +28018,6 @@ SELECT ReceivingContentID, ReceivingRequestID, NomenclatureNumber, FullName, Qua
                         adaptersWithAcceptChangesDuringUpdate.Add(this._storages1TableAdapter.Adapter);
                     }
                 }
-                if ((this._replacementFixationInjTableAdapter != null)) {
-                    revertConnections.Add(this._replacementFixationInjTableAdapter, this._replacementFixationInjTableAdapter.Connection);
-                    this._replacementFixationInjTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._replacementFixationInjTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._replacementFixationInjTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._replacementFixationInjTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._replacementFixationInjTableAdapter.Adapter);
-                    }
-                }
                 if ((this._receivingRequestsContentInjTableAdapter != null)) {
                     revertConnections.Add(this._receivingRequestsContentInjTableAdapter, this._receivingRequestsContentInjTableAdapter.Connection);
                     this._receivingRequestsContentInjTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
@@ -28235,10 +28176,6 @@ SELECT ReceivingContentID, ReceivingRequestID, NomenclatureNumber, FullName, Qua
                 if ((this._storages1TableAdapter != null)) {
                     this._storages1TableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._storages1TableAdapter]));
                     this._storages1TableAdapter.Transaction = null;
-                }
-                if ((this._replacementFixationInjTableAdapter != null)) {
-                    this._replacementFixationInjTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._replacementFixationInjTableAdapter]));
-                    this._replacementFixationInjTableAdapter.Transaction = null;
                 }
                 if ((this._receivingRequestsContentInjTableAdapter != null)) {
                     this._receivingRequestsContentInjTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._receivingRequestsContentInjTableAdapter]));
