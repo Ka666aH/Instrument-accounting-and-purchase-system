@@ -108,7 +108,11 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Inj_Load(object sender, EventArgs e)
         {
-           // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.BalancesInj". При необходимости она может быть перемещена или удалена.
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj". При необходимости она может быть перемещена или удалена.
+            this.purchaseRequestsContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.PurchaseRequestsInj". При необходимости она может быть перемещена или удалена.
+            this.purchaseRequestsInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.BalancesInj". При необходимости она может быть перемещена или удалена.
             this.balancesInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.BalancesInj);
             OstatkiTable.Columns[0].Visible = false;
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj". При необходимости она может быть перемещена или удалена.
@@ -1210,7 +1214,25 @@ namespace Система_учёта_и_приобретения_инструме
         #endregion
 
         #region Заявки на приобретение
+        private void PurchaseRequestsButtonCreate_Click(object sender, EventArgs e)
+        {
+            PurchaseRequest purchaseRequest = new PurchaseRequest();
+            purchaseRequest.ShowDialog();
+        }
 
+        private void PurchaseRequestsButtonAlter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PurchaseRequestsButtonDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void PurchaseRequestsButtonExport_Click(object sender, EventArgs e)
+        {
+            //add
+        }
 
         private void PurchaseRequestsButtonResetSearch_Click(object sender, EventArgs e)
         {
@@ -1964,6 +1986,7 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
         }
+
     }
     public static class Logs
     {
