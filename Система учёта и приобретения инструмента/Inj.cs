@@ -108,7 +108,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Inj_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.BalancesInj". При необходимости она может быть перемещена или удалена.
+           // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.BalancesInj". При необходимости она может быть перемещена или удалена.
             this.balancesInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.BalancesInj);
             OstatkiTable.Columns[0].Visible = false;
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj". При необходимости она может быть перемещена или удалена.
@@ -1272,6 +1272,22 @@ namespace Система_учёта_и_приобретения_инструме
                 StatementsTableContextMenu.Show(Cursor.Position);
             }
         }
+
+        private void StatementsButtonCreate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StatementsButtonAlter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StatementsButtonDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void SetStatementsTableContextMenuItems(bool isRow)
         {
             StatementsTableContextMenuAlter.Visible = isRow;
@@ -1921,7 +1937,6 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
         }
-
     }
     public static class Logs
     {

@@ -25,6 +25,10 @@ namespace Система_учёта_и_приобретения_инструме
         AutoCompleteStringCollection workshops = new AutoCompleteStringCollection();
         private void RequestConsideration_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DataTable2". При необходимости она может быть перемещена или удалена.
+            this.dataTable2TableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DataTable2);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DataTable2". При необходимости она может быть перемещена или удалена.
+            this.dataTable2TableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DataTable2);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequestsContent". При необходимости она может быть перемещена или удалена.
             this.receivingRequestsContentTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.ReceivingRequestsContent);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReplacementFixationInj". При необходимости она может быть перемещена или удалена.
@@ -35,19 +39,21 @@ namespace Система_учёта_и_приобретения_инструме
             purchaseRequestsTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequests);
             purchaseRequestsContentTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContent);
             workshopsTableAdapter.Fill(tOOLACCOUNTINGDataSet.Workshops);
+            balancesInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.BalancesInj);
+            //replacementFixationTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReplacementFixation);
 
             string filter = $"ReceivingRequestID = {requestNumber}";
             receivingRequestsContentInjBindingSource.Filter = filter;
 
-            foreach (DataRow row in new WorkshopsTableAdapter().GetData().Rows)
-            {
-                string fullName = $"{row[1]?.ToString().Trim()}";
-                if (!string.IsNullOrEmpty(fullName))
-                {
-                    workshops.Add(fullName);
-                }
-            }
-            RequestConsiderationDonor.AutoCompleteCustomSource = workshops;
+            //foreach (DataRow row in new WorkshopsTableAdapter().GetData().Rows)
+            //{
+            //    string fullName = $"{row[1]?.ToString().Trim()}";
+            //    if (!string.IsNullOrEmpty(fullName))
+            //    {
+            //        workshops.Add(fullName);
+            //    }
+            //}
+            //RequestConsiderationDonor.AutoCompleteCustomSource = workshops;
         }
 
         private void SetRequestConsiderationDecisionButtonsState()
@@ -71,7 +77,7 @@ namespace Система_учёта_и_приобретения_инструме
                 {
                     RequestConsiderationBuy.Checked = false;
                     RequestConsiderationTransfer.Checked = false;
-                    RequestConsiderationDonor.Text = string.Empty;
+                    //RequestConsiderationDonor.Text = string.Empty;
                 }
                 else
                 {
@@ -82,9 +88,9 @@ namespace Система_учёта_и_приобретения_инструме
                     if (!purchaseRow.IsPurchase)
                     {
                         int donorId = purchaseRow.DonorWorkshopID;
-                        var donorWorkshop = tOOLACCOUNTINGDataSet.Workshops.Where(w => w.WorkshopID == donorId).Select(x => x.Name).FirstOrDefault(); //bug
+                        var donorWorkshop = tOOLACCOUNTINGDataSet.Workshops.Where(w => w.WorkshopID == donorId).Select(x => x.Name).FirstOrDefault();
 
-                        RequestConsiderationDonor.Text = donorWorkshop;
+                        //RequestConsiderationDonor.Text = donorWorkshop;
                     }
                 }
 
@@ -98,13 +104,22 @@ namespace Система_учёта_и_приобретения_инструме
             }
         }
 
-        private void SetRequestConsiderationButtonsState()
+        private void SetRequestConsiderationFixationButtonsState()
         {
             try
             {
-                bool state = RequestConsiderationFixationTable.CurrentRow != null;
-                RequestConsiderationButtonAlter.Enabled = state;
-                RequestConsiderationButtonDelete.Enabled = state;
+                //bool state = RequestConsiderationFixationTable.CurrentRow != null;
+                //RequestConsiderationButtonReplace.Enabled = state;
+                if (RequestConsiderationFixationTable.CurrentRow == null || tOOLACCOUNTINGDataSet.ReplacementFixationInj.Any(x => x.ReceivingContentID == Convert.ToInt32(RequestConsiderationFixationTable.CurrentRow.Cells[0].Value.ToString())))
+                {
+                    RequestConsiderationButtonReplace.Enabled = false;
+                }
+                else
+                {
+                    RequestConsiderationButtonReplace.Enabled = true;
+                }
+                //RequestConsiderationButtonAlter.Enabled = state;
+                //RequestConsiderationButtonDelete.Enabled = state;
             }
             catch { }
         }
@@ -112,16 +127,18 @@ namespace Система_учёта_и_приобретения_инструме
         private void RequestConsiderationContentTable_CurrentCellChanged(object sender, EventArgs e)
         {
             SetRequestConsiderationDecisionButtonsState();
-        }
 
-        private void RequestConsiderationContentTable_SelectionChanged(object sender, EventArgs e)
-        {
-
+            if (RequestConsiderationContentTable.CurrentRow == null) return;
+            var selectedRow = RequestConsiderationContentTable.CurrentRow.DataBoundItem as DataRowView;
+            var contentRow = selectedRow.Row as TOOLACCOUNTINGDataSet.ReceivingRequestsContentInjRow;
+            if (contentRow == null) return;
+            int quantity = tOOLACCOUNTINGDataSet.BalancesInj.Where(b => b.NomenclatureNumber == contentRow.NomenclatureNumber).Sum(b => b.Quantity);
+            RequestConsiderationQuantity.Text = quantity.ToString();
         }
 
         private void RequestConsiderationFixationTable_CurrentCellChanged(object sender, EventArgs e)
         {
-            SetRequestConsiderationButtonsState();
+            SetRequestConsiderationFixationButtonsState();
         }
 
         private void RequestConsiderationButtonDeсide_Click(object sender, EventArgs e)
@@ -145,11 +162,12 @@ namespace Система_учёта_и_приобретения_инструме
                 var prcr = tOOLACCOUNTINGDataSet.PurchaseRequestsContent.Where(x => x.ReceivingContentID == contentRow.ReceivingContentID).FirstOrDefault();
                 if (prcr.IsPurchase != RequestConsiderationBuy.Checked) prcr.IsPurchase = RequestConsiderationBuy.Checked;
                 if (prcr.IsPurchase) prcr.SetDonorWorkshopIDNull();
-                else
-                {
-                    int donor = tOOLACCOUNTINGDataSet.Workshops.Where(x => x.Name == RequestConsiderationDonor.Text).Select(x => x.WorkshopID).FirstOrDefault();
-                    if (prcr.DonorWorkshopID != donor) prcr.DonorWorkshopID = donor;
-                }
+                else prcr.DonorWorkshopID = 0;
+                //else
+                //{
+                //    int donor = tOOLACCOUNTINGDataSet.Workshops.Where(x => x.Name == RequestConsiderationDonor.Text).Select(x => x.WorkshopID).FirstOrDefault();
+                //    if (prcr.DonorWorkshopID != donor) prcr.DonorWorkshopID = donor;
+                //}
             }
             else
             {
@@ -157,11 +175,11 @@ namespace Система_учёта_и_приобретения_инструме
                 prcr.PurchaseRequestID = 1;
                 prcr.ReceivingContentID = contentRow.ReceivingContentID;
                 prcr.IsPurchase = RequestConsiderationBuy.Checked;
-                if (!RequestConsiderationBuy.Checked)
-                    prcr.DonorWorkshopID = tOOLACCOUNTINGDataSet.Workshops
-                        .Where(x => x.Name.ToLower() == RequestConsiderationDonor.Text.ToLower())
-                        .Select(x => x.WorkshopID)
-                        .FirstOrDefault();
+                if (RequestConsiderationTransfer.Checked) prcr.DonorWorkshopID = 0;
+                //    prcr.DonorWorkshopID = tOOLACCOUNTINGDataSet.Workshops
+                //        .Where(x => x.Name.ToLower() == RequestConsiderationDonor.Text.ToLower())
+                //        .Select(x => x.WorkshopID)
+                //        .FirstOrDefault();
                 tOOLACCOUNTINGDataSet.PurchaseRequestsContent.AddPurchaseRequestsContentRow(prcr);
             }
 
@@ -169,19 +187,52 @@ namespace Система_учёта_и_приобретения_инструме
             new PurchaseRequestsContentTableAdapter().Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContent);
         }
 
-        private void RequestConsiderationButtonCreate_Click(object sender, EventArgs e)
+        private void RequestConsiderationButtonReplace_Click(object sender, EventArgs e)
         {
+            // Проверяем выделенную строку
+            if (RequestConsiderationFixationTable.CurrentRow == null)
+                return;
 
-        }
+            // Получаем ID из ячейки
+            var cellValue = RequestConsiderationFixationTable.CurrentRow.Cells[0].Value;
+            if (cellValue == null || !int.TryParse(cellValue.ToString(), out int id))
+                return;
 
-        private void RequestConsiderationButtonAlter_Click(object sender, EventArgs e)
-        {
+            // Находим запись в DataTable2 по ReceivingContentID
+            var row = tOOLACCOUNTINGDataSet.DataTable2
+                .FirstOrDefault(x => x.ReceivingContentID == id);
 
-        }
+            if (row == null)
+                return;
 
-        private void RequestConsiderationButtonDelete_Click(object sender, EventArgs e)
-        {
+            // Проверяем, не существует ли уже запись с таким ReceivingContentID
+            if (tOOLACCOUNTINGDataSet.ReplacementFixationInj.Any(x => x.ReceivingContentID == row.ReceivingContentID))
+                return;
 
+            // Создаем новую строку для ReplacementFixation
+            var rpf = tOOLACCOUNTINGDataSet.ReplacementFixation.NewReplacementFixationRow();
+
+            rpf.ReceivingContentID = row.ReceivingContentID;
+            rpf.AnalogNomenclatureNumber = row.AnalogNumber;
+
+            // Получаем количество из ReceivingRequestsContent
+            var quantity = tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj
+                .Where(x => x.ReceivingContentID == row.ReceivingContentID)
+                .Select(x => x.Quantity)
+                .FirstOrDefault();
+
+            rpf.Quantity = quantity;
+
+            // Добавляем новую строку и сохраняем изменения
+            tOOLACCOUNTINGDataSet.ReplacementFixation.AddReplacementFixationRow(rpf);
+
+            // Обновляем адаптеры
+            var adapter = new ReplacementFixationTableAdapter();
+            adapter.Update(tOOLACCOUNTINGDataSet.ReplacementFixation);
+            tOOLACCOUNTINGDataSet.ReplacementFixation.Clear();
+            adapter.Fill(tOOLACCOUNTINGDataSet.ReplacementFixation);
+            replacementFixationInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReplacementFixationInj);
+            SetRequestConsiderationFixationButtonsState();      ///
         }
 
         private void RequestConsiderationButtonSave_Click(object sender, EventArgs e)
@@ -196,17 +247,17 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void RequestConsiderationButtonClose_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
         private void radioButton_CheckedChanged(object sender, EventArgs e)
         {
-            if (!RequestConsiderationTransfer.Checked)
-            {
-                RequestConsiderationDonor.Enabled = false;
-                RequestConsiderationDonor.Text = string.Empty;
-            }
-            else RequestConsiderationDonor.Enabled = true;
+            //if (!RequestConsiderationTransfer.Checked)
+            //{
+            //    RequestConsiderationDonor.Enabled = false;
+            //    RequestConsiderationDonor.Text = string.Empty;
+            //}
+            //else RequestConsiderationDonor.Enabled = true;
             if (RequestConsiderationBuy.Checked || RequestConsiderationTransfer.Checked) RequestConsiderationButtonDeсide.Enabled = true;
         }
     }
