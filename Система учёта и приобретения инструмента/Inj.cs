@@ -108,6 +108,9 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Inj_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.BalancesInj". При необходимости она может быть перемещена или удалена.
+            this.balancesInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.BalancesInj);
+            OstatkiTable.Columns[0].Visible = false;
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj". При необходимости она может быть перемещена или удалена.
             this.receivingRequestsContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj);
             ReceivingRequestsContentTable.Columns[0].Visible = false;
