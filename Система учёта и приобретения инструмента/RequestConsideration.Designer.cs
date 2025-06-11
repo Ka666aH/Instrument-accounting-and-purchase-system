@@ -42,12 +42,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.RequestConsiderationFixationTable = new System.Windows.Forms.DataGridView();
             this.receivingContentIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.analogNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receivingRequestsContentInjDataTable2BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.receivingRequestsContentInjReplacementFixationInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.receivingRequestsContentInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentInjTableAdapter();
-            this.replacementFixationInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReplacementFixationInjTableAdapter();
             this.RequestConsiderationButtonClose = new System.Windows.Forms.Button();
             this.RequestConsiderationButtonSaveClose = new System.Windows.Forms.Button();
             this.RequestConsiderationButtonSave = new System.Windows.Forms.Button();
@@ -55,18 +53,25 @@
             this.label2 = new System.Windows.Forms.Label();
             this.RequestConsiderationBuy = new System.Windows.Forms.RadioButton();
             this.RequestConsiderationTransfer = new System.Windows.Forms.RadioButton();
+            this.label4 = new System.Windows.Forms.Label();
+            this.RequestConsiderationQuantity = new System.Windows.Forms.TextBox();
+            this.receivingRequestsContentInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentInjTableAdapter();
+            this.replacementFixationInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReplacementFixationInjTableAdapter();
             this.purchaseRequestsContentTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.PurchaseRequestsContentTableAdapter();
             this.purchaseRequestsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.PurchaseRequestsTableAdapter();
             this.purchaseRequestsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.receivingRequestsContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.receivingRequestsContentTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter();
             this.workshopsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.WorkshopsTableAdapter();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dataTable2TableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.DataTable2TableAdapter();
+            this.balancesInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.BalancesInjTableAdapter();
+            this.RequestConsiderationButtonReplace = new System.Windows.Forms.Button();
+            this.replacementFixationTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReplacementFixationTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.RequestConsiderationContentTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentInjBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RequestConsiderationFixationTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentInjDataTable2BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentInjReplacementFixationInjBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.purchaseRequestsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentBindingSource)).BeginInit();
@@ -95,7 +100,6 @@
             this.RequestConsiderationContentTable.Size = new System.Drawing.Size(694, 186);
             this.RequestConsiderationContentTable.TabIndex = 0;
             this.RequestConsiderationContentTable.CurrentCellChanged += new System.EventHandler(this.RequestConsiderationContentTable_CurrentCellChanged);
-            this.RequestConsiderationContentTable.SelectionChanged += new System.EventHandler(this.RequestConsiderationContentTable_SelectionChanged);
             // 
             // receivingRequestIDDataGridViewTextBoxColumn
             // 
@@ -165,9 +169,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(12, 282);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(353, 24);
+            this.label1.Size = new System.Drawing.Size(286, 24);
             this.label1.TabIndex = 38;
-            this.label1.Text = "Зафиксированные замены на аналоги";
+            this.label1.Text = "Доступные замены на аналоги";
             // 
             // RequestConsiderationFixationTable
             // 
@@ -178,17 +182,16 @@
             this.RequestConsiderationFixationTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.RequestConsiderationFixationTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.receivingContentIDDataGridViewTextBoxColumn1,
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn,
-            this.fullNameDataGridViewTextBoxColumn1,
-            this.quantityDataGridViewTextBoxColumn1});
-            this.RequestConsiderationFixationTable.DataSource = this.receivingRequestsContentInjReplacementFixationInjBindingSource;
+            this.analogNumberDataGridViewTextBoxColumn,
+            this.fullNameDataGridViewTextBoxColumn1});
+            this.RequestConsiderationFixationTable.DataSource = this.receivingRequestsContentInjDataTable2BindingSource;
             this.RequestConsiderationFixationTable.Location = new System.Drawing.Point(12, 310);
             this.RequestConsiderationFixationTable.MultiSelect = false;
             this.RequestConsiderationFixationTable.Name = "RequestConsiderationFixationTable";
             this.RequestConsiderationFixationTable.ReadOnly = true;
             this.RequestConsiderationFixationTable.RowHeadersVisible = false;
             this.RequestConsiderationFixationTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.RequestConsiderationFixationTable.Size = new System.Drawing.Size(884, 234);
+            this.RequestConsiderationFixationTable.Size = new System.Drawing.Size(694, 125);
             this.RequestConsiderationFixationTable.TabIndex = 37;
             this.RequestConsiderationFixationTable.CurrentCellChanged += new System.EventHandler(this.RequestConsiderationFixationTable_CurrentCellChanged);
             // 
@@ -200,50 +203,35 @@
             this.receivingContentIDDataGridViewTextBoxColumn1.ReadOnly = true;
             this.receivingContentIDDataGridViewTextBoxColumn1.Visible = false;
             // 
-            // analogNomenclatureNumberDataGridViewTextBoxColumn
+            // analogNumberDataGridViewTextBoxColumn
             // 
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn.DataPropertyName = "AnalogNomenclatureNumber";
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn.HeaderText = "Номенклатурный номер аналога";
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn.Name = "analogNomenclatureNumberDataGridViewTextBoxColumn";
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn.ReadOnly = true;
-            this.analogNomenclatureNumberDataGridViewTextBoxColumn.Width = 150;
+            this.analogNumberDataGridViewTextBoxColumn.DataPropertyName = "AnalogNumber";
+            this.analogNumberDataGridViewTextBoxColumn.HeaderText = "Номенклатурный номера аналога";
+            this.analogNumberDataGridViewTextBoxColumn.Name = "analogNumberDataGridViewTextBoxColumn";
+            this.analogNumberDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // fullNameDataGridViewTextBoxColumn1
             // 
-            this.fullNameDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.fullNameDataGridViewTextBoxColumn1.DataPropertyName = "FullName";
             this.fullNameDataGridViewTextBoxColumn1.HeaderText = "Полное наименование";
             this.fullNameDataGridViewTextBoxColumn1.Name = "fullNameDataGridViewTextBoxColumn1";
             this.fullNameDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // quantityDataGridViewTextBoxColumn1
+            // receivingRequestsContentInjDataTable2BindingSource
             // 
-            this.quantityDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.quantityDataGridViewTextBoxColumn1.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn1.HeaderText = "Количество";
-            this.quantityDataGridViewTextBoxColumn1.Name = "quantityDataGridViewTextBoxColumn1";
-            this.quantityDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.quantityDataGridViewTextBoxColumn1.Width = 125;
+            this.receivingRequestsContentInjDataTable2BindingSource.DataMember = "ReceivingRequestsContentInj_DataTable2";
+            this.receivingRequestsContentInjDataTable2BindingSource.DataSource = this.receivingRequestsContentInjBindingSource;
             // 
             // receivingRequestsContentInjReplacementFixationInjBindingSource
             // 
             this.receivingRequestsContentInjReplacementFixationInjBindingSource.DataMember = "ReceivingRequestsContentInj_ReplacementFixationInj";
             this.receivingRequestsContentInjReplacementFixationInjBindingSource.DataSource = this.receivingRequestsContentInjBindingSource;
             // 
-            // receivingRequestsContentInjTableAdapter
-            // 
-            this.receivingRequestsContentInjTableAdapter.ClearBeforeFill = true;
-            // 
-            // replacementFixationInjTableAdapter
-            // 
-            this.replacementFixationInjTableAdapter.ClearBeforeFill = true;
-            // 
             // RequestConsiderationButtonClose
             // 
             this.RequestConsiderationButtonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.RequestConsiderationButtonClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RequestConsiderationButtonClose.Location = new System.Drawing.Point(793, 560);
+            this.RequestConsiderationButtonClose.Location = new System.Drawing.Point(793, 447);
             this.RequestConsiderationButtonClose.MaximumSize = new System.Drawing.Size(103, 31);
             this.RequestConsiderationButtonClose.MinimumSize = new System.Drawing.Size(103, 31);
             this.RequestConsiderationButtonClose.Name = "RequestConsiderationButtonClose";
@@ -257,7 +245,7 @@
             // 
             this.RequestConsiderationButtonSaveClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.RequestConsiderationButtonSaveClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RequestConsiderationButtonSaveClose.Location = new System.Drawing.Point(559, 560);
+            this.RequestConsiderationButtonSaveClose.Location = new System.Drawing.Point(559, 447);
             this.RequestConsiderationButtonSaveClose.Name = "RequestConsiderationButtonSaveClose";
             this.RequestConsiderationButtonSaveClose.Size = new System.Drawing.Size(228, 31);
             this.RequestConsiderationButtonSaveClose.TabIndex = 43;
@@ -270,7 +258,7 @@
             // 
             this.RequestConsiderationButtonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.RequestConsiderationButtonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RequestConsiderationButtonSave.Location = new System.Drawing.Point(421, 560);
+            this.RequestConsiderationButtonSave.Location = new System.Drawing.Point(421, 447);
             this.RequestConsiderationButtonSave.Name = "RequestConsiderationButtonSave";
             this.RequestConsiderationButtonSave.Size = new System.Drawing.Size(132, 31);
             this.RequestConsiderationButtonSave.TabIndex = 42;
@@ -322,6 +310,32 @@
             this.RequestConsiderationTransfer.UseVisualStyleBackColor = true;
             this.RequestConsiderationTransfer.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(12, 240);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(159, 24);
+            this.label4.TabIndex = 49;
+            this.label4.Text = "Остаток на ЦИС:";
+            // 
+            // RequestConsiderationQuantity
+            // 
+            this.RequestConsiderationQuantity.Location = new System.Drawing.Point(177, 238);
+            this.RequestConsiderationQuantity.Name = "RequestConsiderationQuantity";
+            this.RequestConsiderationQuantity.ReadOnly = true;
+            this.RequestConsiderationQuantity.Size = new System.Drawing.Size(167, 26);
+            this.RequestConsiderationQuantity.TabIndex = 50;
+            // 
+            // receivingRequestsContentInjTableAdapter
+            // 
+            this.receivingRequestsContentInjTableAdapter.ClearBeforeFill = true;
+            // 
+            // replacementFixationInjTableAdapter
+            // 
+            this.replacementFixationInjTableAdapter.ClearBeforeFill = true;
+            // 
             // purchaseRequestsContentTableAdapter
             // 
             this.purchaseRequestsContentTableAdapter.ClearBeforeFill = true;
@@ -348,30 +362,36 @@
             // 
             this.workshopsTableAdapter.ClearBeforeFill = true;
             // 
-            // label4
+            // dataTable2TableAdapter
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(12, 240);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(159, 24);
-            this.label4.TabIndex = 49;
-            this.label4.Text = "Остаток на ЦИС:";
+            this.dataTable2TableAdapter.ClearBeforeFill = true;
             // 
-            // textBox1
+            // balancesInjTableAdapter
             // 
-            this.textBox1.Location = new System.Drawing.Point(177, 238);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(167, 26);
-            this.textBox1.TabIndex = 50;
+            this.balancesInjTableAdapter.ClearBeforeFill = true;
+            // 
+            // RequestConsiderationButtonReplace
+            // 
+            this.RequestConsiderationButtonReplace.Enabled = false;
+            this.RequestConsiderationButtonReplace.Location = new System.Drawing.Point(714, 310);
+            this.RequestConsiderationButtonReplace.Name = "RequestConsiderationButtonReplace";
+            this.RequestConsiderationButtonReplace.Size = new System.Drawing.Size(182, 44);
+            this.RequestConsiderationButtonReplace.TabIndex = 51;
+            this.RequestConsiderationButtonReplace.Text = "Заменить";
+            this.RequestConsiderationButtonReplace.UseVisualStyleBackColor = true;
+            this.RequestConsiderationButtonReplace.Click += new System.EventHandler(this.RequestConsiderationButtonReplace_Click);
+            // 
+            // replacementFixationTableAdapter
+            // 
+            this.replacementFixationTableAdapter.ClearBeforeFill = true;
             // 
             // RequestConsideration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(907, 606);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(907, 493);
+            this.Controls.Add(this.RequestConsiderationButtonReplace);
+            this.Controls.Add(this.RequestConsiderationQuantity);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.RequestConsiderationTransfer);
             this.Controls.Add(this.RequestConsiderationBuy);
@@ -387,7 +407,6 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MinimumSize = new System.Drawing.Size(923, 645);
             this.Name = "RequestConsideration";
             this.Text = "Форма рассмотрения заявки на получение – Информационная система учета и приобрете" +
     "ния инструмента";
@@ -396,6 +415,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentInjBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RequestConsiderationFixationTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentInjDataTable2BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentInjReplacementFixationInjBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.purchaseRequestsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentBindingSource)).EndInit();
@@ -418,10 +438,6 @@
         private System.Windows.Forms.Button RequestConsiderationButtonSaveClose;
         private System.Windows.Forms.Button RequestConsiderationButtonSave;
         private System.Windows.Forms.BindingSource receivingRequestsContentInjReplacementFixationInjBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn receivingContentIDDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn analogNomenclatureNumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn receivingRequestIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
@@ -438,6 +454,15 @@
         private TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter receivingRequestsContentTableAdapter;
         private TOOLACCOUNTINGDataSetTableAdapters.WorkshopsTableAdapter workshopsTableAdapter;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox RequestConsiderationQuantity;
+        private System.Windows.Forms.BindingSource receivingRequestsContentInjDataTable2BindingSource;
+        private TOOLACCOUNTINGDataSetTableAdapters.DataTable2TableAdapter dataTable2TableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn availableQuantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn receivingContentIDDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn analogNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn1;
+        private TOOLACCOUNTINGDataSetTableAdapters.BalancesInjTableAdapter balancesInjTableAdapter;
+        private System.Windows.Forms.Button RequestConsiderationButtonReplace;
+        private TOOLACCOUNTINGDataSetTableAdapters.ReplacementFixationTableAdapter replacementFixationTableAdapter;
     }
 }

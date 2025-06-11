@@ -108,7 +108,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Inj_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.BalancesInj". При необходимости она может быть перемещена или удалена.
+           // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.BalancesInj". При необходимости она может быть перемещена или удалена.
             this.balancesInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.BalancesInj);
             OstatkiTable.Columns[0].Visible = false;
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj". При необходимости она может быть перемещена или удалена.
@@ -1083,6 +1083,7 @@ namespace Система_учёта_и_приобретения_инструме
             int requestNumber = int.Parse(ReceivingRequestsRequestsTable.CurrentRow.Cells[0].Value.ToString());
             RequestConsideration requestConsideration = new RequestConsideration(requestNumber, FormMode.Add);
             requestConsideration.ShowDialog();
+            //receivingRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
         }
 
         private void ReceivingRequestsButtonAlter_Click(object sender, EventArgs e)
@@ -1272,6 +1273,22 @@ namespace Система_учёта_и_приобретения_инструме
                 StatementsTableContextMenu.Show(Cursor.Position);
             }
         }
+
+        private void StatementsButtonCreate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StatementsButtonAlter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StatementsButtonDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void SetStatementsTableContextMenuItems(bool isRow)
         {
             StatementsTableContextMenuAlter.Visible = isRow;
@@ -1680,10 +1697,36 @@ namespace Система_учёта_и_приобретения_инструме
         #endregion
 
         #region Остатки номенклатуры
+
+        private void Ostatki_TextChanged(object sender, EventArgs e)
+        {
+            if (isSearchReseting) return;
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(OstatkiNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", OstatkiNumber.Text));
+            try
+            {
+                string filter = Search.Filter(parameters);
+                balancesInjBindingSource.Filter = filter;
+                OstatkiTable.Columns[0].Visible = false;
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void OstatkiPrice_CheckedChanged(object sender, EventArgs e)
+        {
+            if(OstatkiPrice.Checked) OstatkiTable.Columns[5].Visible = true;
+                else OstatkiTable.Columns[5].Visible = false;
+        }
+
         private void OstatkiButtonResetSearch_Click(object sender, EventArgs e)
         {
             OstatkiResetSearch();
         }
+
+
         #endregion
 
         //private void maskedTextBox_Enter(object sender, EventArgs e)
@@ -1921,7 +1964,6 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
         }
-
     }
     public static class Logs
     {
