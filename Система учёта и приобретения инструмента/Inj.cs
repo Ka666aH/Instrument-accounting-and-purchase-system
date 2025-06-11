@@ -1083,6 +1083,7 @@ namespace Система_учёта_и_приобретения_инструме
             int requestNumber = int.Parse(ReceivingRequestsRequestsTable.CurrentRow.Cells[0].Value.ToString());
             RequestConsideration requestConsideration = new RequestConsideration(requestNumber, FormMode.Add);
             requestConsideration.ShowDialog();
+            receivingRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
         }
 
         private void ReceivingRequestsButtonAlter_Click(object sender, EventArgs e)

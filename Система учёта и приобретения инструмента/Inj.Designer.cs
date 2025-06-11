@@ -1673,6 +1673,7 @@
             this.ReceivingRequestsButtonDelete.TabIndex = 46;
             this.ReceivingRequestsButtonDelete.Text = "Отменить обработку";
             this.ReceivingRequestsButtonDelete.UseVisualStyleBackColor = true;
+            this.ReceivingRequestsButtonDelete.Visible = false;
             this.ReceivingRequestsButtonDelete.Click += new System.EventHandler(this.ReceivingRequestsButtonDelete_Click);
             // 
             // ReceivingRequestsSearchGroup
