@@ -918,6 +918,7 @@
             this.AnalogButtonDelete.TabIndex = 22;
             this.AnalogButtonDelete.Text = "Удалить";
             this.AnalogButtonDelete.UseVisualStyleBackColor = true;
+            this.AnalogButtonDelete.Visible = false;
             this.AnalogButtonDelete.Click += new System.EventHandler(this.AnalogButtonDelete_Click);
             // 
             // AnalogButtonAlter
@@ -930,6 +931,7 @@
             this.AnalogButtonAlter.TabIndex = 21;
             this.AnalogButtonAlter.Text = "Изменить";
             this.AnalogButtonAlter.UseVisualStyleBackColor = true;
+            this.AnalogButtonAlter.Visible = false;
             this.AnalogButtonAlter.Click += new System.EventHandler(this.AnalogButtonAlter_Click);
             // 
             // AnalogButtonCreate
@@ -1250,6 +1252,7 @@
             this.GroupsButtonDelete.TabIndex = 19;
             this.GroupsButtonDelete.Text = "Удалить";
             this.GroupsButtonDelete.UseVisualStyleBackColor = true;
+            this.GroupsButtonDelete.Visible = false;
             this.GroupsButtonDelete.Click += new System.EventHandler(this.GroupsButtonDelete_Click);
             // 
             // GroupsButtonAlter
@@ -1262,6 +1265,7 @@
             this.GroupsButtonAlter.TabIndex = 18;
             this.GroupsButtonAlter.Text = "Изменить";
             this.GroupsButtonAlter.UseVisualStyleBackColor = true;
+            this.GroupsButtonAlter.Visible = false;
             this.GroupsButtonAlter.Click += new System.EventHandler(this.GroupsButtonAlter_Click);
             // 
             // GroupsButtonCreate
@@ -1821,6 +1825,7 @@
             this.PurchaseRequestsButtonAlter.TabIndex = 46;
             this.PurchaseRequestsButtonAlter.Text = "Изменить";
             this.PurchaseRequestsButtonAlter.UseVisualStyleBackColor = true;
+            this.PurchaseRequestsButtonAlter.Visible = false;
             // 
             // PurchaseRequestsButtonDelete
             // 
@@ -1832,6 +1837,7 @@
             this.PurchaseRequestsButtonDelete.TabIndex = 45;
             this.PurchaseRequestsButtonDelete.Text = "Удалить";
             this.PurchaseRequestsButtonDelete.UseVisualStyleBackColor = true;
+            this.PurchaseRequestsButtonDelete.Visible = false;
             // 
             // PurchaseRequestsReceivingRequestsTable
             // 
@@ -2176,6 +2182,7 @@
             this.StatementsButtonDelete.TabIndex = 45;
             this.StatementsButtonDelete.Text = "Удалить";
             this.StatementsButtonDelete.UseVisualStyleBackColor = true;
+            this.StatementsButtonDelete.Visible = false;
             // 
             // StatementsButtonAlter
             // 
@@ -2187,6 +2194,7 @@
             this.StatementsButtonAlter.TabIndex = 44;
             this.StatementsButtonAlter.Text = "Изменить";
             this.StatementsButtonAlter.UseVisualStyleBackColor = true;
+            this.StatementsButtonAlter.Visible = false;
             // 
             // StatementsButtonCreate
             // 
@@ -2572,6 +2580,7 @@
             this.InvoicesButtonDelete.TabIndex = 50;
             this.InvoicesButtonDelete.Text = "Удалить";
             this.InvoicesButtonDelete.UseVisualStyleBackColor = true;
+            this.InvoicesButtonDelete.Visible = false;
             // 
             // InvoicesButtonAlter
             // 
@@ -2583,6 +2592,7 @@
             this.InvoicesButtonAlter.TabIndex = 49;
             this.InvoicesButtonAlter.Text = "Изменить";
             this.InvoicesButtonAlter.UseVisualStyleBackColor = true;
+            this.InvoicesButtonAlter.Visible = false;
             // 
             // InvoicesButtonEnter
             // 
@@ -2810,6 +2820,7 @@
             this.ProvidersButtonDelete.TabIndex = 25;
             this.ProvidersButtonDelete.Text = "Удалить";
             this.ProvidersButtonDelete.UseVisualStyleBackColor = true;
+            this.ProvidersButtonDelete.Visible = false;
             this.ProvidersButtonDelete.Click += new System.EventHandler(this.ProvidersButtonDelete_Click);
             // 
             // ProvidersButtonAlter
@@ -2822,6 +2833,7 @@
             this.ProvidersButtonAlter.TabIndex = 24;
             this.ProvidersButtonAlter.Text = "Изменить";
             this.ProvidersButtonAlter.UseVisualStyleBackColor = true;
+            this.ProvidersButtonAlter.Visible = false;
             this.ProvidersButtonAlter.Click += new System.EventHandler(this.ProvidersButtonAlter_Click);
             // 
             // ProvidersButtonCreate
