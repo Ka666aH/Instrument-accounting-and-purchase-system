@@ -1872,8 +1872,6 @@ namespace Система_учёта_и_приобретения_инструме
             
             private global::System.Data.DataColumn columnPrice;
             
-            private global::System.Data.DataColumn columnAccount;
-            
             private global::System.Data.DataColumn columnQuantity;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1959,14 +1957,6 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn AccountColumn {
-                get {
-                    return this.columnAccount;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn QuantityColumn {
                 get {
                     return this.columnQuantity;
@@ -2010,7 +2000,7 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public BalancesRow AddBalancesRow(NomenclatureRow parentNomenclatureRowByFK__Balances__Nomenc__75A278F5, StoragesRow parentStoragesRowByFK__Balances__Storag__76969D2E, System.DateTime BalanceDate, string BatchNumber, decimal Price, string Account, int Quantity) {
+            public BalancesRow AddBalancesRow(NomenclatureRow parentNomenclatureRowByFK__Balances__Nomenc__75A278F5, StoragesRow parentStoragesRowByFK__Balances__Storag__76969D2E, System.DateTime BalanceDate, string BatchNumber, decimal Price, int Quantity) {
                 BalancesRow rowBalancesRow = ((BalancesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2019,7 +2009,6 @@ namespace Система_учёта_и_приобретения_инструме
                         BalanceDate,
                         BatchNumber,
                         Price,
-                        Account,
                         Quantity};
                 if ((parentNomenclatureRowByFK__Balances__Nomenc__75A278F5 != null)) {
                     columnValuesArray[1] = parentNomenclatureRowByFK__Balances__Nomenc__75A278F5[0];
@@ -2062,7 +2051,6 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnBalanceDate = base.Columns["BalanceDate"];
                 this.columnBatchNumber = base.Columns["BatchNumber"];
                 this.columnPrice = base.Columns["Price"];
-                this.columnAccount = base.Columns["Account"];
                 this.columnQuantity = base.Columns["Quantity"];
             }
             
@@ -2081,8 +2069,6 @@ namespace Система_учёта_и_приобретения_инструме
                 base.Columns.Add(this.columnBatchNumber);
                 this.columnPrice = new global::System.Data.DataColumn("Price", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPrice);
-                this.columnAccount = new global::System.Data.DataColumn("Account", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAccount);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -2100,8 +2086,6 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnBatchNumber.AllowDBNull = false;
                 this.columnBatchNumber.MaxLength = 50;
                 this.columnPrice.AllowDBNull = false;
-                this.columnAccount.AllowDBNull = false;
-                this.columnAccount.MaxLength = 50;
                 this.columnQuantity.AllowDBNull = false;
             }
             
@@ -12082,17 +12066,6 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Account {
-                get {
-                    return ((string)(this[this.tableBalances.AccountColumn]));
-                }
-                set {
-                    this[this.tableBalances.AccountColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public int Quantity {
                 get {
                     return ((int)(this[this.tableBalances.QuantityColumn]));
@@ -17390,12 +17363,11 @@ SELECT ID, OriginalNomenclatureNumber, AnalogNomenclatureNumber FROM AnalogTools
             tableMapping.ColumnMappings.Add("BalanceDate", "BalanceDate");
             tableMapping.ColumnMappings.Add("BatchNumber", "BatchNumber");
             tableMapping.ColumnMappings.Add("Price", "Price");
-            tableMapping.ColumnMappings.Add("Account", "Account");
             tableMapping.ColumnMappings.Add("Quantity", "Quantity");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Balances] WHERE (([BalanceID] = @Original_BalanceID) AND ([NomenclatureNumber] = @Original_NomenclatureNumber) AND ([StorageID] = @Original_StorageID) AND ([BalanceDate] = @Original_BalanceDate) AND ([BatchNumber] = @Original_BatchNumber) AND ([Price] = @Original_Price) AND ([Quantity] = @Original_Quantity) AND ([Account] = @Original_Account))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Balances] WHERE (([BalanceID] = @Original_BalanceID) AND ([NomenclatureNumber] = @Original_NomenclatureNumber) AND ([StorageID] = @Original_StorageID) AND ([BalanceDate] = @Original_BalanceDate) AND ([BatchNumber] = @Original_BatchNumber) AND ([Price] = @Original_Price) AND ([Quantity] = @Original_Quantity))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BalanceID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BalanceID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomenclatureNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -17404,11 +17376,10 @@ SELECT ID, OriginalNomenclatureNumber, AnalogNomenclatureNumber FROM AnalogTools
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BatchNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BatchNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Account", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Account", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Balances] ([NomenclatureNumber], [StorageID], [BalanceDate], [BatchNumber], [Price], [Quantity], [Account]) VALUES (@NomenclatureNumber, @StorageID, @BalanceDate, @BatchNumber, @Price, @Quantity, @Account);
-SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price, Quantity, Account FROM Balances WHERE (BalanceID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Balances] ([NomenclatureNumber], [StorageID], [BalanceDate], [BatchNumber], [Price], [Quantity]) VALUES (@NomenclatureNumber, @StorageID, @BalanceDate, @BatchNumber, @Price, @Quantity);
+SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price, Quantity FROM Balances WHERE (BalanceID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomenclatureNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StorageID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -17416,11 +17387,10 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BatchNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BatchNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Account", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Account", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [Balances] SET [NomenclatureNumber] = @NomenclatureNumber, [StorageID] = @StorageID, [BalanceDate] = @BalanceDate, [BatchNumber] = @BatchNumber, [Price] = @Price, [Quantity] = @Quantity, [Account] = @Account WHERE (([BalanceID] = @Original_BalanceID) AND ([NomenclatureNumber] = @Original_NomenclatureNumber) AND ([StorageID] = @Original_StorageID) AND ([BalanceDate] = @Original_BalanceDate) AND ([BatchNumber] = @Original_BatchNumber) AND ([Price] = @Original_Price) AND ([Quantity] = @Original_Quantity) AND ([Account] = @Original_Account));
-SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price, Quantity, Account FROM Balances WHERE (BalanceID = @BalanceID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Balances] SET [NomenclatureNumber] = @NomenclatureNumber, [StorageID] = @StorageID, [BalanceDate] = @BalanceDate, [BatchNumber] = @BatchNumber, [Price] = @Price, [Quantity] = @Quantity WHERE (([BalanceID] = @Original_BalanceID) AND ([NomenclatureNumber] = @Original_NomenclatureNumber) AND ([StorageID] = @Original_StorageID) AND ([BalanceDate] = @Original_BalanceDate) AND ([BatchNumber] = @Original_BatchNumber) AND ([Price] = @Original_Price) AND ([Quantity] = @Original_Quantity));
+SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price, Quantity FROM Balances WHERE (BalanceID = @BalanceID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomenclatureNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StorageID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -17428,7 +17398,6 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BatchNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BatchNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Account", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Account", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BalanceID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BalanceID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomenclatureNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StorageID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -17436,7 +17405,6 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BatchNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BatchNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Account", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Account", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BalanceID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "BalanceID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -17454,7 +17422,7 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber," +
-                " Price, Quantity, Account\r\nFROM            Balances";
+                " Price, Quantity\r\nFROM            Balances";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -17515,7 +17483,7 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_BalanceID, string Original_NomenclatureNumber, int Original_StorageID, System.DateTime Original_BalanceDate, string Original_BatchNumber, decimal Original_Price, int Original_Quantity, string Original_Account) {
+        public virtual int Delete(int Original_BalanceID, string Original_NomenclatureNumber, int Original_StorageID, System.DateTime Original_BalanceDate, string Original_BatchNumber, decimal Original_Price, int Original_Quantity) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_BalanceID));
             if ((Original_NomenclatureNumber == null)) {
                 throw new global::System.ArgumentNullException("Original_NomenclatureNumber");
@@ -17533,12 +17501,6 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
             }
             this.Adapter.DeleteCommand.Parameters[5].Value = ((decimal)(Original_Price));
             this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_Quantity));
-            if ((Original_Account == null)) {
-                throw new global::System.ArgumentNullException("Original_Account");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_Account));
-            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -17559,7 +17521,7 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string NomenclatureNumber, int StorageID, System.DateTime BalanceDate, string BatchNumber, decimal Price, int Quantity, string Account) {
+        public virtual int Insert(string NomenclatureNumber, int StorageID, System.DateTime BalanceDate, string BatchNumber, decimal Price, int Quantity) {
             if ((NomenclatureNumber == null)) {
                 throw new global::System.ArgumentNullException("NomenclatureNumber");
             }
@@ -17576,12 +17538,6 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
             }
             this.Adapter.InsertCommand.Parameters[4].Value = ((decimal)(Price));
             this.Adapter.InsertCommand.Parameters[5].Value = ((int)(Quantity));
-            if ((Account == null)) {
-                throw new global::System.ArgumentNullException("Account");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Account));
-            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -17602,23 +17558,7 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    string NomenclatureNumber, 
-                    int StorageID, 
-                    System.DateTime BalanceDate, 
-                    string BatchNumber, 
-                    decimal Price, 
-                    int Quantity, 
-                    string Account, 
-                    int Original_BalanceID, 
-                    string Original_NomenclatureNumber, 
-                    int Original_StorageID, 
-                    System.DateTime Original_BalanceDate, 
-                    string Original_BatchNumber, 
-                    decimal Original_Price, 
-                    int Original_Quantity, 
-                    string Original_Account, 
-                    int BalanceID) {
+        public virtual int Update(string NomenclatureNumber, int StorageID, System.DateTime BalanceDate, string BatchNumber, decimal Price, int Quantity, int Original_BalanceID, string Original_NomenclatureNumber, int Original_StorageID, System.DateTime Original_BalanceDate, string Original_BatchNumber, decimal Original_Price, int Original_Quantity, int BalanceID) {
             if ((NomenclatureNumber == null)) {
                 throw new global::System.ArgumentNullException("NomenclatureNumber");
             }
@@ -17635,36 +17575,24 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
             }
             this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(Price));
             this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Quantity));
-            if ((Account == null)) {
-                throw new global::System.ArgumentNullException("Account");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Account));
-            }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_BalanceID));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_BalanceID));
             if ((Original_NomenclatureNumber == null)) {
                 throw new global::System.ArgumentNullException("Original_NomenclatureNumber");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_NomenclatureNumber));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_NomenclatureNumber));
             }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_StorageID));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(Original_BalanceDate));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_StorageID));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_BalanceDate));
             if ((Original_BatchNumber == null)) {
                 throw new global::System.ArgumentNullException("Original_BatchNumber");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_BatchNumber));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_BatchNumber));
             }
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(Original_Price));
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_Quantity));
-            if ((Original_Account == null)) {
-                throw new global::System.ArgumentNullException("Original_Account");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_Account));
-            }
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(BalanceID));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(Original_Price));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_Quantity));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(BalanceID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -17685,8 +17613,8 @@ SELECT BalanceID, NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NomenclatureNumber, int StorageID, System.DateTime BalanceDate, string BatchNumber, decimal Price, int Quantity, string Account, int Original_BalanceID, string Original_NomenclatureNumber, int Original_StorageID, System.DateTime Original_BalanceDate, string Original_BatchNumber, decimal Original_Price, int Original_Quantity, string Original_Account) {
-            return this.Update(NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price, Quantity, Account, Original_BalanceID, Original_NomenclatureNumber, Original_StorageID, Original_BalanceDate, Original_BatchNumber, Original_Price, Original_Quantity, Original_Account, Original_BalanceID);
+        public virtual int Update(string NomenclatureNumber, int StorageID, System.DateTime BalanceDate, string BatchNumber, decimal Price, int Quantity, int Original_BalanceID, string Original_NomenclatureNumber, int Original_StorageID, System.DateTime Original_BalanceDate, string Original_BatchNumber, decimal Original_Price, int Original_Quantity) {
+            return this.Update(NomenclatureNumber, StorageID, BalanceDate, BatchNumber, Price, Quantity, Original_BalanceID, Original_NomenclatureNumber, Original_StorageID, Original_BalanceDate, Original_BatchNumber, Original_Price, Original_Quantity, Original_BalanceID);
         }
     }
     
