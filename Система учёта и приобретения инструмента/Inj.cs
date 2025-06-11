@@ -1696,10 +1696,36 @@ namespace Система_учёта_и_приобретения_инструме
         #endregion
 
         #region Остатки номенклатуры
+
+        private void Ostatki_TextChanged(object sender, EventArgs e)
+        {
+            if (isSearchReseting) return;
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(OstatkiNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", OstatkiNumber.Text));
+            try
+            {
+                string filter = Search.Filter(parameters);
+                balancesInjBindingSource.Filter = filter;
+                OstatkiTable.Columns[0].Visible = false;
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void OstatkiPrice_CheckedChanged(object sender, EventArgs e)
+        {
+            if(OstatkiPrice.Checked) OstatkiTable.Columns[5].Visible = true;
+                else OstatkiTable.Columns[5].Visible = false;
+        }
+
         private void OstatkiButtonResetSearch_Click(object sender, EventArgs e)
         {
             OstatkiResetSearch();
         }
+
+
         #endregion
 
         //private void maskedTextBox_Enter(object sender, EventArgs e)

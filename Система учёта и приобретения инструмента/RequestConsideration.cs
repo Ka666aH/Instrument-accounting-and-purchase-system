@@ -232,7 +232,7 @@ namespace Система_учёта_и_приобретения_инструме
             tOOLACCOUNTINGDataSet.ReplacementFixation.Clear();
             adapter.Fill(tOOLACCOUNTINGDataSet.ReplacementFixation);
             replacementFixationInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReplacementFixationInj);
-            SetRequestConsiderationFixationButtonsState();      ///
+            SetRequestConsiderationFixationButtonsState();
         }
 
         private void RequestConsiderationButtonSave_Click(object sender, EventArgs e)
