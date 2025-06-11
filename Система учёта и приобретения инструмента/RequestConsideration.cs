@@ -186,31 +186,31 @@ namespace Система_учёта_и_приобретения_инструме
             new PurchaseRequestsContentTableAdapter().Update(tOOLACCOUNTINGDataSet.PurchaseRequestsContent);
             new PurchaseRequestsContentTableAdapter().Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContent);
 
-            // Получаем ID документа
-            int receivingRequestID = contentRow.ReceivingRequestID;
+            //// Получаем ID документа
+            //int receivingRequestID = contentRow.ReceivingRequestID;
 
-            // Получаем список всех ReceivingContentID для этого документа
-            var receivingContentIds = tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj
-                .Where(x => x.ReceivingRequestID == receivingRequestID)
-                .Select(x => x.ReceivingContentID)
-                .ToList();
+            //// Получаем список всех ReceivingContentID для этого документа
+            //var receivingContentIds = tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj
+            //    .Where(x => x.ReceivingRequestID == receivingRequestID)
+            //    .Select(x => x.ReceivingContentID)
+            //    .ToList();
 
-            // Получаем список ReceivingContentID, которые уже есть в PurchaseRequestsContent
-            var purchaseContentIds = tOOLACCOUNTINGDataSet.PurchaseRequestsContent
-                .Select(x => x.ReceivingContentID)
-                .ToList();
+            //// Получаем список ReceivingContentID, которые уже есть в PurchaseRequestsContent
+            //var purchaseContentIds = tOOLACCOUNTINGDataSet.PurchaseRequestsContent
+            //    .Select(x => x.ReceivingContentID)
+            //    .ToList();
 
-            // Проверяем, содержатся ли все ReceivingContentID в PurchaseRequestsContent
-            bool allExist = receivingContentIds.All(id => purchaseContentIds.Contains(id));
-            if (allExist)
-            {
-                new ReceivingRequestsTableAdapter().Fill(tOOLACCOUNTINGDataSet.ReceivingRequests);
-                var r = tOOLACCOUNTINGDataSet.ReceivingRequests.FindByReceivingRequestID(receivingRequestID);
-                r.Status = "В работе";
-                new ReceivingRequestsTableAdapter().Update(tOOLACCOUNTINGDataSet.ReceivingRequests);
-                new ReceivingRequestsTableAdapter().Fill(tOOLACCOUNTINGDataSet.ReceivingRequests);
-                new ReceivingRequestsInjTableAdapter().Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
-            }
+            //// Проверяем, содержатся ли все ReceivingContentID в PurchaseRequestsContent
+            //bool allExist = receivingContentIds.All(id => purchaseContentIds.Contains(id));
+            //if (allExist)
+            //{
+            //    new ReceivingRequestsTableAdapter().Fill(tOOLACCOUNTINGDataSet.ReceivingRequests);
+            //    var r = tOOLACCOUNTINGDataSet.ReceivingRequests.FindByReceivingRequestID(receivingRequestID);
+            //    r.Status = "В работе";
+            //    new ReceivingRequestsTableAdapter().Update(tOOLACCOUNTINGDataSet.ReceivingRequests);
+            //    new ReceivingRequestsTableAdapter().Fill(tOOLACCOUNTINGDataSet.ReceivingRequests);
+            //    new ReceivingRequestsInjTableAdapter().Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
+            //}
                 
         }
 

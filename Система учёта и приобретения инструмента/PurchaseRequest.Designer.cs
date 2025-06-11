@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PurchaseRequest));
             this.label39 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
             this.PurchaseRequestContentTable = new System.Windows.Forms.DataGridView();
-            this.PurchaseRequestRequestsTable = new System.Windows.Forms.DataGridView();
             this.PurchaseRequestNumber = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
@@ -44,8 +44,30 @@
             this.PurchaseRequestButtonAdd = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.PurchaseRequestDate = new System.Windows.Forms.TextBox();
+            this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
+            this.receivingRequestsInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.receivingRequestsInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsInjTableAdapter();
+            this.ReceivingRequestsRequestsTable = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fKReceivingRecei6FE99F9F2BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.receivingRequestsContentInjWithReplaceTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentInjWithReplaceTableAdapter();
+            this.receivingContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requiredQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isReplacedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receivingRequestIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseRequestContentTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PurchaseRequestRequestsTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsInjBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReceivingRequestsRequestsTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKReceivingRecei6FE99F9F2BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label39
@@ -74,26 +96,23 @@
             this.PurchaseRequestContentTable.AllowUserToDeleteRows = false;
             this.PurchaseRequestContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PurchaseRequestContentTable.AutoGenerateColumns = false;
+            this.PurchaseRequestContentTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.PurchaseRequestContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PurchaseRequestContentTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.receivingContentIDDataGridViewTextBoxColumn,
+            this.nomenclatureNumberDataGridViewTextBoxColumn,
+            this.fullNameDataGridViewTextBoxColumn,
+            this.requiredQuantityDataGridViewTextBoxColumn,
+            this.isReplacedDataGridViewTextBoxColumn,
+            this.receivingRequestIDDataGridViewTextBoxColumn});
+            this.PurchaseRequestContentTable.DataSource = this.fKReceivingRecei6FE99F9F2BindingSource;
             this.PurchaseRequestContentTable.Location = new System.Drawing.Point(13, 477);
             this.PurchaseRequestContentTable.Name = "PurchaseRequestContentTable";
             this.PurchaseRequestContentTable.ReadOnly = true;
+            this.PurchaseRequestContentTable.RowHeadersVisible = false;
             this.PurchaseRequestContentTable.Size = new System.Drawing.Size(859, 234);
             this.PurchaseRequestContentTable.TabIndex = 59;
-            // 
-            // PurchaseRequestRequestsTable
-            // 
-            this.PurchaseRequestRequestsTable.AllowUserToAddRows = false;
-            this.PurchaseRequestRequestsTable.AllowUserToDeleteRows = false;
-            this.PurchaseRequestRequestsTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PurchaseRequestRequestsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PurchaseRequestRequestsTable.Location = new System.Drawing.Point(13, 165);
-            this.PurchaseRequestRequestsTable.Name = "PurchaseRequestRequestsTable";
-            this.PurchaseRequestRequestsTable.ReadOnly = true;
-            this.PurchaseRequestRequestsTable.Size = new System.Drawing.Size(671, 284);
-            this.PurchaseRequestRequestsTable.TabIndex = 58;
             // 
             // PurchaseRequestNumber
             // 
@@ -208,11 +227,156 @@
             this.PurchaseRequestDate.Size = new System.Drawing.Size(253, 29);
             this.PurchaseRequestDate.TabIndex = 57;
             // 
+            // tOOLACCOUNTINGDataSet
+            // 
+            this.tOOLACCOUNTINGDataSet.DataSetName = "TOOLACCOUNTINGDataSet";
+            this.tOOLACCOUNTINGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // receivingRequestsInjBindingSource
+            // 
+            this.receivingRequestsInjBindingSource.DataMember = "ReceivingRequestsInj";
+            this.receivingRequestsInjBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
+            // 
+            // receivingRequestsInjTableAdapter
+            // 
+            this.receivingRequestsInjTableAdapter.ClearBeforeFill = true;
+            // 
+            // ReceivingRequestsRequestsTable
+            // 
+            this.ReceivingRequestsRequestsTable.AllowUserToAddRows = false;
+            this.ReceivingRequestsRequestsTable.AllowUserToDeleteRows = false;
+            this.ReceivingRequestsRequestsTable.AllowUserToResizeRows = false;
+            this.ReceivingRequestsRequestsTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReceivingRequestsRequestsTable.AutoGenerateColumns = false;
+            this.ReceivingRequestsRequestsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ReceivingRequestsRequestsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ReceivingRequestsRequestsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18,
+            this.dataGridViewTextBoxColumn19,
+            this.dataGridViewTextBoxColumn20,
+            this.dataGridViewTextBoxColumn21,
+            this.dataGridViewTextBoxColumn22});
+            this.ReceivingRequestsRequestsTable.DataSource = this.receivingRequestsInjBindingSource;
+            this.ReceivingRequestsRequestsTable.Location = new System.Drawing.Point(13, 165);
+            this.ReceivingRequestsRequestsTable.MultiSelect = false;
+            this.ReceivingRequestsRequestsTable.Name = "ReceivingRequestsRequestsTable";
+            this.ReceivingRequestsRequestsTable.ReadOnly = true;
+            this.ReceivingRequestsRequestsTable.RowHeadersVisible = false;
+            this.ReceivingRequestsRequestsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ReceivingRequestsRequestsTable.Size = new System.Drawing.Size(668, 283);
+            this.ReceivingRequestsRequestsTable.TabIndex = 72;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "ReceivingRequestID";
+            this.dataGridViewTextBoxColumn16.HeaderText = "Номер заявки";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "ReceivingRequestDate";
+            this.dataGridViewTextBoxColumn17.HeaderText = "Дата заявки";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "WorkshopNumberName";
+            this.dataGridViewTextBoxColumn18.HeaderText = "Цех - отправитель";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "PlannedDate";
+            this.dataGridViewTextBoxColumn19.HeaderText = "Ожидаемая дата получения";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn20
+            // 
+            this.dataGridViewTextBoxColumn20.DataPropertyName = "ReceivingRequestType";
+            this.dataGridViewTextBoxColumn20.HeaderText = "Тип заявки";
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            this.dataGridViewTextBoxColumn20.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn21
+            // 
+            this.dataGridViewTextBoxColumn21.DataPropertyName = "Reason";
+            this.dataGridViewTextBoxColumn21.HeaderText = "Причина";
+            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+            this.dataGridViewTextBoxColumn21.ReadOnly = true;
+            this.dataGridViewTextBoxColumn21.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn22
+            // 
+            this.dataGridViewTextBoxColumn22.DataPropertyName = "Status";
+            this.dataGridViewTextBoxColumn22.HeaderText = "Статус";
+            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
+            this.dataGridViewTextBoxColumn22.ReadOnly = true;
+            this.dataGridViewTextBoxColumn22.Visible = false;
+            // 
+            // fKReceivingRecei6FE99F9F2BindingSource
+            // 
+            this.fKReceivingRecei6FE99F9F2BindingSource.DataMember = "FK__Receiving__Recei__6FE99F9F2";
+            this.fKReceivingRecei6FE99F9F2BindingSource.DataSource = this.receivingRequestsInjBindingSource;
+            // 
+            // receivingRequestsContentInjWithReplaceTableAdapter
+            // 
+            this.receivingRequestsContentInjWithReplaceTableAdapter.ClearBeforeFill = true;
+            // 
+            // receivingContentIDDataGridViewTextBoxColumn
+            // 
+            this.receivingContentIDDataGridViewTextBoxColumn.DataPropertyName = "ReceivingContentID";
+            this.receivingContentIDDataGridViewTextBoxColumn.HeaderText = "ReceivingContentID";
+            this.receivingContentIDDataGridViewTextBoxColumn.Name = "receivingContentIDDataGridViewTextBoxColumn";
+            this.receivingContentIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nomenclatureNumberDataGridViewTextBoxColumn
+            // 
+            this.nomenclatureNumberDataGridViewTextBoxColumn.DataPropertyName = "NomenclatureNumber";
+            this.nomenclatureNumberDataGridViewTextBoxColumn.HeaderText = "NomenclatureNumber";
+            this.nomenclatureNumberDataGridViewTextBoxColumn.Name = "nomenclatureNumberDataGridViewTextBoxColumn";
+            this.nomenclatureNumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fullNameDataGridViewTextBoxColumn
+            // 
+            this.fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
+            this.fullNameDataGridViewTextBoxColumn.HeaderText = "FullName";
+            this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
+            this.fullNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // requiredQuantityDataGridViewTextBoxColumn
+            // 
+            this.requiredQuantityDataGridViewTextBoxColumn.DataPropertyName = "RequiredQuantity";
+            this.requiredQuantityDataGridViewTextBoxColumn.HeaderText = "RequiredQuantity";
+            this.requiredQuantityDataGridViewTextBoxColumn.Name = "requiredQuantityDataGridViewTextBoxColumn";
+            this.requiredQuantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // isReplacedDataGridViewTextBoxColumn
+            // 
+            this.isReplacedDataGridViewTextBoxColumn.DataPropertyName = "IsReplaced";
+            this.isReplacedDataGridViewTextBoxColumn.HeaderText = "IsReplaced";
+            this.isReplacedDataGridViewTextBoxColumn.Name = "isReplacedDataGridViewTextBoxColumn";
+            this.isReplacedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // receivingRequestIDDataGridViewTextBoxColumn
+            // 
+            this.receivingRequestIDDataGridViewTextBoxColumn.DataPropertyName = "ReceivingRequestID";
+            this.receivingRequestIDDataGridViewTextBoxColumn.HeaderText = "ReceivingRequestID";
+            this.receivingRequestIDDataGridViewTextBoxColumn.Name = "receivingRequestIDDataGridViewTextBoxColumn";
+            this.receivingRequestIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // PurchaseRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 761);
+            this.Controls.Add(this.ReceivingRequestsRequestsTable);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.PurchaseRequestButtonRemove);
             this.Controls.Add(this.PurchaseRequestButtonAdd);
@@ -223,7 +387,6 @@
             this.Controls.Add(this.label39);
             this.Controls.Add(this.label59);
             this.Controls.Add(this.PurchaseRequestContentTable);
-            this.Controls.Add(this.PurchaseRequestRequestsTable);
             this.Controls.Add(this.PurchaseRequestDate);
             this.Controls.Add(this.PurchaseRequestNumber);
             this.Controls.Add(this.label38);
@@ -236,8 +399,12 @@
             this.Name = "PurchaseRequest";
             this.Text = "Форма заявки на приобретение – Информационная система учета и приобретения инстру" +
     "мента";
+            this.Load += new System.EventHandler(this.PurchaseRequest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseRequestContentTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PurchaseRequestRequestsTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsInjBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReceivingRequestsRequestsTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKReceivingRecei6FE99F9F2BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,7 +414,6 @@
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.DataGridView PurchaseRequestContentTable;
-        private System.Windows.Forms.DataGridView PurchaseRequestRequestsTable;
         private System.Windows.Forms.TextBox PurchaseRequestNumber;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label32;
@@ -259,5 +425,24 @@
         private System.Windows.Forms.Button PurchaseRequestButtonAdd;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox PurchaseRequestDate;
+        private TOOLACCOUNTINGDataSet tOOLACCOUNTINGDataSet;
+        private System.Windows.Forms.BindingSource receivingRequestsInjBindingSource;
+        private TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsInjTableAdapter receivingRequestsInjTableAdapter;
+        private System.Windows.Forms.DataGridView ReceivingRequestsRequestsTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
+        private System.Windows.Forms.BindingSource fKReceivingRecei6FE99F9F2BindingSource;
+        private TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentInjWithReplaceTableAdapter receivingRequestsContentInjWithReplaceTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn receivingContentIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn requiredQuantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isReplacedDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn receivingRequestIDDataGridViewTextBoxColumn;
     }
 }
