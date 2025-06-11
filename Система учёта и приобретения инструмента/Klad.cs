@@ -88,7 +88,11 @@ namespace Система_учёта_и_приобретения_инструме
             SetupClearableControl(textBox11);
             SetupClearableControl(textBox14);
             SetupClearableControl(textBox13);
-            SetupClearableControl(comboBox6);
+            SetupClearableControl(textBox15);
+
+            // Подписка на события поиска
+            SubscribeReceivingSearchEvents();
+            SubscribeDefectiveSearchEvents();
         }
 
         private void Klad_FormClosed(object sender, FormClosedEventArgs e)
@@ -185,18 +189,36 @@ namespace Система_учёта_и_приобретения_инструме
         private void button8_Click(object sender, EventArgs e)
         {
             DefAdd defAdd = new DefAdd();
+            defAdd.DefectiveSaved += (s, args) => RefreshDefectiveListsTables();
             defAdd.ShowDialog();
+        }
+
+        private void RefreshDefectiveListsTables()
+        {
+            try
+            {
+                this.defectiveListsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DefectiveLists);
+                defectiveListsBindingSource.ResetBindings(false);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка обновления дефектных ведомостей: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void textBox11_TextChanged(object sender, EventArgs e)
         {
+            receivingRequests1BindingSource.RemoveFilter();
             var parameters = new List<SearchParameter>();
             if (!string.IsNullOrEmpty(dateTimePicker2.Text)) parameters.Add(new SearchParameter("DefectiveListDate", dateTimePicker2.Value, true));
-            if (!string.IsNullOrEmpty(comboBox6.Text)) parameters.Add(new SearchParameter("WorkshopID", comboBox6.Text, true));
+            if (!string.IsNullOrEmpty(textBox15.Text)) parameters.Add(new SearchParameter("WorkshopID", Convert.ToInt32(textBox15.Text), true));
             if (!string.IsNullOrEmpty(textBox1.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", textBox1.Text, true));
             if (!string.IsNullOrEmpty(textBox11.Text)) parameters.Add(new SearchParameter("BatchNumber", textBox11.Text, false));
-            if (!string.IsNullOrEmpty(textBox14.Text)) parameters.Add(new SearchParameter("Price", textBox14.Text, true));
-            if (!string.IsNullOrEmpty(textBox13.Text)) parameters.Add(new SearchParameter("Quantity", textBox13.Text, true));
+            decimal priceVal; int quantityVal;
+            if (!string.IsNullOrEmpty(textBox14.Text) && decimal.TryParse(textBox14.Text.Replace(',', '.'), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out priceVal))
+                parameters.Add(new SearchParameter("Price", priceVal, true));
+            if (!string.IsNullOrEmpty(textBox13.Text) && int.TryParse(textBox13.Text, out quantityVal))
+                parameters.Add(new SearchParameter("Quantity", quantityVal, true));
             if (radioButton1.Checked) parameters.Add(new SearchParameter("IsWriteOff", true, true));
             if (radioButton2.Checked) parameters.Add(new SearchParameter("IsWriteOff", false, true));
             try
@@ -810,6 +832,11 @@ namespace Система_учёта_и_приобретения_инструме
         }
         #endregion
 
+        //private void RecReqClear()
+        //{
+        //    receivingRequests1BindingSource.RemoveFilter();
+        //}
+
         #region Сброс поиска – Receiving Requests
         private void ReceivingResetSearchDate() { ApplicationNeedDate.Checked = false; }
         private void ReceivingResetSearchID() { textBox8.Text = string.Empty; }
@@ -837,7 +864,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         #region Сброс поиска – DefectiveLists
         private void DefectiveResetSearchDate() { dateTimePicker2.Value = DateTime.Today; }
-        private void DefectiveResetSearchWorkshop() { comboBox6.SelectedIndex = -1; }
+        private void DefectiveResetSearchWorkshop() { textBox15.Text = string.Empty; }
         private void DefectiveResetSearchNomen() { textBox1.Text = string.Empty; }
         private void DefectiveResetSearchBatch() { textBox11.Text = string.Empty; }
         private void DefectiveResetSearchPrice() { textBox14.Text = string.Empty; }
@@ -859,6 +886,53 @@ namespace Система_учёта_и_приобретения_инструме
             DefectiveResetSearch();
         }
         #endregion
+
+        private void SubscribeReceivingSearchEvents()
+        {
+            // Заявки на получение
+            textBox8.TextChanged += textBox8_TextChanged;
+            textBox9.TextChanged += textBox8_TextChanged;
+            comboBox1.SelectedIndexChanged += (s, e) => textBox8_TextChanged(s, e);
+            Planned.CheckedChanged += (s, e) => textBox8_TextChanged(s, e);
+            NonPlanned.CheckedChanged += (s, e) => textBox8_TextChanged(s, e);
+            ApplicationStatusSearch.TextChanged += (s, e) => textBox8_TextChanged(s, e);
+            ApplicationStatusSearch.SelectedIndexChanged += (s, e) => textBox8_TextChanged(s, e);
+            ApplicationNeedDate.ValueChanged += (s, e) => textBox8_TextChanged(s, e);
+        }
+
+        private void SubscribeDefectiveSearchEvents()
+        {
+            // Дефектные ведомости
+            dateTimePicker2.ValueChanged += textBox11_TextChanged;
+            textBox15.TextChanged += textBox11_TextChanged;
+            textBox1.TextChanged += textBox11_TextChanged;
+            textBox11.TextChanged += textBox11_TextChanged; // уже есть, лишним не будет
+            textBox14.TextChanged += textBox11_TextChanged;
+            textBox13.TextChanged += textBox11_TextChanged;
+            radioButton1.CheckedChanged += textBox11_TextChanged;
+            radioButton2.CheckedChanged += textBox11_TextChanged;
+        }
+
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+            receivingSearchReseting = true;
+            ReceivingResetSearchDate();
+            ReceivingResetSearchID();
+            ReceivingResetSearchWorkshop();
+            ReceivingResetSearchReason();
+            ReceivingResetSearchType();
+            ReceivingResetSearchStatus();
+            receivingSearchReseting = false;
+            receivingRequests1BindingSource.RemoveFilter();
+            DefectiveResetSearchDate();
+            DefectiveResetSearchWorkshop();
+            DefectiveResetSearchNomen();
+            DefectiveResetSearchBatch();
+            DefectiveResetSearchPrice();
+            DefectiveResetSearchQuantity();
+            DefectiveResetSearchFlags();
+            defectiveListsBindingSource.RemoveFilter();
+        }
     }
 
 }
