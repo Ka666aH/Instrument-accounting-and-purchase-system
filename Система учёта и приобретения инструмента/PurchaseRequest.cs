@@ -22,6 +22,8 @@ namespace Система_учёта_и_приобретения_инструме
         PurchaseRequestsInjTableAdapter prita = new PurchaseRequestsInjTableAdapter();
         private void PurchaseRequest_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj". При необходимости она может быть перемещена или удалена.
+            this.purchaseRequestsContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet1.PurchaseRequestsContentInj". При необходимости она может быть перемещена или удалена.
             this.purchaseRequestsContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
 

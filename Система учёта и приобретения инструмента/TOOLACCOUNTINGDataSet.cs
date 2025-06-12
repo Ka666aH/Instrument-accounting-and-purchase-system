@@ -4,6 +4,10 @@
 
     partial class TOOLACCOUNTINGDataSet
     {
+        partial class PurchaseRequestsContentDataTable
+        {
+        }
+
         partial class AnalogTools1DataTable
         {
         }
