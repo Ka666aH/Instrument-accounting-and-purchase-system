@@ -33,14 +33,10 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.Workshop = new System.Windows.Forms.ComboBox();
             this.ApplicationType = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -51,16 +47,14 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.CloseNewApplication = new System.Windows.Forms.Button();
             this.AddConfirm = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // ApplicationDate
@@ -113,19 +107,6 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Движение № ";
             // 
-            // Workshop
-            // 
-            this.Workshop.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Workshop.CausesValidation = false;
-            this.Workshop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Workshop.FormattingEnabled = true;
-            this.Workshop.Location = new System.Drawing.Point(142, 116);
-            this.Workshop.Name = "Workshop";
-            this.Workshop.Size = new System.Drawing.Size(254, 28);
-            this.Workshop.TabIndex = 13;
-            // 
             // ApplicationType
             // 
             this.ApplicationType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -135,11 +116,11 @@
             this.ApplicationType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ApplicationType.FormattingEnabled = true;
             this.ApplicationType.Items.AddRange(new object[] {
-            "Плановая",
-            "Внеплановая"});
-            this.ApplicationType.Location = new System.Drawing.Point(142, 85);
+            "Приход",
+            "Расход"});
+            this.ApplicationType.Location = new System.Drawing.Point(173, 85);
             this.ApplicationType.Name = "ApplicationType";
-            this.ApplicationType.Size = new System.Drawing.Size(254, 28);
+            this.ApplicationType.Size = new System.Drawing.Size(223, 28);
             this.ApplicationType.TabIndex = 14;
             // 
             // label4
@@ -163,9 +144,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.Location = new System.Drawing.Point(9, 151);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(24, 20);
+            this.label5.Size = new System.Drawing.Size(163, 20);
             this.label5.TabIndex = 8;
-            this.label5.Text = "В:";
+            this.label5.Text = "Склад-отправитель";
             // 
             // label3
             // 
@@ -176,42 +157,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(9, 119);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 20);
+            this.label3.Size = new System.Drawing.Size(153, 20);
             this.label3.TabIndex = 11;
-            this.label3.Text = "Из:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.CausesValidation = false;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(142, 148);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(254, 28);
-            this.comboBox1.TabIndex = 13;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(406, 116);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(369, 395);
-            this.dataGridView1.TabIndex = 15;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(402, 88);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(252, 31);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Перемещаемая номенклатура:";
+            this.label3.Text = "Склад-получатель";
             // 
             // label7
             // 
@@ -222,9 +170,9 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.Location = new System.Drawing.Point(8, 183);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(87, 20);
+            this.label7.Size = new System.Drawing.Size(168, 20);
             this.label7.TabIndex = 8;
-            this.label7.Text = "Документ:";
+            this.label7.Text = "Документ-основание";
             // 
             // comboBox2
             // 
@@ -234,9 +182,9 @@
             this.comboBox2.CausesValidation = false;
             this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(142, 180);
+            this.comboBox2.Location = new System.Drawing.Point(173, 180);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(254, 28);
+            this.comboBox2.Size = new System.Drawing.Size(223, 28);
             this.comboBox2.TabIndex = 13;
             // 
             // label8
@@ -248,9 +196,9 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label8.Location = new System.Drawing.Point(9, 217);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 20);
+            this.label8.Size = new System.Drawing.Size(66, 20);
             this.label8.TabIndex = 8;
-            this.label8.Text = "Партия:";
+            this.label8.Text = "Партия";
             // 
             // textBox2
             // 
@@ -270,9 +218,9 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label9.Location = new System.Drawing.Point(9, 249);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(117, 20);
+            this.label9.Size = new System.Drawing.Size(113, 20);
             this.label9.TabIndex = 8;
-            this.label9.Text = "Учетная цена:";
+            this.label9.Text = "Учетная цена";
             // 
             // textBox3
             // 
@@ -292,9 +240,9 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label10.Location = new System.Drawing.Point(9, 281);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(104, 20);
+            this.label10.Size = new System.Drawing.Size(110, 20);
             this.label10.TabIndex = 8;
-            this.label10.Text = "Количество:";
+            this.label10.Text = "Количество *";
             // 
             // textBox4
             // 
@@ -313,9 +261,9 @@
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label11.Location = new System.Drawing.Point(9, 313);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(62, 20);
+            this.label11.Size = new System.Drawing.Size(58, 20);
             this.label11.TabIndex = 8;
-            this.label11.Text = "Сумма:";
+            this.label11.Text = "Сумма";
             // 
             // textBox5
             // 
@@ -325,32 +273,6 @@
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(254, 26);
             this.textBox5.TabIndex = 16;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(9, 345);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(127, 20);
-            this.label12.TabIndex = 8;
-            this.label12.Text = "Тип накладной:";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox3.CausesValidation = false;
-            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(142, 342);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(254, 28);
-            this.comboBox3.TabIndex = 13;
             // 
             // checkBox1
             // 
@@ -374,9 +296,9 @@
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label13.Location = new System.Drawing.Point(10, 379);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(115, 20);
+            this.label13.Size = new System.Drawing.Size(111, 20);
             this.label13.TabIndex = 8;
-            this.label13.Text = "Исполнитель:";
+            this.label13.Text = "Исполнитель";
             // 
             // textBox6
             // 
@@ -386,28 +308,6 @@
             this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(254, 26);
             this.textBox6.TabIndex = 16;
-            // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label14.Location = new System.Drawing.Point(10, 411);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(222, 20);
-            this.label14.TabIndex = 8;
-            this.label14.Text = "Дата-время корректировки:";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox7.Location = new System.Drawing.Point(238, 408);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(158, 26);
-            this.textBox7.TabIndex = 16;
             // 
             // CloseNewApplication
             // 
@@ -428,11 +328,41 @@
             this.AddConfirm.Text = "Создать";
             this.AddConfirm.UseVisualStyleBackColor = true;
             // 
+            // textBox7
+            // 
+            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox7.Location = new System.Drawing.Point(238, 408);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
+            this.textBox7.Size = new System.Drawing.Size(158, 26);
+            this.textBox7.TabIndex = 16;
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label14.Location = new System.Drawing.Point(10, 411);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(218, 20);
+            this.label14.TabIndex = 8;
+            this.label14.Text = "Дата-время корректировки";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(142, 350);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox1.TabIndex = 20;
+            // 
             // AddMoving
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.CloseNewApplication);
             this.Controls.Add(this.AddConfirm);
             this.Controls.Add(this.checkBox1);
@@ -442,20 +372,14 @@
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label12);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.Workshop);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.ApplicationType);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
@@ -470,7 +394,6 @@
             this.Name = "AddMoving";
             this.Text = "Создание движения";
             this.Load += new System.EventHandler(this.AddMoving_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -482,14 +405,10 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox Workshop;
         private System.Windows.Forms.ComboBox ApplicationType;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label8;
@@ -500,14 +419,13 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Button CloseNewApplication;
         private System.Windows.Forms.Button AddConfirm;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
     }
 }
