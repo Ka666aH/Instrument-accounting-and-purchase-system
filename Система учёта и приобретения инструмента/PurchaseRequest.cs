@@ -48,13 +48,13 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void SetButtonsState()
         {
-            if (PurchaseRequestsContentTable.CurrentRow == null)
-            {
-                PurchaseRequestButtonAdd.Enabled = false;
-                PurchaseRequestButtonRemove.Enabled = false;
-                return;
-            }
-
+            //if (PurchaseRequestsContentTable.SelectedRows.Count == 0)
+            //{
+            //    PurchaseRequestButtonAdd.Enabled = false;
+            //    PurchaseRequestButtonRemove.Enabled = false;
+            //    return;
+            //}
+            if (PurchaseRequestsContentTable.CurrentRow == null) return;
             var selectedRow = PurchaseRequestsContentTable.CurrentRow.DataBoundItem as DataRowView;
             var row = selectedRow.Row as TOOLACCOUNTINGDataSet.PurchaseRequestsContentInjRow;
             if (row.PurchaseRequestID == 1)

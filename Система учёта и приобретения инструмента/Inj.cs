@@ -108,10 +108,11 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Inj_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj". При необходимости она может быть перемещена или удалена.
-            this.purchaseRequestsContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.PurchaseRequestsInj". При необходимости она может быть перемещена или удалена.
             this.purchaseRequestsInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj". При необходимости она может быть перемещена или удалена.
+            this.purchaseRequestsContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
+            PurchaseRequestsContentTable.Columns[0].Visible = false;
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.BalancesInj". При необходимости она может быть перемещена или удалена.
             this.balancesInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.BalancesInj);
             OstatkiTable.Columns[0].Visible = false;
@@ -150,6 +151,8 @@ namespace Система_учёта_и_приобретения_инструме
             HistoryResetEnd();
             LogResetStart();
             LogResetEnd();
+            //PurchaseRequestsStart.Checked = true;
+            //PurchaseRequestsStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
         }
         private bool isSearchReseting = false;
 
@@ -1218,6 +1221,8 @@ namespace Система_учёта_и_приобретения_инструме
         {
             PurchaseRequest purchaseRequest = new PurchaseRequest();
             purchaseRequest.ShowDialog();
+            purchaseRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
+            purchaseRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
         }
 
         private void PurchaseRequestsButtonAlter_Click(object sender, EventArgs e)
@@ -1232,11 +1237,6 @@ namespace Система_учёта_и_приобретения_инструме
         private void PurchaseRequestsButtonExport_Click(object sender, EventArgs e)
         {
             //add
-        }
-
-        private void PurchaseRequestsButtonResetSearch_Click(object sender, EventArgs e)
-        {
-            PurchaseRequestsResetSearch();
         }
         private void PurchaseRequestsPurchaseRequestsTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -1274,6 +1274,51 @@ namespace Система_учёта_и_приобретения_инструме
         private void PurchaseRequestsContextMenuExport_Click(object sender, EventArgs e)
         {
             PurchaseRequestsButtonExport.PerformClick();
+        }
+
+        private void PurchaseRequestsStart_ValueChanged(object sender, EventArgs e)
+        {
+            PurchaseRequestsSearch();
+        }
+
+        private void PurchaseRequestsStatus_TextChanged(object sender, EventArgs e)
+        {
+            PurchaseRequestsSearch();
+        }
+
+        private void PurchaseRequestsSearch()
+        {
+            if (isSearchReseting) return;
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(PurchaseRequestsStatus.Text)) parameters.Add(new SearchParameter("Status", PurchaseRequestsStatus.Text));
+
+            try
+            {
+                string filter = Search.Filter(parameters);
+                string date1 = $"{PurchaseRequestsStart.Value.ToString("yyyy-MM-dd")}";
+                string date2 = $"{PurchaseRequestsEnd.Value.AddDays(1).ToString("yyyy-MM-dd")}";
+                if (PurchaseRequestsStart.Checked)
+                {
+                    if (!string.IsNullOrEmpty(filter)) filter += " AND ";
+                    filter += $"PurchaseRequestDate >= '{date1}'";
+                }
+                if (PurchaseRequestsEnd.Checked)
+                {
+                    if (!string.IsNullOrEmpty(filter)) filter += " AND ";
+                    filter += $"PurchaseRequestDate <'{date2}'";
+                }
+
+                purchaseRequestsInjBindingSource.Filter = filter;
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+        private void PurchaseRequestsButtonResetSearch_Click(object sender, EventArgs e)
+        {
+            PurchaseRequestsResetSearch();
         }
         #endregion
 
@@ -1986,7 +2031,6 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
         }
-
     }
     public static class Logs
     {
