@@ -25,6 +25,11 @@ namespace Система_учёта_и_приобретения_инструме
             login = _login;
             WorkshopsMain.UserDeletingRow += WorkshopsMain_UserDeletingRow;
 
+            // Подписка на пункты меню "Отчёты"
+            отчетПоОстаткамToolStripMenuItem.Click += ReportBalances_Click;
+            отчетПоДефектнымВедомостямToolStripMenuItem.Click += ReportDefective_Click;
+            отчетПоЗаявкамToolStripMenuItem.Click += ReportApplications_Click;
+
             // ======== ДОБАВЛЕНО ========
             SetupContextMenus();
             // ======== КОНЕЦ ДОБАВЛЕНИЯ ========
@@ -95,6 +100,12 @@ namespace Система_учёта_и_приобретения_инструме
             SetupClearableControl(textBox14);
             SetupClearableControl(textBox13);
             SetupClearableControl(textBox15);
+
+            // Ostatki (Остатки) controls
+            SetupClearableControl(textBox12);   // Номер склада или иной фильтр
+            SetupClearableControl(textBox7);    // Склад
+            SetupClearableControl(OstatkiNumber); // Номенклатурный номер
+            SetupClearableControl(textBox16);   // Цена
 
             // Подписка на события поиска
             SubscribeReceivingSearchEvents();
@@ -188,9 +199,9 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void AddMoving_Click(object sender, EventArgs e)
         {
-            //AddMoving addMoving = new AddMoving(true);
+            AddMoving addMoving = new AddMoving();
             //addMoving.MovementSaved += (s, args) => RefreshToolMovementsTables();
-            //addMoving.ShowDialog();
+            addMoving.ShowDialog();
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -236,7 +247,7 @@ namespace Система_учёта_и_приобретения_инструме
             if (!string.IsNullOrEmpty(dateTimePicker2.Text)) parameters.Add(new SearchParameter("DefectiveListDate", dateTimePicker2.Value, true));
             if (!string.IsNullOrEmpty(textBox15.Text)) parameters.Add(new SearchParameter("WorkshopID", Convert.ToInt32(textBox15.Text), true));
             if (!string.IsNullOrEmpty(textBox1.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", textBox1.Text, true));
-            if (!string.IsNullOrEmpty(textBox11.Text)) parameters.Add(new SearchParameter("BatchNumber", textBox11.Text, false));
+            if (!string.IsNullOrEmpty(textBox11.Text)) parameters.Add(new SearchParameter("BatchNumber", textBox11.Text, true));
             decimal priceVal; int quantityVal;
             if (!string.IsNullOrEmpty(textBox14.Text) && decimal.TryParse(textBox14.Text.Replace(',', '.'), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out priceVal))
                 parameters.Add(new SearchParameter("Price", priceVal, true));
@@ -456,7 +467,7 @@ namespace Система_учёта_и_приобретения_инструме
             if (ApplicationNeedDate.Checked) parameters.Add(new SearchParameter("ReceivingRequestDate", ApplicationNeedDate.Value, true));
             if (!string.IsNullOrEmpty(textBox8.Text)) parameters.Add(new SearchParameter("ReceivingRequestID", Convert.ToInt32(textBox8.Text), true));
             if (!string.IsNullOrEmpty(textBox9.Text)) parameters.Add(new SearchParameter("WorkshopID", Convert.ToInt32(textBox9.Text), true));
-            if (!string.IsNullOrEmpty(comboBox1.Text)) parameters.Add(new SearchParameter("Reason", comboBox1.Text, false));
+            if (!string.IsNullOrEmpty(comboBox1.Text)) parameters.Add(new SearchParameter("Reason", comboBox1.Text, true));
             if (Planned.Checked) parameters.Add(new SearchParameter("ReceivingRequestType", "Плановая", true));
             if (NonPlanned.Checked) parameters.Add(new SearchParameter("ReceivingRequestType", "Внеплановая", true));
             if (!string.IsNullOrEmpty(ApplicationStatusSearch.Text)) parameters.Add(new SearchParameter("Status", ApplicationStatusSearch.Text, true));
@@ -1248,7 +1259,92 @@ namespace Система_учёта_и_приобретения_инструме
             }
         }
         #endregion
-        
+
+        private void textBox12_TextChanged(object sender, EventArgs e)
+        {
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(textBox12.Text)) parameters.Add(new SearchParameter("BalanceID", Convert.ToInt32(textBox12.Text), true));
+            if (!string.IsNullOrEmpty(OstatkiNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", OstatkiNumber.Text, true));
+            if (!string.IsNullOrEmpty(textBox7.Text)) parameters.Add(new SearchParameter("WorkshopID", Convert.ToInt32(textBox7.Text), true));
+            if (!string.IsNullOrEmpty(textBox16.Text)) parameters.Add(new SearchParameter("ButchNumber", textBox16.Text, true));
+          
+
+            try
+            {
+                string filter = Search.Filter(parameters);
+                OstatkiTable.SuspendLayout();
+                balancesBindingSource.Filter = filter;
+                OstatkiTable.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void OstatkiResetSearchNumber() { textBox12.Text = string.Empty; }
+        private void OstatkiResetSearchStorage() { textBox7.Text = string.Empty; }
+        private void OstatkiResetSearchName() { OstatkiNumber.Text = string.Empty; }
+        private void OstatkiResetSearchPrice() { textBox16.Text = string.Empty; }
+
+        private void OstatkiResetSearch()
+        {
+
+            OstatkiResetSearchNumber();
+            OstatkiResetSearchStorage();
+            OstatkiResetSearchName();
+            OstatkiResetSearchPrice();
+            balancesBindingSource.RemoveFilter();
+        }
+
+        private void OstatkiResetButton_Click(object sender, EventArgs e)
+        {
+            OstatkiResetSearch();
+        }
+       
+
+        #region Excel reports
+        private void ExportTable(System.Data.DataTable table, string defaultFileName)
+        {
+            if (table == null || table.Rows.Count == 0)
+            {
+                MessageBox.Show("Нет данных для экспорта.", "Экспорт", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            using (var sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Excel (*.xlsx)|*.xlsx";
+                sfd.FileName = defaultFileName + ".xlsx";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        new Excel().Export(table, sfd.FileName);
+                        MessageBox.Show("Экспорт завершён.", "Экспорт", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void ReportBalances_Click(object sender, EventArgs e)
+        {
+            ExportTable(tOOLACCOUNTINGDataSet.Balances, "Остатки");
+        }
+
+        private void ReportDefective_Click(object sender, EventArgs e)
+        {
+            ExportTable(tOOLACCOUNTINGDataSet.DefectiveLists, "Дефектные_ведомости");
+        }
+
+        private void ReportApplications_Click(object sender, EventArgs e)
+        {
+            ExportTable(tOOLACCOUNTINGDataSet.ReceivingRequests, "Заявки");
+        }
+        #endregion
     }
 
 }

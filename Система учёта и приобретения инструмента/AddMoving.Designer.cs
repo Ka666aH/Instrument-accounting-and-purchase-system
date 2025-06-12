@@ -63,6 +63,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.SourceDocumentType = new System.Windows.Forms.ComboBox();
             this.Moving = new System.Windows.Forms.RadioButton();
+            this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
+            ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // ApplicationDate
@@ -275,6 +277,7 @@
             this.User.ReadOnly = true;
             this.User.Size = new System.Drawing.Size(388, 26);
             this.User.TabIndex = 16;
+            this.User.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox7
             // 
@@ -305,6 +308,7 @@
             this.Nomenclature.Name = "Nomenclature";
             this.Nomenclature.Size = new System.Drawing.Size(388, 26);
             this.Nomenclature.TabIndex = 16;
+            this.Nomenclature.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
             // 
@@ -453,6 +457,11 @@
             this.Moving.UseVisualStyleBackColor = true;
             this.Moving.CheckedChanged += new System.EventHandler(this.Add_CheckedChanged);
             // 
+            // tOOLACCOUNTINGDataSet
+            // 
+            this.tOOLACCOUNTINGDataSet.DataSetName = "TOOLACCOUNTINGDataSet";
+            this.tOOLACCOUNTINGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // AddMoving
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -497,6 +506,8 @@
             this.MinimumSize = new System.Drawing.Size(600, 430);
             this.Name = "AddMoving";
             this.Text = "Создание движения";
+            this.Load += new System.EventHandler(this.AddMoving_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -538,5 +549,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox SourceDocumentType;
         private System.Windows.Forms.RadioButton Moving;
+        private TOOLACCOUNTINGDataSet tOOLACCOUNTINGDataSet;
     }
 }

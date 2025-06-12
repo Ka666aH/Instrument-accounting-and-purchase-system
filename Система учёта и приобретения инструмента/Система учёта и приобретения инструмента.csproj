@@ -245,7 +245,6 @@
     </None>
     <None Include="TOOLACCOUNTINGDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TOOLACCOUNTINGDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="TOOLACCOUNTINGDataSet.xss">

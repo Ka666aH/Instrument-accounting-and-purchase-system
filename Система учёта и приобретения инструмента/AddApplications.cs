@@ -29,6 +29,16 @@ namespace Система_учёта_и_приобретения_инструме
         {
             InitializeComponent();
             dataSet = _dataSet;
+            // переназначаем источник данных биндингов на переданный набор
+            try
+            {
+                // tOOLACCOUNTINGDataSet – поле, сгенерированное дизайнером
+                this.tOOLACCOUNTINGDataSet = dataSet;
+
+                if (receivingRequestsContentBindingSource != null)
+                    receivingRequestsContentBindingSource.DataSource = dataSet;
+            }
+            catch { /* если дизайнерские названия изменятся – игнорируем */ }
             mode = _mode;
             if (_editRow != null)
             {
@@ -331,7 +341,6 @@ namespace Система_учёта_и_приобретения_инструме
         private bool AllFieldsEmpty()
         {
             return (Workshop.SelectedIndex == -1 || Workshop.SelectedValue == null)
-                && string.IsNullOrWhiteSpace(ApplicationType.Text)
                 && string.IsNullOrWhiteSpace(Reason.Text)
                 && dataSet.ReceivingRequestsContent.Rows.Count == 0;
         }

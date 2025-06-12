@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters;
 using static Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet;
 using System.Collections.Generic;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Система_учёта_и_приобретения_инструмента
 {
@@ -26,12 +27,15 @@ namespace Система_учёта_и_приобретения_инструме
         BalancesTableAdapter balancesTableAdapter = new BalancesTableAdapter();
 
         // --- динамически создаваемые контроли (если отсутствуют в Designer) ---
-        private TextBox textBox5;
-        private TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
         private RadioButton radioButton1;
         private RadioButton radioButton2;
 
         public event EventHandler DefectiveSaved;
+
+        // Флаг, чтобы отличить программную установку значения от пользовательского ввода
+        private bool _settingByCode = false;
 
         public DefAdd()
         {
@@ -47,14 +51,14 @@ namespace Система_учёта_и_приобретения_инструме
         private void CreateDynamicControls()
         {
             // Проверяем, существуют ли уже контролы из дизайнера
-            textBox5 = this.Controls.Find("textBox5", true).FirstOrDefault() as TextBox;
-            textBox6 = this.Controls.Find("textBox6", true).FirstOrDefault() as TextBox;
+            textBox5 = this.Controls.Find("textBox5", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+            textBox6 = this.Controls.Find("textBox6", true).FirstOrDefault() as System.Windows.Forms.TextBox;
             radioButton1 = this.Controls.Find("radioButton1", true).FirstOrDefault() as RadioButton;
             radioButton2 = this.Controls.Find("radioButton2", true).FirstOrDefault() as RadioButton;
 
             if (textBox5 == null)
             {
-                textBox5 = new TextBox
+                textBox5 = new System.Windows.Forms.TextBox
                 {
                     Name = "textBox5",
                     Font = new Font("Microsoft Sans Serif", 12F),
@@ -65,7 +69,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             if (textBox6 == null)
             {
-                textBox6 = new TextBox
+                textBox6 = new System.Windows.Forms.TextBox
                 {
                     Name = "textBox6",
                     Font = new Font("Microsoft Sans Serif", 12F),
@@ -104,6 +108,8 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void TextBox5_Leave(object sender, EventArgs e)
         {
+            if (_settingByCode) return; // пропускаем обработку, если значение выставлялось кодом через Prefill
+
             string txt = textBox5.Text;
             int dashIdx = txt.IndexOf('-');
             if (dashIdx > 0) txt = txt.Substring(0, dashIdx).Trim();
@@ -159,7 +165,7 @@ namespace Система_учёта_и_приобретения_инструме
             workshopsTableAdapter.Fill(tOOLACCOUNTINGDataSet.Workshops);
             storagesTableAdapter.Fill(tOOLACCOUNTINGDataSet.Storages);
             balancesTableAdapter.Fill(tOOLACCOUNTINGDataSet.Balances);
-
+            
             RefreshWorkshopSource();
             RefreshNomenSource();
 
@@ -173,9 +179,12 @@ namespace Система_учёта_и_приобретения_инструме
             textBox2.AutoCompleteCustomSource = workshopSource;
 
             // Устанавливаем номера и дату
+            var defTableAdapter = new DefectiveListsTableAdapter();
+            defTableAdapter.Fill(tOOLACCOUNTINGDataSet.DefectiveLists);
             ApplicationDate.Text = DateTime.Today.ToShortDateString();
             int newId = tOOLACCOUNTINGDataSet.DefectiveLists.Count == 0 ? 1 : tOOLACCOUNTINGDataSet.DefectiveLists.Max(r => r.DefectiveListID) + 1;
             textBox1.Text = newId.ToString();
+
         }
 
         private void RefreshNomenSource()
@@ -334,7 +343,12 @@ namespace Система_учёта_и_приобретения_инструме
         public void Prefill(string nomenNumber, int workshopId, decimal price, string batchNumber)
         {
             // textBox5 – номер номенклатуры
-            if (textBox5 != null) textBox5.Text = nomenNumber;
+            if (textBox5 != null)
+            {
+                _settingByCode = true;
+                textBox5.Text = nomenNumber;
+                _settingByCode = false;
+            }
             // textBox2 – номер цеха (по дизайну)
             if (textBox2 != null) textBox2.Text = workshopId.ToString();
             // textBox3 – учётная цена
