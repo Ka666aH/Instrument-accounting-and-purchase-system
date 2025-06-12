@@ -2200,6 +2200,7 @@
             this.StatementsButtonExport.TabIndex = 56;
             this.StatementsButtonExport.Text = "Экспортировать";
             this.StatementsButtonExport.UseVisualStyleBackColor = true;
+            this.StatementsButtonExport.Click += new System.EventHandler(this.StatementsButtonExport_Click);
             // 
             // StatementsButtonDelete
             // 

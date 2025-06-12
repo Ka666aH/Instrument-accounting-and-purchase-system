@@ -115,6 +115,11 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void PurchaseRequestButtonClose_Click(object sender, EventArgs e)
         {
+            Close();
+        }
+
+        private void PurchaseRequest_FormClosing(object sender, FormClosingEventArgs e)
+        {
             // Дополнительно: проверка наличия записей и удаление пустых заявок
             int currentRequestID = Convert.ToInt32(PurchaseRequestNumber.Text);
 
@@ -134,7 +139,6 @@ namespace Система_учёта_и_приобретения_инструме
                     purchaseRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
                 }
             }
-            Close();
         }
     }
 }

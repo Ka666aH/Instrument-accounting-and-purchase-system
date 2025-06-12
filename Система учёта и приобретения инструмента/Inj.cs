@@ -1353,7 +1353,10 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void StatementsButtonCreate_Click(object sender, EventArgs e)
         {
-
+            DeleviryListForm deleviryListForm = new DeleviryListForm();
+            deleviryListForm.ShowDialog();
+            deliveryListsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsInj);
+            deliveryListsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
         }
 
         private void StatementsButtonAlter_Click(object sender, EventArgs e)
@@ -1362,6 +1365,11 @@ namespace Система_учёта_и_приобретения_инструме
         }
 
         private void StatementsButtonDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StatementsButtonExport_Click(object sender, EventArgs e)
         {
 
         }

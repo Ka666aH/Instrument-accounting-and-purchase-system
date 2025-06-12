@@ -329,6 +329,7 @@
             this.Name = "PurchaseRequest";
             this.Text = "Форма заявки на приобретение – Информационная система учета и приобретения инстру" +
     "мента";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PurchaseRequest_FormClosing);
             this.Load += new System.EventHandler(this.PurchaseRequest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseRequestsContentTable)).EndInit();

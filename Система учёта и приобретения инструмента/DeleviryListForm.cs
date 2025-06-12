@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters;
 
 namespace Система_учёта_и_приобретения_инструмента
 {
@@ -16,18 +18,130 @@ namespace Система_учёта_и_приобретения_инструме
         {
             InitializeComponent();
         }
-
+        AutoCompleteStringCollection source = new AutoCompleteStringCollection();
+        int deliveryListNumber = 1;
+        DeliveryListsTableAdapter dlta = new DeliveryListsTableAdapter();
+        DeliveryListsInjTableAdapter dlita = new DeliveryListsInjTableAdapter();
         private void DeleviryListForm_Load(object sender, EventArgs e)
         {
+            dlta.Fill(tOOLACCOUNTINGDataSet.DeliveryLists);
+            dlita.Fill(tOOLACCOUNTINGDataSet.DeliveryListsInj);
+
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DeliveryListsContentInj". При необходимости она может быть перемещена или удалена.
             this.deliveryListsContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DeliveryListsContent". При необходимости она может быть перемещена или удалена.
-            this.deliveryListsContentTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DeliveryListsContent);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj". При необходимости она может быть перемещена или удалена.
             this.purchaseRequestsContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.PurchaseRequestsInj". При необходимости она может быть перемещена или удалена.
             this.purchaseRequestsInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
 
+
+            // Создаём новую заявку на закупку с текущей датой и статусом "Не обработана"
+            var dl = tOOLACCOUNTINGDataSet.DeliveryLists.NewDeliveryListsRow();
+            dl.DeliveryListDate = DateTime.Today;
+            new SuppliersTableAdapter().Fill(tOOLACCOUNTINGDataSet.Suppliers);
+            dl.SupplierINN = tOOLACCOUNTINGDataSet.Suppliers.Select(x => x.INN).FirstOrDefault();
+            tOOLACCOUNTINGDataSet.DeliveryLists.AddDeliveryListsRow(dl);
+            dlta.Update(tOOLACCOUNTINGDataSet.DeliveryLists);
+            dlta.Fill(tOOLACCOUNTINGDataSet.DeliveryLists);
+            dlita.Fill(tOOLACCOUNTINGDataSet.DeliveryListsInj);
+            deliveryListsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
+
+            deliveryListNumber = (tOOLACCOUNTINGDataSet.DeliveryLists.Max(x => x.DeliveryListID));
+
+            deliveryListsContentInjBindingSource.Filter = $"DeliveryListID = {deliveryListNumber}";
+
+            DeliveryListFormNumber.Text = deliveryListNumber.ToString();
+            DeliveryListFormDate.Text = DateTime.Today.ToString("dd.MM.yyyy");
+
+            SetSuppliersSource();
         }
+
+        private void SetSuppliersSource()
+        {
+            foreach (DataRow row in new SuppliersTableAdapter().GetData().Rows)
+            {
+                string fullName = row[1]?.ToString().Trim() ?? "";
+                if (!string.IsNullOrEmpty(fullName))
+                {
+                    source.Add(fullName);
+                }
+            }
+            DeliveryListFormSupplier.AutoCompleteCustomSource = source;
+        }
+        private void FindSupplier(TextBox sender)
+        {
+            string selectedText = sender.Text;
+            sender.Text = new List<string>(source.Cast<string>()).Where(x => x.ToLower() == selectedText.ToLower()).FirstOrDefault();
+        }
+
+        private void DeliveryListFormSupplier_Leave(object sender, EventArgs e)
+        {
+            FindSupplier(sender as TextBox);
+            if (string.IsNullOrEmpty(DeliveryListFormSupplier.Text)) return;
+            DeliveryListFormButtonAdd.Enabled = true;
+        }
+
+        private void SetButtonsState()
+        {
+            if (DeliveryListFormPurchaseRequestContentTable.CurrentRow == null) DeliveryListFormButtonAdd.Enabled = false;
+            else DeliveryListFormButtonAdd.Enabled = true;
+
+            if (DeliveryListFormDeliveryListContentTable.CurrentRow == null) DeliveryListFormButtonRemove.Enabled = false;
+            else DeliveryListFormButtonRemove.Enabled = true;
+        }
+
+        private void DeliveryListFormButtonAdd_Click(object sender, EventArgs e)
+        {
+            var selectedRow = DeliveryListFormPurchaseRequestContentTable.CurrentRow?.DataBoundItem as DataRowView;
+            if (selectedRow == null) return;
+
+            var row = selectedRow.Row as TOOLACCOUNTINGDataSet.PurchaseRequestsContentInjRow;
+            if (row == null) return;
+
+            //создание пункта заявки
+            TOOLACCOUNTINGDataSet.DeliveryListsContentRow dlcRow = tOOLACCOUNTINGDataSet.DeliveryListsContent.NewDeliveryListsContentRow();
+            dlcRow.DeliveryListID = deliveryListNumber;
+            dlcRow.PurchaseContentID = row.PurchaseContentID;
+            //dlcRow.DeliveryContentDate = //PlannedDate из связанного ReceivingRequests 
+            dlcRow.ContractNumber = "0";
+            //dlcRow.Quantity = //Quantity из связанного ReceivingRequestsContent 
+            tOOLACCOUNTINGDataSet.DeliveryListsContent.AddDeliveryListsContentRow(dlcRow);
+            new DeliveryListsContentTableAdapter().Update(tOOLACCOUNTINGDataSet.DeliveryListsContent);
+            new DeliveryListsContentTableAdapter().Fill(tOOLACCOUNTINGDataSet.DeliveryListsContent);
+            new DeliveryListsContentInjTableAdapter().Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
+
+        }
+
+        private void DeliveryListFormButtonRemove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DeleviryListForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Дополнительно: проверка наличия записей и удаление пустых заявок
+
+            bool hasOtherEntries = tOOLACCOUNTINGDataSet.DeliveryListsContent.Any(x => x.DeliveryListID == deliveryListNumber);
+            if (!hasOtherEntries)
+            {
+                // Если других записей нет, можно удалить саму заявку
+                var dlRow = tOOLACCOUNTINGDataSet.DeliveryLists.FindByDeliveryListID(deliveryListNumber);
+                if (dlRow != null)
+                {
+                    dlRow.Delete();
+                    dlta.Update(tOOLACCOUNTINGDataSet.DeliveryLists);
+                    dlta.Fill(tOOLACCOUNTINGDataSet.DeliveryLists);
+                    dlita.Fill(tOOLACCOUNTINGDataSet.DeliveryListsInj);
+                    deliveryListsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
+                }
+            }
+        }
+
+        private void DeliveryListFormButtonClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+
     }
 }

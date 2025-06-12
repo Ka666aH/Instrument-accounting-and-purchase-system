@@ -83,8 +83,6 @@ namespace Система_учёта_и_приобретения_инструме
         {
 
         }
-
-
         private void AnalogFormAnalogNumber_TextChanged(object sender, EventArgs e)
         {
 

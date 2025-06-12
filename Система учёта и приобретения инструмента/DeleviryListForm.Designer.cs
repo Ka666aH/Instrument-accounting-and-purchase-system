@@ -38,9 +38,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeleviryListForm));
             this.DeliveryListFormDate = new System.Windows.Forms.TextBox();
             this.DeliveryListFormNumber = new System.Windows.Forms.TextBox();
@@ -134,11 +131,14 @@
             // 
             // DeliveryListFormSupplier
             // 
+            this.DeliveryListFormSupplier.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.DeliveryListFormSupplier.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.DeliveryListFormSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DeliveryListFormSupplier.Location = new System.Drawing.Point(113, 81);
             this.DeliveryListFormSupplier.Name = "DeliveryListFormSupplier";
             this.DeliveryListFormSupplier.Size = new System.Drawing.Size(279, 29);
             this.DeliveryListFormSupplier.TabIndex = 63;
+            this.DeliveryListFormSupplier.Leave += new System.EventHandler(this.DeliveryListFormSupplier_Leave);
             // 
             // label1
             // 
@@ -170,6 +170,7 @@
             this.DeliveryListFormButtonRemove.Text = "Убрать";
             this.DeliveryListFormButtonRemove.UseVisualStyleBackColor = true;
             this.DeliveryListFormButtonRemove.Visible = false;
+            this.DeliveryListFormButtonRemove.Click += new System.EventHandler(this.DeliveryListFormButtonRemove_Click);
             // 
             // DeliveryListFormButtonAdd
             // 
@@ -180,6 +181,7 @@
             this.DeliveryListFormButtonAdd.TabIndex = 78;
             this.DeliveryListFormButtonAdd.Text = "Добавить";
             this.DeliveryListFormButtonAdd.UseVisualStyleBackColor = true;
+            this.DeliveryListFormButtonAdd.Click += new System.EventHandler(this.DeliveryListFormButtonAdd_Click);
             // 
             // DeliveryListFormButtonClose
             // 
@@ -193,6 +195,7 @@
             this.DeliveryListFormButtonClose.TabIndex = 76;
             this.DeliveryListFormButtonClose.Text = "Закрыть";
             this.DeliveryListFormButtonClose.UseVisualStyleBackColor = true;
+            this.DeliveryListFormButtonClose.Click += new System.EventHandler(this.DeliveryListFormButtonClose_Click);
             // 
             // label42
             // 
@@ -218,6 +221,7 @@
             // 
             this.DeliveryListFormDeliveryListContentTable.AllowUserToAddRows = false;
             this.DeliveryListFormDeliveryListContentTable.AllowUserToDeleteRows = false;
+            this.DeliveryListFormDeliveryListContentTable.AllowUserToResizeRows = false;
             this.DeliveryListFormDeliveryListContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -252,17 +256,9 @@
             this.DeliveryListFormDeliveryListContentTable.MultiSelect = false;
             this.DeliveryListFormDeliveryListContentTable.Name = "DeliveryListFormDeliveryListContentTable";
             this.DeliveryListFormDeliveryListContentTable.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeliveryListFormDeliveryListContentTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DeliveryListFormDeliveryListContentTable.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DeliveryListFormDeliveryListContentTable.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DeliveryListFormDeliveryListContentTable.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.DeliveryListFormDeliveryListContentTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DeliveryListFormDeliveryListContentTable.Size = new System.Drawing.Size(906, 202);
             this.DeliveryListFormDeliveryListContentTable.TabIndex = 85;
@@ -373,47 +369,40 @@
             // 
             this.DeliveryListFormPurchaseRequestsTable.AllowUserToAddRows = false;
             this.DeliveryListFormPurchaseRequestsTable.AllowUserToDeleteRows = false;
+            this.DeliveryListFormPurchaseRequestsTable.AllowUserToResizeRows = false;
             this.DeliveryListFormPurchaseRequestsTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.DeliveryListFormPurchaseRequestsTable.AutoGenerateColumns = false;
             this.DeliveryListFormPurchaseRequestsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeliveryListFormPurchaseRequestsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DeliveryListFormPurchaseRequestsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DeliveryListFormPurchaseRequestsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DeliveryListFormPurchaseRequestsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
             this.DeliveryListFormPurchaseRequestsTable.DataSource = this.purchaseRequestsInjBindingSource;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DeliveryListFormPurchaseRequestsTable.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DeliveryListFormPurchaseRequestsTable.DefaultCellStyle = dataGridViewCellStyle5;
             this.DeliveryListFormPurchaseRequestsTable.Location = new System.Drawing.Point(12, 218);
             this.DeliveryListFormPurchaseRequestsTable.MultiSelect = false;
             this.DeliveryListFormPurchaseRequestsTable.Name = "DeliveryListFormPurchaseRequestsTable";
             this.DeliveryListFormPurchaseRequestsTable.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeliveryListFormPurchaseRequestsTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.DeliveryListFormPurchaseRequestsTable.RowHeadersVisible = false;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DeliveryListFormPurchaseRequestsTable.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DeliveryListFormPurchaseRequestsTable.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.DeliveryListFormPurchaseRequestsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DeliveryListFormPurchaseRequestsTable.Size = new System.Drawing.Size(338, 216);
             this.DeliveryListFormPurchaseRequestsTable.TabIndex = 89;
@@ -451,14 +440,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DeliveryListFormPurchaseRequestContentTable.AutoGenerateColumns = false;
             this.DeliveryListFormPurchaseRequestContentTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeliveryListFormPurchaseRequestContentTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DeliveryListFormPurchaseRequestContentTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.DeliveryListFormPurchaseRequestContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DeliveryListFormPurchaseRequestContentTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
@@ -471,29 +460,21 @@
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn9});
             this.DeliveryListFormPurchaseRequestContentTable.DataSource = this.purchaseRequestsInjPurchaseRequestsContentInjBindingSource;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DeliveryListFormPurchaseRequestContentTable.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DeliveryListFormPurchaseRequestContentTable.DefaultCellStyle = dataGridViewCellStyle8;
             this.DeliveryListFormPurchaseRequestContentTable.Location = new System.Drawing.Point(356, 218);
             this.DeliveryListFormPurchaseRequestContentTable.MultiSelect = false;
             this.DeliveryListFormPurchaseRequestContentTable.Name = "DeliveryListFormPurchaseRequestContentTable";
             this.DeliveryListFormPurchaseRequestContentTable.ReadOnly = true;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeliveryListFormPurchaseRequestContentTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.DeliveryListFormPurchaseRequestContentTable.RowHeadersVisible = false;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DeliveryListFormPurchaseRequestContentTable.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DeliveryListFormPurchaseRequestContentTable.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.DeliveryListFormPurchaseRequestContentTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DeliveryListFormPurchaseRequestContentTable.Size = new System.Drawing.Size(562, 216);
             this.DeliveryListFormPurchaseRequestContentTable.TabIndex = 90;
@@ -596,9 +577,12 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
+            this.MaximumSize = new System.Drawing.Size(1135, 754);
+            this.MinimumSize = new System.Drawing.Size(1135, 754);
             this.Name = "DeleviryListForm";
             this.Text = "Форма ведомости поставки – Информационная система учета и приобретения инструмент" +
     "а";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DeleviryListForm_FormClosing);
             this.Load += new System.EventHandler(this.DeleviryListForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DeliveryListFormDeliveryListContentTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deliveryListsContentInjBindingSource)).EndInit();
