@@ -13880,6 +13880,13 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DeliveryListsContentInjRow FindByDeliveryContentID(int DeliveryContentID) {
+                return ((DeliveryListsContentInjRow)(this.Rows.Find(new object[] {
+                            DeliveryContentID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 DeliveryListsContentInjDataTable cln = ((DeliveryListsContentInjDataTable)(base.Clone()));
                 cln.InitVars();
@@ -13918,16 +13925,20 @@ namespace Система_учёта_и_приобретения_инструме
                 base.Columns.Add(this.columnDeliveryContentDate);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnDeliveryContentID}, true));
                 this.columnDeliveryContentID.AutoIncrement = true;
                 this.columnDeliveryContentID.AutoIncrementSeed = -1;
                 this.columnDeliveryContentID.AutoIncrementStep = -1;
                 this.columnDeliveryContentID.AllowDBNull = false;
                 this.columnDeliveryContentID.ReadOnly = true;
+                this.columnDeliveryContentID.Unique = true;
                 this.columnDeliveryListID.AllowDBNull = false;
                 this.columnNomenclatureNumber.ReadOnly = true;
                 this.columnNomenclatureNumber.MaxLength = 9;
                 this.columnFullName.ReadOnly = true;
                 this.columnFullName.MaxLength = 2147483647;
+                this.columnDeliveryContentDate.AllowDBNull = false;
                 this.columnQuantity.AllowDBNull = false;
             }
             
@@ -18698,13 +18709,7 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public System.DateTime DeliveryContentDate {
                 get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableDeliveryListsContentInj.DeliveryContentDateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'DeliveryContentDate\' в таблице \'DeliveryListsContentInj\' ра" +
-                                "вно DBNull.", e);
-                    }
+                    return ((global::System.DateTime)(this[this.tableDeliveryListsContentInj.DeliveryContentDateColumn]));
                 }
                 set {
                     this[this.tableDeliveryListsContentInj.DeliveryContentDateColumn] = value;
@@ -18755,18 +18760,6 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetFullNameNull() {
                 this[this.tableDeliveryListsContentInj.FullNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsDeliveryContentDateNull() {
-                return this.IsNull(this.tableDeliveryListsContentInj.DeliveryContentDateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetDeliveryContentDateNull() {
-                this[this.tableDeliveryListsContentInj.DeliveryContentDateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -31675,41 +31668,32 @@ WHERE
     dlc.DeliveryContentID,
     dlc.DeliveryListID,
 
-    -- Номер инструмента: если есть аналог — выводим его, иначе оригинал
+    -- Номер инструмента: аналог или оригинал
     ISNULL(rf.AnalogNomenclatureNumber, rrc.NomenclatureNumber) AS NomenclatureNumber,
 
-    -- Полное наименование инструмента
+    -- Полное наименование
     COALESCE(g.Name + ' ', '') + 
     COALESCE(n.Designation + ' ', '') + 
     COALESCE(n.Dimensions + ' ', '') + 
     COALESCE(n.CuttingMaterial + ' ', '') + 
     COALESCE(n.RegulatoryDoc, '') AS FullName,
 
-    -- Дата поставки (берём из PlannedDate заявки)
-    rr.PlannedDate AS DeliveryContentDate,
+    -- Дата поставки (берётся напрямую из DeliveryListsContent)
+    dlc.DeliveryContentDate,
 
-    -- Количество из ведомости поставки
+    -- Количество (берётся напрямую из DeliveryListsContent)
     dlc.Quantity
 FROM DeliveryListsContent dlc
 INNER JOIN PurchaseRequestsContent prc 
     ON dlc.PurchaseContentID = prc.PurchaseContentID
 INNER JOIN ReceivingRequestsContent rrc 
     ON prc.ReceivingContentID = rrc.ReceivingContentID
-INNER JOIN ReceivingRequests rr 
-    ON rrc.ReceivingRequestID = rr.ReceivingRequestID
-
--- Проверяем наличие аналога только по ReceivingContentID
 LEFT JOIN ReplacementFixation rf 
     ON rrc.ReceivingContentID = rf.ReceivingContentID 
-
--- Получаем данные об инструменте (оригинал или аналог)
 INNER JOIN Nomenclature n 
     ON n.NomenclatureNumber = ISNULL(rf.AnalogNomenclatureNumber, rrc.NomenclatureNumber)
-
--- Группы для формирования FullName
 LEFT JOIN Groups g 
-    ON g.RangeStart = LEFT(n.NomenclatureNumber, 4)
-";
+    ON g.RangeStart = LEFT(n.NomenclatureNumber, 4)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
