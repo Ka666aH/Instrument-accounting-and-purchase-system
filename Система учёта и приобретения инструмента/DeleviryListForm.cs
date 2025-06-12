@@ -19,6 +19,8 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void DeleviryListForm_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DeliveryListsContentInj". При необходимости она может быть перемещена или удалена.
+            this.deliveryListsContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DeliveryListsContent". При необходимости она может быть перемещена или удалена.
             this.deliveryListsContentTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DeliveryListsContent);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj". При необходимости она может быть перемещена или удалена.

@@ -1964,6 +1964,90 @@ WHERE
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DeliveryListsInjTableAdapter" GeneratorDataComponentClassName="DeliveryListsInjTableAdapter" Name="DeliveryListsInj" UserDataComponentName="DeliveryListsInjTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="TOOLACCOUNTINGConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT 
+    dl.DeliveryListID,
+    dl.DeliveryListDate,
+    s.Name AS SupplierName
+FROM 
+    DeliveryLists dl
+INNER JOIN 
+    Suppliers s ON dl.SupplierINN = s.INN;</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="DeliveryListID" DataSetColumn="DeliveryListID" />
+              <Mapping SourceColumn="DeliveryListDate" DataSetColumn="DeliveryListDate" />
+              <Mapping SourceColumn="SupplierName" DataSetColumn="SupplierName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DeliveryListsContentInjTableAdapter" GeneratorDataComponentClassName="DeliveryListsContentInjTableAdapter" Name="DeliveryListsContentInj" UserDataComponentName="DeliveryListsContentInjTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="TOOLACCOUNTINGConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT 
+    dlc.DeliveryContentID,
+    dlc.DeliveryListID,
+
+    -- Номер инструмента: если есть аналог — выводим его, иначе оригинал
+    ISNULL(rf.AnalogNomenclatureNumber, rrc.NomenclatureNumber) AS NomenclatureNumber,
+
+    -- Полное наименование инструмента
+    COALESCE(g.Name + ' ', '') + 
+    COALESCE(n.Designation + ' ', '') + 
+    COALESCE(n.Dimensions + ' ', '') + 
+    COALESCE(n.CuttingMaterial + ' ', '') + 
+    COALESCE(n.RegulatoryDoc, '') AS FullName,
+
+    -- Дата поставки (берём из PlannedDate заявки)
+    rr.PlannedDate AS DeliveryContentDate,
+
+    -- Количество из ведомости поставки
+    dlc.Quantity
+FROM DeliveryListsContent dlc
+INNER JOIN PurchaseRequestsContent prc 
+    ON dlc.PurchaseContentID = prc.PurchaseContentID
+INNER JOIN ReceivingRequestsContent rrc 
+    ON prc.ReceivingContentID = rrc.ReceivingContentID
+INNER JOIN ReceivingRequests rr 
+    ON rrc.ReceivingRequestID = rr.ReceivingRequestID
+
+-- Проверяем наличие аналога только по ReceivingContentID
+LEFT JOIN ReplacementFixation rf 
+    ON rrc.ReceivingContentID = rf.ReceivingContentID 
+
+-- Получаем данные об инструменте (оригинал или аналог)
+INNER JOIN Nomenclature n 
+    ON n.NomenclatureNumber = ISNULL(rf.AnalogNomenclatureNumber, rrc.NomenclatureNumber)
+
+-- Группы для формирования FullName
+LEFT JOIN Groups g 
+    ON g.RangeStart = LEFT(n.NomenclatureNumber, 4)
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="DeliveryContentID" DataSetColumn="DeliveryContentID" />
+              <Mapping SourceColumn="DeliveryListID" DataSetColumn="DeliveryListID" />
+              <Mapping SourceColumn="NomenclatureNumber" DataSetColumn="NomenclatureNumber" />
+              <Mapping SourceColumn="FullName" DataSetColumn="FullName" />
+              <Mapping SourceColumn="DeliveryContentDate" DataSetColumn="DeliveryContentDate" />
+              <Mapping SourceColumn="Quantity" DataSetColumn="Quantity" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -2924,6 +3008,45 @@ WHERE
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="DeliveryListsInj" msprop:Generator_RowEvHandlerName="DeliveryListsInjRowChangeEventHandler" msprop:Generator_RowDeletedName="DeliveryListsInjRowDeleted" msprop:Generator_RowDeletingName="DeliveryListsInjRowDeleting" msprop:Generator_RowEvArgName="DeliveryListsInjRowChangeEvent" msprop:Generator_TablePropName="DeliveryListsInj" msprop:Generator_RowChangedName="DeliveryListsInjRowChanged" msprop:Generator_RowChangingName="DeliveryListsInjRowChanging" msprop:Generator_TableClassName="DeliveryListsInjDataTable" msprop:Generator_RowClassName="DeliveryListsInjRow" msprop:Generator_TableVarName="tableDeliveryListsInj" msprop:Generator_UserTableName="DeliveryListsInj">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DeliveryListID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="DeliveryListID" msprop:Generator_ColumnPropNameInTable="DeliveryListIDColumn" msprop:Generator_ColumnVarNameInTable="columnDeliveryListID" msprop:Generator_UserColumnName="DeliveryListID" type="xs:int" />
+              <xs:element name="DeliveryListDate" msprop:Generator_ColumnPropNameInRow="DeliveryListDate" msprop:Generator_ColumnPropNameInTable="DeliveryListDateColumn" msprop:Generator_ColumnVarNameInTable="columnDeliveryListDate" msprop:Generator_UserColumnName="DeliveryListDate" type="xs:dateTime" />
+              <xs:element name="SupplierName" msprop:Generator_ColumnPropNameInRow="SupplierName" msprop:Generator_ColumnPropNameInTable="SupplierNameColumn" msprop:Generator_ColumnVarNameInTable="columnSupplierName" msprop:Generator_UserColumnName="SupplierName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DeliveryListsContentInj" msprop:Generator_RowEvHandlerName="DeliveryListsContentInjRowChangeEventHandler" msprop:Generator_RowDeletedName="DeliveryListsContentInjRowDeleted" msprop:Generator_RowDeletingName="DeliveryListsContentInjRowDeleting" msprop:Generator_RowEvArgName="DeliveryListsContentInjRowChangeEvent" msprop:Generator_TablePropName="DeliveryListsContentInj" msprop:Generator_RowChangedName="DeliveryListsContentInjRowChanged" msprop:Generator_RowChangingName="DeliveryListsContentInjRowChanging" msprop:Generator_TableClassName="DeliveryListsContentInjDataTable" msprop:Generator_RowClassName="DeliveryListsContentInjRow" msprop:Generator_TableVarName="tableDeliveryListsContentInj" msprop:Generator_UserTableName="DeliveryListsContentInj">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DeliveryContentID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="DeliveryContentID" msprop:Generator_ColumnPropNameInTable="DeliveryContentIDColumn" msprop:Generator_ColumnVarNameInTable="columnDeliveryContentID" msprop:Generator_UserColumnName="DeliveryContentID" type="xs:int" />
+              <xs:element name="DeliveryListID" msprop:Generator_ColumnPropNameInRow="DeliveryListID" msprop:Generator_ColumnPropNameInTable="DeliveryListIDColumn" msprop:Generator_ColumnVarNameInTable="columnDeliveryListID" msprop:Generator_UserColumnName="DeliveryListID" type="xs:int" />
+              <xs:element name="NomenclatureNumber" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="NomenclatureNumber" msprop:Generator_ColumnPropNameInTable="NomenclatureNumberColumn" msprop:Generator_ColumnVarNameInTable="columnNomenclatureNumber" msprop:Generator_UserColumnName="NomenclatureNumber" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FullName" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="FullName" msprop:Generator_ColumnPropNameInTable="FullNameColumn" msprop:Generator_ColumnVarNameInTable="columnFullName" msprop:Generator_UserColumnName="FullName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DeliveryContentDate" msprop:Generator_ColumnPropNameInRow="DeliveryContentDate" msprop:Generator_ColumnPropNameInTable="DeliveryContentDateColumn" msprop:Generator_ColumnVarNameInTable="columnDeliveryContentDate" msprop:Generator_UserColumnName="DeliveryContentDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Quantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_UserColumnName="Quantity" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -3042,6 +3165,10 @@ WHERE
       <xs:selector xpath=".//mstns:PurchaseRequestsInj" />
       <xs:field xpath="mstns:PurchaseRequestID" />
     </xs:unique>
+    <xs:unique name="DeliveryListsInj_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DeliveryListsInj" />
+      <xs:field xpath="mstns:DeliveryListID" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
@@ -3082,6 +3209,7 @@ WHERE
       <msdata:Relationship name="FK__Replaceme__Recei__71D1E8112" msdata:parent="ReceivingRequestsContentInj" msdata:child="ReplacementFixation" msdata:parentkey="ReceivingContentID" msdata:childkey="ReceivingContentID" msprop:Generator_UserParentTable="ReceivingRequestsContentInj" msprop:Generator_UserChildTable="ReplacementFixation" msprop:Generator_RelationVarName="relationFK__Replaceme__Recei__71D1E8112" msprop:Generator_ChildPropName="GetReplacementFixationRows" msprop:Generator_UserRelationName="FK__Replaceme__Recei__71D1E8112" msprop:Generator_ParentPropName="ReceivingRequestsContentInjRow" />
       <msdata:Relationship name="FK__Receiving__Recei__6FE99F9F2" msdata:parent="ReceivingRequestsInj" msdata:child="ReceivingRequestsContentInjWithReplace" msdata:parentkey="ReceivingRequestID" msdata:childkey="ReceivingRequestID" msprop:Generator_UserParentTable="ReceivingRequestsInj" msprop:Generator_UserChildTable="ReceivingRequestsContentInjWithReplace" msprop:Generator_RelationVarName="relationFK__Receiving__Recei__6FE99F9F2" msprop:Generator_ChildPropName="GetReceivingRequestsContentInjWithReplaceRows" msprop:Generator_UserRelationName="FK__Receiving__Recei__6FE99F9F2" msprop:Generator_ParentPropName="ReceivingRequestsInjRow" />
       <msdata:Relationship name="PurchaseRequestsInj_PurchaseRequestsContentInj" msdata:parent="PurchaseRequestsInj" msdata:child="PurchaseRequestsContentInj" msdata:parentkey="PurchaseRequestID" msdata:childkey="PurchaseRequestID" msprop:Generator_UserParentTable="PurchaseRequestsInj" msprop:Generator_UserChildTable="PurchaseRequestsContentInj" msprop:Generator_RelationVarName="relationPurchaseRequestsInj_PurchaseRequestsContentInj" msprop:Generator_ChildPropName="GetPurchaseRequestsContentInjRows" msprop:Generator_ParentPropName="PurchaseRequestsInjRow" msprop:Generator_UserRelationName="PurchaseRequestsInj_PurchaseRequestsContentInj" />
+      <msdata:Relationship name="DeliveryListsInj_DeliveryListsContentInj" msdata:parent="DeliveryListsInj" msdata:child="DeliveryListsContentInj" msdata:parentkey="DeliveryListID" msdata:childkey="DeliveryListID" msprop:Generator_UserParentTable="DeliveryListsInj" msprop:Generator_UserChildTable="DeliveryListsContentInj" msprop:Generator_RelationVarName="relationDeliveryListsInj_DeliveryListsContentInj" msprop:Generator_ChildPropName="GetDeliveryListsContentInjRows" msprop:Generator_ParentPropName="DeliveryListsInjRow" msprop:Generator_UserRelationName="DeliveryListsInj_DeliveryListsContentInj" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
