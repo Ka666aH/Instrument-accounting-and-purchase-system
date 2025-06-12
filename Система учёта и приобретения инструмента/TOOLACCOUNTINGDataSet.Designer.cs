@@ -17510,12 +17510,11 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string NomenclatureNumber {
                 get {
-                    try {
-                        return ((string)(this[this.tableReceivingRequestsContentInjWithReplace.NomenclatureNumberColumn]));
+                    if (this.IsNomenclatureNumberNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NomenclatureNumber\' в таблице \'ReceivingRequestsContentInjW" +
-                                "ithReplace\' равно DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableReceivingRequestsContentInjWithReplace.NomenclatureNumberColumn]));
                     }
                 }
                 set {

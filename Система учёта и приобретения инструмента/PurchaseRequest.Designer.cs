@@ -44,8 +44,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.PurchaseRequestDate = new System.Windows.Forms.TextBox();
             this.PurchaseRequestsContentTable = new System.Windows.Forms.DataGridView();
-            this.purchaseRequestsContentInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.purchaseRequestsContentInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.PurchaseRequestsContentInjTableAdapter();
             this.purchaseContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.purchaseRequestIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receivingContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +53,8 @@
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.requiredQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purchaseRequestsContentInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.purchaseRequestsContentInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.PurchaseRequestsContentInjTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseRequestsContentTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.purchaseRequestsContentInjBindingSource)).BeginInit();
@@ -116,6 +116,7 @@
             this.PurchaseRequestButtonClose.TabIndex = 67;
             this.PurchaseRequestButtonClose.Text = "Закрыть";
             this.PurchaseRequestButtonClose.UseVisualStyleBackColor = true;
+            this.PurchaseRequestButtonClose.Click += new System.EventHandler(this.PurchaseRequestButtonClose_Click);
             // 
             // PurchaseRequestButtonSaveClose
             // 
@@ -160,6 +161,7 @@
             this.PurchaseRequestButtonRemove.TabIndex = 70;
             this.PurchaseRequestButtonRemove.Text = "Убрать";
             this.PurchaseRequestButtonRemove.UseVisualStyleBackColor = true;
+            this.PurchaseRequestButtonRemove.Visible = false;
             this.PurchaseRequestButtonRemove.Click += new System.EventHandler(this.PurchaseRequestButtonRemove_Click);
             // 
             // PurchaseRequestButtonAdd
@@ -222,15 +224,6 @@
             this.PurchaseRequestsContentTable.Size = new System.Drawing.Size(667, 245);
             this.PurchaseRequestsContentTable.TabIndex = 72;
             this.PurchaseRequestsContentTable.CurrentCellChanged += new System.EventHandler(this.PurchaseRequestsContentTable_CurrentCellChanged);
-            // 
-            // purchaseRequestsContentInjBindingSource
-            // 
-            this.purchaseRequestsContentInjBindingSource.DataMember = "PurchaseRequestsContentInj";
-            this.purchaseRequestsContentInjBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
-            // 
-            // purchaseRequestsContentInjTableAdapter
-            // 
-            this.purchaseRequestsContentInjTableAdapter.ClearBeforeFill = true;
             // 
             // purchaseContentIDDataGridViewTextBoxColumn
             // 
@@ -299,6 +292,15 @@
             this.statusDataGridViewTextBoxColumn.HeaderText = "Статус";
             this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
             this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // purchaseRequestsContentInjBindingSource
+            // 
+            this.purchaseRequestsContentInjBindingSource.DataMember = "PurchaseRequestsContentInj";
+            this.purchaseRequestsContentInjBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
+            // 
+            // purchaseRequestsContentInjTableAdapter
+            // 
+            this.purchaseRequestsContentInjTableAdapter.ClearBeforeFill = true;
             // 
             // PurchaseRequest
             // 

@@ -30,16 +30,34 @@ namespace Система_учёта_и_приобретения_инструме
             prcta.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContent);
             prta.Fill(tOOLACCOUNTINGDataSet.PurchaseRequests);
 
-            PurchaseRequestNumber.Text = (tOOLACCOUNTINGDataSet.PurchaseRequests.Max(x => x.PurchaseRequestID) + 1).ToString();
+            // Создаём новую заявку на закупку с текущей датой и статусом "Не обработана"
+            var pr = tOOLACCOUNTINGDataSet.PurchaseRequests.NewPurchaseRequestsRow();
+            pr.PurchaseRequestDate = DateTime.Today;
+            pr.Status = "Не обработана";
+            tOOLACCOUNTINGDataSet.PurchaseRequests.AddPurchaseRequestsRow(pr);
+            prta.Update(tOOLACCOUNTINGDataSet.PurchaseRequests);
+            prta.Fill(tOOLACCOUNTINGDataSet.PurchaseRequests);
+            prita.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
+            purchaseRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
+
+            purchaseRequestsContentInjBindingSource.Filter = "PurchaseRequestID = 1";
+
+            PurchaseRequestNumber.Text = (tOOLACCOUNTINGDataSet.PurchaseRequests.Max(x => x.PurchaseRequestID)).ToString();
             PurchaseRequestDate.Text = DateTime.Now.ToString("dd.MM.yyyy");
         }
 
         private void SetButtonsState()
         {
-            if(PurchaseRequestsContentTable.CurrentRow == null) return;
+            if (PurchaseRequestsContentTable.CurrentRow == null)
+            {
+                PurchaseRequestButtonAdd.Enabled = false;
+                PurchaseRequestButtonRemove.Enabled = false;
+                return;
+            }
+
             var selectedRow = PurchaseRequestsContentTable.CurrentRow.DataBoundItem as DataRowView;
             var row = selectedRow.Row as TOOLACCOUNTINGDataSet.PurchaseRequestsContentInjRow;
-            if(row.PurchaseRequestID == 1)
+            if (row.PurchaseRequestID == 1)
             {
                 PurchaseRequestButtonAdd.Enabled = true;
                 PurchaseRequestButtonRemove.Enabled = false;
@@ -58,38 +76,6 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void PurchaseRequestButtonAdd_Click(object sender, EventArgs e) //bug Обновляются только при перезаходе
         {
-            //var pr = tOOLACCOUNTINGDataSet.PurchaseRequests.NewPurchaseRequestsRow();
-            //pr.PurchaseRequestDate = DateTime.Today;
-            //pr.Status = "Не обработана";
-            //tOOLACCOUNTINGDataSet.PurchaseRequests.AddPurchaseRequestsRow(pr);
-            //prta.Update(tOOLACCOUNTINGDataSet.PurchaseRequests);
-            //prta.Fill(tOOLACCOUNTINGDataSet.PurchaseRequests);
-            //prita.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
-
-            //var selectedRow = PurchaseRequestsContentTable.CurrentRow.DataBoundItem as DataRowView;
-            //var row = selectedRow.Row as TOOLACCOUNTINGDataSet.PurchaseRequestsContentInjRow;
-            //var r = tOOLACCOUNTINGDataSet.PurchaseRequestsContent.FindByPurchaseContentID(row.PurchaseContentID);
-            ////r.PurchaseRequestID = Convert.ToInt32(PurchaseRequestNumber.Text);
-            //r.PurchaseRequestID = tOOLACCOUNTINGDataSet.PurchaseRequests.Max(x => x.PurchaseRequestID);
-
-            //prcta.Update(tOOLACCOUNTINGDataSet.PurchaseRequestsContent);
-            //prcta.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContent);
-            //purchaseRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
-
-            // Создаём новую заявку на закупку с текущей датой и статусом "Не обработана"
-            var pr = tOOLACCOUNTINGDataSet.PurchaseRequests.NewPurchaseRequestsRow();
-            pr.PurchaseRequestDate = DateTime.Today;
-            pr.Status = "Не обработана";
-            tOOLACCOUNTINGDataSet.PurchaseRequests.AddPurchaseRequestsRow(pr);
-
-            // Сохраняем в БД
-            prta.Update(tOOLACCOUNTINGDataSet.PurchaseRequests);
-
-            // Обновляем таблицу, чтобы получить актуальные данные (включая автоинкрементный ID)
-            prta.Fill(tOOLACCOUNTINGDataSet.PurchaseRequests);
-            prita.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
-
-            // Получаем выбранную строку из интерфейса (например, из DataGridView)
             var selectedRow = PurchaseRequestsContentTable.CurrentRow?.DataBoundItem as DataRowView;
             if (selectedRow == null) return;
 
@@ -100,30 +86,55 @@ namespace Система_учёта_и_приобретения_инструме
             var r = tOOLACCOUNTINGDataSet.PurchaseRequestsContent.FindByPurchaseContentID(row.PurchaseContentID);
             if (r == null) return;
 
-            // Устанавливаем связь с только что созданной заявкой
-            // Вместо текстового поля используем последний ID из таблицы (только что созданный)
-            r.PurchaseRequestID = tOOLACCOUNTINGDataSet.PurchaseRequests.Max(x => x.PurchaseRequestID);
-
-            // Сохраняем изменения в PurchaseRequestsContent
+            r.PurchaseRequestID = Convert.ToInt32(PurchaseRequestNumber.Text);
             prcta.Update(tOOLACCOUNTINGDataSet.PurchaseRequestsContent);
-
-            // Обновляем адаптеры для отображения изменений в интерфейсе
             prcta.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContent);
             purchaseRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
         }
 
         private void PurchaseRequestButtonRemove_Click(object sender, EventArgs e)
         {
-            //var selectedRow = PurchaseRequestsContentTable.CurrentRow.DataBoundItem as DataRowView;
-            //var row = selectedRow.Row as TOOLACCOUNTINGDataSet.PurchaseRequestsContentInjRow;
-            //var r = tOOLACCOUNTINGDataSet.PurchaseRequestsContent.FindByPurchaseContentID(row.PurchaseContentID);
-            //r.PurchaseRequestID = 1;
+            // Получаем выделенную строку из таблицы
+            var selectedRow = PurchaseRequestsContentTable.CurrentRow?.DataBoundItem as DataRowView;
+            if (selectedRow == null) return;
 
-            ////add //удаление заявки, при убирании всех инструментов
+            var row = selectedRow.Row as TOOLACCOUNTINGDataSet.PurchaseRequestsContentInjRow;
+            if (row == null) return;
 
-            //prcta.Update(tOOLACCOUNTINGDataSet.PurchaseRequestsContent);
-            //prcta.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContent);
-            //purchaseRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
+            // Находим связанную запись в основной таблице PurchaseRequestsContent
+            var r = tOOLACCOUNTINGDataSet.PurchaseRequestsContent.FindByPurchaseContentID(row.PurchaseContentID);
+            if (r == null) return;
+
+            // Освобождаем связь с заявкой (можно установить NULL, если поле допускает это)
+            r.PurchaseRequestID = 1;
+
+            prcta.Update(tOOLACCOUNTINGDataSet.PurchaseRequestsContent);
+            prcta.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContent);
+            purchaseRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
+        }
+
+        private void PurchaseRequestButtonClose_Click(object sender, EventArgs e)
+        {
+            // Дополнительно: проверка наличия записей и удаление пустых заявок
+            int currentRequestID = Convert.ToInt32(PurchaseRequestNumber.Text);
+
+            bool hasOtherEntries = tOOLACCOUNTINGDataSet.PurchaseRequestsContent
+                .Any(x => x.PurchaseRequestID == currentRequestID);
+
+            if (!hasOtherEntries)
+            {
+                // Если других записей нет, можно удалить саму заявку
+                var requestRow = tOOLACCOUNTINGDataSet.PurchaseRequests.FindByPurchaseRequestID(currentRequestID);
+                if (requestRow != null)
+                {
+                    requestRow.Delete();
+                    prta.Update(tOOLACCOUNTINGDataSet.PurchaseRequests);
+                    prta.Fill(tOOLACCOUNTINGDataSet.PurchaseRequests);
+                    prita.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
+                    purchaseRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
+                }
+            }
+            Close();
         }
     }
 }

@@ -2856,7 +2856,7 @@ WHERE
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ReceivingContentID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="ReceivingContentID" msprop:Generator_ColumnPropNameInTable="ReceivingContentIDColumn" msprop:Generator_ColumnPropNameInRow="ReceivingContentID" msprop:Generator_ColumnVarNameInTable="columnReceivingContentID" type="xs:int" />
-              <xs:element name="NomenclatureNumber" msdata:ReadOnly="true" msprop:Generator_UserColumnName="NomenclatureNumber" msprop:Generator_ColumnPropNameInTable="NomenclatureNumberColumn" msprop:Generator_ColumnPropNameInRow="NomenclatureNumber" msprop:Generator_ColumnVarNameInTable="columnNomenclatureNumber" minOccurs="0">
+              <xs:element name="NomenclatureNumber" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="NomenclatureNumberColumn" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="NomenclatureNumber" msprop:Generator_UserColumnName="NomenclatureNumber" msprop:Generator_ColumnVarNameInTable="columnNomenclatureNumber" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="9" />
