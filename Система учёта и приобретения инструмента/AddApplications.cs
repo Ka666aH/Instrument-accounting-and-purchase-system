@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -339,8 +340,16 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!AllFieldsEmpty())
             {
-                DialogResult result = MessageBox.Show("Вы уверены, что хотите закрыть форму? Все несохранённые данные будут потеряны.", "Подтверждение закрытия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.No) e.Cancel = true;
+                DialogResult result = MessageBox.Show("Закрыть форму без сохранения? Изменения будут потеряны.", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    // Откатываем все несохранённые изменения
+                    dataSet.RejectChanges();
+                }
             }
         }
 
@@ -470,6 +479,78 @@ namespace Система_учёта_и_приобретения_инструме
             // Проверка поля FullName
            
             
+        }
+        private void Digits_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
+        }
+
+
+        private void ApplicationsCompound_EditingControlShowing_1(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (ApplicationsCompound.CurrentCell.ColumnIndex == 2 || ApplicationsCompound.CurrentCell.ColumnIndex == 4)
+            {
+                if (e.Control is System.Windows.Forms.TextBox textBox)
+                {
+                    textBox.KeyPress -= Digits_KeyPress;
+                    textBox.KeyPress += Digits_KeyPress;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Добавляет выбранную номенклатуру в таблицу состав заявки.
+        /// Вызывать до ShowDialog().
+        /// </summary>
+        public void AddNomenclature(string nomenNumber)
+        {
+            if (string.IsNullOrWhiteSpace(nomenNumber)) return;
+
+            // 1. Удостоверимся, что в наборе есть строка с такой номенклатурой для получения полного наименования
+            var nomenRow = dataSet.NomenclatureView.FirstOrDefault(n => n.NomenclatureNumber == nomenNumber);
+
+            // 2. Определяем номер заявки (нужен для not-null столбца ReceivingRequestID)
+            int requestId;
+            if (int.TryParse(textBox1.Text, out int parsedId))
+            {
+                requestId = parsedId;
+            }
+            else
+            {
+                // Если поле ещё пусто – сгенерируем новый номер так же, как в Load
+                requestId = dataSet.ReceivingRequests.Count == 0
+                    ? 1
+                    : dataSet.ReceivingRequests.Max(r => r.ReceivingRequestID) + 1;
+                textBox1.Text = requestId.ToString();
+            }
+
+            // 3. Создаём новую строку ReceivingRequestsContent
+            var newRow = dataSet.ReceivingRequestsContent.NewReceivingRequestsContentRow();
+            newRow.ReceivingContentID = dataSet.ReceivingRequestsContent.Count == 0
+                ? 1
+                : dataSet.ReceivingRequestsContent.Max(r => r.ReceivingContentID) + 1;
+            newRow.ReceivingRequestID = requestId;
+            newRow.NomenclatureNumber = nomenNumber;
+            if (nomenRow != null)
+                newRow.FullName = nomenRow.FullName;
+            newRow.Quantity = 1; // по умолчанию 1
+            dataSet.ReceivingRequestsContent.Rows.Add(newRow);
+        }
+
+        /// <summary>
+        /// Предварительно выбирает цех в ComboBox Workshop.
+        /// Вызывать после создания формы, но до ShowDialog().
+        /// </summary>
+        public void PreselectWorkshop(int workshopId)
+        {
+            // Передаём id напрямую – ComboBox заполнится после Load, поэтому подписываемся на событие
+            this.Load += (s, e) =>
+            {
+                if (Workshop.Items.Count > 0)
+                {
+                    Workshop.SelectedValue = workshopId;
+                }
+            };
         }
     }
 }

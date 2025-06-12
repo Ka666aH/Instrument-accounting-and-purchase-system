@@ -324,7 +324,23 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void CloseNewApplication_Click(object sender, EventArgs e)
         {
+            new DefectiveListsTableAdapter().Fill(tOOLACCOUNTINGDataSet.DefectiveLists);
             this.Close();
+        }
+
+        /// <summary>
+        /// Предварительно заполняет форму дефектной ведомости.
+        /// </summary>
+        public void Prefill(string nomenNumber, int workshopId, decimal price, string batchNumber)
+        {
+            // textBox5 – номер номенклатуры
+            if (textBox5 != null) textBox5.Text = nomenNumber;
+            // textBox2 – номер цеха (по дизайну)
+            if (textBox2 != null) textBox2.Text = workshopId.ToString();
+            // textBox3 – учётная цена
+            if (textBox3 != null) textBox3.Text = price.ToString("0.##");
+            // textBox6 – партия
+            if (textBox6 != null) textBox6.Text = batchNumber;
         }
     }
 }

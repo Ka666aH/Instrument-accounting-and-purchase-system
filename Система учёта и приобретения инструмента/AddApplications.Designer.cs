@@ -48,14 +48,14 @@
             this.WorkshopFormSaveClose = new System.Windows.Forms.Button();
             this.WorkshopFormSave = new System.Windows.Forms.Button();
             this.ApplicationsCompound = new System.Windows.Forms.DataGridView();
-            this.receivingRequestsContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
-            this.receivingRequestsContentTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter();
             this.receivingContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receivingRequestIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receivingRequestsContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
+            this.receivingRequestsContentTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter();
             this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ApplicationsCompound)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentBindingSource)).BeginInit();
@@ -308,21 +308,8 @@
             this.ApplicationsCompound.Size = new System.Drawing.Size(760, 307);
             this.ApplicationsCompound.TabIndex = 2;
             this.ApplicationsCompound.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.ApplicationsCompound_CellValidated);
+            this.ApplicationsCompound.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.ApplicationsCompound_EditingControlShowing_1);
             this.ApplicationsCompound.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.ApplicationsCompound_RowValidating);
-            // 
-            // receivingRequestsContentBindingSource
-            // 
-            this.receivingRequestsContentBindingSource.DataMember = "ReceivingRequestsContent";
-            this.receivingRequestsContentBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
-            // 
-            // tOOLACCOUNTINGDataSet
-            // 
-            this.tOOLACCOUNTINGDataSet.DataSetName = "TOOLACCOUNTINGDataSet";
-            this.tOOLACCOUNTINGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // receivingRequestsContentTableAdapter
-            // 
-            this.receivingRequestsContentTableAdapter.ClearBeforeFill = true;
             // 
             // receivingContentIDDataGridViewTextBoxColumn
             // 
@@ -358,6 +345,20 @@
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Количество";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            // 
+            // receivingRequestsContentBindingSource
+            // 
+            this.receivingRequestsContentBindingSource.DataMember = "ReceivingRequestsContent";
+            this.receivingRequestsContentBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
+            // 
+            // tOOLACCOUNTINGDataSet
+            // 
+            this.tOOLACCOUNTINGDataSet.DataSetName = "TOOLACCOUNTINGDataSet";
+            this.tOOLACCOUNTINGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // receivingRequestsContentTableAdapter
+            // 
+            this.receivingRequestsContentTableAdapter.ClearBeforeFill = true;
             // 
             // label7
             // 
@@ -430,7 +431,6 @@
         private System.Windows.Forms.Button WorkshopFormClose;
         private System.Windows.Forms.Button WorkshopFormSaveClose;
         private System.Windows.Forms.Button WorkshopFormSave;
-        private System.Windows.Forms.DataGridView ApplicationsCompound;
         private System.Windows.Forms.BindingSource receivingRequestsContentBindingSource;
         private TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter receivingRequestsContentTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn receivingContentIDDataGridViewTextBoxColumn;
@@ -439,5 +439,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.DataGridView ApplicationsCompound;
     }
 }
