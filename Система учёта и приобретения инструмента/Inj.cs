@@ -1439,6 +1439,17 @@ namespace Система_учёта_и_приобретения_инструме
         #endregion
 
         #region Товарные накладные
+
+        private void InvoicesButtonEnter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InvoicesDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void InvoicesButtonResetSearch_Click(object sender, EventArgs e)
         {
             InvoicesResetSearch();
@@ -1688,7 +1699,17 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void ProvidersTableContextMenuCreateStatement_Click(object sender, EventArgs e)
         {
-            //fill
+            var selectedRow = ProvidersTable.CurrentRow.DataBoundItem as DataRowView;
+            var supplierRow = selectedRow.Row as TOOLACCOUNTINGDataSet.SuppliersRow;
+
+            InjLevel1.SelectedTab = InjZayavkiPage;
+            InjLevel2.SelectedTab = Statements;
+            DeleviryListForm deleviryListForm = new DeleviryListForm();
+            deleviryListForm.DeliveryListFormSupplier.Text = supplierRow.Name;
+            deleviryListForm.ShowDialog();
+
+            deliveryListsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsInj);
+            deliveryListsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
         }
         #endregion
 

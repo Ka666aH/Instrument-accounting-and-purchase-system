@@ -549,7 +549,6 @@
         private System.Windows.Forms.TextBox DeliveryListFormNumber;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.TextBox DeliveryListFormSupplier;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button DeliveryListFormButtonAddSupplier;
         private System.Windows.Forms.Button DeliveryListFormButtonRemove;
@@ -588,5 +587,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryContentDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        public System.Windows.Forms.TextBox DeliveryListFormSupplier;
     }
 }
