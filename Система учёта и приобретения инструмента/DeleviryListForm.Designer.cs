@@ -74,7 +74,6 @@
             this.nomenclatureNumberDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullNameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deliveryListsContentInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.DeliveryListsContentInjTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.DeliveryListFormDeliveryListContentTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deliveryListsContentInjBindingSource)).BeginInit();
@@ -89,20 +88,20 @@
             // 
             this.DeliveryListFormDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DeliveryListFormDate.Location = new System.Drawing.Point(121, 40);
-            this.DeliveryListFormDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeliveryListFormDate.Margin = new System.Windows.Forms.Padding(2);
             this.DeliveryListFormDate.Name = "DeliveryListFormDate";
             this.DeliveryListFormDate.ReadOnly = true;
-            this.DeliveryListFormDate.Size = new System.Drawing.Size(229, 29);
+            this.DeliveryListFormDate.Size = new System.Drawing.Size(447, 29);
             this.DeliveryListFormDate.TabIndex = 61;
             // 
             // DeliveryListFormNumber
             // 
             this.DeliveryListFormNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DeliveryListFormNumber.Location = new System.Drawing.Point(121, 7);
-            this.DeliveryListFormNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeliveryListFormNumber.Margin = new System.Windows.Forms.Padding(2);
             this.DeliveryListFormNumber.Name = "DeliveryListFormNumber";
             this.DeliveryListFormNumber.ReadOnly = true;
-            this.DeliveryListFormNumber.Size = new System.Drawing.Size(229, 29);
+            this.DeliveryListFormNumber.Size = new System.Drawing.Size(447, 29);
             this.DeliveryListFormNumber.TabIndex = 59;
             // 
             // label38
@@ -133,10 +132,10 @@
             this.DeliveryListFormSupplier.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.DeliveryListFormSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DeliveryListFormSupplier.Location = new System.Drawing.Point(121, 73);
-            this.DeliveryListFormSupplier.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeliveryListFormSupplier.Margin = new System.Windows.Forms.Padding(2);
             this.DeliveryListFormSupplier.Name = "DeliveryListFormSupplier";
-            this.DeliveryListFormSupplier.Size = new System.Drawing.Size(229, 29);
-            this.DeliveryListFormSupplier.TabIndex = 63;
+            this.DeliveryListFormSupplier.Size = new System.Drawing.Size(447, 29);
+            this.DeliveryListFormSupplier.TabIndex = 0;
             this.DeliveryListFormSupplier.Leave += new System.EventHandler(this.DeliveryListFormSupplier_Leave);
             // 
             // label1
@@ -146,17 +145,17 @@
             this.label1.Location = new System.Drawing.Point(10, 82);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 20);
+            this.label1.Size = new System.Drawing.Size(105, 20);
             this.label1.TabIndex = 62;
-            this.label1.Text = "Поставщик";
+            this.label1.Text = "Поставщик *";
             // 
             // DeliveryListFormButtonAddSupplier
             // 
-            this.DeliveryListFormButtonAddSupplier.Location = new System.Drawing.Point(354, 73);
-            this.DeliveryListFormButtonAddSupplier.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeliveryListFormButtonAddSupplier.Location = new System.Drawing.Point(572, 73);
+            this.DeliveryListFormButtonAddSupplier.Margin = new System.Windows.Forms.Padding(2);
             this.DeliveryListFormButtonAddSupplier.Name = "DeliveryListFormButtonAddSupplier";
             this.DeliveryListFormButtonAddSupplier.Size = new System.Drawing.Size(30, 29);
-            this.DeliveryListFormButtonAddSupplier.TabIndex = 64;
+            this.DeliveryListFormButtonAddSupplier.TabIndex = 1;
             this.DeliveryListFormButtonAddSupplier.Text = "+";
             this.DeliveryListFormButtonAddSupplier.UseVisualStyleBackColor = true;
             this.DeliveryListFormButtonAddSupplier.Visible = false;
@@ -165,10 +164,10 @@
             // 
             this.DeliveryListFormButtonRemove.Enabled = false;
             this.DeliveryListFormButtonRemove.Location = new System.Drawing.Point(801, 426);
-            this.DeliveryListFormButtonRemove.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeliveryListFormButtonRemove.Margin = new System.Windows.Forms.Padding(2);
             this.DeliveryListFormButtonRemove.Name = "DeliveryListFormButtonRemove";
             this.DeliveryListFormButtonRemove.Size = new System.Drawing.Size(149, 37);
-            this.DeliveryListFormButtonRemove.TabIndex = 79;
+            this.DeliveryListFormButtonRemove.TabIndex = 6;
             this.DeliveryListFormButtonRemove.Text = "Убрать";
             this.DeliveryListFormButtonRemove.UseVisualStyleBackColor = true;
             this.DeliveryListFormButtonRemove.Click += new System.EventHandler(this.DeliveryListFormButtonRemove_Click);
@@ -177,10 +176,10 @@
             // 
             this.DeliveryListFormButtonAdd.Enabled = false;
             this.DeliveryListFormButtonAdd.Location = new System.Drawing.Point(800, 216);
-            this.DeliveryListFormButtonAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeliveryListFormButtonAdd.Margin = new System.Windows.Forms.Padding(2);
             this.DeliveryListFormButtonAdd.Name = "DeliveryListFormButtonAdd";
             this.DeliveryListFormButtonAdd.Size = new System.Drawing.Size(149, 37);
-            this.DeliveryListFormButtonAdd.TabIndex = 78;
+            this.DeliveryListFormButtonAdd.TabIndex = 4;
             this.DeliveryListFormButtonAdd.Text = "Добавить";
             this.DeliveryListFormButtonAdd.UseVisualStyleBackColor = true;
             this.DeliveryListFormButtonAdd.Click += new System.EventHandler(this.DeliveryListFormButtonAdd_Click);
@@ -189,12 +188,12 @@
             // 
             this.DeliveryListFormButtonClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DeliveryListFormButtonClose.Location = new System.Drawing.Point(865, 596);
-            this.DeliveryListFormButtonClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeliveryListFormButtonClose.Margin = new System.Windows.Forms.Padding(2);
             this.DeliveryListFormButtonClose.MaximumSize = new System.Drawing.Size(84, 26);
             this.DeliveryListFormButtonClose.MinimumSize = new System.Drawing.Size(84, 26);
             this.DeliveryListFormButtonClose.Name = "DeliveryListFormButtonClose";
             this.DeliveryListFormButtonClose.Size = new System.Drawing.Size(84, 26);
-            this.DeliveryListFormButtonClose.TabIndex = 76;
+            this.DeliveryListFormButtonClose.TabIndex = 7;
             this.DeliveryListFormButtonClose.Text = "Закрыть";
             this.DeliveryListFormButtonClose.UseVisualStyleBackColor = true;
             this.DeliveryListFormButtonClose.Click += new System.EventHandler(this.DeliveryListFormButtonClose_Click);
@@ -238,7 +237,7 @@
             this.quantityDataGridViewTextBoxColumn});
             this.DeliveryListFormDeliveryListContentTable.DataSource = this.deliveryListsContentInjBindingSource;
             this.DeliveryListFormDeliveryListContentTable.Location = new System.Drawing.Point(12, 426);
-            this.DeliveryListFormDeliveryListContentTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeliveryListFormDeliveryListContentTable.Margin = new System.Windows.Forms.Padding(2);
             this.DeliveryListFormDeliveryListContentTable.MultiSelect = false;
             this.DeliveryListFormDeliveryListContentTable.Name = "DeliveryListFormDeliveryListContentTable";
             this.DeliveryListFormDeliveryListContentTable.ReadOnly = true;
@@ -247,7 +246,7 @@
             this.DeliveryListFormDeliveryListContentTable.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DeliveryListFormDeliveryListContentTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DeliveryListFormDeliveryListContentTable.Size = new System.Drawing.Size(784, 168);
-            this.DeliveryListFormDeliveryListContentTable.TabIndex = 85;
+            this.DeliveryListFormDeliveryListContentTable.TabIndex = 5;
             this.DeliveryListFormDeliveryListContentTable.CurrentCellChanged += new System.EventHandler(this.DeliveryListFormDeliveryListContentTable_CurrentCellChanged);
             // 
             // deliveryContentIDDataGridViewTextBoxColumn
@@ -369,7 +368,7 @@
             this.dataGridViewTextBoxColumn3});
             this.DeliveryListFormPurchaseRequestsTable.DataSource = this.purchaseRequestsInjBindingSource;
             this.DeliveryListFormPurchaseRequestsTable.Location = new System.Drawing.Point(12, 213);
-            this.DeliveryListFormPurchaseRequestsTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeliveryListFormPurchaseRequestsTable.Margin = new System.Windows.Forms.Padding(2);
             this.DeliveryListFormPurchaseRequestsTable.MultiSelect = false;
             this.DeliveryListFormPurchaseRequestsTable.Name = "DeliveryListFormPurchaseRequestsTable";
             this.DeliveryListFormPurchaseRequestsTable.ReadOnly = true;
@@ -378,7 +377,7 @@
             this.DeliveryListFormPurchaseRequestsTable.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.DeliveryListFormPurchaseRequestsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DeliveryListFormPurchaseRequestsTable.Size = new System.Drawing.Size(277, 180);
-            this.DeliveryListFormPurchaseRequestsTable.TabIndex = 89;
+            this.DeliveryListFormPurchaseRequestsTable.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -419,11 +418,10 @@
             this.dataGridViewTextBoxColumn7,
             this.nomenclatureNumberDataGridViewTextBoxColumn4,
             this.fullNameDataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9});
+            this.dataGridViewTextBoxColumn8});
             this.DeliveryListFormPurchaseRequestContentTable.DataSource = this.purchaseRequestsInjPurchaseRequestsContentInjBindingSource;
             this.DeliveryListFormPurchaseRequestContentTable.Location = new System.Drawing.Point(293, 213);
-            this.DeliveryListFormPurchaseRequestContentTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeliveryListFormPurchaseRequestContentTable.Margin = new System.Windows.Forms.Padding(2);
             this.DeliveryListFormPurchaseRequestContentTable.MultiSelect = false;
             this.DeliveryListFormPurchaseRequestContentTable.Name = "DeliveryListFormPurchaseRequestContentTable";
             this.DeliveryListFormPurchaseRequestContentTable.ReadOnly = true;
@@ -432,7 +430,7 @@
             this.DeliveryListFormPurchaseRequestContentTable.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.DeliveryListFormPurchaseRequestContentTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DeliveryListFormPurchaseRequestContentTable.Size = new System.Drawing.Size(503, 180);
-            this.DeliveryListFormPurchaseRequestContentTable.TabIndex = 90;
+            this.DeliveryListFormPurchaseRequestContentTable.TabIndex = 3;
             this.DeliveryListFormPurchaseRequestContentTable.CurrentCellChanged += new System.EventHandler(this.DeliveryListFormPurchaseRequestContentTable_CurrentCellChanged);
             // 
             // dataGridViewTextBoxColumn4
@@ -496,13 +494,6 @@
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "Status";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Статус";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
             // deliveryListsContentInjTableAdapter
             // 
             this.deliveryListsContentInjTableAdapter.ClearBeforeFill = true;
@@ -532,7 +523,9 @@
             this.Controls.Add(this.label32);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
+            this.MaximumSize = new System.Drawing.Size(976, 672);
+            this.MinimumSize = new System.Drawing.Size(976, 672);
             this.Name = "DeleviryListForm";
             this.Text = "Форма ведомости поставки – Информационная система учета и приобретения инструмент" +
     "а";

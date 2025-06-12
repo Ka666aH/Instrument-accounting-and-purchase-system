@@ -110,10 +110,6 @@ namespace Система_учёта_и_приобретения_инструме
         
         private global::System.Data.DataRelation relationFK__Defective__Works__71D1E811;
         
-        private global::System.Data.DataRelation relationFK__DeliveryL__Suppl__619B8048;
-        
-        private global::System.Data.DataRelation relationFK__DeliveryL__Deliv__6477ECF3;
-        
         private global::System.Data.DataRelation relationFK__DeliveryL__Purch__656C112C;
         
         private global::System.Data.DataRelation relationFK__InvoicesC__Deliv__6D0D32F4;
@@ -125,8 +121,6 @@ namespace Система_учёта_и_приобретения_инструме
         private global::System.Data.DataRelation relationFK__PurchaseR__Purch__5AEE82B9;
         
         private global::System.Data.DataRelation relationFK__PurchaseR__Recei__5BE2A6F2;
-        
-        private global::System.Data.DataRelation relationFK__Receiving__Works__49C3F6B7;
         
         private global::System.Data.DataRelation relationFK__Receiving__Nomen__4F7CD00D;
         
@@ -173,6 +167,10 @@ namespace Система_учёта_и_приобретения_инструме
         private global::System.Data.DataRelation relationPurchaseRequestsInj_PurchaseRequestsContentInj;
         
         private global::System.Data.DataRelation relationDeliveryListsInj_DeliveryListsContentInj;
+        
+        private global::System.Data.DataRelation relationFK__DeliveryL__Deliv__6477ECF3;
+        
+        private global::System.Data.DataRelation relationFK__DeliveryL__Suppl__619B8048;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -1140,15 +1138,12 @@ namespace Система_учёта_и_приобретения_инструме
             this.relationFK__Balances__Storag__76969D2E = this.Relations["FK__Balances__Storag__76969D2E"];
             this.relationFK__Defective__Nomen__70DDC3D8 = this.Relations["FK__Defective__Nomen__70DDC3D8"];
             this.relationFK__Defective__Works__71D1E811 = this.Relations["FK__Defective__Works__71D1E811"];
-            this.relationFK__DeliveryL__Suppl__619B8048 = this.Relations["FK__DeliveryL__Suppl__619B8048"];
-            this.relationFK__DeliveryL__Deliv__6477ECF3 = this.Relations["FK__DeliveryL__Deliv__6477ECF3"];
             this.relationFK__DeliveryL__Purch__656C112C = this.Relations["FK__DeliveryL__Purch__656C112C"];
             this.relationFK__InvoicesC__Deliv__6D0D32F4 = this.Relations["FK__InvoicesC__Deliv__6D0D32F4"];
             this.relationFK__InvoicesC__Invoi__6C190EBB = this.Relations["FK__InvoicesC__Invoi__6C190EBB"];
             this.relationFK__PurchaseR__Donor__5CD6CB2B = this.Relations["FK__PurchaseR__Donor__5CD6CB2B"];
             this.relationFK__PurchaseR__Purch__5AEE82B9 = this.Relations["FK__PurchaseR__Purch__5AEE82B9"];
             this.relationFK__PurchaseR__Recei__5BE2A6F2 = this.Relations["FK__PurchaseR__Recei__5BE2A6F2"];
-            this.relationFK__Receiving__Works__49C3F6B7 = this.Relations["FK__Receiving__Works__49C3F6B7"];
             this.relationFK__Receiving__Nomen__4F7CD00D = this.Relations["FK__Receiving__Nomen__4F7CD00D"];
             this.relationFK__Receiving__Recei__4E88ABD4 = this.Relations["FK__Receiving__Recei__4E88ABD4"];
             this.relationFK__Storages__Worksh__46E78A0C = this.Relations["FK__Storages__Worksh__46E78A0C"];
@@ -1172,6 +1167,8 @@ namespace Система_учёта_и_приобретения_инструме
             this.relationFK__Receiving__Recei__6FE99F9F2 = this.Relations["FK__Receiving__Recei__6FE99F9F2"];
             this.relationPurchaseRequestsInj_PurchaseRequestsContentInj = this.Relations["PurchaseRequestsInj_PurchaseRequestsContentInj"];
             this.relationDeliveryListsInj_DeliveryListsContentInj = this.Relations["DeliveryListsInj_DeliveryListsContentInj"];
+            this.relationFK__DeliveryL__Deliv__6477ECF3 = this.Relations["FK__DeliveryL__Deliv__6477ECF3"];
+            this.relationFK__DeliveryL__Suppl__619B8048 = this.Relations["FK__DeliveryL__Suppl__619B8048"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1280,14 +1277,6 @@ namespace Система_учёта_и_приобретения_инструме
                         this.tableWorkshops.WorkshopIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableDefectiveLists.WorkshopIDColumn}, false);
             this.Relations.Add(this.relationFK__Defective__Works__71D1E811);
-            this.relationFK__DeliveryL__Suppl__619B8048 = new global::System.Data.DataRelation("FK__DeliveryL__Suppl__619B8048", new global::System.Data.DataColumn[] {
-                        this.tableSuppliers.INNColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDeliveryLists.SupplierINNColumn}, false);
-            this.Relations.Add(this.relationFK__DeliveryL__Suppl__619B8048);
-            this.relationFK__DeliveryL__Deliv__6477ECF3 = new global::System.Data.DataRelation("FK__DeliveryL__Deliv__6477ECF3", new global::System.Data.DataColumn[] {
-                        this.tableDeliveryLists.DeliveryListIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDeliveryListsContent.DeliveryListIDColumn}, false);
-            this.Relations.Add(this.relationFK__DeliveryL__Deliv__6477ECF3);
             this.relationFK__DeliveryL__Purch__656C112C = new global::System.Data.DataRelation("FK__DeliveryL__Purch__656C112C", new global::System.Data.DataColumn[] {
                         this.tablePurchaseRequestsContent.PurchaseContentIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableDeliveryListsContent.PurchaseContentIDColumn}, false);
@@ -1312,10 +1301,6 @@ namespace Система_учёта_и_приобретения_инструме
                         this.tableReceivingRequestsContent.ReceivingContentIDColumn}, new global::System.Data.DataColumn[] {
                         this.tablePurchaseRequestsContent.ReceivingContentIDColumn}, false);
             this.Relations.Add(this.relationFK__PurchaseR__Recei__5BE2A6F2);
-            this.relationFK__Receiving__Works__49C3F6B7 = new global::System.Data.DataRelation("FK__Receiving__Works__49C3F6B7", new global::System.Data.DataColumn[] {
-                        this.tableWorkshops.WorkshopIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableReceivingRequests.WorkshopIDColumn}, false);
-            this.Relations.Add(this.relationFK__Receiving__Works__49C3F6B7);
             this.relationFK__Receiving__Nomen__4F7CD00D = new global::System.Data.DataRelation("FK__Receiving__Nomen__4F7CD00D", new global::System.Data.DataColumn[] {
                         this.tableNomenclature.NomenclatureNumberColumn}, new global::System.Data.DataColumn[] {
                         this.tableReceivingRequestsContent.NomenclatureNumberColumn}, false);
@@ -1408,6 +1393,14 @@ namespace Система_учёта_и_приобретения_инструме
                         this.tableDeliveryListsInj.DeliveryListIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableDeliveryListsContentInj.DeliveryListIDColumn}, false);
             this.Relations.Add(this.relationDeliveryListsInj_DeliveryListsContentInj);
+            this.relationFK__DeliveryL__Deliv__6477ECF3 = new global::System.Data.DataRelation("FK__DeliveryL__Deliv__6477ECF3", new global::System.Data.DataColumn[] {
+                        this.tableDeliveryLists.DeliveryListIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDeliveryListsContent.DeliveryListIDColumn}, false);
+            this.Relations.Add(this.relationFK__DeliveryL__Deliv__6477ECF3);
+            this.relationFK__DeliveryL__Suppl__619B8048 = new global::System.Data.DataRelation("FK__DeliveryL__Suppl__619B8048", new global::System.Data.DataColumn[] {
+                        this.tableSuppliers.INNColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDeliveryLists.SupplierINNColumn}, false);
+            this.Relations.Add(this.relationFK__DeliveryL__Suppl__619B8048);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6163,19 +6156,16 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReceivingRequestsRow AddReceivingRequestsRow(System.DateTime ReceivingRequestDate, WorkshopsRow parentWorkshopsRowByFK__Receiving__Works__49C3F6B7, System.DateTime PlannedDate, string ReceivingRequestType, string Reason, string Status) {
+            public ReceivingRequestsRow AddReceivingRequestsRow(System.DateTime ReceivingRequestDate, int WorkshopID, System.DateTime PlannedDate, string ReceivingRequestType, string Reason, string Status) {
                 ReceivingRequestsRow rowReceivingRequestsRow = ((ReceivingRequestsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         ReceivingRequestDate,
-                        null,
+                        WorkshopID,
                         PlannedDate,
                         ReceivingRequestType,
                         Reason,
                         Status};
-                if ((parentWorkshopsRowByFK__Receiving__Works__49C3F6B7 != null)) {
-                    columnValuesArray[2] = parentWorkshopsRowByFK__Receiving__Works__49C3F6B7[0];
-                }
                 rowReceivingRequestsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowReceivingRequestsRow);
                 return rowReceivingRequestsRow;
@@ -13077,8 +13067,6 @@ namespace Система_учёта_и_приобретения_инструме
             
             private global::System.Data.DataColumn columnRequiredQuantity;
             
-            private global::System.Data.DataColumn columnStatus;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public PurchaseRequestsContentInjDataTable() {
@@ -13178,14 +13166,6 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn StatusColumn {
-                get {
-                    return this.columnStatus;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -13221,7 +13201,7 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PurchaseRequestsContentInjRow AddPurchaseRequestsContentInjRow(PurchaseRequestsInjRow parentPurchaseRequestsInjRowByPurchaseRequestsInj_PurchaseRequestsContentInj, int ReceivingContentID, bool IsPurchase, int DonorWorkshopID, string NomenclatureNumber, string FullName, int RequiredQuantity, string Status) {
+            public PurchaseRequestsContentInjRow AddPurchaseRequestsContentInjRow(PurchaseRequestsInjRow parentPurchaseRequestsInjRowByPurchaseRequestsInj_PurchaseRequestsContentInj, int ReceivingContentID, bool IsPurchase, int DonorWorkshopID, string NomenclatureNumber, string FullName, int RequiredQuantity) {
                 PurchaseRequestsContentInjRow rowPurchaseRequestsContentInjRow = ((PurchaseRequestsContentInjRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -13231,14 +13211,20 @@ namespace Система_учёта_и_приобретения_инструме
                         DonorWorkshopID,
                         NomenclatureNumber,
                         FullName,
-                        RequiredQuantity,
-                        Status};
+                        RequiredQuantity};
                 if ((parentPurchaseRequestsInjRowByPurchaseRequestsInj_PurchaseRequestsContentInj != null)) {
                     columnValuesArray[1] = parentPurchaseRequestsInjRowByPurchaseRequestsInj_PurchaseRequestsContentInj[0];
                 }
                 rowPurchaseRequestsContentInjRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPurchaseRequestsContentInjRow);
                 return rowPurchaseRequestsContentInjRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public PurchaseRequestsContentInjRow FindByPurchaseContentID(int PurchaseContentID) {
+                return ((PurchaseRequestsContentInjRow)(this.Rows.Find(new object[] {
+                            PurchaseContentID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13266,7 +13252,6 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnNomenclatureNumber = base.Columns["NomenclatureNumber"];
                 this.columnFullName = base.Columns["FullName"];
                 this.columnRequiredQuantity = base.Columns["RequiredQuantity"];
-                this.columnStatus = base.Columns["Status"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13288,13 +13273,14 @@ namespace Система_учёта_и_приобретения_инструме
                 base.Columns.Add(this.columnFullName);
                 this.columnRequiredQuantity = new global::System.Data.DataColumn("RequiredQuantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRequiredQuantity);
-                this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnStatus);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnPurchaseContentID}, true));
                 this.columnPurchaseContentID.AutoIncrement = true;
                 this.columnPurchaseContentID.AutoIncrementSeed = -1;
                 this.columnPurchaseContentID.AutoIncrementStep = -1;
                 this.columnPurchaseContentID.AllowDBNull = false;
                 this.columnPurchaseContentID.ReadOnly = true;
+                this.columnPurchaseContentID.Unique = true;
                 this.columnPurchaseRequestID.AllowDBNull = false;
                 this.columnReceivingContentID.AllowDBNull = false;
                 this.columnIsPurchase.AllowDBNull = false;
@@ -13303,8 +13289,6 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnFullName.ReadOnly = true;
                 this.columnFullName.MaxLength = 2147483647;
                 this.columnRequiredQuantity.AllowDBNull = false;
-                this.columnStatus.AllowDBNull = false;
-                this.columnStatus.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14604,23 +14588,23 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DeliveryListsRow DeliveryListsRow {
-                get {
-                    return ((DeliveryListsRow)(this.GetParentRow(this.Table.ParentRelations["FK__DeliveryL__Deliv__6477ECF3"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__DeliveryL__Deliv__6477ECF3"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public PurchaseRequestsContentRow PurchaseRequestsContentRow {
                 get {
                     return ((PurchaseRequestsContentRow)(this.GetParentRow(this.Table.ParentRelations["FK__DeliveryL__Purch__656C112C"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK__DeliveryL__Purch__656C112C"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DeliveryListsRow DeliveryListsRow {
+                get {
+                    return ((DeliveryListsRow)(this.GetParentRow(this.Table.ParentRelations["FK__DeliveryL__Deliv__6477ECF3"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__DeliveryL__Deliv__6477ECF3"]);
                 }
             }
             
@@ -15620,17 +15604,6 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public WorkshopsRow WorkshopsRow {
-                get {
-                    return ((WorkshopsRow)(this.GetParentRow(this.Table.ParentRelations["FK__Receiving__Works__49C3F6B7"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Receiving__Works__49C3F6B7"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsPlannedDateNull() {
                 return this.IsNull(this.tableReceivingRequests.PlannedDateColumn);
             }
@@ -16403,17 +16376,6 @@ namespace Система_учёта_и_приобретения_инструме
                 }
                 else {
                     return ((PurchaseRequestsContentRow[])(base.GetChildRows(this.Table.ChildRelations["FK__PurchaseR__Donor__5CD6CB2B"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReceivingRequestsRow[] GetReceivingRequestsRows() {
-                if ((this.Table.ChildRelations["FK__Receiving__Works__49C3F6B7"] == null)) {
-                    return new ReceivingRequestsRow[0];
-                }
-                else {
-                    return ((ReceivingRequestsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Receiving__Works__49C3F6B7"])));
                 }
             }
             
@@ -18514,17 +18476,6 @@ namespace Система_учёта_и_приобретения_инструме
                 }
                 set {
                     this[this.tablePurchaseRequestsContentInj.RequiredQuantityColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Status {
-                get {
-                    return ((string)(this[this.tablePurchaseRequestsContentInj.StatusColumn]));
-                }
-                set {
-                    this[this.tablePurchaseRequestsContentInj.StatusColumn] = value;
                 }
             }
             
@@ -21662,17 +21613,10 @@ SELECT DeliveryListID, DeliveryListDate, SupplierINN FROM DeliveryLists WHERE (D
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[DeliveryListsContent] WHERE (([DeliveryContentID] = @Original_DeliveryContentID) AND ([DeliveryListID] = @Original_DeliveryListID) AND ([PurchaseContentID] = @Original_PurchaseContentID) AND ([DeliveryContentDate] = @Original_DeliveryContentDate) AND ([ContractNumber] = @Original_ContractNumber) AND ([Quantity] = @Original_Quantity) AND ([Price] = @Original_Price) AND ((@IsNull_Total = 1 AND [Total] IS NULL) OR ([Total] = @Original_Total)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[DeliveryListsContent] WHERE (([DeliveryContentID] = @Original_" +
+                "DeliveryContentID))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DeliveryContentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeliveryContentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DeliveryListID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeliveryListID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PurchaseContentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PurchaseContentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DeliveryContentDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeliveryContentDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ContractNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContractNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Total", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Total", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Total", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 29, 2, "Total", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[DeliveryListsContent] ([DeliveryListID], [PurchaseContentID], [DeliveryContentDate], [ContractNumber], [Quantity], [Price]) VALUES (@DeliveryListID, @PurchaseContentID, @DeliveryContentDate, @ContractNumber, @Quantity, @Price);
@@ -21686,7 +21630,7 @@ SELECT DeliveryContentID, DeliveryListID, PurchaseContentID, DeliveryContentDate
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[DeliveryListsContent] SET [DeliveryListID] = @DeliveryListID, [PurchaseContentID] = @PurchaseContentID, [DeliveryContentDate] = @DeliveryContentDate, [ContractNumber] = @ContractNumber, [Quantity] = @Quantity, [Price] = @Price WHERE (([DeliveryContentID] = @Original_DeliveryContentID) AND ([DeliveryListID] = @Original_DeliveryListID) AND ([PurchaseContentID] = @Original_PurchaseContentID) AND ([DeliveryContentDate] = @Original_DeliveryContentDate) AND ([ContractNumber] = @Original_ContractNumber) AND ([Quantity] = @Original_Quantity) AND ([Price] = @Original_Price) AND ((@IsNull_Total = 1 AND [Total] IS NULL) OR ([Total] = @Original_Total)));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[DeliveryListsContent] SET [DeliveryListID] = @DeliveryListID, [PurchaseContentID] = @PurchaseContentID, [DeliveryContentDate] = @DeliveryContentDate, [ContractNumber] = @ContractNumber, [Quantity] = @Quantity, [Price] = @Price WHERE (([DeliveryContentID] = @Original_DeliveryContentID));
 SELECT DeliveryContentID, DeliveryListID, PurchaseContentID, DeliveryContentDate, ContractNumber, Quantity, Price, Total FROM DeliveryListsContent WHERE (DeliveryContentID = @DeliveryContentID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DeliveryListID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeliveryListID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -21696,14 +21640,6 @@ SELECT DeliveryContentID, DeliveryListID, PurchaseContentID, DeliveryContentDate
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DeliveryContentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeliveryContentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DeliveryListID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeliveryListID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PurchaseContentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PurchaseContentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DeliveryContentDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeliveryContentDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ContractNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContractNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Total", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Total", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Total", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 29, 2, "Total", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DeliveryContentID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "DeliveryContentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -21782,32 +21718,8 @@ SELECT DeliveryContentID, DeliveryListID, PurchaseContentID, DeliveryContentDate
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_DeliveryContentID, int Original_DeliveryListID, int Original_PurchaseContentID, System.DateTime Original_DeliveryContentDate, string Original_ContractNumber, int Original_Quantity, global::System.Nullable<decimal> Original_Price, global::System.Nullable<decimal> Original_Total) {
+        public virtual int Delete(int Original_DeliveryContentID) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_DeliveryContentID));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_DeliveryListID));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_PurchaseContentID));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((System.DateTime)(Original_DeliveryContentDate));
-            if ((Original_ContractNumber == null)) {
-                throw new global::System.ArgumentNullException("Original_ContractNumber");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_ContractNumber));
-            }
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_Quantity));
-            if ((Original_Price.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((decimal)(Original_Price.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Total.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((decimal)(Original_Total.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -21865,7 +21777,7 @@ SELECT DeliveryContentID, DeliveryListID, PurchaseContentID, DeliveryContentDate
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int DeliveryListID, int PurchaseContentID, System.DateTime DeliveryContentDate, string ContractNumber, int Quantity, global::System.Nullable<decimal> Price, int Original_DeliveryContentID, int Original_DeliveryListID, int Original_PurchaseContentID, System.DateTime Original_DeliveryContentDate, string Original_ContractNumber, int Original_Quantity, global::System.Nullable<decimal> Original_Price, global::System.Nullable<decimal> Original_Total, int DeliveryContentID) {
+        public virtual int Update(int DeliveryListID, int PurchaseContentID, System.DateTime DeliveryContentDate, string ContractNumber, int Quantity, global::System.Nullable<decimal> Price, int Original_DeliveryContentID, int DeliveryContentID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(DeliveryListID));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(PurchaseContentID));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(DeliveryContentDate));
@@ -21883,31 +21795,7 @@ SELECT DeliveryContentID, DeliveryListID, PurchaseContentID, DeliveryContentDate
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_DeliveryContentID));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_DeliveryListID));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_PurchaseContentID));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_DeliveryContentDate));
-            if ((Original_ContractNumber == null)) {
-                throw new global::System.ArgumentNullException("Original_ContractNumber");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_ContractNumber));
-            }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_Quantity));
-            if ((Original_Price.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(Original_Price.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Total.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((decimal)(Original_Total.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(DeliveryContentID));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(DeliveryContentID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -21928,8 +21816,8 @@ SELECT DeliveryContentID, DeliveryListID, PurchaseContentID, DeliveryContentDate
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int DeliveryListID, int PurchaseContentID, System.DateTime DeliveryContentDate, string ContractNumber, int Quantity, global::System.Nullable<decimal> Price, int Original_DeliveryContentID, int Original_DeliveryListID, int Original_PurchaseContentID, System.DateTime Original_DeliveryContentDate, string Original_ContractNumber, int Original_Quantity, global::System.Nullable<decimal> Original_Price, global::System.Nullable<decimal> Original_Total) {
-            return this.Update(DeliveryListID, PurchaseContentID, DeliveryContentDate, ContractNumber, Quantity, Price, Original_DeliveryContentID, Original_DeliveryListID, Original_PurchaseContentID, Original_DeliveryContentDate, Original_ContractNumber, Original_Quantity, Original_Price, Original_Total, Original_DeliveryContentID);
+        public virtual int Update(int DeliveryListID, int PurchaseContentID, System.DateTime DeliveryContentDate, string ContractNumber, int Quantity, global::System.Nullable<decimal> Price, int Original_DeliveryContentID) {
+            return this.Update(DeliveryListID, PurchaseContentID, DeliveryContentDate, ContractNumber, Quantity, Price, Original_DeliveryContentID, Original_DeliveryContentID);
         }
     }
     
@@ -31271,7 +31159,6 @@ SELECT PurchaseRequestID, PurchaseRequestDate, Status FROM PurchaseRequests WHER
             tableMapping.ColumnMappings.Add("NomenclatureNumber", "NomenclatureNumber");
             tableMapping.ColumnMappings.Add("FullName", "FullName");
             tableMapping.ColumnMappings.Add("RequiredQuantity", "RequiredQuantity");
-            tableMapping.ColumnMappings.Add("Status", "Status");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -31306,10 +31193,7 @@ SELECT PurchaseRequestID, PurchaseRequestDate, Status FROM PurchaseRequests WHER
     COALESCE(n.RegulatoryDoc, '') AS FullName,
 
     -- Количество из заявки
-    rrc.Quantity AS RequiredQuantity,
-
-    -- Статус заявки
-    rr.Status
+    rrc.Quantity AS RequiredQuantity
 
 FROM PurchaseRequestsContent prc
 INNER JOIN PurchaseRequests pr ON pr.PurchaseRequestID = prc.PurchaseRequestID
@@ -32367,15 +32251,6 @@ LEFT JOIN Groups g
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateUpdatedRows(TOOLACCOUNTINGDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._workshopsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Workshops.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._workshopsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._receivingRequestsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.ReceivingRequests.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -32391,6 +32266,15 @@ LEFT JOIN Groups g
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._nomenclatureTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._workshopsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Workshops.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._workshopsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -32448,21 +32332,21 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._storages1TableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._storages1TableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._invoicesTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Invoices.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._invoicesTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._deliveryListsContentTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.DeliveryListsContent.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._deliveryListsContentTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -32475,21 +32359,30 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._receivingRequestsContentInjTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ReceivingRequestsContentInj.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._receivingRequestsContentInjTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._purchaseRequestsInjTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.PurchaseRequestsInj.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._purchaseRequestsInjTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._deliveryListsContentTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.DeliveryListsContent.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._deliveryListsContentTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._receivingRequestsContentInjTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ReceivingRequestsContentInj.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._receivingRequestsContentInjTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -32502,30 +32395,12 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._storages1TableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._storages1TableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._replacementFixationTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.ReplacementFixation.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._replacementFixationTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._analogToolsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.AnalogTools.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._analogToolsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -32592,6 +32467,15 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._analogToolsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.AnalogTools.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._analogToolsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -32602,14 +32486,6 @@ LEFT JOIN Groups g
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateInsertedRows(TOOLACCOUNTINGDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._workshopsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Workshops.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._workshopsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._receivingRequestsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ReceivingRequests.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -32623,6 +32499,14 @@ LEFT JOIN Groups g
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._nomenclatureTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._workshopsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Workshops.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._workshopsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -32674,19 +32558,19 @@ LEFT JOIN Groups g
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._storages1TableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._storages1TableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._invoicesTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Invoices.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._invoicesTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._deliveryListsContentTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.DeliveryListsContent.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._deliveryListsContentTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -32698,19 +32582,27 @@ LEFT JOIN Groups g
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._receivingRequestsContentInjTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ReceivingRequestsContentInj.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._receivingRequestsContentInjTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._purchaseRequestsInjTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.PurchaseRequestsInj.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._purchaseRequestsInjTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._deliveryListsContentTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.DeliveryListsContent.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._deliveryListsContentTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._receivingRequestsContentInjTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ReceivingRequestsContentInj.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._receivingRequestsContentInjTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -32722,27 +32614,11 @@ LEFT JOIN Groups g
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._storages1TableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._storages1TableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._replacementFixationTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ReplacementFixation.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._replacementFixationTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._analogToolsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.AnalogTools.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._analogToolsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -32802,6 +32678,14 @@ LEFT JOIN Groups g
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._analogToolsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.AnalogTools.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._analogToolsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -32812,6 +32696,14 @@ LEFT JOIN Groups g
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateDeletedRows(TOOLACCOUNTINGDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._analogToolsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.AnalogTools.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._analogToolsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._balancesTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Balances.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -32868,27 +32760,11 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._analogToolsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.AnalogTools.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._analogToolsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._replacementFixationTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.ReplacementFixation.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._replacementFixationTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._storages1TableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._storages1TableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -32900,27 +32776,11 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._purchaseRequestsInjTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.PurchaseRequestsInj.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._purchaseRequestsInjTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._receivingRequestsContentInjTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.ReceivingRequestsContentInj.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._receivingRequestsContentInjTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._storagesTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Storages.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._storagesTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -32932,11 +32792,35 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._purchaseRequestsInjTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PurchaseRequestsInj.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._purchaseRequestsInjTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._storagesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Storages.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._storagesTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._invoicesTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Invoices.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._invoicesTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._storages1TableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._storages1TableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -32988,6 +32872,14 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._workshopsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Workshops.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._workshopsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._nomenclatureTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Nomenclature.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -33001,14 +32893,6 @@ LEFT JOIN Groups g
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._receivingRequestsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._workshopsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Workshops.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._workshopsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
