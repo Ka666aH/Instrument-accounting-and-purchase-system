@@ -164,14 +164,13 @@
             // DeliveryListFormButtonRemove
             // 
             this.DeliveryListFormButtonRemove.Enabled = false;
-            this.DeliveryListFormButtonRemove.Location = new System.Drawing.Point(800, 423);
+            this.DeliveryListFormButtonRemove.Location = new System.Drawing.Point(801, 426);
             this.DeliveryListFormButtonRemove.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DeliveryListFormButtonRemove.Name = "DeliveryListFormButtonRemove";
             this.DeliveryListFormButtonRemove.Size = new System.Drawing.Size(149, 37);
             this.DeliveryListFormButtonRemove.TabIndex = 79;
             this.DeliveryListFormButtonRemove.Text = "Убрать";
             this.DeliveryListFormButtonRemove.UseVisualStyleBackColor = true;
-            this.DeliveryListFormButtonRemove.Visible = false;
             this.DeliveryListFormButtonRemove.Click += new System.EventHandler(this.DeliveryListFormButtonRemove_Click);
             // 
             // DeliveryListFormButtonAdd
@@ -238,7 +237,7 @@
             this.deliveryContentDateDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn});
             this.DeliveryListFormDeliveryListContentTable.DataSource = this.deliveryListsContentInjBindingSource;
-            this.DeliveryListFormDeliveryListContentTable.Location = new System.Drawing.Point(11, 423);
+            this.DeliveryListFormDeliveryListContentTable.Location = new System.Drawing.Point(12, 426);
             this.DeliveryListFormDeliveryListContentTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DeliveryListFormDeliveryListContentTable.MultiSelect = false;
             this.DeliveryListFormDeliveryListContentTable.Name = "DeliveryListFormDeliveryListContentTable";
@@ -249,6 +248,7 @@
             this.DeliveryListFormDeliveryListContentTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DeliveryListFormDeliveryListContentTable.Size = new System.Drawing.Size(784, 168);
             this.DeliveryListFormDeliveryListContentTable.TabIndex = 85;
+            this.DeliveryListFormDeliveryListContentTable.CurrentCellChanged += new System.EventHandler(this.DeliveryListFormDeliveryListContentTable_CurrentCellChanged);
             // 
             // deliveryContentIDDataGridViewTextBoxColumn
             // 
@@ -433,6 +433,7 @@
             this.DeliveryListFormPurchaseRequestContentTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DeliveryListFormPurchaseRequestContentTable.Size = new System.Drawing.Size(503, 180);
             this.DeliveryListFormPurchaseRequestContentTable.TabIndex = 90;
+            this.DeliveryListFormPurchaseRequestContentTable.CurrentCellChanged += new System.EventHandler(this.DeliveryListFormPurchaseRequestContentTable_CurrentCellChanged);
             // 
             // dataGridViewTextBoxColumn4
             // 

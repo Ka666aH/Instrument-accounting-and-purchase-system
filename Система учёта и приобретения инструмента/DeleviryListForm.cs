@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
@@ -55,6 +56,8 @@ namespace Система_учёта_и_приобретения_инструме
             DeliveryListFormNumber.Text = deliveryListNumber.ToString();
             DeliveryListFormDate.Text = DateTime.Today.ToString("dd.MM.yyyy");
 
+            //purchaseRequestsInjBindingSource.Filter = 
+
             SetSuppliersSource();
         }
 
@@ -91,49 +94,75 @@ namespace Система_учёта_и_приобретения_инструме
             if (DeliveryListFormDeliveryListContentTable.CurrentRow == null) DeliveryListFormButtonRemove.Enabled = false;
             else DeliveryListFormButtonRemove.Enabled = true;
         }
+        private void DeliveryListFormPurchaseRequestContentTable_CurrentCellChanged(object sender, EventArgs e)
+        {
+            SetButtonsState();
+        }
 
+        private void DeliveryListFormDeliveryListContentTable_CurrentCellChanged(object sender, EventArgs e)
+        {
+            SetButtonsState();
+        }
         private void DeliveryListFormButtonAdd_Click(object sender, EventArgs e)
         {
-            var selectedRow = DeliveryListFormPurchaseRequestContentTable.CurrentRow?.DataBoundItem as DataRowView;
-            if (selectedRow == null) return;
+            try
+            {
+                var selectedRow = DeliveryListFormPurchaseRequestContentTable.CurrentRow?.DataBoundItem as DataRowView;
+                if (selectedRow == null) return;
 
-            var row = selectedRow.Row as TOOLACCOUNTINGDataSet.PurchaseRequestsContentInjRow;
-            if (row == null) return;
+                var row = selectedRow.Row as TOOLACCOUNTINGDataSet.PurchaseRequestsContentInjRow;
+                if (row == null) return;
 
-            //создание пункта заявки
-            TOOLACCOUNTINGDataSet.DeliveryListsContentRow dlcRow = tOOLACCOUNTINGDataSet.DeliveryListsContent.NewDeliveryListsContentRow();
-            dlcRow.DeliveryListID = deliveryListNumber;
-            dlcRow.PurchaseContentID = row.PurchaseContentID;
+                //создание пункта заявки
+                TOOLACCOUNTINGDataSet.DeliveryListsContentRow dlcRow = tOOLACCOUNTINGDataSet.DeliveryListsContent.NewDeliveryListsContentRow();
+                dlcRow.DeliveryListID = deliveryListNumber;
+                dlcRow.PurchaseContentID = row.PurchaseContentID;
 
 
-            // Получаем PlannedDate из связанной заявки
-            var prcRow = tOOLACCOUNTINGDataSet.PurchaseRequestsContent.FindByPurchaseContentID(row.PurchaseContentID);
-            var rrcRow = tOOLACCOUNTINGDataSet.ReceivingRequestsContent.FindByReceivingContentID(prcRow.ReceivingContentID);
-            dlcRow.DeliveryContentDate = rrcRow.ReceivingRequestsRow.PlannedDate;
+                // Получаем PlannedDate из связанной заявки
+                new ReceivingRequestsTableAdapter().Fill(tOOLACCOUNTINGDataSet.ReceivingRequests);
+                new ReceivingRequestsContentTableAdapter().Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsContent);
+                new PurchaseRequestsContentTableAdapter().Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContent);
 
-            // Количество берем из ReceivingRequestsContent
-            dlcRow.Quantity = rrcRow.Quantity;
+                var prcRow = tOOLACCOUNTINGDataSet.PurchaseRequestsContent.FindByPurchaseContentID(row.PurchaseContentID);
+                var rrcRow = tOOLACCOUNTINGDataSet.ReceivingRequestsContent.FindByReceivingContentID(prcRow.ReceivingContentID);
+                var rrRow = tOOLACCOUNTINGDataSet.ReceivingRequests.FindByReceivingRequestID(rrcRow.ReceivingRequestID);
+                dlcRow.DeliveryContentDate = rrRow.PlannedDate;
 
-            dlcRow.ContractNumber = "0";
-            tOOLACCOUNTINGDataSet.DeliveryListsContent.AddDeliveryListsContentRow(dlcRow);
-            dlcta.Update(tOOLACCOUNTINGDataSet.DeliveryListsContent);
-            dlcta.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContent);
-            dlcita.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
+                // Количество берем из ReceivingRequestsContent
+                dlcRow.Quantity = rrcRow.Quantity;
+
+                dlcRow.ContractNumber = "0";
+                tOOLACCOUNTINGDataSet.DeliveryListsContent.AddDeliveryListsContentRow(dlcRow);
+                dlcta.Update(tOOLACCOUNTINGDataSet.DeliveryListsContent);
+                dlcta.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContent);
+                dlcita.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
+            }
+            catch { }
         }
 
         private void DeliveryListFormButtonRemove_Click(object sender, EventArgs e)
         {
-            var selectedRow = DeliveryListFormDeliveryListContentTable.CurrentRow?.DataBoundItem as DataRowView;
-            if (selectedRow == null) return;
+            try
+            {
+                var selectedRow = DeliveryListFormDeliveryListContentTable.CurrentRow?.DataBoundItem as DataRowView;
+                if (selectedRow == null) return;
 
-            var row = selectedRow.Row as TOOLACCOUNTINGDataSet.DeliveryListsContentInjRow;
-            if (row == null) return;
+                var row = selectedRow.Row as TOOLACCOUNTINGDataSet.DeliveryListsContentInjRow;
+                if (row == null) return;
 
-            var dlcRow = tOOLACCOUNTINGDataSet.DeliveryListsContent.FindByDeliveryContentID(row.DeliveryContentID);
-            dlcRow.Delete();
-            dlcta.Update(tOOLACCOUNTINGDataSet.DeliveryListsContent);
-            dlcta.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContent);
-            dlcita.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
+
+                //dlcta.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContent);
+                //dlcita.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
+                dlta.Fill(tOOLACCOUNTINGDataSet.DeliveryLists);
+                dlita.Fill(tOOLACCOUNTINGDataSet.DeliveryListsInj);
+                var dlcRow = tOOLACCOUNTINGDataSet.DeliveryListsContent.FindByDeliveryContentID(row.DeliveryContentID);
+                dlcRow.Delete();
+                dlcta.Update(tOOLACCOUNTINGDataSet.DeliveryListsContent);
+                dlcta.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContent);
+                dlcita.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
+            }
+            catch { } //bug ошибка параллелизма
         }
 
         private void DeleviryListForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -160,7 +189,5 @@ namespace Система_учёта_и_приобретения_инструме
         {
             Close();
         }
-
-
     }
 }
