@@ -22,6 +22,8 @@ namespace Система_учёта_и_приобретения_инструме
         int deliveryListNumber = 1;
         DeliveryListsTableAdapter dlta = new DeliveryListsTableAdapter();
         DeliveryListsInjTableAdapter dlita = new DeliveryListsInjTableAdapter();
+        DeliveryListsContentTableAdapter dlcta = new DeliveryListsContentTableAdapter();
+        DeliveryListsContentInjTableAdapter dlcita = new DeliveryListsContentInjTableAdapter();
         private void DeleviryListForm_Load(object sender, EventArgs e)
         {
             dlta.Fill(tOOLACCOUNTINGDataSet.DeliveryLists);
@@ -102,19 +104,36 @@ namespace Система_учёта_и_приобретения_инструме
             TOOLACCOUNTINGDataSet.DeliveryListsContentRow dlcRow = tOOLACCOUNTINGDataSet.DeliveryListsContent.NewDeliveryListsContentRow();
             dlcRow.DeliveryListID = deliveryListNumber;
             dlcRow.PurchaseContentID = row.PurchaseContentID;
-            //dlcRow.DeliveryContentDate = //PlannedDate из связанного ReceivingRequests 
-            dlcRow.ContractNumber = "0";
-            //dlcRow.Quantity = //Quantity из связанного ReceivingRequestsContent 
-            tOOLACCOUNTINGDataSet.DeliveryListsContent.AddDeliveryListsContentRow(dlcRow);
-            new DeliveryListsContentTableAdapter().Update(tOOLACCOUNTINGDataSet.DeliveryListsContent);
-            new DeliveryListsContentTableAdapter().Fill(tOOLACCOUNTINGDataSet.DeliveryListsContent);
-            new DeliveryListsContentInjTableAdapter().Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
 
+
+            // Получаем PlannedDate из связанной заявки
+            var prcRow = tOOLACCOUNTINGDataSet.PurchaseRequestsContent.FindByPurchaseContentID(row.PurchaseContentID);
+            var rrcRow = tOOLACCOUNTINGDataSet.ReceivingRequestsContent.FindByReceivingContentID(prcRow.ReceivingContentID);
+            dlcRow.DeliveryContentDate = rrcRow.ReceivingRequestsRow.PlannedDate;
+
+            // Количество берем из ReceivingRequestsContent
+            dlcRow.Quantity = rrcRow.Quantity;
+
+            dlcRow.ContractNumber = "0";
+            tOOLACCOUNTINGDataSet.DeliveryListsContent.AddDeliveryListsContentRow(dlcRow);
+            dlcta.Update(tOOLACCOUNTINGDataSet.DeliveryListsContent);
+            dlcta.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContent);
+            dlcita.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
         }
 
         private void DeliveryListFormButtonRemove_Click(object sender, EventArgs e)
         {
+            var selectedRow = DeliveryListFormDeliveryListContentTable.CurrentRow?.DataBoundItem as DataRowView;
+            if (selectedRow == null) return;
 
+            var row = selectedRow.Row as TOOLACCOUNTINGDataSet.DeliveryListsContentInjRow;
+            if (row == null) return;
+
+            var dlcRow = tOOLACCOUNTINGDataSet.DeliveryListsContent.FindByDeliveryContentID(row.DeliveryContentID);
+            dlcRow.Delete();
+            dlcta.Update(tOOLACCOUNTINGDataSet.DeliveryListsContent);
+            dlcta.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContent);
+            dlcita.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
         }
 
         private void DeleviryListForm_FormClosing(object sender, FormClosingEventArgs e)
