@@ -81,6 +81,7 @@
             // 
             this.RequestConsiderationContentTable.AllowUserToAddRows = false;
             this.RequestConsiderationContentTable.AllowUserToDeleteRows = false;
+            this.RequestConsiderationContentTable.AllowUserToResizeRows = false;
             this.RequestConsiderationContentTable.AutoGenerateColumns = false;
             this.RequestConsiderationContentTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.RequestConsiderationContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -177,6 +178,7 @@
             // 
             this.RequestConsiderationFixationTable.AllowUserToAddRows = false;
             this.RequestConsiderationFixationTable.AllowUserToDeleteRows = false;
+            this.RequestConsiderationFixationTable.AllowUserToResizeRows = false;
             this.RequestConsiderationFixationTable.AutoGenerateColumns = false;
             this.RequestConsiderationFixationTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.RequestConsiderationFixationTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -407,6 +409,8 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximumSize = new System.Drawing.Size(923, 532);
+            this.MinimumSize = new System.Drawing.Size(923, 532);
             this.Name = "RequestConsideration";
             this.Text = "Форма рассмотрения заявки на получение – Информационная система учета и приобрете" +
     "ния инструмента";
