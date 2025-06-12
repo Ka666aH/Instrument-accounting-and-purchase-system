@@ -1397,9 +1397,59 @@ namespace Система_учёта_и_приобретения_инструме
         {
             StatementsButtonExport.PerformClick();
         }
+
+        private void StatementsProvider_TextChanged(object sender, EventArgs e)
+        {
+            StatementsSearch();
+        }
+
+        private void StatementsDate_ValueChanged(object sender, EventArgs e)
+        {
+            StatementsSearch();
+        }
+        private void StatementsSearch()
+        {
+            if (isSearchReseting) return;
+            var parameters = new List<SearchParameter>();
+            //string inn = tOOLACCOUNTINGDataSet.Suppliers.Where(x => x.Name == StatementsProvider.Text).Select(x => x.INN).FirstOrDefault();
+            if (!string.IsNullOrEmpty(StatementsProvider.Text)) parameters.Add(new SearchParameter("SupplierName", StatementsProvider.Text, false));
+            //if (StatementsDate.Checked && (!string.IsNullOrEmpty(StatementsDate.Text))) parameters.Add(new SearchParameter("DeliveryListDate", StatementsDate.Value));
+
+            try
+            {
+                string filter = Search.Filter(parameters);
+                string date1 = $"{StatementsDate.Value.ToString("yyyy-MM-dd")}";
+                string date2 = $"{StatementsDate.Value.AddDays(1).ToString("yyyy-MM-dd")}";
+
+                if (!string.IsNullOrEmpty(filter)) filter += " AND ";
+                if (StatementsDate.Checked && (!string.IsNullOrEmpty(StatementsDate.Text)))
+                {
+                    filter += $"DeliveryListDate >= '{date1}'";
+                    filter += " AND ";
+                    filter += $"DeliveryListDate <'{date2}'";
+                }
+
+                deliveryListsInjBindingSource.Filter = filter;
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
         #endregion
 
         #region Товарные накладные
+
+        private void InvoicesButtonEnter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InvoicesDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void InvoicesButtonResetSearch_Click(object sender, EventArgs e)
         {
             InvoicesResetSearch();
@@ -1649,7 +1699,17 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void ProvidersTableContextMenuCreateStatement_Click(object sender, EventArgs e)
         {
-            //fill
+            var selectedRow = ProvidersTable.CurrentRow.DataBoundItem as DataRowView;
+            var supplierRow = selectedRow.Row as TOOLACCOUNTINGDataSet.SuppliersRow;
+
+            InjLevel1.SelectedTab = InjZayavkiPage;
+            InjLevel2.SelectedTab = Statements;
+            DeleviryListForm deleviryListForm = new DeleviryListForm();
+            deleviryListForm.DeliveryListFormSupplier.Text = supplierRow.Name;
+            deleviryListForm.ShowDialog();
+
+            deliveryListsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsInj);
+            deliveryListsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
         }
         #endregion
 
@@ -1802,8 +1862,8 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void OstatkiPrice_CheckedChanged(object sender, EventArgs e)
         {
-            if(OstatkiPrice.Checked) OstatkiTable.Columns[5].Visible = true;
-                else OstatkiTable.Columns[5].Visible = false;
+            if (OstatkiPrice.Checked) OstatkiTable.Columns[5].Visible = true;
+            else OstatkiTable.Columns[5].Visible = false;
         }
 
         private void OstatkiButtonResetSearch_Click(object sender, EventArgs e)
@@ -1863,7 +1923,6 @@ namespace Система_учёта_и_приобретения_инструме
         private void ReceivingRequestsResetWorkshop() { ReceivingRequestsWorkshop.Text = string.Empty; }
         private void ReceivingRequestsResetStatus() { ReceivingRequestsStatus.SelectedIndex = 1; }
         private void ReceivingRequestsResetType() { ReceivingRequestsAll.Checked = true; }
-        //remove filter #fix
         private void PurchaseRequestsResetSearch()
         {
             isSearchReseting = true;
@@ -1871,17 +1930,18 @@ namespace Система_учёта_и_приобретения_инструме
             PurchaseRequestsResetEnd();
             PurchaseRequestsResetStatus();
             isSearchReseting = false;
+            purchaseRequestsInjBindingSource.RemoveFilter();
         }
         private void PurchaseRequestsResetStart() { PurchaseRequestsStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1); PurchaseRequestsStart.Checked = false; }
         private void PurchaseRequestsResetEnd() { PurchaseRequestsEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1); PurchaseRequestsEnd.Checked = false; }
         private void PurchaseRequestsResetStatus() { PurchaseRequestsStatus.Text = string.Empty; }
-        //remove filter #fix
         private void StatementsResetSearch()
         {
             isSearchReseting = true;
             StatementsResetName();
             StatementsResetDate();
             isSearchReseting = false;
+            deliveryListsInjBindingSource.RemoveFilter();
         }
         private void StatementsResetName() { StatementsProvider.Text = string.Empty; }
         private void StatementsResetDate() { StatementsDate.Value = DateTime.Today; StatementsDate.Checked = false; }
