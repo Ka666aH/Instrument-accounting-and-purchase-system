@@ -1265,7 +1265,7 @@ namespace Система_учёта_и_приобретения_инструме
             var parameters = new List<SearchParameter>();
             if (!string.IsNullOrEmpty(textBox12.Text)) parameters.Add(new SearchParameter("BalanceID", Convert.ToInt32(textBox12.Text), true));
             if (!string.IsNullOrEmpty(OstatkiNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", OstatkiNumber.Text, true));
-            if (!string.IsNullOrEmpty(textBox7.Text)) parameters.Add(new SearchParameter("WorkshopID", Convert.ToInt32(textBox7.Text), true));
+            if (!string.IsNullOrEmpty(textBox7.Text)) parameters.Add(new SearchParameter("StorageID", Convert.ToInt32(textBox7.Text), true));
             if (!string.IsNullOrEmpty(textBox16.Text)) parameters.Add(new SearchParameter("ButchNumber", textBox16.Text, true));
           
 
