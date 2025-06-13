@@ -108,6 +108,10 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Inj_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.InvoicesContentInj". При необходимости она может быть перемещена или удалена.
+            this.invoicesContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.InvoicesContentInj);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.InvoicesInj". При необходимости она может быть перемещена или удалена.
+            this.invoicesInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.InvoicesInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DeliveryListsContentInj". При необходимости она может быть перемещена или удалена.
             this.deliveryListsContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DeliveryListsInj". При необходимости она может быть перемещена или удалена.
@@ -1442,7 +1446,10 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void InvoicesButtonEnter_Click(object sender, EventArgs e)
         {
-
+            InvoiceForm invoiceForm = new InvoiceForm();
+            invoiceForm.ShowDialog();
+            invoicesInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.InvoicesInj);
+            invoicesContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.InvoicesContentInj);
         }
 
         private void InvoicesDate_ValueChanged(object sender, EventArgs e)

@@ -307,7 +307,6 @@ namespace Система_учёта_и_приобретения_инструме
                 }
             }
         }
-
         private void DeliveryListFormButtonClose_Click(object sender, EventArgs e)
         {
             Close();

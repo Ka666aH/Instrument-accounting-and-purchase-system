@@ -2483,6 +2483,7 @@
             this.импортToolStripMenuItem.Name = "импортToolStripMenuItem";
             this.импортToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
             this.импортToolStripMenuItem.Text = "Импорт";
+            this.импортToolStripMenuItem.Visible = false;
             this.импортToolStripMenuItem.Click += new System.EventHandler(this.импортToolStripMenuItem_Click);
             // 
             // Menu

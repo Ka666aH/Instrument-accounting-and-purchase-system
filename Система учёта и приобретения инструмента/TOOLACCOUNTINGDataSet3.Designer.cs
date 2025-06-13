@@ -14423,6 +14423,8 @@ namespace Система_учёта_и_приобретения_инструме
             
             private global::System.Data.DataColumn columnQuantity;
             
+            private global::System.Data.DataColumn columnReceivingRequestID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public InvoicesContentInjDataTable() {
@@ -14506,6 +14508,14 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ReceivingRequestIDColumn {
+                get {
+                    return this.columnReceivingRequestID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -14541,7 +14551,7 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public InvoicesContentInjRow AddInvoicesContentInjRow(InvoicesInjRow parentInvoicesInjRowByInvoicesInj_InvoicesContentInj, int DeliveryContentID, string NomenclatureNumber, string FullName, int Quantity) {
+            public InvoicesContentInjRow AddInvoicesContentInjRow(InvoicesInjRow parentInvoicesInjRowByInvoicesInj_InvoicesContentInj, int DeliveryContentID, string NomenclatureNumber, string FullName, int Quantity, int ReceivingRequestID) {
                 InvoicesContentInjRow rowInvoicesContentInjRow = ((InvoicesContentInjRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -14549,7 +14559,8 @@ namespace Система_учёта_и_приобретения_инструме
                         DeliveryContentID,
                         NomenclatureNumber,
                         FullName,
-                        Quantity};
+                        Quantity,
+                        ReceivingRequestID};
                 if ((parentInvoicesInjRowByInvoicesInj_InvoicesContentInj != null)) {
                     columnValuesArray[1] = parentInvoicesInjRowByInvoicesInj_InvoicesContentInj[0];
                 }
@@ -14588,6 +14599,7 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnNomenclatureNumber = base.Columns["NomenclatureNumber"];
                 this.columnFullName = base.Columns["FullName"];
                 this.columnQuantity = base.Columns["Quantity"];
+                this.columnReceivingRequestID = base.Columns["ReceivingRequestID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14605,6 +14617,8 @@ namespace Система_учёта_и_приобретения_инструме
                 base.Columns.Add(this.columnFullName);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
+                this.columnReceivingRequestID = new global::System.Data.DataColumn("ReceivingRequestID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReceivingRequestID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnInvoiceContentID}, true));
                 this.columnInvoiceContentID.AutoIncrement = true;
@@ -14620,6 +14634,7 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnFullName.ReadOnly = true;
                 this.columnFullName.MaxLength = 2147483647;
                 this.columnQuantity.AllowDBNull = false;
+                this.columnReceivingRequestID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19546,6 +19561,17 @@ namespace Система_учёта_и_приобретения_инструме
                 }
                 set {
                     this[this.tableInvoicesContentInj.QuantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ReceivingRequestID {
+                get {
+                    return ((int)(this[this.tableInvoicesContentInj.ReceivingRequestIDColumn]));
+                }
+                set {
+                    this[this.tableInvoicesContentInj.ReceivingRequestIDColumn] = value;
                 }
             }
             
@@ -32970,6 +32996,7 @@ LEFT JOIN Groups g
             tableMapping.ColumnMappings.Add("NomenclatureNumber", "NomenclatureNumber");
             tableMapping.ColumnMappings.Add("FullName", "FullName");
             tableMapping.ColumnMappings.Add("Quantity", "Quantity");
+            tableMapping.ColumnMappings.Add("ReceivingRequestID", "ReceivingRequestID");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -32990,7 +33017,7 @@ LEFT JOIN Groups g
     ic.InvoiceContentID,
     ic.InvoiceID,
     ic.DeliveryContentID,
-    
+    rrc.ReceivingRequestID,
     -- Номер инструмента: аналог или оригинал
     ISNULL(rf.AnalogNomenclatureNumber, rrc.NomenclatureNumber) AS NomenclatureNumber,
 

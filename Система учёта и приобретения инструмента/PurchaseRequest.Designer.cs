@@ -44,17 +44,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.PurchaseRequestDate = new System.Windows.Forms.TextBox();
             this.PurchaseRequestsContentTable = new System.Windows.Forms.DataGridView();
-            this.purchaseContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.purchaseRequestIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receivingContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isPurchaseDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.donorWorkshopIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.requiredQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.purchaseRequestsContentInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.purchaseRequestsContentInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.PurchaseRequestsContentInjTableAdapter();
+            this.requiredQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.donorWorkshopIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isPurchaseDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.receivingContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purchaseRequestIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purchaseContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseRequestsContentTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.purchaseRequestsContentInjBindingSource)).BeginInit();
@@ -213,8 +212,7 @@
             this.donorWorkshopIDDataGridViewTextBoxColumn,
             this.nomenclatureNumberDataGridViewTextBoxColumn,
             this.fullNameDataGridViewTextBoxColumn,
-            this.requiredQuantityDataGridViewTextBoxColumn,
-            this.statusDataGridViewTextBoxColumn});
+            this.requiredQuantityDataGridViewTextBoxColumn});
             this.PurchaseRequestsContentTable.DataSource = this.purchaseRequestsContentInjBindingSource;
             this.PurchaseRequestsContentTable.Location = new System.Drawing.Point(17, 157);
             this.PurchaseRequestsContentTable.MultiSelect = false;
@@ -226,37 +224,35 @@
             this.PurchaseRequestsContentTable.TabIndex = 72;
             this.PurchaseRequestsContentTable.CurrentCellChanged += new System.EventHandler(this.PurchaseRequestsContentTable_CurrentCellChanged);
             // 
-            // purchaseContentIDDataGridViewTextBoxColumn
+            // purchaseRequestsContentInjBindingSource
             // 
-            this.purchaseContentIDDataGridViewTextBoxColumn.DataPropertyName = "PurchaseContentID";
-            this.purchaseContentIDDataGridViewTextBoxColumn.HeaderText = "PurchaseContentID";
-            this.purchaseContentIDDataGridViewTextBoxColumn.Name = "purchaseContentIDDataGridViewTextBoxColumn";
-            this.purchaseContentIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.purchaseContentIDDataGridViewTextBoxColumn.Visible = false;
+            this.purchaseRequestsContentInjBindingSource.DataMember = "PurchaseRequestsContentInj";
+            this.purchaseRequestsContentInjBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
             // 
-            // purchaseRequestIDDataGridViewTextBoxColumn
+            // purchaseRequestsContentInjTableAdapter
             // 
-            this.purchaseRequestIDDataGridViewTextBoxColumn.DataPropertyName = "PurchaseRequestID";
-            this.purchaseRequestIDDataGridViewTextBoxColumn.HeaderText = "PurchaseRequestID";
-            this.purchaseRequestIDDataGridViewTextBoxColumn.Name = "purchaseRequestIDDataGridViewTextBoxColumn";
-            this.purchaseRequestIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.purchaseRequestIDDataGridViewTextBoxColumn.Visible = false;
+            this.purchaseRequestsContentInjTableAdapter.ClearBeforeFill = true;
             // 
-            // receivingContentIDDataGridViewTextBoxColumn
+            // requiredQuantityDataGridViewTextBoxColumn
             // 
-            this.receivingContentIDDataGridViewTextBoxColumn.DataPropertyName = "ReceivingContentID";
-            this.receivingContentIDDataGridViewTextBoxColumn.HeaderText = "ReceivingContentID";
-            this.receivingContentIDDataGridViewTextBoxColumn.Name = "receivingContentIDDataGridViewTextBoxColumn";
-            this.receivingContentIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.receivingContentIDDataGridViewTextBoxColumn.Visible = false;
+            this.requiredQuantityDataGridViewTextBoxColumn.DataPropertyName = "RequiredQuantity";
+            this.requiredQuantityDataGridViewTextBoxColumn.HeaderText = "Количество";
+            this.requiredQuantityDataGridViewTextBoxColumn.Name = "requiredQuantityDataGridViewTextBoxColumn";
+            this.requiredQuantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // isPurchaseDataGridViewCheckBoxColumn
+            // fullNameDataGridViewTextBoxColumn
             // 
-            this.isPurchaseDataGridViewCheckBoxColumn.DataPropertyName = "IsPurchase";
-            this.isPurchaseDataGridViewCheckBoxColumn.HeaderText = "IsPurchase";
-            this.isPurchaseDataGridViewCheckBoxColumn.Name = "isPurchaseDataGridViewCheckBoxColumn";
-            this.isPurchaseDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.isPurchaseDataGridViewCheckBoxColumn.Visible = false;
+            this.fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
+            this.fullNameDataGridViewTextBoxColumn.HeaderText = "Полное наименование";
+            this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
+            this.fullNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nomenclatureNumberDataGridViewTextBoxColumn
+            // 
+            this.nomenclatureNumberDataGridViewTextBoxColumn.DataPropertyName = "NomenclatureNumber";
+            this.nomenclatureNumberDataGridViewTextBoxColumn.HeaderText = "Номенклатурный номер";
+            this.nomenclatureNumberDataGridViewTextBoxColumn.Name = "nomenclatureNumberDataGridViewTextBoxColumn";
+            this.nomenclatureNumberDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // donorWorkshopIDDataGridViewTextBoxColumn
             // 
@@ -266,42 +262,37 @@
             this.donorWorkshopIDDataGridViewTextBoxColumn.ReadOnly = true;
             this.donorWorkshopIDDataGridViewTextBoxColumn.Visible = false;
             // 
-            // nomenclatureNumberDataGridViewTextBoxColumn
+            // isPurchaseDataGridViewCheckBoxColumn
             // 
-            this.nomenclatureNumberDataGridViewTextBoxColumn.DataPropertyName = "NomenclatureNumber";
-            this.nomenclatureNumberDataGridViewTextBoxColumn.HeaderText = "Номенклатурный номер";
-            this.nomenclatureNumberDataGridViewTextBoxColumn.Name = "nomenclatureNumberDataGridViewTextBoxColumn";
-            this.nomenclatureNumberDataGridViewTextBoxColumn.ReadOnly = true;
+            this.isPurchaseDataGridViewCheckBoxColumn.DataPropertyName = "IsPurchase";
+            this.isPurchaseDataGridViewCheckBoxColumn.HeaderText = "IsPurchase";
+            this.isPurchaseDataGridViewCheckBoxColumn.Name = "isPurchaseDataGridViewCheckBoxColumn";
+            this.isPurchaseDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.isPurchaseDataGridViewCheckBoxColumn.Visible = false;
             // 
-            // fullNameDataGridViewTextBoxColumn
+            // receivingContentIDDataGridViewTextBoxColumn
             // 
-            this.fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
-            this.fullNameDataGridViewTextBoxColumn.HeaderText = "Полное наименование";
-            this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
-            this.fullNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.receivingContentIDDataGridViewTextBoxColumn.DataPropertyName = "ReceivingContentID";
+            this.receivingContentIDDataGridViewTextBoxColumn.HeaderText = "ReceivingContentID";
+            this.receivingContentIDDataGridViewTextBoxColumn.Name = "receivingContentIDDataGridViewTextBoxColumn";
+            this.receivingContentIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.receivingContentIDDataGridViewTextBoxColumn.Visible = false;
             // 
-            // requiredQuantityDataGridViewTextBoxColumn
+            // purchaseRequestIDDataGridViewTextBoxColumn
             // 
-            this.requiredQuantityDataGridViewTextBoxColumn.DataPropertyName = "RequiredQuantity";
-            this.requiredQuantityDataGridViewTextBoxColumn.HeaderText = "Количество";
-            this.requiredQuantityDataGridViewTextBoxColumn.Name = "requiredQuantityDataGridViewTextBoxColumn";
-            this.requiredQuantityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.purchaseRequestIDDataGridViewTextBoxColumn.DataPropertyName = "PurchaseRequestID";
+            this.purchaseRequestIDDataGridViewTextBoxColumn.HeaderText = "PurchaseRequestID";
+            this.purchaseRequestIDDataGridViewTextBoxColumn.Name = "purchaseRequestIDDataGridViewTextBoxColumn";
+            this.purchaseRequestIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.purchaseRequestIDDataGridViewTextBoxColumn.Visible = false;
             // 
-            // statusDataGridViewTextBoxColumn
+            // purchaseContentIDDataGridViewTextBoxColumn
             // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Статус";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // purchaseRequestsContentInjBindingSource
-            // 
-            this.purchaseRequestsContentInjBindingSource.DataMember = "PurchaseRequestsContentInj";
-            this.purchaseRequestsContentInjBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
-            // 
-            // purchaseRequestsContentInjTableAdapter
-            // 
-            this.purchaseRequestsContentInjTableAdapter.ClearBeforeFill = true;
+            this.purchaseContentIDDataGridViewTextBoxColumn.DataPropertyName = "PurchaseContentID";
+            this.purchaseContentIDDataGridViewTextBoxColumn.HeaderText = "PurchaseContentID";
+            this.purchaseContentIDDataGridViewTextBoxColumn.Name = "purchaseContentIDDataGridViewTextBoxColumn";
+            this.purchaseContentIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.purchaseContentIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // PurchaseRequest
             // 
@@ -356,6 +347,7 @@
         private System.Windows.Forms.DataGridView PurchaseRequestsContentTable;
         private System.Windows.Forms.BindingSource purchaseRequestsContentInjBindingSource;
         private TOOLACCOUNTINGDataSetTableAdapters.PurchaseRequestsContentInjTableAdapter purchaseRequestsContentInjTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn purchaseContentIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn purchaseRequestIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn receivingContentIDDataGridViewTextBoxColumn;
@@ -364,6 +356,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn requiredQuantityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
     }
 }
