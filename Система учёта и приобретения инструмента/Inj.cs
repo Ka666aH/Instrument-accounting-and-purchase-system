@@ -1448,8 +1448,8 @@ namespace Система_учёта_и_приобретения_инструме
         {
             InvoiceForm invoiceForm = new InvoiceForm();
             invoiceForm.ShowDialog();
-            //deliveryListsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsInj);
-            //deliveryListsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
+            invoicesInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.InvoicesInj);
+            invoicesContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.InvoicesContentInj);
         }
 
         private void InvoicesDate_ValueChanged(object sender, EventArgs e)

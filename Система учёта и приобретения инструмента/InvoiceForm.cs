@@ -45,18 +45,29 @@ namespace Система_учёта_и_приобретения_инструме
 
             invoiceNumber = (tOOLACCOUNTINGDataSet.Invoices.Max(x => x.InvoiceID));
 
+            invoicesContentInjBindingSource.Filter = $"InvoiceID = {invoiceNumber}";
+            ApplyDeliveryFilter();
+
             InvoiceFormNumber.Text = invoiceNumber.ToString();
             InvoiceFormDate.Text = DateTime.Today.ToString("dd.MM.yyyy");
+            SetState();
         }
         private void SetState()
         {
             try
             {
-                if (InvoiceFormDeliveryTable.CurrentRow == null) return;
+                if (InvoiceFormDeliveryTable.CurrentRow == null)
+                {
+                    InvoiceFormQuantity.Value = 0;
+                    InvoiceFormQuantity.Enabled = false;
+                    InvoiceFormButtonsFix.Enabled = false;
+                    return;
+                }
 
                 var selectedRow = InvoiceFormDeliveryTable.CurrentRow?.DataBoundItem as DataRowView;
                 if (selectedRow == null)
                 {
+                    InvoiceFormQuantity.Value = 0;
                     InvoiceFormQuantity.Enabled = false;
                     InvoiceFormButtonsFix.Enabled = false;
                     return;
@@ -65,6 +76,7 @@ namespace Система_учёта_и_приобретения_инструме
                 var row = selectedRow.Row as TOOLACCOUNTINGDataSet.DeliveryListsContentInjRow;
                 if (row == null)
                 {
+                    InvoiceFormQuantity.Value = 0;
                     InvoiceFormQuantity.Enabled = false;
                     InvoiceFormButtonsFix.Enabled = false;
                     return;
@@ -78,6 +90,10 @@ namespace Система_учёта_и_приобретения_инструме
                 InvoiceFormButtonsFix.Enabled = true;
             }
             catch { }
+        }
+        private void InvoiceFormQuantity_ValueChanged(object sender, EventArgs e)
+        {
+            if (InvoiceFormQuantity.Value == 0) InvoiceFormButtonsFix.Enabled = false;
         }
 
         private void InvoiceFormDeliveryTable_CurrentCellChanged(object sender, EventArgs e)
@@ -114,10 +130,12 @@ namespace Система_учёта_и_приобретения_инструме
 
                 // Загрузка всех необходимых данных
                 var rrta = new ReceivingRequestsTableAdapter();
+                var rrcta = new ReceivingRequestsContentTableAdapter();
                 var prcta = new PurchaseRequestsContentTableAdapter();
                 var dlcAdapter = new DeliveryListsContentTableAdapter();
 
                 rrta.Fill(tOOLACCOUNTINGDataSet.ReceivingRequests);
+                rrcta.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsContent);
                 prcta.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContent);
                 dlcAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContent);
 
@@ -211,14 +229,60 @@ namespace Система_учёта_и_приобретения_инструме
                     }
 
                     pr.Status = allPurchaseCompleted ? "Исполнена полностью" : "Исполнена частично";
-                    new PurchaseRequestsTableAdapter().Update(pr);
+                    new PurchaseRequestsTableAdapter().Update(tOOLACCOUNTINGDataSet.PurchaseRequests);
+                    new PurchaseRequestsTableAdapter().Fill(tOOLACCOUNTINGDataSet.PurchaseRequests);
+                    new PurchaseRequestsInjTableAdapter().Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
                 }
 
                 #endregion
+
+                ApplyDeliveryFilter();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка при обработке заявки: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ApplyDeliveryFilter()
+        {
+            try
+            {
+                // Список DeliveryContentID, которые нужно исключить из отображения
+                var excludedIds = new HashSet<int>();
+
+                new DeliveryListsContentTableAdapter().Fill(tOOLACCOUNTINGDataSet.DeliveryListsContent);
+                new InvoicesContentTableAdapter().Fill(tOOLACCOUNTINGDataSet.InvoicesContent);
+                // Перебираем все строки DeliveryListsContent
+                foreach (var dlc in tOOLACCOUNTINGDataSet.DeliveryListsContent)
+                {
+                    // Получаем сумму поставленного по этой строке
+                    var delivered = tOOLACCOUNTINGDataSet.InvoicesContent
+                        .Where(ic => ic.DeliveryContentID == dlc.DeliveryContentID)
+                        .Sum(ic => ic.Quantity);
+
+                    // Если поставлено столько же или больше — исключаем эту строку
+                    if (delivered >= dlc.Quantity)
+                    {
+                        excludedIds.Add(dlc.DeliveryContentID);
+                    }
+                }
+
+                // Формируем фильтр
+                string filter = string.Empty;
+
+                if (excludedIds.Count > 0)
+                {
+                    string excludedList = string.Join(",", excludedIds);
+                    filter = $"DeliveryContentID NOT IN ({excludedList})";
+                }
+
+                // Применяем фильтр
+                deliveryListsContentInjBindingSource.Filter = filter;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при применении фильтра: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -244,5 +308,7 @@ namespace Система_учёта_и_приобретения_инструме
                 }
             }
         }
+
+
     }
 }

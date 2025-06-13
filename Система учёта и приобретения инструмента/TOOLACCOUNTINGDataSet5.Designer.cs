@@ -32858,9 +32858,7 @@ LEFT JOIN ReplacementFixation rf
 INNER JOIN Nomenclature n 
     ON n.NomenclatureNumber = ISNULL(rf.AnalogNomenclatureNumber, rrc.NomenclatureNumber)
 LEFT JOIN Groups g 
-    ON g.RangeStart = LEFT(n.NomenclatureNumber, 4)
-WHERE 
-    rr.Status <> 'Исполнена полностью'";
+    ON g.RangeStart = LEFT(n.NomenclatureNumber, 4)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

@@ -244,6 +244,7 @@
             this.InvoiceFormQuantity.Name = "InvoiceFormQuantity";
             this.InvoiceFormQuantity.Size = new System.Drawing.Size(365, 29);
             this.InvoiceFormQuantity.TabIndex = 69;
+            this.InvoiceFormQuantity.ValueChanged += new System.EventHandler(this.InvoiceFormQuantity_ValueChanged);
             // 
             // InvoiceFormButtonsFix
             // 

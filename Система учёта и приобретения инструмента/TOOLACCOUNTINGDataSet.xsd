@@ -2078,9 +2078,7 @@ LEFT JOIN ReplacementFixation rf
 INNER JOIN Nomenclature n 
     ON n.NomenclatureNumber = ISNULL(rf.AnalogNomenclatureNumber, rrc.NomenclatureNumber)
 LEFT JOIN Groups g 
-    ON g.RangeStart = LEFT(n.NomenclatureNumber, 4)
-WHERE 
-    rr.Status &lt;&gt; 'Исполнена полностью'</CommandText>
+    ON g.RangeStart = LEFT(n.NomenclatureNumber, 4)</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
