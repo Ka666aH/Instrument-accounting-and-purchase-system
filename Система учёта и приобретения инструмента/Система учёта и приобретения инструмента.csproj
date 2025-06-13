@@ -154,10 +154,7 @@
     <Compile Include="SupForm.Designer.cs">
       <DependentUpon>SupForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TOOLACCOUNTINGDataSet.cs">
-      <DependentUpon>TOOLACCOUNTINGDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="TOOLACCOUNTINGDataSet.Designer.cs">
+    <Compile Include="TOOLACCOUNTINGDataSet5.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TOOLACCOUNTINGDataSet.xsd</DependentUpon>
@@ -246,9 +243,7 @@
     <None Include="TOOLACCOUNTINGDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="TOOLACCOUNTINGDataSet.xss">
-      <DependentUpon>TOOLACCOUNTINGDataSet.xsd</DependentUpon>
+      <LastGenOutput>TOOLACCOUNTINGDataSet5.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
