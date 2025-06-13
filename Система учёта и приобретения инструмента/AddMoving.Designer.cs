@@ -124,7 +124,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(307, 184);
+            this.label5.Location = new System.Drawing.Point(303, 184);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(163, 20);
             this.label5.TabIndex = 8;
@@ -362,6 +362,7 @@
             this.StorageFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.StorageFrom.Location = new System.Drawing.Point(472, 181);
             this.StorageFrom.Name = "StorageFrom";
+            this.StorageFrom.ReadOnly = true;
             this.StorageFrom.Size = new System.Drawing.Size(100, 26);
             this.StorageFrom.TabIndex = 16;
             // 

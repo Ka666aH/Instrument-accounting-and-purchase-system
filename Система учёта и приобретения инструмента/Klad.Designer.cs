@@ -172,6 +172,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.OstatkiTable = new System.Windows.Forms.DataGridView();
             this.balanceIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -184,8 +186,10 @@
             this.balancesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox16 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
+            this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.OstatkiNumber = new System.Windows.Forms.MaskedTextBox();
             this.label39 = new System.Windows.Forms.Label();
@@ -214,7 +218,7 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.DeleteStorage = new System.Windows.Forms.Button();
             this.AlterStorage = new System.Windows.Forms.Button();
-            this.CreateStorage = new System.Windows.Forms.Button();
+            this.CreateMove = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -250,8 +254,6 @@
             this.receivingRequestsContentTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter();
             this.toolMovementsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ToolMovementsTableAdapter();
             this.balancesTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.BalancesTableAdapter();
-            this.label37 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
             this.tabPage4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -1773,13 +1775,13 @@
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage7);
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tabControl1.Location = new System.Drawing.Point(0, 25);
             this.tabControl1.Name = "tabControl1";
@@ -1790,6 +1792,8 @@
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.button9);
+            this.tabPage7.Controls.Add(this.button8);
             this.tabPage7.Controls.Add(this.button7);
             this.tabPage7.Controls.Add(this.OstatkiTable);
             this.tabPage7.Controls.Add(this.groupBox6);
@@ -1800,16 +1804,39 @@
             this.tabPage7.Text = "Остатки номенклатуры";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
+            // button9
+            // 
+            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button9.Location = new System.Drawing.Point(1064, 170);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(182, 48);
+            this.button9.TabIndex = 26;
+            this.button9.Text = "Создать дефектную ведомость";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button8
+            // 
+            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button8.Location = new System.Drawing.Point(1064, 116);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(182, 48);
+            this.button8.TabIndex = 21;
+            this.button8.Text = "Создать движение";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click_1);
+            // 
             // button7
             // 
             this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.Location = new System.Drawing.Point(1064, 116);
+            this.button7.Location = new System.Drawing.Point(1064, 224);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(182, 44);
+            this.button7.Size = new System.Drawing.Size(182, 48);
             this.button7.TabIndex = 17;
-            this.button7.Text = "Отчёт";
+            this.button7.Text = "Сформировать отчет";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // OstatkiTable
             // 
@@ -1913,6 +1940,16 @@
             this.textBox12.TabIndex = 18;
             this.textBox12.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
             // 
+            // textBox16
+            // 
+            this.textBox16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox16.Location = new System.Drawing.Point(988, 62);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.Size = new System.Drawing.Size(167, 29);
+            this.textBox16.TabIndex = 17;
+            this.textBox16.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
+            // 
             // textBox7
             // 
             this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1934,6 +1971,16 @@
             this.button6.Text = "Сброс";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.OstatkiResetButton_Click);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label37.Location = new System.Drawing.Point(862, 64);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(66, 20);
+            this.label37.TabIndex = 10;
+            this.label37.Text = "Партия";
             // 
             // label38
             // 
@@ -2016,7 +2063,7 @@
             // 
             this.DeleteWorkshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteWorkshop.Enabled = false;
-            this.DeleteWorkshop.Location = new System.Drawing.Point(1050, 210);
+            this.DeleteWorkshop.Location = new System.Drawing.Point(1056, 214);
             this.DeleteWorkshop.Name = "DeleteWorkshop";
             this.DeleteWorkshop.Size = new System.Drawing.Size(182, 44);
             this.DeleteWorkshop.TabIndex = 22;
@@ -2028,7 +2075,7 @@
             // 
             this.AlterWorkshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AlterWorkshop.Enabled = false;
-            this.AlterWorkshop.Location = new System.Drawing.Point(1050, 160);
+            this.AlterWorkshop.Location = new System.Drawing.Point(1056, 164);
             this.AlterWorkshop.Name = "AlterWorkshop";
             this.AlterWorkshop.Size = new System.Drawing.Size(182, 44);
             this.AlterWorkshop.TabIndex = 21;
@@ -2040,12 +2087,13 @@
             // 
             this.CreateWorkshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CreateWorkshop.Enabled = false;
-            this.CreateWorkshop.Location = new System.Drawing.Point(1050, 110);
+            this.CreateWorkshop.Location = new System.Drawing.Point(1056, 110);
             this.CreateWorkshop.Name = "CreateWorkshop";
-            this.CreateWorkshop.Size = new System.Drawing.Size(182, 44);
+            this.CreateWorkshop.Size = new System.Drawing.Size(182, 48);
             this.CreateWorkshop.TabIndex = 20;
-            this.CreateWorkshop.Text = "Создать";
+            this.CreateWorkshop.Text = "Создать заявку на получение";
             this.CreateWorkshop.UseVisualStyleBackColor = true;
+            this.CreateWorkshop.Click += new System.EventHandler(this.CreateWorkshop_Click);
             // 
             // groupBox4
             // 
@@ -2135,7 +2183,7 @@
             this.dataGridView5.MultiSelect = false;
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.RowHeadersVisible = false;
-            this.dataGridView5.Size = new System.Drawing.Size(1021, 194);
+            this.dataGridView5.Size = new System.Drawing.Size(1030, 194);
             this.dataGridView5.TabIndex = 0;
             // 
             // storageIDDataGridViewTextBoxColumn
@@ -2187,7 +2235,7 @@
             this.WorkshopsMain.ReadOnly = true;
             this.WorkshopsMain.RowHeadersVisible = false;
             this.WorkshopsMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.WorkshopsMain.Size = new System.Drawing.Size(1021, 275);
+            this.WorkshopsMain.Size = new System.Drawing.Size(1030, 275);
             this.WorkshopsMain.TabIndex = 0;
             this.WorkshopsMain.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.WorkshopsMain_CellBeginEdit);
             this.WorkshopsMain.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.WorkshopsMain_CellValidating);
@@ -2212,7 +2260,7 @@
             // 
             this.tabPage6.Controls.Add(this.DeleteStorage);
             this.tabPage6.Controls.Add(this.AlterStorage);
-            this.tabPage6.Controls.Add(this.CreateStorage);
+            this.tabPage6.Controls.Add(this.CreateMove);
             this.tabPage6.Controls.Add(this.groupBox5);
             this.tabPage6.Controls.Add(this.StoragesTable);
             this.tabPage6.Location = new System.Drawing.Point(4, 29);
@@ -2244,16 +2292,16 @@
             this.AlterStorage.UseVisualStyleBackColor = true;
             this.AlterStorage.Click += new System.EventHandler(this.AlterStorage_Click);
             // 
-            // CreateStorage
+            // CreateMove
             // 
-            this.CreateStorage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CreateStorage.Location = new System.Drawing.Point(1056, 78);
-            this.CreateStorage.Name = "CreateStorage";
-            this.CreateStorage.Size = new System.Drawing.Size(182, 44);
-            this.CreateStorage.TabIndex = 23;
-            this.CreateStorage.Text = "Создать";
-            this.CreateStorage.UseVisualStyleBackColor = true;
-            this.CreateStorage.Click += new System.EventHandler(this.CreateStorage_Click);
+            this.CreateMove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CreateMove.Location = new System.Drawing.Point(1056, 78);
+            this.CreateMove.Name = "CreateMove";
+            this.CreateMove.Size = new System.Drawing.Size(182, 44);
+            this.CreateMove.TabIndex = 23;
+            this.CreateMove.Text = "Создать движение";
+            this.CreateMove.UseVisualStyleBackColor = true;
+            this.CreateMove.Click += new System.EventHandler(this.CreateMove_Click);
             // 
             // groupBox5
             // 
@@ -2531,26 +2579,6 @@
             // 
             this.balancesTableAdapter.ClearBeforeFill = true;
             // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label37.Location = new System.Drawing.Point(862, 64);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(66, 20);
-            this.label37.TabIndex = 10;
-            this.label37.Text = "Партия";
-            // 
-            // textBox16
-            // 
-            this.textBox16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox16.Location = new System.Drawing.Point(988, 62);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(167, 29);
-            this.textBox16.TabIndex = 17;
-            this.textBox16.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
-            // 
             // Klad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2707,7 +2735,7 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Button DeleteStorage;
         private System.Windows.Forms.Button AlterStorage;
-        private System.Windows.Forms.Button CreateStorage;
+        private System.Windows.Forms.Button CreateMove;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label33;
@@ -2839,5 +2867,7 @@
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
     }
 }

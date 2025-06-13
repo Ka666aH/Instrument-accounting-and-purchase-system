@@ -124,19 +124,28 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Add_CheckedChanged(object sender, EventArgs e)
         {
+            Check_MoveType();
+        }
+
+        private void Check_MoveType()
+        {
             if (Add.Checked)
             {
-                StorageFrom.ReadOnly = true;
+
                 StorageTo.ReadOnly = false;
                 label15.Text = "Тип документа *";
                 label7.Text = "Документ-основание *";
                 label5.Text = "Склад-отправитель";
                 SourceDocumentType.Text = null;
-            } else
+                StorageTo.Text = "0";
+                StorageFrom.Text = null;
+                StorageFrom.ReadOnly = true;
+            }
+            else
             {
                 if (NonAdd.Checked)
                 {
-                    StorageFrom.ReadOnly = false;
+
                     StorageTo.Text = "12";
                     StorageTo.ReadOnly = true;
                     label15.Text = "Тип документа *";
@@ -147,13 +156,14 @@ namespace Система_учёта_и_приобретения_инструме
                 else
                 {
                     label15.Text = "Тип документа";
+                    StorageTo.Text = null;
+                    StorageFrom.Text = "0";
                     label7.Text = "Документ-основание";
-                    StorageFrom.ReadOnly = false;
                     StorageTo.ReadOnly = false;
                     label5.Text = "Склад-отправитель *";
                     SourceDocumentType.Text = null;
                 }
-            }   
+            }
         }
 
         /// <summary>
@@ -182,6 +192,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void AddMoving_Load(object sender, EventArgs e)
         {
+            Check_MoveType();
             var TMTableAdapter = new ToolMovementsTableAdapter();
             TMTableAdapter.Fill(tOOLACCOUNTINGDataSet.ToolMovements);
             int newId = tOOLACCOUNTINGDataSet.ToolMovements.Count() == 0 ? 1 : tOOLACCOUNTINGDataSet.ToolMovements.Max(r => r.MovementID) + 1;

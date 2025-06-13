@@ -290,10 +290,11 @@ namespace Система_учёта_и_приобретения_инструме
             }
         }
         #endregion
-        private void CreateStorage_Click(object sender, EventArgs e)
+        private void CreateMove_Click(object sender, EventArgs e)
         {
-            StorageForm storageForm = new StorageForm(tOOLACCOUNTINGDataSet, storagesTableAdapter);
-            storageForm.ShowDialog();
+            AddMoving addMoving = new AddMoving();
+            //addMoving.MovementSaved += (s, args) => RefreshToolMovementsTables();
+            addMoving.ShowDialog();
         }
         public void SetStoragesButtonsState()
         {
@@ -1044,7 +1045,6 @@ namespace Система_учёта_и_приобретения_инструме
         {
             var menu = new ContextMenuStrip();
             menu.Items.Add("Создать перемещение на данный склад", null, StorageCreateMovingTo_Click);
-            menu.Items.Add("Создать перемещение с этого склада", null, StorageCreateMovingFrom_Click);
             menu.Items.Add("Показать остатки на этом складе", null, StorageShowOstatki_Click);
             StoragesTable.ContextMenuStrip = menu;
         }
@@ -1236,18 +1236,6 @@ namespace Система_учёта_и_приобретения_инструме
             }
         }
 
-        private void StorageCreateMovingFrom_Click(object sender, EventArgs e)
-        {
-            if (StoragesTable.CurrentRow?.DataBoundItem is DataRowView drv)
-            {
-                int storageId = Convert.ToInt32(drv["StorageID"]);
-                var form = new AddMoving();
-                form.Prefill(string.Empty, storageId, string.Empty, 0m, true);
-                form.ShowDialog();
-                RefreshToolMovementsTables();
-            }
-        }
-
         private void StorageShowOstatki_Click(object sender, EventArgs e)
         {
             if (StoragesTable.CurrentRow?.DataBoundItem is DataRowView drv)
@@ -1303,48 +1291,123 @@ namespace Система_учёта_и_приобретения_инструме
        
 
         #region Excel reports
-        private void ExportTable(System.Data.DataTable table, string defaultFileName)
+        /// <summary>
+        /// Создаёт копию исходной таблицы и добавляет к ней колонку "FullName", если в таблице присутствует поле "NomenclatureNumber".
+        /// Колонка ставится сразу после номера номенклатуры.
+        /// </summary>
+        private System.Data.DataTable PrepareForExport(System.Data.DataTable source)
+        {
+            if (source == null) return null;
+
+            var dt = source.Copy();
+
+            // Если таблица не содержит номера номенклатуры – ничего не добавляем
+            if (!dt.Columns.Contains("NomenclatureNumber")) return dt;
+
+            // Добавляем колонку с полным наименованием при необходимости
+            if (!dt.Columns.Contains("FullName"))
+            {
+                dt.Columns.Add("FullName", typeof(string));
+            }
+
+            // Заполняем её
+            var nomenDict = tOOLACCOUNTINGDataSet.NomenclatureView
+                .ToDictionary(n => n.NomenclatureNumber, n => n.FullName);
+
+            foreach (System.Data.DataRow row in dt.Rows)
+            {
+                var num = row["NomenclatureNumber"]?.ToString();
+                if (!string.IsNullOrEmpty(num) && nomenDict.TryGetValue(num, out var name))
+                {
+                    row["FullName"] = name;
+                }
+            }
+
+            // Перемещаем колонку сразу после номера номенклатуры
+            dt.Columns["FullName"].SetOrdinal(dt.Columns["NomenclatureNumber"].Ordinal + 1);
+
+            return dt;
+        }
+
+        private void ExportTable(System.Data.DataTable table)
         {
             if (table == null || table.Rows.Count == 0)
             {
-                MessageBox.Show("Нет данных для экспорта.", "Экспорт", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                NotificationService.Notify("Экспорт", "Нет данных для экспорта.", ToolTipIcon.Info);
                 return;
             }
 
-            using (var sfd = new SaveFileDialog())
+            try
             {
-                sfd.Filter = "Excel (*.xlsx)|*.xlsx";
-                sfd.FileName = defaultFileName + ".xlsx";
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        new Excel().Export(table, sfd.FileName);
-                        MessageBox.Show("Экспорт завершён.", "Экспорт", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
+                new Excel().Export(table); // без сохранения, сразу открывается Excel
+                NotificationService.Notify("Экспорт", "Отчёт открыт в Excel.", ToolTipIcon.Info);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void ReportBalances_Click(object sender, EventArgs e)
         {
-            ExportTable(tOOLACCOUNTINGDataSet.Balances, "Остатки");
+            try
+            {
+                new Excel().ExportBalancesForm(tOOLACCOUNTINGDataSet); // открываем Excel без сохранения
+                NotificationService.Notify("Экспорт", "Ведомость открыта в Excel.", ToolTipIcon.Info);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ReportDefective_Click(object sender, EventArgs e)
         {
-            ExportTable(tOOLACCOUNTINGDataSet.DefectiveLists, "Дефектные_ведомости");
+            var table = PrepareForExport(tOOLACCOUNTINGDataSet.DefectiveLists);
+            ExportTable(table);
         }
 
         private void ReportApplications_Click(object sender, EventArgs e)
         {
-            ExportTable(tOOLACCOUNTINGDataSet.ReceivingRequests, "Заявки");
+            var table = PrepareForExport(tOOLACCOUNTINGDataSet.ReceivingRequests);
+            ExportTable(table);
         }
         #endregion
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            AddMoving addMoving = new AddMoving();
+            //addMoving.MovementSaved += (s, args) => RefreshToolMovementsTables();
+            addMoving.ShowDialog();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            DefAdd defAdd = new DefAdd();
+            defAdd.DefectiveSaved += (s, args) => RefreshDefectiveListsTables();
+            defAdd.ShowDialog();
+        }
+
+        private void CreateWorkshop_Click(object sender, EventArgs e)
+        {
+            AddApplications addApplications = new AddApplications(tOOLACCOUNTINGDataSet);
+            // Подписываемся на событие сохранения для обновления таблиц
+            addApplications.RequestSaved += (s, args) => RefreshReceivingRequestsTables();
+            addApplications.ShowDialog();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                new Excel().ExportBalancesForm(tOOLACCOUNTINGDataSet); // открываем Excel без сохранения
+                NotificationService.Notify("Экспорт", "Ведомость открыта в Excel.", ToolTipIcon.Info);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 
 }

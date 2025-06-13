@@ -222,13 +222,14 @@ namespace Система_учёта_и_приобретения_инструме
                     {
                         dataSet.ReceivingRequestsContent.AddReceivingRequestsContentRow(newRow);
                     }
-                    receivingRequestsContentTableAdapter.Update(dataSet.ReceivingRequestsContent);
-                    receivingRequestsContentTableAdapter.Fill(dataSet.ReceivingRequestsContent);
-
-                    // Явное обновление глобального DataSet
-                    globalRequestsAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequests1);
-                    globalContentAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsContent1);
+                   
                 }
+                receivingRequestsContentTableAdapter.Update(dataSet.ReceivingRequestsContent);
+                receivingRequestsContentTableAdapter.Fill(dataSet.ReceivingRequestsContent);
+
+                // Явное обновление глобального DataSet
+                globalRequestsAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequests1);
+                globalContentAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsContent1);
 
                 // Вызываем событие после успешного сохранения
                 RequestSaved?.Invoke(this, EventArgs.Empty);
@@ -365,6 +366,9 @@ namespace Система_учёта_и_приобретения_инструме
         private void ApplicationType_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateReasonItems();
+            
+               
+            
         }
 
         private void UpdateReasonItems()
@@ -384,7 +388,12 @@ namespace Система_учёта_и_приобретения_инструме
                     "Другое"
                 });
             }
-            Reason.SelectedIndex = -1;
+            if (ApplicationType.Text != "Внеплановая")
+            {
+                Reason.SelectedIndex = 0;
+                
+            } else
+                Reason.SelectedIndex = -1;
         }
 
         private class WorkshopDisplay
