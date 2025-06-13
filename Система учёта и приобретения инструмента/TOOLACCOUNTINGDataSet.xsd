@@ -1971,7 +1971,7 @@ INNER JOIN
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DeliveryListsContentInjTableAdapter" GeneratorDataComponentClassName="DeliveryListsContentInjTableAdapter" Name="DeliveryListsContentInj" UserDataComponentName="DeliveryListsContentInjTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="TOOLACCOUNTINGConnectionString (Settings)" DbObjectName="TOOLACCOUNTING.dbo.DeliveryListsContent" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="TOOLACCOUNTINGConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT 
@@ -1988,16 +1988,27 @@ INNER JOIN
     COALESCE(n.CuttingMaterial + ' ', '') + 
     COALESCE(n.RegulatoryDoc, '') AS FullName,
 
-    -- Дата поставки (берётся напрямую из DeliveryListsContent)
+    -- Дата поставки
     dlc.DeliveryContentDate,
 
-    -- Количество (берётся напрямую из DeliveryListsContent)
-    dlc.Quantity
+    -- Количество
+    dlc.Quantity,
+
+    -- Идентификатор заявки на приёмку
+    rrc.ReceivingRequestID,
+
+    -- Цех в формате "ID - Name"
+    CAST(w.WorkshopID AS NVARCHAR(10)) + ' - ' + w.Name AS Workshop
+
 FROM DeliveryListsContent dlc
 INNER JOIN PurchaseRequestsContent prc 
     ON dlc.PurchaseContentID = prc.PurchaseContentID
 INNER JOIN ReceivingRequestsContent rrc 
     ON prc.ReceivingContentID = rrc.ReceivingContentID
+INNER JOIN ReceivingRequests rr 
+    ON rrc.ReceivingRequestID = rr.ReceivingRequestID
+INNER JOIN Workshops w 
+    ON rr.WorkshopID = w.WorkshopID
 LEFT JOIN ReplacementFixation rf 
     ON rrc.ReceivingContentID = rf.ReceivingContentID 
 INNER JOIN Nomenclature n 
@@ -2016,6 +2027,8 @@ LEFT JOIN Groups g
               <Mapping SourceColumn="FullName" DataSetColumn="FullName" />
               <Mapping SourceColumn="DeliveryContentDate" DataSetColumn="DeliveryContentDate" />
               <Mapping SourceColumn="Quantity" DataSetColumn="Quantity" />
+              <Mapping SourceColumn="ReceivingRequestID" DataSetColumn="ReceivingRequestID" />
+              <Mapping SourceColumn="Workshop" DataSetColumn="Workshop" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -3090,6 +3103,14 @@ LEFT JOIN Groups g
               </xs:element>
               <xs:element name="DeliveryContentDate" msprop:Generator_UserColumnName="DeliveryContentDate" msprop:Generator_ColumnPropNameInTable="DeliveryContentDateColumn" msprop:Generator_ColumnPropNameInRow="DeliveryContentDate" msprop:Generator_ColumnVarNameInTable="columnDeliveryContentDate" type="xs:dateTime" />
               <xs:element name="Quantity" msprop:Generator_UserColumnName="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" type="xs:int" />
+              <xs:element name="ReceivingRequestID" msprop:Generator_ColumnPropNameInRow="ReceivingRequestID" msprop:Generator_ColumnPropNameInTable="ReceivingRequestIDColumn" msprop:Generator_ColumnVarNameInTable="columnReceivingRequestID" msprop:Generator_UserColumnName="ReceivingRequestID" type="xs:int" />
+              <xs:element name="Workshop" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="Workshop" msprop:Generator_ColumnPropNameInTable="WorkshopColumn" msprop:Generator_ColumnVarNameInTable="columnWorkshop" msprop:Generator_UserColumnName="Workshop" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="268" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

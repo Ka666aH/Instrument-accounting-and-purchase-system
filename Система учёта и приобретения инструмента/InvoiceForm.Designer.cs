@@ -55,6 +55,21 @@
             this.fullNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
+            this.deliveryContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deliveryListIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receivingRequestIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.workshopDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deliveryContentDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoiceContentIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoiceIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deliveryContentIDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receivingRequestIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomenclatureNumberDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fullNameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deliveryListsContentInjBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeliveryListFormDeliveryListContentTable)).BeginInit();
@@ -124,8 +139,19 @@
             this.DeliveryListFormDeliveryListContentTable.AllowUserToAddRows = false;
             this.DeliveryListFormDeliveryListContentTable.AllowUserToDeleteRows = false;
             this.DeliveryListFormDeliveryListContentTable.AllowUserToResizeRows = false;
+            this.DeliveryListFormDeliveryListContentTable.AutoGenerateColumns = false;
             this.DeliveryListFormDeliveryListContentTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DeliveryListFormDeliveryListContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DeliveryListFormDeliveryListContentTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.deliveryContentIDDataGridViewTextBoxColumn,
+            this.deliveryListIDDataGridViewTextBoxColumn,
+            this.receivingRequestIDDataGridViewTextBoxColumn,
+            this.workshopDataGridViewTextBoxColumn,
+            this.nomenclatureNumberDataGridViewTextBoxColumn,
+            this.fullNameDataGridViewTextBoxColumn,
+            this.deliveryContentDateDataGridViewTextBoxColumn,
+            this.quantityDataGridViewTextBoxColumn});
+            this.DeliveryListFormDeliveryListContentTable.DataSource = this.deliveryListsContentInjBindingSource;
             this.DeliveryListFormDeliveryListContentTable.Location = new System.Drawing.Point(18, 128);
             this.DeliveryListFormDeliveryListContentTable.Margin = new System.Windows.Forms.Padding(2);
             this.DeliveryListFormDeliveryListContentTable.MultiSelect = false;
@@ -197,8 +223,18 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.invoiceContentIDDataGridViewTextBoxColumn1,
+            this.invoiceIDDataGridViewTextBoxColumn1,
+            this.deliveryContentIDDataGridViewTextBoxColumn2,
+            this.receivingRequestIDDataGridViewTextBoxColumn1,
+            this.nomenclatureNumberDataGridViewTextBoxColumn2,
+            this.fullNameDataGridViewTextBoxColumn2,
+            this.quantityDataGridViewTextBoxColumn2});
+            this.dataGridView1.DataSource = this.invoicesContentInjBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(18, 407);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.MultiSelect = false;
@@ -276,6 +312,117 @@
             this.label2.TabIndex = 90;
             this.label2.Text = "Распределение инструментов";
             // 
+            // deliveryContentIDDataGridViewTextBoxColumn
+            // 
+            this.deliveryContentIDDataGridViewTextBoxColumn.DataPropertyName = "DeliveryContentID";
+            this.deliveryContentIDDataGridViewTextBoxColumn.HeaderText = "Номер";
+            this.deliveryContentIDDataGridViewTextBoxColumn.Name = "deliveryContentIDDataGridViewTextBoxColumn";
+            this.deliveryContentIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.deliveryContentIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // deliveryListIDDataGridViewTextBoxColumn
+            // 
+            this.deliveryListIDDataGridViewTextBoxColumn.DataPropertyName = "DeliveryListID";
+            this.deliveryListIDDataGridViewTextBoxColumn.HeaderText = "Номер ведомости поставки";
+            this.deliveryListIDDataGridViewTextBoxColumn.Name = "deliveryListIDDataGridViewTextBoxColumn";
+            this.deliveryListIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.deliveryListIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // receivingRequestIDDataGridViewTextBoxColumn
+            // 
+            this.receivingRequestIDDataGridViewTextBoxColumn.DataPropertyName = "ReceivingRequestID";
+            this.receivingRequestIDDataGridViewTextBoxColumn.HeaderText = "Номер заявки на получение";
+            this.receivingRequestIDDataGridViewTextBoxColumn.Name = "receivingRequestIDDataGridViewTextBoxColumn";
+            this.receivingRequestIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // workshopDataGridViewTextBoxColumn
+            // 
+            this.workshopDataGridViewTextBoxColumn.DataPropertyName = "Workshop";
+            this.workshopDataGridViewTextBoxColumn.HeaderText = "Цех";
+            this.workshopDataGridViewTextBoxColumn.Name = "workshopDataGridViewTextBoxColumn";
+            this.workshopDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nomenclatureNumberDataGridViewTextBoxColumn
+            // 
+            this.nomenclatureNumberDataGridViewTextBoxColumn.DataPropertyName = "NomenclatureNumber";
+            this.nomenclatureNumberDataGridViewTextBoxColumn.HeaderText = "Номенклатурный номер";
+            this.nomenclatureNumberDataGridViewTextBoxColumn.Name = "nomenclatureNumberDataGridViewTextBoxColumn";
+            this.nomenclatureNumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fullNameDataGridViewTextBoxColumn
+            // 
+            this.fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
+            this.fullNameDataGridViewTextBoxColumn.HeaderText = "Полное наименование";
+            this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
+            this.fullNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // deliveryContentDateDataGridViewTextBoxColumn
+            // 
+            this.deliveryContentDateDataGridViewTextBoxColumn.DataPropertyName = "DeliveryContentDate";
+            this.deliveryContentDateDataGridViewTextBoxColumn.HeaderText = "Дата поставки";
+            this.deliveryContentDateDataGridViewTextBoxColumn.Name = "deliveryContentDateDataGridViewTextBoxColumn";
+            this.deliveryContentDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.deliveryContentDateDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Количество";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // invoiceContentIDDataGridViewTextBoxColumn1
+            // 
+            this.invoiceContentIDDataGridViewTextBoxColumn1.DataPropertyName = "InvoiceContentID";
+            this.invoiceContentIDDataGridViewTextBoxColumn1.HeaderText = "Номер";
+            this.invoiceContentIDDataGridViewTextBoxColumn1.Name = "invoiceContentIDDataGridViewTextBoxColumn1";
+            this.invoiceContentIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.invoiceContentIDDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // invoiceIDDataGridViewTextBoxColumn1
+            // 
+            this.invoiceIDDataGridViewTextBoxColumn1.DataPropertyName = "InvoiceID";
+            this.invoiceIDDataGridViewTextBoxColumn1.HeaderText = "InvoiceID";
+            this.invoiceIDDataGridViewTextBoxColumn1.Name = "invoiceIDDataGridViewTextBoxColumn1";
+            this.invoiceIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.invoiceIDDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // deliveryContentIDDataGridViewTextBoxColumn2
+            // 
+            this.deliveryContentIDDataGridViewTextBoxColumn2.DataPropertyName = "DeliveryContentID";
+            this.deliveryContentIDDataGridViewTextBoxColumn2.HeaderText = "DeliveryContentID";
+            this.deliveryContentIDDataGridViewTextBoxColumn2.Name = "deliveryContentIDDataGridViewTextBoxColumn2";
+            this.deliveryContentIDDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.deliveryContentIDDataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // receivingRequestIDDataGridViewTextBoxColumn1
+            // 
+            this.receivingRequestIDDataGridViewTextBoxColumn1.DataPropertyName = "ReceivingRequestID";
+            this.receivingRequestIDDataGridViewTextBoxColumn1.HeaderText = "Номер заявки на получение";
+            this.receivingRequestIDDataGridViewTextBoxColumn1.Name = "receivingRequestIDDataGridViewTextBoxColumn1";
+            this.receivingRequestIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // nomenclatureNumberDataGridViewTextBoxColumn2
+            // 
+            this.nomenclatureNumberDataGridViewTextBoxColumn2.DataPropertyName = "NomenclatureNumber";
+            this.nomenclatureNumberDataGridViewTextBoxColumn2.HeaderText = "Номенклатурный номер";
+            this.nomenclatureNumberDataGridViewTextBoxColumn2.Name = "nomenclatureNumberDataGridViewTextBoxColumn2";
+            this.nomenclatureNumberDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // fullNameDataGridViewTextBoxColumn2
+            // 
+            this.fullNameDataGridViewTextBoxColumn2.DataPropertyName = "FullName";
+            this.fullNameDataGridViewTextBoxColumn2.HeaderText = "Полное наименование";
+            this.fullNameDataGridViewTextBoxColumn2.Name = "fullNameDataGridViewTextBoxColumn2";
+            this.fullNameDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // quantityDataGridViewTextBoxColumn2
+            // 
+            this.quantityDataGridViewTextBoxColumn2.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn2.HeaderText = "Количество";
+            this.quantityDataGridViewTextBoxColumn2.Name = "quantityDataGridViewTextBoxColumn2";
+            this.quantityDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
             // InvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -336,5 +483,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deliveryContentIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deliveryListIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn receivingRequestIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn workshopDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deliveryContentDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invoiceContentIDDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invoiceIDDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deliveryContentIDDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn receivingRequestIDDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn2;
     }
 }

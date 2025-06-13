@@ -13804,6 +13804,10 @@ namespace Система_учёта_и_приобретения_инструме
             
             private global::System.Data.DataColumn columnQuantity;
             
+            private global::System.Data.DataColumn columnReceivingRequestID;
+            
+            private global::System.Data.DataColumn columnWorkshop;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DeliveryListsContentInjDataTable() {
@@ -13887,6 +13891,22 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ReceivingRequestIDColumn {
+                get {
+                    return this.columnReceivingRequestID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn WorkshopColumn {
+                get {
+                    return this.columnWorkshop;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -13922,7 +13942,7 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DeliveryListsContentInjRow AddDeliveryListsContentInjRow(DeliveryListsInjRow parentDeliveryListsInjRowByDeliveryListsInj_DeliveryListsContentInj, string NomenclatureNumber, string FullName, System.DateTime DeliveryContentDate, int Quantity) {
+            public DeliveryListsContentInjRow AddDeliveryListsContentInjRow(DeliveryListsInjRow parentDeliveryListsInjRowByDeliveryListsInj_DeliveryListsContentInj, string NomenclatureNumber, string FullName, System.DateTime DeliveryContentDate, int Quantity, int ReceivingRequestID, string Workshop) {
                 DeliveryListsContentInjRow rowDeliveryListsContentInjRow = ((DeliveryListsContentInjRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -13930,7 +13950,9 @@ namespace Система_учёта_и_приобретения_инструме
                         NomenclatureNumber,
                         FullName,
                         DeliveryContentDate,
-                        Quantity};
+                        Quantity,
+                        ReceivingRequestID,
+                        Workshop};
                 if ((parentDeliveryListsInjRowByDeliveryListsInj_DeliveryListsContentInj != null)) {
                     columnValuesArray[1] = parentDeliveryListsInjRowByDeliveryListsInj_DeliveryListsContentInj[0];
                 }
@@ -13969,6 +13991,8 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnFullName = base.Columns["FullName"];
                 this.columnDeliveryContentDate = base.Columns["DeliveryContentDate"];
                 this.columnQuantity = base.Columns["Quantity"];
+                this.columnReceivingRequestID = base.Columns["ReceivingRequestID"];
+                this.columnWorkshop = base.Columns["Workshop"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13986,6 +14010,10 @@ namespace Система_учёта_и_приобретения_инструме
                 base.Columns.Add(this.columnDeliveryContentDate);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
+                this.columnReceivingRequestID = new global::System.Data.DataColumn("ReceivingRequestID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReceivingRequestID);
+                this.columnWorkshop = new global::System.Data.DataColumn("Workshop", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWorkshop);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnDeliveryContentID}, true));
                 this.columnDeliveryContentID.AutoIncrement = true;
@@ -14001,6 +14029,9 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnFullName.MaxLength = 2147483647;
                 this.columnDeliveryContentDate.AllowDBNull = false;
                 this.columnQuantity.AllowDBNull = false;
+                this.columnReceivingRequestID.AllowDBNull = false;
+                this.columnWorkshop.ReadOnly = true;
+                this.columnWorkshop.MaxLength = 268;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19391,6 +19422,34 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ReceivingRequestID {
+                get {
+                    return ((int)(this[this.tableDeliveryListsContentInj.ReceivingRequestIDColumn]));
+                }
+                set {
+                    this[this.tableDeliveryListsContentInj.ReceivingRequestIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Workshop {
+                get {
+                    try {
+                        return ((string)(this[this.tableDeliveryListsContentInj.WorkshopColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Workshop\' в таблице \'DeliveryListsContentInj\' равно DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableDeliveryListsContentInj.WorkshopColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DeliveryListsInjRow DeliveryListsInjRow {
                 get {
                     return ((DeliveryListsInjRow)(this.GetParentRow(this.Table.ParentRelations["DeliveryListsInj_DeliveryListsContentInj"])));
@@ -19422,6 +19481,18 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetFullNameNull() {
                 this[this.tableDeliveryListsContentInj.FullNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsWorkshopNull() {
+                return this.IsNull(this.tableDeliveryListsContentInj.WorkshopColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetWorkshopNull() {
+                this[this.tableDeliveryListsContentInj.WorkshopColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -32497,6 +32568,8 @@ WHERE
             tableMapping.ColumnMappings.Add("FullName", "FullName");
             tableMapping.ColumnMappings.Add("DeliveryContentDate", "DeliveryContentDate");
             tableMapping.ColumnMappings.Add("Quantity", "Quantity");
+            tableMapping.ColumnMappings.Add("ReceivingRequestID", "ReceivingRequestID");
+            tableMapping.ColumnMappings.Add("Workshop", "Workshop");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -32527,16 +32600,27 @@ WHERE
     COALESCE(n.CuttingMaterial + ' ', '') + 
     COALESCE(n.RegulatoryDoc, '') AS FullName,
 
-    -- Дата поставки (берётся напрямую из DeliveryListsContent)
+    -- Дата поставки
     dlc.DeliveryContentDate,
 
-    -- Количество (берётся напрямую из DeliveryListsContent)
-    dlc.Quantity
+    -- Количество
+    dlc.Quantity,
+
+    -- Идентификатор заявки на приёмку
+    rrc.ReceivingRequestID,
+
+    -- Цех в формате ""ID - Name""
+    CAST(w.WorkshopID AS NVARCHAR(10)) + ' - ' + w.Name AS Workshop
+
 FROM DeliveryListsContent dlc
 INNER JOIN PurchaseRequestsContent prc 
     ON dlc.PurchaseContentID = prc.PurchaseContentID
 INNER JOIN ReceivingRequestsContent rrc 
     ON prc.ReceivingContentID = rrc.ReceivingContentID
+INNER JOIN ReceivingRequests rr 
+    ON rrc.ReceivingRequestID = rr.ReceivingRequestID
+INNER JOIN Workshops w 
+    ON rr.WorkshopID = w.WorkshopID
 LEFT JOIN ReplacementFixation rf 
     ON rrc.ReceivingContentID = rf.ReceivingContentID 
 INNER JOIN Nomenclature n 
