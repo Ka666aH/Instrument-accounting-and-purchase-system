@@ -184,8 +184,10 @@
             this.balancesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox16 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
+            this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.OstatkiNumber = new System.Windows.Forms.MaskedTextBox();
             this.label39 = new System.Windows.Forms.Label();
@@ -250,8 +252,6 @@
             this.receivingRequestsContentTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter();
             this.toolMovementsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ToolMovementsTableAdapter();
             this.balancesTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.BalancesTableAdapter();
-            this.label37 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
             this.tabPage4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -1913,6 +1913,16 @@
             this.textBox12.TabIndex = 18;
             this.textBox12.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
             // 
+            // textBox16
+            // 
+            this.textBox16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox16.Location = new System.Drawing.Point(988, 62);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.Size = new System.Drawing.Size(167, 29);
+            this.textBox16.TabIndex = 17;
+            this.textBox16.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
+            // 
             // textBox7
             // 
             this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1934,6 +1944,16 @@
             this.button6.Text = "Сброс";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.OstatkiResetButton_Click);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label37.Location = new System.Drawing.Point(862, 64);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(66, 20);
+            this.label37.TabIndex = 10;
+            this.label37.Text = "Партия";
             // 
             // label38
             // 
@@ -2435,6 +2455,7 @@
             this.импортToolStripMenuItem.Name = "импортToolStripMenuItem";
             this.импортToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
             this.импортToolStripMenuItem.Text = "Импорт";
+            this.импортToolStripMenuItem.Visible = false;
             this.импортToolStripMenuItem.Click += new System.EventHandler(this.импортToolStripMenuItem_Click);
             // 
             // Menu
@@ -2530,26 +2551,6 @@
             // balancesTableAdapter
             // 
             this.balancesTableAdapter.ClearBeforeFill = true;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label37.Location = new System.Drawing.Point(862, 64);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(66, 20);
-            this.label37.TabIndex = 10;
-            this.label37.Text = "Партия";
-            // 
-            // textBox16
-            // 
-            this.textBox16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox16.Location = new System.Drawing.Point(988, 62);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(167, 29);
-            this.textBox16.TabIndex = 17;
-            this.textBox16.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
             // 
             // Klad
             // 

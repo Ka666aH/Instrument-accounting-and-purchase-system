@@ -447,10 +447,10 @@
             this.InjLevel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.InjLevel1.Controls.Add(this.InjZayavkiPage);
             this.InjLevel1.Controls.Add(this.InjNomenPage);
             this.InjLevel1.Controls.Add(this.InjAnalogPage);
             this.InjLevel1.Controls.Add(this.InjGroupsPage);
-            this.InjLevel1.Controls.Add(this.InjZayavkiPage);
             this.InjLevel1.Controls.Add(this.InjProvidersPage);
             this.InjLevel1.Controls.Add(this.InjLogPage);
             this.InjLevel1.Controls.Add(this.InjOstatkiPage);
@@ -1927,7 +1927,7 @@
             this.PurchaseRequestsPurchaseRequestsTable.ReadOnly = true;
             this.PurchaseRequestsPurchaseRequestsTable.RowHeadersVisible = false;
             this.PurchaseRequestsPurchaseRequestsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PurchaseRequestsPurchaseRequestsTable.Size = new System.Drawing.Size(338, 453);
+            this.PurchaseRequestsPurchaseRequestsTable.Size = new System.Drawing.Size(338, 460);
             this.PurchaseRequestsPurchaseRequestsTable.TabIndex = 31;
             this.PurchaseRequestsPurchaseRequestsTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.PurchaseRequestsPurchaseRequestsTable_CellMouseClick);
             // 
@@ -1986,7 +1986,7 @@
             this.PurchaseRequestsContentTable.ReadOnly = true;
             this.PurchaseRequestsContentTable.RowHeadersVisible = false;
             this.PurchaseRequestsContentTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PurchaseRequestsContentTable.Size = new System.Drawing.Size(708, 452);
+            this.PurchaseRequestsContentTable.Size = new System.Drawing.Size(708, 459);
             this.PurchaseRequestsContentTable.TabIndex = 30;
             // 
             // purchaseContentIDDataGridViewTextBoxColumn
@@ -2247,7 +2247,7 @@
             this.deliveryContentDateDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn1});
             this.StatementsContentTable.DataSource = this.deliveryListsInjDeliveryListsContentInjBindingSource;
-            this.StatementsContentTable.Location = new System.Drawing.Point(7, 476);
+            this.StatementsContentTable.Location = new System.Drawing.Point(7, 483);
             this.StatementsContentTable.MultiSelect = false;
             this.StatementsContentTable.Name = "StatementsContentTable";
             this.StatementsContentTable.ReadOnly = true;
@@ -2315,7 +2315,7 @@
             this.label50.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label50.AutoSize = true;
             this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label50.Location = new System.Drawing.Point(7, 449);
+            this.label50.Location = new System.Drawing.Point(7, 456);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(268, 24);
             this.label50.TabIndex = 40;
@@ -2352,7 +2352,7 @@
             this.StatementsStatementsTable.ReadOnly = true;
             this.StatementsStatementsTable.RowHeadersVisible = false;
             this.StatementsStatementsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.StatementsStatementsTable.Size = new System.Drawing.Size(1044, 347);
+            this.StatementsStatementsTable.Size = new System.Drawing.Size(1044, 354);
             this.StatementsStatementsTable.TabIndex = 38;
             this.StatementsStatementsTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.StatementsStatementsTable_CellMouseClick);
             // 
@@ -2483,7 +2483,7 @@
             this.dataGridViewTextBoxColumn29,
             this.Column12,
             this.Column13});
-            this.InvoicesContentTable.Location = new System.Drawing.Point(7, 476);
+            this.InvoicesContentTable.Location = new System.Drawing.Point(7, 483);
             this.InvoicesContentTable.MultiSelect = false;
             this.InvoicesContentTable.Name = "InvoicesContentTable";
             this.InvoicesContentTable.ReadOnly = true;
@@ -2527,7 +2527,7 @@
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(7, 449);
+            this.label15.Location = new System.Drawing.Point(7, 456);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(266, 24);
             this.label15.TabIndex = 54;
@@ -2563,7 +2563,7 @@
             this.InvoicesInvoicesTable.ReadOnly = true;
             this.InvoicesInvoicesTable.RowHeadersVisible = false;
             this.InvoicesInvoicesTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(1044, 347);
+            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(1044, 354);
             this.InvoicesInvoicesTable.TabIndex = 52;
             this.InvoicesInvoicesTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.InvoicesInvoicesTable_CellMouseClick);
             // 
@@ -2721,7 +2721,7 @@
             this.HistoryTable.Location = new System.Drawing.Point(7, 113);
             this.HistoryTable.Name = "HistoryTable";
             this.HistoryTable.ReadOnly = true;
-            this.HistoryTable.Size = new System.Drawing.Size(1044, 614);
+            this.HistoryTable.Size = new System.Drawing.Size(1044, 621);
             this.HistoryTable.TabIndex = 13;
             // 
             // HistorySearchGroup
@@ -3903,14 +3903,14 @@
             // ProvidersTableContextMenuCreate
             // 
             this.ProvidersTableContextMenuCreate.Name = "ProvidersTableContextMenuCreate";
-            this.ProvidersTableContextMenuCreate.Size = new System.Drawing.Size(155, 22);
+            this.ProvidersTableContextMenuCreate.Size = new System.Drawing.Size(153, 22);
             this.ProvidersTableContextMenuCreate.Text = "Создать";
             this.ProvidersTableContextMenuCreate.Click += new System.EventHandler(this.ProvidersTableContextMenuCreate_Click);
             // 
             // ProvidersTableContextMenuAlter
             // 
             this.ProvidersTableContextMenuAlter.Name = "ProvidersTableContextMenuAlter";
-            this.ProvidersTableContextMenuAlter.Size = new System.Drawing.Size(155, 22);
+            this.ProvidersTableContextMenuAlter.Size = new System.Drawing.Size(153, 22);
             this.ProvidersTableContextMenuAlter.Text = "Изменить";
             this.ProvidersTableContextMenuAlter.Visible = false;
             this.ProvidersTableContextMenuAlter.Click += new System.EventHandler(this.ProvidersTableContextMenuAlter_Click);
@@ -3918,7 +3918,7 @@
             // ProvidersTableContextMenuDelete
             // 
             this.ProvidersTableContextMenuDelete.Name = "ProvidersTableContextMenuDelete";
-            this.ProvidersTableContextMenuDelete.Size = new System.Drawing.Size(155, 22);
+            this.ProvidersTableContextMenuDelete.Size = new System.Drawing.Size(153, 22);
             this.ProvidersTableContextMenuDelete.Text = "Удалить";
             this.ProvidersTableContextMenuDelete.Visible = false;
             this.ProvidersTableContextMenuDelete.Click += new System.EventHandler(this.ProvidersTableContextMenuDelete_Click);
@@ -3926,12 +3926,12 @@
             // ProvidersTableContextMenuSeparator
             // 
             this.ProvidersTableContextMenuSeparator.Name = "ProvidersTableContextMenuSeparator";
-            this.ProvidersTableContextMenuSeparator.Size = new System.Drawing.Size(152, 6);
+            this.ProvidersTableContextMenuSeparator.Size = new System.Drawing.Size(150, 6);
             // 
             // ProvidersTableContextMenuCreateStatement
             // 
             this.ProvidersTableContextMenuCreateStatement.Name = "ProvidersTableContextMenuCreateStatement";
-            this.ProvidersTableContextMenuCreateStatement.Size = new System.Drawing.Size(155, 22);
+            this.ProvidersTableContextMenuCreateStatement.Size = new System.Drawing.Size(153, 22);
             this.ProvidersTableContextMenuCreateStatement.Text = "Создать ведомость";
             this.ProvidersTableContextMenuCreateStatement.ToolTipText = "Создать ведомость поставки от выбранного поставщика";
             this.ProvidersTableContextMenuCreateStatement.Click += new System.EventHandler(this.ProvidersTableContextMenuCreateStatement_Click);

@@ -1442,7 +1442,10 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void InvoicesButtonEnter_Click(object sender, EventArgs e)
         {
-
+            InvoiceForm invoiceForm = new InvoiceForm();
+            invoiceForm.ShowDialog();
+            //deliveryListsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsInj);
+            //deliveryListsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
         }
 
         private void InvoicesDate_ValueChanged(object sender, EventArgs e)
