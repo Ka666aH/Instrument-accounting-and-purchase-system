@@ -134,9 +134,10 @@
             this.DeliveryListFormSupplier.Location = new System.Drawing.Point(121, 73);
             this.DeliveryListFormSupplier.Margin = new System.Windows.Forms.Padding(2);
             this.DeliveryListFormSupplier.Name = "DeliveryListFormSupplier";
+            this.DeliveryListFormSupplier.ReadOnly = true;
             this.DeliveryListFormSupplier.Size = new System.Drawing.Size(447, 29);
-            this.DeliveryListFormSupplier.TabIndex = 0;
-            this.DeliveryListFormSupplier.Leave += new System.EventHandler(this.DeliveryListFormSupplier_Leave);
+            this.DeliveryListFormSupplier.TabIndex = 62;
+            this.DeliveryListFormSupplier.Visible = false;
             // 
             // label1
             // 
@@ -148,6 +149,7 @@
             this.label1.Size = new System.Drawing.Size(105, 20);
             this.label1.TabIndex = 62;
             this.label1.Text = "Поставщик *";
+            this.label1.Visible = false;
             // 
             // DeliveryListFormButtonAddSupplier
             // 

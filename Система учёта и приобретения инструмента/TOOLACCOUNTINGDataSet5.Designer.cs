@@ -102,6 +102,8 @@ namespace Система_учёта_и_приобретения_инструме
         
         private InvoicesDataTable tableInvoices;
         
+        private HistoryInjDataTable tableHistoryInj;
+        
         private global::System.Data.DataRelation relationFK__AnalogToo__Analo__3E52440B;
         
         private global::System.Data.DataRelation relationFK__AnalogToo__Origi__3D5E1FD2;
@@ -322,6 +324,9 @@ namespace Система_учёта_и_приобретения_инструме
                 }
                 if ((ds.Tables["Invoices"] != null)) {
                     base.Tables.Add(new InvoicesDataTable(ds.Tables["Invoices"]));
+                }
+                if ((ds.Tables["HistoryInj"] != null)) {
+                    base.Tables.Add(new HistoryInjDataTable(ds.Tables["HistoryInj"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -733,6 +738,16 @@ namespace Система_учёта_и_приобретения_инструме
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public HistoryInjDataTable HistoryInj {
+            get {
+                return this.tableHistoryInj;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -914,6 +929,9 @@ namespace Система_учёта_и_приобретения_инструме
                 }
                 if ((ds.Tables["Invoices"] != null)) {
                     base.Tables.Add(new InvoicesDataTable(ds.Tables["Invoices"]));
+                }
+                if ((ds.Tables["HistoryInj"] != null)) {
+                    base.Tables.Add(new HistoryInjDataTable(ds.Tables["HistoryInj"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -1182,6 +1200,12 @@ namespace Система_учёта_и_приобретения_инструме
                     this.tableInvoices.InitVars();
                 }
             }
+            this.tableHistoryInj = ((HistoryInjDataTable)(base.Tables["HistoryInj"]));
+            if ((initTable == true)) {
+                if ((this.tableHistoryInj != null)) {
+                    this.tableHistoryInj.InitVars();
+                }
+            }
             this.relationFK__AnalogToo__Analo__3E52440B = this.Relations["FK__AnalogToo__Analo__3E52440B"];
             this.relationFK__AnalogToo__Origi__3D5E1FD2 = this.Relations["FK__AnalogToo__Origi__3D5E1FD2"];
             this.relationFK__Balances__Nomenc__75A278F5 = this.Relations["FK__Balances__Nomenc__75A278F5"];
@@ -1308,6 +1332,8 @@ namespace Система_учёта_и_приобретения_инструме
             base.Tables.Add(this.tableInvoicesContentInj);
             this.tableInvoices = new InvoicesDataTable();
             base.Tables.Add(this.tableInvoices);
+            this.tableHistoryInj = new HistoryInjDataTable();
+            base.Tables.Add(this.tableHistoryInj);
             this.relationFK__AnalogToo__Analo__3E52440B = new global::System.Data.DataRelation("FK__AnalogToo__Analo__3E52440B", new global::System.Data.DataColumn[] {
                         this.tableNomenclature.NomenclatureNumberColumn}, new global::System.Data.DataColumn[] {
                         this.tableAnalogTools.AnalogNomenclatureNumberColumn}, false);
@@ -1698,6 +1724,12 @@ namespace Система_учёта_и_приобретения_инструме
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeHistoryInj() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -1867,6 +1899,9 @@ namespace Система_учёта_и_приобретения_инструме
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void InvoicesRowChangeEventHandler(object sender, InvoicesRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void HistoryInjRowChangeEventHandler(object sender, HistoryInjRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -12867,6 +12902,10 @@ namespace Система_учёта_и_приобретения_инструме
             
             private global::System.Data.DataColumn columnRequiredQuantity;
             
+            private global::System.Data.DataColumn columnRequestStatus;
+            
+            private global::System.Data.DataColumn columnReceivingRequestID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public PurchaseRequestsContentInjDataTable() {
@@ -12966,6 +13005,22 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn RequestStatusColumn {
+                get {
+                    return this.columnRequestStatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ReceivingRequestIDColumn {
+                get {
+                    return this.columnReceivingRequestID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -13001,7 +13056,7 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PurchaseRequestsContentInjRow AddPurchaseRequestsContentInjRow(PurchaseRequestsInjRow parentPurchaseRequestsInjRowByPurchaseRequestsInj_PurchaseRequestsContentInj, int ReceivingContentID, bool IsPurchase, int DonorWorkshopID, string NomenclatureNumber, string FullName, int RequiredQuantity) {
+            public PurchaseRequestsContentInjRow AddPurchaseRequestsContentInjRow(PurchaseRequestsInjRow parentPurchaseRequestsInjRowByPurchaseRequestsInj_PurchaseRequestsContentInj, int ReceivingContentID, bool IsPurchase, int DonorWorkshopID, string NomenclatureNumber, string FullName, int RequiredQuantity, string RequestStatus) {
                 PurchaseRequestsContentInjRow rowPurchaseRequestsContentInjRow = ((PurchaseRequestsContentInjRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -13011,7 +13066,9 @@ namespace Система_учёта_и_приобретения_инструме
                         DonorWorkshopID,
                         NomenclatureNumber,
                         FullName,
-                        RequiredQuantity};
+                        RequiredQuantity,
+                        RequestStatus,
+                        null};
                 if ((parentPurchaseRequestsInjRowByPurchaseRequestsInj_PurchaseRequestsContentInj != null)) {
                     columnValuesArray[1] = parentPurchaseRequestsInjRowByPurchaseRequestsInj_PurchaseRequestsContentInj[0];
                 }
@@ -13052,6 +13109,8 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnNomenclatureNumber = base.Columns["NomenclatureNumber"];
                 this.columnFullName = base.Columns["FullName"];
                 this.columnRequiredQuantity = base.Columns["RequiredQuantity"];
+                this.columnRequestStatus = base.Columns["RequestStatus"];
+                this.columnReceivingRequestID = base.Columns["ReceivingRequestID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13073,6 +13132,10 @@ namespace Система_учёта_и_приобретения_инструме
                 base.Columns.Add(this.columnFullName);
                 this.columnRequiredQuantity = new global::System.Data.DataColumn("RequiredQuantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRequiredQuantity);
+                this.columnRequestStatus = new global::System.Data.DataColumn("RequestStatus", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRequestStatus);
+                this.columnReceivingRequestID = new global::System.Data.DataColumn("ReceivingRequestID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReceivingRequestID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnPurchaseContentID}, true));
                 this.columnPurchaseContentID.AutoIncrement = true;
@@ -13089,6 +13152,13 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnFullName.ReadOnly = true;
                 this.columnFullName.MaxLength = 2147483647;
                 this.columnRequiredQuantity.AllowDBNull = false;
+                this.columnRequestStatus.AllowDBNull = false;
+                this.columnRequestStatus.MaxLength = 50;
+                this.columnReceivingRequestID.AutoIncrement = true;
+                this.columnReceivingRequestID.AutoIncrementSeed = -1;
+                this.columnReceivingRequestID.AutoIncrementStep = -1;
+                this.columnReceivingRequestID.AllowDBNull = false;
+                this.columnReceivingRequestID.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14752,6 +14822,317 @@ namespace Система_учёта_и_приобретения_инструме
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "InvoicesDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class HistoryInjDataTable : global::System.Data.TypedTableBase<HistoryInjRow> {
+            
+            private global::System.Data.DataColumn columnNomenclatureNumber;
+            
+            private global::System.Data.DataColumn columnFullName;
+            
+            private global::System.Data.DataColumn columnSupplier;
+            
+            private global::System.Data.DataColumn columnInvoiceDate;
+            
+            private global::System.Data.DataColumn columnQuantity;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public HistoryInjDataTable() {
+                this.TableName = "HistoryInj";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal HistoryInjDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected HistoryInjDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NomenclatureNumberColumn {
+                get {
+                    return this.columnNomenclatureNumber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FullNameColumn {
+                get {
+                    return this.columnFullName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SupplierColumn {
+                get {
+                    return this.columnSupplier;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn InvoiceDateColumn {
+                get {
+                    return this.columnInvoiceDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn QuantityColumn {
+                get {
+                    return this.columnQuantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public HistoryInjRow this[int index] {
+                get {
+                    return ((HistoryInjRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event HistoryInjRowChangeEventHandler HistoryInjRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event HistoryInjRowChangeEventHandler HistoryInjRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event HistoryInjRowChangeEventHandler HistoryInjRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event HistoryInjRowChangeEventHandler HistoryInjRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddHistoryInjRow(HistoryInjRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public HistoryInjRow AddHistoryInjRow(string NomenclatureNumber, string FullName, string Supplier, System.DateTime InvoiceDate, int Quantity) {
+                HistoryInjRow rowHistoryInjRow = ((HistoryInjRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        NomenclatureNumber,
+                        FullName,
+                        Supplier,
+                        InvoiceDate,
+                        Quantity};
+                rowHistoryInjRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowHistoryInjRow);
+                return rowHistoryInjRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                HistoryInjDataTable cln = ((HistoryInjDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new HistoryInjDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnNomenclatureNumber = base.Columns["NomenclatureNumber"];
+                this.columnFullName = base.Columns["FullName"];
+                this.columnSupplier = base.Columns["Supplier"];
+                this.columnInvoiceDate = base.Columns["InvoiceDate"];
+                this.columnQuantity = base.Columns["Quantity"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnNomenclatureNumber = new global::System.Data.DataColumn("NomenclatureNumber", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNomenclatureNumber);
+                this.columnFullName = new global::System.Data.DataColumn("FullName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFullName);
+                this.columnSupplier = new global::System.Data.DataColumn("Supplier", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSupplier);
+                this.columnInvoiceDate = new global::System.Data.DataColumn("InvoiceDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceDate);
+                this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQuantity);
+                this.columnNomenclatureNumber.ReadOnly = true;
+                this.columnNomenclatureNumber.MaxLength = 9;
+                this.columnFullName.ReadOnly = true;
+                this.columnFullName.MaxLength = 2147483647;
+                this.columnSupplier.AllowDBNull = false;
+                this.columnSupplier.MaxLength = 255;
+                this.columnInvoiceDate.AllowDBNull = false;
+                this.columnQuantity.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public HistoryInjRow NewHistoryInjRow() {
+                return ((HistoryInjRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new HistoryInjRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(HistoryInjRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.HistoryInjRowChanged != null)) {
+                    this.HistoryInjRowChanged(this, new HistoryInjRowChangeEvent(((HistoryInjRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.HistoryInjRowChanging != null)) {
+                    this.HistoryInjRowChanging(this, new HistoryInjRowChangeEvent(((HistoryInjRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.HistoryInjRowDeleted != null)) {
+                    this.HistoryInjRowDeleted(this, new HistoryInjRowChangeEvent(((HistoryInjRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.HistoryInjRowDeleting != null)) {
+                    this.HistoryInjRowDeleting(this, new HistoryInjRowChangeEvent(((HistoryInjRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveHistoryInjRow(HistoryInjRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                TOOLACCOUNTINGDataSet ds = new TOOLACCOUNTINGDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "HistoryInjDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -18441,12 +18822,11 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string NomenclatureNumber {
                 get {
-                    try {
-                        return ((string)(this[this.tableReceivingRequestsContentInj.NomenclatureNumberColumn]));
+                    if (this.IsNomenclatureNumberNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NomenclatureNumber\' в таблице \'ReceivingRequestsContentInj\'" +
-                                " равно DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableReceivingRequestsContentInj.NomenclatureNumberColumn]));
                     }
                 }
                 set {
@@ -19175,6 +19555,28 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string RequestStatus {
+                get {
+                    return ((string)(this[this.tablePurchaseRequestsContentInj.RequestStatusColumn]));
+                }
+                set {
+                    this[this.tablePurchaseRequestsContentInj.RequestStatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ReceivingRequestID {
+                get {
+                    return ((int)(this[this.tablePurchaseRequestsContentInj.ReceivingRequestIDColumn]));
+                }
+                set {
+                    this[this.tablePurchaseRequestsContentInj.ReceivingRequestIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public PurchaseRequestsInjRow PurchaseRequestsInjRow {
                 get {
                     return ((PurchaseRequestsInjRow)(this.GetParentRow(this.Table.ParentRelations["PurchaseRequestsInj_PurchaseRequestsContentInj"])));
@@ -19679,6 +20081,110 @@ namespace Система_учёта_и_приобретения_инструме
                 else {
                     return ((InvoicesContentRow[])(base.GetChildRows(this.Table.ChildRelations["FK__InvoicesC__Invoi__693CA210"])));
                 }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class HistoryInjRow : global::System.Data.DataRow {
+            
+            private HistoryInjDataTable tableHistoryInj;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal HistoryInjRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableHistoryInj = ((HistoryInjDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string NomenclatureNumber {
+                get {
+                    try {
+                        return ((string)(this[this.tableHistoryInj.NomenclatureNumberColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NomenclatureNumber\' в таблице \'HistoryInj\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableHistoryInj.NomenclatureNumberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string FullName {
+                get {
+                    try {
+                        return ((string)(this[this.tableHistoryInj.FullNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FullName\' в таблице \'HistoryInj\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableHistoryInj.FullNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Supplier {
+                get {
+                    return ((string)(this[this.tableHistoryInj.SupplierColumn]));
+                }
+                set {
+                    this[this.tableHistoryInj.SupplierColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime InvoiceDate {
+                get {
+                    return ((global::System.DateTime)(this[this.tableHistoryInj.InvoiceDateColumn]));
+                }
+                set {
+                    this[this.tableHistoryInj.InvoiceDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int Quantity {
+                get {
+                    return ((int)(this[this.tableHistoryInj.QuantityColumn]));
+                }
+                set {
+                    this[this.tableHistoryInj.QuantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsNomenclatureNumberNull() {
+                return this.IsNull(this.tableHistoryInj.NomenclatureNumberColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetNomenclatureNumberNull() {
+                this[this.tableHistoryInj.NomenclatureNumberColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFullNameNull() {
+                return this.IsNull(this.tableHistoryInj.FullNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFullNameNull() {
+                this[this.tableHistoryInj.FullNameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -20994,6 +21500,40 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public InvoicesRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class HistoryInjRowChangeEvent : global::System.EventArgs {
+            
+            private HistoryInjRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public HistoryInjRowChangeEvent(HistoryInjRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public HistoryInjRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -31925,6 +32465,8 @@ SELECT PurchaseRequestID, PurchaseRequestDate, Status FROM PurchaseRequests WHER
             tableMapping.ColumnMappings.Add("NomenclatureNumber", "NomenclatureNumber");
             tableMapping.ColumnMappings.Add("FullName", "FullName");
             tableMapping.ColumnMappings.Add("RequiredQuantity", "RequiredQuantity");
+            tableMapping.ColumnMappings.Add("RequestStatus", "RequestStatus");
+            tableMapping.ColumnMappings.Add("ReceivingRequestID", "ReceivingRequestID");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -31959,7 +32501,10 @@ SELECT PurchaseRequestID, PurchaseRequestDate, Status FROM PurchaseRequests WHER
     COALESCE(n.RegulatoryDoc, '') AS FullName,
 
     -- Количество из заявки
-    rrc.Quantity AS RequiredQuantity
+    rrc.Quantity AS RequiredQuantity,
+    
+    rr.Status AS RequestStatus, -- Добавляем статус заявки
+    rr.ReceivingRequestID
 
 FROM PurchaseRequestsContent prc
 INNER JOIN PurchaseRequests pr ON pr.PurchaseRequestID = prc.PurchaseRequestID
@@ -31970,8 +32515,7 @@ INNER JOIN Nomenclature n ON n.NomenclatureNumber = ISNULL(rf.AnalogNomenclature
 LEFT JOIN Groups g ON g.RangeStart = LEFT(n.NomenclatureNumber, 4)
 
 WHERE 
-    rr.Status = 'Не обработана'
-    AND prc.IsPurchase = 1;";
+prc.IsPurchase = 1;";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -33186,6 +33730,207 @@ LEFT JOIN Groups g
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class HistoryInjTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public HistoryInjTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "HistoryInj";
+            tableMapping.ColumnMappings.Add("NomenclatureNumber", "NomenclatureNumber");
+            tableMapping.ColumnMappings.Add("FullName", "FullName");
+            tableMapping.ColumnMappings.Add("Supplier", "Supplier");
+            tableMapping.ColumnMappings.Add("InvoiceDate", "InvoiceDate");
+            tableMapping.ColumnMappings.Add("Quantity", "Quantity");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::Система_учёта_и_приобретения_инструмента.Properties.Settings.Default.TOOLACCOUNTINGConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT 
+    ISNULL(rf.AnalogNomenclatureNumber, rrc.NomenclatureNumber) AS NomenclatureNumber,
+    COALESCE(g.Name + ' ', '') + 
+    COALESCE(n.Designation + ' ', '') + 
+    COALESCE(n.Dimensions + ' ', '') + 
+    COALESCE(n.CuttingMaterial + ' ', '') + 
+    COALESCE(n.RegulatoryDoc, '') AS FullName,
+    s.Name AS Supplier,
+    i.InvoiceDate,
+    ic.Quantity
+FROM InvoicesContent ic
+INNER JOIN DeliveryListsContent dlc 
+    ON ic.DeliveryContentID = dlc.DeliveryContentID
+INNER JOIN PurchaseRequestsContent prc 
+    ON dlc.PurchaseContentID = prc.PurchaseContentID
+INNER JOIN ReceivingRequestsContent rrc 
+    ON prc.ReceivingContentID = rrc.ReceivingContentID
+INNER JOIN ReceivingRequests rr 
+    ON rrc.ReceivingRequestID = rr.ReceivingRequestID
+LEFT JOIN ReplacementFixation rf 
+    ON rrc.ReceivingContentID = rf.ReceivingContentID 
+INNER JOIN Nomenclature n 
+    ON n.NomenclatureNumber = ISNULL(rf.AnalogNomenclatureNumber, rrc.NomenclatureNumber)
+LEFT JOIN Groups g 
+    ON g.RangeStart = LEFT(n.NomenclatureNumber, 4)
+INNER JOIN Invoices i 
+    ON ic.InvoiceID = i.InvoiceID
+INNER JOIN DeliveryLists dl 
+    ON dlc.DeliveryListID = dl.DeliveryListID
+INNER JOIN Suppliers s 
+    ON dl.SupplierINN = s.INN";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(TOOLACCOUNTINGDataSet.HistoryInjDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual TOOLACCOUNTINGDataSet.HistoryInjDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            TOOLACCOUNTINGDataSet.HistoryInjDataTable dataTable = new TOOLACCOUNTINGDataSet.HistoryInjDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -33871,6 +34616,15 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._workshopsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Workshops.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._workshopsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._purchaseRequestsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.PurchaseRequests.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -33889,39 +34643,12 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._workshopsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Workshops.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._workshopsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._suppliersTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Suppliers.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._suppliersTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._deliveryListsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.DeliveryLists.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._deliveryListsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._workshops1TableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Workshops1.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._workshops1TableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -33934,6 +34661,24 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._workshops1TableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Workshops1.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._workshops1TableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._deliveryListsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.DeliveryLists.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._deliveryListsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._invoicesTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Invoices.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -33943,21 +34688,12 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._storages1TableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._purchaseRequestsInjTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.PurchaseRequestsInj.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._storages1TableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._receivingRequestsContent1TableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ReceivingRequestsContent1.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._receivingRequestsContent1TableAdapter.Update(updatedRows));
+                    result = (result + this._purchaseRequestsInjTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -33970,12 +34706,12 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._purchaseRequestsInjTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.PurchaseRequestsInj.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._storages1TableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._purchaseRequestsInjTableAdapter.Update(updatedRows));
+                    result = (result + this._storages1TableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -34006,12 +34742,30 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._receivingRequestsContent1TableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ReceivingRequestsContent1.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._receivingRequestsContent1TableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._replacementFixationTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.ReplacementFixation.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._replacementFixationTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._analogToolsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.AnalogTools.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._analogToolsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -34078,15 +34832,6 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._analogToolsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.AnalogTools.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._analogToolsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             return result;
         }
         
@@ -34113,6 +34858,14 @@ LEFT JOIN Groups g
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._workshopsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Workshops.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._workshopsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._purchaseRequestsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.PurchaseRequests.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -34129,35 +34882,11 @@ LEFT JOIN Groups g
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._workshopsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Workshops.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._workshopsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._suppliersTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Suppliers.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._suppliersTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._deliveryListsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.DeliveryLists.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._deliveryListsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._workshops1TableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Workshops1.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._workshops1TableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -34169,6 +34898,22 @@ LEFT JOIN Groups g
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._workshops1TableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Workshops1.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._workshops1TableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._deliveryListsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.DeliveryLists.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._deliveryListsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._invoicesTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Invoices.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -34177,19 +34922,11 @@ LEFT JOIN Groups g
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._storages1TableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._purchaseRequestsInjTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.PurchaseRequestsInj.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._storages1TableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._receivingRequestsContent1TableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ReceivingRequestsContent1.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._receivingRequestsContent1TableAdapter.Update(addedRows));
+                    result = (result + this._purchaseRequestsInjTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -34201,11 +34938,11 @@ LEFT JOIN Groups g
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._purchaseRequestsInjTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.PurchaseRequestsInj.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._storages1TableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._purchaseRequestsInjTableAdapter.Update(addedRows));
+                    result = (result + this._storages1TableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -34233,11 +34970,27 @@ LEFT JOIN Groups g
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._receivingRequestsContent1TableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ReceivingRequestsContent1.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._receivingRequestsContent1TableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._replacementFixationTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ReplacementFixation.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._replacementFixationTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._analogToolsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.AnalogTools.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._analogToolsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -34297,14 +35050,6 @@ LEFT JOIN Groups g
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._analogToolsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.AnalogTools.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._analogToolsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -34315,14 +35060,6 @@ LEFT JOIN Groups g
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateDeletedRows(TOOLACCOUNTINGDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._analogToolsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.AnalogTools.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._analogToolsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._balancesTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Balances.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -34379,11 +35116,27 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._analogToolsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.AnalogTools.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._analogToolsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._replacementFixationTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.ReplacementFixation.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._replacementFixationTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._receivingRequestsContent1TableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ReceivingRequestsContent1.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._receivingRequestsContent1TableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -34411,11 +35164,11 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._purchaseRequestsInjTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.PurchaseRequestsInj.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._storages1TableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._purchaseRequestsInjTableAdapter.Update(deletedRows));
+                    result = (result + this._storages1TableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -34427,19 +35180,11 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._receivingRequestsContent1TableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ReceivingRequestsContent1.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._purchaseRequestsInjTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PurchaseRequestsInj.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._receivingRequestsContent1TableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._storages1TableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._storages1TableAdapter.Update(deletedRows));
+                    result = (result + this._purchaseRequestsInjTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -34451,11 +35196,11 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._purchaseRequestsContentTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.PurchaseRequestsContent.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._deliveryListsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.DeliveryLists.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._purchaseRequestsContentTableAdapter.Update(deletedRows));
+                    result = (result + this._deliveryListsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -34467,11 +35212,11 @@ LEFT JOIN Groups g
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._deliveryListsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.DeliveryLists.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._purchaseRequestsContentTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PurchaseRequestsContent.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._deliveryListsTableAdapter.Update(deletedRows));
+                    result = (result + this._purchaseRequestsContentTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -34480,14 +35225,6 @@ LEFT JOIN Groups g
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._suppliersTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._workshopsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Workshops.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._workshopsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -34504,6 +35241,14 @@ LEFT JOIN Groups g
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._purchaseRequestsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._workshopsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Workshops.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._workshopsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

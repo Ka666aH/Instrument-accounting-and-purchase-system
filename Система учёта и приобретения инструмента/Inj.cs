@@ -108,6 +108,8 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Inj_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.HistoryInj". При необходимости она может быть перемещена или удалена.
+            this.historyInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.HistoryInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.InvoicesContentInj". При необходимости она может быть перемещена или удалена.
             this.invoicesContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.InvoicesContentInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.InvoicesInj". При необходимости она может быть перемещена или удалена.
@@ -158,6 +160,7 @@ namespace Система_учёта_и_приобретения_инструме
             WindowState = FormWindowState.Maximized;
 
             ReceivingRequestsResetStatus();
+            PurchaseRequestsResetStatus();
             //Установка дат во вкладках с диапазоном
             PurchaseRequestsResetStart();
             PurchaseRequestsResetEnd();
@@ -1104,7 +1107,8 @@ namespace Система_учёта_и_приобретения_инструме
             int requestNumber = int.Parse(ReceivingRequestsRequestsTable.CurrentRow.Cells[0].Value.ToString());
             RequestConsideration requestConsideration = new RequestConsideration(requestNumber, FormMode.Add);
             requestConsideration.ShowDialog();
-            //receivingRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
+            //new ReceivingRequestsTableAdapter().Fill(tOOLACCOUNTINGDataSet.ReceivingRequests);
+            receivingRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
         }
 
         private void ReceivingRequestsButtonAlter_Click(object sender, EventArgs e)
@@ -1235,8 +1239,10 @@ namespace Система_учёта_и_приобретения_инструме
         {
             PurchaseRequest purchaseRequest = new PurchaseRequest();
             purchaseRequest.ShowDialog();
+            //purchaseRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
             purchaseRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
             purchaseRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
+            receivingRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
         }
 
         private void PurchaseRequestsButtonAlter_Click(object sender, EventArgs e)
@@ -1304,7 +1310,7 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (isSearchReseting) return;
             var parameters = new List<SearchParameter>();
-            if (!string.IsNullOrEmpty(PurchaseRequestsStatus.Text)) parameters.Add(new SearchParameter("Status", PurchaseRequestsStatus.Text));
+            if (!string.IsNullOrEmpty(PurchaseRequestsStatus.Text) && PurchaseRequestsStatus.SelectedIndex != 0) parameters.Add(new SearchParameter("Status", PurchaseRequestsStatus.Text));
 
             try
             {
@@ -1361,6 +1367,9 @@ namespace Система_учёта_и_приобретения_инструме
             deleviryListForm.ShowDialog();
             deliveryListsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsInj);
             deliveryListsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
+            purchaseRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
+            purchaseRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
+            receivingRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
         }
 
         private void StatementsButtonAlter_Click(object sender, EventArgs e)
@@ -1450,11 +1459,33 @@ namespace Система_учёта_и_приобретения_инструме
             invoiceForm.ShowDialog();
             invoicesInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.InvoicesInj);
             invoicesContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.InvoicesContentInj);
+            purchaseRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
+            purchaseRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
+            receivingRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
         }
 
         private void InvoicesDate_ValueChanged(object sender, EventArgs e)
         {
+            if (isSearchReseting) return;
+            try
+            {
+                string filter = string.Empty;
+                string date1 = $"{InvoicesDate.Value.ToString("yyyy-MM-dd")}";
+                string date2 = $"{InvoicesDate.Value.AddDays(1).ToString("yyyy-MM-dd")}";
 
+                if (InvoicesDate.Checked && (!string.IsNullOrEmpty(InvoicesDate.Text)))
+                {
+                    filter += $"InvoiceDate >= '{date1}'";
+                    filter += " AND ";
+                    filter += $"InvoiceDate <'{date2}'";
+                }
+
+                invoicesInjBindingSource.Filter = filter;
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void InvoicesButtonResetSearch_Click(object sender, EventArgs e)
@@ -1496,7 +1527,47 @@ namespace Система_учёта_и_приобретения_инструме
         #endregion
 
         #region История поступлений
+        private void HistoryStart_ValueChanged(object sender, EventArgs e)
+        {
+            HistorySearch();
+        }
 
+        private void HistoryName_TextChanged(object sender, EventArgs e)
+        {
+            HistorySearch();
+        }
+        private void HistorySearch()
+        {
+            if (isSearchReseting) return;
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(HistoryName.Text)) parameters.Add(new SearchParameter("FullName", HistoryName.Text, false));
+            if (!string.IsNullOrEmpty(HistoryNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", HistoryNumber.Text));
+            try
+            {
+                string filter = Search.Filter(parameters);
+
+                string date1 = $"{HistoryStart.Value.ToString("yyyy-MM-dd")}";
+                string date2 = $"{HistoryEnd.Value.AddDays(1).ToString("yyyy-MM-dd")}";
+                if (HistoryStart.Checked)
+                {
+                    if (!string.IsNullOrEmpty(filter)) filter += " AND ";
+                    filter += $"InvoiceDate >= '{date1}'";
+                }
+                if (HistoryEnd.Checked)
+                {
+                    if (!string.IsNullOrEmpty(filter)) filter += " AND ";
+                    filter += $"InvoiceDate <'{date2}'";
+                }
+
+                HistoryTable.SuspendLayout();
+                historyInjBindingSource.Filter = filter;
+                HistoryTable.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
 
         private void HistoryButtonResetSearch_Click(object sender, EventArgs e)
         {
@@ -1922,10 +1993,11 @@ namespace Система_учёта_и_приобретения_инструме
         {
             isSearchReseting = true;
             ReceivingRequestsResetWorkshop();
-            ReceivingRequestsResetStatus();
+            //ReceivingRequestsResetStatus();
             ReceivingRequestsResetType();
             isSearchReseting = false;
             receivingRequestsInjBindingSource.RemoveFilter();
+            ReceivingRequestsResetStatus();
         }
         private void ReceivingRequestsResetWorkshop() { ReceivingRequestsWorkshop.Text = string.Empty; }
         private void ReceivingRequestsResetStatus() { ReceivingRequestsStatus.SelectedIndex = 1; }
@@ -1935,13 +2007,14 @@ namespace Система_учёта_и_приобретения_инструме
             isSearchReseting = true;
             PurchaseRequestsResetStart();
             PurchaseRequestsResetEnd();
-            PurchaseRequestsResetStatus();
+            //PurchaseRequestsResetStatus();
             isSearchReseting = false;
             purchaseRequestsInjBindingSource.RemoveFilter();
+            PurchaseRequestsResetStatus();
         }
         private void PurchaseRequestsResetStart() { PurchaseRequestsStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1); PurchaseRequestsStart.Checked = false; }
         private void PurchaseRequestsResetEnd() { PurchaseRequestsEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1); PurchaseRequestsEnd.Checked = false; }
-        private void PurchaseRequestsResetStatus() { PurchaseRequestsStatus.Text = string.Empty; }
+        private void PurchaseRequestsResetStatus() { PurchaseRequestsStatus.SelectedIndex = 0; }
         private void StatementsResetSearch()
         {
             isSearchReseting = true;
@@ -1952,25 +2025,27 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void StatementsResetName() { StatementsProvider.Text = string.Empty; }
         private void StatementsResetDate() { StatementsDate.Value = DateTime.Today; StatementsDate.Checked = false; }
-        //remove filter #fix
         private void InvoicesResetSearch()
         {
             isSearchReseting = true;
             InvoicesResetDate();
             isSearchReseting = false;
+            invoicesInjBindingSource.RemoveFilter();
         }
         private void InvoicesResetDate() { InvoicesDate.Value = DateTime.Today; InvoicesDate.Checked = false; }
-        //remove filter #fix
         private void HistoryResetSearch()
         {
             isSearchReseting = true;
             HistoryResetStart();
             HistoryResetEnd();
+            HistoryResetName();
             HistoryResetNumber();
             isSearchReseting = false;
+            historyInjBindingSource.RemoveFilter();
         }
         private void HistoryResetStart() { HistoryStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1); HistoryStart.Checked = false; }
         private void HistoryResetEnd() { HistoryEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1); HistoryEnd.Checked = false; }
+        private void HistoryResetName() { HistoryName.Text = string.Empty; }
         private void HistoryResetNumber() { HistoryNumber.Text = string.Empty; }
 
         private void AnalogsResetSearch()
@@ -2019,7 +2094,6 @@ namespace Система_учёта_и_приобретения_инструме
         private void LogResetExecutor() { LogUser.Text = string.Empty; }
         private void LogResetStart() { LogStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1); LogStart.Checked = false; }
         private void LogResetEnd() { LogEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1); LogEnd.Checked = false; }
-        //remove filter #fix
         private void OstatkiResetSearch()
         {
             isSearchReseting = true;
@@ -2027,6 +2101,7 @@ namespace Система_учёта_и_приобретения_инструме
             OstatkiResetStorage();
             OstatkiResetPrice();
             isSearchReseting = false;
+            balancesInjBindingSource.RemoveFilter();
         }
         private void OstatkiResetNumber() { OstatkiNumber.Text = string.Empty; }
         private void OstatkiResetStorage() { OstatkiStorage.Text = string.Empty; }
@@ -2086,6 +2161,7 @@ namespace Система_учёта_и_приобретения_инструме
 
                 case "HistoryStart": HistoryResetStart(); break;
                 case "HistoryEnd": HistoryResetEnd(); break;
+                case "HistoryName": HistoryResetName(); break;
                 case "HistoryNumber": HistoryResetNumber(); break;
 
                 case "AnalogMainName": AnalogsResetMainName(); break;

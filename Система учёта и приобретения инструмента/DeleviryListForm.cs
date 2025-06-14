@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,7 @@ namespace Система_учёта_и_приобретения_инструме
         {
             InitializeComponent();
         }
-        AutoCompleteStringCollection source = new AutoCompleteStringCollection();
+        //AutoCompleteStringCollection source = new AutoCompleteStringCollection();
         int deliveryListNumber = 1;
         DeliveryListsTableAdapter dlta = new DeliveryListsTableAdapter();
         DeliveryListsInjTableAdapter dlita = new DeliveryListsInjTableAdapter();
@@ -45,7 +46,15 @@ namespace Система_учёта_и_приобретения_инструме
             var dl = tOOLACCOUNTINGDataSet.DeliveryLists.NewDeliveryListsRow();
             dl.DeliveryListDate = DateTime.Today;
             new SuppliersTableAdapter().Fill(tOOLACCOUNTINGDataSet.Suppliers);
-            dl.SupplierINN = tOOLACCOUNTINGDataSet.Suppliers.Select(x => x.INN).FirstOrDefault();
+            // Создаем экземпляр Random
+            var random = new Random();
+            // Выбираем случайного поставщика и получаем его INN
+            string randomINN = tOOLACCOUNTINGDataSet.Suppliers
+                .OrderBy(x => random.Next())   // Перемешиваем список
+                .Select(x => x.INN)            // Берём INN
+                .FirstOrDefault();              // Берём первый (случайный)
+            dl.SupplierINN = randomINN;
+            DeliveryListFormSupplier.Text = dl.SupplierINN;
             tOOLACCOUNTINGDataSet.DeliveryLists.AddDeliveryListsRow(dl);
             dlta.Update(tOOLACCOUNTINGDataSet.DeliveryLists);
             dlta.Fill(tOOLACCOUNTINGDataSet.DeliveryLists);
@@ -62,47 +71,47 @@ namespace Система_учёта_и_приобретения_инструме
 
             //purchaseRequestsInjBindingSource.Filter = 
 
-            SetSuppliersSource();
+            //SetSuppliersSource();
             SetPurchaseRequestsContentFilter();
         }
 
-        private void SetSuppliersSource()
-        {
-            foreach (DataRow row in new SuppliersTableAdapter().GetData().Rows)
-            {
-                string fullName = row[1]?.ToString().Trim() ?? "";
-                if (!string.IsNullOrEmpty(fullName))
-                {
-                    source.Add(fullName);
-                }
-            }
-            DeliveryListFormSupplier.AutoCompleteCustomSource = source;
-        }
-        private void FindSupplier(TextBox sender)
-        {
-            string selectedText = sender.Text;
-            sender.Text = new List<string>(source.Cast<string>()).Where(x => x.ToLower() == selectedText.ToLower()).FirstOrDefault();
-        }
+        //private void SetSuppliersSource()
+        //{
+        //    foreach (DataRow row in new SuppliersTableAdapter().GetData().Rows)
+        //    {
+        //        string fullName = row[1]?.ToString().Trim() ?? "";
+        //        if (!string.IsNullOrEmpty(fullName))
+        //        {
+        //            source.Add(fullName);
+        //        }
+        //    }
+        //    DeliveryListFormSupplier.AutoCompleteCustomSource = source;
+        //}
+        //private void FindSupplier(TextBox sender)
+        //{
+        //    string selectedText = sender.Text;
+        //    sender.Text = new List<string>(source.Cast<string>()).Where(x => x.ToLower() == selectedText.ToLower()).FirstOrDefault();
+        //}
 
-        private void DeliveryListFormSupplier_Leave(object sender, EventArgs e)
-        {
-            FindSupplier(sender as TextBox);
-            
-            //установка поставщика
-            var dlRow = tOOLACCOUNTINGDataSet.DeliveryLists.FindByDeliveryListID(deliveryListNumber);
-            string inn = tOOLACCOUNTINGDataSet.Suppliers.Where(x => x.Name == DeliveryListFormSupplier.Text).Select(x => x.INN).FirstOrDefault();
-            if(!string.IsNullOrEmpty(inn))dlRow.SupplierINN = inn;
-            dlta.Update(tOOLACCOUNTINGDataSet.DeliveryLists);
-            dlta.Fill(tOOLACCOUNTINGDataSet.DeliveryLists);
+        //private void DeliveryListFormSupplier_Leave(object sender, EventArgs e)
+        //{
+        //    FindSupplier(sender as TextBox);
 
-            SetButtonsState();
-        }
+        //    //установка поставщика
+        //    var dlRow = tOOLACCOUNTINGDataSet.DeliveryLists.FindByDeliveryListID(deliveryListNumber);
+        //    string inn = tOOLACCOUNTINGDataSet.Suppliers.Where(x => x.Name == DeliveryListFormSupplier.Text).Select(x => x.INN).FirstOrDefault();
+        //    if(!string.IsNullOrEmpty(inn))dlRow.SupplierINN = inn;
+        //    dlta.Update(tOOLACCOUNTINGDataSet.DeliveryLists);
+        //    dlta.Fill(tOOLACCOUNTINGDataSet.DeliveryLists);
+
+        //    SetButtonsState();
+        //}
 
         private void SetButtonsState()
         {
             try
             {
-                if(string.IsNullOrEmpty(DeliveryListFormSupplier.Text))
+                if (string.IsNullOrEmpty(DeliveryListFormSupplier.Text))
                 {
                     DeliveryListFormButtonAdd.Enabled = false;
                     DeliveryListFormButtonRemove.Enabled = false;
@@ -164,7 +173,7 @@ namespace Система_учёта_и_приобретения_инструме
                 dlcta.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContent);
                 dlcita.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
 
-                //обновление статуса
+                //Обновление статуса заявки на приобретение
                 int purchaseRequestID = prcRow.PurchaseRequestID;
                 // Получаем все строки PurchaseRequestsContent для указанного PurchaseRequestID
                 var contentList = tOOLACCOUNTINGDataSet.PurchaseRequestsContent
@@ -191,6 +200,14 @@ namespace Система_учёта_и_приобретения_инструме
                         prita.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
                     }
                 }
+
+
+                // Обновление статуса заявки на получение
+                rrRow.Status = "В работе";
+                new ReceivingRequestsTableAdapter().Update(tOOLACCOUNTINGDataSet.ReceivingRequests);
+
+
+
                 SetPurchaseRequestsContentFilter();
             }
             catch { }
@@ -213,7 +230,7 @@ namespace Система_учёта_и_приобретения_инструме
                 dlita.Fill(tOOLACCOUNTINGDataSet.DeliveryListsInj);
                 var dlcRow = tOOLACCOUNTINGDataSet.DeliveryListsContent.FindByDeliveryContentID(row.DeliveryContentID);
 
-                int prcId= dlcRow.PurchaseContentID;
+                int prcId = dlcRow.PurchaseContentID;
 
                 dlcRow.Delete();
                 dlcta.Update(tOOLACCOUNTINGDataSet.DeliveryListsContent);
@@ -252,6 +269,35 @@ namespace Система_учёта_и_приобретения_инструме
                 prta.Update(prRow);
                 prta.Fill(tOOLACCOUNTINGDataSet.PurchaseRequests);
                 prita.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
+
+
+                // Обновление статуса заявки на получение
+                var rrcRow = tOOLACCOUNTINGDataSet.ReceivingRequestsContent
+                    .FirstOrDefault(r => r.ReceivingContentID == prcRow.ReceivingContentID);
+                int receivingRequestID = rrcRow.ReceivingRequestID;
+                // 1. Получаем все ReceivingRequestsContent, связанные с этой заявкой
+                var receivingContentIDs = tOOLACCOUNTINGDataSet.ReceivingRequestsContent
+                    .Where(rrc => rrc.ReceivingRequestID == receivingRequestID)
+                    .Select(rrc => rrc.ReceivingContentID)
+                    .ToList();
+                // 3. Находим все PurchaseRequestsContent, связанные с этими ReceivingContentID
+                var prcList = tOOLACCOUNTINGDataSet.PurchaseRequestsContent
+                    .Where(prc => receivingContentIDs.Contains(prc.ReceivingContentID) && prc.IsPurchase == true)
+                    .Select(prc => prc.PurchaseContentID)
+                    .ToList();
+                // 4. Проверяем, есть ли связь с DeliveryListsContent
+                bool hasDeliveryLink = tOOLACCOUNTINGDataSet.DeliveryListsContent
+                    .Any(dlc => prcList.Contains(dlc.PurchaseContentID));
+                // 5. Обновляем статус заявки на получение
+                if (!hasDeliveryLink)
+                {
+                    var rrta = new ReceivingRequestsTableAdapter();
+                    rrta.Fill(tOOLACCOUNTINGDataSet.ReceivingRequests);
+                    var rrRow = tOOLACCOUNTINGDataSet.ReceivingRequests
+                        .FindByReceivingRequestID(receivingRequestID);
+                        rrRow.Status = "Обработана";
+                    rrta.Update(tOOLACCOUNTINGDataSet.ReceivingRequests);
+                }
 
                 SetPurchaseRequestsContentFilter();
             }

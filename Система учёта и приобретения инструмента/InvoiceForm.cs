@@ -134,10 +134,14 @@ namespace Система_учёта_и_приобретения_инструме
                 var prcta = new PurchaseRequestsContentTableAdapter();
                 var dlcAdapter = new DeliveryListsContentTableAdapter();
 
+                var prta = new PurchaseRequestsTableAdapter();
+
                 rrta.Fill(tOOLACCOUNTINGDataSet.ReceivingRequests);
                 rrcta.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsContent);
                 prcta.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContent);
                 dlcAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContent);
+
+                prta.Fill(tOOLACCOUNTINGDataSet.PurchaseRequests);
 
                 // Получение связей
                 var dlc = tOOLACCOUNTINGDataSet.DeliveryListsContent.FindByDeliveryContentID(row.DeliveryContentID);
@@ -188,6 +192,7 @@ namespace Система_учёта_и_приобретения_инструме
                 #region Обновление статуса заявки на приобретение
 
                 var purchaseRequestID = prc.PurchaseRequestID;
+                
                 var pr = tOOLACCOUNTINGDataSet.PurchaseRequests.FindByPurchaseRequestID(purchaseRequestID);
 
                 if (pr != null)
@@ -229,9 +234,7 @@ namespace Система_учёта_и_приобретения_инструме
                     }
 
                     pr.Status = allPurchaseCompleted ? "Исполнена полностью" : "Исполнена частично";
-                    new PurchaseRequestsTableAdapter().Update(tOOLACCOUNTINGDataSet.PurchaseRequests);
-                    new PurchaseRequestsTableAdapter().Fill(tOOLACCOUNTINGDataSet.PurchaseRequests);
-                    new PurchaseRequestsInjTableAdapter().Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
+                    prta.Update(tOOLACCOUNTINGDataSet.PurchaseRequests);
                 }
 
                 #endregion

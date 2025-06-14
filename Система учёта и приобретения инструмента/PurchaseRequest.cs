@@ -40,7 +40,7 @@ namespace Система_учёта_и_приобретения_инструме
             prita.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
             purchaseRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
 
-            purchaseRequestsContentInjBindingSource.Filter = "PurchaseRequestID = 1";
+            purchaseRequestsContentInjBindingSource.Filter = "PurchaseRequestID = 1 AND RequestStatus = 'Обработана'";
 
             PurchaseRequestNumber.Text = (tOOLACCOUNTINGDataSet.PurchaseRequests.Max(x => x.PurchaseRequestID)).ToString();
             PurchaseRequestDate.Text = DateTime.Now.ToString("dd.MM.yyyy");
@@ -74,7 +74,7 @@ namespace Система_учёта_и_приобретения_инструме
             SetButtonsState();
         }
 
-        private void PurchaseRequestButtonAdd_Click(object sender, EventArgs e) //bug Обновляются только при перезаходе
+        private void PurchaseRequestButtonAdd_Click(object sender, EventArgs e)
         {
             var selectedRow = PurchaseRequestsContentTable.CurrentRow?.DataBoundItem as DataRowView;
             if (selectedRow == null) return;

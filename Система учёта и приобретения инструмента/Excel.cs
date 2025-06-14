@@ -62,10 +62,6 @@ namespace Система_учёта_и_приобретения_инструме
             "NomenclatureNumber", "RangeStart", "Group", "BatchNumber"
         };
 
-        public void Import()
-        {
-            
-        }
         public void Export(System.Data.DataTable table, string path = null)
         {
             if (table == null) return;
