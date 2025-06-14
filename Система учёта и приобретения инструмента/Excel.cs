@@ -48,6 +48,10 @@ namespace Система_учёта_и_приобретения_инструме
             {"ReceivingRequestID", "№ заявки"},
             {"PlannedDate", "Плановая дата"},
             {"RequestType", "Тип заявки"},
+            // История поступлений
+            {"InvoiceID", "№ накладной"},
+            {"InvoiceDate", "Дата накладной"},
+            {"SupplierName", "Поставщик"}
         };
 
         /// <summary>
@@ -81,7 +85,7 @@ namespace Система_учёта_и_приобретения_инструме
                 // Заголовки
                 for (int col = 0; col < columnCount; col++)
                 {
-                    string header = GetHeader(table.Columns[col].ColumnName);
+                    string header = !string.IsNullOrEmpty(table.Columns[col].Caption) ? table.Columns[col].Caption : GetHeader(table.Columns[col].ColumnName);
                     ws.Cells[1, col + 1] = header;
                     if (TextColumns.Contains(table.Columns[col].ColumnName))
                         ws.Columns[col + 1].NumberFormat = "@"; // текстовый формат
@@ -364,7 +368,7 @@ namespace Система_учёта_и_приобретения_инструме
 
                     foreach (var p in parameters)
                     {
-                        string header = GetHeader(p.Field);
+                        string header = p.Field;
                         ws.Cells[currentRow, 1] = header + ":";
                         var valueCell = ws.Cells[currentRow, 2];
                         // Форматируем значение как текст, прежде чем присвоить
@@ -378,11 +382,13 @@ namespace Система_учёта_и_приобретения_инструме
                 // 3. Заголовки столбцов
                 for (int col = 0; col < columnCount; col++)
                 {
-                    string header = GetHeader(table.Columns[col].ColumnName);
+                    string header = !string.IsNullOrEmpty(table.Columns[col].Caption) ? table.Columns[col].Caption : GetHeader(table.Columns[col].ColumnName);
                     ws.Cells[currentRow, col + 1] = header;
                     // Текстовый формат для определённых колонок
                     if (TextColumns.Contains(table.Columns[col].ColumnName))
                         ws.Columns[col + 1].NumberFormat = "@";
+                    else if (header.Contains("Дата"))
+                        ws.Columns[col + 1].NumberFormat = "dd.MM.yyyy";
                 }
 
                 MSExcel.Range headerRange = ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow, columnCount]];
@@ -417,6 +423,97 @@ namespace Система_учёта_и_приобретения_инструме
             finally
             {
                 // Если Excel был открыт невидимым (что не наш случай) – закрываем
+                if (excelApp != null && !excelApp.Visible)
+                    excelApp.Quit();
+            }
+        }
+
+        public void ExportHistoryInj(System.Data.DataTable table, List<SearchParameter> parameters)
+        {
+            if (table == null || table.Rows.Count == 0) return;
+
+            MSExcel.Application excelApp = null;
+            try
+            {
+                excelApp = new MSExcel.Application();
+                excelApp.Visible = true;
+                var wb = excelApp.Workbooks.Add();
+                MSExcel.Worksheet ws = wb.ActiveSheet;
+
+                int currentRow = 1;
+                int columnCount = table.Columns.Count;
+
+                // Заголовок отчёта
+                ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow, columnCount]].Merge();
+                ws.Cells[currentRow, 1] = "ОТЧЁТ ПО ИСТОРИИ ПОСТУПЛЕНИЙ";
+                MSExcel.Range titleRange = ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow, columnCount]];
+                titleRange.Font.Bold = true;
+                titleRange.Font.Size = 14;
+                titleRange.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignCenter;
+                currentRow += 2;
+
+                // Параметры (если есть)
+                if (parameters != null && parameters.Count > 0)
+                {
+                    ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow, columnCount]].Merge();
+                    ws.Cells[currentRow, 1] = "ПАРАМЕТРЫ ОТЧЁТА";
+                    MSExcel.Range paramsHeader = ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow, columnCount]];
+                    paramsHeader.Font.Bold = true;
+                    paramsHeader.Font.Size = 12;
+                    paramsHeader.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignLeft;
+                    currentRow++;
+
+                    foreach (var p in parameters)
+                    {
+                        string header = p.Field;
+                        ws.Cells[currentRow, 1] = header + ":";
+                        var valueCell = ws.Cells[currentRow, 2];
+                        valueCell.NumberFormat = "@"; // текстово
+                        valueCell.Value = p.Value?.ToString();
+                        currentRow++;
+                    }
+                    currentRow++; // пустая строка
+                }
+
+                // Шапка столбцов
+                for (int col = 0; col < columnCount; col++)
+                {
+                    string header = !string.IsNullOrEmpty(table.Columns[col].Caption) ? table.Columns[col].Caption : GetHeader(table.Columns[col].ColumnName);
+                    ws.Cells[currentRow, col + 1] = header;
+                    if (TextColumns.Contains(table.Columns[col].ColumnName))
+                        ws.Columns[col + 1].NumberFormat = "@";
+                    else if (header.Contains("Дата"))
+                        ws.Columns[col + 1].NumberFormat = "dd.MM.yyyy";
+                }
+                MSExcel.Range headerRange = ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow, columnCount]];
+                headerRange.Font.Bold = true;
+                headerRange.Interior.Color = (int)MSExcel.XlRgbColor.rgbLightGray;
+                headerRange.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignCenter;
+
+                // Данные
+                for (int row = 0; row < table.Rows.Count; row++)
+                {
+                    for (int col = 0; col < columnCount; col++)
+                    {
+                        ws.Cells[currentRow + 1 + row, col + 1] = table.Rows[row][col];
+                    }
+                }
+
+                // Smart table
+                MSExcel.Range fullRange = ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow + table.Rows.Count, columnCount]];
+                var listObj = ws.ListObjects.Add(MSExcel.XlListObjectSourceType.xlSrcRange, fullRange, Type.Missing, MSExcel.XlYesNoGuess.xlYes);
+                listObj.TableStyle = "TableStyleMedium2";
+
+                // Автофит и фиксация шапки
+                ws.Columns.AutoFit();
+                excelApp.ActiveWindow.SplitRow = currentRow;
+                excelApp.ActiveWindow.FreezePanes = true;
+
+                // Колонтитул
+                ws.PageSetup.CenterHeader = $"История поступлений  {DateTime.Today:dd.MM.yyyy}   {Environment.UserName}   Стр.&P из &N";
+            }
+            finally
+            {
                 if (excelApp != null && !excelApp.Visible)
                     excelApp.Quit();
             }

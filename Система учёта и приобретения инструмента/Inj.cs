@@ -1575,6 +1575,25 @@ namespace Система_учёта_и_приобретения_инструме
         }
 
 
+        private void HistoryButtonExport_Click(object sender, EventArgs e)
+        {
+            if (HistoryTable.Rows.Count == 0) return;
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(HistoryNumber.Text)) parameters.Add(new SearchParameter("Номенклатурный номер", HistoryNumber.Text));
+            if (!string.IsNullOrEmpty(HistoryName.Text)) parameters.Add(new SearchParameter("Полное наименование", HistoryName.Text, false));
+            if (HistoryStart.Checked) parameters.Add(new SearchParameter("Дата от", HistoryStart.Value.ToString("dd.MM.yyyy"), false));
+            if (HistoryEnd.Checked) parameters.Add(new SearchParameter("Дата до", HistoryEnd.Value.ToString("dd.MM.yyyy"), false));
+
+            DataTable dt = DataGridViewToDataTable(HistoryTable);
+            new Excel().ExportHistoryInj(dt, parameters);
+        }
+
+        private void HistoryTable_CurrentCellChanged(object sender, EventArgs e)
+        {
+            if (HistoryTable.Rows.Count == 0) HistoryButtonExport.Enabled = false;
+            else HistoryButtonExport.Enabled = true;
+        }
+
         //private void PurchaseRequestsResetStart() { PurchaseRequestsStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1); PurchaseRequestsStart.Checked = false; }
         //private void PurchaseRequestsResetEnd() { PurchaseRequestsEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1); PurchaseRequestsEnd.Checked = false; }
         #endregion
@@ -1951,41 +1970,15 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void OstatkiButtonExport_Click(object sender, EventArgs e)
         {
+            if (OstatkiTable.Rows.Count == 0) return;
             var parameters = new List<SearchParameter>();
-            if (!string.IsNullOrEmpty(OstatkiNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", OstatkiNumber.Text));
+            if (!string.IsNullOrEmpty(OstatkiNumber.Text)) parameters.Add(new SearchParameter("Номенклатурный номер", OstatkiNumber.Text));
             DataTable dt = DataGridViewToDataTable(OstatkiTable);
             new Excel().ExportBalancesInj(dt, parameters);
         }
 
         // Преобразование видимых данных DataGridView в DataTable
-        private static DataTable DataGridViewToDataTable(DataGridView dgv)
-        {
-            var dt = new DataTable();
-            // Создаём колонки только для видимых столбцов
-            foreach (DataGridViewColumn col in dgv.Columns)
-            {
-                if (!col.Visible) continue;
-                string colName = !string.IsNullOrEmpty(col.DataPropertyName) ? col.DataPropertyName : col.Name;
-                if (!dt.Columns.Contains(colName))
-                    dt.Columns.Add(colName);
-            }
-
-            // Заполняем строки
-            foreach (DataGridViewRow row in dgv.Rows)
-            {
-                if (row.IsNewRow) continue;
-                var newRow = dt.NewRow();
-                foreach (DataGridViewColumn col in dgv.Columns)
-                {
-                    if (!col.Visible) continue;
-                    string colName = !string.IsNullOrEmpty(col.DataPropertyName) ? col.DataPropertyName : col.Name;
-                    newRow[colName] = row.Cells[col.Index].Value ?? DBNull.Value;
-                }
-                dt.Rows.Add(newRow);
-            }
-            return dt;
-        }
-
+        
         private void OstatkiTable_CurrentCellChanged(object sender, EventArgs e)
         {
             if(OstatkiTable.Rows.Count == 0) OstatkiButtonExport.Enabled = false;
@@ -2233,6 +2226,41 @@ namespace Система_учёта_и_приобретения_инструме
         private void Digits_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
+        }
+
+        private static DataTable DataGridViewToDataTable(DataGridView dgv)
+        {
+            var dt = new DataTable();
+            // Создаём колонки только для видимых столбцов
+            foreach (DataGridViewColumn col in dgv.Columns)
+            {
+                if (!col.Visible) continue;
+                string colName = !string.IsNullOrEmpty(col.DataPropertyName) ? col.DataPropertyName : col.Name;
+                if (!dt.Columns.Contains(colName))
+                {
+                    var dataCol = dt.Columns.Add(colName);
+                    dataCol.Caption = col.HeaderText;
+                }
+            }
+
+            // Заполняем строки
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                if (row.IsNewRow) continue;
+                var newRow = dt.NewRow();
+                foreach (DataGridViewColumn col in dgv.Columns)
+                {
+                    if (!col.Visible) continue;
+                    string colName = !string.IsNullOrEmpty(col.DataPropertyName) ? col.DataPropertyName : col.Name;
+                    object val = row.Cells[col.Index].Value;
+                    if (val is DateTime dtVal)
+                        newRow[colName] = dtVal.ToString("dd.MM.yyyy");
+                    else
+                        newRow[colName] = val?.ToString();
+                }
+                dt.Rows.Add(newRow);
+            }
+            return dt;
         }
     }
     public static class Logs
