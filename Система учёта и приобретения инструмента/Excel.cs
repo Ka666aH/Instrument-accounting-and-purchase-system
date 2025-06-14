@@ -352,7 +352,11 @@ namespace Система_учёта_и_приобретения_инструме
                 titleRange.Font.Bold = true;
                 titleRange.Font.Size = 14;
                 titleRange.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignCenter;
-                currentRow += 2; // пропускаем строку
+                currentRow += 1;
+                currentRow += 1;
+                ws.Cells[currentRow,1] = $"Дата формирования отчёта: {DateTime.Today:dd.MM.yyyy}";
+                currentRow += 1; // пустая строка после даты
+                currentRow += 1;
 
                 // 2. Параметры поиска (если они заданы)
                 if (parameters != null && parameters.Count > 0)
@@ -416,9 +420,7 @@ namespace Система_учёта_и_приобретения_инструме
                 excelApp.ActiveWindow.FreezePanes = true;
 
                 // 7. Колонтитул
-                ws.PageSetup.CenterHeader = $"Отчёт об остатках  {DateTime.Today:dd.MM.yyyy}   {Environment.UserName}   Стр.&P из &N";
-
-                // 8. (Рамки убраны по требованию)
+                ws.PageSetup.CenterHeader = "";
             }
             finally
             {
@@ -450,7 +452,11 @@ namespace Система_учёта_и_приобретения_инструме
                 titleRange.Font.Bold = true;
                 titleRange.Font.Size = 14;
                 titleRange.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignCenter;
-                currentRow += 2;
+                currentRow += 1;
+                currentRow += 1;
+                ws.Cells[currentRow,1] = $"Дата формирования отчёта: {DateTime.Today:dd.MM.yyyy}";
+                currentRow += 1; // пустая строка после даты
+                currentRow += 1;
 
                 // Параметры (если есть)
                 if (parameters != null && parameters.Count > 0)
@@ -510,7 +516,7 @@ namespace Система_учёта_и_приобретения_инструме
                 excelApp.ActiveWindow.FreezePanes = true;
 
                 // Колонтитул
-                ws.PageSetup.CenterHeader = $"История поступлений  {DateTime.Today:dd.MM.yyyy}   {Environment.UserName}   Стр.&P из &N";
+                ws.PageSetup.CenterHeader = "";
             }
             finally
             {
