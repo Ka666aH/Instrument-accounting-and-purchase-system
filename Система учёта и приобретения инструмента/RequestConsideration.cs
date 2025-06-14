@@ -126,8 +126,22 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void RequestConsiderationContentTable_CurrentCellChanged(object sender, EventArgs e)
         {
-            SetRequestConsiderationDecisionButtonsState();
+            if (RequestConsiderationContentTable.CurrentRow != null && string.IsNullOrEmpty(RequestConsiderationContentTable.CurrentRow.Cells[1].Value.ToString()))
+            {
+                RequestConsiderationButtonAddNomenclature.Enabled = true;
+                RequestConsiderationButtonAddNomenclature.Visible = true;
+                RequestConsiderationButtonDeсide.Enabled= false;
+                RequestConsiderationButtonReplace.Enabled = false;
+                return;
+            }
+            else
+            {
+                RequestConsiderationButtonAddNomenclature.Enabled = false;
+                RequestConsiderationButtonAddNomenclature.Visible = false;
+            }
 
+
+            SetRequestConsiderationDecisionButtonsState();
             if (RequestConsiderationContentTable.CurrentRow == null) return;
             var selectedRow = RequestConsiderationContentTable.CurrentRow.DataBoundItem as DataRowView;
             var contentRow = selectedRow.Row as TOOLACCOUNTINGDataSet.ReceivingRequestsContentInjRow;
@@ -139,6 +153,20 @@ namespace Система_учёта_и_приобретения_инструме
         private void RequestConsiderationFixationTable_CurrentCellChanged(object sender, EventArgs e)
         {
             SetRequestConsiderationFixationButtonsState();
+        }
+
+        private void RequestConsiderationButtonAddNomenclature_Click(object sender, EventArgs e)
+        {
+            var selectedRow = RequestConsiderationContentTable.CurrentRow.DataBoundItem as DataRowView;
+            var contentRow = selectedRow.Row as TOOLACCOUNTINGDataSet.ReceivingRequestsContentInjRow;
+            receivingRequestsContentTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsContent);
+            TOOLACCOUNTINGDataSet.ReceivingRequestsContentRow rrcRow = tOOLACCOUNTINGDataSet.ReceivingRequestsContent.FindByReceivingContentID(contentRow.ReceivingContentID);
+            NomenclatureTableAdapter nta = new NomenclatureTableAdapter();
+            nta.Fill(tOOLACCOUNTINGDataSet.Nomenclature);
+            NomenForm nomenForm = new NomenForm(tOOLACCOUNTINGDataSet,nta,FormMode.Add,null, rrcRow);
+            nomenForm.ShowDialog();
+            nta.Fill(tOOLACCOUNTINGDataSet.Nomenclature);
+            receivingRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj);
         }
 
         private void RequestConsiderationButtonDeсide_Click(object sender, EventArgs e)

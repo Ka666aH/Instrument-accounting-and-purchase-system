@@ -21,11 +21,16 @@ namespace Система_учёта_и_приобретения_инструме
         FormMode mode;
         TOOLACCOUNTINGDataSet.NomenclatureRow editRow;
         TOOLACCOUNTINGDataSet.NomenclatureViewRow editViewRow;
+
+        TOOLACCOUNTINGDataSet.ReceivingRequestsContentRow requestsContentRow;
         public NomenForm(
             TOOLACCOUNTINGDataSet _toolAccounting,
             NomenclatureTableAdapter _tableAdapter,
             FormMode _mode = FormMode.Add,
-            TOOLACCOUNTINGDataSet.NomenclatureViewRow _editRow = null)
+            TOOLACCOUNTINGDataSet.NomenclatureViewRow _editRow = null,
+
+
+            TOOLACCOUNTINGDataSet.ReceivingRequestsContentRow _requestsContentRow = null)
         {
             InitializeComponent();
             toolAccounting = _toolAccounting;
@@ -34,6 +39,8 @@ namespace Система_учёта_и_приобретения_инструме
             editViewRow = _editRow;
             if (_editRow != null) editRow = toolAccounting.Nomenclature.FindByNomenclatureNumber(_editRow.NomenclatureNumber);
             else editRow = null;
+
+            if (_requestsContentRow != null) requestsContentRow = _requestsContentRow;
 
             NomenFormUsage.SelectedIndex = 0;
         }
@@ -229,15 +236,6 @@ private AutoCompleteStringCollection NomenclatureSource(NomenclatureViewTableAda
         }
         private void CreateNomenclature()
         {
-            //bool exists = toolAccounting.Ana0logTools
-            //            .Any(r =>
-            //            r.OriginalNomenclatureNumber == AnalogFormOrigiinalNumber.Text &&
-            //            r.AnalogNomenclatureNumber == AnalogFormAnalogNumber.Text);
-
-            //if (exists)
-            //{
-            //    throw new Exception("Такая пара аналогов уже существует.");
-            //}
             try
             {
                 var newRow = toolAccounting.Nomenclature.NewNomenclatureRow();
@@ -246,6 +244,15 @@ private AutoCompleteStringCollection NomenclatureSource(NomenclatureViewTableAda
                 Logging(true, newRow); //созданние логов корректировки
                 UpdateTable(); // обновление таблицы номенклатуры
                 UpdateLogs(); // обновление таблицы логов
+
+                if(requestsContentRow != null)
+                {
+                    requestsContentRow.NomenclatureNumber = NomenFormNumber.Text;
+                    new ReceivingRequestsContentTableAdapter().Update(toolAccounting.ReceivingRequestsContent);
+                    //requestsContentRow.FullName
+                    ClearForm();
+                    Close();
+                }
             }
             catch (Exception ex)
             {

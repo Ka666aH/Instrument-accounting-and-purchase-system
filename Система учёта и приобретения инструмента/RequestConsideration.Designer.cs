@@ -67,6 +67,7 @@
             this.balancesInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.BalancesInjTableAdapter();
             this.RequestConsiderationButtonReplace = new System.Windows.Forms.Button();
             this.replacementFixationTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReplacementFixationTableAdapter();
+            this.RequestConsiderationButtonAddNomenclature = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.RequestConsiderationContentTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentInjBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
@@ -387,11 +388,25 @@
             // 
             this.replacementFixationTableAdapter.ClearBeforeFill = true;
             // 
+            // RequestConsiderationButtonAddNomenclature
+            // 
+            this.RequestConsiderationButtonAddNomenclature.Enabled = false;
+            this.RequestConsiderationButtonAddNomenclature.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RequestConsiderationButtonAddNomenclature.Location = new System.Drawing.Point(714, 178);
+            this.RequestConsiderationButtonAddNomenclature.Name = "RequestConsiderationButtonAddNomenclature";
+            this.RequestConsiderationButtonAddNomenclature.Size = new System.Drawing.Size(182, 44);
+            this.RequestConsiderationButtonAddNomenclature.TabIndex = 52;
+            this.RequestConsiderationButtonAddNomenclature.Text = "Добавить в номенклатуру";
+            this.RequestConsiderationButtonAddNomenclature.UseVisualStyleBackColor = true;
+            this.RequestConsiderationButtonAddNomenclature.Visible = false;
+            this.RequestConsiderationButtonAddNomenclature.Click += new System.EventHandler(this.RequestConsiderationButtonAddNomenclature_Click);
+            // 
             // RequestConsideration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(907, 493);
+            this.Controls.Add(this.RequestConsiderationButtonAddNomenclature);
             this.Controls.Add(this.RequestConsiderationButtonReplace);
             this.Controls.Add(this.RequestConsiderationQuantity);
             this.Controls.Add(this.label4);
@@ -468,5 +483,6 @@
         private TOOLACCOUNTINGDataSetTableAdapters.BalancesInjTableAdapter balancesInjTableAdapter;
         private System.Windows.Forms.Button RequestConsiderationButtonReplace;
         private TOOLACCOUNTINGDataSetTableAdapters.ReplacementFixationTableAdapter replacementFixationTableAdapter;
+        private System.Windows.Forms.Button RequestConsiderationButtonAddNomenclature;
     }
 }
