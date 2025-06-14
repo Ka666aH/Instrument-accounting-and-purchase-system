@@ -19,6 +19,9 @@ namespace Система_учёта_и_приобретения_инструме
         AutoCompleteStringCollection nomenSource = new AutoCompleteStringCollection();
         private ToolTip qtyTip = new ToolTip();
 
+        // Адаптер для сохранения перемещений
+        ToolMovementsTableAdapter movementsAdapter = new ToolMovementsTableAdapter();
+
         public AddMoving()
         {
             InitializeComponent();
@@ -131,7 +134,8 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (Add.Checked)
             {
-
+                ToggleNomenAutocomplete(false);
+                
                 StorageTo.ReadOnly = false;
                 label15.Text = "Тип документа *";
                 label7.Text = "Документ-основание *";
@@ -145,7 +149,8 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 if (NonAdd.Checked)
                 {
-
+                    ToggleNomenAutocomplete(true);
+                    
                     StorageTo.Text = "12";
                     StorageTo.ReadOnly = true;
                     label15.Text = "Тип документа *";
@@ -155,6 +160,7 @@ namespace Система_учёта_и_приобретения_инструме
                 }
                 else
                 {
+                    ToggleNomenAutocomplete(true);
                     label15.Text = "Тип документа";
                     StorageTo.Text = null;
                     StorageFrom.Text = "0";
@@ -163,6 +169,28 @@ namespace Система_учёта_и_приобретения_инструме
                     label5.Text = "Склад-отправитель *";
                     SourceDocumentType.Text = null;
                 }
+            }
+        }
+
+        private void ToggleNomenAutocomplete(bool enable)
+        {
+            if (enable)
+            {
+                Nomenclature.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                Nomenclature.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                Nomenclature.AutoCompleteCustomSource = nomenSource;
+
+                // обновим источник, если известен склад
+                int sid;
+                if (int.TryParse(StorageFrom.Text.Trim(), out sid))
+                {
+                    BuildNomenSource(sid);
+                }
+            }
+            else
+            {
+                Nomenclature.AutoCompleteMode = AutoCompleteMode.None;
+                Nomenclature.AutoCompleteCustomSource = null;
             }
         }
 
@@ -199,5 +227,99 @@ namespace Система_учёта_и_приобретения_инструме
             textBox1.Text = newId.ToString();
             textBox7.Text = DateTime.Now.ToString();
         }
+
+        private void MoveFormSave_Click(object sender, EventArgs e)
+        {
+            if (TrySave())
+            {
+                NotificationService.Notify("Успех", "Перемещение сохранено.", ToolTipIcon.Info);
+            }
+        }
+
+        private void MoveFormSaveClose_Click(object sender, EventArgs e)
+        {
+            if (TrySave()) this.Close();
+        }
+
+        private bool TrySave()
+        {
+            // Валидация обязательных полей
+            if (string.IsNullOrWhiteSpace(StorageFrom.Text) || string.IsNullOrWhiteSpace(StorageTo.Text) ||
+                string.IsNullOrWhiteSpace(Nomenclature.Text) || string.IsNullOrWhiteSpace(Quantity.Text))
+            {
+                NotificationService.Notify("Предупреждение", "Заполните все обязательные поля.", ToolTipIcon.Warning);
+                return false;
+            }
+
+            int fromId, toId, qty;
+            if (!int.TryParse(StorageFrom.Text.Trim(), out fromId))
+            {
+                NotificationService.Notify("Ошибка", "Некорректный склад-отправитель.", ToolTipIcon.Error);
+                return false;
+            }
+            if (!int.TryParse(StorageTo.Text.Trim(), out toId))
+            {
+                NotificationService.Notify("Ошибка", "Некорректный склад-получатель.", ToolTipIcon.Error);
+                return false;
+            }
+            if (!int.TryParse(Quantity.Text.Trim(), out qty) || qty <= 0)
+            {
+                NotificationService.Notify("Ошибка", "Количество должно быть положительным числом.", ToolTipIcon.Error);
+                return false;
+            }
+
+            string nomenNumber = Nomenclature.Text.Split('-')[0].Trim();
+            string movementName = "Перемещение"; // единственный вариант
+
+            try
+            {
+                movementsAdapter.Fill(tOOLACCOUNTINGDataSet.ToolMovements);
+                int newId = tOOLACCOUNTINGDataSet.ToolMovements.Count == 0 ? 1 : tOOLACCOUNTINGDataSet.ToolMovements.Max(r => r.MovementID) + 1;
+
+                var newRow = tOOLACCOUNTINGDataSet.ToolMovements.NewToolMovementsRow();
+                newRow.MovementID = newId;
+                newRow.MovementDate = DateTime.Now;
+                newRow.ToStorageID = toId;
+                newRow.FromStorageID = fromId;
+                newRow.MovementTypeID = movementName; // записываем название, а не код
+                newRow.NomenclatureNumber = nomenNumber;
+                newRow.BatchNumber = string.IsNullOrWhiteSpace(BatchNumber.Text) ? "-" : BatchNumber.Text.Trim();
+                decimal price;
+                decimal.TryParse(Price.Text.Replace(',', '.'), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out price);
+                newRow.Price = price;
+                newRow.Quantity = qty;
+                newRow.Executor = Environment.UserName.ToString();
+                newRow.IsPosted = isWriteOff.Checked;
+                newRow.LastUpdated = DateTime.Now;
+
+                tOOLACCOUNTINGDataSet.ToolMovements.AddToolMovementsRow(newRow);
+                movementsAdapter.Update(tOOLACCOUNTINGDataSet.ToolMovements);
+                movementsAdapter.Fill(tOOLACCOUNTINGDataSet.ToolMovements);
+
+                // событие внешним формам (если потребуется)
+                return true;
+            }
+            catch (Exception ex)
+            {
+                tOOLACCOUNTINGDataSet.ToolMovements.RejectChanges();
+                MessageBox.Show($"Ошибка сохранения: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        // Привязываем кнопки к обработчикам (обеспечиваем, если дизайнер не сделал)
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            if (MoveFormSave != null) MoveFormSave.Click += MoveFormSave_Click;
+            if (MoveFormSaveClose != null) MoveFormSaveClose.Click += MoveFormSaveClose_Click;
+
+            Quantity.Enter += (s, ev) =>
+            {
+                // обновляем подсказку при каждом входе в поле
+                Nomenclature_Leave(null, EventArgs.Empty);
+            };
+        }
     }
 }
+
