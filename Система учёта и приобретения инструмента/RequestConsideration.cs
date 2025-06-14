@@ -58,33 +58,40 @@ namespace Система_учёта_и_приобретения_инструме
 
                 int receivingContentId = contentRow.ReceivingContentID;
 
-                // Ищем по ID напрямую
-                var purchaseRows = tOOLACCOUNTINGDataSet.PurchaseRequestsContent
-                    .Where(x => x.ReceivingContentID == receivingContentId);
+                //// Ищем по ID напрямую
+                //var purchaseRows = tOOLACCOUNTINGDataSet.PurchaseRequestsContent
+                //    .Where(x => x.ReceivingContentID == receivingContentId);
 
-                if (!purchaseRows.Any())
+                //if (!purchaseRows.Any())
+                //{
+                //    RequestConsiderationBuy.Checked = false;
+                //    RequestConsiderationTransfer.Checked = false;
+                //    //RequestConsiderationDonor.Text = string.Empty;
+                //}
+                //else
+                //{
+                //    var purchaseRow = purchaseRows.First();
+                //    RequestConsiderationBuy.Checked = purchaseRow.IsPurchase;
+                //    RequestConsiderationTransfer.Checked = !purchaseRow.IsPurchase;
+
+                //    if (!purchaseRow.IsPurchase)
+                //    {
+                //        int donorId = purchaseRow.DonorWorkshopID;
+                //        var donorWorkshop = tOOLACCOUNTINGDataSet.Workshops.Where(w => w.WorkshopID == donorId).Select(x => x.Name).FirstOrDefault();
+
+                //        //RequestConsiderationDonor.Text = donorWorkshop;
+                //    }
+                //}
+
+                RequestConsiderationButtonDeсide.Enabled = RequestConsiderationBuy.Checked || RequestConsiderationTransfer.Checked;
+
+                //Сравнение с доступным количеством
+                if (Convert.ToInt32(RequestConsiderationQuantity.Text) < contentRow.Quantity)
                 {
-                    RequestConsiderationBuy.Checked = false;
-                    RequestConsiderationTransfer.Checked = false;
-                    //RequestConsiderationDonor.Text = string.Empty;
+                    RequestConsiderationTransfer.Enabled = false;
+                    RequestConsiderationBuy.Checked = true;
                 }
-                else
-                {
-                    var purchaseRow = purchaseRows.First();
-                    RequestConsiderationBuy.Checked = purchaseRow.IsPurchase;
-                    RequestConsiderationTransfer.Checked = !purchaseRow.IsPurchase;
-
-                    if (!purchaseRow.IsPurchase)
-                    {
-                        int donorId = purchaseRow.DonorWorkshopID;
-                        var donorWorkshop = tOOLACCOUNTINGDataSet.Workshops.Where(w => w.WorkshopID == donorId).Select(x => x.Name).FirstOrDefault();
-
-                        //RequestConsiderationDonor.Text = donorWorkshop;
-                    }
-                }
-
-                RequestConsiderationButtonDeсide.Enabled =
-                    RequestConsiderationBuy.Checked || RequestConsiderationTransfer.Checked;
+                else RequestConsiderationTransfer.Enabled = true;
             }
             catch //(Exception ex)
             {
@@ -129,6 +136,7 @@ namespace Система_учёта_и_приобретения_инструме
                 RequestConsiderationButtonAddNomenclature.Enabled = false;
                 RequestConsiderationButtonAddNomenclature.Visible = false;
             }
+
 
 
             SetRequestConsiderationDecisionButtonsState();
@@ -310,6 +318,17 @@ namespace Система_учёта_и_приобретения_инструме
             replacementFixationInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReplacementFixationInj);
             RequestConsiderationButtonDeсide.PerformClick();
             //SetRequestConsiderationFixationButtonsState();
+        }
+        private void RequestConsiderationQuantity_TextChanged(object sender, EventArgs e)
+        {
+            var selectedRow = RequestConsiderationContentTable.CurrentRow.DataBoundItem as DataRowView;
+            var contentRow = selectedRow.Row as TOOLACCOUNTINGDataSet.ReceivingRequestsContentInjRow;
+            if(Convert.ToInt32(RequestConsiderationQuantity.Text) < contentRow.Quantity)
+            {
+                RequestConsiderationTransfer.Enabled = false;
+                RequestConsiderationBuy.Checked = true;
+            }
+            else RequestConsiderationTransfer.Enabled = true;
         }
 
         private void RequestConsiderationButtonSave_Click(object sender, EventArgs e)
