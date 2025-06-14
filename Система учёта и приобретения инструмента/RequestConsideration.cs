@@ -355,8 +355,15 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void RequestConsideration_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if(tOOLACCOUNTINGDataSet.ReceivingRequests.FindByReceivingRequestID(requestNumber).Status == "Обработана")
-            NotificationService.Notify("Обработка заявки", $"Заявка на получение №{requestNumber} обработана.",ToolTipIcon.Info);
+            try
+            {
+                var rrRow = tOOLACCOUNTINGDataSet.ReceivingRequests.FindByReceivingRequestID(requestNumber);
+                if (rrRow != null && rrRow.Status == "Обработана")
+                {
+                    NotificationService.Notify("Обработка заявки", $"Заявка на получение №{requestNumber} обработана.", ToolTipIcon.Info);
+                }
+            }
+            catch { /* Исключения уже перехватываются глобально, но здесь дополнительно защищаемся */ }
         }
     }
 }

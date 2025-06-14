@@ -48,7 +48,7 @@ namespace Система_учёта_и_приобретения_инструме
             try
             {
                 System.Diagnostics.Debug.WriteLine($"Unhandled: {ex}");
-                NotificationService.Notify("Ошибка", ex.Message, ToolTipIcon.Warning);
+                //NotificationService.Notify("Ошибка", ex.Message, ToolTipIcon.Warning);
             }
             catch { /* должно быть безопасно */ }
         }

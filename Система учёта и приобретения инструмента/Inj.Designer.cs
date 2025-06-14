@@ -2966,10 +2966,13 @@
             this.ProvidersButtonCreate.TabIndex = 23;
             this.ProvidersButtonCreate.Text = "Создать";
             this.ProvidersButtonCreate.UseVisualStyleBackColor = true;
+            this.ProvidersButtonCreate.Visible = false;
             this.ProvidersButtonCreate.Click += new System.EventHandler(this.ProvidersButtonCreate_Click);
             // 
             // ProvidersTable
             // 
+            this.ProvidersTable.AllowUserToAddRows = false;
+            this.ProvidersTable.AllowUserToDeleteRows = false;
             this.ProvidersTable.AllowUserToResizeRows = false;
             this.ProvidersTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -2989,7 +2992,7 @@
             this.ProvidersTable.Name = "ProvidersTable";
             this.ProvidersTable.RowHeadersVisible = false;
             this.ProvidersTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ProvidersTable.Size = new System.Drawing.Size(1035, 538);
+            this.ProvidersTable.Size = new System.Drawing.Size(1232, 538);
             this.ProvidersTable.TabIndex = 7;
             this.ProvidersTable.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.ProvidersTable_CellBeginEdit);
             this.ProvidersTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ProvidersTable_CellMouseClick);
@@ -3995,19 +3998,20 @@
             this.ProvidersTableContextMenuCreateStatement});
             this.ProvidersTableContextMenu.Name = "ProvidersTableContextMenu";
             this.ProvidersTableContextMenu.ShowImageMargin = false;
-            this.ProvidersTableContextMenu.Size = new System.Drawing.Size(154, 98);
+            this.ProvidersTableContextMenu.Size = new System.Drawing.Size(156, 120);
             // 
             // ProvidersTableContextMenuCreate
             // 
             this.ProvidersTableContextMenuCreate.Name = "ProvidersTableContextMenuCreate";
-            this.ProvidersTableContextMenuCreate.Size = new System.Drawing.Size(153, 22);
+            this.ProvidersTableContextMenuCreate.Size = new System.Drawing.Size(155, 22);
             this.ProvidersTableContextMenuCreate.Text = "Создать";
+            this.ProvidersTableContextMenuCreate.Visible = false;
             this.ProvidersTableContextMenuCreate.Click += new System.EventHandler(this.ProvidersTableContextMenuCreate_Click);
             // 
             // ProvidersTableContextMenuAlter
             // 
             this.ProvidersTableContextMenuAlter.Name = "ProvidersTableContextMenuAlter";
-            this.ProvidersTableContextMenuAlter.Size = new System.Drawing.Size(153, 22);
+            this.ProvidersTableContextMenuAlter.Size = new System.Drawing.Size(155, 22);
             this.ProvidersTableContextMenuAlter.Text = "Изменить";
             this.ProvidersTableContextMenuAlter.Visible = false;
             this.ProvidersTableContextMenuAlter.Click += new System.EventHandler(this.ProvidersTableContextMenuAlter_Click);
@@ -4015,7 +4019,7 @@
             // ProvidersTableContextMenuDelete
             // 
             this.ProvidersTableContextMenuDelete.Name = "ProvidersTableContextMenuDelete";
-            this.ProvidersTableContextMenuDelete.Size = new System.Drawing.Size(153, 22);
+            this.ProvidersTableContextMenuDelete.Size = new System.Drawing.Size(155, 22);
             this.ProvidersTableContextMenuDelete.Text = "Удалить";
             this.ProvidersTableContextMenuDelete.Visible = false;
             this.ProvidersTableContextMenuDelete.Click += new System.EventHandler(this.ProvidersTableContextMenuDelete_Click);
@@ -4023,13 +4027,13 @@
             // ProvidersTableContextMenuSeparator
             // 
             this.ProvidersTableContextMenuSeparator.Name = "ProvidersTableContextMenuSeparator";
-            this.ProvidersTableContextMenuSeparator.Size = new System.Drawing.Size(150, 6);
+            this.ProvidersTableContextMenuSeparator.Size = new System.Drawing.Size(152, 6);
             this.ProvidersTableContextMenuSeparator.Visible = false;
             // 
             // ProvidersTableContextMenuCreateStatement
             // 
             this.ProvidersTableContextMenuCreateStatement.Name = "ProvidersTableContextMenuCreateStatement";
-            this.ProvidersTableContextMenuCreateStatement.Size = new System.Drawing.Size(153, 22);
+            this.ProvidersTableContextMenuCreateStatement.Size = new System.Drawing.Size(155, 22);
             this.ProvidersTableContextMenuCreateStatement.Text = "Создать ведомость";
             this.ProvidersTableContextMenuCreateStatement.ToolTipText = "Создать ведомость поставки от выбранного поставщика";
             this.ProvidersTableContextMenuCreateStatement.Visible = false;
