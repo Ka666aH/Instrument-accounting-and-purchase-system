@@ -321,7 +321,7 @@ namespace Система_учёта_и_приобретения_инструме
             catch (Exception ex)
             {
                 tOOLACCOUNTINGDataSet.DefectiveLists.RejectChanges();
-                MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }

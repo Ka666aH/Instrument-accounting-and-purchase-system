@@ -302,10 +302,31 @@ namespace Система_учёта_и_приобретения_инструме
                 SetPurchaseRequestsContentFilter();
             }
             catch { }
+            finally
+            {
+                // Обновляем фильтры и таблицы даже если вышли по return или поймали исключение
+                try { SetPurchaseRequestsContentFilter(); } catch { }
+            }
         }
 
         private void SetPurchaseRequestsContentFilter() //bug Не обновляется после удаления в таблице, где несколько строк. Странное обновление в целом
         {
+            // Сохраняем текущую выделенную заявку, чтобы восстановить после обновления
+            int? selectedPurchaseRequestId = null;
+            try
+            {
+                if (DeliveryListFormPurchaseRequestsTable.CurrentRow != null)
+                {
+                    var cellValue = DeliveryListFormPurchaseRequestsTable.CurrentRow.Cells["dataGridViewTextBoxColumn1"].Value; // столбец PurchaseRequestID
+                    if (cellValue != null)
+                    {
+                        selectedPurchaseRequestId = Convert.ToInt32(cellValue);
+                    }
+                }
+            }
+            catch { }
+
+            // ------ обновление данных и формирование фильтра --------
             //фильтр состава заявки
             // Получаем все PurchaseContentID, которые уже в поставке
             dlcta.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContent);
@@ -313,12 +334,13 @@ namespace Система_учёта_и_приобретения_инструме
             prta.Fill(tOOLACCOUNTINGDataSet.PurchaseRequests);
             prita.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
             purchaseRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
+
             var assignedIDs = tOOLACCOUNTINGDataSet.DeliveryListsContent
                 .Select(dlc => dlc.PurchaseContentID)
                 .ToList();
 
             // Формируем строку фильтрации: исключаем те, что уже в поставке
-            if (assignedIDs.Count() > 0)
+            if (assignedIDs.Any())
             {
                 string filter = $"PurchaseContentID NOT IN ({string.Join(",", assignedIDs)})";
                 purchaseRequestsInjPurchaseRequestsContentInjBindingSource.Filter = filter;
@@ -327,11 +349,35 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 purchaseRequestsInjPurchaseRequestsContentInjBindingSource.Filter = null;
             }
-            dlcta.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContent);
-            dlcita.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
-            prta.Fill(tOOLACCOUNTINGDataSet.PurchaseRequests);
-            prita.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
-            purchaseRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
+
+            // После изменения фильтра и перезагрузки данных надо уведомить привязки
+            purchaseRequestsInjPurchaseRequestsContentInjBindingSource.ResetBindings(false);
+            purchaseRequestsInjBindingSource.ResetBindings(false);
+
+            // -------------- попытка восстановить выделение -----------------
+            if (selectedPurchaseRequestId.HasValue)
+            {
+                foreach (DataGridViewRow row in DeliveryListFormPurchaseRequestsTable.Rows)
+                {
+                    if (row.Cells["dataGridViewTextBoxColumn1"].Value != null &&
+                        Convert.ToInt32(row.Cells["dataGridViewTextBoxColumn1"].Value) == selectedPurchaseRequestId.Value)
+                    {
+                        DeliveryListFormPurchaseRequestsTable.CurrentCell = row.Cells[0];
+                        row.Selected = true;
+                        break;
+                    }
+                }
+                // Если не нашли прежнюю строку – выбираем первую доступную (она уже будет выделена автоматически
+                // DataGridView обычно сам выделяет первую строку, но убедимся, что есть хотя бы одна строка
+                if (DeliveryListFormPurchaseRequestsTable.CurrentRow == null && DeliveryListFormPurchaseRequestsTable.Rows.Count > 0)
+                {
+                    DeliveryListFormPurchaseRequestsTable.CurrentCell = DeliveryListFormPurchaseRequestsTable.Rows[0].Cells[0];
+                    DeliveryListFormPurchaseRequestsTable.Rows[0].Selected = true;
+                }
+            }
+
+            // Обновляем состояние кнопок после возможного изменения выделения
+            SetButtonsState();
         }
 
         private void DeleviryListForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -352,6 +398,9 @@ namespace Система_учёта_и_приобретения_инструме
                     deliveryListsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
                 }
             }
+
+            if (tOOLACCOUNTINGDataSet.DeliveryLists.Any(x => x.DeliveryListID == deliveryListNumber))
+                NotificationService.Notify("Создание ведомости", $"Ведомость поставки №{deliveryListNumber} создана.", ToolTipIcon.Info);
         }
         private void DeliveryListFormButtonClose_Click(object sender, EventArgs e)
         {

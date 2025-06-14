@@ -139,6 +139,9 @@ namespace Система_учёта_и_приобретения_инструме
                     purchaseRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
                 }
             }
+
+            if(tOOLACCOUNTINGDataSet.PurchaseRequests.Any(x=>x.PurchaseRequestID == currentRequestID))
+                NotificationService.Notify("Создание заявки", $"Заявка на приобретение №{currentRequestID} создана.", ToolTipIcon.Info);
         }
     }
 }

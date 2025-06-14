@@ -56,6 +56,20 @@ namespace Система_учёта_и_приобретения_инструме
             importForm.Owner = this;
             importForm.ShowDialog();
         }
+        private void остаткиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OstatkiResetSearch();
+            InjLevel1.SelectedTab = InjOstatkiPage;
+            OstatkiButtonExport.PerformClick();
+        }
+
+        private void историяПоступленийToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HistoryResetSearch();
+            InjLevel1.SelectedTab = InjZayavkiPage;
+            InjLevel2.SelectedTab = History;
+            HistoryButtonExport.PerformClick();
+        }
 
         public string ImportRefresh(string tableName)
         {
@@ -108,12 +122,17 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Inj_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DeliveryListsContent". При необходимости она может быть перемещена или удалена.
+            this.deliveryListsContentTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DeliveryListsContent);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DeliveryLists". При необходимости она может быть перемещена или удалена.
+            this.deliveryListsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DeliveryLists);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.HistoryInj". При необходимости она может быть перемещена или удалена.
             this.historyInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.HistoryInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.InvoicesContentInj". При необходимости она может быть перемещена или удалена.
             this.invoicesContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.InvoicesContentInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.InvoicesInj". При необходимости она может быть перемещена или удалена.
             this.invoicesInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.InvoicesInj);
+            InvoicesContentTable.Columns[0].Visible = false;
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DeliveryListsContentInj". При необходимости она может быть перемещена или удалена.
             this.deliveryListsContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DeliveryListsInj". При необходимости она может быть перемещена или удалена.
@@ -124,6 +143,7 @@ namespace Система_учёта_и_приобретения_инструме
             this.deliveryListsContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DeliveryListsInj". При необходимости она может быть перемещена или удалена.
             this.deliveryListsInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DeliveryListsInj);
+            StatementsContentTable.Columns[0].Visible = false;
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.PurchaseRequestsInj". При необходимости она может быть перемещена или удалена.
             this.purchaseRequestsInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj". При необходимости она может быть перемещена или удалена.
@@ -828,8 +848,8 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void SetAnalogContextMenuItems(bool isRow)
         {
-            AnalogsTableContextMenuAlter.Visible = isRow;
-            AnalogsTableContextMenuDelete.Visible = isRow;
+            //AnalogsTableContextMenuAlter.Visible = isRow;
+            //AnalogsTableContextMenuDelete.Visible = isRow;
         }
         private void AnalogsTableContextMenuCreate_Click(object sender, EventArgs e)
         {
@@ -853,8 +873,18 @@ namespace Система_учёта_и_приобретения_инструме
             try
             {
                 bool state = GroupsTable.CurrentRow != null && !string.IsNullOrEmpty(GroupsTable.CurrentRow.Cells[0].Value.ToString());
+
                 GroupsButtonAlter.Enabled = state;
                 GroupsButtonDelete.Enabled = state;
+
+                if(state)
+                {
+                    nomenclatureViewBindingSource1.Filter = $"NomenclatureNumber LIKE '{GroupsTable.CurrentRow.Cells[0].Value.ToString()}%'";
+                }
+                else
+                {
+                    nomenclatureViewBindingSource1.Filter = "0 = 1";
+                }
             }
             catch { }
         }
@@ -1015,8 +1045,8 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void SetGroupContextMenuItems(bool isRow)
         {
-            GroupTableContextMenuAlter.Visible = isRow;
-            GroupTableContextMenuDelete.Visible = isRow;
+            //GroupTableContextMenuAlter.Visible = isRow;
+            //GroupTableContextMenuDelete.Visible = isRow;
             GroupTableContextMenuSeparator.Visible = isRow;
             GroupTableContextMenuFindNomen.Visible = isRow;
             GroupTableContextMenuAddNomen.Visible = isRow;
@@ -1217,8 +1247,8 @@ namespace Система_учёта_и_приобретения_инструме
         private void SetReceivingRequestsContextMenuItems(bool isRow)
         {
             ReceivingRequestsContextMenuConsider.Visible = isRow;
-            ReceivingRequestsContextMenuAlter.Visible = isRow;
-            ReceivingRequestsContextMenuCancel.Visible = isRow;
+            //ReceivingRequestsContextMenuAlter.Visible = isRow;
+            //ReceivingRequestsContextMenuCancel.Visible = isRow;
         }
         private void ReceivingRequestsContextMenuConsider_Click(object sender, EventArgs e)
         {
@@ -1256,7 +1286,25 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void PurchaseRequestsButtonExport_Click(object sender, EventArgs e)
         {
-            //add
+            if (PurchaseRequestsPurchaseRequestsTable.CurrentRow == null || PurchaseRequestsPurchaseRequestsTable.Rows.Count == 0) return;
+
+            var headerView = PurchaseRequestsPurchaseRequestsTable.CurrentRow.DataBoundItem as DataRowView;
+            if (headerView == null) return;
+            var headerRow = headerView.Row as TOOLACCOUNTINGDataSet.PurchaseRequestsInjRow;
+            if (headerRow == null) return;
+
+            // Содержимое заявки уже отображается в связанной таблице PurchaseRequestsContentTable
+            if (PurchaseRequestsContentTable.Rows.Count == 0)
+            {
+                MessageBox.Show("У выбранной заявки нет строк содержания.", "Экспорт", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DataTable details = DataGridViewToDataTable(PurchaseRequestsContentTable);
+            int id = headerRow.PurchaseRequestID;
+            DateTime reqDate = headerRow.PurchaseRequestDate;
+            string status = headerRow.Status;
+            new Excel().ExportPurchaseRequestInj(id, reqDate, status, details);
         }
         private void PurchaseRequestsPurchaseRequestsTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -1273,10 +1321,15 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void SetPurchaseRequestsContextMenuItems(bool isRow)
         {
-            PurchaseRequestsContextMenuAlter.Visible = isRow;
-            PurchaseRequestsContextMenuDelete.Visible = isRow;
+            //PurchaseRequestsContextMenuAlter.Visible = isRow;
+            //PurchaseRequestsContextMenuDelete.Visible = isRow;
             PurchaseRequestsContextMenuSeparator.Visible = isRow;
             PurchaseRequestsContextMenuExport.Visible = isRow;
+        }
+        private void PurchaseRequestsPurchaseRequestsTable_CurrentCellChanged(object sender, EventArgs e)
+        {
+            if (PurchaseRequestsPurchaseRequestsTable.CurrentRow == null) return;
+            PurchaseRequestsButtonExport.Enabled = true;
         }
 
         private void PurchaseRequestsContextMenuCreate_Click(object sender, EventArgs e)
@@ -1376,7 +1429,6 @@ namespace Система_учёта_и_приобретения_инструме
         {
 
         }
-
         private void StatementsButtonDelete_Click(object sender, EventArgs e)
         {
 
@@ -1384,13 +1436,33 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void StatementsButtonExport_Click(object sender, EventArgs e)
         {
+            if (StatementsStatementsTable.CurrentRow == null || StatementsStatementsTable.Rows.Count == 0) return;
+            var headerView = StatementsStatementsTable.CurrentRow.DataBoundItem as DataRowView;
+            if (headerView == null) return;
+            var headerRow = headerView.Row as TOOLACCOUNTINGDataSet.DeliveryListsInjRow; // assuming type
+            if (headerRow == null) return;
 
+            if (StatementsContentTable.Rows.Count == 0)
+            {
+                MessageBox.Show("У выбранной ведомости нет строк.", "Экспорт", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DataTable details = DataGridViewToDataTable(StatementsContentTable);
+            int id = headerRow.DeliveryListID;
+            DateTime date = headerRow.DeliveryListDate;
+            string supplier = headerRow.SupplierName;
+            new Excel().ExportDeliveryListInj(id, date, supplier, details);
+        }
+        private void StatementsStatementsTable_CurrentCellChanged(object sender, EventArgs e)
+        {
+            if (StatementsStatementsTable.CurrentRow == null) return;
+            StatementsButtonExport.Enabled = true;
         }
 
         private void SetStatementsTableContextMenuItems(bool isRow)
         {
-            StatementsTableContextMenuAlter.Visible = isRow;
-            StatementsTableContextMenuDelete.Visible = isRow;
+            //StatementsTableContextMenuAlter.Visible = isRow;
+            //StatementsTableContextMenuDelete.Visible = isRow;
             StatementsTableContextMenuSeparator.Visible = isRow;
             StatementsTableContextMenuExport.Visible = isRow;
         }
@@ -1507,8 +1579,8 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void SetInvoicesContextMenuItems(bool isRow)
         {
-            InvoicesTableContextMenuAlter.Visible = isRow;
-            InvoicesTableContextMenuDelete.Visible = isRow;
+            //InvoicesTableContextMenuAlter.Visible = isRow;
+            //InvoicesTableContextMenuDelete.Visible = isRow;
             //InvoicesTableContextMenuSeparator.Visible = isRow;
             //InvoicesTableContextMenuExport.Visible = isRow;
         }
@@ -1574,6 +1646,25 @@ namespace Система_учёта_и_приобретения_инструме
             HistoryResetSearch();
         }
 
+
+        private void HistoryButtonExport_Click(object sender, EventArgs e)
+        {
+            if (HistoryTable.Rows.Count == 0) return;
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(HistoryNumber.Text)) parameters.Add(new SearchParameter("Номенклатурный номер", HistoryNumber.Text));
+            if (!string.IsNullOrEmpty(HistoryName.Text)) parameters.Add(new SearchParameter("Полное наименование", HistoryName.Text, false));
+            if (HistoryStart.Checked) parameters.Add(new SearchParameter("Дата от", HistoryStart.Value.ToString("dd.MM.yyyy"), false));
+            if (HistoryEnd.Checked) parameters.Add(new SearchParameter("Дата до", HistoryEnd.Value.ToString("dd.MM.yyyy"), false));
+
+            DataTable dt = DataGridViewToDataTable(HistoryTable);
+            new Excel().ExportHistoryInj(dt, parameters);
+        }
+
+        private void HistoryTable_CurrentCellChanged(object sender, EventArgs e)
+        {
+            if (HistoryTable.Rows.Count == 0) HistoryButtonExport.Enabled = false;
+            else HistoryButtonExport.Enabled = true;
+        }
 
         //private void PurchaseRequestsResetStart() { PurchaseRequestsStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1); PurchaseRequestsStart.Checked = false; }
         //private void PurchaseRequestsResetEnd() { PurchaseRequestsEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1); PurchaseRequestsEnd.Checked = false; }
@@ -1758,10 +1849,10 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void SetProvidersContextMenuItems(bool isRow)
         {
-            ProvidersTableContextMenuAlter.Visible = isRow;
-            ProvidersTableContextMenuDelete.Visible = isRow;
-            ProvidersTableContextMenuSeparator.Visible = isRow;
-            ProvidersTableContextMenuCreateStatement.Visible = isRow;
+            //ProvidersTableContextMenuAlter.Visible = isRow;
+            //ProvidersTableContextMenuDelete.Visible = isRow;
+            //ProvidersTableContextMenuSeparator.Visible = isRow;
+            //ProvidersTableContextMenuCreateStatement.Visible = isRow;
         }
         private void ProvidersTableContextMenuCreate_Click(object sender, EventArgs e)
         {
@@ -1949,6 +2040,22 @@ namespace Система_учёта_и_приобретения_инструме
             OstatkiResetSearch();
         }
 
+        private void OstatkiButtonExport_Click(object sender, EventArgs e)
+        {
+            if (OstatkiTable.Rows.Count == 0) return;
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(OstatkiNumber.Text)) parameters.Add(new SearchParameter("Номенклатурный номер", OstatkiNumber.Text));
+            DataTable dt = DataGridViewToDataTable(OstatkiTable);
+            new Excel().ExportBalancesInj(dt, parameters);
+        }
+
+        // Преобразование видимых данных DataGridView в DataTable
+        
+        private void OstatkiTable_CurrentCellChanged(object sender, EventArgs e)
+        {
+            if(OstatkiTable.Rows.Count == 0) OstatkiButtonExport.Enabled = false;
+            else OstatkiButtonExport.Enabled = true;
+        }
 
         #endregion
 
@@ -2192,6 +2299,43 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) e.Handled = true;
         }
+
+        private static DataTable DataGridViewToDataTable(DataGridView dgv)
+        {
+            var dt = new DataTable();
+            // Создаём колонки только для видимых столбцов
+            foreach (DataGridViewColumn col in dgv.Columns)
+            {
+                if (!col.Visible) continue;
+                string colName = !string.IsNullOrEmpty(col.DataPropertyName) ? col.DataPropertyName : col.Name;
+                if (!dt.Columns.Contains(colName))
+                {
+                    var dataCol = dt.Columns.Add(colName);
+                    dataCol.Caption = col.HeaderText;
+                }
+            }
+
+            // Заполняем строки
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                if (row.IsNewRow) continue;
+                var newRow = dt.NewRow();
+                foreach (DataGridViewColumn col in dgv.Columns)
+                {
+                    if (!col.Visible) continue;
+                    string colName = !string.IsNullOrEmpty(col.DataPropertyName) ? col.DataPropertyName : col.Name;
+                    object val = row.Cells[col.Index].Value;
+                    if (val is DateTime dtVal)
+                        newRow[colName] = dtVal.ToString("dd.MM.yyyy");
+                    else
+                        newRow[colName] = val?.ToString();
+                }
+                dt.Rows.Add(newRow);
+            }
+            return dt;
+        }
+
+
     }
     public static class Logs
     {

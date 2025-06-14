@@ -243,7 +243,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при обработке заявки: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка при обработке заявки: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -285,7 +285,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при применении фильтра: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка при применении фильтра: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -310,8 +310,9 @@ namespace Система_учёта_и_приобретения_инструме
                     invoicesContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.InvoicesContentInj);
                 }
             }
+
+            if (tOOLACCOUNTINGDataSet.Invoices.Any(x => x.InvoiceID== invoiceNumber))
+                NotificationService.Notify("Создание накладной", $"Товарная накладная №{invoiceNumber} создана.", ToolTipIcon.Info);
         }
-
-
     }
 }

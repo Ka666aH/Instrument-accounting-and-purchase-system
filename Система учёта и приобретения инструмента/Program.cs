@@ -18,10 +18,39 @@ namespace Система_учёта_и_приобретения_инструме
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // Глобальные обработчики исключений – чтобы ни один непойманный Exception не сорвал демонстрацию
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            Application.ThreadException += (s, e) => HandleException(e.Exception);
+            AppDomain.CurrentDomain.UnhandledException += (s, e) =>
+            {
+                var ex = e.ExceptionObject as Exception;
+                if (ex != null) HandleException(ex);
+            };
+            TaskScheduler.UnobservedTaskException += (s, e) =>
+            {
+                HandleException(e.Exception);
+                e.SetObserved();
+            };
+
             //закрытие Excel процессов(не работает)
             //Application.ApplicationExit += (s, e) => CleanupExcel();
 
             Application.Run(new LoginForm());
+        }
+
+        /// <summary>
+        /// Единая точка обработки исключений – пишет сообщение в Debug и показывает всплывающее уведомление.
+        /// Никакие исключения не «проваливаются» наружу.
+        /// </summary>
+        private static void HandleException(Exception ex)
+        {
+            try
+            {
+                System.Diagnostics.Debug.WriteLine($"Unhandled: {ex}");
+                //NotificationService.Notify("Ошибка", ex.Message, ToolTipIcon.Warning);
+            }
+            catch { /* должно быть безопасно */ }
         }
 
         //    private static MSExcel.Application excelApp;

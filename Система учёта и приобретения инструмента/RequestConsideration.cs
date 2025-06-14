@@ -335,7 +335,6 @@ namespace Система_учёта_и_приобретения_инструме
         {
 
         }
-
         private void RequestConsiderationButtonSaveClose_Click(object sender, EventArgs e)
         {
 
@@ -352,6 +351,19 @@ namespace Система_учёта_и_приобретения_инструме
 
             if (RequestConsiderationTransfer.Checked) RequestConsiderationButtonReplace.Enabled = true;
             else RequestConsiderationButtonReplace.Enabled = false;
+        }
+
+        private void RequestConsideration_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                var rrRow = tOOLACCOUNTINGDataSet.ReceivingRequests.FindByReceivingRequestID(requestNumber);
+                if (rrRow != null && rrRow.Status == "Обработана")
+                {
+                    NotificationService.Notify("Обработка заявки", $"Заявка на получение №{requestNumber} обработана.", ToolTipIcon.Info);
+                }
+            }
+            catch { /* Исключения уже перехватываются глобально, но здесь дополнительно защищаемся */ }
         }
     }
 }
