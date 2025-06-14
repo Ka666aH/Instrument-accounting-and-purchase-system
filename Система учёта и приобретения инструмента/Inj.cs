@@ -158,6 +158,7 @@ namespace Система_учёта_и_приобретения_инструме
             WindowState = FormWindowState.Maximized;
 
             ReceivingRequestsResetStatus();
+            PurchaseRequestsResetStatus();
             //Установка дат во вкладках с диапазоном
             PurchaseRequestsResetStart();
             PurchaseRequestsResetEnd();
@@ -1104,7 +1105,8 @@ namespace Система_учёта_и_приобретения_инструме
             int requestNumber = int.Parse(ReceivingRequestsRequestsTable.CurrentRow.Cells[0].Value.ToString());
             RequestConsideration requestConsideration = new RequestConsideration(requestNumber, FormMode.Add);
             requestConsideration.ShowDialog();
-            //receivingRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
+            //new ReceivingRequestsTableAdapter().Fill(tOOLACCOUNTINGDataSet.ReceivingRequests);
+            receivingRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
         }
 
         private void ReceivingRequestsButtonAlter_Click(object sender, EventArgs e)
@@ -1304,7 +1306,7 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (isSearchReseting) return;
             var parameters = new List<SearchParameter>();
-            if (!string.IsNullOrEmpty(PurchaseRequestsStatus.Text)) parameters.Add(new SearchParameter("Status", PurchaseRequestsStatus.Text));
+            if (!string.IsNullOrEmpty(PurchaseRequestsStatus.Text) && PurchaseRequestsStatus.SelectedIndex!=0) parameters.Add(new SearchParameter("Status", PurchaseRequestsStatus.Text));
 
             try
             {
@@ -1922,10 +1924,11 @@ namespace Система_учёта_и_приобретения_инструме
         {
             isSearchReseting = true;
             ReceivingRequestsResetWorkshop();
-            ReceivingRequestsResetStatus();
+            //ReceivingRequestsResetStatus();
             ReceivingRequestsResetType();
             isSearchReseting = false;
             receivingRequestsInjBindingSource.RemoveFilter();
+            ReceivingRequestsResetStatus();
         }
         private void ReceivingRequestsResetWorkshop() { ReceivingRequestsWorkshop.Text = string.Empty; }
         private void ReceivingRequestsResetStatus() { ReceivingRequestsStatus.SelectedIndex = 1; }
@@ -1935,13 +1938,14 @@ namespace Система_учёта_и_приобретения_инструме
             isSearchReseting = true;
             PurchaseRequestsResetStart();
             PurchaseRequestsResetEnd();
-            PurchaseRequestsResetStatus();
+            //PurchaseRequestsResetStatus();
             isSearchReseting = false;
             purchaseRequestsInjBindingSource.RemoveFilter();
+            PurchaseRequestsResetStatus();
         }
         private void PurchaseRequestsResetStart() { PurchaseRequestsStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1); PurchaseRequestsStart.Checked = false; }
         private void PurchaseRequestsResetEnd() { PurchaseRequestsEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1); PurchaseRequestsEnd.Checked = false; }
-        private void PurchaseRequestsResetStatus() { PurchaseRequestsStatus.Text = string.Empty; }
+        private void PurchaseRequestsResetStatus() { PurchaseRequestsStatus.SelectedIndex = 0; }
         private void StatementsResetSearch()
         {
             isSearchReseting = true;

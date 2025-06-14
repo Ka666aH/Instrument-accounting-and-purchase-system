@@ -12867,6 +12867,8 @@ namespace Система_учёта_и_приобретения_инструме
             
             private global::System.Data.DataColumn columnRequiredQuantity;
             
+            private global::System.Data.DataColumn columnRequestStatus;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public PurchaseRequestsContentInjDataTable() {
@@ -12966,6 +12968,14 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn RequestStatusColumn {
+                get {
+                    return this.columnRequestStatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -13001,7 +13011,7 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PurchaseRequestsContentInjRow AddPurchaseRequestsContentInjRow(PurchaseRequestsInjRow parentPurchaseRequestsInjRowByPurchaseRequestsInj_PurchaseRequestsContentInj, int ReceivingContentID, bool IsPurchase, int DonorWorkshopID, string NomenclatureNumber, string FullName, int RequiredQuantity) {
+            public PurchaseRequestsContentInjRow AddPurchaseRequestsContentInjRow(PurchaseRequestsInjRow parentPurchaseRequestsInjRowByPurchaseRequestsInj_PurchaseRequestsContentInj, int ReceivingContentID, bool IsPurchase, int DonorWorkshopID, string NomenclatureNumber, string FullName, int RequiredQuantity, string RequestStatus) {
                 PurchaseRequestsContentInjRow rowPurchaseRequestsContentInjRow = ((PurchaseRequestsContentInjRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -13011,7 +13021,8 @@ namespace Система_учёта_и_приобретения_инструме
                         DonorWorkshopID,
                         NomenclatureNumber,
                         FullName,
-                        RequiredQuantity};
+                        RequiredQuantity,
+                        RequestStatus};
                 if ((parentPurchaseRequestsInjRowByPurchaseRequestsInj_PurchaseRequestsContentInj != null)) {
                     columnValuesArray[1] = parentPurchaseRequestsInjRowByPurchaseRequestsInj_PurchaseRequestsContentInj[0];
                 }
@@ -13052,6 +13063,7 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnNomenclatureNumber = base.Columns["NomenclatureNumber"];
                 this.columnFullName = base.Columns["FullName"];
                 this.columnRequiredQuantity = base.Columns["RequiredQuantity"];
+                this.columnRequestStatus = base.Columns["RequestStatus"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13073,6 +13085,8 @@ namespace Система_учёта_и_приобретения_инструме
                 base.Columns.Add(this.columnFullName);
                 this.columnRequiredQuantity = new global::System.Data.DataColumn("RequiredQuantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRequiredQuantity);
+                this.columnRequestStatus = new global::System.Data.DataColumn("RequestStatus", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRequestStatus);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnPurchaseContentID}, true));
                 this.columnPurchaseContentID.AutoIncrement = true;
@@ -13089,6 +13103,8 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnFullName.ReadOnly = true;
                 this.columnFullName.MaxLength = 2147483647;
                 this.columnRequiredQuantity.AllowDBNull = false;
+                this.columnRequestStatus.AllowDBNull = false;
+                this.columnRequestStatus.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19170,6 +19186,17 @@ namespace Система_учёта_и_приобретения_инструме
                 }
                 set {
                     this[this.tablePurchaseRequestsContentInj.RequiredQuantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string RequestStatus {
+                get {
+                    return ((string)(this[this.tablePurchaseRequestsContentInj.RequestStatusColumn]));
+                }
+                set {
+                    this[this.tablePurchaseRequestsContentInj.RequestStatusColumn] = value;
                 }
             }
             
@@ -31925,6 +31952,7 @@ SELECT PurchaseRequestID, PurchaseRequestDate, Status FROM PurchaseRequests WHER
             tableMapping.ColumnMappings.Add("NomenclatureNumber", "NomenclatureNumber");
             tableMapping.ColumnMappings.Add("FullName", "FullName");
             tableMapping.ColumnMappings.Add("RequiredQuantity", "RequiredQuantity");
+            tableMapping.ColumnMappings.Add("RequestStatus", "RequestStatus");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -31959,7 +31987,9 @@ SELECT PurchaseRequestID, PurchaseRequestDate, Status FROM PurchaseRequests WHER
     COALESCE(n.RegulatoryDoc, '') AS FullName,
 
     -- Количество из заявки
-    rrc.Quantity AS RequiredQuantity
+    rrc.Quantity AS RequiredQuantity,
+    
+    rr.Status AS RequestStatus -- Добавляем статус заявки
 
 FROM PurchaseRequestsContent prc
 INNER JOIN PurchaseRequests pr ON pr.PurchaseRequestID = prc.PurchaseRequestID
@@ -31970,8 +32000,7 @@ INNER JOIN Nomenclature n ON n.NomenclatureNumber = ISNULL(rf.AnalogNomenclature
 LEFT JOIN Groups g ON g.RangeStart = LEFT(n.NomenclatureNumber, 4)
 
 WHERE 
-    rr.Status = 'Не обработана'
-    AND prc.IsPurchase = 1;";
+prc.IsPurchase = 1;";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

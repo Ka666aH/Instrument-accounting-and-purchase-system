@@ -93,7 +93,6 @@
             this.purchaseRequestsInjPurchaseRequestsContentInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PurchaseRequestsSearchGroup = new System.Windows.Forms.GroupBox();
             this.PurchaseRequestsButtonResetSearch = new System.Windows.Forms.Button();
-            this.PurchaseRequestsStatus = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.PurchaseRequestsEnd = new System.Windows.Forms.DateTimePicker();
@@ -127,9 +126,20 @@
             this.label46 = new System.Windows.Forms.Label();
             this.Invoices = new System.Windows.Forms.TabPage();
             this.InvoicesContentTable = new System.Windows.Forms.DataGridView();
+            this.invoiceContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoiceIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deliveryContentIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomenclatureNumberDataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fullNameDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoicesInjInvoicesContentInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.invoicesInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label15 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.InvoicesInvoicesTable = new System.Windows.Forms.DataGridView();
+            this.invoiceIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoiceDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InvoicesButtonDelete = new System.Windows.Forms.Button();
             this.InvoicesButtonAlter = new System.Windows.Forms.Button();
             this.InvoicesButtonEnter = new System.Windows.Forms.Button();
@@ -362,19 +372,9 @@
             this.purchaseRequestsContentInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.PurchaseRequestsContentInjTableAdapter();
             this.deliveryListsInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.DeliveryListsInjTableAdapter();
             this.deliveryListsContentInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.DeliveryListsContentInjTableAdapter();
-            this.invoicesInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invoicesInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.InvoicesInjTableAdapter();
-            this.invoicesInjInvoicesContentInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invoicesContentInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.InvoicesContentInjTableAdapter();
-            this.invoiceContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.invoiceIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deliveryContentIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomenclatureNumberDataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fullNameDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.invoiceIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.invoiceDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseRequestsStatus = new System.Windows.Forms.ComboBox();
             this.InjLevel1.SuspendLayout();
             this.InjZayavkiPage.SuspendLayout();
             this.InjLevel2.SuspendLayout();
@@ -401,6 +401,8 @@
             this.StatementsSearchGroup.SuspendLayout();
             this.Invoices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InvoicesContentTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoicesInjInvoicesContentInjBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoicesInjBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvoicesInvoicesTable)).BeginInit();
             this.InvoicesSearchGroup.SuspendLayout();
             this.History.SuspendLayout();
@@ -444,8 +446,6 @@
             this.ProvidersTableContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.balancesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.analogToolsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoicesInjBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoicesInjInvoicesContentInjBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // InjLevel1
@@ -783,6 +783,7 @@
             this.ReceivingRequestsStatus.Items.AddRange(new object[] {
             "Все",
             "Не обработана",
+            "Обработана",
             "В работе",
             "Исполнена частично",
             "Исполнена полностью"});
@@ -1011,7 +1012,7 @@
             this.PurchaseRequestsPurchaseRequestsTable.ReadOnly = true;
             this.PurchaseRequestsPurchaseRequestsTable.RowHeadersVisible = false;
             this.PurchaseRequestsPurchaseRequestsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PurchaseRequestsPurchaseRequestsTable.Size = new System.Drawing.Size(338, 467);
+            this.PurchaseRequestsPurchaseRequestsTable.Size = new System.Drawing.Size(338, 474);
             this.PurchaseRequestsPurchaseRequestsTable.TabIndex = 31;
             this.PurchaseRequestsPurchaseRequestsTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.PurchaseRequestsPurchaseRequestsTable_CellMouseClick);
             // 
@@ -1070,7 +1071,7 @@
             this.PurchaseRequestsContentTable.ReadOnly = true;
             this.PurchaseRequestsContentTable.RowHeadersVisible = false;
             this.PurchaseRequestsContentTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PurchaseRequestsContentTable.Size = new System.Drawing.Size(708, 466);
+            this.PurchaseRequestsContentTable.Size = new System.Drawing.Size(708, 473);
             this.PurchaseRequestsContentTable.TabIndex = 30;
             // 
             // purchaseContentIDDataGridViewTextBoxColumn
@@ -1144,8 +1145,8 @@
             this.PurchaseRequestsSearchGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PurchaseRequestsSearchGroup.ContextMenuStrip = this.SearchGroupContextMenu;
-            this.PurchaseRequestsSearchGroup.Controls.Add(this.PurchaseRequestsButtonResetSearch);
             this.PurchaseRequestsSearchGroup.Controls.Add(this.PurchaseRequestsStatus);
+            this.PurchaseRequestsSearchGroup.Controls.Add(this.PurchaseRequestsButtonResetSearch);
             this.PurchaseRequestsSearchGroup.Controls.Add(this.label45);
             this.PurchaseRequestsSearchGroup.Controls.Add(this.label43);
             this.PurchaseRequestsSearchGroup.Controls.Add(this.PurchaseRequestsEnd);
@@ -1170,24 +1171,6 @@
             this.PurchaseRequestsButtonResetSearch.Text = "Сброс";
             this.PurchaseRequestsButtonResetSearch.UseVisualStyleBackColor = true;
             this.PurchaseRequestsButtonResetSearch.Click += new System.EventHandler(this.PurchaseRequestsButtonResetSearch_Click);
-            // 
-            // PurchaseRequestsStatus
-            // 
-            this.PurchaseRequestsStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PurchaseRequestsStatus.AutoCompleteCustomSource.AddRange(new string[] {
-            "Не обработана",
-            "В работе",
-            "Исполнена частично",
-            "Исполнена полностью"});
-            this.PurchaseRequestsStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.PurchaseRequestsStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.PurchaseRequestsStatus.ContextMenuStrip = this.SearchFieldsContextMenu;
-            this.PurchaseRequestsStatus.Location = new System.Drawing.Point(616, 21);
-            this.PurchaseRequestsStatus.Name = "PurchaseRequestsStatus";
-            this.PurchaseRequestsStatus.Size = new System.Drawing.Size(541, 29);
-            this.PurchaseRequestsStatus.TabIndex = 20;
-            this.PurchaseRequestsStatus.TextChanged += new System.EventHandler(this.PurchaseRequestsStatus_TextChanged);
             // 
             // label45
             // 
@@ -1331,7 +1314,7 @@
             this.deliveryContentDateDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn1});
             this.StatementsContentTable.DataSource = this.deliveryListsInjDeliveryListsContentInjBindingSource;
-            this.StatementsContentTable.Location = new System.Drawing.Point(7, 490);
+            this.StatementsContentTable.Location = new System.Drawing.Point(7, 497);
             this.StatementsContentTable.MultiSelect = false;
             this.StatementsContentTable.Name = "StatementsContentTable";
             this.StatementsContentTable.ReadOnly = true;
@@ -1399,7 +1382,7 @@
             this.label50.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label50.AutoSize = true;
             this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label50.Location = new System.Drawing.Point(7, 463);
+            this.label50.Location = new System.Drawing.Point(7, 470);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(268, 24);
             this.label50.TabIndex = 40;
@@ -1436,7 +1419,7 @@
             this.StatementsStatementsTable.ReadOnly = true;
             this.StatementsStatementsTable.RowHeadersVisible = false;
             this.StatementsStatementsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.StatementsStatementsTable.Size = new System.Drawing.Size(1044, 361);
+            this.StatementsStatementsTable.Size = new System.Drawing.Size(1044, 368);
             this.StatementsStatementsTable.TabIndex = 38;
             this.StatementsStatementsTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.StatementsStatementsTable_CellMouseClick);
             // 
@@ -1571,7 +1554,7 @@
             this.fullNameDataGridViewTextBoxColumn4,
             this.quantityDataGridViewTextBoxColumn2});
             this.InvoicesContentTable.DataSource = this.invoicesInjInvoicesContentInjBindingSource;
-            this.InvoicesContentTable.Location = new System.Drawing.Point(7, 490);
+            this.InvoicesContentTable.Location = new System.Drawing.Point(7, 497);
             this.InvoicesContentTable.MultiSelect = false;
             this.InvoicesContentTable.Name = "InvoicesContentTable";
             this.InvoicesContentTable.ReadOnly = true;
@@ -1580,12 +1563,73 @@
             this.InvoicesContentTable.Size = new System.Drawing.Size(1044, 264);
             this.InvoicesContentTable.TabIndex = 51;
             // 
+            // invoiceContentIDDataGridViewTextBoxColumn
+            // 
+            this.invoiceContentIDDataGridViewTextBoxColumn.DataPropertyName = "InvoiceContentID";
+            this.invoiceContentIDDataGridViewTextBoxColumn.HeaderText = "Номер";
+            this.invoiceContentIDDataGridViewTextBoxColumn.Name = "invoiceContentIDDataGridViewTextBoxColumn";
+            this.invoiceContentIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // invoiceIDDataGridViewTextBoxColumn1
+            // 
+            this.invoiceIDDataGridViewTextBoxColumn1.DataPropertyName = "InvoiceID";
+            this.invoiceIDDataGridViewTextBoxColumn1.HeaderText = "InvoiceID";
+            this.invoiceIDDataGridViewTextBoxColumn1.Name = "invoiceIDDataGridViewTextBoxColumn1";
+            this.invoiceIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.invoiceIDDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // deliveryContentIDDataGridViewTextBoxColumn1
+            // 
+            this.deliveryContentIDDataGridViewTextBoxColumn1.DataPropertyName = "DeliveryContentID";
+            this.deliveryContentIDDataGridViewTextBoxColumn1.HeaderText = "DeliveryContentID";
+            this.deliveryContentIDDataGridViewTextBoxColumn1.Name = "deliveryContentIDDataGridViewTextBoxColumn1";
+            this.deliveryContentIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.deliveryContentIDDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ReceivingRequestID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Номер заявки на получение";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // nomenclatureNumberDataGridViewTextBoxColumn6
+            // 
+            this.nomenclatureNumberDataGridViewTextBoxColumn6.DataPropertyName = "NomenclatureNumber";
+            this.nomenclatureNumberDataGridViewTextBoxColumn6.HeaderText = "Номенклатурный номер";
+            this.nomenclatureNumberDataGridViewTextBoxColumn6.Name = "nomenclatureNumberDataGridViewTextBoxColumn6";
+            this.nomenclatureNumberDataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // fullNameDataGridViewTextBoxColumn4
+            // 
+            this.fullNameDataGridViewTextBoxColumn4.DataPropertyName = "FullName";
+            this.fullNameDataGridViewTextBoxColumn4.HeaderText = "Полное наименование";
+            this.fullNameDataGridViewTextBoxColumn4.Name = "fullNameDataGridViewTextBoxColumn4";
+            this.fullNameDataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // quantityDataGridViewTextBoxColumn2
+            // 
+            this.quantityDataGridViewTextBoxColumn2.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn2.HeaderText = "Количество";
+            this.quantityDataGridViewTextBoxColumn2.Name = "quantityDataGridViewTextBoxColumn2";
+            this.quantityDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // invoicesInjInvoicesContentInjBindingSource
+            // 
+            this.invoicesInjInvoicesContentInjBindingSource.DataMember = "InvoicesInj_InvoicesContentInj";
+            this.invoicesInjInvoicesContentInjBindingSource.DataSource = this.invoicesInjBindingSource;
+            // 
+            // invoicesInjBindingSource
+            // 
+            this.invoicesInjBindingSource.DataMember = "InvoicesInj";
+            this.invoicesInjBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
+            // 
             // label15
             // 
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(7, 463);
+            this.label15.Location = new System.Drawing.Point(7, 470);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(266, 24);
             this.label15.TabIndex = 54;
@@ -1621,9 +1665,23 @@
             this.InvoicesInvoicesTable.ReadOnly = true;
             this.InvoicesInvoicesTable.RowHeadersVisible = false;
             this.InvoicesInvoicesTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(1044, 361);
+            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(1044, 368);
             this.InvoicesInvoicesTable.TabIndex = 52;
             this.InvoicesInvoicesTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.InvoicesInvoicesTable_CellMouseClick);
+            // 
+            // invoiceIDDataGridViewTextBoxColumn
+            // 
+            this.invoiceIDDataGridViewTextBoxColumn.DataPropertyName = "InvoiceID";
+            this.invoiceIDDataGridViewTextBoxColumn.HeaderText = "Номер товарной накладной";
+            this.invoiceIDDataGridViewTextBoxColumn.Name = "invoiceIDDataGridViewTextBoxColumn";
+            this.invoiceIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // invoiceDateDataGridViewTextBoxColumn
+            // 
+            this.invoiceDateDataGridViewTextBoxColumn.DataPropertyName = "InvoiceDate";
+            this.invoiceDateDataGridViewTextBoxColumn.HeaderText = "Дата накладной";
+            this.invoiceDateDataGridViewTextBoxColumn.Name = "invoiceDateDataGridViewTextBoxColumn";
+            this.invoiceDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // InvoicesButtonDelete
             // 
@@ -1748,7 +1806,7 @@
             this.HistoryTable.Location = new System.Drawing.Point(7, 113);
             this.HistoryTable.Name = "HistoryTable";
             this.HistoryTable.ReadOnly = true;
-            this.HistoryTable.Size = new System.Drawing.Size(1044, 628);
+            this.HistoryTable.Size = new System.Drawing.Size(1044, 635);
             this.HistoryTable.TabIndex = 13;
             // 
             // HistorySearchGroup
@@ -3959,88 +4017,32 @@
             // 
             this.deliveryListsContentInjTableAdapter.ClearBeforeFill = true;
             // 
-            // invoicesInjBindingSource
-            // 
-            this.invoicesInjBindingSource.DataMember = "InvoicesInj";
-            this.invoicesInjBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
-            // 
             // invoicesInjTableAdapter
             // 
             this.invoicesInjTableAdapter.ClearBeforeFill = true;
-            // 
-            // invoicesInjInvoicesContentInjBindingSource
-            // 
-            this.invoicesInjInvoicesContentInjBindingSource.DataMember = "InvoicesInj_InvoicesContentInj";
-            this.invoicesInjInvoicesContentInjBindingSource.DataSource = this.invoicesInjBindingSource;
             // 
             // invoicesContentInjTableAdapter
             // 
             this.invoicesContentInjTableAdapter.ClearBeforeFill = true;
             // 
-            // invoiceContentIDDataGridViewTextBoxColumn
+            // PurchaseRequestsStatus
             // 
-            this.invoiceContentIDDataGridViewTextBoxColumn.DataPropertyName = "InvoiceContentID";
-            this.invoiceContentIDDataGridViewTextBoxColumn.HeaderText = "Номер";
-            this.invoiceContentIDDataGridViewTextBoxColumn.Name = "invoiceContentIDDataGridViewTextBoxColumn";
-            this.invoiceContentIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // invoiceIDDataGridViewTextBoxColumn1
-            // 
-            this.invoiceIDDataGridViewTextBoxColumn1.DataPropertyName = "InvoiceID";
-            this.invoiceIDDataGridViewTextBoxColumn1.HeaderText = "InvoiceID";
-            this.invoiceIDDataGridViewTextBoxColumn1.Name = "invoiceIDDataGridViewTextBoxColumn1";
-            this.invoiceIDDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.invoiceIDDataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // deliveryContentIDDataGridViewTextBoxColumn1
-            // 
-            this.deliveryContentIDDataGridViewTextBoxColumn1.DataPropertyName = "DeliveryContentID";
-            this.deliveryContentIDDataGridViewTextBoxColumn1.HeaderText = "DeliveryContentID";
-            this.deliveryContentIDDataGridViewTextBoxColumn1.Name = "deliveryContentIDDataGridViewTextBoxColumn1";
-            this.deliveryContentIDDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.deliveryContentIDDataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ReceivingRequestID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Номер заявки на получение";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // nomenclatureNumberDataGridViewTextBoxColumn6
-            // 
-            this.nomenclatureNumberDataGridViewTextBoxColumn6.DataPropertyName = "NomenclatureNumber";
-            this.nomenclatureNumberDataGridViewTextBoxColumn6.HeaderText = "Номенклатурный номер";
-            this.nomenclatureNumberDataGridViewTextBoxColumn6.Name = "nomenclatureNumberDataGridViewTextBoxColumn6";
-            this.nomenclatureNumberDataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // fullNameDataGridViewTextBoxColumn4
-            // 
-            this.fullNameDataGridViewTextBoxColumn4.DataPropertyName = "FullName";
-            this.fullNameDataGridViewTextBoxColumn4.HeaderText = "Полное наименование";
-            this.fullNameDataGridViewTextBoxColumn4.Name = "fullNameDataGridViewTextBoxColumn4";
-            this.fullNameDataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // quantityDataGridViewTextBoxColumn2
-            // 
-            this.quantityDataGridViewTextBoxColumn2.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn2.HeaderText = "Количество";
-            this.quantityDataGridViewTextBoxColumn2.Name = "quantityDataGridViewTextBoxColumn2";
-            this.quantityDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // invoiceIDDataGridViewTextBoxColumn
-            // 
-            this.invoiceIDDataGridViewTextBoxColumn.DataPropertyName = "InvoiceID";
-            this.invoiceIDDataGridViewTextBoxColumn.HeaderText = "Номер товарной накладной";
-            this.invoiceIDDataGridViewTextBoxColumn.Name = "invoiceIDDataGridViewTextBoxColumn";
-            this.invoiceIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // invoiceDateDataGridViewTextBoxColumn
-            // 
-            this.invoiceDateDataGridViewTextBoxColumn.DataPropertyName = "InvoiceDate";
-            this.invoiceDateDataGridViewTextBoxColumn.HeaderText = "Дата накладной";
-            this.invoiceDateDataGridViewTextBoxColumn.Name = "invoiceDateDataGridViewTextBoxColumn";
-            this.invoiceDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.PurchaseRequestsStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PurchaseRequestsStatus.ContextMenuStrip = this.SearchFieldsContextMenu;
+            this.PurchaseRequestsStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PurchaseRequestsStatus.FormattingEnabled = true;
+            this.PurchaseRequestsStatus.Items.AddRange(new object[] {
+            "Все",
+            "Не обработана",
+            "В работе",
+            "Исполнена частично",
+            "Исполнена полностью"});
+            this.PurchaseRequestsStatus.Location = new System.Drawing.Point(616, 18);
+            this.PurchaseRequestsStatus.Name = "PurchaseRequestsStatus";
+            this.PurchaseRequestsStatus.Size = new System.Drawing.Size(541, 32);
+            this.PurchaseRequestsStatus.TabIndex = 25;
+            this.PurchaseRequestsStatus.SelectedIndexChanged += new System.EventHandler(this.PurchaseRequestsStatus_TextChanged);
             // 
             // Inj
             // 
@@ -4089,6 +4091,8 @@
             this.Invoices.ResumeLayout(false);
             this.Invoices.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InvoicesContentTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoicesInjInvoicesContentInjBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoicesInjBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InvoicesInvoicesTable)).EndInit();
             this.InvoicesSearchGroup.ResumeLayout(false);
             this.InvoicesSearchGroup.PerformLayout();
@@ -4141,8 +4145,6 @@
             this.ProvidersTableContextMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.balancesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.analogToolsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoicesInjBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoicesInjInvoicesContentInjBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4330,7 +4332,6 @@
         private System.Windows.Forms.RadioButton ReceivingRequestsOutPlanned;
         private System.Windows.Forms.RadioButton ReceivingRequestsPlanned;
         private System.Windows.Forms.RadioButton ReceivingRequestsAll;
-        private System.Windows.Forms.TextBox PurchaseRequestsStatus;
         private System.Windows.Forms.TabPage Statements;
         private System.Windows.Forms.Button StatementsButtonDelete;
         private System.Windows.Forms.Button StatementsButtonAlter;
@@ -4499,5 +4500,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn invoiceIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn invoiceDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ComboBox PurchaseRequestsStatus;
     }
 }
