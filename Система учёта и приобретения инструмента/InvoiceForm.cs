@@ -310,8 +310,9 @@ namespace Система_учёта_и_приобретения_инструме
                     invoicesContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.InvoicesContentInj);
                 }
             }
+
+            if (tOOLACCOUNTINGDataSet.Invoices.Any(x => x.InvoiceID== invoiceNumber))
+                NotificationService.Notify("Создание накладной", $"Товарная накладная №{invoiceNumber} создана.", ToolTipIcon.Info);
         }
-
-
     }
 }

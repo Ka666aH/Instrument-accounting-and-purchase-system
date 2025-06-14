@@ -1348,6 +1348,7 @@
             // 
             this.StatementsContentTable.AllowUserToAddRows = false;
             this.StatementsContentTable.AllowUserToDeleteRows = false;
+            this.StatementsContentTable.AllowUserToResizeRows = false;
             this.StatementsContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StatementsContentTable.AutoGenerateColumns = false;
@@ -1449,6 +1450,7 @@
             // 
             this.StatementsStatementsTable.AllowUserToAddRows = false;
             this.StatementsStatementsTable.AllowUserToDeleteRows = false;
+            this.StatementsStatementsTable.AllowUserToResizeRows = false;
             this.StatementsStatementsTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1588,6 +1590,7 @@
             // 
             this.InvoicesContentTable.AllowUserToAddRows = false;
             this.InvoicesContentTable.AllowUserToDeleteRows = false;
+            this.InvoicesContentTable.AllowUserToResizeRows = false;
             this.InvoicesContentTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.InvoicesContentTable.AutoGenerateColumns = false;
@@ -1646,6 +1649,7 @@
             // 
             this.InvoicesInvoicesTable.AllowUserToAddRows = false;
             this.InvoicesInvoicesTable.AllowUserToDeleteRows = false;
+            this.InvoicesInvoicesTable.AllowUserToResizeRows = false;
             this.InvoicesInvoicesTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));

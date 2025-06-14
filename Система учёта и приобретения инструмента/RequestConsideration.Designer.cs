@@ -430,6 +430,7 @@
             this.Name = "RequestConsideration";
             this.Text = "Форма рассмотрения заявки на получение – Информационная система учета и приобрете" +
     "ния инструмента";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RequestConsideration_FormClosed);
             this.Load += new System.EventHandler(this.RequestConsideration_Load);
             ((System.ComponentModel.ISupportInitialize)(this.RequestConsiderationContentTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentInjBindingSource)).EndInit();
