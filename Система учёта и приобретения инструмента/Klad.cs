@@ -220,7 +220,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка обновления дефектных ведомостей: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка обновления дефектных ведомостей: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -236,7 +236,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка обновления таблиц движения/остатков: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка обновления таблиц движения/остатков: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -350,7 +350,7 @@ namespace Система_учёта_и_приобретения_инструме
             catch (Exception ex)
             {
                 tOOLACCOUNTINGDataSet.RejectChanges();
-                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }
@@ -757,7 +757,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка обновления таблиц: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка обновления таблиц: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -1344,7 +1344,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -1357,7 +1357,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -1405,7 +1405,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

@@ -243,7 +243,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при обработке заявки: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка при обработке заявки: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -285,7 +285,7 @@ namespace Система_учёта_и_приобретения_инструме
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при применении фильтра: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка при применении фильтра: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
