@@ -330,6 +330,7 @@
             this.RequestConsiderationQuantity.ReadOnly = true;
             this.RequestConsiderationQuantity.Size = new System.Drawing.Size(167, 26);
             this.RequestConsiderationQuantity.TabIndex = 50;
+            this.RequestConsiderationQuantity.TextChanged += new System.EventHandler(this.RequestConsiderationQuantity_TextChanged);
             // 
             // receivingRequestsContentInjTableAdapter
             // 
