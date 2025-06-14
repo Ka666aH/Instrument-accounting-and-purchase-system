@@ -1464,7 +1464,26 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void InvoicesDate_ValueChanged(object sender, EventArgs e)
         {
-            
+            if (isSearchReseting) return;           
+            try
+            {
+                string filter = string.Empty;
+                string date1 = $"{InvoicesDate.Value.ToString("yyyy-MM-dd")}";
+                string date2 = $"{InvoicesDate.Value.AddDays(1).ToString("yyyy-MM-dd")}";
+
+                if (InvoicesDate.Checked && (!string.IsNullOrEmpty(InvoicesDate.Text)))
+                {
+                    filter += $"InvoiceDate >= '{date1}'";
+                    filter += " AND ";
+                    filter += $"InvoiceDate <'{date2}'";
+                }
+
+                invoicesInjBindingSource.Filter = filter;
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void InvoicesButtonResetSearch_Click(object sender, EventArgs e)
@@ -1964,12 +1983,12 @@ namespace Система_учёта_и_приобретения_инструме
         }
         private void StatementsResetName() { StatementsProvider.Text = string.Empty; }
         private void StatementsResetDate() { StatementsDate.Value = DateTime.Today; StatementsDate.Checked = false; }
-        //remove filter #fix
         private void InvoicesResetSearch()
         {
             isSearchReseting = true;
             InvoicesResetDate();
             isSearchReseting = false;
+            invoicesInjBindingSource.RemoveFilter();
         }
         private void InvoicesResetDate() { InvoicesDate.Value = DateTime.Today; InvoicesDate.Checked = false; }
         //remove filter #fix
@@ -2031,7 +2050,6 @@ namespace Система_учёта_и_приобретения_инструме
         private void LogResetExecutor() { LogUser.Text = string.Empty; }
         private void LogResetStart() { LogStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1); LogStart.Checked = false; }
         private void LogResetEnd() { LogEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1); LogEnd.Checked = false; }
-        //remove filter #fix
         private void OstatkiResetSearch()
         {
             isSearchReseting = true;
@@ -2039,6 +2057,7 @@ namespace Система_учёта_и_приобретения_инструме
             OstatkiResetStorage();
             OstatkiResetPrice();
             isSearchReseting = false;
+            balancesInjBindingSource.RemoveFilter();
         }
         private void OstatkiResetNumber() { OstatkiNumber.Text = string.Empty; }
         private void OstatkiResetStorage() { OstatkiStorage.Text = string.Empty; }
