@@ -103,7 +103,7 @@ namespace Система_учёта_и_приобретения_инструме
                 // Стилизация "крутого" отчёта
                 MSExcel.Range headerRange = ws.Range[ws.Cells[1, 1], ws.Cells[1, columnCount]];
                 headerRange.Font.Bold = true;
-                headerRange.Interior.Color = (int)MSExcel.XlRgbColor.rgbLightGray;
+                headerRange.Interior.ColorIndex = 0; // белый фон
                 headerRange.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignCenter;
 
                 // Автофит столбцов
@@ -215,7 +215,7 @@ namespace Система_учёта_и_приобретения_инструме
                 // Стиль шапки
                 var headerRange = ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow, headers.Length]];
                 headerRange.Font.Bold = true;
-                headerRange.Interior.Color = (int)MSExcel.XlRgbColor.rgbLightGray;
+                headerRange.Interior.ColorIndex = 0; // белый фон
                 headerRange.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignCenter;
 
                 currentRow++; // сразу переходим на строку данных
@@ -393,7 +393,7 @@ namespace Система_учёта_и_приобретения_инструме
 
                 MSExcel.Range headerRange = ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow, columnCount]];
                 headerRange.Font.Bold = true;
-                headerRange.Interior.Color = (int)MSExcel.XlRgbColor.rgbLightGray;
+                headerRange.Interior.ColorIndex = 0; // белый фон
                 headerRange.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignCenter;
 
                 // 4. Данные
@@ -408,7 +408,7 @@ namespace Система_учёта_и_приобретения_инструме
                 // 5. Преобразуем диапазон в "умную" таблицу
                 MSExcel.Range fullRange = ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow + table.Rows.Count, columnCount]];
                 var listObj = ws.ListObjects.Add(MSExcel.XlListObjectSourceType.xlSrcRange, fullRange, Type.Missing, MSExcel.XlYesNoGuess.xlYes);
-                listObj.TableStyle = "TableStyleMedium2";
+                listObj.TableStyle = "TableStyleLight1";
 
                 // 6. Автофит и фиксация шапки
                 ws.Columns.AutoFit();
@@ -487,7 +487,7 @@ namespace Система_учёта_и_приобретения_инструме
                 }
                 MSExcel.Range headerRange = ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow, columnCount]];
                 headerRange.Font.Bold = true;
-                headerRange.Interior.Color = (int)MSExcel.XlRgbColor.rgbLightGray;
+                headerRange.Interior.ColorIndex = 0; // белый фон
                 headerRange.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignCenter;
 
                 // Данные
@@ -502,7 +502,7 @@ namespace Система_учёта_и_приобретения_инструме
                 // Smart table
                 MSExcel.Range fullRange = ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow + table.Rows.Count, columnCount]];
                 var listObj = ws.ListObjects.Add(MSExcel.XlListObjectSourceType.xlSrcRange, fullRange, Type.Missing, MSExcel.XlYesNoGuess.xlYes);
-                listObj.TableStyle = "TableStyleMedium2";
+                listObj.TableStyle = "TableStyleLight1";
 
                 // Автофит и фиксация шапки
                 ws.Columns.AutoFit();
@@ -517,6 +517,203 @@ namespace Система_учёта_и_приобретения_инструме
                 if (excelApp != null && !excelApp.Visible)
                     excelApp.Quit();
             }
+        }
+
+        public void ExportPurchaseRequestInj(int requestId, DateTime requestDate, string status, System.Data.DataTable details)
+        {
+            if (details == null || details.Rows.Count == 0) return;
+
+            MSExcel.Application excelApp = null;
+            try
+            {
+                excelApp = new MSExcel.Application();
+                excelApp.Visible = true;
+                var wb = excelApp.Workbooks.Add();
+                MSExcel.Worksheet ws = wb.ActiveSheet;
+
+                int currentRow = 1;
+                int columnCount = details.Columns.Count;
+
+                // Заголовок
+                ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow, columnCount]].Merge();
+                ws.Cells[currentRow, 1] = $"ЗАЯВКА НА ПРИОБРЕТЕНИЕ № {requestId} от {requestDate:dd.MM.yyyy}";
+                MSExcel.Range titleRange = ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow, columnCount]];
+                titleRange.Font.Bold = true;
+                titleRange.Font.Size = 14;
+                titleRange.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignCenter;
+                currentRow += 2;
+
+                // Можно добавить дату печати
+                currentRow += 1;
+
+                // Заголовки деталей
+                for (int col = 0; col < columnCount; col++)
+                {
+                    string header = !string.IsNullOrEmpty(details.Columns[col].Caption) ? details.Columns[col].Caption : GetHeader(details.Columns[col].ColumnName);
+                    ws.Cells[currentRow, col + 1] = header;
+                    if (TextColumns.Contains(details.Columns[col].ColumnName))
+                        ws.Columns[col + 1].NumberFormat = "@";
+                    else if (header.Contains("Дата"))
+                        ws.Columns[col + 1].NumberFormat = "dd.MM.yyyy";
+                }
+                MSExcel.Range hdrRange = ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow, columnCount]];
+                hdrRange.Font.Bold = true;
+                hdrRange.Interior.ColorIndex = 0; // белый фон
+                hdrRange.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignCenter;
+
+                // Данные
+                for (int row = 0; row < details.Rows.Count; row++)
+                {
+                    for (int col = 0; col < columnCount; col++)
+                    {
+                        ws.Cells[currentRow + 1 + row, col + 1] = details.Rows[row][col];
+                    }
+                }
+
+                // Smart table
+                MSExcel.Range fullRange = ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow + details.Rows.Count, columnCount]];
+                var listObj = ws.ListObjects.Add(MSExcel.XlListObjectSourceType.xlSrcRange, fullRange, Type.Missing, MSExcel.XlYesNoGuess.xlYes);
+                listObj.TableStyle = "TableStyleLight1";
+
+                // Подсчитать итог кол-ва
+                int qtyColIndex = -1;
+                for (int col = 0; col < columnCount; col++)
+                {
+                    string lowerHeader = details.Columns[col].Caption.ToLowerInvariant();
+                    if (lowerHeader.Contains("колич")) { qtyColIndex = col; break; }
+                }
+                if (qtyColIndex >= 0)
+                {
+                    int summaryRow = currentRow + 1 + details.Rows.Count;
+                    ws.Cells[summaryRow, qtyColIndex] = "Итого:";
+                    ws.Cells[summaryRow, qtyColIndex + 1].Formula = $"=SUBTOTAL(109,{ws.Range[ws.Cells[currentRow + 1, qtyColIndex + 1], ws.Cells[summaryRow - 1, qtyColIndex + 1]].Address[false,false]})";
+                    ws.Range[ws.Cells[summaryRow, qtyColIndex], ws.Cells[summaryRow, qtyColIndex + 1]].Font.Bold = true;
+                }
+
+                //--- ADD DATE AND SIGNATURE FOR PURCHASE REQUEST
+                // Date under table
+                int prDateRow = currentRow + details.Rows.Count + 3;
+                ws.Cells[prDateRow,1] = "Дата: _________________";
+                //ws.Cells[prDateRow,2] = DateTime.Today.ToString("dd.MM.yyyy");
+                MSExcel.Range prDateRange = ws.Range[ws.Cells[prDateRow, 2], ws.Cells[prDateRow, 2]];
+                //prDateRange.Borders[MSExcel.XlBordersIndex.xlEdgeBottom].LineStyle = MSExcel.XlLineStyle.xlContinuous;
+                // Signatures
+                int prSignStart = prDateRow + 2;
+                ws.Cells[prSignStart,1] = "Должность";
+                ws.Cells[prSignStart,2] = "Подпись";
+                ws.Cells[prSignStart,3] = "ФИО";
+                MSExcel.Range prSignRange = ws.Range[ws.Cells[prSignStart,1], ws.Cells[prSignStart,3]];
+                //prSignRange.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignCenter;
+                prSignRange.VerticalAlignment = MSExcel.XlVAlign.xlVAlignCenter;
+                for(int c=1;c<=3;c++)
+                    ws.Cells[prSignStart+1,c].Borders[MSExcel.XlBordersIndex.xlEdgeBottom].LineStyle = MSExcel.XlLineStyle.xlContinuous;
+
+                // Автофит, фиксация шапки
+                ws.Columns.AutoFit();
+                excelApp.ActiveWindow.SplitRow = currentRow;
+                excelApp.ActiveWindow.FreezePanes = true;
+
+                // Блок подписей
+                //int signStartRow = currentRow + details.Rows.Count + 6; // немного отступить
+
+                //ws.Cells[signStartRow, 1] = "Должность";
+                //ws.Cells[signStartRow, 2] = "Подпись";
+                //ws.Cells[signStartRow, 3] = "ФИО";
+
+                //// Получаем диапазон этих ячеек
+                //MSExcel.Range headerRange = ws.Range[ws.Cells[signStartRow, 1], ws.Cells[signStartRow, 1]];
+
+                //// Выравниваем по центру по горизонтали и вертикали
+                //headerRange.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignCenter;
+                //headerRange.VerticalAlignment = MSExcel.XlVAlign.xlVAlignCenter;
+
+                // Линии подписи (нижняя граница)
+                //ws.Range[ws.Cells[signStartRow + 1, 1], ws.Cells[signStartRow + 1, 1]].Borders[MSExcel.XlBordersIndex.xlEdgeBottom].LineStyle = MSExcel.XlLineStyle.xlContinuous;
+                //ws.Range[ws.Cells[signStartRow + 1, 2], ws.Cells[signStartRow + 1, 2]].Borders[MSExcel.XlBordersIndex.xlEdgeBottom].LineStyle = MSExcel.XlLineStyle.xlContinuous;
+                //ws.Range[ws.Cells[signStartRow + 1, 3], ws.Cells[signStartRow + 1, 3]].Borders[MSExcel.XlBordersIndex.xlEdgeBottom].LineStyle = MSExcel.XlLineStyle.xlContinuous;
+
+                // Убираем колонтитул
+                ws.PageSetup.CenterHeader = "";
+            }
+            finally
+            {
+                if (excelApp != null && !excelApp.Visible) excelApp.Quit();
+            }
+        }
+
+        public void ExportDeliveryListInj(int listId, DateTime listDate, string supplier, System.Data.DataTable details)
+        {
+            if (details == null || details.Rows.Count == 0) return;
+            MSExcel.Application excelApp = null;
+            try
+            {
+                excelApp = new MSExcel.Application();
+                excelApp.Visible = true;
+                var wb = excelApp.Workbooks.Add();
+                MSExcel.Worksheet ws = wb.ActiveSheet;
+
+                int row = 1;
+                int cols = details.Columns.Count;
+
+                // Header
+                ws.Range[ws.Cells[row,1], ws.Cells[row, cols]].Merge();
+                ws.Cells[row,1] = $"ВЕДОМОСТЬ ПОСТАВКИ № {listId} от {listDate:dd.MM.yyyy}";
+                MSExcel.Range tRange = ws.Range[ws.Cells[row,1], ws.Cells[row,cols]];
+                tRange.Font.Bold = true; tRange.Font.Size = 14; tRange.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignCenter;
+                row += 2;
+
+                ws.Cells[row,1] = $"Поставщик: {supplier}";
+                ws.Cells[row,1].Font.Bold = true;
+                row += 2;
+
+                // columns
+                for(int c=0;c<cols;c++)
+                {
+                    string header = !string.IsNullOrEmpty(details.Columns[c].Caption)?details.Columns[c].Caption:GetHeader(details.Columns[c].ColumnName);
+                    ws.Cells[row,c+1]=header;
+                    if(TextColumns.Contains(details.Columns[c].ColumnName)) ws.Columns[c+1].NumberFormat="@";
+                    else if(header.Contains("Дата")) ws.Columns[c+1].NumberFormat="dd.MM.yyyy";
+                }
+                MSExcel.Range hdr = ws.Range[ws.Cells[row,1], ws.Cells[row,cols]];
+                hdr.Font.Bold = true;
+                hdr.Interior.ColorIndex = 0;
+                hdr.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignCenter;
+
+                // data
+                for(int r=0;r<details.Rows.Count;r++)
+                {
+                    for(int c=0;c<cols;c++) ws.Cells[row+1+r,c+1]=details.Rows[r][c];
+                }
+
+                MSExcel.Range full = ws.Range[ws.Cells[row,1], ws.Cells[row+details.Rows.Count, cols]];
+                var table = ws.ListObjects.Add(MSExcel.XlListObjectSourceType.xlSrcRange, full, Type.Missing, MSExcel.XlYesNoGuess.xlYes);
+                table.TableStyle = "TableStyleLight1";
+
+                // Date field
+                int dateRow = row + details.Rows.Count + 3;
+                ws.Cells[dateRow,1] = "Дата: _________________";
+
+                // Signature block
+                int signStart = dateRow + 2;
+                ws.Cells[signStart,1] = "Должность";
+                ws.Cells[signStart,2] = "Подпись";
+                ws.Cells[signStart,3] = "ФИО";
+                MSExcel.Range signRange = ws.Range[ws.Cells[signStart,1], ws.Cells[signStart,3]];
+                signRange.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignCenter;
+                signRange.VerticalAlignment = MSExcel.XlVAlign.xlVAlignCenter;
+                for(int c=1;c<=4;c++)
+                    ws.Cells[signStart+1,c].Borders[MSExcel.XlBordersIndex.xlEdgeBottom].LineStyle = MSExcel.XlLineStyle.xlContinuous;
+
+                // totals
+                int qtyIndex=-1;
+                for(int c=0;c<cols;c++) if(details.Columns[c].Caption.ToLowerInvariant().Contains("колич")){qtyIndex=c;break;}
+                if(qtyIndex>=0){int totalRow=row+1+details.Rows.Count; ws.Cells[totalRow,qtyIndex+1-1]="Итого:"; ws.Cells[totalRow,qtyIndex+1].Formula=$"=SUBTOTAL(109,{ws.Range[ws.Cells[row+1,qtyIndex+1], ws.Cells[totalRow-1,qtyIndex+1]].Address[false,false]})"; ws.Range[ws.Cells[totalRow,qtyIndex],ws.Cells[totalRow,qtyIndex+1]].Font.Bold=true;}
+
+                ws.Columns.AutoFit();
+                excelApp.ActiveWindow.SplitRow=row;
+                excelApp.ActiveWindow.FreezePanes=true;
+            }
+            finally{if(excelApp!=null&&!excelApp.Visible) excelApp.Quit();}
         }
     }
 }
