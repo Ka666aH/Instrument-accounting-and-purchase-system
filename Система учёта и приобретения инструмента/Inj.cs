@@ -56,6 +56,20 @@ namespace Система_учёта_и_приобретения_инструме
             importForm.Owner = this;
             importForm.ShowDialog();
         }
+        private void остаткиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OstatkiResetSearch();
+            InjLevel1.SelectedTab = InjOstatkiPage;
+            OstatkiButtonExport.PerformClick();
+        }
+
+        private void историяПоступленийToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HistoryResetSearch();
+            InjLevel1.SelectedTab = InjZayavkiPage;
+            InjLevel2.SelectedTab = History;
+            HistoryButtonExport.PerformClick();
+        }
 
         public string ImportRefresh(string tableName)
         {
@@ -2320,6 +2334,8 @@ namespace Система_учёта_и_приобретения_инструме
             }
             return dt;
         }
+
+
     }
     public static class Logs
     {

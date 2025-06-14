@@ -3639,12 +3639,14 @@
             this.остаткиToolStripMenuItem.Name = "остаткиToolStripMenuItem";
             this.остаткиToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
             this.остаткиToolStripMenuItem.Text = "Остатки";
+            this.остаткиToolStripMenuItem.Click += new System.EventHandler(this.остаткиToolStripMenuItem_Click);
             // 
             // историяПоступленийToolStripMenuItem
             // 
             this.историяПоступленийToolStripMenuItem.Name = "историяПоступленийToolStripMenuItem";
             this.историяПоступленийToolStripMenuItem.Size = new System.Drawing.Size(231, 24);
             this.историяПоступленийToolStripMenuItem.Text = "История поступлений";
+            this.историяПоступленийToolStripMenuItem.Click += new System.EventHandler(this.историяПоступленийToolStripMenuItem_Click);
             // 
             // NomenTableContextMenu
             // 
