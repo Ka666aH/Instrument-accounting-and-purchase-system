@@ -12904,6 +12904,8 @@ namespace Система_учёта_и_приобретения_инструме
             
             private global::System.Data.DataColumn columnRequestStatus;
             
+            private global::System.Data.DataColumn columnReceivingRequestID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public PurchaseRequestsContentInjDataTable() {
@@ -13011,6 +13013,14 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ReceivingRequestIDColumn {
+                get {
+                    return this.columnReceivingRequestID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -13057,7 +13067,8 @@ namespace Система_учёта_и_приобретения_инструме
                         NomenclatureNumber,
                         FullName,
                         RequiredQuantity,
-                        RequestStatus};
+                        RequestStatus,
+                        null};
                 if ((parentPurchaseRequestsInjRowByPurchaseRequestsInj_PurchaseRequestsContentInj != null)) {
                     columnValuesArray[1] = parentPurchaseRequestsInjRowByPurchaseRequestsInj_PurchaseRequestsContentInj[0];
                 }
@@ -13099,6 +13110,7 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnFullName = base.Columns["FullName"];
                 this.columnRequiredQuantity = base.Columns["RequiredQuantity"];
                 this.columnRequestStatus = base.Columns["RequestStatus"];
+                this.columnReceivingRequestID = base.Columns["ReceivingRequestID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13122,6 +13134,8 @@ namespace Система_учёта_и_приобретения_инструме
                 base.Columns.Add(this.columnRequiredQuantity);
                 this.columnRequestStatus = new global::System.Data.DataColumn("RequestStatus", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRequestStatus);
+                this.columnReceivingRequestID = new global::System.Data.DataColumn("ReceivingRequestID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReceivingRequestID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnPurchaseContentID}, true));
                 this.columnPurchaseContentID.AutoIncrement = true;
@@ -13140,6 +13154,11 @@ namespace Система_учёта_и_приобретения_инструме
                 this.columnRequiredQuantity.AllowDBNull = false;
                 this.columnRequestStatus.AllowDBNull = false;
                 this.columnRequestStatus.MaxLength = 50;
+                this.columnReceivingRequestID.AutoIncrement = true;
+                this.columnReceivingRequestID.AutoIncrementSeed = -1;
+                this.columnReceivingRequestID.AutoIncrementStep = -1;
+                this.columnReceivingRequestID.AllowDBNull = false;
+                this.columnReceivingRequestID.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19543,6 +19562,17 @@ namespace Система_учёта_и_приобретения_инструме
                 }
                 set {
                     this[this.tablePurchaseRequestsContentInj.RequestStatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ReceivingRequestID {
+                get {
+                    return ((int)(this[this.tablePurchaseRequestsContentInj.ReceivingRequestIDColumn]));
+                }
+                set {
+                    this[this.tablePurchaseRequestsContentInj.ReceivingRequestIDColumn] = value;
                 }
             }
             
@@ -32437,6 +32467,7 @@ SELECT PurchaseRequestID, PurchaseRequestDate, Status FROM PurchaseRequests WHER
             tableMapping.ColumnMappings.Add("FullName", "FullName");
             tableMapping.ColumnMappings.Add("RequiredQuantity", "RequiredQuantity");
             tableMapping.ColumnMappings.Add("RequestStatus", "RequestStatus");
+            tableMapping.ColumnMappings.Add("ReceivingRequestID", "ReceivingRequestID");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -32473,7 +32504,8 @@ SELECT PurchaseRequestID, PurchaseRequestDate, Status FROM PurchaseRequests WHER
     -- Количество из заявки
     rrc.Quantity AS RequiredQuantity,
     
-    rr.Status AS RequestStatus -- Добавляем статус заявки
+    rr.Status AS RequestStatus, -- Добавляем статус заявки
+    rr.ReceivingRequestID
 
 FROM PurchaseRequestsContent prc
 INNER JOIN PurchaseRequests pr ON pr.PurchaseRequestID = prc.PurchaseRequestID

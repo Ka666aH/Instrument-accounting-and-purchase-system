@@ -1878,7 +1878,8 @@ SELECT PurchaseRequestID, PurchaseRequestDate, Status FROM PurchaseRequests WHER
     -- Количество из заявки
     rrc.Quantity AS RequiredQuantity,
     
-    rr.Status AS RequestStatus -- Добавляем статус заявки
+    rr.Status AS RequestStatus, -- Добавляем статус заявки
+    rr.ReceivingRequestID
 
 FROM PurchaseRequestsContent prc
 INNER JOIN PurchaseRequests pr ON pr.PurchaseRequestID = prc.PurchaseRequestID
@@ -1905,6 +1906,7 @@ prc.IsPurchase = 1;</CommandText>
               <Mapping SourceColumn="FullName" DataSetColumn="FullName" />
               <Mapping SourceColumn="RequiredQuantity" DataSetColumn="RequiredQuantity" />
               <Mapping SourceColumn="RequestStatus" DataSetColumn="RequestStatus" />
+              <Mapping SourceColumn="ReceivingRequestID" DataSetColumn="ReceivingRequestID" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -3129,6 +3131,7 @@ INNER JOIN Suppliers s
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="ReceivingRequestID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="ReceivingRequestID" msprop:Generator_ColumnPropNameInTable="ReceivingRequestIDColumn" msprop:Generator_ColumnVarNameInTable="columnReceivingRequestID" msprop:Generator_UserColumnName="ReceivingRequestID" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
