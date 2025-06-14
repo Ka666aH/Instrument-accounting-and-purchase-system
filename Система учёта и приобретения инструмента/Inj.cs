@@ -1238,6 +1238,7 @@ namespace Система_учёта_и_приобретения_инструме
             PurchaseRequest purchaseRequest = new PurchaseRequest();
             purchaseRequest.ShowDialog();
             //purchaseRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
+            purchaseRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
             purchaseRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
             receivingRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
         }
@@ -1364,6 +1365,7 @@ namespace Система_учёта_и_приобретения_инструме
             deleviryListForm.ShowDialog();
             deliveryListsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsInj);
             deliveryListsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.DeliveryListsContentInj);
+            purchaseRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
             purchaseRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
             receivingRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
         }
@@ -1455,13 +1457,14 @@ namespace Система_учёта_и_приобретения_инструме
             invoiceForm.ShowDialog();
             invoicesInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.InvoicesInj);
             invoicesContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.InvoicesContentInj);
+            purchaseRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsInj);
             purchaseRequestsContentInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
             receivingRequestsInjTableAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
         }
 
         private void InvoicesDate_ValueChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void InvoicesButtonResetSearch_Click(object sender, EventArgs e)
