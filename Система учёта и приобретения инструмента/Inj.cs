@@ -1949,6 +1949,48 @@ namespace Система_учёта_и_приобретения_инструме
             OstatkiResetSearch();
         }
 
+        private void OstatkiButtonExport_Click(object sender, EventArgs e)
+        {
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(OstatkiNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", OstatkiNumber.Text));
+            DataTable dt = DataGridViewToDataTable(OstatkiTable);
+            new Excel().ExportBalancesInj(dt, parameters);
+        }
+
+        // Преобразование видимых данных DataGridView в DataTable
+        private static DataTable DataGridViewToDataTable(DataGridView dgv)
+        {
+            var dt = new DataTable();
+            // Создаём колонки только для видимых столбцов
+            foreach (DataGridViewColumn col in dgv.Columns)
+            {
+                if (!col.Visible) continue;
+                string colName = !string.IsNullOrEmpty(col.DataPropertyName) ? col.DataPropertyName : col.Name;
+                if (!dt.Columns.Contains(colName))
+                    dt.Columns.Add(colName);
+            }
+
+            // Заполняем строки
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                if (row.IsNewRow) continue;
+                var newRow = dt.NewRow();
+                foreach (DataGridViewColumn col in dgv.Columns)
+                {
+                    if (!col.Visible) continue;
+                    string colName = !string.IsNullOrEmpty(col.DataPropertyName) ? col.DataPropertyName : col.Name;
+                    newRow[colName] = row.Cells[col.Index].Value ?? DBNull.Value;
+                }
+                dt.Rows.Add(newRow);
+            }
+            return dt;
+        }
+
+        private void OstatkiTable_CurrentCellChanged(object sender, EventArgs e)
+        {
+            if(OstatkiTable.Rows.Count == 0) OstatkiButtonExport.Enabled = false;
+            else OstatkiButtonExport.Enabled = true;
+        }
 
         #endregion
 

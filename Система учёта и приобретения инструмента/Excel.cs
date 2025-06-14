@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MSExcel = Microsoft.Office.Interop.Excel;
+using System.Data;
 
 namespace Система_учёта_и_приобретения_инструмента
 {
@@ -322,6 +323,102 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 if (xlApp != null && !xlApp.Visible)
                     xlApp.Quit();
+            }
+        }
+
+        public void ExportBalancesInj(DataTable table, List<SearchParameter> parameters)
+        {
+            if (table == null || table.Rows.Count == 0) return;
+
+            MSExcel.Application excelApp = null;
+            try
+            {
+                excelApp = new MSExcel.Application();
+                excelApp.Visible = true; // Показываем Excel пользователю
+                var wb = excelApp.Workbooks.Add();
+                MSExcel.Worksheet ws = wb.ActiveSheet;
+
+                int currentRow = 1;
+                int columnCount = table.Columns.Count;
+
+                // 1. Заголовок отчёта
+                ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow, columnCount]].Merge();
+                ws.Cells[currentRow, 1] = "ОТЧЁТ ОБ ОСТАТКАХ ИНСТРУМЕНТА НА ЦИС";
+                MSExcel.Range titleRange = ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow, columnCount]];
+                titleRange.Font.Bold = true;
+                titleRange.Font.Size = 14;
+                titleRange.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignCenter;
+                currentRow += 2; // пропускаем строку
+
+                // 2. Параметры поиска (если они заданы)
+                if (parameters != null && parameters.Count > 0)
+                {
+                    // Заголовок параметров
+                    ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow, columnCount]].Merge();
+                    ws.Cells[currentRow, 1] = "ПАРАМЕТРЫ ОТЧЁТА";
+                    MSExcel.Range paramsHeader = ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow, columnCount]];
+                    paramsHeader.Font.Bold = true;
+                    paramsHeader.Font.Size = 12;
+                    paramsHeader.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignLeft;
+                    currentRow++;
+
+                    foreach (var p in parameters)
+                    {
+                        string header = GetHeader(p.Field);
+                        ws.Cells[currentRow, 1] = header + ":";
+                        var valueCell = ws.Cells[currentRow, 2];
+                        // Форматируем значение как текст, прежде чем присвоить
+                        valueCell.NumberFormat = "@";
+                        valueCell.Value = p.Value?.ToString();
+                        currentRow++;
+                    }
+                    currentRow++; // пустая строка после параметров
+                }
+
+                // 3. Заголовки столбцов
+                for (int col = 0; col < columnCount; col++)
+                {
+                    string header = GetHeader(table.Columns[col].ColumnName);
+                    ws.Cells[currentRow, col + 1] = header;
+                    // Текстовый формат для определённых колонок
+                    if (TextColumns.Contains(table.Columns[col].ColumnName))
+                        ws.Columns[col + 1].NumberFormat = "@";
+                }
+
+                MSExcel.Range headerRange = ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow, columnCount]];
+                headerRange.Font.Bold = true;
+                headerRange.Interior.Color = (int)MSExcel.XlRgbColor.rgbLightGray;
+                headerRange.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignCenter;
+
+                // 4. Данные
+                for (int row = 0; row < table.Rows.Count; row++)
+                {
+                    for (int col = 0; col < columnCount; col++)
+                    {
+                        ws.Cells[currentRow + 1 + row, col + 1] = table.Rows[row][col];
+                    }
+                }
+
+                // 5. Преобразуем диапазон в "умную" таблицу
+                MSExcel.Range fullRange = ws.Range[ws.Cells[currentRow, 1], ws.Cells[currentRow + table.Rows.Count, columnCount]];
+                var listObj = ws.ListObjects.Add(MSExcel.XlListObjectSourceType.xlSrcRange, fullRange, Type.Missing, MSExcel.XlYesNoGuess.xlYes);
+                listObj.TableStyle = "TableStyleMedium2";
+
+                // 6. Автофит и фиксация шапки
+                ws.Columns.AutoFit();
+                excelApp.ActiveWindow.SplitRow = currentRow;
+                excelApp.ActiveWindow.FreezePanes = true;
+
+                // 7. Колонтитул
+                ws.PageSetup.CenterHeader = $"Отчёт об остатках  {DateTime.Today:dd.MM.yyyy}   {Environment.UserName}   Стр.&P из &N";
+
+                // 8. (Рамки убраны по требованию)
+            }
+            finally
+            {
+                // Если Excel был открыт невидимым (что не наш случай) – закрываем
+                if (excelApp != null && !excelApp.Visible)
+                    excelApp.Quit();
             }
         }
     }
