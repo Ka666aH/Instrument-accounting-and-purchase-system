@@ -2145,6 +2145,56 @@ SELECT InvoiceID, InvoiceDate FROM Invoices WHERE (InvoiceID = @InvoiceID)</Comm
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="HistoryInjTableAdapter" GeneratorDataComponentClassName="HistoryInjTableAdapter" Name="HistoryInj" UserDataComponentName="HistoryInjTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="TOOLACCOUNTINGConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT 
+    ISNULL(rf.AnalogNomenclatureNumber, rrc.NomenclatureNumber) AS NomenclatureNumber,
+    COALESCE(g.Name + ' ', '') + 
+    COALESCE(n.Designation + ' ', '') + 
+    COALESCE(n.Dimensions + ' ', '') + 
+    COALESCE(n.CuttingMaterial + ' ', '') + 
+    COALESCE(n.RegulatoryDoc, '') AS FullName,
+    s.Name AS Supplier,
+    i.InvoiceDate,
+    ic.Quantity
+FROM InvoicesContent ic
+INNER JOIN DeliveryListsContent dlc 
+    ON ic.DeliveryContentID = dlc.DeliveryContentID
+INNER JOIN PurchaseRequestsContent prc 
+    ON dlc.PurchaseContentID = prc.PurchaseContentID
+INNER JOIN ReceivingRequestsContent rrc 
+    ON prc.ReceivingContentID = rrc.ReceivingContentID
+INNER JOIN ReceivingRequests rr 
+    ON rrc.ReceivingRequestID = rr.ReceivingRequestID
+LEFT JOIN ReplacementFixation rf 
+    ON rrc.ReceivingContentID = rf.ReceivingContentID 
+INNER JOIN Nomenclature n 
+    ON n.NomenclatureNumber = ISNULL(rf.AnalogNomenclatureNumber, rrc.NomenclatureNumber)
+LEFT JOIN Groups g 
+    ON g.RangeStart = LEFT(n.NomenclatureNumber, 4)
+INNER JOIN Invoices i 
+    ON ic.InvoiceID = i.InvoiceID
+INNER JOIN DeliveryLists dl 
+    ON dlc.DeliveryListID = dl.DeliveryListID
+INNER JOIN Suppliers s 
+    ON dl.SupplierINN = s.INN</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="NomenclatureNumber" DataSetColumn="NomenclatureNumber" />
+              <Mapping SourceColumn="FullName" DataSetColumn="FullName" />
+              <Mapping SourceColumn="Supplier" DataSetColumn="Supplier" />
+              <Mapping SourceColumn="InvoiceDate" DataSetColumn="InvoiceDate" />
+              <Mapping SourceColumn="Quantity" DataSetColumn="Quantity" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -3182,6 +3232,35 @@ SELECT InvoiceID, InvoiceDate FROM Invoices WHERE (InvoiceID = @InvoiceID)</Comm
             <xs:sequence>
               <xs:element name="InvoiceID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="InvoiceID" msprop:Generator_ColumnPropNameInTable="InvoiceIDColumn" msprop:Generator_ColumnPropNameInRow="InvoiceID" msprop:Generator_ColumnVarNameInTable="columnInvoiceID" type="xs:int" />
               <xs:element name="InvoiceDate" msprop:Generator_UserColumnName="InvoiceDate" msprop:Generator_ColumnPropNameInTable="InvoiceDateColumn" msprop:Generator_ColumnPropNameInRow="InvoiceDate" msprop:Generator_ColumnVarNameInTable="columnInvoiceDate" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="HistoryInj" msprop:Generator_RowEvHandlerName="HistoryInjRowChangeEventHandler" msprop:Generator_RowDeletedName="HistoryInjRowDeleted" msprop:Generator_RowDeletingName="HistoryInjRowDeleting" msprop:Generator_RowEvArgName="HistoryInjRowChangeEvent" msprop:Generator_TablePropName="HistoryInj" msprop:Generator_RowChangedName="HistoryInjRowChanged" msprop:Generator_RowChangingName="HistoryInjRowChanging" msprop:Generator_TableClassName="HistoryInjDataTable" msprop:Generator_RowClassName="HistoryInjRow" msprop:Generator_TableVarName="tableHistoryInj" msprop:Generator_UserTableName="HistoryInj">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NomenclatureNumber" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="NomenclatureNumber" msprop:Generator_ColumnPropNameInTable="NomenclatureNumberColumn" msprop:Generator_ColumnVarNameInTable="columnNomenclatureNumber" msprop:Generator_UserColumnName="NomenclatureNumber" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FullName" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="FullName" msprop:Generator_ColumnPropNameInTable="FullNameColumn" msprop:Generator_ColumnVarNameInTable="columnFullName" msprop:Generator_UserColumnName="FullName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Supplier" msprop:Generator_ColumnPropNameInRow="Supplier" msprop:Generator_ColumnPropNameInTable="SupplierColumn" msprop:Generator_ColumnVarNameInTable="columnSupplier" msprop:Generator_UserColumnName="Supplier">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="InvoiceDate" msprop:Generator_ColumnPropNameInRow="InvoiceDate" msprop:Generator_ColumnPropNameInTable="InvoiceDateColumn" msprop:Generator_ColumnVarNameInTable="columnInvoiceDate" msprop:Generator_UserColumnName="InvoiceDate" type="xs:dateTime" />
+              <xs:element name="Quantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_UserColumnName="Quantity" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

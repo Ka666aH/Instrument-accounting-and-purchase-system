@@ -92,6 +92,7 @@
             this.requiredQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.purchaseRequestsInjPurchaseRequestsContentInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PurchaseRequestsSearchGroup = new System.Windows.Forms.GroupBox();
+            this.PurchaseRequestsStatus = new System.Windows.Forms.ComboBox();
             this.PurchaseRequestsButtonResetSearch = new System.Windows.Forms.Button();
             this.label45 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
@@ -150,7 +151,15 @@
             this.History = new System.Windows.Forms.TabPage();
             this.HistoryButtonExport = new System.Windows.Forms.Button();
             this.HistoryTable = new System.Windows.Forms.DataGridView();
+            this.nomenclatureNumberDataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fullNameDataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoiceDateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.historyInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.HistorySearchGroup = new System.Windows.Forms.GroupBox();
+            this.HistoryName = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
             this.HistoryButtonResetSearch = new System.Windows.Forms.Button();
             this.HistoryNumber = new System.Windows.Forms.MaskedTextBox();
             this.label29 = new System.Windows.Forms.Label();
@@ -374,7 +383,7 @@
             this.deliveryListsContentInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.DeliveryListsContentInjTableAdapter();
             this.invoicesInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.InvoicesInjTableAdapter();
             this.invoicesContentInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.InvoicesContentInjTableAdapter();
-            this.PurchaseRequestsStatus = new System.Windows.Forms.ComboBox();
+            this.historyInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.HistoryInjTableAdapter();
             this.InjLevel1.SuspendLayout();
             this.InjZayavkiPage.SuspendLayout();
             this.InjLevel2.SuspendLayout();
@@ -407,6 +416,7 @@
             this.InvoicesSearchGroup.SuspendLayout();
             this.History.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HistoryTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.historyInjBindingSource)).BeginInit();
             this.HistorySearchGroup.SuspendLayout();
             this.InjNomenPage.SuspendLayout();
             this.NomenSearchGroup.SuspendLayout();
@@ -548,7 +558,7 @@
             this.ReceivingRequestsContentTable.ReadOnly = true;
             this.ReceivingRequestsContentTable.RowHeadersVisible = false;
             this.ReceivingRequestsContentTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ReceivingRequestsContentTable.Size = new System.Drawing.Size(1037, 169);
+            this.ReceivingRequestsContentTable.Size = new System.Drawing.Size(1037, 162);
             this.ReceivingRequestsContentTable.TabIndex = 51;
             // 
             // dataGridViewTextBoxColumn5
@@ -1012,7 +1022,7 @@
             this.PurchaseRequestsPurchaseRequestsTable.ReadOnly = true;
             this.PurchaseRequestsPurchaseRequestsTable.RowHeadersVisible = false;
             this.PurchaseRequestsPurchaseRequestsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PurchaseRequestsPurchaseRequestsTable.Size = new System.Drawing.Size(338, 474);
+            this.PurchaseRequestsPurchaseRequestsTable.Size = new System.Drawing.Size(338, 488);
             this.PurchaseRequestsPurchaseRequestsTable.TabIndex = 31;
             this.PurchaseRequestsPurchaseRequestsTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.PurchaseRequestsPurchaseRequestsTable_CellMouseClick);
             // 
@@ -1071,7 +1081,7 @@
             this.PurchaseRequestsContentTable.ReadOnly = true;
             this.PurchaseRequestsContentTable.RowHeadersVisible = false;
             this.PurchaseRequestsContentTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PurchaseRequestsContentTable.Size = new System.Drawing.Size(708, 473);
+            this.PurchaseRequestsContentTable.Size = new System.Drawing.Size(708, 487);
             this.PurchaseRequestsContentTable.TabIndex = 30;
             // 
             // purchaseContentIDDataGridViewTextBoxColumn
@@ -1159,6 +1169,25 @@
             this.PurchaseRequestsSearchGroup.TabIndex = 35;
             this.PurchaseRequestsSearchGroup.TabStop = false;
             this.PurchaseRequestsSearchGroup.Text = "Поиск";
+            // 
+            // PurchaseRequestsStatus
+            // 
+            this.PurchaseRequestsStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PurchaseRequestsStatus.ContextMenuStrip = this.SearchFieldsContextMenu;
+            this.PurchaseRequestsStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PurchaseRequestsStatus.FormattingEnabled = true;
+            this.PurchaseRequestsStatus.Items.AddRange(new object[] {
+            "Все",
+            "Не обработана",
+            "В работе",
+            "Исполнена частично",
+            "Исполнена полностью"});
+            this.PurchaseRequestsStatus.Location = new System.Drawing.Point(616, 18);
+            this.PurchaseRequestsStatus.Name = "PurchaseRequestsStatus";
+            this.PurchaseRequestsStatus.Size = new System.Drawing.Size(541, 32);
+            this.PurchaseRequestsStatus.TabIndex = 25;
+            this.PurchaseRequestsStatus.SelectedIndexChanged += new System.EventHandler(this.PurchaseRequestsStatus_TextChanged);
             // 
             // PurchaseRequestsButtonResetSearch
             // 
@@ -1314,7 +1343,7 @@
             this.deliveryContentDateDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn1});
             this.StatementsContentTable.DataSource = this.deliveryListsInjDeliveryListsContentInjBindingSource;
-            this.StatementsContentTable.Location = new System.Drawing.Point(7, 497);
+            this.StatementsContentTable.Location = new System.Drawing.Point(7, 511);
             this.StatementsContentTable.MultiSelect = false;
             this.StatementsContentTable.Name = "StatementsContentTable";
             this.StatementsContentTable.ReadOnly = true;
@@ -1382,7 +1411,7 @@
             this.label50.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label50.AutoSize = true;
             this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label50.Location = new System.Drawing.Point(7, 470);
+            this.label50.Location = new System.Drawing.Point(7, 484);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(268, 24);
             this.label50.TabIndex = 40;
@@ -1419,7 +1448,7 @@
             this.StatementsStatementsTable.ReadOnly = true;
             this.StatementsStatementsTable.RowHeadersVisible = false;
             this.StatementsStatementsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.StatementsStatementsTable.Size = new System.Drawing.Size(1044, 368);
+            this.StatementsStatementsTable.Size = new System.Drawing.Size(1044, 382);
             this.StatementsStatementsTable.TabIndex = 38;
             this.StatementsStatementsTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.StatementsStatementsTable_CellMouseClick);
             // 
@@ -1554,7 +1583,7 @@
             this.fullNameDataGridViewTextBoxColumn4,
             this.quantityDataGridViewTextBoxColumn2});
             this.InvoicesContentTable.DataSource = this.invoicesInjInvoicesContentInjBindingSource;
-            this.InvoicesContentTable.Location = new System.Drawing.Point(7, 497);
+            this.InvoicesContentTable.Location = new System.Drawing.Point(7, 511);
             this.InvoicesContentTable.MultiSelect = false;
             this.InvoicesContentTable.Name = "InvoicesContentTable";
             this.InvoicesContentTable.ReadOnly = true;
@@ -1629,7 +1658,7 @@
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(7, 470);
+            this.label15.Location = new System.Drawing.Point(7, 484);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(266, 24);
             this.label15.TabIndex = 54;
@@ -1665,7 +1694,7 @@
             this.InvoicesInvoicesTable.ReadOnly = true;
             this.InvoicesInvoicesTable.RowHeadersVisible = false;
             this.InvoicesInvoicesTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(1044, 368);
+            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(1044, 382);
             this.InvoicesInvoicesTable.TabIndex = 52;
             this.InvoicesInvoicesTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.InvoicesInvoicesTable_CellMouseClick);
             // 
@@ -1799,21 +1828,75 @@
             // 
             this.HistoryTable.AllowUserToAddRows = false;
             this.HistoryTable.AllowUserToDeleteRows = false;
+            this.HistoryTable.AllowUserToResizeRows = false;
             this.HistoryTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.HistoryTable.AutoGenerateColumns = false;
+            this.HistoryTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.HistoryTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.HistoryTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nomenclatureNumberDataGridViewTextBoxColumn7,
+            this.fullNameDataGridViewTextBoxColumn5,
+            this.supplierDataGridViewTextBoxColumn,
+            this.invoiceDateDataGridViewTextBoxColumn1,
+            this.quantityDataGridViewTextBoxColumn3});
+            this.HistoryTable.DataSource = this.historyInjBindingSource;
             this.HistoryTable.Location = new System.Drawing.Point(7, 113);
             this.HistoryTable.Name = "HistoryTable";
             this.HistoryTable.ReadOnly = true;
-            this.HistoryTable.Size = new System.Drawing.Size(1044, 635);
+            this.HistoryTable.RowHeadersVisible = false;
+            this.HistoryTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.HistoryTable.Size = new System.Drawing.Size(1044, 649);
             this.HistoryTable.TabIndex = 13;
+            // 
+            // nomenclatureNumberDataGridViewTextBoxColumn7
+            // 
+            this.nomenclatureNumberDataGridViewTextBoxColumn7.DataPropertyName = "NomenclatureNumber";
+            this.nomenclatureNumberDataGridViewTextBoxColumn7.HeaderText = "Номенклатурный номер";
+            this.nomenclatureNumberDataGridViewTextBoxColumn7.Name = "nomenclatureNumberDataGridViewTextBoxColumn7";
+            this.nomenclatureNumberDataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // fullNameDataGridViewTextBoxColumn5
+            // 
+            this.fullNameDataGridViewTextBoxColumn5.DataPropertyName = "FullName";
+            this.fullNameDataGridViewTextBoxColumn5.HeaderText = "Полное наименование";
+            this.fullNameDataGridViewTextBoxColumn5.Name = "fullNameDataGridViewTextBoxColumn5";
+            this.fullNameDataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // supplierDataGridViewTextBoxColumn
+            // 
+            this.supplierDataGridViewTextBoxColumn.DataPropertyName = "Supplier";
+            this.supplierDataGridViewTextBoxColumn.HeaderText = "Поставщик";
+            this.supplierDataGridViewTextBoxColumn.Name = "supplierDataGridViewTextBoxColumn";
+            this.supplierDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // invoiceDateDataGridViewTextBoxColumn1
+            // 
+            this.invoiceDateDataGridViewTextBoxColumn1.DataPropertyName = "InvoiceDate";
+            this.invoiceDateDataGridViewTextBoxColumn1.HeaderText = "Дата поступления";
+            this.invoiceDateDataGridViewTextBoxColumn1.Name = "invoiceDateDataGridViewTextBoxColumn1";
+            this.invoiceDateDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // quantityDataGridViewTextBoxColumn3
+            // 
+            this.quantityDataGridViewTextBoxColumn3.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn3.HeaderText = "Количество";
+            this.quantityDataGridViewTextBoxColumn3.Name = "quantityDataGridViewTextBoxColumn3";
+            this.quantityDataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // historyInjBindingSource
+            // 
+            this.historyInjBindingSource.DataMember = "HistoryInj";
+            this.historyInjBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
             // 
             // HistorySearchGroup
             // 
             this.HistorySearchGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HistorySearchGroup.ContextMenuStrip = this.SearchGroupContextMenu;
+            this.HistorySearchGroup.Controls.Add(this.HistoryName);
+            this.HistorySearchGroup.Controls.Add(this.label30);
             this.HistorySearchGroup.Controls.Add(this.HistoryButtonResetSearch);
             this.HistorySearchGroup.Controls.Add(this.HistoryNumber);
             this.HistorySearchGroup.Controls.Add(this.label29);
@@ -1828,6 +1911,29 @@
             this.HistorySearchGroup.TabIndex = 4;
             this.HistorySearchGroup.TabStop = false;
             this.HistorySearchGroup.Text = "Поиск";
+            // 
+            // HistoryName
+            // 
+            this.HistoryName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.HistoryName.ContextMenuStrip = this.SearchFieldsContextMenu;
+            this.HistoryName.Location = new System.Drawing.Point(204, 20);
+            this.HistoryName.Name = "HistoryName";
+            this.HistoryName.Size = new System.Drawing.Size(466, 29);
+            this.HistoryName.TabIndex = 29;
+            this.HistoryName.TextChanged += new System.EventHandler(this.HistoryName_TextChanged);
+            // 
+            // label30
+            // 
+            this.label30.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label30.Location = new System.Drawing.Point(7, 30);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(122, 20);
+            this.label30.TabIndex = 27;
+            this.label30.Text = "Наименование";
             // 
             // HistoryButtonResetSearch
             // 
@@ -1846,12 +1952,13 @@
             this.HistoryNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HistoryNumber.ContextMenuStrip = this.SearchFieldsContextMenu;
-            this.HistoryNumber.Location = new System.Drawing.Point(697, 21);
+            this.HistoryNumber.Location = new System.Drawing.Point(204, 55);
             this.HistoryNumber.Mask = "000000000";
             this.HistoryNumber.Name = "HistoryNumber";
-            this.HistoryNumber.Size = new System.Drawing.Size(460, 29);
+            this.HistoryNumber.Size = new System.Drawing.Size(466, 29);
             this.HistoryNumber.TabIndex = 23;
             this.HistoryNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.HistoryNumber.TextChanged += new System.EventHandler(this.HistoryName_TextChanged);
             // 
             // label29
             // 
@@ -1859,7 +1966,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label29.Location = new System.Drawing.Point(500, 30);
+            this.label29.Location = new System.Drawing.Point(7, 64);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(191, 20);
             this.label29.TabIndex = 22;
@@ -1867,11 +1974,10 @@
             // 
             // label54
             // 
-            this.label54.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label54.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label54.AutoSize = true;
             this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label54.Location = new System.Drawing.Point(6, 64);
+            this.label54.Location = new System.Drawing.Point(676, 64);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(235, 20);
             this.label54.TabIndex = 21;
@@ -1879,22 +1985,23 @@
             // 
             // HistoryEnd
             // 
+            this.HistoryEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.HistoryEnd.Checked = false;
             this.HistoryEnd.ContextMenuStrip = this.SearchFieldsContextMenu;
             this.HistoryEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.HistoryEnd.Location = new System.Drawing.Point(259, 55);
+            this.HistoryEnd.Location = new System.Drawing.Point(929, 55);
             this.HistoryEnd.Name = "HistoryEnd";
             this.HistoryEnd.ShowCheckBox = true;
             this.HistoryEnd.Size = new System.Drawing.Size(228, 29);
             this.HistoryEnd.TabIndex = 20;
+            this.HistoryEnd.ValueChanged += new System.EventHandler(this.HistoryStart_ValueChanged);
             // 
             // label58
             // 
-            this.label58.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label58.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label58.AutoSize = true;
             this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label58.Location = new System.Drawing.Point(6, 30);
+            this.label58.Location = new System.Drawing.Point(676, 30);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(247, 20);
             this.label58.TabIndex = 19;
@@ -1902,14 +2009,16 @@
             // 
             // HistoryStart
             // 
+            this.HistoryStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.HistoryStart.Checked = false;
             this.HistoryStart.ContextMenuStrip = this.SearchFieldsContextMenu;
             this.HistoryStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.HistoryStart.Location = new System.Drawing.Point(259, 21);
+            this.HistoryStart.Location = new System.Drawing.Point(929, 21);
             this.HistoryStart.Name = "HistoryStart";
             this.HistoryStart.ShowCheckBox = true;
             this.HistoryStart.Size = new System.Drawing.Size(228, 29);
             this.HistoryStart.TabIndex = 18;
+            this.HistoryStart.ValueChanged += new System.EventHandler(this.HistoryStart_ValueChanged);
             // 
             // InjNomenPage
             // 
@@ -4025,24 +4134,9 @@
             // 
             this.invoicesContentInjTableAdapter.ClearBeforeFill = true;
             // 
-            // PurchaseRequestsStatus
+            // historyInjTableAdapter
             // 
-            this.PurchaseRequestsStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PurchaseRequestsStatus.ContextMenuStrip = this.SearchFieldsContextMenu;
-            this.PurchaseRequestsStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.PurchaseRequestsStatus.FormattingEnabled = true;
-            this.PurchaseRequestsStatus.Items.AddRange(new object[] {
-            "Все",
-            "Не обработана",
-            "В работе",
-            "Исполнена частично",
-            "Исполнена полностью"});
-            this.PurchaseRequestsStatus.Location = new System.Drawing.Point(616, 18);
-            this.PurchaseRequestsStatus.Name = "PurchaseRequestsStatus";
-            this.PurchaseRequestsStatus.Size = new System.Drawing.Size(541, 32);
-            this.PurchaseRequestsStatus.TabIndex = 25;
-            this.PurchaseRequestsStatus.SelectedIndexChanged += new System.EventHandler(this.PurchaseRequestsStatus_TextChanged);
+            this.historyInjTableAdapter.ClearBeforeFill = true;
             // 
             // Inj
             // 
@@ -4098,6 +4192,7 @@
             this.InvoicesSearchGroup.PerformLayout();
             this.History.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.HistoryTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.historyInjBindingSource)).EndInit();
             this.HistorySearchGroup.ResumeLayout(false);
             this.HistorySearchGroup.PerformLayout();
             this.InjNomenPage.ResumeLayout(false);
@@ -4501,5 +4596,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn invoiceIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn invoiceDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.ComboBox PurchaseRequestsStatus;
+        private System.Windows.Forms.BindingSource historyInjBindingSource;
+        private TOOLACCOUNTINGDataSetTableAdapters.HistoryInjTableAdapter historyInjTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplierDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invoiceDateDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.TextBox HistoryName;
+        private System.Windows.Forms.Label label30;
     }
 }

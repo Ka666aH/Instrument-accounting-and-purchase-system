@@ -108,6 +108,8 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Inj_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.HistoryInj". При необходимости она может быть перемещена или удалена.
+            this.historyInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.HistoryInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.InvoicesContentInj". При необходимости она может быть перемещена или удалена.
             this.invoicesContentInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.InvoicesContentInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.InvoicesInj". При необходимости она может быть перемещена или удалена.
@@ -1308,7 +1310,7 @@ namespace Система_учёта_и_приобретения_инструме
         {
             if (isSearchReseting) return;
             var parameters = new List<SearchParameter>();
-            if (!string.IsNullOrEmpty(PurchaseRequestsStatus.Text) && PurchaseRequestsStatus.SelectedIndex!=0) parameters.Add(new SearchParameter("Status", PurchaseRequestsStatus.Text));
+            if (!string.IsNullOrEmpty(PurchaseRequestsStatus.Text) && PurchaseRequestsStatus.SelectedIndex != 0) parameters.Add(new SearchParameter("Status", PurchaseRequestsStatus.Text));
 
             try
             {
@@ -1464,7 +1466,7 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void InvoicesDate_ValueChanged(object sender, EventArgs e)
         {
-            if (isSearchReseting) return;           
+            if (isSearchReseting) return;
             try
             {
                 string filter = string.Empty;
@@ -1525,7 +1527,47 @@ namespace Система_учёта_и_приобретения_инструме
         #endregion
 
         #region История поступлений
+        private void HistoryStart_ValueChanged(object sender, EventArgs e)
+        {
+            HistorySearch();
+        }
 
+        private void HistoryName_TextChanged(object sender, EventArgs e)
+        {
+            HistorySearch();
+        }
+        private void HistorySearch()
+        {
+            if (isSearchReseting) return;
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(HistoryName.Text)) parameters.Add(new SearchParameter("FullName", HistoryName.Text, false));
+            if (!string.IsNullOrEmpty(HistoryNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", HistoryNumber.Text));
+            try
+            {
+                string filter = Search.Filter(parameters);
+
+                string date1 = $"{HistoryStart.Value.ToString("yyyy-MM-dd")}";
+                string date2 = $"{HistoryEnd.Value.AddDays(1).ToString("yyyy-MM-dd")}";
+                if (HistoryStart.Checked)
+                {
+                    if (!string.IsNullOrEmpty(filter)) filter += " AND ";
+                    filter += $"InvoiceDate >= '{date1}'";
+                }
+                if (HistoryEnd.Checked)
+                {
+                    if (!string.IsNullOrEmpty(filter)) filter += " AND ";
+                    filter += $"InvoiceDate <'{date2}'";
+                }
+
+                HistoryTable.SuspendLayout();
+                historyInjBindingSource.Filter = filter;
+                HistoryTable.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
 
         private void HistoryButtonResetSearch_Click(object sender, EventArgs e)
         {
@@ -1991,17 +2033,19 @@ namespace Система_учёта_и_приобретения_инструме
             invoicesInjBindingSource.RemoveFilter();
         }
         private void InvoicesResetDate() { InvoicesDate.Value = DateTime.Today; InvoicesDate.Checked = false; }
-        //remove filter #fix
         private void HistoryResetSearch()
         {
             isSearchReseting = true;
             HistoryResetStart();
             HistoryResetEnd();
+            HistoryResetName();
             HistoryResetNumber();
             isSearchReseting = false;
+            historyInjBindingSource.RemoveFilter();
         }
         private void HistoryResetStart() { HistoryStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1); HistoryStart.Checked = false; }
         private void HistoryResetEnd() { HistoryEnd.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 1, 1).AddMilliseconds(-1); HistoryEnd.Checked = false; }
+        private void HistoryResetName() { HistoryName.Text = string.Empty; }
         private void HistoryResetNumber() { HistoryNumber.Text = string.Empty; }
 
         private void AnalogsResetSearch()
@@ -2117,6 +2161,7 @@ namespace Система_учёта_и_приобретения_инструме
 
                 case "HistoryStart": HistoryResetStart(); break;
                 case "HistoryEnd": HistoryResetEnd(); break;
+                case "HistoryName": HistoryResetName(); break;
                 case "HistoryNumber": HistoryResetNumber(); break;
 
                 case "AnalogMainName": AnalogsResetMainName(); break;
