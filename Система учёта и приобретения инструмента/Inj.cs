@@ -108,6 +108,10 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Inj_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DeliveryListsContent". При необходимости она может быть перемещена или удалена.
+            this.deliveryListsContentTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DeliveryListsContent);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.DeliveryLists". При необходимости она может быть перемещена или удалена.
+            this.deliveryListsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DeliveryLists);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.HistoryInj". При необходимости она может быть перемещена или удалена.
             this.historyInjTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.HistoryInj);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.InvoicesContentInj". При необходимости она может быть перемещена или удалена.
@@ -855,8 +859,18 @@ namespace Система_учёта_и_приобретения_инструме
             try
             {
                 bool state = GroupsTable.CurrentRow != null && !string.IsNullOrEmpty(GroupsTable.CurrentRow.Cells[0].Value.ToString());
+
                 GroupsButtonAlter.Enabled = state;
                 GroupsButtonDelete.Enabled = state;
+
+                if(state)
+                {
+                    nomenclatureViewBindingSource1.Filter = $"NomenclatureNumber LIKE '{GroupsTable.CurrentRow.Cells[0].Value.ToString()}%'";
+                }
+                else
+                {
+                    nomenclatureViewBindingSource1.Filter = "0 = 1";
+                }
             }
             catch { }
         }

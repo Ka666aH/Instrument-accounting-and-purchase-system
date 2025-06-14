@@ -384,6 +384,21 @@
             this.nomenclatureNumberDataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullNameDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GroupsNomenTable = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomenclatureViewBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.deliveryListsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.DeliveryListsTableAdapter();
+            this.deliveryListsContentTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.DeliveryListsContentTableAdapter();
             this.InjLevel1.SuspendLayout();
             this.InjZayavkiPage.SuspendLayout();
             this.InjLevel2.SuspendLayout();
@@ -456,6 +471,8 @@
             this.ProvidersTableContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.balancesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.analogToolsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GroupsNomenTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nomenclatureViewBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // InjLevel1
@@ -2750,6 +2767,7 @@
             // 
             // InjGroupsPage
             // 
+            this.InjGroupsPage.Controls.Add(this.GroupsNomenTable);
             this.InjGroupsPage.Controls.Add(this.GroupsButtonDelete);
             this.InjGroupsPage.Controls.Add(this.GroupsButtonAlter);
             this.InjGroupsPage.Controls.Add(this.GroupsButtonCreate);
@@ -2866,7 +2884,7 @@
             this.GroupsTable.Name = "GroupsTable";
             this.GroupsTable.RowHeadersVisible = false;
             this.GroupsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GroupsTable.Size = new System.Drawing.Size(1035, 533);
+            this.GroupsTable.Size = new System.Drawing.Size(1035, 262);
             this.GroupsTable.TabIndex = 3;
             this.GroupsTable.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.GroupsTable_CellBeginEdit);
             this.GroupsTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GroupsTable_CellMouseClick);
@@ -4149,6 +4167,150 @@
             this.quantityDataGridViewTextBoxColumn2.Name = "quantityDataGridViewTextBoxColumn2";
             this.quantityDataGridViewTextBoxColumn2.ReadOnly = true;
             // 
+            // GroupsNomenTable
+            // 
+            this.GroupsNomenTable.AllowUserToAddRows = false;
+            this.GroupsNomenTable.AllowUserToDeleteRows = false;
+            this.GroupsNomenTable.AllowUserToResizeRows = false;
+            this.GroupsNomenTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GroupsNomenTable.AutoGenerateColumns = false;
+            this.GroupsNomenTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GroupsNomenTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GroupsNomenTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn23,
+            this.dataGridViewTextBoxColumn24,
+            this.dataGridViewTextBoxColumn25,
+            this.dataGridViewTextBoxColumn26,
+            this.dataGridViewTextBoxColumn27,
+            this.dataGridViewTextBoxColumn28,
+            this.dataGridViewTextBoxColumn29,
+            this.dataGridViewTextBoxColumn30});
+            this.GroupsNomenTable.DataSource = this.nomenclatureViewBindingSource1;
+            this.GroupsNomenTable.Location = new System.Drawing.Point(8, 352);
+            this.GroupsNomenTable.MultiSelect = false;
+            this.GroupsNomenTable.Name = "GroupsNomenTable";
+            this.GroupsNomenTable.ReadOnly = true;
+            this.GroupsNomenTable.RowHeadersVisible = false;
+            this.GroupsNomenTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GroupsNomenTable.Size = new System.Drawing.Size(1034, 262);
+            this.GroupsNomenTable.TabIndex = 21;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "NomenclatureNumber";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Номенклатурный номер";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            this.dataGridViewTextBoxColumn12.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn13.HeaderText = "Наименование";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            this.dataGridViewTextBoxColumn13.Width = 147;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "Designation";
+            this.dataGridViewTextBoxColumn14.HeaderText = "Обозначение";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            this.dataGridViewTextBoxColumn14.Width = 135;
+            // 
+            // dataGridViewTextBoxColumn23
+            // 
+            this.dataGridViewTextBoxColumn23.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn23.DataPropertyName = "Unit";
+            this.dataGridViewTextBoxColumn23.HeaderText = "Единицы измерения";
+            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
+            this.dataGridViewTextBoxColumn23.ReadOnly = true;
+            this.dataGridViewTextBoxColumn23.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn24
+            // 
+            this.dataGridViewTextBoxColumn24.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewTextBoxColumn24.DataPropertyName = "Dimensions";
+            this.dataGridViewTextBoxColumn24.HeaderText = "Типоразмеры";
+            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
+            this.dataGridViewTextBoxColumn24.ReadOnly = true;
+            this.dataGridViewTextBoxColumn24.Width = 136;
+            // 
+            // dataGridViewTextBoxColumn25
+            // 
+            this.dataGridViewTextBoxColumn25.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewTextBoxColumn25.DataPropertyName = "CuttingMaterial";
+            this.dataGridViewTextBoxColumn25.HeaderText = "Материал режущей части";
+            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
+            this.dataGridViewTextBoxColumn25.ReadOnly = true;
+            this.dataGridViewTextBoxColumn25.Width = 136;
+            // 
+            // dataGridViewTextBoxColumn26
+            // 
+            this.dataGridViewTextBoxColumn26.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn26.DataPropertyName = "RegulatoryDoc";
+            this.dataGridViewTextBoxColumn26.HeaderText = "Нормативная документация";
+            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
+            this.dataGridViewTextBoxColumn26.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn27
+            // 
+            this.dataGridViewTextBoxColumn27.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn27.DataPropertyName = "Producer";
+            this.dataGridViewTextBoxColumn27.HeaderText = "Производитель";
+            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
+            this.dataGridViewTextBoxColumn27.ReadOnly = true;
+            this.dataGridViewTextBoxColumn27.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn28
+            // 
+            this.dataGridViewTextBoxColumn28.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn28.DataPropertyName = "FullName";
+            this.dataGridViewTextBoxColumn28.HeaderText = "Полное наименование";
+            this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
+            this.dataGridViewTextBoxColumn28.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn29
+            // 
+            this.dataGridViewTextBoxColumn29.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn29.DataPropertyName = "UsageFlag";
+            this.dataGridViewTextBoxColumn29.HeaderText = "Признак использования";
+            this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
+            this.dataGridViewTextBoxColumn29.ReadOnly = true;
+            this.dataGridViewTextBoxColumn29.Visible = false;
+            this.dataGridViewTextBoxColumn29.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn30
+            // 
+            this.dataGridViewTextBoxColumn30.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn30.DataPropertyName = "MinStock";
+            this.dataGridViewTextBoxColumn30.HeaderText = "Неснижаемый остаток";
+            this.dataGridViewTextBoxColumn30.Name = "dataGridViewTextBoxColumn30";
+            this.dataGridViewTextBoxColumn30.ReadOnly = true;
+            this.dataGridViewTextBoxColumn30.Visible = false;
+            this.dataGridViewTextBoxColumn30.Width = 90;
+            // 
+            // nomenclatureViewBindingSource1
+            // 
+            this.nomenclatureViewBindingSource1.DataMember = "NomenclatureView";
+            this.nomenclatureViewBindingSource1.DataSource = this.tOOLACCOUNTINGDataSet;
+            // 
+            // deliveryListsTableAdapter
+            // 
+            this.deliveryListsTableAdapter.ClearBeforeFill = true;
+            // 
+            // deliveryListsContentTableAdapter
+            // 
+            this.deliveryListsContentTableAdapter.ClearBeforeFill = true;
+            // 
             // Inj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4251,6 +4413,8 @@
             this.ProvidersTableContextMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.balancesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.analogToolsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GroupsNomenTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nomenclatureViewBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4616,5 +4780,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridView GroupsNomenTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
+        private System.Windows.Forms.BindingSource nomenclatureViewBindingSource1;
+        private TOOLACCOUNTINGDataSetTableAdapters.DeliveryListsTableAdapter deliveryListsTableAdapter;
+        private TOOLACCOUNTINGDataSetTableAdapters.DeliveryListsContentTableAdapter deliveryListsContentTableAdapter;
     }
 }
