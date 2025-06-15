@@ -174,6 +174,7 @@
             this.NomenFormUsage.Name = "NomenFormUsage";
             this.NomenFormUsage.Size = new System.Drawing.Size(475, 28);
             this.NomenFormUsage.TabIndex = 8;
+            this.NomenFormUsage.Visible = false;
             // 
             // label9
             // 
@@ -184,6 +185,7 @@
             this.label9.Size = new System.Drawing.Size(203, 20);
             this.label9.TabIndex = 20;
             this.label9.Text = "Признак использования *";
+            this.label9.Visible = false;
             // 
             // NomenFormOstatok
             // 
@@ -199,6 +201,7 @@
             this.NomenFormOstatok.Size = new System.Drawing.Size(475, 26);
             this.NomenFormOstatok.TabIndex = 9;
             this.NomenFormOstatok.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.NomenFormOstatok.Visible = false;
             // 
             // label10
             // 
@@ -209,6 +212,7 @@
             this.label10.Size = new System.Drawing.Size(251, 20);
             this.label10.TabIndex = 22;
             this.label10.Text = "Неснижаемый остаток на ЦИС *";
+            this.label10.Visible = false;
             // 
             // NomenFormSave
             // 

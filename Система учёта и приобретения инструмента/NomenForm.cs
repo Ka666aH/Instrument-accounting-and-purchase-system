@@ -42,7 +42,7 @@ namespace Система_учёта_и_приобретения_инструме
 
             if (_requestsContentRow != null) requestsContentRow = _requestsContentRow;
 
-            NomenFormUsage.SelectedIndex = 0;
+            NomenFormUsage.SelectedIndex = 1;
         }
         AutoCompleteStringCollection groupSource = new AutoCompleteStringCollection();
         AutoCompleteStringCollection unitSource = new AutoCompleteStringCollection();

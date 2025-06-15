@@ -207,9 +207,9 @@
             this.label42.Location = new System.Drawing.Point(293, 190);
             this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(540, 24);
+            this.label42.Size = new System.Drawing.Size(545, 24);
             this.label42.TabIndex = 84;
-            this.label42.Text = "Инструменты входящие в данную заявку на приобретение";
+            this.label42.Text = "Инструменты, входящие в данную заявку на приобретение";
             // 
             // label40
             // 
