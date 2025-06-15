@@ -56,8 +56,6 @@ namespace Система_учёта_и_приобретения_инструме
         
         private SuppliersDataTable tableSuppliers;
         
-        private ToolMovementsDataTable tableToolMovements;
-        
         private WorkshopsDataTable tableWorkshops;
         
         private NomenclatureViewDataTable tableNomenclatureView;
@@ -104,6 +102,8 @@ namespace Система_учёта_и_приобретения_инструме
         
         private HistoryInjDataTable tableHistoryInj;
         
+        private ToolMovementsDataTable tableToolMovements;
+        
         private global::System.Data.DataRelation relationFK__AnalogToo__Analo__3E52440B;
         
         private global::System.Data.DataRelation relationFK__AnalogToo__Origi__3D5E1FD2;
@@ -131,12 +131,6 @@ namespace Система_учёта_и_приобретения_инструме
         private global::System.Data.DataRelation relationFK__Receiving__Recei__4E88ABD4;
         
         private global::System.Data.DataRelation relationFK__Storages__Worksh__46E78A0C;
-        
-        private global::System.Data.DataRelation relationFK__ToolMovem__FromS__7D439ABD;
-        
-        private global::System.Data.DataRelation relationFK__ToolMovem__Nomen__7F2BE32F;
-        
-        private global::System.Data.DataRelation relationFK__ToolMovem__ToSto__7C4F7684;
         
         private global::System.Data.DataRelation relationAnalogTools1_DataTable1;
         
@@ -179,6 +173,16 @@ namespace Система_учёта_и_приобретения_инструме
         private global::System.Data.DataRelation relationInvoicesInj_InvoicesContentInj;
         
         private global::System.Data.DataRelation relationFK__InvoicesC__Invoi__693CA210;
+        
+        private global::System.Data.DataRelation relationFK__ToolMovem__FromS__73BA3083;
+        
+        private global::System.Data.DataRelation relationFK__ToolMovem__FromS__73BA30831;
+        
+        private global::System.Data.DataRelation relationFK__ToolMovem__Nomen__75A278F5;
+        
+        private global::System.Data.DataRelation relationFK__ToolMovem__ToSto__76969D2E;
+        
+        private global::System.Data.DataRelation relationFK__ToolMovem__ToSto__76969D2E1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -256,9 +260,6 @@ namespace Система_учёта_и_приобретения_инструме
                 if ((ds.Tables["Suppliers"] != null)) {
                     base.Tables.Add(new SuppliersDataTable(ds.Tables["Suppliers"]));
                 }
-                if ((ds.Tables["ToolMovements"] != null)) {
-                    base.Tables.Add(new ToolMovementsDataTable(ds.Tables["ToolMovements"]));
-                }
                 if ((ds.Tables["Workshops"] != null)) {
                     base.Tables.Add(new WorkshopsDataTable(ds.Tables["Workshops"]));
                 }
@@ -327,6 +328,9 @@ namespace Система_учёта_и_приобретения_инструме
                 }
                 if ((ds.Tables["HistoryInj"] != null)) {
                     base.Tables.Add(new HistoryInjDataTable(ds.Tables["HistoryInj"]));
+                }
+                if ((ds.Tables["ToolMovements"] != null)) {
+                    base.Tables.Add(new ToolMovementsDataTable(ds.Tables["ToolMovements"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -503,16 +507,6 @@ namespace Система_учёта_и_приобретения_инструме
         public SuppliersDataTable Suppliers {
             get {
                 return this.tableSuppliers;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ToolMovementsDataTable ToolMovements {
-            get {
-                return this.tableToolMovements;
             }
         }
         
@@ -748,6 +742,16 @@ namespace Система_учёта_и_приобретения_инструме
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ToolMovementsDataTable ToolMovements {
+            get {
+                return this.tableToolMovements;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -861,9 +865,6 @@ namespace Система_учёта_и_приобретения_инструме
                 if ((ds.Tables["Suppliers"] != null)) {
                     base.Tables.Add(new SuppliersDataTable(ds.Tables["Suppliers"]));
                 }
-                if ((ds.Tables["ToolMovements"] != null)) {
-                    base.Tables.Add(new ToolMovementsDataTable(ds.Tables["ToolMovements"]));
-                }
                 if ((ds.Tables["Workshops"] != null)) {
                     base.Tables.Add(new WorkshopsDataTable(ds.Tables["Workshops"]));
                 }
@@ -932,6 +933,9 @@ namespace Система_учёта_и_приобретения_инструме
                 }
                 if ((ds.Tables["HistoryInj"] != null)) {
                     base.Tables.Add(new HistoryInjDataTable(ds.Tables["HistoryInj"]));
+                }
+                if ((ds.Tables["ToolMovements"] != null)) {
+                    base.Tables.Add(new ToolMovementsDataTable(ds.Tables["ToolMovements"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -1060,12 +1064,6 @@ namespace Система_учёта_и_приобретения_инструме
             if ((initTable == true)) {
                 if ((this.tableSuppliers != null)) {
                     this.tableSuppliers.InitVars();
-                }
-            }
-            this.tableToolMovements = ((ToolMovementsDataTable)(base.Tables["ToolMovements"]));
-            if ((initTable == true)) {
-                if ((this.tableToolMovements != null)) {
-                    this.tableToolMovements.InitVars();
                 }
             }
             this.tableWorkshops = ((WorkshopsDataTable)(base.Tables["Workshops"]));
@@ -1206,6 +1204,12 @@ namespace Система_учёта_и_приобретения_инструме
                     this.tableHistoryInj.InitVars();
                 }
             }
+            this.tableToolMovements = ((ToolMovementsDataTable)(base.Tables["ToolMovements"]));
+            if ((initTable == true)) {
+                if ((this.tableToolMovements != null)) {
+                    this.tableToolMovements.InitVars();
+                }
+            }
             this.relationFK__AnalogToo__Analo__3E52440B = this.Relations["FK__AnalogToo__Analo__3E52440B"];
             this.relationFK__AnalogToo__Origi__3D5E1FD2 = this.Relations["FK__AnalogToo__Origi__3D5E1FD2"];
             this.relationFK__Balances__Nomenc__75A278F5 = this.Relations["FK__Balances__Nomenc__75A278F5"];
@@ -1220,9 +1224,6 @@ namespace Система_учёта_и_приобретения_инструме
             this.relationFK__Receiving__Nomen__4F7CD00D = this.Relations["FK__Receiving__Nomen__4F7CD00D"];
             this.relationFK__Receiving__Recei__4E88ABD4 = this.Relations["FK__Receiving__Recei__4E88ABD4"];
             this.relationFK__Storages__Worksh__46E78A0C = this.Relations["FK__Storages__Worksh__46E78A0C"];
-            this.relationFK__ToolMovem__FromS__7D439ABD = this.Relations["FK__ToolMovem__FromS__7D439ABD"];
-            this.relationFK__ToolMovem__Nomen__7F2BE32F = this.Relations["FK__ToolMovem__Nomen__7F2BE32F"];
-            this.relationFK__ToolMovem__ToSto__7C4F7684 = this.Relations["FK__ToolMovem__ToSto__7C4F7684"];
             this.relationAnalogTools1_DataTable1 = this.Relations["AnalogTools1_DataTable1"];
             this.relationFK__AnalogToo__Analo__3E52440B1 = this.Relations["FK__AnalogToo__Analo__3E52440B1"];
             this.relationFK__AnalogToo__Origi__3D5E1FD21 = this.Relations["FK__AnalogToo__Origi__3D5E1FD21"];
@@ -1244,6 +1245,11 @@ namespace Система_учёта_и_приобретения_инструме
             this.relationFK__DeliveryL__Suppl__619B8048 = this.Relations["FK__DeliveryL__Suppl__619B8048"];
             this.relationInvoicesInj_InvoicesContentInj = this.Relations["InvoicesInj_InvoicesContentInj"];
             this.relationFK__InvoicesC__Invoi__693CA210 = this.Relations["FK__InvoicesC__Invoi__693CA210"];
+            this.relationFK__ToolMovem__FromS__73BA3083 = this.Relations["FK__ToolMovem__FromS__73BA3083"];
+            this.relationFK__ToolMovem__FromS__73BA30831 = this.Relations["FK__ToolMovem__FromS__73BA30831"];
+            this.relationFK__ToolMovem__Nomen__75A278F5 = this.Relations["FK__ToolMovem__Nomen__75A278F5"];
+            this.relationFK__ToolMovem__ToSto__76969D2E = this.Relations["FK__ToolMovem__ToSto__76969D2E"];
+            this.relationFK__ToolMovem__ToSto__76969D2E1 = this.Relations["FK__ToolMovem__ToSto__76969D2E1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1286,8 +1292,6 @@ namespace Система_учёта_и_приобретения_инструме
             base.Tables.Add(this.tableStorages);
             this.tableSuppliers = new SuppliersDataTable();
             base.Tables.Add(this.tableSuppliers);
-            this.tableToolMovements = new ToolMovementsDataTable();
-            base.Tables.Add(this.tableToolMovements);
             this.tableWorkshops = new WorkshopsDataTable();
             base.Tables.Add(this.tableWorkshops);
             this.tableNomenclatureView = new NomenclatureViewDataTable();
@@ -1334,6 +1338,8 @@ namespace Система_учёта_и_приобретения_инструме
             base.Tables.Add(this.tableInvoices);
             this.tableHistoryInj = new HistoryInjDataTable();
             base.Tables.Add(this.tableHistoryInj);
+            this.tableToolMovements = new ToolMovementsDataTable();
+            base.Tables.Add(this.tableToolMovements);
             this.relationFK__AnalogToo__Analo__3E52440B = new global::System.Data.DataRelation("FK__AnalogToo__Analo__3E52440B", new global::System.Data.DataColumn[] {
                         this.tableNomenclature.NomenclatureNumberColumn}, new global::System.Data.DataColumn[] {
                         this.tableAnalogTools.AnalogNomenclatureNumberColumn}, false);
@@ -1390,18 +1396,6 @@ namespace Система_учёта_и_приобретения_инструме
                         this.tableWorkshops.WorkshopIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableStorages.WorkshopIDColumn}, false);
             this.Relations.Add(this.relationFK__Storages__Worksh__46E78A0C);
-            this.relationFK__ToolMovem__FromS__7D439ABD = new global::System.Data.DataRelation("FK__ToolMovem__FromS__7D439ABD", new global::System.Data.DataColumn[] {
-                        this.tableStorages.StorageIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableToolMovements.FromStorageIDColumn}, false);
-            this.Relations.Add(this.relationFK__ToolMovem__FromS__7D439ABD);
-            this.relationFK__ToolMovem__Nomen__7F2BE32F = new global::System.Data.DataRelation("FK__ToolMovem__Nomen__7F2BE32F", new global::System.Data.DataColumn[] {
-                        this.tableNomenclature.NomenclatureNumberColumn}, new global::System.Data.DataColumn[] {
-                        this.tableToolMovements.NomenclatureNumberColumn}, false);
-            this.Relations.Add(this.relationFK__ToolMovem__Nomen__7F2BE32F);
-            this.relationFK__ToolMovem__ToSto__7C4F7684 = new global::System.Data.DataRelation("FK__ToolMovem__ToSto__7C4F7684", new global::System.Data.DataColumn[] {
-                        this.tableStorages.StorageIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableToolMovements.ToStorageIDColumn}, false);
-            this.Relations.Add(this.relationFK__ToolMovem__ToSto__7C4F7684);
             this.relationAnalogTools1_DataTable1 = new global::System.Data.DataRelation("AnalogTools1_DataTable1", new global::System.Data.DataColumn[] {
                         this.tableAnalogTools1.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableDataTable1.IDColumn}, false);
@@ -1486,6 +1480,26 @@ namespace Система_учёта_и_приобретения_инструме
                         this.tableInvoices.InvoiceIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableInvoicesContent.InvoiceIDColumn}, false);
             this.Relations.Add(this.relationFK__InvoicesC__Invoi__693CA210);
+            this.relationFK__ToolMovem__FromS__73BA3083 = new global::System.Data.DataRelation("FK__ToolMovem__FromS__73BA3083", new global::System.Data.DataColumn[] {
+                        this.tableStorages.StorageIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableToolMovements.FromStorageIDColumn}, false);
+            this.Relations.Add(this.relationFK__ToolMovem__FromS__73BA3083);
+            this.relationFK__ToolMovem__FromS__73BA30831 = new global::System.Data.DataRelation("FK__ToolMovem__FromS__73BA30831", new global::System.Data.DataColumn[] {
+                        this.tableStorages1.StorageIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableToolMovements.FromStorageIDColumn}, false);
+            this.Relations.Add(this.relationFK__ToolMovem__FromS__73BA30831);
+            this.relationFK__ToolMovem__Nomen__75A278F5 = new global::System.Data.DataRelation("FK__ToolMovem__Nomen__75A278F5", new global::System.Data.DataColumn[] {
+                        this.tableNomenclature.NomenclatureNumberColumn}, new global::System.Data.DataColumn[] {
+                        this.tableToolMovements.NomenclatureNumberColumn}, false);
+            this.Relations.Add(this.relationFK__ToolMovem__Nomen__75A278F5);
+            this.relationFK__ToolMovem__ToSto__76969D2E = new global::System.Data.DataRelation("FK__ToolMovem__ToSto__76969D2E", new global::System.Data.DataColumn[] {
+                        this.tableStorages.StorageIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableToolMovements.ToStorageIDColumn}, false);
+            this.Relations.Add(this.relationFK__ToolMovem__ToSto__76969D2E);
+            this.relationFK__ToolMovem__ToSto__76969D2E1 = new global::System.Data.DataRelation("FK__ToolMovem__ToSto__76969D2E1", new global::System.Data.DataColumn[] {
+                        this.tableStorages1.StorageIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableToolMovements.ToStorageIDColumn}, false);
+            this.Relations.Add(this.relationFK__ToolMovem__ToSto__76969D2E1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1581,12 +1595,6 @@ namespace Система_учёта_и_приобретения_инструме
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializeSuppliers() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeToolMovements() {
             return false;
         }
         
@@ -1730,6 +1738,12 @@ namespace Система_учёта_и_приобретения_инструме
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeToolMovements() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -1832,9 +1846,6 @@ namespace Система_учёта_и_приобретения_инструме
         public delegate void SuppliersRowChangeEventHandler(object sender, SuppliersRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void ToolMovementsRowChangeEventHandler(object sender, ToolMovementsRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void WorkshopsRowChangeEventHandler(object sender, WorkshopsRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -1902,6 +1913,9 @@ namespace Система_учёта_и_приобретения_инструме
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void HistoryInjRowChangeEventHandler(object sender, HistoryInjRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void ToolMovementsRowChangeEventHandler(object sender, ToolMovementsRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -7100,500 +7114,6 @@ namespace Система_учёта_и_приобретения_инструме
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "SuppliersDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ToolMovementsDataTable : global::System.Data.TypedTableBase<ToolMovementsRow> {
-            
-            private global::System.Data.DataColumn columnMovementID;
-            
-            private global::System.Data.DataColumn columnMovementDate;
-            
-            private global::System.Data.DataColumn columnToStorageID;
-            
-            private global::System.Data.DataColumn columnFromStorageID;
-            
-            private global::System.Data.DataColumn columnMovementTypeID;
-            
-            private global::System.Data.DataColumn columnNomenclatureNumber;
-            
-            private global::System.Data.DataColumn columnSourceDocumentType;
-            
-            private global::System.Data.DataColumn columnSourceDocumentID;
-            
-            private global::System.Data.DataColumn columnBatchNumber;
-            
-            private global::System.Data.DataColumn columnPrice;
-            
-            private global::System.Data.DataColumn columnQuantity;
-            
-            private global::System.Data.DataColumn columnTotal;
-            
-            private global::System.Data.DataColumn columnInvoiceType;
-            
-            private global::System.Data.DataColumn columnIsPosted;
-            
-            private global::System.Data.DataColumn columnExecutor;
-            
-            private global::System.Data.DataColumn columnLastUpdated;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ToolMovementsDataTable() {
-                this.TableName = "ToolMovements";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal ToolMovementsDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected ToolMovementsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn MovementIDColumn {
-                get {
-                    return this.columnMovementID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn MovementDateColumn {
-                get {
-                    return this.columnMovementDate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ToStorageIDColumn {
-                get {
-                    return this.columnToStorageID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn FromStorageIDColumn {
-                get {
-                    return this.columnFromStorageID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn MovementTypeIDColumn {
-                get {
-                    return this.columnMovementTypeID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn NomenclatureNumberColumn {
-                get {
-                    return this.columnNomenclatureNumber;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn SourceDocumentTypeColumn {
-                get {
-                    return this.columnSourceDocumentType;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn SourceDocumentIDColumn {
-                get {
-                    return this.columnSourceDocumentID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn BatchNumberColumn {
-                get {
-                    return this.columnBatchNumber;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn PriceColumn {
-                get {
-                    return this.columnPrice;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn QuantityColumn {
-                get {
-                    return this.columnQuantity;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TotalColumn {
-                get {
-                    return this.columnTotal;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn InvoiceTypeColumn {
-                get {
-                    return this.columnInvoiceType;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IsPostedColumn {
-                get {
-                    return this.columnIsPosted;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ExecutorColumn {
-                get {
-                    return this.columnExecutor;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn LastUpdatedColumn {
-                get {
-                    return this.columnLastUpdated;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ToolMovementsRow this[int index] {
-                get {
-                    return ((ToolMovementsRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event ToolMovementsRowChangeEventHandler ToolMovementsRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event ToolMovementsRowChangeEventHandler ToolMovementsRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event ToolMovementsRowChangeEventHandler ToolMovementsRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event ToolMovementsRowChangeEventHandler ToolMovementsRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddToolMovementsRow(ToolMovementsRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ToolMovementsRow AddToolMovementsRow(System.DateTime MovementDate, StoragesRow parentStoragesRowByFK__ToolMovem__ToSto__7C4F7684, StoragesRow parentStoragesRowByFK__ToolMovem__FromS__7D439ABD, string MovementTypeID, NomenclatureRow parentNomenclatureRowByFK__ToolMovem__Nomen__7F2BE32F, string SourceDocumentType, int SourceDocumentID, string BatchNumber, decimal Price, int Quantity, decimal Total, string InvoiceType, bool IsPosted, string Executor, System.DateTime LastUpdated) {
-                ToolMovementsRow rowToolMovementsRow = ((ToolMovementsRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        MovementDate,
-                        null,
-                        null,
-                        MovementTypeID,
-                        null,
-                        SourceDocumentType,
-                        SourceDocumentID,
-                        BatchNumber,
-                        Price,
-                        Quantity,
-                        Total,
-                        InvoiceType,
-                        IsPosted,
-                        Executor,
-                        LastUpdated};
-                if ((parentStoragesRowByFK__ToolMovem__ToSto__7C4F7684 != null)) {
-                    columnValuesArray[2] = parentStoragesRowByFK__ToolMovem__ToSto__7C4F7684[0];
-                }
-                if ((parentStoragesRowByFK__ToolMovem__FromS__7D439ABD != null)) {
-                    columnValuesArray[3] = parentStoragesRowByFK__ToolMovem__FromS__7D439ABD[0];
-                }
-                if ((parentNomenclatureRowByFK__ToolMovem__Nomen__7F2BE32F != null)) {
-                    columnValuesArray[5] = parentNomenclatureRowByFK__ToolMovem__Nomen__7F2BE32F[0];
-                }
-                rowToolMovementsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowToolMovementsRow);
-                return rowToolMovementsRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ToolMovementsRow FindByMovementID(int MovementID) {
-                return ((ToolMovementsRow)(this.Rows.Find(new object[] {
-                            MovementID})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                ToolMovementsDataTable cln = ((ToolMovementsDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new ToolMovementsDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-                this.columnMovementID = base.Columns["MovementID"];
-                this.columnMovementDate = base.Columns["MovementDate"];
-                this.columnToStorageID = base.Columns["ToStorageID"];
-                this.columnFromStorageID = base.Columns["FromStorageID"];
-                this.columnMovementTypeID = base.Columns["MovementTypeID"];
-                this.columnNomenclatureNumber = base.Columns["NomenclatureNumber"];
-                this.columnSourceDocumentType = base.Columns["SourceDocumentType"];
-                this.columnSourceDocumentID = base.Columns["SourceDocumentID"];
-                this.columnBatchNumber = base.Columns["BatchNumber"];
-                this.columnPrice = base.Columns["Price"];
-                this.columnQuantity = base.Columns["Quantity"];
-                this.columnTotal = base.Columns["Total"];
-                this.columnInvoiceType = base.Columns["InvoiceType"];
-                this.columnIsPosted = base.Columns["IsPosted"];
-                this.columnExecutor = base.Columns["Executor"];
-                this.columnLastUpdated = base.Columns["LastUpdated"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-                this.columnMovementID = new global::System.Data.DataColumn("MovementID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMovementID);
-                this.columnMovementDate = new global::System.Data.DataColumn("MovementDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMovementDate);
-                this.columnToStorageID = new global::System.Data.DataColumn("ToStorageID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnToStorageID);
-                this.columnFromStorageID = new global::System.Data.DataColumn("FromStorageID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFromStorageID);
-                this.columnMovementTypeID = new global::System.Data.DataColumn("MovementTypeID", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMovementTypeID);
-                this.columnNomenclatureNumber = new global::System.Data.DataColumn("NomenclatureNumber", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNomenclatureNumber);
-                this.columnSourceDocumentType = new global::System.Data.DataColumn("SourceDocumentType", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSourceDocumentType);
-                this.columnSourceDocumentID = new global::System.Data.DataColumn("SourceDocumentID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSourceDocumentID);
-                this.columnBatchNumber = new global::System.Data.DataColumn("BatchNumber", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBatchNumber);
-                this.columnPrice = new global::System.Data.DataColumn("Price", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPrice);
-                this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnQuantity);
-                this.columnTotal = new global::System.Data.DataColumn("Total", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotal);
-                this.columnInvoiceType = new global::System.Data.DataColumn("InvoiceType", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnInvoiceType);
-                this.columnIsPosted = new global::System.Data.DataColumn("IsPosted", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIsPosted);
-                this.columnExecutor = new global::System.Data.DataColumn("Executor", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnExecutor);
-                this.columnLastUpdated = new global::System.Data.DataColumn("LastUpdated", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLastUpdated);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnMovementID}, true));
-                this.columnMovementID.AutoIncrement = true;
-                this.columnMovementID.AutoIncrementSeed = -1;
-                this.columnMovementID.AutoIncrementStep = -1;
-                this.columnMovementID.AllowDBNull = false;
-                this.columnMovementID.ReadOnly = true;
-                this.columnMovementID.Unique = true;
-                this.columnMovementDate.AllowDBNull = false;
-                this.columnToStorageID.AllowDBNull = false;
-                this.columnNomenclatureNumber.AllowDBNull = false;
-                this.columnNomenclatureNumber.MaxLength = 9;
-                this.columnSourceDocumentType.MaxLength = 50;
-                this.columnBatchNumber.AllowDBNull = false;
-                this.columnBatchNumber.MaxLength = 50;
-                this.columnQuantity.AllowDBNull = false;
-                this.columnTotal.ReadOnly = true;
-                this.columnInvoiceType.MaxLength = 50;
-                this.columnIsPosted.AllowDBNull = false;
-                this.columnExecutor.AllowDBNull = false;
-                this.columnExecutor.MaxLength = 255;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ToolMovementsRow NewToolMovementsRow() {
-                return ((ToolMovementsRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ToolMovementsRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(ToolMovementsRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.ToolMovementsRowChanged != null)) {
-                    this.ToolMovementsRowChanged(this, new ToolMovementsRowChangeEvent(((ToolMovementsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.ToolMovementsRowChanging != null)) {
-                    this.ToolMovementsRowChanging(this, new ToolMovementsRowChangeEvent(((ToolMovementsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.ToolMovementsRowDeleted != null)) {
-                    this.ToolMovementsRowDeleted(this, new ToolMovementsRowChangeEvent(((ToolMovementsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.ToolMovementsRowDeleting != null)) {
-                    this.ToolMovementsRowDeleting(this, new ToolMovementsRowChangeEvent(((ToolMovementsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveToolMovementsRow(ToolMovementsRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                TOOLACCOUNTINGDataSet ds = new TOOLACCOUNTINGDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ToolMovementsDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -15174,6 +14694,501 @@ namespace Система_учёта_и_приобретения_инструме
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ToolMovementsDataTable : global::System.Data.TypedTableBase<ToolMovementsRow> {
+            
+            private global::System.Data.DataColumn columnMovementID;
+            
+            private global::System.Data.DataColumn columnMovementDate;
+            
+            private global::System.Data.DataColumn columnToStorageID;
+            
+            private global::System.Data.DataColumn columnFromStorageID;
+            
+            private global::System.Data.DataColumn columnMovementTypeID;
+            
+            private global::System.Data.DataColumn columnNomenclatureNumber;
+            
+            private global::System.Data.DataColumn columnSourceDocumentType;
+            
+            private global::System.Data.DataColumn columnSourceDocumentID;
+            
+            private global::System.Data.DataColumn columnBatchNumber;
+            
+            private global::System.Data.DataColumn columnPrice;
+            
+            private global::System.Data.DataColumn columnQuantity;
+            
+            private global::System.Data.DataColumn columnTotal;
+            
+            private global::System.Data.DataColumn columnInvoiceType;
+            
+            private global::System.Data.DataColumn columnIsPosted;
+            
+            private global::System.Data.DataColumn columnExecutor;
+            
+            private global::System.Data.DataColumn columnLastUpdated;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ToolMovementsDataTable() {
+                this.TableName = "ToolMovements";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal ToolMovementsDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected ToolMovementsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn MovementIDColumn {
+                get {
+                    return this.columnMovementID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn MovementDateColumn {
+                get {
+                    return this.columnMovementDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ToStorageIDColumn {
+                get {
+                    return this.columnToStorageID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FromStorageIDColumn {
+                get {
+                    return this.columnFromStorageID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn MovementTypeIDColumn {
+                get {
+                    return this.columnMovementTypeID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NomenclatureNumberColumn {
+                get {
+                    return this.columnNomenclatureNumber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SourceDocumentTypeColumn {
+                get {
+                    return this.columnSourceDocumentType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SourceDocumentIDColumn {
+                get {
+                    return this.columnSourceDocumentID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn BatchNumberColumn {
+                get {
+                    return this.columnBatchNumber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PriceColumn {
+                get {
+                    return this.columnPrice;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn QuantityColumn {
+                get {
+                    return this.columnQuantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn TotalColumn {
+                get {
+                    return this.columnTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn InvoiceTypeColumn {
+                get {
+                    return this.columnInvoiceType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IsPostedColumn {
+                get {
+                    return this.columnIsPosted;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ExecutorColumn {
+                get {
+                    return this.columnExecutor;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn LastUpdatedColumn {
+                get {
+                    return this.columnLastUpdated;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ToolMovementsRow this[int index] {
+                get {
+                    return ((ToolMovementsRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event ToolMovementsRowChangeEventHandler ToolMovementsRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event ToolMovementsRowChangeEventHandler ToolMovementsRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event ToolMovementsRowChangeEventHandler ToolMovementsRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event ToolMovementsRowChangeEventHandler ToolMovementsRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddToolMovementsRow(ToolMovementsRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ToolMovementsRow AddToolMovementsRow(System.DateTime MovementDate, StoragesRow parentStoragesRowByFK__ToolMovem__ToSto__76969D2E, StoragesRow parentStoragesRowByFK__ToolMovem__FromS__73BA3083, string MovementTypeID, NomenclatureRow parentNomenclatureRowByFK__ToolMovem__Nomen__75A278F5, string SourceDocumentType, int SourceDocumentID, string BatchNumber, decimal Price, int Quantity, decimal Total, string InvoiceType, bool IsPosted, string Executor, System.DateTime LastUpdated) {
+                ToolMovementsRow rowToolMovementsRow = ((ToolMovementsRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        MovementDate,
+                        null,
+                        null,
+                        MovementTypeID,
+                        null,
+                        SourceDocumentType,
+                        SourceDocumentID,
+                        BatchNumber,
+                        Price,
+                        Quantity,
+                        Total,
+                        InvoiceType,
+                        IsPosted,
+                        Executor,
+                        LastUpdated};
+                if ((parentStoragesRowByFK__ToolMovem__ToSto__76969D2E != null)) {
+                    columnValuesArray[2] = parentStoragesRowByFK__ToolMovem__ToSto__76969D2E[0];
+                }
+                if ((parentStoragesRowByFK__ToolMovem__FromS__73BA3083 != null)) {
+                    columnValuesArray[3] = parentStoragesRowByFK__ToolMovem__FromS__73BA3083[0];
+                }
+                if ((parentNomenclatureRowByFK__ToolMovem__Nomen__75A278F5 != null)) {
+                    columnValuesArray[5] = parentNomenclatureRowByFK__ToolMovem__Nomen__75A278F5[0];
+                }
+                rowToolMovementsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowToolMovementsRow);
+                return rowToolMovementsRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ToolMovementsRow FindByMovementID(int MovementID) {
+                return ((ToolMovementsRow)(this.Rows.Find(new object[] {
+                            MovementID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ToolMovementsDataTable cln = ((ToolMovementsDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ToolMovementsDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnMovementID = base.Columns["MovementID"];
+                this.columnMovementDate = base.Columns["MovementDate"];
+                this.columnToStorageID = base.Columns["ToStorageID"];
+                this.columnFromStorageID = base.Columns["FromStorageID"];
+                this.columnMovementTypeID = base.Columns["MovementTypeID"];
+                this.columnNomenclatureNumber = base.Columns["NomenclatureNumber"];
+                this.columnSourceDocumentType = base.Columns["SourceDocumentType"];
+                this.columnSourceDocumentID = base.Columns["SourceDocumentID"];
+                this.columnBatchNumber = base.Columns["BatchNumber"];
+                this.columnPrice = base.Columns["Price"];
+                this.columnQuantity = base.Columns["Quantity"];
+                this.columnTotal = base.Columns["Total"];
+                this.columnInvoiceType = base.Columns["InvoiceType"];
+                this.columnIsPosted = base.Columns["IsPosted"];
+                this.columnExecutor = base.Columns["Executor"];
+                this.columnLastUpdated = base.Columns["LastUpdated"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnMovementID = new global::System.Data.DataColumn("MovementID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMovementID);
+                this.columnMovementDate = new global::System.Data.DataColumn("MovementDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMovementDate);
+                this.columnToStorageID = new global::System.Data.DataColumn("ToStorageID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnToStorageID);
+                this.columnFromStorageID = new global::System.Data.DataColumn("FromStorageID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFromStorageID);
+                this.columnMovementTypeID = new global::System.Data.DataColumn("MovementTypeID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMovementTypeID);
+                this.columnNomenclatureNumber = new global::System.Data.DataColumn("NomenclatureNumber", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNomenclatureNumber);
+                this.columnSourceDocumentType = new global::System.Data.DataColumn("SourceDocumentType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSourceDocumentType);
+                this.columnSourceDocumentID = new global::System.Data.DataColumn("SourceDocumentID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSourceDocumentID);
+                this.columnBatchNumber = new global::System.Data.DataColumn("BatchNumber", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBatchNumber);
+                this.columnPrice = new global::System.Data.DataColumn("Price", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPrice);
+                this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQuantity);
+                this.columnTotal = new global::System.Data.DataColumn("Total", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotal);
+                this.columnInvoiceType = new global::System.Data.DataColumn("InvoiceType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceType);
+                this.columnIsPosted = new global::System.Data.DataColumn("IsPosted", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsPosted);
+                this.columnExecutor = new global::System.Data.DataColumn("Executor", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExecutor);
+                this.columnLastUpdated = new global::System.Data.DataColumn("LastUpdated", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLastUpdated);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnMovementID}, true));
+                this.columnMovementID.AutoIncrement = true;
+                this.columnMovementID.AutoIncrementSeed = -1;
+                this.columnMovementID.AutoIncrementStep = -1;
+                this.columnMovementID.AllowDBNull = false;
+                this.columnMovementID.ReadOnly = true;
+                this.columnMovementID.Unique = true;
+                this.columnMovementDate.AllowDBNull = false;
+                this.columnToStorageID.AllowDBNull = false;
+                this.columnMovementTypeID.MaxLength = 2147483647;
+                this.columnNomenclatureNumber.AllowDBNull = false;
+                this.columnNomenclatureNumber.MaxLength = 9;
+                this.columnSourceDocumentType.MaxLength = 50;
+                this.columnBatchNumber.AllowDBNull = false;
+                this.columnBatchNumber.MaxLength = 50;
+                this.columnQuantity.AllowDBNull = false;
+                this.columnTotal.ReadOnly = true;
+                this.columnInvoiceType.MaxLength = 50;
+                this.columnIsPosted.AllowDBNull = false;
+                this.columnExecutor.AllowDBNull = false;
+                this.columnExecutor.MaxLength = 255;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ToolMovementsRow NewToolMovementsRow() {
+                return ((ToolMovementsRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ToolMovementsRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ToolMovementsRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ToolMovementsRowChanged != null)) {
+                    this.ToolMovementsRowChanged(this, new ToolMovementsRowChangeEvent(((ToolMovementsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ToolMovementsRowChanging != null)) {
+                    this.ToolMovementsRowChanging(this, new ToolMovementsRowChangeEvent(((ToolMovementsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ToolMovementsRowDeleted != null)) {
+                    this.ToolMovementsRowDeleted(this, new ToolMovementsRowChangeEvent(((ToolMovementsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ToolMovementsRowDeleting != null)) {
+                    this.ToolMovementsRowDeleting(this, new ToolMovementsRowChangeEvent(((ToolMovementsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveToolMovementsRow(ToolMovementsRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                TOOLACCOUNTINGDataSet ds = new TOOLACCOUNTINGDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ToolMovementsDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class AnalogToolsRow : global::System.Data.DataRow {
@@ -16188,17 +16203,6 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ToolMovementsRow[] GetToolMovementsRows() {
-                if ((this.Table.ChildRelations["FK__ToolMovem__Nomen__7F2BE32F"] == null)) {
-                    return new ToolMovementsRow[0];
-                }
-                else {
-                    return ((ToolMovementsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ToolMovem__Nomen__7F2BE32F"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public AnalogTools1Row[] GetAnalogTools1RowsByFK__AnalogToo__Analo__3E52440B1() {
                 if ((this.Table.ChildRelations["FK__AnalogToo__Analo__3E52440B1"] == null)) {
                     return new AnalogTools1Row[0];
@@ -16238,6 +16242,17 @@ namespace Система_учёта_и_приобретения_инструме
                 }
                 else {
                     return ((ReplacementFixationRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Replaceme__Analo__70DDC3D8"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ToolMovementsRow[] GetToolMovementsRows() {
+                if ((this.Table.ChildRelations["FK__ToolMovem__Nomen__75A278F5"] == null)) {
+                    return new ToolMovementsRow[0];
+                }
+                else {
+                    return ((ToolMovementsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ToolMovem__Nomen__75A278F5"])));
                 }
             }
         }
@@ -16916,23 +16931,23 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ToolMovementsRow[] GetToolMovementsRowsByFK__ToolMovem__FromS__7D439ABD() {
-                if ((this.Table.ChildRelations["FK__ToolMovem__FromS__7D439ABD"] == null)) {
+            public ToolMovementsRow[] GetToolMovementsRowsByFK__ToolMovem__FromS__73BA3083() {
+                if ((this.Table.ChildRelations["FK__ToolMovem__FromS__73BA3083"] == null)) {
                     return new ToolMovementsRow[0];
                 }
                 else {
-                    return ((ToolMovementsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ToolMovem__FromS__7D439ABD"])));
+                    return ((ToolMovementsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ToolMovem__FromS__73BA3083"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ToolMovementsRow[] GetToolMovementsRowsByFK__ToolMovem__ToSto__7C4F7684() {
-                if ((this.Table.ChildRelations["FK__ToolMovem__ToSto__7C4F7684"] == null)) {
+            public ToolMovementsRow[] GetToolMovementsRowsByFK__ToolMovem__ToSto__76969D2E() {
+                if ((this.Table.ChildRelations["FK__ToolMovem__ToSto__76969D2E"] == null)) {
                     return new ToolMovementsRow[0];
                 }
                 else {
-                    return ((ToolMovementsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ToolMovem__ToSto__7C4F7684"])));
+                    return ((ToolMovementsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ToolMovem__ToSto__76969D2E"])));
                 }
             }
         }
@@ -17032,367 +17047,6 @@ namespace Система_учёта_и_приобретения_инструме
                 else {
                     return ((DeliveryListsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__DeliveryL__Suppl__619B8048"])));
                 }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class ToolMovementsRow : global::System.Data.DataRow {
-            
-            private ToolMovementsDataTable tableToolMovements;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal ToolMovementsRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableToolMovements = ((ToolMovementsDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int MovementID {
-                get {
-                    return ((int)(this[this.tableToolMovements.MovementIDColumn]));
-                }
-                set {
-                    this[this.tableToolMovements.MovementIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public System.DateTime MovementDate {
-                get {
-                    return ((global::System.DateTime)(this[this.tableToolMovements.MovementDateColumn]));
-                }
-                set {
-                    this[this.tableToolMovements.MovementDateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int ToStorageID {
-                get {
-                    return ((int)(this[this.tableToolMovements.ToStorageIDColumn]));
-                }
-                set {
-                    this[this.tableToolMovements.ToStorageIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int FromStorageID {
-                get {
-                    try {
-                        return ((int)(this[this.tableToolMovements.FromStorageIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FromStorageID\' в таблице \'ToolMovements\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableToolMovements.FromStorageIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string MovementTypeID {
-                get {
-                    try {
-                        return ((string)(this[this.tableToolMovements.MovementTypeIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'MovementTypeID\' в таблице \'ToolMovements\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableToolMovements.MovementTypeIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string NomenclatureNumber {
-                get {
-                    return ((string)(this[this.tableToolMovements.NomenclatureNumberColumn]));
-                }
-                set {
-                    this[this.tableToolMovements.NomenclatureNumberColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string SourceDocumentType {
-                get {
-                    try {
-                        return ((string)(this[this.tableToolMovements.SourceDocumentTypeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'SourceDocumentType\' в таблице \'ToolMovements\' равно DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tableToolMovements.SourceDocumentTypeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int SourceDocumentID {
-                get {
-                    try {
-                        return ((int)(this[this.tableToolMovements.SourceDocumentIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'SourceDocumentID\' в таблице \'ToolMovements\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableToolMovements.SourceDocumentIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string BatchNumber {
-                get {
-                    return ((string)(this[this.tableToolMovements.BatchNumberColumn]));
-                }
-                set {
-                    this[this.tableToolMovements.BatchNumberColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal Price {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableToolMovements.PriceColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Price\' в таблице \'ToolMovements\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableToolMovements.PriceColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Quantity {
-                get {
-                    return ((int)(this[this.tableToolMovements.QuantityColumn]));
-                }
-                set {
-                    this[this.tableToolMovements.QuantityColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal Total {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableToolMovements.TotalColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Total\' в таблице \'ToolMovements\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableToolMovements.TotalColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string InvoiceType {
-                get {
-                    try {
-                        return ((string)(this[this.tableToolMovements.InvoiceTypeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'InvoiceType\' в таблице \'ToolMovements\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableToolMovements.InvoiceTypeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsPosted {
-                get {
-                    return ((bool)(this[this.tableToolMovements.IsPostedColumn]));
-                }
-                set {
-                    this[this.tableToolMovements.IsPostedColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Executor {
-                get {
-                    return ((string)(this[this.tableToolMovements.ExecutorColumn]));
-                }
-                set {
-                    this[this.tableToolMovements.ExecutorColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public System.DateTime LastUpdated {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableToolMovements.LastUpdatedColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'LastUpdated\' в таблице \'ToolMovements\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableToolMovements.LastUpdatedColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StoragesRow StoragesRowByFK__ToolMovem__FromS__7D439ABD {
-                get {
-                    return ((StoragesRow)(this.GetParentRow(this.Table.ParentRelations["FK__ToolMovem__FromS__7D439ABD"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__ToolMovem__FromS__7D439ABD"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public NomenclatureRow NomenclatureRow {
-                get {
-                    return ((NomenclatureRow)(this.GetParentRow(this.Table.ParentRelations["FK__ToolMovem__Nomen__7F2BE32F"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__ToolMovem__Nomen__7F2BE32F"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StoragesRow StoragesRowByFK__ToolMovem__ToSto__7C4F7684 {
-                get {
-                    return ((StoragesRow)(this.GetParentRow(this.Table.ParentRelations["FK__ToolMovem__ToSto__7C4F7684"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__ToolMovem__ToSto__7C4F7684"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsFromStorageIDNull() {
-                return this.IsNull(this.tableToolMovements.FromStorageIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetFromStorageIDNull() {
-                this[this.tableToolMovements.FromStorageIDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsMovementTypeIDNull() {
-                return this.IsNull(this.tableToolMovements.MovementTypeIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetMovementTypeIDNull() {
-                this[this.tableToolMovements.MovementTypeIDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsSourceDocumentTypeNull() {
-                return this.IsNull(this.tableToolMovements.SourceDocumentTypeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetSourceDocumentTypeNull() {
-                this[this.tableToolMovements.SourceDocumentTypeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsSourceDocumentIDNull() {
-                return this.IsNull(this.tableToolMovements.SourceDocumentIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetSourceDocumentIDNull() {
-                this[this.tableToolMovements.SourceDocumentIDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsPriceNull() {
-                return this.IsNull(this.tableToolMovements.PriceColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetPriceNull() {
-                this[this.tableToolMovements.PriceColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTotalNull() {
-                return this.IsNull(this.tableToolMovements.TotalColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTotalNull() {
-                this[this.tableToolMovements.TotalColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsInvoiceTypeNull() {
-                return this.IsNull(this.tableToolMovements.InvoiceTypeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetInvoiceTypeNull() {
-                this[this.tableToolMovements.InvoiceTypeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsLastUpdatedNull() {
-                return this.IsNull(this.tableToolMovements.LastUpdatedColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetLastUpdatedNull() {
-                this[this.tableToolMovements.LastUpdatedColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -18524,6 +18178,28 @@ namespace Система_учёта_и_приобретения_инструме
                 }
                 else {
                     return ((BalancesRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Balances__Storag__619B8048"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ToolMovementsRow[] GetToolMovementsRowsByFK__ToolMovem__FromS__73BA30831() {
+                if ((this.Table.ChildRelations["FK__ToolMovem__FromS__73BA30831"] == null)) {
+                    return new ToolMovementsRow[0];
+                }
+                else {
+                    return ((ToolMovementsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ToolMovem__FromS__73BA30831"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ToolMovementsRow[] GetToolMovementsRowsByFK__ToolMovem__ToSto__76969D2E1() {
+                if ((this.Table.ChildRelations["FK__ToolMovem__ToSto__76969D2E1"] == null)) {
+                    return new ToolMovementsRow[0];
+                }
+                else {
+                    return ((ToolMovementsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ToolMovem__ToSto__76969D2E1"])));
                 }
             }
         }
@@ -20189,6 +19865,388 @@ namespace Система_учёта_и_приобретения_инструме
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ToolMovementsRow : global::System.Data.DataRow {
+            
+            private ToolMovementsDataTable tableToolMovements;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal ToolMovementsRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableToolMovements = ((ToolMovementsDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int MovementID {
+                get {
+                    return ((int)(this[this.tableToolMovements.MovementIDColumn]));
+                }
+                set {
+                    this[this.tableToolMovements.MovementIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime MovementDate {
+                get {
+                    return ((global::System.DateTime)(this[this.tableToolMovements.MovementDateColumn]));
+                }
+                set {
+                    this[this.tableToolMovements.MovementDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ToStorageID {
+                get {
+                    return ((int)(this[this.tableToolMovements.ToStorageIDColumn]));
+                }
+                set {
+                    this[this.tableToolMovements.ToStorageIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int FromStorageID {
+                get {
+                    try {
+                        return ((int)(this[this.tableToolMovements.FromStorageIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FromStorageID\' в таблице \'ToolMovements\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableToolMovements.FromStorageIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string MovementTypeID {
+                get {
+                    try {
+                        return ((string)(this[this.tableToolMovements.MovementTypeIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'MovementTypeID\' в таблице \'ToolMovements\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableToolMovements.MovementTypeIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string NomenclatureNumber {
+                get {
+                    return ((string)(this[this.tableToolMovements.NomenclatureNumberColumn]));
+                }
+                set {
+                    this[this.tableToolMovements.NomenclatureNumberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string SourceDocumentType {
+                get {
+                    if (this.IsSourceDocumentTypeNull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tableToolMovements.SourceDocumentTypeColumn]));
+                    }
+                }
+                set {
+                    this[this.tableToolMovements.SourceDocumentTypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int SourceDocumentID {
+                get {
+                    try {
+                        return ((int)(this[this.tableToolMovements.SourceDocumentIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'SourceDocumentID\' в таблице \'ToolMovements\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableToolMovements.SourceDocumentIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string BatchNumber {
+                get {
+                    return ((string)(this[this.tableToolMovements.BatchNumberColumn]));
+                }
+                set {
+                    this[this.tableToolMovements.BatchNumberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal Price {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableToolMovements.PriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Price\' в таблице \'ToolMovements\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableToolMovements.PriceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int Quantity {
+                get {
+                    return ((int)(this[this.tableToolMovements.QuantityColumn]));
+                }
+                set {
+                    this[this.tableToolMovements.QuantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal Total {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableToolMovements.TotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Total\' в таблице \'ToolMovements\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableToolMovements.TotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string InvoiceType {
+                get {
+                    try {
+                        return ((string)(this[this.tableToolMovements.InvoiceTypeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'InvoiceType\' в таблице \'ToolMovements\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableToolMovements.InvoiceTypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPosted {
+                get {
+                    return ((bool)(this[this.tableToolMovements.IsPostedColumn]));
+                }
+                set {
+                    this[this.tableToolMovements.IsPostedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Executor {
+                get {
+                    return ((string)(this[this.tableToolMovements.ExecutorColumn]));
+                }
+                set {
+                    this[this.tableToolMovements.ExecutorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime LastUpdated {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableToolMovements.LastUpdatedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'LastUpdated\' в таблице \'ToolMovements\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableToolMovements.LastUpdatedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public StoragesRow StoragesRowByFK__ToolMovem__FromS__73BA3083 {
+                get {
+                    return ((StoragesRow)(this.GetParentRow(this.Table.ParentRelations["FK__ToolMovem__FromS__73BA3083"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__ToolMovem__FromS__73BA3083"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public Storages1Row Storages1RowByFK__ToolMovem__FromS__73BA30831 {
+                get {
+                    return ((Storages1Row)(this.GetParentRow(this.Table.ParentRelations["FK__ToolMovem__FromS__73BA30831"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__ToolMovem__FromS__73BA30831"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public NomenclatureRow NomenclatureRow {
+                get {
+                    return ((NomenclatureRow)(this.GetParentRow(this.Table.ParentRelations["FK__ToolMovem__Nomen__75A278F5"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__ToolMovem__Nomen__75A278F5"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public StoragesRow StoragesRowByFK__ToolMovem__ToSto__76969D2E {
+                get {
+                    return ((StoragesRow)(this.GetParentRow(this.Table.ParentRelations["FK__ToolMovem__ToSto__76969D2E"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__ToolMovem__ToSto__76969D2E"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public Storages1Row Storages1RowByFK__ToolMovem__ToSto__76969D2E1 {
+                get {
+                    return ((Storages1Row)(this.GetParentRow(this.Table.ParentRelations["FK__ToolMovem__ToSto__76969D2E1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__ToolMovem__ToSto__76969D2E1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFromStorageIDNull() {
+                return this.IsNull(this.tableToolMovements.FromStorageIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFromStorageIDNull() {
+                this[this.tableToolMovements.FromStorageIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsMovementTypeIDNull() {
+                return this.IsNull(this.tableToolMovements.MovementTypeIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetMovementTypeIDNull() {
+                this[this.tableToolMovements.MovementTypeIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsSourceDocumentTypeNull() {
+                return this.IsNull(this.tableToolMovements.SourceDocumentTypeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetSourceDocumentTypeNull() {
+                this[this.tableToolMovements.SourceDocumentTypeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsSourceDocumentIDNull() {
+                return this.IsNull(this.tableToolMovements.SourceDocumentIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetSourceDocumentIDNull() {
+                this[this.tableToolMovements.SourceDocumentIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPriceNull() {
+                return this.IsNull(this.tableToolMovements.PriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPriceNull() {
+                this[this.tableToolMovements.PriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsTotalNull() {
+                return this.IsNull(this.tableToolMovements.TotalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetTotalNull() {
+                this[this.tableToolMovements.TotalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsInvoiceTypeNull() {
+                return this.IsNull(this.tableToolMovements.InvoiceTypeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetInvoiceTypeNull() {
+                this[this.tableToolMovements.InvoiceTypeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsLastUpdatedNull() {
+                return this.IsNull(this.tableToolMovements.LastUpdatedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetLastUpdatedNull() {
+                this[this.tableToolMovements.LastUpdatedColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -20718,40 +20776,6 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public SuppliersRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class ToolMovementsRowChangeEvent : global::System.EventArgs {
-            
-            private ToolMovementsRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ToolMovementsRowChangeEvent(ToolMovementsRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ToolMovementsRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -21534,6 +21558,40 @@ namespace Система_учёта_и_приобретения_инструме
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public HistoryInjRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class ToolMovementsRowChangeEvent : global::System.EventArgs {
+            
+            private ToolMovementsRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ToolMovementsRowChangeEvent(ToolMovementsRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ToolMovementsRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -27557,763 +27615,6 @@ SELECT INN, Name, LegalAddress, Contacts, Notes FROM Suppliers WHERE (INN = @INN
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ToolMovementsTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public ToolMovementsTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "ToolMovements";
-            tableMapping.ColumnMappings.Add("MovementID", "MovementID");
-            tableMapping.ColumnMappings.Add("MovementDate", "MovementDate");
-            tableMapping.ColumnMappings.Add("ToStorageID", "ToStorageID");
-            tableMapping.ColumnMappings.Add("FromStorageID", "FromStorageID");
-            tableMapping.ColumnMappings.Add("MovementTypeID", "MovementTypeID");
-            tableMapping.ColumnMappings.Add("NomenclatureNumber", "NomenclatureNumber");
-            tableMapping.ColumnMappings.Add("SourceDocumentType", "SourceDocumentType");
-            tableMapping.ColumnMappings.Add("SourceDocumentID", "SourceDocumentID");
-            tableMapping.ColumnMappings.Add("BatchNumber", "BatchNumber");
-            tableMapping.ColumnMappings.Add("Price", "Price");
-            tableMapping.ColumnMappings.Add("Quantity", "Quantity");
-            tableMapping.ColumnMappings.Add("Total", "Total");
-            tableMapping.ColumnMappings.Add("InvoiceType", "InvoiceType");
-            tableMapping.ColumnMappings.Add("IsPosted", "IsPosted");
-            tableMapping.ColumnMappings.Add("Executor", "Executor");
-            tableMapping.ColumnMappings.Add("LastUpdated", "LastUpdated");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[ToolMovements] WHERE (([MovementID] = @Original_MovementID) AND ([MovementDate] = @Original_MovementDate) AND ([ToStorageID] = @Original_ToStorageID) AND ((@IsNull_FromStorageID = 1 AND [FromStorageID] IS NULL) OR ([FromStorageID] = @Original_FromStorageID)) AND ([MovementTypeID] = @Original_MovementTypeID) AND ([NomenclatureNumber] = @Original_NomenclatureNumber) AND ((@IsNull_SourceDocumentType = 1 AND [SourceDocumentType] IS NULL) OR ([SourceDocumentType] = @Original_SourceDocumentType)) AND ((@IsNull_SourceDocumentID = 1 AND [SourceDocumentID] IS NULL) OR ([SourceDocumentID] = @Original_SourceDocumentID)) AND ([BatchNumber] = @Original_BatchNumber) AND ([Price] = @Original_Price) AND ([Quantity] = @Original_Quantity) AND ((@IsNull_Total = 1 AND [Total] IS NULL) OR ([Total] = @Original_Total)) AND ((@IsNull_InvoiceType = 1 AND [InvoiceType] IS NULL) OR ([InvoiceType] = @Original_InvoiceType)) AND ([IsPosted] = @Original_IsPosted) AND ([Executor] = @Original_Executor) AND ([LastUpdated] = @Original_LastUpdated))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MovementID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MovementID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MovementDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MovementDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ToStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ToStorageID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FromStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FromStorageID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FromStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FromStorageID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MovementTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MovementTypeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomenclatureNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SourceDocumentType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SourceDocumentType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SourceDocumentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SourceDocumentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BatchNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BatchNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Total", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Total", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Total", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 29, 2, "Total", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_InvoiceType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InvoiceType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IsPosted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsPosted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Executor", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Executor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LastUpdated", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastUpdated", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[ToolMovements] ([MovementDate], [ToStorageID], [FromStorageID], [MovementTypeID], [NomenclatureNumber], [SourceDocumentType], [SourceDocumentID], [BatchNumber], [Price], [Quantity], [InvoiceType], [IsPosted], [Executor], [LastUpdated]) VALUES (@MovementDate, @ToStorageID, @FromStorageID, @MovementTypeID, @NomenclatureNumber, @SourceDocumentType, @SourceDocumentID, @BatchNumber, @Price, @Quantity, @InvoiceType, @IsPosted, @Executor, @LastUpdated);
-SELECT MovementID, MovementDate, ToStorageID, FromStorageID, MovementTypeID, NomenclatureNumber, SourceDocumentType, SourceDocumentID, BatchNumber, Price, Quantity, Total, InvoiceType, IsPosted, Executor, LastUpdated FROM ToolMovements WHERE (MovementID = SCOPE_IDENTITY())";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MovementDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MovementDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ToStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ToStorageID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FromStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FromStorageID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MovementTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MovementTypeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomenclatureNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SourceDocumentType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SourceDocumentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BatchNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BatchNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsPosted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsPosted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Executor", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Executor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastUpdated", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastUpdated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[ToolMovements] SET [MovementDate] = @MovementDate, [ToStorageID] = " +
-                "@ToStorageID, [FromStorageID] = @FromStorageID, [MovementTypeID] = @MovementType" +
-                "ID, [NomenclatureNumber] = @NomenclatureNumber, [SourceDocumentType] = @SourceDo" +
-                "cumentType, [SourceDocumentID] = @SourceDocumentID, [BatchNumber] = @BatchNumber" +
-                ", [Price] = @Price, [Quantity] = @Quantity, [InvoiceType] = @InvoiceType, [IsPos" +
-                "ted] = @IsPosted, [Executor] = @Executor, [LastUpdated] = @LastUpdated WHERE (([" +
-                "MovementID] = @Original_MovementID) AND ([MovementDate] = @Original_MovementDate" +
-                ") AND ([ToStorageID] = @Original_ToStorageID) AND ((@IsNull_FromStorageID = 1 AN" +
-                "D [FromStorageID] IS NULL) OR ([FromStorageID] = @Original_FromStorageID)) AND (" +
-                "[MovementTypeID] = @Original_MovementTypeID) AND ([NomenclatureNumber] = @Origin" +
-                "al_NomenclatureNumber) AND ((@IsNull_SourceDocumentType = 1 AND [SourceDocumentT" +
-                "ype] IS NULL) OR ([SourceDocumentType] = @Original_SourceDocumentType)) AND ((@I" +
-                "sNull_SourceDocumentID = 1 AND [SourceDocumentID] IS NULL) OR ([SourceDocumentID" +
-                "] = @Original_SourceDocumentID)) AND ([BatchNumber] = @Original_BatchNumber) AND" +
-                " ([Price] = @Original_Price) AND ([Quantity] = @Original_Quantity) AND ((@IsNull" +
-                "_Total = 1 AND [Total] IS NULL) OR ([Total] = @Original_Total)) AND ((@IsNull_In" +
-                "voiceType = 1 AND [InvoiceType] IS NULL) OR ([InvoiceType] = @Original_InvoiceTy" +
-                "pe)) AND ([IsPosted] = @Original_IsPosted) AND ([Executor] = @Original_Executor)" +
-                " AND ([LastUpdated] = @Original_LastUpdated));\r\nSELECT MovementID, MovementDate," +
-                " ToStorageID, FromStorageID, MovementTypeID, NomenclatureNumber, SourceDocumentT" +
-                "ype, SourceDocumentID, BatchNumber, Price, Quantity, Total, InvoiceType, IsPoste" +
-                "d, Executor, LastUpdated FROM ToolMovements WHERE (MovementID = @MovementID)";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MovementDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MovementDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ToStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ToStorageID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FromStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FromStorageID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MovementTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MovementTypeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomenclatureNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SourceDocumentType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SourceDocumentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BatchNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BatchNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsPosted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsPosted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Executor", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Executor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastUpdated", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastUpdated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MovementID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MovementID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MovementDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MovementDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ToStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ToStorageID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FromStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FromStorageID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FromStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FromStorageID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MovementTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MovementTypeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomenclatureNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SourceDocumentType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SourceDocumentType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SourceDocumentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SourceDocumentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BatchNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BatchNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Total", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Total", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Total", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 29, 2, "Total", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_InvoiceType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InvoiceType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IsPosted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsPosted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Executor", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Executor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LastUpdated", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastUpdated", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MovementID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "MovementID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Система_учёта_и_приобретения_инструмента.Properties.Settings.Default.TOOLACCOUNTINGConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT MovementID, MovementDate, ToStorageID, FromStorageID, MovementTypeID, Nome" +
-                "nclatureNumber, SourceDocumentType, SourceDocumentID, BatchNumber, Price, Quanti" +
-                "ty, Total, InvoiceType, IsPosted, Executor, LastUpdated FROM dbo.ToolMovements";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(TOOLACCOUNTINGDataSet.ToolMovementsDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual TOOLACCOUNTINGDataSet.ToolMovementsDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            TOOLACCOUNTINGDataSet.ToolMovementsDataTable dataTable = new TOOLACCOUNTINGDataSet.ToolMovementsDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(TOOLACCOUNTINGDataSet.ToolMovementsDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(TOOLACCOUNTINGDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "ToolMovements");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(
-                    int Original_MovementID, 
-                    System.DateTime Original_MovementDate, 
-                    int Original_ToStorageID, 
-                    global::System.Nullable<int> Original_FromStorageID, 
-                    global::System.Nullable<int> Original_MovementTypeID, 
-                    string Original_NomenclatureNumber, 
-                    string Original_SourceDocumentType, 
-                    global::System.Nullable<int> Original_SourceDocumentID, 
-                    string Original_BatchNumber, 
-                    global::System.Nullable<decimal> Original_Price, 
-                    int Original_Quantity, 
-                    global::System.Nullable<decimal> Original_Total, 
-                    string Original_InvoiceType, 
-                    bool Original_IsPosted, 
-                    string Original_Executor, 
-                    global::System.Nullable<global::System.DateTime> Original_LastUpdated) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_MovementID));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_MovementDate));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_ToStorageID));
-            if ((Original_FromStorageID.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_FromStorageID.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            if ((Original_MovementTypeID.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_MovementTypeID.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            if ((Original_NomenclatureNumber == null)) {
-                throw new global::System.ArgumentNullException("Original_NomenclatureNumber");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_NomenclatureNumber));
-            }
-            if ((Original_SourceDocumentType == null)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_SourceDocumentType));
-            }
-            if ((Original_SourceDocumentID.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_SourceDocumentID.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            if ((Original_BatchNumber == null)) {
-                throw new global::System.ArgumentNullException("Original_BatchNumber");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Original_BatchNumber));
-            }
-            if ((Original_Price.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((decimal)(Original_Price.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.DeleteCommand.Parameters[13].Value = ((int)(Original_Quantity));
-            if ((Original_Total.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((decimal)(Original_Total.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[15].Value = global::System.DBNull.Value;
-            }
-            if ((Original_InvoiceType == null)) {
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[17].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[17].Value = ((string)(Original_InvoiceType));
-            }
-            this.Adapter.DeleteCommand.Parameters[18].Value = ((bool)(Original_IsPosted));
-            if ((Original_Executor == null)) {
-                throw new global::System.ArgumentNullException("Original_Executor");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((string)(Original_Executor));
-            }
-            if ((Original_LastUpdated.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((System.DateTime)(Original_LastUpdated.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.DateTime MovementDate, int ToStorageID, global::System.Nullable<int> FromStorageID, global::System.Nullable<int> MovementTypeID, string NomenclatureNumber, string SourceDocumentType, global::System.Nullable<int> SourceDocumentID, string BatchNumber, global::System.Nullable<decimal> Price, int Quantity, string InvoiceType, bool IsPosted, string Executor, global::System.Nullable<global::System.DateTime> LastUpdated) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(MovementDate));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(ToStorageID));
-            if ((FromStorageID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(FromStorageID.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            if ((MovementTypeID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(MovementTypeID.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            if ((NomenclatureNumber == null)) {
-                throw new global::System.ArgumentNullException("NomenclatureNumber");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(NomenclatureNumber));
-            }
-            if ((SourceDocumentType == null)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(SourceDocumentType));
-            }
-            if ((SourceDocumentID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(SourceDocumentID.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((BatchNumber == null)) {
-                throw new global::System.ArgumentNullException("BatchNumber");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(BatchNumber));
-            }
-            if ((Price.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((decimal)(Price.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.InsertCommand.Parameters[9].Value = ((int)(Quantity));
-            if ((InvoiceType == null)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(InvoiceType));
-            }
-            this.Adapter.InsertCommand.Parameters[11].Value = ((bool)(IsPosted));
-            if ((Executor == null)) {
-                throw new global::System.ArgumentNullException("Executor");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(Executor));
-            }
-            if ((LastUpdated.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((System.DateTime)(LastUpdated.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    System.DateTime MovementDate, 
-                    int ToStorageID, 
-                    global::System.Nullable<int> FromStorageID, 
-                    global::System.Nullable<int> MovementTypeID, 
-                    string NomenclatureNumber, 
-                    string SourceDocumentType, 
-                    global::System.Nullable<int> SourceDocumentID, 
-                    string BatchNumber, 
-                    global::System.Nullable<decimal> Price, 
-                    int Quantity, 
-                    string InvoiceType, 
-                    bool IsPosted, 
-                    string Executor, 
-                    global::System.Nullable<global::System.DateTime> LastUpdated, 
-                    int Original_MovementID, 
-                    System.DateTime Original_MovementDate, 
-                    int Original_ToStorageID, 
-                    global::System.Nullable<int> Original_FromStorageID, 
-                    global::System.Nullable<int> Original_MovementTypeID, 
-                    string Original_NomenclatureNumber, 
-                    string Original_SourceDocumentType, 
-                    global::System.Nullable<int> Original_SourceDocumentID, 
-                    string Original_BatchNumber, 
-                    global::System.Nullable<decimal> Original_Price, 
-                    int Original_Quantity, 
-                    global::System.Nullable<decimal> Original_Total, 
-                    string Original_InvoiceType, 
-                    bool Original_IsPosted, 
-                    string Original_Executor, 
-                    global::System.Nullable<global::System.DateTime> Original_LastUpdated, 
-                    int MovementID) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(MovementDate));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(ToStorageID));
-            if ((FromStorageID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(FromStorageID.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            if ((MovementTypeID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(MovementTypeID.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            if ((NomenclatureNumber == null)) {
-                throw new global::System.ArgumentNullException("NomenclatureNumber");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(NomenclatureNumber));
-            }
-            if ((SourceDocumentType == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(SourceDocumentType));
-            }
-            if ((SourceDocumentID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(SourceDocumentID.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((BatchNumber == null)) {
-                throw new global::System.ArgumentNullException("BatchNumber");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(BatchNumber));
-            }
-            if ((Price.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(Price.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Quantity));
-            if ((InvoiceType == null)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(InvoiceType));
-            }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((bool)(IsPosted));
-            if ((Executor == null)) {
-                throw new global::System.ArgumentNullException("Executor");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Executor));
-            }
-            if ((LastUpdated.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(LastUpdated.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_MovementID));
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(Original_MovementDate));
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_ToStorageID));
-            if ((Original_FromStorageID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_FromStorageID.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
-            }
-            if ((Original_MovementTypeID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_MovementTypeID.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
-            }
-            if ((Original_NomenclatureNumber == null)) {
-                throw new global::System.ArgumentNullException("Original_NomenclatureNumber");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_NomenclatureNumber));
-            }
-            if ((Original_SourceDocumentType == null)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_SourceDocumentType));
-            }
-            if ((Original_SourceDocumentID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(Original_SourceDocumentID.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
-            }
-            if ((Original_BatchNumber == null)) {
-                throw new global::System.ArgumentNullException("Original_BatchNumber");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_BatchNumber));
-            }
-            if ((Original_Price.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((decimal)(Original_Price.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[27].Value = ((int)(Original_Quantity));
-            if ((Original_Total.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((decimal)(Original_Total.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
-            }
-            if ((Original_InvoiceType == null)) {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Original_InvoiceType));
-            }
-            this.Adapter.UpdateCommand.Parameters[32].Value = ((bool)(Original_IsPosted));
-            if ((Original_Executor == null)) {
-                throw new global::System.ArgumentNullException("Original_Executor");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(Original_Executor));
-            }
-            if ((Original_LastUpdated.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((System.DateTime)(Original_LastUpdated.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[35].Value = ((int)(MovementID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    System.DateTime MovementDate, 
-                    int ToStorageID, 
-                    global::System.Nullable<int> FromStorageID, 
-                    global::System.Nullable<int> MovementTypeID, 
-                    string NomenclatureNumber, 
-                    string SourceDocumentType, 
-                    global::System.Nullable<int> SourceDocumentID, 
-                    string BatchNumber, 
-                    global::System.Nullable<decimal> Price, 
-                    int Quantity, 
-                    string InvoiceType, 
-                    bool IsPosted, 
-                    string Executor, 
-                    global::System.Nullable<global::System.DateTime> LastUpdated, 
-                    int Original_MovementID, 
-                    System.DateTime Original_MovementDate, 
-                    int Original_ToStorageID, 
-                    global::System.Nullable<int> Original_FromStorageID, 
-                    global::System.Nullable<int> Original_MovementTypeID, 
-                    string Original_NomenclatureNumber, 
-                    string Original_SourceDocumentType, 
-                    global::System.Nullable<int> Original_SourceDocumentID, 
-                    string Original_BatchNumber, 
-                    global::System.Nullable<decimal> Original_Price, 
-                    int Original_Quantity, 
-                    global::System.Nullable<decimal> Original_Total, 
-                    string Original_InvoiceType, 
-                    bool Original_IsPosted, 
-                    string Original_Executor, 
-                    global::System.Nullable<global::System.DateTime> Original_LastUpdated) {
-            return this.Update(MovementDate, ToStorageID, FromStorageID, MovementTypeID, NomenclatureNumber, SourceDocumentType, SourceDocumentID, BatchNumber, Price, Quantity, InvoiceType, IsPosted, Executor, LastUpdated, Original_MovementID, Original_MovementDate, Original_ToStorageID, Original_FromStorageID, Original_MovementTypeID, Original_NomenclatureNumber, Original_SourceDocumentType, Original_SourceDocumentID, Original_BatchNumber, Original_Price, Original_Quantity, Original_Total, Original_InvoiceType, Original_IsPosted, Original_Executor, Original_LastUpdated, Original_MovementID);
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class WorkshopsTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
@@ -33931,6 +33232,742 @@ INNER JOIN Suppliers s
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ToolMovementsTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public ToolMovementsTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ToolMovements";
+            tableMapping.ColumnMappings.Add("MovementID", "MovementID");
+            tableMapping.ColumnMappings.Add("MovementDate", "MovementDate");
+            tableMapping.ColumnMappings.Add("ToStorageID", "ToStorageID");
+            tableMapping.ColumnMappings.Add("FromStorageID", "FromStorageID");
+            tableMapping.ColumnMappings.Add("MovementTypeID", "MovementTypeID");
+            tableMapping.ColumnMappings.Add("NomenclatureNumber", "NomenclatureNumber");
+            tableMapping.ColumnMappings.Add("SourceDocumentType", "SourceDocumentType");
+            tableMapping.ColumnMappings.Add("SourceDocumentID", "SourceDocumentID");
+            tableMapping.ColumnMappings.Add("BatchNumber", "BatchNumber");
+            tableMapping.ColumnMappings.Add("Price", "Price");
+            tableMapping.ColumnMappings.Add("Quantity", "Quantity");
+            tableMapping.ColumnMappings.Add("Total", "Total");
+            tableMapping.ColumnMappings.Add("InvoiceType", "InvoiceType");
+            tableMapping.ColumnMappings.Add("IsPosted", "IsPosted");
+            tableMapping.ColumnMappings.Add("Executor", "Executor");
+            tableMapping.ColumnMappings.Add("LastUpdated", "LastUpdated");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [ToolMovements] WHERE (([MovementID] = @Original_MovementID) AND ([MovementDate] = @Original_MovementDate) AND ([ToStorageID] = @Original_ToStorageID) AND ((@IsNull_FromStorageID = 1 AND [FromStorageID] IS NULL) OR ([FromStorageID] = @Original_FromStorageID)) AND ([NomenclatureNumber] = @Original_NomenclatureNumber) AND ((@IsNull_SourceDocumentType = 1 AND [SourceDocumentType] IS NULL) OR ([SourceDocumentType] = @Original_SourceDocumentType)) AND ((@IsNull_SourceDocumentID = 1 AND [SourceDocumentID] IS NULL) OR ([SourceDocumentID] = @Original_SourceDocumentID)) AND ([BatchNumber] = @Original_BatchNumber) AND ((@IsNull_Price = 1 AND [Price] IS NULL) OR ([Price] = @Original_Price)) AND ([Quantity] = @Original_Quantity) AND ((@IsNull_Total = 1 AND [Total] IS NULL) OR ([Total] = @Original_Total)) AND ((@IsNull_InvoiceType = 1 AND [InvoiceType] IS NULL) OR ([InvoiceType] = @Original_InvoiceType)) AND ([IsPosted] = @Original_IsPosted) AND ([Executor] = @Original_Executor) AND ((@IsNull_LastUpdated = 1 AND [LastUpdated] IS NULL) OR ([LastUpdated] = @Original_LastUpdated)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MovementID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MovementID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MovementDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MovementDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ToStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ToStorageID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FromStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FromStorageID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FromStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FromStorageID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomenclatureNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SourceDocumentType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SourceDocumentType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SourceDocumentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SourceDocumentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BatchNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BatchNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Price", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Total", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Total", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Total", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 29, 2, "Total", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_InvoiceType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InvoiceType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IsPosted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsPosted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Executor", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Executor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LastUpdated", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastUpdated", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LastUpdated", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastUpdated", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [ToolMovements] ([MovementDate], [ToStorageID], [FromStorageID], [MovementTypeID], [NomenclatureNumber], [SourceDocumentType], [SourceDocumentID], [BatchNumber], [Price], [Quantity], [InvoiceType], [IsPosted], [Executor], [LastUpdated]) VALUES (@MovementDate, @ToStorageID, @FromStorageID, @MovementTypeID, @NomenclatureNumber, @SourceDocumentType, @SourceDocumentID, @BatchNumber, @Price, @Quantity, @InvoiceType, @IsPosted, @Executor, @LastUpdated);
+SELECT MovementID, MovementDate, ToStorageID, FromStorageID, MovementTypeID, NomenclatureNumber, SourceDocumentType, SourceDocumentID, BatchNumber, Price, Quantity, Total, InvoiceType, IsPosted, Executor, LastUpdated FROM ToolMovements WHERE (MovementID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MovementDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MovementDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ToStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ToStorageID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FromStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FromStorageID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MovementTypeID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MovementTypeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomenclatureNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SourceDocumentType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SourceDocumentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BatchNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BatchNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsPosted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsPosted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Executor", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Executor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastUpdated", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastUpdated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE [ToolMovements] SET [MovementDate] = @MovementDate, [ToStorageID] = @ToSto" +
+                "rageID, [FromStorageID] = @FromStorageID, [MovementTypeID] = @MovementTypeID, [N" +
+                "omenclatureNumber] = @NomenclatureNumber, [SourceDocumentType] = @SourceDocument" +
+                "Type, [SourceDocumentID] = @SourceDocumentID, [BatchNumber] = @BatchNumber, [Pri" +
+                "ce] = @Price, [Quantity] = @Quantity, [InvoiceType] = @InvoiceType, [IsPosted] =" +
+                " @IsPosted, [Executor] = @Executor, [LastUpdated] = @LastUpdated WHERE (([Moveme" +
+                "ntID] = @Original_MovementID) AND ([MovementDate] = @Original_MovementDate) AND " +
+                "([ToStorageID] = @Original_ToStorageID) AND ((@IsNull_FromStorageID = 1 AND [Fro" +
+                "mStorageID] IS NULL) OR ([FromStorageID] = @Original_FromStorageID)) AND ([Nomen" +
+                "clatureNumber] = @Original_NomenclatureNumber) AND ((@IsNull_SourceDocumentType " +
+                "= 1 AND [SourceDocumentType] IS NULL) OR ([SourceDocumentType] = @Original_Sourc" +
+                "eDocumentType)) AND ((@IsNull_SourceDocumentID = 1 AND [SourceDocumentID] IS NUL" +
+                "L) OR ([SourceDocumentID] = @Original_SourceDocumentID)) AND ([BatchNumber] = @O" +
+                "riginal_BatchNumber) AND ((@IsNull_Price = 1 AND [Price] IS NULL) OR ([Price] = " +
+                "@Original_Price)) AND ([Quantity] = @Original_Quantity) AND ((@IsNull_Total = 1 " +
+                "AND [Total] IS NULL) OR ([Total] = @Original_Total)) AND ((@IsNull_InvoiceType =" +
+                " 1 AND [InvoiceType] IS NULL) OR ([InvoiceType] = @Original_InvoiceType)) AND ([" +
+                "IsPosted] = @Original_IsPosted) AND ([Executor] = @Original_Executor) AND ((@IsN" +
+                "ull_LastUpdated = 1 AND [LastUpdated] IS NULL) OR ([LastUpdated] = @Original_Las" +
+                "tUpdated)));\r\nSELECT MovementID, MovementDate, ToStorageID, FromStorageID, Movem" +
+                "entTypeID, NomenclatureNumber, SourceDocumentType, SourceDocumentID, BatchNumber" +
+                ", Price, Quantity, Total, InvoiceType, IsPosted, Executor, LastUpdated FROM Tool" +
+                "Movements WHERE (MovementID = @MovementID)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MovementDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MovementDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ToStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ToStorageID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FromStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FromStorageID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MovementTypeID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MovementTypeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomenclatureNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SourceDocumentType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SourceDocumentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BatchNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BatchNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InvoiceType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsPosted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsPosted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Executor", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Executor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastUpdated", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastUpdated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MovementID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MovementID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MovementDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MovementDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ToStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ToStorageID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FromStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FromStorageID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FromStorageID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FromStorageID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NomenclatureNumber", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomenclatureNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SourceDocumentType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SourceDocumentType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SourceDocumentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SourceDocumentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SourceDocumentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BatchNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BatchNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Price", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Total", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Total", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Total", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 29, 2, "Total", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_InvoiceType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InvoiceType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InvoiceType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IsPosted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsPosted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Executor", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Executor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LastUpdated", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastUpdated", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LastUpdated", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastUpdated", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MovementID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "MovementID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::Система_учёта_и_приобретения_инструмента.Properties.Settings.Default.TOOLACCOUNTINGConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT        ToolMovements.*\r\nFROM            ToolMovements";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(TOOLACCOUNTINGDataSet.ToolMovementsDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual TOOLACCOUNTINGDataSet.ToolMovementsDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            TOOLACCOUNTINGDataSet.ToolMovementsDataTable dataTable = new TOOLACCOUNTINGDataSet.ToolMovementsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(TOOLACCOUNTINGDataSet.ToolMovementsDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(TOOLACCOUNTINGDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "ToolMovements");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_MovementID, System.DateTime Original_MovementDate, int Original_ToStorageID, global::System.Nullable<int> Original_FromStorageID, string Original_NomenclatureNumber, string Original_SourceDocumentType, global::System.Nullable<int> Original_SourceDocumentID, string Original_BatchNumber, global::System.Nullable<decimal> Original_Price, int Original_Quantity, global::System.Nullable<decimal> Original_Total, string Original_InvoiceType, bool Original_IsPosted, string Original_Executor, global::System.Nullable<global::System.DateTime> Original_LastUpdated) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_MovementID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_MovementDate));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_ToStorageID));
+            if ((Original_FromStorageID.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_FromStorageID.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((Original_NomenclatureNumber == null)) {
+                throw new global::System.ArgumentNullException("Original_NomenclatureNumber");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_NomenclatureNumber));
+            }
+            if ((Original_SourceDocumentType == null)) {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_SourceDocumentType));
+            }
+            if ((Original_SourceDocumentID.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(Original_SourceDocumentID.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((Original_BatchNumber == null)) {
+                throw new global::System.ArgumentNullException("Original_BatchNumber");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_BatchNumber));
+            }
+            if ((Original_Price.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((decimal)(Original_Price.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[13].Value = ((int)(Original_Quantity));
+            if ((Original_Total.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((decimal)(Original_Total.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            if ((Original_InvoiceType == null)) {
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((string)(Original_InvoiceType));
+            }
+            this.Adapter.DeleteCommand.Parameters[18].Value = ((bool)(Original_IsPosted));
+            if ((Original_Executor == null)) {
+                throw new global::System.ArgumentNullException("Original_Executor");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((string)(Original_Executor));
+            }
+            if ((Original_LastUpdated.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((System.DateTime)(Original_LastUpdated.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(System.DateTime MovementDate, int ToStorageID, global::System.Nullable<int> FromStorageID, string MovementTypeID, string NomenclatureNumber, string SourceDocumentType, global::System.Nullable<int> SourceDocumentID, string BatchNumber, global::System.Nullable<decimal> Price, int Quantity, string InvoiceType, bool IsPosted, string Executor, global::System.Nullable<global::System.DateTime> LastUpdated) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(MovementDate));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(ToStorageID));
+            if ((FromStorageID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(FromStorageID.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((MovementTypeID == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(MovementTypeID));
+            }
+            if ((NomenclatureNumber == null)) {
+                throw new global::System.ArgumentNullException("NomenclatureNumber");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(NomenclatureNumber));
+            }
+            if ((SourceDocumentType == null)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(SourceDocumentType));
+            }
+            if ((SourceDocumentID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(SourceDocumentID.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((BatchNumber == null)) {
+                throw new global::System.ArgumentNullException("BatchNumber");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(BatchNumber));
+            }
+            if ((Price.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((decimal)(Price.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.InsertCommand.Parameters[9].Value = ((int)(Quantity));
+            if ((InvoiceType == null)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(InvoiceType));
+            }
+            this.Adapter.InsertCommand.Parameters[11].Value = ((bool)(IsPosted));
+            if ((Executor == null)) {
+                throw new global::System.ArgumentNullException("Executor");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(Executor));
+            }
+            if ((LastUpdated.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((System.DateTime)(LastUpdated.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    System.DateTime MovementDate, 
+                    int ToStorageID, 
+                    global::System.Nullable<int> FromStorageID, 
+                    string MovementTypeID, 
+                    string NomenclatureNumber, 
+                    string SourceDocumentType, 
+                    global::System.Nullable<int> SourceDocumentID, 
+                    string BatchNumber, 
+                    global::System.Nullable<decimal> Price, 
+                    int Quantity, 
+                    string InvoiceType, 
+                    bool IsPosted, 
+                    string Executor, 
+                    global::System.Nullable<global::System.DateTime> LastUpdated, 
+                    int Original_MovementID, 
+                    System.DateTime Original_MovementDate, 
+                    int Original_ToStorageID, 
+                    global::System.Nullable<int> Original_FromStorageID, 
+                    string Original_NomenclatureNumber, 
+                    string Original_SourceDocumentType, 
+                    global::System.Nullable<int> Original_SourceDocumentID, 
+                    string Original_BatchNumber, 
+                    global::System.Nullable<decimal> Original_Price, 
+                    int Original_Quantity, 
+                    global::System.Nullable<decimal> Original_Total, 
+                    string Original_InvoiceType, 
+                    bool Original_IsPosted, 
+                    string Original_Executor, 
+                    global::System.Nullable<global::System.DateTime> Original_LastUpdated, 
+                    int MovementID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(MovementDate));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(ToStorageID));
+            if ((FromStorageID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(FromStorageID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((MovementTypeID == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(MovementTypeID));
+            }
+            if ((NomenclatureNumber == null)) {
+                throw new global::System.ArgumentNullException("NomenclatureNumber");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(NomenclatureNumber));
+            }
+            if ((SourceDocumentType == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(SourceDocumentType));
+            }
+            if ((SourceDocumentID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(SourceDocumentID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((BatchNumber == null)) {
+                throw new global::System.ArgumentNullException("BatchNumber");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(BatchNumber));
+            }
+            if ((Price.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(Price.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Quantity));
+            if ((InvoiceType == null)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(InvoiceType));
+            }
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((bool)(IsPosted));
+            if ((Executor == null)) {
+                throw new global::System.ArgumentNullException("Executor");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Executor));
+            }
+            if ((LastUpdated.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(LastUpdated.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_MovementID));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(Original_MovementDate));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_ToStorageID));
+            if ((Original_FromStorageID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_FromStorageID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            if ((Original_NomenclatureNumber == null)) {
+                throw new global::System.ArgumentNullException("Original_NomenclatureNumber");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_NomenclatureNumber));
+            }
+            if ((Original_SourceDocumentType == null)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_SourceDocumentType));
+            }
+            if ((Original_SourceDocumentID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((int)(Original_SourceDocumentID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            if ((Original_BatchNumber == null)) {
+                throw new global::System.ArgumentNullException("Original_BatchNumber");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_BatchNumber));
+            }
+            if ((Original_Price.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((decimal)(Original_Price.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[27].Value = ((int)(Original_Quantity));
+            if ((Original_Total.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((decimal)(Original_Total.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            if ((Original_InvoiceType == null)) {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Original_InvoiceType));
+            }
+            this.Adapter.UpdateCommand.Parameters[32].Value = ((bool)(Original_IsPosted));
+            if ((Original_Executor == null)) {
+                throw new global::System.ArgumentNullException("Original_Executor");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(Original_Executor));
+            }
+            if ((Original_LastUpdated.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((System.DateTime)(Original_LastUpdated.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[36].Value = ((int)(MovementID));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    System.DateTime MovementDate, 
+                    int ToStorageID, 
+                    global::System.Nullable<int> FromStorageID, 
+                    string MovementTypeID, 
+                    string NomenclatureNumber, 
+                    string SourceDocumentType, 
+                    global::System.Nullable<int> SourceDocumentID, 
+                    string BatchNumber, 
+                    global::System.Nullable<decimal> Price, 
+                    int Quantity, 
+                    string InvoiceType, 
+                    bool IsPosted, 
+                    string Executor, 
+                    global::System.Nullable<global::System.DateTime> LastUpdated, 
+                    int Original_MovementID, 
+                    System.DateTime Original_MovementDate, 
+                    int Original_ToStorageID, 
+                    global::System.Nullable<int> Original_FromStorageID, 
+                    string Original_NomenclatureNumber, 
+                    string Original_SourceDocumentType, 
+                    global::System.Nullable<int> Original_SourceDocumentID, 
+                    string Original_BatchNumber, 
+                    global::System.Nullable<decimal> Original_Price, 
+                    int Original_Quantity, 
+                    global::System.Nullable<decimal> Original_Total, 
+                    string Original_InvoiceType, 
+                    bool Original_IsPosted, 
+                    string Original_Executor, 
+                    global::System.Nullable<global::System.DateTime> Original_LastUpdated) {
+            return this.Update(MovementDate, ToStorageID, FromStorageID, MovementTypeID, NomenclatureNumber, SourceDocumentType, SourceDocumentID, BatchNumber, Price, Quantity, InvoiceType, IsPosted, Executor, LastUpdated, Original_MovementID, Original_MovementDate, Original_ToStorageID, Original_FromStorageID, Original_NomenclatureNumber, Original_SourceDocumentType, Original_SourceDocumentID, Original_BatchNumber, Original_Price, Original_Quantity, Original_Total, Original_InvoiceType, Original_IsPosted, Original_Executor, Original_LastUpdated, Original_MovementID);
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -33974,8 +34011,6 @@ INNER JOIN Suppliers s
         
         private SuppliersTableAdapter _suppliersTableAdapter;
         
-        private ToolMovementsTableAdapter _toolMovementsTableAdapter;
-        
         private WorkshopsTableAdapter _workshopsTableAdapter;
         
         private ReceivingRequestsContent1TableAdapter _receivingRequestsContent1TableAdapter;
@@ -33993,6 +34028,8 @@ INNER JOIN Suppliers s
         private InvoicesInjTableAdapter _invoicesInjTableAdapter;
         
         private InvoicesTableAdapter _invoicesTableAdapter;
+        
+        private ToolMovementsTableAdapter _toolMovementsTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -34238,20 +34275,6 @@ INNER JOIN Suppliers s
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public ToolMovementsTableAdapter ToolMovementsTableAdapter {
-            get {
-                return this._toolMovementsTableAdapter;
-            }
-            set {
-                this._toolMovementsTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
         public WorkshopsTableAdapter WorkshopsTableAdapter {
             get {
                 return this._workshopsTableAdapter;
@@ -34375,6 +34398,20 @@ INNER JOIN Suppliers s
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public ToolMovementsTableAdapter ToolMovementsTableAdapter {
+            get {
+                return this._toolMovementsTableAdapter;
+            }
+            set {
+                this._toolMovementsTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -34456,10 +34493,6 @@ INNER JOIN Suppliers s
                             && (this._suppliersTableAdapter.Connection != null))) {
                     return this._suppliersTableAdapter.Connection;
                 }
-                if (((this._toolMovementsTableAdapter != null) 
-                            && (this._toolMovementsTableAdapter.Connection != null))) {
-                    return this._toolMovementsTableAdapter.Connection;
-                }
                 if (((this._workshopsTableAdapter != null) 
                             && (this._workshopsTableAdapter.Connection != null))) {
                     return this._workshopsTableAdapter.Connection;
@@ -34495,6 +34528,10 @@ INNER JOIN Suppliers s
                 if (((this._invoicesTableAdapter != null) 
                             && (this._invoicesTableAdapter.Connection != null))) {
                     return this._invoicesTableAdapter.Connection;
+                }
+                if (((this._toolMovementsTableAdapter != null) 
+                            && (this._toolMovementsTableAdapter.Connection != null))) {
+                    return this._toolMovementsTableAdapter.Connection;
                 }
                 return null;
             }
@@ -34557,9 +34594,6 @@ INNER JOIN Suppliers s
                 if ((this._suppliersTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._toolMovementsTableAdapter != null)) {
-                    count = (count + 1);
-                }
                 if ((this._workshopsTableAdapter != null)) {
                     count = (count + 1);
                 }
@@ -34585,6 +34619,9 @@ INNER JOIN Suppliers s
                     count = (count + 1);
                 }
                 if ((this._invoicesTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._toolMovementsTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -34616,15 +34653,6 @@ INNER JOIN Suppliers s
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._workshopsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Workshops.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._workshopsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._purchaseRequestsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.PurchaseRequests.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -34643,21 +34671,21 @@ INNER JOIN Suppliers s
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._workshopsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Workshops.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._workshopsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._suppliersTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Suppliers.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._suppliersTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._purchaseRequestsContentTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.PurchaseRequestsContent.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._purchaseRequestsContentTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -34679,12 +34707,30 @@ INNER JOIN Suppliers s
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._invoicesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Invoices.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._purchaseRequestsContentTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.PurchaseRequestsContent.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._invoicesTableAdapter.Update(updatedRows));
+                    result = (result + this._purchaseRequestsContentTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._storages1TableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._storages1TableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._receivingRequestsContent1TableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ReceivingRequestsContent1.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._receivingRequestsContent1TableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -34706,12 +34752,12 @@ INNER JOIN Suppliers s
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._storages1TableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._invoicesInjTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.InvoicesInj.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._storages1TableAdapter.Update(updatedRows));
+                    result = (result + this._invoicesInjTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -34724,12 +34770,12 @@ INNER JOIN Suppliers s
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._invoicesInjTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.InvoicesInj.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._invoicesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Invoices.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._invoicesInjTableAdapter.Update(updatedRows));
+                    result = (result + this._invoicesTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -34739,15 +34785,6 @@ INNER JOIN Suppliers s
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._receivingRequestsContentInjTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._receivingRequestsContent1TableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ReceivingRequestsContent1.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._receivingRequestsContent1TableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -34766,15 +34803,6 @@ INNER JOIN Suppliers s
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._analogToolsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._toolMovementsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ToolMovements.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._toolMovementsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -34832,6 +34860,15 @@ INNER JOIN Suppliers s
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._toolMovementsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ToolMovements.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._toolMovementsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -34858,14 +34895,6 @@ INNER JOIN Suppliers s
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._workshopsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Workshops.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._workshopsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._purchaseRequestsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.PurchaseRequests.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -34882,19 +34911,19 @@ INNER JOIN Suppliers s
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._workshopsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Workshops.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._workshopsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._suppliersTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Suppliers.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._suppliersTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._purchaseRequestsContentTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.PurchaseRequestsContent.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._purchaseRequestsContentTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -34914,11 +34943,27 @@ INNER JOIN Suppliers s
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._invoicesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Invoices.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._purchaseRequestsContentTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.PurchaseRequestsContent.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._invoicesTableAdapter.Update(addedRows));
+                    result = (result + this._purchaseRequestsContentTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._storages1TableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._storages1TableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._receivingRequestsContent1TableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ReceivingRequestsContent1.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._receivingRequestsContent1TableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -34938,11 +34983,11 @@ INNER JOIN Suppliers s
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._storages1TableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._invoicesInjTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.InvoicesInj.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._storages1TableAdapter.Update(addedRows));
+                    result = (result + this._invoicesInjTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -34954,11 +34999,11 @@ INNER JOIN Suppliers s
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._invoicesInjTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.InvoicesInj.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._invoicesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Invoices.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._invoicesInjTableAdapter.Update(addedRows));
+                    result = (result + this._invoicesTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -34967,14 +35012,6 @@ INNER JOIN Suppliers s
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._receivingRequestsContentInjTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._receivingRequestsContent1TableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ReceivingRequestsContent1.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._receivingRequestsContent1TableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -34991,14 +35028,6 @@ INNER JOIN Suppliers s
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._analogToolsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._toolMovementsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ToolMovements.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._toolMovementsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -35050,6 +35079,14 @@ INNER JOIN Suppliers s
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._toolMovementsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ToolMovements.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._toolMovementsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -35060,6 +35097,14 @@ INNER JOIN Suppliers s
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateDeletedRows(TOOLACCOUNTINGDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._toolMovementsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ToolMovements.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._toolMovementsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._balancesTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Balances.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -35108,14 +35153,6 @@ INNER JOIN Suppliers s
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._toolMovementsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ToolMovements.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._toolMovementsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._analogToolsTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.AnalogTools.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -35132,14 +35169,6 @@ INNER JOIN Suppliers s
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._receivingRequestsContent1TableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ReceivingRequestsContent1.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._receivingRequestsContent1TableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._receivingRequestsContentInjTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.ReceivingRequestsContentInj.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -35148,11 +35177,11 @@ INNER JOIN Suppliers s
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._invoicesInjTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.InvoicesInj.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._invoicesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Invoices.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._invoicesInjTableAdapter.Update(deletedRows));
+                    result = (result + this._invoicesTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -35164,11 +35193,11 @@ INNER JOIN Suppliers s
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._storages1TableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._invoicesInjTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.InvoicesInj.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._storages1TableAdapter.Update(deletedRows));
+                    result = (result + this._invoicesInjTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -35188,11 +35217,27 @@ INNER JOIN Suppliers s
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._invoicesTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Invoices.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._receivingRequestsContent1TableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ReceivingRequestsContent1.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._invoicesTableAdapter.Update(deletedRows));
+                    result = (result + this._receivingRequestsContent1TableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._storages1TableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Storages1.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._storages1TableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._purchaseRequestsContentTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PurchaseRequestsContent.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._purchaseRequestsContentTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -35212,19 +35257,19 @@ INNER JOIN Suppliers s
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._purchaseRequestsContentTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.PurchaseRequestsContent.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._purchaseRequestsContentTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._suppliersTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Suppliers.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._suppliersTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._workshopsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Workshops.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._workshopsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -35241,14 +35286,6 @@ INNER JOIN Suppliers s
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._purchaseRequestsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._workshopsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Workshops.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._workshopsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -35387,11 +35424,6 @@ INNER JOIN Suppliers s
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
-            if (((this._toolMovementsTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._toolMovementsTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
-                        "r, должны использовать одинаковую строку подключения.");
-            }
             if (((this._workshopsTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._workshopsTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
@@ -35434,6 +35466,11 @@ INNER JOIN Suppliers s
             }
             if (((this._invoicesTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._invoicesTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
+                        "r, должны использовать одинаковую строку подключения.");
+            }
+            if (((this._toolMovementsTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._toolMovementsTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
@@ -35613,15 +35650,6 @@ INNER JOIN Suppliers s
                         adaptersWithAcceptChangesDuringUpdate.Add(this._suppliersTableAdapter.Adapter);
                     }
                 }
-                if ((this._toolMovementsTableAdapter != null)) {
-                    revertConnections.Add(this._toolMovementsTableAdapter, this._toolMovementsTableAdapter.Connection);
-                    this._toolMovementsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._toolMovementsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._toolMovementsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._toolMovementsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._toolMovementsTableAdapter.Adapter);
-                    }
-                }
                 if ((this._workshopsTableAdapter != null)) {
                     revertConnections.Add(this._workshopsTableAdapter, this._workshopsTableAdapter.Connection);
                     this._workshopsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
@@ -35701,6 +35729,15 @@ INNER JOIN Suppliers s
                     if (this._invoicesTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._invoicesTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._invoicesTableAdapter.Adapter);
+                    }
+                }
+                if ((this._toolMovementsTableAdapter != null)) {
+                    revertConnections.Add(this._toolMovementsTableAdapter, this._toolMovementsTableAdapter.Connection);
+                    this._toolMovementsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._toolMovementsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._toolMovementsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._toolMovementsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._toolMovementsTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -35825,10 +35862,6 @@ INNER JOIN Suppliers s
                     this._suppliersTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._suppliersTableAdapter]));
                     this._suppliersTableAdapter.Transaction = null;
                 }
-                if ((this._toolMovementsTableAdapter != null)) {
-                    this._toolMovementsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._toolMovementsTableAdapter]));
-                    this._toolMovementsTableAdapter.Transaction = null;
-                }
                 if ((this._workshopsTableAdapter != null)) {
                     this._workshopsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._workshopsTableAdapter]));
                     this._workshopsTableAdapter.Transaction = null;
@@ -35864,6 +35897,10 @@ INNER JOIN Suppliers s
                 if ((this._invoicesTableAdapter != null)) {
                     this._invoicesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._invoicesTableAdapter]));
                     this._invoicesTableAdapter.Transaction = null;
+                }
+                if ((this._toolMovementsTableAdapter != null)) {
+                    this._toolMovementsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._toolMovementsTableAdapter]));
+                    this._toolMovementsTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

@@ -200,7 +200,7 @@ namespace Система_учёта_и_приобретения_инструме
         private void AddMoving_Click(object sender, EventArgs e)
         {
             AddMoving addMoving = new AddMoving();
-            //addMoving.MovementSaved += (s, args) => RefreshToolMovementsTables();
+            addMoving.MovementSaved += (s, args) => { RefreshToolMovementsTables(); OstatkiResetSearch(); };
             addMoving.ShowDialog();
         }
 
@@ -293,7 +293,7 @@ namespace Система_учёта_и_приобретения_инструме
         private void CreateMove_Click(object sender, EventArgs e)
         {
             AddMoving addMoving = new AddMoving();
-            //addMoving.MovementSaved += (s, args) => RefreshToolMovementsTables();
+            addMoving.MovementSaved += (s, args) => { RefreshToolMovementsTables(); OstatkiResetSearch(); };
             addMoving.ShowDialog();
         }
         public void SetStoragesButtonsState()
@@ -1169,8 +1169,8 @@ namespace Система_учёта_и_приобретения_инструме
 
                 var form = new AddMoving();
                 form.Prefill(nomenNumber, storageId, batch, price, true);
+                form.MovementSaved += (s, args) => { RefreshToolMovementsTables(); OstatkiResetSearch(); };
                 form.ShowDialog();
-                RefreshToolMovementsTables();
             }
         }
         #endregion
@@ -1203,8 +1203,8 @@ namespace Система_учёта_и_приобретения_инструме
                 decimal price = Convert.ToDecimal(drv["Price"]);
                 var form = new AddMoving();
                 form.Prefill(nomenNumber, storageId, batch, price, true);
+                form.MovementSaved += (s, args) => { RefreshToolMovementsTables(); OstatkiResetSearch(); };
                 form.ShowDialog();
-                RefreshToolMovementsTables();
             }
         }
         #endregion
@@ -1231,8 +1231,8 @@ namespace Система_учёта_и_приобретения_инструме
                 int storageId = Convert.ToInt32(drv["StorageID"]);
                 var form = new AddMoving();
                 form.Prefill(string.Empty, null, string.Empty, 0m, true, storageId);
+                form.MovementSaved += (s, args) => { RefreshToolMovementsTables(); OstatkiResetSearch(); };
                 form.ShowDialog();
-                RefreshToolMovementsTables();
             }
         }
 
@@ -1377,7 +1377,7 @@ namespace Система_учёта_и_приобретения_инструме
         private void button8_Click_1(object sender, EventArgs e)
         {
             AddMoving addMoving = new AddMoving();
-            //addMoving.MovementSaved += (s, args) => RefreshToolMovementsTables();
+            addMoving.MovementSaved += (s, args) => { RefreshToolMovementsTables(); OstatkiResetSearch(); };
             addMoving.ShowDialog();
         }
 

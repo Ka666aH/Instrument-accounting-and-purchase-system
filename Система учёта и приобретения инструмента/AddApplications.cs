@@ -514,6 +514,15 @@ namespace Система_учёта_и_приобретения_инструме
                     textBox.KeyPress += Digits_KeyPress;
                 }
             }
+            else
+            {
+                if (e.Control is System.Windows.Forms.TextBox textBox)
+                {
+                    textBox.KeyPress -= Digits_KeyPress;
+                  
+                }
+              
+            }
         }
 
         /// <summary>

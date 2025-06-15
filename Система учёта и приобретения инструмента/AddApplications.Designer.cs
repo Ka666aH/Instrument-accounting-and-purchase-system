@@ -344,12 +344,14 @@
             this.receivingContentIDDataGridViewTextBoxColumn.HeaderText = "ReceivingContentID";
             this.receivingContentIDDataGridViewTextBoxColumn.Name = "receivingContentIDDataGridViewTextBoxColumn";
             this.receivingContentIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.receivingContentIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // receivingRequestIDDataGridViewTextBoxColumn
             // 
             this.receivingRequestIDDataGridViewTextBoxColumn.DataPropertyName = "ReceivingRequestID";
             this.receivingRequestIDDataGridViewTextBoxColumn.HeaderText = "ReceivingRequestID";
             this.receivingRequestIDDataGridViewTextBoxColumn.Name = "receivingRequestIDDataGridViewTextBoxColumn";
+            this.receivingRequestIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // nomenclatureNumberDataGridViewTextBoxColumn
             // 
