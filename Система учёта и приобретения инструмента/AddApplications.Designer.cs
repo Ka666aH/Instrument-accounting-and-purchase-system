@@ -48,15 +48,15 @@
             this.WorkshopFormSaveClose = new System.Windows.Forms.Button();
             this.WorkshopFormSave = new System.Windows.Forms.Button();
             this.ApplicationsCompound = new System.Windows.Forms.DataGridView();
-            this.receivingRequestsContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
-            this.receivingRequestsContentTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter();
-            this.label7 = new System.Windows.Forms.Label();
             this.receivingContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receivingRequestIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomenclatureNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receivingRequestsContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tOOLACCOUNTINGDataSet = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSet();
+            this.receivingRequestsContentTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ApplicationsCompound)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingRequestsContentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
@@ -292,6 +292,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ApplicationsCompound.AutoGenerateColumns = false;
             this.ApplicationsCompound.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ApplicationsCompound.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.ApplicationsCompound.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ApplicationsCompound.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.receivingContentIDDataGridViewTextBoxColumn,
@@ -310,33 +311,6 @@
             this.ApplicationsCompound.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.ApplicationsCompound_CellValidated);
             this.ApplicationsCompound.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.ApplicationsCompound_EditingControlShowing_1);
             this.ApplicationsCompound.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.ApplicationsCompound_RowValidating);
-            // 
-            // receivingRequestsContentBindingSource
-            // 
-            this.receivingRequestsContentBindingSource.DataMember = "ReceivingRequestsContent";
-            this.receivingRequestsContentBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
-            // 
-            // tOOLACCOUNTINGDataSet
-            // 
-            this.tOOLACCOUNTINGDataSet.DataSetName = "TOOLACCOUNTINGDataSet";
-            this.tOOLACCOUNTINGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // receivingRequestsContentTableAdapter
-            // 
-            this.receivingRequestsContentTableAdapter.ClearBeforeFill = true;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(12, 186);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(199, 20);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Содержимое заявки:";
-            this.label7.Visible = false;
             // 
             // receivingContentIDDataGridViewTextBoxColumn
             // 
@@ -372,6 +346,33 @@
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Количество";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            // 
+            // receivingRequestsContentBindingSource
+            // 
+            this.receivingRequestsContentBindingSource.DataMember = "ReceivingRequestsContent";
+            this.receivingRequestsContentBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
+            // 
+            // tOOLACCOUNTINGDataSet
+            // 
+            this.tOOLACCOUNTINGDataSet.DataSetName = "TOOLACCOUNTINGDataSet";
+            this.tOOLACCOUNTINGDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // receivingRequestsContentTableAdapter
+            // 
+            this.receivingRequestsContentTableAdapter.ClearBeforeFill = true;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(12, 186);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(199, 20);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Содержимое заявки:";
+            this.label7.Visible = false;
             // 
             // AddApplications
             // 

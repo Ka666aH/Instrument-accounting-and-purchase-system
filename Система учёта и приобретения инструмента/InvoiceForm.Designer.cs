@@ -141,6 +141,7 @@
             this.InvoiceFormDeliveryTable.AllowUserToResizeRows = false;
             this.InvoiceFormDeliveryTable.AutoGenerateColumns = false;
             this.InvoiceFormDeliveryTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.InvoiceFormDeliveryTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.InvoiceFormDeliveryTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.InvoiceFormDeliveryTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.deliveryContentIDDataGridViewTextBoxColumn,
@@ -288,6 +289,7 @@
             this.InvoiceFormInvoicesTable.AllowUserToResizeRows = false;
             this.InvoiceFormInvoicesTable.AutoGenerateColumns = false;
             this.InvoiceFormInvoicesTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.InvoiceFormInvoicesTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.InvoiceFormInvoicesTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.InvoiceFormInvoicesTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.invoiceContentIDDataGridViewTextBoxColumn1,

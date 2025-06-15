@@ -44,8 +44,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.PurchaseRequestDate = new System.Windows.Forms.TextBox();
             this.PurchaseRequestsContentTable = new System.Windows.Forms.DataGridView();
-            this.purchaseRequestsContentInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.purchaseRequestsContentInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.PurchaseRequestsContentInjTableAdapter();
             this.purchaseContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.purchaseRequestIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receivingContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +54,8 @@
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.requiredQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.requestStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purchaseRequestsContentInjBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.purchaseRequestsContentInjTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.PurchaseRequestsContentInjTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.tOOLACCOUNTINGDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseRequestsContentTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.purchaseRequestsContentInjBindingSource)).BeginInit();
@@ -205,6 +205,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PurchaseRequestsContentTable.AutoGenerateColumns = false;
             this.PurchaseRequestsContentTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.PurchaseRequestsContentTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.PurchaseRequestsContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PurchaseRequestsContentTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.purchaseContentIDDataGridViewTextBoxColumn,
@@ -227,15 +228,6 @@
             this.PurchaseRequestsContentTable.Size = new System.Drawing.Size(667, 245);
             this.PurchaseRequestsContentTable.TabIndex = 72;
             this.PurchaseRequestsContentTable.CurrentCellChanged += new System.EventHandler(this.PurchaseRequestsContentTable_CurrentCellChanged);
-            // 
-            // purchaseRequestsContentInjBindingSource
-            // 
-            this.purchaseRequestsContentInjBindingSource.DataMember = "PurchaseRequestsContentInj";
-            this.purchaseRequestsContentInjBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
-            // 
-            // purchaseRequestsContentInjTableAdapter
-            // 
-            this.purchaseRequestsContentInjTableAdapter.ClearBeforeFill = true;
             // 
             // purchaseContentIDDataGridViewTextBoxColumn
             // 
@@ -312,6 +304,15 @@
             this.requestStatusDataGridViewTextBoxColumn.Name = "requestStatusDataGridViewTextBoxColumn";
             this.requestStatusDataGridViewTextBoxColumn.ReadOnly = true;
             this.requestStatusDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // purchaseRequestsContentInjBindingSource
+            // 
+            this.purchaseRequestsContentInjBindingSource.DataMember = "PurchaseRequestsContentInj";
+            this.purchaseRequestsContentInjBindingSource.DataSource = this.tOOLACCOUNTINGDataSet;
+            // 
+            // purchaseRequestsContentInjTableAdapter
+            // 
+            this.purchaseRequestsContentInjTableAdapter.ClearBeforeFill = true;
             // 
             // PurchaseRequest
             // 

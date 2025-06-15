@@ -85,6 +85,7 @@
             this.RequestConsiderationContentTable.AllowUserToResizeRows = false;
             this.RequestConsiderationContentTable.AutoGenerateColumns = false;
             this.RequestConsiderationContentTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.RequestConsiderationContentTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.RequestConsiderationContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.RequestConsiderationContentTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.receivingRequestIDDataGridViewTextBoxColumn,
@@ -182,6 +183,7 @@
             this.RequestConsiderationFixationTable.AllowUserToResizeRows = false;
             this.RequestConsiderationFixationTable.AutoGenerateColumns = false;
             this.RequestConsiderationFixationTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.RequestConsiderationFixationTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.RequestConsiderationFixationTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.RequestConsiderationFixationTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.receivingContentIDDataGridViewTextBoxColumn1,

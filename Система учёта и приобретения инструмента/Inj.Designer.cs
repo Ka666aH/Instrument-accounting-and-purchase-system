@@ -562,6 +562,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ReceivingRequestsContentTable.AutoGenerateColumns = false;
             this.ReceivingRequestsContentTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ReceivingRequestsContentTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.ReceivingRequestsContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ReceivingRequestsContentTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
@@ -635,6 +636,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ReceivingRequestsRequestsTable.AutoGenerateColumns = false;
             this.ReceivingRequestsRequestsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ReceivingRequestsRequestsTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.ReceivingRequestsRequestsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ReceivingRequestsRequestsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn16,
@@ -1027,6 +1029,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.PurchaseRequestsPurchaseRequestsTable.AutoGenerateColumns = false;
             this.PurchaseRequestsPurchaseRequestsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.PurchaseRequestsPurchaseRequestsTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.PurchaseRequestsPurchaseRequestsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PurchaseRequestsPurchaseRequestsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.purchaseRequestIDDataGridViewTextBoxColumn,
@@ -1039,7 +1042,7 @@
             this.PurchaseRequestsPurchaseRequestsTable.ReadOnly = true;
             this.PurchaseRequestsPurchaseRequestsTable.RowHeadersVisible = false;
             this.PurchaseRequestsPurchaseRequestsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PurchaseRequestsPurchaseRequestsTable.Size = new System.Drawing.Size(338, 467);
+            this.PurchaseRequestsPurchaseRequestsTable.Size = new System.Drawing.Size(338, 446);
             this.PurchaseRequestsPurchaseRequestsTable.TabIndex = 31;
             this.PurchaseRequestsPurchaseRequestsTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.PurchaseRequestsPurchaseRequestsTable_CellMouseClick);
             this.PurchaseRequestsPurchaseRequestsTable.CurrentCellChanged += new System.EventHandler(this.PurchaseRequestsPurchaseRequestsTable_CurrentCellChanged);
@@ -1082,6 +1085,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PurchaseRequestsContentTable.AutoGenerateColumns = false;
             this.PurchaseRequestsContentTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.PurchaseRequestsContentTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.PurchaseRequestsContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PurchaseRequestsContentTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.purchaseContentIDDataGridViewTextBoxColumn,
@@ -1099,7 +1103,7 @@
             this.PurchaseRequestsContentTable.ReadOnly = true;
             this.PurchaseRequestsContentTable.RowHeadersVisible = false;
             this.PurchaseRequestsContentTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PurchaseRequestsContentTable.Size = new System.Drawing.Size(708, 466);
+            this.PurchaseRequestsContentTable.Size = new System.Drawing.Size(708, 445);
             this.PurchaseRequestsContentTable.TabIndex = 30;
             // 
             // purchaseContentIDDataGridViewTextBoxColumn
@@ -1353,6 +1357,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StatementsContentTable.AutoGenerateColumns = false;
             this.StatementsContentTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.StatementsContentTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.StatementsContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.StatementsContentTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.deliveryContentIDDataGridViewTextBoxColumn,
@@ -1362,7 +1367,7 @@
             this.deliveryContentDateDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn1});
             this.StatementsContentTable.DataSource = this.deliveryListsInjDeliveryListsContentInjBindingSource;
-            this.StatementsContentTable.Location = new System.Drawing.Point(6, 337);
+            this.StatementsContentTable.Location = new System.Drawing.Point(7, 323);
             this.StatementsContentTable.MultiSelect = false;
             this.StatementsContentTable.Name = "StatementsContentTable";
             this.StatementsContentTable.ReadOnly = true;
@@ -1430,7 +1435,7 @@
             this.label50.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label50.AutoSize = true;
             this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label50.Location = new System.Drawing.Point(6, 310);
+            this.label50.Location = new System.Drawing.Point(7, 296);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(268, 24);
             this.label50.TabIndex = 40;
@@ -1456,6 +1461,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StatementsStatementsTable.AutoGenerateColumns = false;
             this.StatementsStatementsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.StatementsStatementsTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.StatementsStatementsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.StatementsStatementsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.deliveryListIDDataGridViewTextBoxColumn,
@@ -1468,7 +1474,7 @@
             this.StatementsStatementsTable.ReadOnly = true;
             this.StatementsStatementsTable.RowHeadersVisible = false;
             this.StatementsStatementsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.StatementsStatementsTable.Size = new System.Drawing.Size(1044, 208);
+            this.StatementsStatementsTable.Size = new System.Drawing.Size(1044, 194);
             this.StatementsStatementsTable.TabIndex = 38;
             this.StatementsStatementsTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.StatementsStatementsTable_CellMouseClick);
             this.StatementsStatementsTable.CurrentCellChanged += new System.EventHandler(this.StatementsStatementsTable_CurrentCellChanged);
@@ -1595,6 +1601,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.InvoicesContentTable.AutoGenerateColumns = false;
             this.InvoicesContentTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.InvoicesContentTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.InvoicesContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.InvoicesContentTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.invoiceContentIDDataGridViewTextBoxColumn,
@@ -1605,7 +1612,7 @@
             this.fullNameDataGridViewTextBoxColumn4,
             this.quantityDataGridViewTextBoxColumn2});
             this.InvoicesContentTable.DataSource = this.invoicesInjInvoicesContentInjBindingSource;
-            this.InvoicesContentTable.Location = new System.Drawing.Point(7, 337);
+            this.InvoicesContentTable.Location = new System.Drawing.Point(7, 323);
             this.InvoicesContentTable.MultiSelect = false;
             this.InvoicesContentTable.Name = "InvoicesContentTable";
             this.InvoicesContentTable.ReadOnly = true;
@@ -1681,7 +1688,7 @@
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(7, 310);
+            this.label15.Location = new System.Drawing.Point(7, 296);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(266, 24);
             this.label15.TabIndex = 54;
@@ -1707,6 +1714,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.InvoicesInvoicesTable.AutoGenerateColumns = false;
             this.InvoicesInvoicesTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.InvoicesInvoicesTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.InvoicesInvoicesTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.InvoicesInvoicesTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.invoiceIDDataGridViewTextBoxColumn,
@@ -1718,7 +1726,7 @@
             this.InvoicesInvoicesTable.ReadOnly = true;
             this.InvoicesInvoicesTable.RowHeadersVisible = false;
             this.InvoicesInvoicesTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(1044, 208);
+            this.InvoicesInvoicesTable.Size = new System.Drawing.Size(1044, 194);
             this.InvoicesInvoicesTable.TabIndex = 52;
             this.InvoicesInvoicesTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.InvoicesInvoicesTable_CellMouseClick);
             // 
@@ -1859,6 +1867,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HistoryTable.AutoGenerateColumns = false;
             this.HistoryTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.HistoryTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.HistoryTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.HistoryTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nomenclatureNumberDataGridViewTextBoxColumn7,
@@ -1872,7 +1881,7 @@
             this.HistoryTable.ReadOnly = true;
             this.HistoryTable.RowHeadersVisible = false;
             this.HistoryTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.HistoryTable.Size = new System.Drawing.Size(1044, 677);
+            this.HistoryTable.Size = new System.Drawing.Size(1044, 474);
             this.HistoryTable.TabIndex = 13;
             this.HistoryTable.CurrentCellChanged += new System.EventHandler(this.HistoryTable_CurrentCellChanged);
             // 
@@ -2321,6 +2330,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NomenTable.AutoGenerateColumns = false;
             this.NomenTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.NomenTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.NomenTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.NomenTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nomenclatureNumberDataGridViewTextBoxColumn,
@@ -2417,6 +2427,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AnalogCompareTable.AutoGenerateColumns = false;
             this.AnalogCompareTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.AnalogCompareTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.AnalogCompareTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AnalogCompareTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nomenclatureNumberDataGridViewTextBoxColumn3,
@@ -2667,6 +2678,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AnalogListTable.AutoGenerateColumns = false;
             this.AnalogListTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.AnalogListTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.AnalogListTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AnalogListTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
@@ -2755,6 +2767,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GroupsNomenTable.AutoGenerateColumns = false;
             this.GroupsNomenTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GroupsNomenTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.GroupsNomenTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GroupsNomenTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn12,
@@ -2877,6 +2890,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GroupsTable.AutoGenerateColumns = false;
             this.GroupsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GroupsTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.GroupsTable.ColumnHeadersHeight = 28;
             this.GroupsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rangeStartDataGridViewTextBoxColumn,
@@ -2978,6 +2992,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ProvidersTable.AutoGenerateColumns = false;
             this.ProvidersTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ProvidersTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.ProvidersTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProvidersTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iNNDataGridViewTextBoxColumn,
@@ -3129,6 +3144,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LogTable.AutoGenerateColumns = false;
             this.LogTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.LogTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.LogTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.LogTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.logIDDataGridViewTextBoxColumn,
@@ -3407,6 +3423,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.OstatkiTable.AutoGenerateColumns = false;
             this.OstatkiTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.OstatkiTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.OstatkiTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OstatkiTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.balanceIDDataGridViewTextBoxColumn,

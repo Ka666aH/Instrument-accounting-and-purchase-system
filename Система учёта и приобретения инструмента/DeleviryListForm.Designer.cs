@@ -229,6 +229,7 @@
             this.DeliveryListFormDeliveryListContentTable.AllowUserToResizeRows = false;
             this.DeliveryListFormDeliveryListContentTable.AutoGenerateColumns = false;
             this.DeliveryListFormDeliveryListContentTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DeliveryListFormDeliveryListContentTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.DeliveryListFormDeliveryListContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DeliveryListFormDeliveryListContentTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.deliveryContentIDDataGridViewTextBoxColumn,
@@ -363,6 +364,7 @@
             this.DeliveryListFormPurchaseRequestsTable.AllowUserToResizeRows = false;
             this.DeliveryListFormPurchaseRequestsTable.AutoGenerateColumns = false;
             this.DeliveryListFormPurchaseRequestsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DeliveryListFormPurchaseRequestsTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.DeliveryListFormPurchaseRequestsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DeliveryListFormPurchaseRequestsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -411,6 +413,7 @@
             this.DeliveryListFormPurchaseRequestContentTable.AllowUserToResizeRows = false;
             this.DeliveryListFormPurchaseRequestContentTable.AutoGenerateColumns = false;
             this.DeliveryListFormPurchaseRequestContentTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DeliveryListFormPurchaseRequestContentTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.DeliveryListFormPurchaseRequestContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DeliveryListFormPurchaseRequestContentTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,

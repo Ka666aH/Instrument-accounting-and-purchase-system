@@ -541,6 +541,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView3.AutoGenerateColumns = false;
             this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView3.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.defectiveListIDDataGridViewTextBoxColumn,
@@ -924,6 +925,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.movementIDDataGridViewTextBoxColumn,
@@ -1104,6 +1106,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.WorkshopsRequestsContentTable.AutoGenerateColumns = false;
             this.WorkshopsRequestsContentTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.WorkshopsRequestsContentTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.WorkshopsRequestsContentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.WorkshopsRequestsContentTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.receivingContentIDDataGridViewTextBoxColumn,
@@ -1176,6 +1179,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.WorkshopsRequestsRequestsTable.AutoGenerateColumns = false;
             this.WorkshopsRequestsRequestsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.WorkshopsRequestsRequestsTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.WorkshopsRequestsRequestsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.WorkshopsRequestsRequestsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.receivingRequestIDDataGridViewTextBoxColumn,
@@ -1475,6 +1479,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NomenTable.AutoGenerateColumns = false;
             this.NomenTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.NomenTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.NomenTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.NomenTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nomenclatureNumberDataGridViewTextBoxColumn,
@@ -1829,6 +1834,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.OstatkiTable.AutoGenerateColumns = false;
             this.OstatkiTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.OstatkiTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.OstatkiTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OstatkiTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.balanceIDDataGridViewTextBoxColumn,
@@ -2134,6 +2140,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView5.AutoGenerateColumns = false;
             this.dataGridView5.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView5.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView5.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.storageIDDataGridViewTextBoxColumn,
@@ -2185,6 +2192,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.WorkshopsMain.AutoGenerateColumns = false;
             this.WorkshopsMain.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.WorkshopsMain.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.WorkshopsMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.WorkshopsMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.workshopIDDataGridViewTextBoxColumn,
@@ -2342,6 +2350,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StoragesTable.AutoGenerateColumns = false;
             this.StoragesTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.StoragesTable.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.StoragesTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.StoragesTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.storageIDDataGridViewTextBoxColumn1,
