@@ -183,7 +183,7 @@ namespace Система_учёта_и_приобретения_инструме
                 NotificationService.Notify("Импорт", $"В таблицу \"{ImportFormTable.Text}\":\nДобавлено строк: {importedRows}.\nПропущено строк: {skipedRows}.\nСтрок с ошибками: {errorRows}.", ToolTipIcon.Info);
                 ImportFormSheet.SelectedIndex = -1;
                 ImportFormTable.SelectedIndex = -1;
-                if (errorRows > 0) MessageBox.Show(string.Join("\n", importErrorReport), "Строки с ошибками", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //if (errorRows > 0) MessageBox.Show(string.Join("\n", importErrorReport), "Строки с ошибками", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 importedRows = 0;
                 skipedRows = 0;
                 errorRows = 0;
