@@ -171,6 +171,12 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 BatchNumber.Text = lastBalance.BatchNumber;
             }
+
+            // Если это приход (Add) и партия ещё не указана – формируем автоматически
+            if (Add.Checked && string.IsNullOrWhiteSpace(BatchNumber.Text))
+            {
+                BatchNumber.Text = $"B{DateTime.Now:yyMMddHHmmss}";
+            }
         }
 
         private void Add_CheckedChanged(object sender, EventArgs e)
@@ -183,7 +189,7 @@ namespace Система_учёта_и_приобретения_инструме
             if (Add.Checked)
             {
                 ToggleNomenAutocomplete(false);
-                
+
                 StorageTo.ReadOnly = false;
                 label15.Text = "Тип документа *";
                 label7.Text = "Документ-основание *";
@@ -193,6 +199,7 @@ namespace Система_учёта_и_приобретения_инструме
                 StorageTo.Text = "0";
                 StorageFrom.Text = null;
                 StorageFrom.ReadOnly = true;
+                Nomenclature.ReadOnly = false;
                 RefreshSourceDocumentType();
             }
             else
@@ -200,7 +207,7 @@ namespace Система_учёта_и_приобретения_инструме
                 if (NonAdd.Checked)
                 {
                     ToggleNomenAutocomplete(true);
-                    
+                    Nomenclature.ReadOnly = true;
                     StorageTo.Text = "12";
                     StorageTo.ReadOnly = true;
                     label15.Text = "Тип документа *";
@@ -213,8 +220,10 @@ namespace Система_учёта_и_приобретения_инструме
                 }
                 else
                 {
+                    
                     ToggleNomenAutocomplete(true);
                     label15.Text = "Тип документа";
+                    Nomenclature.ReadOnly = false;
                     StorageTo.Text = null;
                     StorageFrom.Text = "0";
                     label7.Text = "Документ-основание";
@@ -325,6 +334,9 @@ namespace Система_учёта_и_приобретения_инструме
             string nomenNumber = Nomenclature.Text.Split('-')[0].Trim();
             string movementName = Moving.Checked ? "Перемещение" : "Списание";
 
+            // Флаг «Проведён»
+            bool posted = isWriteOff.Checked;
+
             // Документ-основание
             string srcDocType = string.IsNullOrWhiteSpace(SourceDocumentType.Text) ? null : SourceDocumentType.Text.Trim();
             int? srcDocId = null;
@@ -341,8 +353,8 @@ namespace Система_учёта_и_приобретения_инструме
                 return false;
             }
 
-            // Проверка остатка для операций списания/перемещения
-            if (movementName == "Списание" || movementName == "Перемещение")
+            // Проверка остатка выполняется только при проведённом документе
+            if (posted && (movementName == "Списание" || movementName == "Перемещение"))
             {
                 int availableQty = tOOLACCOUNTINGDataSet.Balances
                     .Where(b => b.StorageID == fromId && b.NomenclatureNumber == nomenNumber)
@@ -373,7 +385,7 @@ namespace Система_учёта_и_приобретения_инструме
                 newRow.Price = price;
                 newRow.Quantity = qty;
                 newRow.Executor = Environment.UserName.ToString();
-                newRow.IsPosted = isWriteOff.Checked;
+                newRow.IsPosted = posted;
                 newRow.LastUpdated = DateTime.Now;
                 newRow.Total = price * qty;
                 if (srcDocType != null) newRow.SourceDocumentType = srcDocType;
@@ -381,62 +393,75 @@ namespace Система_учёта_и_приобретения_инструме
 
                 if (movementName == "Списание")
                 {
-                    // проверяем остаток и списываем со склада-отправителя
-                    var balRow = tOOLACCOUNTINGDataSet.Balances.FirstOrDefault(b => b.StorageID == fromId && b.NomenclatureNumber == nomenNumber);
-                    if (balRow != null)
+                    // При непроведённом документе только фиксируем склад 12, без изменения балансов
+                    int writeOffStorageId = 12;
+                    if (!posted)
                     {
-                        int newQty = balRow.Quantity - qty;
-                        // Проверка мин. остатка
-                        var nRow = tOOLACCOUNTINGDataSet.NomenclatureView.FirstOrDefault(n => n.NomenclatureNumber == nomenNumber);
-                        int minStock = nRow?.MinStock ?? 0;
-                        if (newQty < minStock)
-                        {
-                            if (MessageBox.Show($"Итоговый остаток ({newQty}) станет меньше неснижаемого ({minStock}). Продолжить?", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
-                            {
-                                return false;
-                            }
-                        }
-                        balRow.Quantity = newQty;
+                        newRow.ToStorageID = writeOffStorageId;
                     }
 
-                    // Перемещаем списанную номенклатуру на склад списанного инструмента (ID = 12)
-                    int writeOffStorageId = 12;
-                    toId = writeOffStorageId; // гарантируем, что запись движения указывает на склад 12
-                    StorageTo.Text = writeOffStorageId.ToString();
-                    newRow.ToStorageID = writeOffStorageId; // корректируем строку движения
-
-                    var balDest = tOOLACCOUNTINGDataSet.Balances.FirstOrDefault(b => b.StorageID == writeOffStorageId && b.NomenclatureNumber == nomenNumber);
-
-                    if (balDest != null)
+                    if (!posted)
                     {
-                        // Если остаток уже есть – увеличиваем количество
-                        balDest.Quantity += qty;
+                        // изменения остатков будут выполнены при проведении
                     }
                     else
                     {
-                        // Иначе создаём новый остаток на складе 12
-                        int newBalId = tOOLACCOUNTINGDataSet.Balances.Count == 0 ? 1 : tOOLACCOUNTINGDataSet.Balances.Max(r => r.BalanceID) + 1;
-                        var newBal = tOOLACCOUNTINGDataSet.Balances.NewBalancesRow();
-                        newBal.BalanceID = newBalId;
-                        newBal.NomenclatureNumber = nomenNumber;
-                        newBal.StorageID = writeOffStorageId;
-                        newBal.BalanceDate = DateTime.Now;
-                        newBal.BatchNumber = string.IsNullOrWhiteSpace(BatchNumber.Text) ? "-" : BatchNumber.Text.Trim();
-                        newBal.Price = price;
-                        newBal.Quantity = qty;
-                        // Столбец Account может отсутствовать, поэтому заполняем, только если он существует
-                        if (newBal.Table.Columns.Contains("Account"))
+                        // проверяем остаток и списываем со склада-отправителя
+                        var balRow = tOOLACCOUNTINGDataSet.Balances.FirstOrDefault(b => b.StorageID == fromId && b.NomenclatureNumber == nomenNumber);
+                        if (balRow != null)
                         {
-                            newBal["Account"] = "Списание";
+                            int newQty = balRow.Quantity - qty;
+                            // Проверка мин. остатка
+                            var nRow = tOOLACCOUNTINGDataSet.NomenclatureView.FirstOrDefault(n => n.NomenclatureNumber == nomenNumber);
+                            int minStock = nRow?.MinStock ?? 0;
+                            if (newQty < minStock)
+                            {
+                                if (MessageBox.Show($"Итоговый остаток ({newQty}) станет меньше неснижаемого ({minStock}). Продолжить?", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                                {
+                                    return false;
+                                }
+                            }
+                            balRow.Quantity = newQty;
                         }
 
-                        tOOLACCOUNTINGDataSet.Balances.AddBalancesRow(newBal);
-                    }
+                        // Перемещаем списанную номенклатуру на склад списанного инструмента (ID = 12)
+                        toId = writeOffStorageId; // гарантируем, что запись движения указывает на склад 12
+                        StorageTo.Text = writeOffStorageId.ToString();
+                        newRow.ToStorageID = writeOffStorageId; // корректируем строку движения
 
-                    // Сохраняем изменения остатков
-                    new BalancesTableAdapter().Update(tOOLACCOUNTINGDataSet.Balances);
+                        var balDest = tOOLACCOUNTINGDataSet.Balances.FirstOrDefault(b => b.StorageID == writeOffStorageId && b.NomenclatureNumber == nomenNumber);
+
+                        if (balDest != null)
+                        {
+                            // Если остаток уже есть – увеличиваем количество
+                            balDest.Quantity += qty;
+                        }
+                        else
+                        {
+                            // Иначе создаём новый остаток на складе 12
+                            int newBalId = tOOLACCOUNTINGDataSet.Balances.Count == 0 ? 1 : tOOLACCOUNTINGDataSet.Balances.Max(r => r.BalanceID) + 1;
+                            var newBal = tOOLACCOUNTINGDataSet.Balances.NewBalancesRow();
+                            newBal.BalanceID = newBalId;
+                            newBal.NomenclatureNumber = nomenNumber;
+                            newBal.StorageID = writeOffStorageId;
+                            newBal.BalanceDate = DateTime.Now;
+                            newBal.BatchNumber = string.IsNullOrWhiteSpace(BatchNumber.Text) ? "-" : BatchNumber.Text.Trim();
+                            newBal.Price = price;
+                            newBal.Quantity = qty;
+                            // Столбец Account может отсутствовать, поэтому заполняем, только если он существует
+                            if (newBal.Table.Columns.Contains("Account"))
+                            {
+                                newBal["Account"] = "Списание";
+                            }
+
+                            tOOLACCOUNTINGDataSet.Balances.AddBalancesRow(newBal);
+                        }
+
+                        // Сохраняем изменения остатков
+                        new BalancesTableAdapter().Update(tOOLACCOUNTINGDataSet.Balances);
+                    }
                 }
-                else if (movementName == "Перемещение")
+                else if (movementName == "Перемещение" && posted)
                 {
                     // Списание со склада-отправителя
                     var balFrom = tOOLACCOUNTINGDataSet.Balances.FirstOrDefault(b => b.StorageID == fromId && b.NomenclatureNumber == nomenNumber);
@@ -611,6 +636,45 @@ namespace Система_учёта_и_приобретения_инструме
                 SourceDocumentType.Text = SourceDocumentType.Items.Count > 0 ? SourceDocumentType.Items[0].ToString() : string.Empty;
             }
         }
+
+        // ======== ПУБЛИЧНЫЕ МЕТОДЫ ДЛЯ ВНЕШНЕЙ ИНИЦИАЛИЗАЦИИ ========
+        public void InitializeWriteOffFromDefective(int defectiveId)
+        {
+            NonAdd.Checked = true; // режим «Списание»
+            Check_MoveType();
+            SourceDocumentType.Text = "Дефектная ведомость";
+            SourceDocument.Text = defectiveId.ToString();
+            ApplyDefectiveData();
+        }
+
+        /// <summary>
+        /// Устанавливает тип движения: "Приход", "Перемещение", "Списание".
+        /// </summary>
+        public void SelectType(string type)
+        {
+            switch (type)
+            {
+                case "Приход":
+                    Add.Checked = true;
+                    break;
+                case "Перемещение":
+                    Moving.Checked = true;
+                    break;
+                case "Списание":
+                    NonAdd.Checked = true;
+                    break;
+            }
+            Check_MoveType();
+        }
+
+        public void InitializeFromRequest(int requestId, string movementKind)
+        {
+            // movementKind: "Перемещение" или "Приход"
+            SelectType(movementKind);
+            SourceDocumentType.Text = "Заявка на получение";
+            SourceDocument.Text = requestId.ToString();
+        }
+        // ======== КОНЕЦ БЛОКА ПУБЛИЧНЫХ МЕТОДОВ ========
     }
 }
 

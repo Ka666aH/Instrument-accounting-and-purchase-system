@@ -175,7 +175,7 @@
             this.BatchNumber.Location = new System.Drawing.Point(184, 246);
             this.BatchNumber.Name = "BatchNumber";
             this.BatchNumber.ReadOnly = true;
-            this.BatchNumber.Size = new System.Drawing.Size(119, 26);
+            this.BatchNumber.Size = new System.Drawing.Size(388, 26);
             this.BatchNumber.TabIndex = 16;
             // 
             // label9
@@ -190,6 +190,7 @@
             this.label9.Size = new System.Drawing.Size(113, 20);
             this.label9.TabIndex = 8;
             this.label9.Text = "Учетная цена";
+            this.label9.Visible = false;
             // 
             // Price
             // 
@@ -199,6 +200,7 @@
             this.Price.ReadOnly = true;
             this.Price.Size = new System.Drawing.Size(128, 26);
             this.Price.TabIndex = 16;
+            this.Price.Visible = false;
             // 
             // label10
             // 
@@ -218,7 +220,7 @@
             this.Quantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Quantity.Location = new System.Drawing.Point(184, 278);
             this.Quantity.Name = "Quantity";
-            this.Quantity.Size = new System.Drawing.Size(119, 26);
+            this.Quantity.Size = new System.Drawing.Size(388, 26);
             this.Quantity.TabIndex = 16;
             // 
             // label11
@@ -233,6 +235,7 @@
             this.label11.Size = new System.Drawing.Size(58, 20);
             this.label11.TabIndex = 8;
             this.label11.Text = "Сумма";
+            this.label11.Visible = false;
             // 
             // Total
             // 
@@ -242,6 +245,7 @@
             this.Total.ReadOnly = true;
             this.Total.Size = new System.Drawing.Size(128, 26);
             this.Total.TabIndex = 16;
+            this.Total.Visible = false;
             // 
             // isWriteOff
             // 
@@ -503,8 +507,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(900, 800);
-            this.MinimumSize = new System.Drawing.Size(600, 430);
+            this.MaximumSize = new System.Drawing.Size(600, 490);
+            this.MinimumSize = new System.Drawing.Size(600, 490);
             this.Name = "AddMoving";
             this.Text = "Создание движения";
             this.Load += new System.EventHandler(this.AddMoving_Load);
