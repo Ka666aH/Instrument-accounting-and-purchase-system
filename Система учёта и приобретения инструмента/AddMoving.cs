@@ -65,8 +65,8 @@ namespace Система_учёта_и_приобретения_инструме
 
             // обработчик выбора типа документа-источника
             SourceDocumentType.SelectedIndexChanged += SourceDocumentType_SelectedIndexChanged;
+            SourceDocument.SelectionChangeCommitted += SourceDocument_SelectionChanged;
             SourceDocument.Leave += SourceDocument_Leave;
-            SourceDocument.TextChanged += SourceDocument_TextChanged;
         }
 
         private void ConfigureStorageAutoComplete(TextBox tb)
@@ -153,29 +153,58 @@ namespace Система_учёта_и_приобретения_инструме
             Nomenclature.Text = txt;
 
             int storageId;
-            if (!int.TryParse(StorageFrom.Text.Trim(), out storageId)) return;
+            bool hasStorage = int.TryParse(StorageFrom.Text.Trim(), out storageId);
 
-            int available = tOOLACCOUNTINGDataSet.Balances
-                .Where(b => b.StorageID == storageId && b.NomenclatureNumber == txt)
-                .Sum(b => b.Quantity);
-
-            qtyTip.SetToolTip(Quantity, $"Доступно на складе: {available}");
-
-            // Автоподстановка партии (последняя партия по дате баланса)
-            var lastBalance = tOOLACCOUNTINGDataSet.Balances
-                .Where(b => b.StorageID == storageId && b.NomenclatureNumber == txt)
-                .OrderByDescending(b => b.BalanceDate)
-                .FirstOrDefault();
-
-            if (lastBalance != null)
+            if (hasStorage)
             {
-                BatchNumber.Text = lastBalance.BatchNumber;
+                int available = tOOLACCOUNTINGDataSet.Balances
+                    .Where(b => b.StorageID == storageId && b.NomenclatureNumber == txt)
+                    .Sum(b => b.Quantity);
+
+                qtyTip.SetToolTip(Quantity, $"Доступно на складе: {available}");
+
+                // Автоподстановка партии (последняя партия по дате баланса)
+                var lastBalance = tOOLACCOUNTINGDataSet.Balances
+                    .Where(b => b.StorageID == storageId && b.NomenclatureNumber == txt)
+                    .OrderByDescending(b => b.BalanceDate)
+                    .FirstOrDefault();
+
+                if (lastBalance != null)
+                {
+                    BatchNumber.Text = lastBalance.BatchNumber;
+                }
             }
 
-            // Если это приход (Add) и партия ещё не указана – формируем автоматически
-            if (Add.Checked && string.IsNullOrWhiteSpace(BatchNumber.Text))
+            // Если это приход (Add):
+            if (Add.Checked)
             {
-                BatchNumber.Text = $"B{DateTime.Now:yyMMddHHmmss}";
+                // Генерируем партию, если не указана
+                if (string.IsNullOrWhiteSpace(BatchNumber.Text))
+                {
+                    BatchNumber.Text = GenerateBatchNumber();
+                }
+            }
+
+            // Если основание – товарная накладная, подтягиваем остаток и генерируем правильную партию
+            if (SourceDocumentType.Text == "Товарная накладная")
+            {
+                string src = SourceDocument.Text;
+                int dashSrc = src.IndexOf('-');
+                if (dashSrc > -1) src = src.Substring(0, dashSrc).Trim();
+                if (int.TryParse(src, out int invId))
+                {
+                    FillFromInvoice(invId, Nomenclature.Text);
+                }
+            }
+            else if (SourceDocumentType.Text == "Заявка на получение")
+            {
+                string src = SourceDocument.Text;
+                int dashSrc = src.IndexOf('-');
+                if (dashSrc > -1) src = src.Substring(0, dashSrc).Trim();
+                if (int.TryParse(src, out int reqId))
+                {
+                    FillFromRequest(reqId, Nomenclature.Text);
+                }
             }
         }
 
@@ -186,6 +215,9 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Check_MoveType()
         {
+            // При смене вида движения обнуляем динамические поля
+            ClearAllDynamicFields();
+
             if (Add.Checked)
             {
                 ToggleNomenAutocomplete(false);
@@ -306,19 +338,40 @@ namespace Система_учёта_и_приобретения_инструме
 
         private bool TrySave()
         {
-            // Валидация обязательных полей
-            if (string.IsNullOrWhiteSpace(StorageFrom.Text) || string.IsNullOrWhiteSpace(StorageTo.Text) ||
-                string.IsNullOrWhiteSpace(Nomenclature.Text) || string.IsNullOrWhiteSpace(Quantity.Text))
+            // ======== Проверка обязательных полей ========
+            if (Add.Checked)
             {
-                NotificationService.Notify("Предупреждение", "Заполните все обязательные поля.", ToolTipIcon.Warning);
-                return false;
+                if (string.IsNullOrWhiteSpace(StorageTo.Text) || string.IsNullOrWhiteSpace(Nomenclature.Text) || string.IsNullOrWhiteSpace(Quantity.Text))
+                {
+                    NotificationService.Notify("Предупреждение", "Для прихода укажите склад-получатель, номенклатуру и количество.", ToolTipIcon.Warning);
+                    return false;
+                }
+            }
+            else if (Moving.Checked)
+            {
+                if (string.IsNullOrWhiteSpace(StorageFrom.Text) || string.IsNullOrWhiteSpace(StorageTo.Text) || string.IsNullOrWhiteSpace(Nomenclature.Text) || string.IsNullOrWhiteSpace(Quantity.Text))
+                {
+                    NotificationService.Notify("Предупреждение", "Для перемещения заполните оба склада, номенклатуру и количество.", ToolTipIcon.Warning);
+                    return false;
+                }
+            }
+            else if (NonAdd.Checked)
+            {
+                if (string.IsNullOrWhiteSpace(StorageFrom.Text) || string.IsNullOrWhiteSpace(Nomenclature.Text) || string.IsNullOrWhiteSpace(Quantity.Text))
+                {
+                    NotificationService.Notify("Предупреждение", "Для расхода заполните склад-отправитель, номенклатуру и количество.", ToolTipIcon.Warning);
+                    return false;
+                }
             }
 
-            int fromId, toId, qty;
-            if (!int.TryParse(StorageFrom.Text.Trim(), out fromId))
+            int fromId = 0, toId, qty;
+            if (Moving.Checked || NonAdd.Checked)
             {
-                NotificationService.Notify("Ошибка", "Некорректный склад-отправитель.", ToolTipIcon.Error);
-                return false;
+                if (!int.TryParse(StorageFrom.Text.Trim(), out fromId))
+                {
+                    NotificationService.Notify("Ошибка", "Некорректный склад-отправитель.", ToolTipIcon.Error);
+                    return false;
+                }
             }
             if (!int.TryParse(StorageTo.Text.Trim(), out toId))
             {
@@ -332,7 +385,18 @@ namespace Система_учёта_и_приобретения_инструме
             }
 
             string nomenNumber = Nomenclature.Text.Split('-')[0].Trim();
-            string movementName = Moving.Checked ? "Перемещение" : "Списание";
+            string movementName;
+            if (Moving.Checked)
+            {
+                movementName = "Перемещение";   
+            } else
+            {
+                if (NonAdd.Checked)
+                    movementName = "Списание";
+                else
+                    movementName = "Приход";
+            }
+       
 
             // Флаг «Проведён»
             bool posted = isWriteOff.Checked;
@@ -376,7 +440,14 @@ namespace Система_учёта_и_приобретения_инструме
                 newRow.MovementID = newId;
                 newRow.MovementDate = DateTime.Now;
                 newRow.ToStorageID = toId;
-                newRow.FromStorageID = fromId;
+                if (Add.Checked)
+                {
+                    newRow.SetFromStorageIDNull(); // для прихода склада-отправителя нет
+                }
+                else
+                {
+                    newRow.FromStorageID = fromId;
+                }
                 newRow.MovementTypeID = movementName; // записываем название, а не код
                 newRow.NomenclatureNumber = nomenNumber;
                 newRow.BatchNumber = string.IsNullOrWhiteSpace(BatchNumber.Text) ? "-" : BatchNumber.Text.Trim();
@@ -512,6 +583,36 @@ namespace Система_учёта_и_приобретения_инструме
 
                     new BalancesTableAdapter().Update(tOOLACCOUNTINGDataSet.Balances);
                 }
+                else if (movementName == "Приход" && posted)
+                {
+                    // Увеличиваем остаток на складе-получателе
+                    var balTo = tOOLACCOUNTINGDataSet.Balances.FirstOrDefault(b => b.StorageID == toId && b.NomenclatureNumber == nomenNumber);
+
+                    if (balTo != null)
+                    {
+                        balTo.Quantity += qty;
+                    }
+                    else
+                    {
+                        int newBalId = tOOLACCOUNTINGDataSet.Balances.Count == 0 ? 1 : tOOLACCOUNTINGDataSet.Balances.Max(r => r.BalanceID) + 1;
+                        var newBal = tOOLACCOUNTINGDataSet.Balances.NewBalancesRow();
+                        newBal.BalanceID = newBalId;
+                        newBal.NomenclatureNumber = nomenNumber;
+                        newBal.StorageID = toId;
+                        newBal.BalanceDate = DateTime.Now;
+                        newBal.BatchNumber = string.IsNullOrWhiteSpace(BatchNumber.Text) ? "-" : BatchNumber.Text.Trim();
+                        newBal.Price = price;
+                        newBal.Quantity = qty;
+                        if (newBal.Table.Columns.Contains("Account"))
+                        {
+                            newBal["Account"] = "Приход";
+                        }
+
+                        tOOLACCOUNTINGDataSet.Balances.AddBalancesRow(newBal);
+                    }
+
+                    new BalancesTableAdapter().Update(tOOLACCOUNTINGDataSet.Balances);
+                }
 
                 tOOLACCOUNTINGDataSet.ToolMovements.AddToolMovementsRow(newRow);
                 movementsAdapter.Update(tOOLACCOUNTINGDataSet.ToolMovements);
@@ -544,52 +645,188 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void SourceDocumentType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // При смене типа документа-основания очищаем выбранную номенклатуру и связанные поля
+            ClearNomenFields();
+
             if (SourceDocumentType.Text == "Дефектная ведомость")
             {
                 BuildDefectiveSourceList();
-                SourceDocument.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                SourceDocument.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                SourceDocument.SelectedIndex = -1;
+            }
+            else if (SourceDocumentType.Text == "Товарная накладная")
+            {
+                BuildInvoiceSourceList();
+                SourceDocument.SelectedIndex = -1;
+            }
+            else if (SourceDocumentType.Text == "Заявка на получение")
+            {
+                BuildRequestSourceList();
+                SourceDocument.SelectedIndex = -1;
+            }
+            else if (SourceDocumentType.Text == "Акт о перемещении")
+            {
+                BuildActSourceList();
+                SourceDocument.SelectedIndex = -1;
             }
             else
             {
-                SourceDocument.AutoCompleteMode = AutoCompleteMode.None;
-                SourceDocument.AutoCompleteCustomSource = null;
+                SourceDocument.Items.Clear();
+                SourceDocument.Text = string.Empty;
             }
         }
 
         private void BuildDefectiveSourceList()
         {
-
             // Обновляем движений
             DefectiveListsTableAdapter dfList = new DefectiveListsTableAdapter();
             dfList.Fill(tOOLACCOUNTINGDataSet.DefectiveLists);
             movementsAdapter.Fill(tOOLACCOUNTINGDataSet.ToolMovements);
-            AutoCompleteStringCollection src = new AutoCompleteStringCollection();
+            SourceDocument.Items.Clear();
             var dl = tOOLACCOUNTINGDataSet.DefectiveLists;
             
+            var workshopAdapter = new TOOLACCOUNTINGDataSetTableAdapters.WorkshopsTableAdapter();
+            workshopAdapter.Fill(tOOLACCOUNTINGDataSet.Workshops);
+
             foreach (var row in dl)
             {
                 bool already = tOOLACCOUNTINGDataSet.ToolMovements.Any(m => m.SourceDocumentType == "Дефектная ведомость" && m.SourceDocumentID == row.DefectiveListID);
-                if (!already)
-                {
-                    var fullName = tOOLACCOUNTINGDataSet.NomenclatureView.FirstOrDefault(n => n.NomenclatureNumber == row.NomenclatureNumber)?.FullName ?? string.Empty;
-                    src.Add($"{row.DefectiveListID} - {row.NomenclatureNumber} - {fullName} - {row.Quantity}");
-                }
+                if (already) continue;
+
+                var fullName = tOOLACCOUNTINGDataSet.NomenclatureView.FirstOrDefault(n => n.NomenclatureNumber == row.NomenclatureNumber)?.FullName ?? string.Empty;
+                var workshopName = tOOLACCOUNTINGDataSet.Workshops.FirstOrDefault(w => w.WorkshopID == row.WorkshopID)?.Name ?? string.Empty;
+                SourceDocument.Items.Add($"{row.DefectiveListID} - {workshopName} - {row.NomenclatureNumber} - {fullName} - {row.Quantity}");
             }
-            SourceDocument.AutoCompleteCustomSource = src;
         }
 
-        private void SourceDocument_Leave(object sender, EventArgs e)
+        private void BuildInvoiceSourceList()
         {
-            ApplyDefectiveData();
+            // загрузим содержание для дальнейших вычислений
+            var invAdapter = new TOOLACCOUNTINGDataSetTableAdapters.InvoicesInjTableAdapter();
+            invAdapter.Fill(tOOLACCOUNTINGDataSet.InvoicesInj);
+
+            var invContAdapter = new TOOLACCOUNTINGDataSetTableAdapters.InvoicesContentInjTableAdapter();
+            invContAdapter.Fill(tOOLACCOUNTINGDataSet.InvoicesContentInj);
+
+            SourceDocument.Items.Clear();
+
+            movementsAdapter.Fill(tOOLACCOUNTINGDataSet.ToolMovements);
+
+            foreach (var inv in tOOLACCOUNTINGDataSet.InvoicesInj)
+            {
+                var contents = tOOLACCOUNTINGDataSet.InvoicesContentInj.Where(c => c.InvoiceID == inv.InvoiceID).ToList();
+
+                bool allDone = true;
+                foreach (var c in contents)
+                {
+                    int moved = tOOLACCOUNTINGDataSet.ToolMovements.Where(m => m.SourceDocumentType == "Товарная накладная" && m.SourceDocumentID == inv.InvoiceID && m.NomenclatureNumber == c.NomenclatureNumber).Sum(m => m.Quantity);
+                    if (moved < c.Quantity)
+                    {
+                        allDone = false;
+                        break;
+                    }
+                }
+
+                if (allDone) continue; // всю номенклатуру уже обработали
+
+                SourceDocument.Items.Add($"{inv.InvoiceID} - {inv.InvoiceDate:dd.MM.yyyy}");
+            }
         }
 
-        private void SourceDocument_TextChanged(object sender, EventArgs e)
+        private void BuildRequestSourceList()
         {
-            if (_updatingSourceDoc) return;
-            if (SourceDocumentType.Text != "Дефектная ведомость") return;
-            if (!SourceDocument.Text.Contains("-")) return; // ждём выбор из автокомплита
-            ApplyDefectiveData();
+            // Загрузим заголовки и содержание заявок
+            var reqAdapter = new TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsInjTableAdapter();
+            reqAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
+
+            var reqContAdapter = new TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentInjTableAdapter();
+            reqContAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj);
+
+            SourceDocument.Items.Clear();
+
+            movementsAdapter.Fill(tOOLACCOUNTINGDataSet.ToolMovements);
+
+            // подгружаем инвойсы
+            var invContAdapter = new TOOLACCOUNTINGDataSetTableAdapters.InvoicesContentInjTableAdapter();
+            invContAdapter.Fill(tOOLACCOUNTINGDataSet.InvoicesContentInj);
+
+            foreach (var req in tOOLACCOUNTINGDataSet.ReceivingRequestsInj)
+            {
+                // учитываем только статусы «Исполнена полностью» и «Исполнена частично»
+                if (!(req.Status.Contains("Исполнена"))) continue;
+
+                var contents = tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj.Where(c => c.ReceivingRequestID == req.ReceivingRequestID).ToList();
+
+                // Проверяем, что по всем связанным товарным накладным номенклатура перемещена на склад 0
+                var invRows = tOOLACCOUNTINGDataSet.InvoicesContentInj.Where(i => i.ReceivingRequestID == req.ReceivingRequestID).ToList();
+
+                bool allInvMoved = true;
+                foreach (var inv in invRows)
+                {
+                    int movedToCis = tOOLACCOUNTINGDataSet.ToolMovements.Where(m => m.SourceDocumentType == "Товарная накладная" && m.SourceDocumentID == inv.InvoiceID && m.NomenclatureNumber == inv.NomenclatureNumber && m.ToStorageID == 0).Sum(m => m.Quantity);
+                    if (movedToCis < inv.Quantity)
+                    {
+                        allInvMoved = false; break;
+                    }
+                }
+
+                if (!allInvMoved) continue;
+
+                bool allDone = true;
+                foreach (var c in contents)
+                {
+                    int moved = tOOLACCOUNTINGDataSet.ToolMovements.Where(m => m.SourceDocumentType == "Заявка на получение" && m.SourceDocumentID == req.ReceivingRequestID && m.NomenclatureNumber == c.NomenclatureNumber).Sum(m => m.Quantity);
+                    if (moved < c.Quantity)
+                    {
+                        allDone = false;
+                        break;
+                    }
+                }
+
+                if (allDone) continue; // всё уже переместили
+
+                SourceDocument.Items.Add($"{req.ReceivingRequestID} - {req.ReceivingRequestDate:dd.MM.yyyy}");
+            }
+        }
+
+        private void BuildActSourceList()
+        {
+            var prcAdapter = new TOOLACCOUNTINGDataSetTableAdapters.PurchaseRequestsContentInjTableAdapter();
+            prcAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
+
+            var reqAdapter = new TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsInjTableAdapter();
+            reqAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
+
+            SourceDocument.Items.Clear();
+            movementsAdapter.Fill(tOOLACCOUNTINGDataSet.ToolMovements);
+
+            // выбираем заявки, у которых есть пункты с IsPurchase = false
+            var reqIds = tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj.Where(p => !p.IsPurchase).Select(p => p.ReceivingRequestID).Distinct();
+
+            foreach (var reqId in reqIds)
+            {
+                var reqRow = tOOLACCOUNTINGDataSet.ReceivingRequestsInj.FirstOrDefault(r => r.ReceivingRequestID == reqId);
+                if (reqRow == null) continue;
+
+                // Проверяем, есть ли ещё что перемещать
+                var prcRows = tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj.Where(p => p.ReceivingRequestID == reqId && !p.IsPurchase).ToList();
+
+                bool allMoved = true;
+                foreach (var pr in prcRows)
+                {
+                    var rrc = tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj.FirstOrDefault(c => c.ReceivingContentID == pr.ReceivingContentID);
+                    if (rrc == null) continue;
+
+                    int moved = tOOLACCOUNTINGDataSet.ToolMovements.Where(m => m.SourceDocumentType == "Акт о перемещении" && m.SourceDocumentID == reqId && m.NomenclatureNumber == rrc.NomenclatureNumber).Sum(m => m.Quantity);
+                    if (moved < rrc.Quantity)
+                    {
+                        allMoved = false; break;
+                    }
+                }
+
+                if (allMoved) continue;
+
+                SourceDocument.Items.Add($"{reqRow.ReceivingRequestID} - {reqRow.ReceivingRequestDate:dd.MM.yyyy}");
+            }
         }
 
         private void ApplyDefectiveData()
@@ -601,15 +838,213 @@ namespace Система_учёта_и_приобретения_инструме
             var defRow = tOOLACCOUNTINGDataSet.DefectiveLists.FirstOrDefault(d => d.DefectiveListID == defId);
             if (defRow == null) return;
 
-            _updatingSourceDoc = true;
-            SourceDocument.Text = defId.ToString();
-            _updatingSourceDoc = false;
-
             StorageFrom.Text = tOOLACCOUNTINGDataSet.Storages.FirstOrDefault(s => s.WorkshopID == defRow.WorkshopID)?.StorageID.ToString() ?? string.Empty;
             Nomenclature.Text = defRow.NomenclatureNumber;
             BatchNumber.Text = defRow.BatchNumber;
             Price.Text = defRow.Price.ToString("0.##");
             Quantity.Text = defRow.Quantity.ToString();
+
+            // склад-получатель по сценарию: ремонт → 13, списание → 12
+            if (defRow.IsWriteOff)
+                StorageTo.Text = "12"; // списание
+            else
+                StorageTo.Text = "13"; // ремонт
+        }
+
+        private void ApplyInvoiceData()
+        {
+            string txt = SourceDocument.Text;
+            int dash = txt.IndexOf('-');
+            if (dash > -1) txt = txt.Substring(0, dash).Trim();
+            if (!int.TryParse(txt, out int invId)) return;
+
+            // Загружаем содержание накладной
+            var invContAdapter = new TOOLACCOUNTINGDataSetTableAdapters.InvoicesContentInjTableAdapter();
+            invContAdapter.Fill(tOOLACCOUNTINGDataSet.InvoicesContentInj);
+
+            // построим список номеклатуры, которая ещё не приходовала по этой накладной
+            var rowsGrouped = tOOLACCOUNTINGDataSet.InvoicesContentInj
+                .Where(r => r.InvoiceID == invId)
+                .GroupBy(r => r.NomenclatureNumber)
+                .Select(g => new { Nomen = g.Key, Qty = g.Sum(x => x.Quantity) })
+                .ToList();
+
+            // обновим движения
+            movementsAdapter.Fill(tOOLACCOUNTINGDataSet.ToolMovements);
+
+            nomenSource.Clear();
+            foreach (var gr in rowsGrouped)
+            {
+                bool already = tOOLACCOUNTINGDataSet.ToolMovements.Any(m => m.SourceDocumentType == "Товарная накладная" && m.SourceDocumentID == invId && m.NomenclatureNumber == gr.Nomen);
+                if (already) continue;
+                var fullName = tOOLACCOUNTINGDataSet.NomenclatureView.FirstOrDefault(n => n.NomenclatureNumber == gr.Nomen)?.FullName ?? string.Empty;
+                nomenSource.Add($"{gr.Nomen} - {fullName} - {gr.Qty}");
+            }
+
+            Nomenclature.AutoCompleteCustomSource = nomenSource;
+            Nomenclature.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            Nomenclature.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            // если осталась только одна позиция – сразу заполняем поля
+            if (nomenSource.Count == 1)
+            {
+                Nomenclature.Text = nomenSource[0].Split('-')[0].Trim();
+                FillFromInvoice(invId, Nomenclature.Text);
+            }
+        }
+
+        private void ApplyRequestData()
+        {
+            string txt = SourceDocument.Text;
+            int dash = txt.IndexOf('-');
+            if (dash > -1) txt = txt.Substring(0, dash).Trim();
+            if (!int.TryParse(txt, out int reqId)) return;
+
+            // Загрузка таблиц
+            var reqContAdapter = new TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentInjTableAdapter();
+            reqContAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj);
+
+            var reqAdapter = new TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsInjTableAdapter();
+            reqAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
+
+            var storAdapter = new TOOLACCOUNTINGDataSetTableAdapters.StoragesTableAdapter();
+            storAdapter.Fill(tOOLACCOUNTINGDataSet.Storages);
+
+            // Определяем склад-получатель по цеху заявки
+            var reqRow = tOOLACCOUNTINGDataSet.ReceivingRequestsInj.FirstOrDefault(r => r.ReceivingRequestID == reqId);
+            if (reqRow != null)
+            {
+                int workshopId = 0;
+                if (!reqRow.IsWorkshopNumberNameNull())
+                {
+                    string wn = reqRow.WorkshopNumberName;
+                    int d = wn.IndexOf('-');
+                    if (d > -1) wn = wn.Substring(0, d).Trim();
+                    int.TryParse(wn, out workshopId);
+                }
+
+                if (workshopId > 0)
+                {
+                    var storageRow = tOOLACCOUNTINGDataSet.Storages.FirstOrDefault(s => s.WorkshopID == workshopId);
+                    if (storageRow != null)
+                    {
+                        StorageTo.Text = storageRow.StorageID.ToString();
+                    }
+                }
+            }
+
+            // Обновим движения
+            movementsAdapter.Fill(tOOLACCOUNTINGDataSet.ToolMovements);
+
+            nomenSource.Clear();
+            var rows = tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj.Where(r => r.ReceivingRequestID == reqId).ToList();
+
+            foreach (var r in rows)
+            {
+                int moved = tOOLACCOUNTINGDataSet.ToolMovements.Where(m => m.SourceDocumentType == "Заявка на получение" && m.SourceDocumentID == reqId && m.NomenclatureNumber == r.NomenclatureNumber).Sum(m => m.Quantity);
+                int remaining = r.Quantity - moved;
+                if (remaining <= 0) continue;
+                var fullName = r.FullName ?? string.Empty;
+                nomenSource.Add($"{r.NomenclatureNumber} - {fullName} - {remaining}");
+            }
+
+            Nomenclature.AutoCompleteCustomSource = nomenSource;
+            Nomenclature.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            Nomenclature.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            if (nomenSource.Count == 1)
+            {
+                Nomenclature.Text = nomenSource[0].Split('-')[0].Trim();
+                FillFromRequest(reqId, Nomenclature.Text);
+            }
+        }
+
+        private void ApplyActData()
+        {
+            string txt = SourceDocument.Text;
+            int dash = txt.IndexOf('-');
+            if (dash > -1) txt = txt.Substring(0, dash).Trim();
+            if (!int.TryParse(txt, out int reqId)) return;
+
+            var prcAdapter = new TOOLACCOUNTINGDataSetTableAdapters.PurchaseRequestsContentInjTableAdapter();
+            prcAdapter.Fill(tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj);
+
+            var reqContAdapter = new TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentInjTableAdapter();
+            reqContAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj);
+
+            var reqAdapter = new TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsInjTableAdapter();
+            reqAdapter.Fill(tOOLACCOUNTINGDataSet.ReceivingRequestsInj);
+
+            var storAdapter = new TOOLACCOUNTINGDataSetTableAdapters.StoragesTableAdapter();
+            storAdapter.Fill(tOOLACCOUNTINGDataSet.Storages);
+
+            // склад-получатель определяется как склад цеха заявки
+            var reqRow = tOOLACCOUNTINGDataSet.ReceivingRequestsInj.FirstOrDefault(r => r.ReceivingRequestID == reqId);
+            if (reqRow != null && !reqRow.IsWorkshopNumberNameNull())
+            {
+                string wn = reqRow.WorkshopNumberName;
+                int d = wn.IndexOf('-');
+                if (d > -1) wn = wn.Substring(0, d).Trim();
+                if (int.TryParse(wn, out int wid))
+                {
+                    var stor = tOOLACCOUNTINGDataSet.Storages.FirstOrDefault(s => s.WorkshopID == wid);
+                    if (stor != null) StorageTo.Text = stor.StorageID.ToString();
+                }
+            }
+
+            movementsAdapter.Fill(tOOLACCOUNTINGDataSet.ToolMovements);
+
+            nomenSource.Clear();
+
+            var prcRows = tOOLACCOUNTINGDataSet.PurchaseRequestsContentInj.Where(p => p.ReceivingRequestID == reqId && !p.IsPurchase).ToList();
+
+            foreach (var pr in prcRows)
+            {
+                var rrc = tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj.FirstOrDefault(c => c.ReceivingContentID == pr.ReceivingContentID);
+                if (rrc == null) continue;
+
+                int moved = tOOLACCOUNTINGDataSet.ToolMovements.Where(m => m.SourceDocumentType == "Акт о перемещении" && m.SourceDocumentID == reqId && m.NomenclatureNumber == rrc.NomenclatureNumber).Sum(m => m.Quantity);
+                int remaining = rrc.Quantity - moved;
+                if (remaining <= 0) continue;
+
+                nomenSource.Add($"{rrc.NomenclatureNumber} - {rrc.FullName} - {remaining}");
+            }
+
+            Nomenclature.AutoCompleteCustomSource = nomenSource;
+            Nomenclature.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            Nomenclature.AutoCompleteSource = AutoCompleteSource.CustomSource;
+        }
+
+        private void SourceDocument_SelectionChanged(object sender, EventArgs e)
+        {
+            // При выборе другого конкретного документа сначала очищаем связанные поля
+            ClearNomenFields();
+
+            if (_updatingSourceDoc) return;
+            if (SourceDocumentType.Text == "Дефектная ведомость")
+            {
+                ApplyDefectiveData();
+            }
+            else if (SourceDocumentType.Text == "Товарная накладная")
+            {
+                ApplyInvoiceData();
+            }
+            else if (SourceDocumentType.Text == "Заявка на получение")
+            {
+                ApplyRequestData();
+            }
+            else if (SourceDocumentType.Text == "Акт о перемещении")
+            {
+                ApplyActData();
+            }
+        }
+
+        private void SourceDocument_Leave(object sender, EventArgs e)
+        {
+            if (SourceDocumentType.Text == "Дефектная ведомость") ApplyDefectiveData();
+            else if (SourceDocumentType.Text == "Товарная накладная") ApplyInvoiceData();
+            else if (SourceDocumentType.Text == "Заявка на получение") ApplyRequestData();
+            else if (SourceDocumentType.Text == "Акт о перемещении") ApplyActData();
         }
 
         private void RefreshSourceDocumentType()
@@ -624,6 +1059,7 @@ namespace Система_учёта_и_приобретения_инструме
             {
                 SourceDocumentType.Items.Add("");
                 SourceDocumentType.Items.Add("Заявка на получение");
+                SourceDocumentType.Items.Add("Акт о перемещении");
             }
             else if (NonAdd.Checked)
             {
@@ -674,7 +1110,104 @@ namespace Система_учёта_и_приобретения_инструме
             SourceDocumentType.Text = "Заявка на получение";
             SourceDocument.Text = requestId.ToString();
         }
+
+        private void MoveFormClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         // ======== КОНЕЦ БЛОКА ПУБЛИЧНЫХ МЕТОДОВ ========
+
+        // ======== ГЕНЕРАЦИЯ ПАРТИИ ========
+        private string GenerateBatchNumber()
+        {
+            string datePart = DateTime.Today.ToString("yyyyMMdd");
+            // найти максимальный порядковый номер среди существующих партий с такой датой
+            var existing = tOOLACCOUNTINGDataSet.Balances
+                .Cast<TOOLACCOUNTINGDataSet.BalancesRow>()
+                .Where(b => !string.IsNullOrEmpty(b.BatchNumber) && b.BatchNumber.StartsWith(datePart))
+                .Select(b =>
+                {
+                    string[] parts = b.BatchNumber.Split('-');
+                    if (parts.Length == 2 && int.TryParse(parts[1], out int num)) return num; else return 0;
+                })
+                .ToList();
+            int next = existing.Count == 0 ? 1 : existing.Max() + 1;
+            return $"{datePart}-{next:000}";
+        }
+
+        private void FillFromInvoice(int invoiceId, string nomenNumber)
+        {
+            var contRow = tOOLACCOUNTINGDataSet.InvoicesContentInj.FirstOrDefault(c => c.InvoiceID == invoiceId && c.NomenclatureNumber == nomenNumber);
+            if (contRow == null) return;
+            int total = tOOLACCOUNTINGDataSet.InvoicesContentInj
+                .Where(c => c.InvoiceID == invoiceId && c.NomenclatureNumber == nomenNumber)
+                .Sum(c => c.Quantity);
+
+            if (total == 0) return;
+            int already = tOOLACCOUNTINGDataSet.ToolMovements.Where(m => m.SourceDocumentType == "Товарная накладная" && m.SourceDocumentID == invoiceId && m.NomenclatureNumber == nomenNumber).Sum(m => m.Quantity);
+            int remaining = total - already;
+            if (remaining < 0) remaining = 0;
+            Quantity.Text = remaining.ToString();
+            if (string.IsNullOrWhiteSpace(BatchNumber.Text)) BatchNumber.Text = GenerateBatchNumber();
+        }
+
+        private void FillFromRequest(int requestId, string nomenNumber)
+        {
+            var contRow = tOOLACCOUNTINGDataSet.ReceivingRequestsContentInj.FirstOrDefault(c => c.ReceivingRequestID == requestId && c.NomenclatureNumber == nomenNumber);
+            if (contRow == null) return;
+
+            int already = tOOLACCOUNTINGDataSet.ToolMovements.Where(m => m.SourceDocumentType == "Заявка на получение" && m.SourceDocumentID == requestId && m.NomenclatureNumber == nomenNumber).Sum(m => m.Quantity);
+            int remaining = contRow.Quantity - already;
+            if (remaining < 0) remaining = 0;
+
+            Quantity.Text = remaining.ToString();
+
+            // Пытаемся подобрать существующую партию из остатков (склад зависит от вида движения)
+            int searchStorageId = -1;
+            if (Moving.Checked && int.TryParse(StorageFrom.Text.Trim(), out int fid)) searchStorageId = fid;
+            else if (!Moving.Checked && int.TryParse(StorageTo.Text.Trim(), out int tid)) searchStorageId = tid;
+
+            if (searchStorageId > 0)
+            {
+                var bal = tOOLACCOUNTINGDataSet.Balances
+                    .Where(b => b.StorageID == searchStorageId && b.NomenclatureNumber == nomenNumber && b.Quantity > 0)
+                    .OrderByDescending(b => b.BalanceDate)
+                    .FirstOrDefault();
+
+                if (bal != null)
+                {
+                    BatchNumber.Text = bal.BatchNumber;
+                }
+            }
+
+            // Если партия всё ещё не определена – генерируем новую
+            if (string.IsNullOrWhiteSpace(BatchNumber.Text))
+            {
+                BatchNumber.Text = GenerateBatchNumber();
+            }
+        }
+
+        /// <summary>
+        /// Очищает поля, связанные с выбранной номенклатурой.
+        /// </summary>
+        private void ClearNomenFields()
+        {
+            Nomenclature.Text = string.Empty;
+            BatchNumber.Text = string.Empty;
+            Quantity.Text = string.Empty;
+            Price.Text = string.Empty;
+        }
+
+        /// <summary>
+        /// Полная очистка динамических полей (используется при смене вида движения).
+        /// </summary>
+        private void ClearAllDynamicFields()
+        {
+            ClearNomenFields();
+            SourceDocument.Text = string.Empty;
+            // Дополнительно обнулим списки документов-оснований
+            SourceDocument.Items.Clear();
+        }
     }
 }
 

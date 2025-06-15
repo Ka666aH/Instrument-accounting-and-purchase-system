@@ -55,7 +55,7 @@
             this.NonAdd = new System.Windows.Forms.RadioButton();
             this.StorageTo = new System.Windows.Forms.TextBox();
             this.StorageFrom = new System.Windows.Forms.TextBox();
-            this.SourceDocument = new System.Windows.Forms.TextBox();
+            this.SourceDocument = new System.Windows.Forms.ComboBox();
             this.MoveFormClose = new System.Windows.Forms.Button();
             this.MoveFormSaveClose = new System.Windows.Forms.Button();
             this.MoveFormSave = new System.Windows.Forms.Button();
@@ -375,8 +375,9 @@
             this.SourceDocument.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SourceDocument.Location = new System.Drawing.Point(184, 148);
             this.SourceDocument.Name = "SourceDocument";
-            this.SourceDocument.Size = new System.Drawing.Size(388, 26);
+            this.SourceDocument.Size = new System.Drawing.Size(388, 28);
             this.SourceDocument.TabIndex = 16;
+            this.SourceDocument.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // MoveFormClose
             // 
@@ -389,6 +390,7 @@
             this.MoveFormClose.TabIndex = 23;
             this.MoveFormClose.Text = "Закрыть";
             this.MoveFormClose.UseVisualStyleBackColor = true;
+            this.MoveFormClose.Click += new System.EventHandler(this.MoveFormClose_Click);
             // 
             // MoveFormSaveClose
             // 
@@ -546,7 +548,7 @@
         private System.Windows.Forms.RadioButton NonAdd;
         private System.Windows.Forms.TextBox StorageTo;
         private System.Windows.Forms.TextBox StorageFrom;
-        private System.Windows.Forms.TextBox SourceDocument;
+        private System.Windows.Forms.ComboBox SourceDocument;
         private System.Windows.Forms.Button MoveFormClose;
         private System.Windows.Forms.Button MoveFormSaveClose;
         private System.Windows.Forms.Button MoveFormSave;
