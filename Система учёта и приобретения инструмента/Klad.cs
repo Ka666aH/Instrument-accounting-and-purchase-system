@@ -19,6 +19,9 @@ namespace Система_учёта_и_приобретения_инструме
         private bool receivingSearchReseting = false;
         private ToolStripMenuItem nomenDefectiveMenuItem;
         private ToolStripMenuItem nomenMovingMenuItem;
+        private ContextMenuStrip defectiveContextMenu;
+        private ContextMenuStrip receivingContextMenu;
+        private ContextMenuStrip movementsContextMenu;
         public Klad(LoginForm _login)
         {
             InitializeComponent();
@@ -32,6 +35,18 @@ namespace Система_учёта_и_приобретения_инструме
 
             // ======== ДОБАВЛЕНО ========
             SetupContextMenus();
+            SetupDefectiveContextMenu();
+            SetupReceivingContextMenu();
+            SetupMovementsContextMenu();
+            // ======== КОНЕЦ ДОБАВЛЕНИЯ ========
+
+            // ======== ДОБАВЛЕНИЕ ДЛЯ ДВИЖЕНИЙ ========
+            // Кнопка «Провести» для движений
+            WriteOff.Click += WriteOff_Click;
+
+            // Переключение выбранного движения – меняем состояние кнопки
+            dataGridView2.CurrentCellChanged += dataGridView2_CurrentCellChanged;
+            UpdateWriteOffButtonState();
             // ======== КОНЕЦ ДОБАВЛЕНИЯ ========
         }
 
@@ -65,6 +80,7 @@ namespace Система_учёта_и_приобретения_инструме
             this.workshops1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Workshops1);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.NomenclatureView". При необходимости она может быть перемещена или удалена.
             this.nomenclatureViewTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NomenclatureView);
+            
 
             this.WindowState = FormWindowState.Maximized;
 
@@ -299,8 +315,7 @@ namespace Система_учёта_и_приобретения_инструме
         public void SetStoragesButtonsState()
         {
             bool state = StoragesTable.CurrentRow != null && !StoragesTable.CurrentRow.IsNewRow && !string.IsNullOrEmpty(StoragesTable.CurrentRow.Cells[0].Value.ToString());
-            AlterStorage.Enabled = false;
-            DeleteStorage.Enabled = false;
+            
         }
         private void StoragesTable_CurrentCellChanged(object sender, EventArgs e)
         {
@@ -511,8 +526,7 @@ namespace Система_учёта_и_приобретения_инструме
         public void SetWorkshopsButtonsState()
         {
             bool state = WorkshopsMain.CurrentRow != null && !string.IsNullOrEmpty(WorkshopsMain.CurrentRow.Cells[0].Value.ToString());
-            AlterWorkshop.Enabled = false;
-            DeleteWorkshop.Enabled = false;
+          
         }
         private void dataGridView1_CurrentCellChanged(object sender, EventArgs e)
         {
@@ -976,6 +990,9 @@ namespace Система_учёта_и_приобретения_инструме
             SetupOstatkiContextMenu();
             SetupWorkshopContextMenu();
             SetupStorageContextMenu();
+            SetupDefectiveContextMenu();
+            SetupReceivingContextMenu();
+            SetupMovementsContextMenu();
         }
 
         private void SetupNomenContextMenu()
@@ -1029,8 +1046,23 @@ namespace Система_учёта_и_приобретения_инструме
         private void SetupOstatkiContextMenu()
         {
             var menu = new ContextMenuStrip();
-            menu.Items.Add("Создать дефектную ведомость", null, OstatkiCreateDefective_Click);
-            menu.Items.Add("Создать перемещение", null, OstatkiCreateMoving_Click);
+            var itemDef = new ToolStripMenuItem("Создать дефектную ведомость", null, OstatkiCreateDefective_Click);
+            var itemMove = new ToolStripMenuItem("Создать перемещение", null, OstatkiCreateMoving_Click);
+
+            menu.Items.AddRange(new ToolStripItem[] { itemDef, itemMove });
+
+            // активация только для склада 0
+            menu.Opening += (s, e) =>
+            {
+                bool enable = false;
+                if (OstatkiTable.CurrentRow?.DataBoundItem is DataRowView drv)
+                {
+                    int storageId = Convert.ToInt32(drv["StorageID"]);
+                    enable = storageId == 0;
+                }
+                itemDef.Enabled = enable;
+                itemMove.Enabled = enable;
+            };
             OstatkiTable.ContextMenuStrip = menu;
         }
 
@@ -1048,247 +1080,169 @@ namespace Система_учёта_и_приобретения_инструме
             menu.Items.Add("Показать остатки на этом складе", null, StorageShowOstatki_Click);
             StoragesTable.ContextMenuStrip = menu;
         }
-        #endregion
 
-        #region Обработчики контекстного меню – NomenTable
-        private void NomenCreateApplication_Click(object sender, EventArgs e)
+        private void SetupDefectiveContextMenu()
         {
-            // Если пользователь выделил несколько номенклатур, перенесём их все
-            var selectedRows = NomenTable.SelectedRows.Count > 0 ? NomenTable.SelectedRows.Cast<DataGridViewRow>()
-                                                                : new[] { NomenTable.CurrentRow };
+            defectiveContextMenu = new ContextMenuStrip();
+            var createWriteOff = new ToolStripMenuItem("Создать списание");
+            createWriteOff.Click += DefectiveCreateWriteOff_Click;
+            var showBalances = new ToolStripMenuItem("Показать остатки по номенклатуре");
+            showBalances.Click += DefectiveShowBalances_Click;
+            defectiveContextMenu.Items.AddRange(new ToolStripItem[] { createWriteOff, showBalances });
 
-            // Собираем уникальные номера номенклатур
-            var nomenNumbers = selectedRows
-                .Where(r => r?.DataBoundItem is DataRowView)
-                .Select(r => ((DataRowView)r.DataBoundItem)["NomenclatureNumber"].ToString())
-                .Where(n => !string.IsNullOrWhiteSpace(n))
-                .Distinct()
-                .ToList();
+            dataGridView3.ContextMenuStrip = defectiveContextMenu;
 
-            if (nomenNumbers.Count == 0) return;
-
-            var form = new AddApplications(tOOLACCOUNTINGDataSet, FormMode.Add);
-            foreach (var num in nomenNumbers)
+            defectiveContextMenu.Opening += (s, e) =>
             {
-                form.AddNomenclature(num);
-            }
-
-            form.RequestSaved += (s, args) => RefreshReceivingRequestsTables();
-            form.ShowDialog();
+                bool enable = false;
+                if (dataGridView3.CurrentRow != null && dataGridView3.CurrentRow.DataBoundItem is DataRowView drv)
+                {
+                    var defRow = drv.Row as TOOLACCOUNTINGDataSet.DefectiveListsRow;
+                    enable = defRow != null && !tOOLACCOUNTINGDataSet.ToolMovements.Any(m => m.SourceDocumentType == "Дефектная ведомость" && m.SourceDocumentID == defRow.DefectiveListID);
+                }
+                createWriteOff.Enabled = enable;
+            };
         }
 
-        private void NomenShowOstatki_Click(object sender, EventArgs e)
+        private void DefectiveCreateWriteOff_Click(object sender, EventArgs e)
         {
-            if (NomenTable.CurrentRow?.DataBoundItem is DataRowView drv)
+            if (dataGridView3.CurrentRow?.DataBoundItem is DataRowView drv)
             {
-                string nomenNumber = drv["NomenclatureNumber"].ToString();
-                tabControl1.SelectedTab = tabPage7; // вкладка остатков
-                OstatkiNumber.Text = nomenNumber;
-                // если есть текстовое событие поиска, вызовем его
-                OstatkiNumber.Focus();
+                var defRow = drv.Row as TOOLACCOUNTINGDataSet.DefectiveListsRow;
+                if (defRow == null) return;
+
+                AddMoving frm = new AddMoving();
+                frm.InitializeWriteOffFromDefective(defRow.DefectiveListID);
+                frm.MovementSaved += (s, ev) => { RefreshToolMovementsTables(); RefreshDefectiveListsTables(); };
+                frm.ShowDialog();
             }
         }
 
-        private void NomenCreateDefective_Click(object sender, EventArgs e)
+        private void DefectiveShowBalances_Click(object sender, EventArgs e)
         {
-            if (NomenTable.CurrentRow?.DataBoundItem is DataRowView drv)
+            if (dataGridView3.CurrentRow?.DataBoundItem is DataRowView drv)
             {
-                string nomenNumber = drv["NomenclatureNumber"].ToString();
+                var defRow = drv.Row as TOOLACCOUNTINGDataSet.DefectiveListsRow;
+                if (defRow == null) return;
 
-                var balances = tOOLACCOUNTINGDataSet.Balances
-                    .Where(b => b.NomenclatureNumber == nomenNumber && b.Quantity > 0)
-                    .OrderByDescending(b => b.BalanceDate)
-                    .ToList();
+                tabControl1.SelectedTab = tabPage7; // Остатки
+                OstatkiNumber.Text = defRow.NomenclatureNumber;
+                textBox12_TextChanged(null, EventArgs.Empty); // Обновляем фильтр
+            }
+        }
 
-                if (balances.Count == 0)
+        private void SetupReceivingContextMenu()
+        {
+            if (WorkshopsRequestsRequestsTable == null) return;
+            receivingContextMenu = new ContextMenuStrip();
+            var createMove = new ToolStripMenuItem("Создать перемещение на основании");
+            createMove.Click += (s, e) =>
+            {
+                if (WorkshopsRequestsRequestsTable.CurrentRow?.DataBoundItem is DataRowView drvReq)
                 {
-                    MessageBox.Show("По выбранной номенклатуре отсутствуют остатки.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    int reqId = Convert.ToInt32(drvReq["ReceivingRequestID"]);
+                    AddMoving frm = new AddMoving();
+                    frm.InitializeFromRequest(reqId, "Перемещение");
+                    frm.ShowDialog();
                 }
-
-                // Если остаток единственный – сразу открываем форму
-                if (balances.Count == 1)
+            };
+            var createAdd = new ToolStripMenuItem("Создать приход на основании");
+            createAdd.Click += (s, e) =>
+            {
+                if (WorkshopsRequestsRequestsTable.CurrentRow?.DataBoundItem is DataRowView drvReq)
                 {
-                    OpenDefectiveForBalance(nomenNumber, balances[0]);
-                    return;
+                    int reqId = Convert.ToInt32(drvReq["ReceivingRequestID"]);
+                    AddMoving frm = new AddMoving();
+                    frm.InitializeFromRequest(reqId, "Приход");
+                    frm.ShowDialog();
                 }
+            };
+            receivingContextMenu.Items.AddRange(new ToolStripItem[] { createMove, createAdd });
 
-                // Если их несколько – показываем дополнительное меню выбора
-                var selectionMenu = new ContextMenuStrip();
-                foreach (var bal in balances)
+            // пункт меню «Сформировать отчёт»
+            var createReport = new ToolStripMenuItem("Сформировать отчёт");
+            createReport.Click += (s, e) =>
+            {
+                if (WorkshopsRequestsRequestsTable.CurrentRow?.DataBoundItem is DataRowView drvReq)
                 {
-                    string text = $"Склад {bal.StorageID}, Партия {bal.BatchNumber}, Кол-во {bal.Quantity}";
-                    var item = new ToolStripMenuItem(text);
-                    item.Tag = bal;
-                    item.Click += (s, args) =>
+                    var reqRow = drvReq.Row as TOOLACCOUNTINGDataSet.ReceivingRequests1Row;
+                    if (reqRow == null) return;
+
+                    var detailsRows = tOOLACCOUNTINGDataSet.ReceivingRequestsContent1.Where(r => r.ReceivingRequestID == reqRow.ReceivingRequestID);
+                    if (!detailsRows.Any())
                     {
-                        selectionMenu.Close();
-                        OpenDefectiveForBalance(nomenNumber, (TOOLACCOUNTINGDataSet.BalancesRow)((ToolStripMenuItem)s).Tag);
-                    };
-                    selectionMenu.Items.Add(item);
+                        MessageBox.Show("У выбранной заявки нет содержания.", "Экспорт", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
+                    System.Data.DataTable dt = detailsRows.CopyToDataTable();
+
+                    new Excel().ExportReceivingRequestInj(
+                        reqRow.ReceivingRequestID,
+                        reqRow.PlannedDate,
+                        reqRow.ReceivingRequestDate,
+                        reqRow.Reason,
+                        reqRow.Status,
+                        dt);
                 }
+            };
 
-                // Показать меню рядом с курсором
-                var mousePos = NomenTable.PointToClient(Cursor.Position);
-                selectionMenu.Show(NomenTable, mousePos);
-            }
+            receivingContextMenu.Items.Add(createReport);
+
+            WorkshopsRequestsRequestsTable.ContextMenuStrip = receivingContextMenu;
         }
 
-        // Вспомогательный метод
-        private void OpenDefectiveForBalance(string nomenNumber, TOOLACCOUNTINGDataSet.BalancesRow balanceRow)
+        private void SetupMovementsContextMenu()
         {
-            int storageId = balanceRow.StorageID;
-            string batch = balanceRow.BatchNumber;
-            decimal price = balanceRow.Price;
-            var storageRow = tOOLACCOUNTINGDataSet.Storages.FirstOrDefault(s => s.StorageID == storageId);
-            int workshopId = storageRow != null ? storageRow.WorkshopID : 0;
-
-            var form = new DefAdd();
-            form.Prefill(nomenNumber, workshopId, price, batch);
-            form.DefectiveSaved += (s, args) => RefreshDefectiveListsTables();
-            form.ShowDialog();
-        }
-
-        private void NomenCreateMoving_Click(object sender, EventArgs e)
-        {
-            if (NomenTable.CurrentRow?.DataBoundItem is DataRowView drv)
+            movementsContextMenu = new ContextMenuStrip();
+            var postItem = new ToolStripMenuItem("Провести");
+            postItem.Click += (s, e) => { WriteOff_Click(s, e); };
+            var showNomenBalances = new ToolStripMenuItem("Остатки по номенклатуре");
+            showNomenBalances.Click += (s, e) =>
             {
-                string nomenNumber = drv["NomenclatureNumber"].ToString();
-                var balanceRow = tOOLACCOUNTINGDataSet.Balances
-                    .Where(b => b.NomenclatureNumber == nomenNumber && b.Quantity > 0)
-                    .OrderByDescending(b => b.BalanceDate)
-                    .FirstOrDefault();
-                if (balanceRow == null)
+                if (dataGridView2.CurrentRow?.DataBoundItem is DataRowView dvr)
                 {
-                    MessageBox.Show("По выбранной номенклатуре отсутствуют остатки.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    var mvRow = dvr.Row as TOOLACCOUNTINGDataSet.ToolMovementsRow;
+                    if (mvRow == null) return;
+                    tabControl1.SelectedTab = tabPage7;
+                    OstatkiNumber.Text = mvRow.NomenclatureNumber;
+                    textBox12_TextChanged(null, EventArgs.Empty);
                 }
-                int storageId = balanceRow.StorageID;
-                string batch = balanceRow.BatchNumber;
-                decimal price = balanceRow.Price;
+            };
+            var showToBalances = new ToolStripMenuItem("Остатки склада получателя");
+            showToBalances.Click += (s, e) => ShowStorageBalances(true);
+            var showFromBalances = new ToolStripMenuItem("Остатки склада отправителя");
+            showFromBalances.Click += (s, e) => ShowStorageBalances(false);
 
-                var form = new AddMoving();
-                form.Prefill(nomenNumber, storageId, batch, price, true);
-                form.MovementSaved += (s, args) => { RefreshToolMovementsTables(); OstatkiResetSearch(); };
-                form.ShowDialog();
-            }
-        }
-        #endregion
+            movementsContextMenu.Items.AddRange(new ToolStripItem[] { postItem, showNomenBalances, showToBalances, showFromBalances });
 
-        #region Обработчики контекстного меню – OstatkiTable
-        private void OstatkiCreateDefective_Click(object sender, EventArgs e)
-        {
-            if (OstatkiTable.CurrentRow?.DataBoundItem is DataRowView drv)
+            dataGridView2.ContextMenuStrip = movementsContextMenu;
+
+            movementsContextMenu.Opening += (s, e) =>
             {
-                string nomenNumber = drv["NomenclatureNumber"].ToString();
-                int storageId = Convert.ToInt32(drv["StorageID"]);
-                string batch = drv["BatchNumber"].ToString();
-                decimal price = Convert.ToDecimal(drv["Price"]);
-                var storageRow = tOOLACCOUNTINGDataSet.Storages.FirstOrDefault(s => s.StorageID == storageId);
-                int workshopId = storageRow != null ? storageRow.WorkshopID : 0;
-                var form = new DefAdd();
-                form.Prefill(nomenNumber, workshopId, price, batch);
-                form.DefectiveSaved += (s, args) => RefreshDefectiveListsTables();
-                form.ShowDialog();
-            }
+                bool enablePost = false;
+                if (dataGridView2.CurrentRow?.DataBoundItem is DataRowView dvr)
+                {
+                    var mvRow = dvr.Row as TOOLACCOUNTINGDataSet.ToolMovementsRow;
+                    enablePost = mvRow != null && !mvRow.IsPosted;
+                }
+                postItem.Enabled = enablePost;
+            };
         }
 
-        private void OstatkiCreateMoving_Click(object sender, EventArgs e)
+        private void ShowStorageBalances(bool isTo)
         {
-            if (OstatkiTable.CurrentRow?.DataBoundItem is DataRowView drv)
+            if (dataGridView2.CurrentRow?.DataBoundItem is DataRowView dvr)
             {
-                string nomenNumber = drv["NomenclatureNumber"].ToString();
-                int storageId = Convert.ToInt32(drv["StorageID"]);
-                string batch = drv["BatchNumber"].ToString();
-                decimal price = Convert.ToDecimal(drv["Price"]);
-                var form = new AddMoving();
-                form.Prefill(nomenNumber, storageId, batch, price, true);
-                form.MovementSaved += (s, args) => { RefreshToolMovementsTables(); OstatkiResetSearch(); };
-                form.ShowDialog();
-            }
-        }
-        #endregion
-
-        #region Обработчики контекстного меню – WorkshopsMain
-        private void WorkshopCreateApplication_Click(object sender, EventArgs e)
-        {
-            if (WorkshopsMain.CurrentRow?.DataBoundItem is DataRowView drv)
-            {
-                int workshopId = Convert.ToInt32(drv["WorkshopID"]);
-                var form = new AddApplications(tOOLACCOUNTINGDataSet, FormMode.Add);
-                form.PreselectWorkshop(workshopId);
-                form.RequestSaved += (s, args) => RefreshReceivingRequestsTables();
-                form.ShowDialog();
-            }
-        }
-        #endregion
-
-        #region Обработчики контекстного меню – StoragesTable
-        private void StorageCreateMovingTo_Click(object sender, EventArgs e)
-        {
-            if (StoragesTable.CurrentRow?.DataBoundItem is DataRowView drv)
-            {
-                int storageId = Convert.ToInt32(drv["StorageID"]);
-                var form = new AddMoving();
-                form.Prefill(string.Empty, null, string.Empty, 0m, true, storageId);
-                form.MovementSaved += (s, args) => { RefreshToolMovementsTables(); OstatkiResetSearch(); };
-                form.ShowDialog();
-            }
-        }
-
-        private void StorageShowOstatki_Click(object sender, EventArgs e)
-        {
-            if (StoragesTable.CurrentRow?.DataBoundItem is DataRowView drv)
-            {
-                int storageId = Convert.ToInt32(drv["StorageID"]);
+                var mvRow = dvr.Row as TOOLACCOUNTINGDataSet.ToolMovementsRow;
+                if (mvRow == null) return;
+                int storageId = isTo ? mvRow.ToStorageID : mvRow.FromStorageID;
                 tabControl1.SelectedTab = tabPage7;
-                textBox7.Text = storageId.ToString(); // поле поиска склада во вкладке остатков
-                textBox7.Focus();
+                textBox7.Text = storageId.ToString(); // поле склада в поиске остатков
+                textBox12_TextChanged(null, EventArgs.Empty);
             }
         }
         #endregion
-
-        private void textBox12_TextChanged(object sender, EventArgs e)
-        {
-            var parameters = new List<SearchParameter>();
-            if (!string.IsNullOrEmpty(textBox12.Text)) parameters.Add(new SearchParameter("BalanceID", Convert.ToInt32(textBox12.Text), true));
-            if (!string.IsNullOrEmpty(OstatkiNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", OstatkiNumber.Text, true));
-            if (!string.IsNullOrEmpty(textBox7.Text)) parameters.Add(new SearchParameter("StorageID", Convert.ToInt32(textBox7.Text), true));
-            if (!string.IsNullOrEmpty(textBox16.Text)) parameters.Add(new SearchParameter("ButchNumber", textBox16.Text, true));
-          
-
-            try
-            {
-                string filter = Search.Filter(parameters);
-                OstatkiTable.SuspendLayout();
-                balancesBindingSource.Filter = filter;
-                OstatkiTable.ResumeLayout();
-            }
-            catch (ArgumentException ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-        private void OstatkiResetSearchNumber() { textBox12.Text = string.Empty; }
-        private void OstatkiResetSearchStorage() { textBox7.Text = string.Empty; }
-        private void OstatkiResetSearchName() { OstatkiNumber.Text = string.Empty; }
-        private void OstatkiResetSearchPrice() { textBox16.Text = string.Empty; }
-
-        private void OstatkiResetSearch()
-        {
-
-            OstatkiResetSearchNumber();
-            OstatkiResetSearchStorage();
-            OstatkiResetSearchName();
-            OstatkiResetSearchPrice();
-            balancesBindingSource.RemoveFilter();
-        }
-
-        private void OstatkiResetButton_Click(object sender, EventArgs e)
-        {
-            OstatkiResetSearch();
-        }
-       
 
         #region Excel reports
         /// <summary>
@@ -1352,7 +1306,8 @@ namespace Система_учёта_и_приобретения_инструме
         {
             try
             {
-                new Excel().ExportBalancesForm(tOOLACCOUNTINGDataSet); // открываем Excel без сохранения
+                var table = PrepareForExport(tOOLACCOUNTINGDataSet.Balances);
+                new Excel().ExportBalancesInj(table, null); // инженерная форма
                 NotificationService.Notify("Экспорт", "Ведомость открыта в Excel.", ToolTipIcon.Info);
             }
             catch (Exception ex)
@@ -1364,13 +1319,40 @@ namespace Система_учёта_и_приобретения_инструме
         private void ReportDefective_Click(object sender, EventArgs e)
         {
             var table = PrepareForExport(tOOLACCOUNTINGDataSet.DefectiveLists);
-            ExportTable(table);
+            if (table == null || table.Rows.Count == 0)
+            {
+                NotificationService.Notify("Экспорт", "Нет данных для экспорта.", ToolTipIcon.Info);
+                return;
+            }
+            try
+            {
+                new Excel().ExportDefectiveInj(table, null);
+                NotificationService.Notify("Экспорт", "Отчёт открыт в Excel.", ToolTipIcon.Info);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void ReportApplications_Click(object sender, EventArgs e)
         {
-            var table = PrepareForExport(tOOLACCOUNTINGDataSet.ReceivingRequests);
-            ExportTable(table);
+            var headers = tOOLACCOUNTINGDataSet.ReceivingRequests1.Copy();
+            var contents = tOOLACCOUNTINGDataSet.ReceivingRequestsContent1.Copy();
+            if (headers == null || headers.Rows.Count == 0)
+            {
+                NotificationService.Notify("Экспорт", "Нет данных для экспорта.", ToolTipIcon.Info);
+                return;
+            }
+            try
+            {
+                new Excel().ExportReceivingRequestsSummaryInj(headers, contents);
+                NotificationService.Notify("Экспорт", "Сводный отчёт открыт в Excel.", ToolTipIcon.Info);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         #endregion
 
@@ -1408,6 +1390,375 @@ namespace Система_учёта_и_приобретения_инструме
                 MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        #region Проведение движений
+
+        /// <summary>
+        /// Обновляет доступность кнопки «Провести» в зависимости от выбранного документа.
+        /// </summary>
+        private void UpdateWriteOffButtonState()
+        {
+            if (dataGridView2.CurrentRow == null || dataGridView2.CurrentRow.IsNewRow)
+            {
+                WriteOff.Enabled = false;
+                return;
+            }
+
+            if (!(dataGridView2.CurrentRow.DataBoundItem is DataRowView drv))
+            {
+                WriteOff.Enabled = false;
+                return;
+            }
+
+            var moveRow = drv.Row as TOOLACCOUNTINGDataSet.ToolMovementsRow;
+            WriteOff.Enabled = moveRow != null && !moveRow.IsPosted;
+        }
+
+        private void dataGridView2_CurrentCellChanged(object sender, EventArgs e)
+        {
+            UpdateWriteOffButtonState();
+        }
+
+        private void WriteOff_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.CurrentRow == null) return;
+            if (!(dataGridView2.CurrentRow.DataBoundItem is DataRowView drv)) return;
+
+            var moveRow = drv.Row as TOOLACCOUNTINGDataSet.ToolMovementsRow;
+            if (moveRow == null || moveRow.IsPosted) return;
+
+            if (PostMovement(moveRow))
+            {
+                NotificationService.Notify("Успех", "Документ проведён.", ToolTipIcon.Info);
+                RefreshToolMovementsTables();
+                UpdateWriteOffButtonState();
+            }
+        }
+
+        /// <summary>
+        /// Проводит выбранное движение, пересчитывая остатки.
+        /// </summary>
+        private bool PostMovement(TOOLACCOUNTINGDataSet.ToolMovementsRow row)
+        {
+            try
+            {
+                string movementName = row.MovementTypeID;
+                string nomenNumber = row.NomenclatureNumber;
+                int qty = row.Quantity;
+                decimal price = row.Price;
+
+                int fromId = row.FromStorageID;
+                int toId = row.ToStorageID;
+
+                // Проверка и перерасчёт остатков
+                if (movementName == "Списание")
+                {
+                    int available = tOOLACCOUNTINGDataSet.Balances.Where(b => b.StorageID == fromId && b.NomenclatureNumber == nomenNumber).Sum(b => b.Quantity);
+                    if (qty > available)
+                    {
+                        NotificationService.Notify("Ошибка", $"Недостаточно остатка для проведения. Доступно {available}, требуется {qty}.", ToolTipIcon.Error);
+                        return false;
+                    }
+
+                    // Списание со склада-отправителя
+                    var balFrom = tOOLACCOUNTINGDataSet.Balances.FirstOrDefault(b => b.StorageID == fromId && b.NomenclatureNumber == nomenNumber);
+                    if (balFrom != null) balFrom.Quantity -= qty;
+
+                    // Приход на склад списанного инструмента (12)
+                    int writeOffStorageId = 12;
+                    var balDest = tOOLACCOUNTINGDataSet.Balances.FirstOrDefault(b => b.StorageID == writeOffStorageId && b.NomenclatureNumber == nomenNumber);
+                    if (balDest != null) balDest.Quantity += qty;
+                    else
+                    {
+                        int newBalId = tOOLACCOUNTINGDataSet.Balances.Count == 0 ? 1 : tOOLACCOUNTINGDataSet.Balances.Max(r => r.BalanceID) + 1;
+                        var newBal = tOOLACCOUNTINGDataSet.Balances.NewBalancesRow();
+                        newBal.BalanceID = newBalId;
+                        newBal.NomenclatureNumber = nomenNumber;
+                        newBal.StorageID = writeOffStorageId;
+                        newBal.BalanceDate = DateTime.Now;
+                        newBal.BatchNumber = row.BatchNumber;
+                        newBal.Price = price;
+                        newBal.Quantity = qty;
+                        if (newBal.Table.Columns.Contains("Account")) newBal["Account"] = "Списание";
+                        tOOLACCOUNTINGDataSet.Balances.AddBalancesRow(newBal);
+                    }
+
+                    row.ToStorageID = writeOffStorageId; // фиксируем получателя
+                }
+                else if (movementName == "Перемещение")
+                {
+                    // Проверяем остаток на складе-отправителе
+                    int available = tOOLACCOUNTINGDataSet.Balances.Where(b => b.StorageID == fromId && b.NomenclatureNumber == nomenNumber).Sum(b => b.Quantity);
+                    if (qty > available)
+                    {
+                        NotificationService.Notify("Ошибка", $"Недостаточно остатка для перемещения. Доступно {available}, требуется {qty}.", ToolTipIcon.Error);
+                        return false;
+                    }
+
+                    var balFrom = tOOLACCOUNTINGDataSet.Balances.FirstOrDefault(b => b.StorageID == fromId && b.NomenclatureNumber == nomenNumber);
+                    if (balFrom != null) balFrom.Quantity -= qty;
+
+                    var balTo = tOOLACCOUNTINGDataSet.Balances.FirstOrDefault(b => b.StorageID == toId && b.NomenclatureNumber == nomenNumber);
+                    if (balTo != null) balTo.Quantity += qty;
+                    else
+                    {
+                        int newBalId = tOOLACCOUNTINGDataSet.Balances.Count == 0 ? 1 : tOOLACCOUNTINGDataSet.Balances.Max(r => r.BalanceID) + 1;
+                        var newBal = tOOLACCOUNTINGDataSet.Balances.NewBalancesRow();
+                        newBal.BalanceID = newBalId;
+                        newBal.NomenclatureNumber = nomenNumber;
+                        newBal.StorageID = toId;
+                        newBal.BalanceDate = DateTime.Now;
+                        newBal.BatchNumber = row.BatchNumber;
+                        newBal.Price = price;
+                        newBal.Quantity = qty;
+                        if (newBal.Table.Columns.Contains("Account")) newBal["Account"] = "Перемещение";
+                        tOOLACCOUNTINGDataSet.Balances.AddBalancesRow(newBal);
+                    }
+                }
+
+                // Обновляем базы
+                balancesTableAdapter.Update(tOOLACCOUNTINGDataSet.Balances);
+
+                row.IsPosted = true;
+                row.Executor = Environment.UserName;
+                row.LastUpdated = DateTime.Now;
+
+                toolMovementsTableAdapter.Update(tOOLACCOUNTINGDataSet.ToolMovements);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                tOOLACCOUNTINGDataSet.RejectChanges();
+                MessageBox.Show($"Ошибка проведения: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        #endregion
+
+        // ======== ЗАГЛУШКИ УДАЛЁННЫХ МЕТОДОВ (для сохранения совместимости) ========
+        private void OstatkiResetSearch()
+        {
+            try
+            {
+                textBox12.Text = string.Empty;
+                textBox7.Text = string.Empty;
+                OstatkiNumber.Text = string.Empty;
+                textBox16.Text = string.Empty;
+                balancesBindingSource.RemoveFilter();
+            }
+            catch { }
+        }
+
+        private void NomenCreateApplication_Click(object sender, EventArgs e)
+        {
+            // Создать заявку на получение инструмента из выбранных номенклатур
+            var selectedRows = NomenTable.SelectedRows.Count > 0 ? NomenTable.SelectedRows.Cast<DataGridViewRow>()
+                                                                : new[] { NomenTable.CurrentRow };
+            var nomenNumbers = selectedRows
+                .Where(r => r?.DataBoundItem is DataRowView)
+                .Select(r => ((DataRowView)r.DataBoundItem)["NomenclatureNumber"].ToString())
+                .Where(n => !string.IsNullOrWhiteSpace(n))
+                .Distinct()
+                .ToList();
+
+            if (nomenNumbers.Count == 0) return;
+
+            var form = new AddApplications(tOOLACCOUNTINGDataSet, FormMode.Add);
+            foreach (var num in nomenNumbers)
+                form.AddNomenclature(num);
+
+            form.RequestSaved += (s, args) => RefreshReceivingRequestsTables();
+            form.ShowDialog();
+        }
+
+        private void NomenShowOstatki_Click(object sender, EventArgs e)
+        {
+            if (NomenTable.CurrentRow?.DataBoundItem is DataRowView drv)
+            {
+                string nomenNumber = drv["NomenclatureNumber"].ToString();
+                tabControl1.SelectedTab = tabPage7;
+                OstatkiNumber.Text = nomenNumber;
+                OstatkiNumber.Focus();
+            }
+        }
+
+        private void NomenCreateDefective_Click(object sender, EventArgs e)
+        {
+            if (NomenTable.CurrentRow?.DataBoundItem is DataRowView drv)
+            {
+                string nomenNumber = drv["NomenclatureNumber"].ToString();
+                var balances = tOOLACCOUNTINGDataSet.Balances
+                    .Where(b => b.NomenclatureNumber == nomenNumber && b.Quantity > 0)
+                    .OrderByDescending(b => b.BalanceDate)
+                    .ToList();
+
+                if (balances.Count == 0)
+                {
+                    MessageBox.Show("По выбранной номенклатуре отсутствуют остатки.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (balances.Count == 1)
+                {
+                    OpenDefectiveForBalance(nomenNumber, balances[0]);
+                    return;
+                }
+
+                var selectionMenu = new ContextMenuStrip();
+                foreach (var bal in balances)
+                {
+                    string text = $"Склад {bal.StorageID}, Партия {bal.BatchNumber}, Кол-во {bal.Quantity}";
+                    var item = new ToolStripMenuItem(text) { Tag = bal };
+                    item.Click += (s, args) =>
+                    {
+                        selectionMenu.Close();
+                        OpenDefectiveForBalance(nomenNumber, (TOOLACCOUNTINGDataSet.BalancesRow)((ToolStripMenuItem)s).Tag);
+                    };
+                    selectionMenu.Items.Add(item);
+                }
+                var pos = NomenTable.PointToClient(Cursor.Position);
+                selectionMenu.Show(NomenTable, pos);
+            }
+        }
+
+        private void NomenCreateMoving_Click(object sender, EventArgs e)
+        {
+            if (NomenTable.CurrentRow?.DataBoundItem is DataRowView drv)
+            {
+                string nomenNumber = drv["NomenclatureNumber"].ToString();
+                var balanceRow = tOOLACCOUNTINGDataSet.Balances
+                    .Where(b => b.NomenclatureNumber == nomenNumber && b.Quantity > 0)
+                    .OrderByDescending(b => b.BalanceDate)
+                    .FirstOrDefault();
+                if (balanceRow == null)
+                {
+                    MessageBox.Show("По выбранной номенклатуре отсутствуют остатки.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                int storageId = balanceRow.StorageID;
+                string batch = balanceRow.BatchNumber;
+                decimal price = balanceRow.Price;
+
+                var form = new AddMoving();
+                form.Prefill(nomenNumber, storageId, batch, price, true);
+                form.MovementSaved += (s, args) => { RefreshToolMovementsTables(); OstatkiResetSearch(); };
+                form.ShowDialog();
+            }
+        }
+
+        private void OstatkiCreateDefective_Click(object sender, EventArgs e)
+        {
+            if (OstatkiTable.CurrentRow?.DataBoundItem is DataRowView drv)
+            {
+                string nomenNumber = drv["NomenclatureNumber"].ToString();
+                int storageId = Convert.ToInt32(drv["StorageID"]);
+                string batch = drv["BatchNumber"].ToString();
+                decimal price = Convert.ToDecimal(drv["Price"]);
+                var storageRow = tOOLACCOUNTINGDataSet.Storages.FirstOrDefault(s => s.StorageID == storageId);
+                int workshopId = storageRow != null ? storageRow.WorkshopID : 0;
+                var form = new DefAdd();
+                form.Prefill(nomenNumber, workshopId, price, batch);
+                form.DefectiveSaved += (s, args) => RefreshDefectiveListsTables();
+                form.ShowDialog();
+            }
+        }
+
+        private void OstatkiCreateMoving_Click(object sender, EventArgs e)
+        {
+            if (OstatkiTable.CurrentRow?.DataBoundItem is DataRowView drv)
+            {
+                string nomenNumber = drv["NomenclatureNumber"].ToString();
+                int storageId = Convert.ToInt32(drv["StorageID"]);
+                string batch = drv["BatchNumber"].ToString();
+                decimal price = Convert.ToDecimal(drv["Price"]);
+                var form = new AddMoving();
+                form.Prefill(nomenNumber, storageId, batch, price, true);
+                form.MovementSaved += (s, args) => { RefreshToolMovementsTables(); OstatkiResetSearch(); };
+                form.ShowDialog();
+            }
+        }
+
+        private void WorkshopCreateApplication_Click(object sender, EventArgs e)
+        {
+            if (WorkshopsMain.CurrentRow?.DataBoundItem is DataRowView drv)
+            {
+                int workshopId = Convert.ToInt32(drv["WorkshopID"]);
+                var form = new AddApplications(tOOLACCOUNTINGDataSet, FormMode.Add);
+                form.PreselectWorkshop(workshopId);
+                form.RequestSaved += (s, args) => RefreshReceivingRequestsTables();
+                form.ShowDialog();
+            }
+        }
+
+        private void StorageCreateMovingTo_Click(object sender, EventArgs e)
+        {
+            if (StoragesTable.CurrentRow?.DataBoundItem is DataRowView drv)
+            {
+                int storageId = Convert.ToInt32(drv["StorageID"]);
+                var form = new AddMoving();
+                form.Prefill(string.Empty, null, string.Empty, 0m, true, storageId);
+                form.MovementSaved += (s, args) => { RefreshToolMovementsTables(); OstatkiResetSearch(); };
+                form.ShowDialog();
+            }
+        }
+
+        private void StorageShowOstatki_Click(object sender, EventArgs e)
+        {
+            if (StoragesTable.CurrentRow?.DataBoundItem is DataRowView drv)
+            {
+                int storageId = Convert.ToInt32(drv["StorageID"]);
+                tabControl1.SelectedTab = tabPage7;
+                textBox7.Text = storageId.ToString();
+                textBox7.Focus();
+            }
+        }
+
+        private void OpenDefectiveForBalance(string nomenNumber, TOOLACCOUNTINGDataSet.BalancesRow balanceRow)
+        {
+            int storageId = balanceRow.StorageID;
+            string batch = balanceRow.BatchNumber;
+            decimal price = balanceRow.Price;
+            var storageRow = tOOLACCOUNTINGDataSet.Storages.FirstOrDefault(s => s.StorageID == storageId);
+            int workshopId = storageRow != null ? storageRow.WorkshopID : 0;
+
+            var form = new DefAdd();
+            form.Prefill(nomenNumber, workshopId, price, batch);
+            form.DefectiveSaved += (s, args) => RefreshDefectiveListsTables();
+            form.ShowDialog();
+        }
+
+        private void textBox12_TextChanged(object sender, EventArgs e)
+        {
+            var parameters = new List<SearchParameter>();
+            if (!string.IsNullOrEmpty(textBox12.Text)) parameters.Add(new SearchParameter("BalanceID", Convert.ToInt32(textBox12.Text), true));
+            if (!string.IsNullOrEmpty(OstatkiNumber.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", OstatkiNumber.Text, true));
+            if (!string.IsNullOrEmpty(textBox7.Text)) parameters.Add(new SearchParameter("StorageID", Convert.ToInt32(textBox7.Text), true));
+            if (!string.IsNullOrEmpty(textBox16.Text)) parameters.Add(new SearchParameter("ButchNumber", textBox16.Text, true));
+
+            try
+            {
+                string filter = Search.Filter(parameters);
+                OstatkiTable.SuspendLayout();
+                balancesBindingSource.Filter = filter;
+                OstatkiTable.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void OstatkiResetButton_Click(object sender, EventArgs e)
+        {
+            OstatkiResetSearch();
+        }
+
+        private void Otchet_Click(object sender, EventArgs e)
+        {
+
+        }
+        // ======== КОНЕЦ ЗАГЛУШЕК ========
     }
 
 }

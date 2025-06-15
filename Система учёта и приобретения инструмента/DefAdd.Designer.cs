@@ -111,7 +111,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(400, 151);
+            this.label9.Location = new System.Drawing.Point(400, 122);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(87, 20);
             this.label9.TabIndex = 19;
@@ -142,6 +142,7 @@
             this.label7.Size = new System.Drawing.Size(113, 20);
             this.label7.TabIndex = 21;
             this.label7.Text = "Учетная цена";
+            this.label7.Visible = false;
             // 
             // label4
             // 
@@ -184,6 +185,7 @@
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(248, 26);
             this.textBox3.TabIndex = 4;
+            this.textBox3.Visible = false;
             // 
             // textBox4
             // 
@@ -256,7 +258,7 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton1.Location = new System.Drawing.Point(524, 148);
+            this.radioButton1.Location = new System.Drawing.Point(524, 119);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(100, 24);
             this.radioButton1.TabIndex = 34;
@@ -268,7 +270,7 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton2.Location = new System.Drawing.Point(630, 148);
+            this.radioButton2.Location = new System.Drawing.Point(630, 119);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(84, 24);
             this.radioButton2.TabIndex = 34;
