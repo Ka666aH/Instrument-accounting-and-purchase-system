@@ -425,12 +425,12 @@ namespace Система_учёта_и_приобретения_инструме
                 excelApp.ActiveWindow.SplitRow = currentRow;
                 excelApp.ActiveWindow.FreezePanes = true;
 
-                // 7. Блок подписей
-                int signRow = currentRow + table.Rows.Count + 3;
-                ws.Cells[signRow, 1] = "Ответственный:";
-                ws.Range[ws.Cells[signRow, 2], ws.Cells[signRow, 4]].Borders[MSExcel.XlBordersIndex.xlEdgeBottom].LineStyle = MSExcel.XlLineStyle.xlContinuous;
-                ws.Cells[signRow, 6] = "Дата:";
-                ws.Range[ws.Cells[signRow, 7], ws.Cells[signRow, 8]].Borders[MSExcel.XlBordersIndex.xlEdgeBottom].LineStyle = MSExcel.XlLineStyle.xlContinuous;
+                //// 7. Блок подписей
+                //int signRow = currentRow + table.Rows.Count + 3;
+                //ws.Cells[signRow, 1] = "Ответственный:";
+                //ws.Range[ws.Cells[signRow, 2], ws.Cells[signRow, 4]].Borders[MSExcel.XlBordersIndex.xlEdgeBottom].LineStyle = MSExcel.XlLineStyle.xlContinuous;
+                //ws.Cells[signRow, 6] = "Дата:";
+                //ws.Range[ws.Cells[signRow, 7], ws.Cells[signRow, 8]].Borders[MSExcel.XlBordersIndex.xlEdgeBottom].LineStyle = MSExcel.XlLineStyle.xlContinuous;
 
                 // 7. Колонтитул
                 ws.PageSetup.CenterHeader = "";
