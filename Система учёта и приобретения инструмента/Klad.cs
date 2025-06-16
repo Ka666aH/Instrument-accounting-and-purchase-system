@@ -70,6 +70,7 @@ namespace Система_учёта_и_приобретения_инструме
             this.defectiveListsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DefectiveLists);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ToolMovements". При необходимости она может быть перемещена или удалена.
             this.toolMovementsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.ToolMovements);
+           
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequestsContent1". При необходимости она может быть перемещена или удалена.
             this.receivingRequestsContent1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet.ReceivingRequestsContent1);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequests1". При необходимости она может быть перемещена или удалена.
@@ -82,7 +83,7 @@ namespace Система_учёта_и_приобретения_инструме
             this.workshops1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Workshops1);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.NomenclatureView". При необходимости она может быть перемещена или удалена.
             this.nomenclatureViewTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NomenclatureView);
-            
+            WorkshopsRequestsContentTable.Columns[0].Visible = false;
 
             this.WindowState = FormWindowState.Maximized;
 
@@ -1106,7 +1107,9 @@ namespace Система_учёта_и_приобретения_инструме
             createWriteOff.Click += DefectiveCreateWriteOff_Click;
             var showBalances = new ToolStripMenuItem("Показать остатки по номенклатуре");
             showBalances.Click += DefectiveShowBalances_Click;
-            defectiveContextMenu.Items.AddRange(new ToolStripItem[] { createWriteOff, showBalances });
+            var reportItem = new ToolStripMenuItem("Сформировать отчёт");
+            reportItem.Click += (s, e) => OtchetDef_Click(s, e);
+            defectiveContextMenu.Items.AddRange(new ToolStripItem[] { createWriteOff, showBalances, reportItem });
 
             dataGridView3.ContextMenuStrip = defectiveContextMenu;
 
@@ -1119,6 +1122,7 @@ namespace Система_учёта_и_приобретения_инструме
                     enable = defRow != null && !tOOLACCOUNTINGDataSet.ToolMovements.Any(m => m.SourceDocumentType == "Дефектная ведомость" && m.SourceDocumentID == defRow.DefectiveListID);
                 }
                 createWriteOff.Enabled = enable;
+                reportItem.Enabled = dataGridView3.CurrentRow != null;
             };
         }
 
@@ -1806,7 +1810,45 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Otchet_Click(object sender, EventArgs e)
         {
+            if (WorkshopsRequestsRequestsTable?.CurrentRow?.DataBoundItem is DataRowView drvReq)
+            {
+                var reqRow = drvReq.Row as TOOLACCOUNTINGDataSet.ReceivingRequests1Row;
+                if (reqRow == null)
+                {
+                    NotificationService.Notify("Отчёт", "Не удалось определить выбранную заявку.", ToolTipIcon.Warning);
+                    return;
+                }
 
+                var detailsRows = tOOLACCOUNTINGDataSet.ReceivingRequestsContent1
+                    .Where(r => r.ReceivingRequestID == reqRow.ReceivingRequestID);
+
+                if (!detailsRows.Any())
+                {
+                    MessageBox.Show("У выбранной заявки нет содержания.", "Экспорт", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                System.Data.DataTable dt = detailsRows.CopyToDataTable();
+
+                try
+                {
+                    new Excel().ExportReceivingRequestInj(
+                        reqRow.ReceivingRequestID,
+                        reqRow.PlannedDate,
+                        reqRow.ReceivingRequestDate,
+                        reqRow.Reason,
+                        reqRow.Status,
+                        dt);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                NotificationService.Notify("Отчёт", "Не выбрана строка заявки.", ToolTipIcon.Warning);
+            }
         }
 
         private void StorageToMovingSearch_TextChanged(object sender, EventArgs e)
@@ -1874,6 +1916,42 @@ namespace Система_учёта_и_приобретения_инструме
             MovementsResetSearch();
         }
         #endregion
+
+        /// <summary>
+        /// Формирует отчёт по выбранной дефектной ведомости в Excel.
+        /// </summary>
+        private void OtchetDef_Click(object sender, EventArgs e)
+        {
+            if (dataGridView3.CurrentRow?.DataBoundItem is DataRowView drv)
+            {
+                var defRow = drv.Row as TOOLACCOUNTINGDataSet.DefectiveListsRow;
+                if (defRow == null)
+                {
+                    NotificationService.Notify("Отчёт", "Не удалось определить выбранную ведомость.", ToolTipIcon.Warning);
+                    return;
+                }
+
+                // Создаём таблицу из одной строки
+                var dt = defRow.Table.Clone();
+                dt.ImportRow(defRow);
+
+                dt = PrepareForExport(dt);
+
+                try
+                {
+                    new Excel().ExportDefectiveInj(dt, null);
+                    NotificationService.Notify("Экспорт", "Отчёт открыт в Excel.", ToolTipIcon.Info);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                NotificationService.Notify("Отчёт", "Не выбрана строка ведомости.", ToolTipIcon.Warning);
+            }
+        }
     }
 
 }

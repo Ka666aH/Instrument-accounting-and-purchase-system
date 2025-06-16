@@ -328,6 +328,8 @@ namespace Система_учёта_и_приобретения_инструме
             if (TrySave())
             {
                 NotificationService.Notify("Успех", "Перемещение сохранено.", ToolTipIcon.Info);
+                // Подготовка формы к следующему вводу
+                ClearForm();
             }
         }
 
@@ -1207,6 +1209,34 @@ namespace Система_учёта_и_приобретения_инструме
             SourceDocument.Text = string.Empty;
             // Дополнительно обнулим списки документов-оснований
             SourceDocument.Items.Clear();
+        }
+
+        /// <summary>
+        /// Полностью очищает форму после сохранения, подготавливая её к вводу нового документа.
+        /// Остаются неизменными только системные поля (пользователь, дата создания).
+        /// </summary>
+        private void ClearForm()
+        {
+            // Сбрасываем динамические поля, связанные с видом движения
+            ClearAllDynamicFields();
+
+            // Снимаем признак «проведён»
+            isWriteOff.Checked = false;
+
+            // Обнуляем цены и количество
+            Quantity.Text = string.Empty;
+            Price.Text = string.Empty;
+
+            // Формируем новый номер движения
+            movementsAdapter.Fill(tOOLACCOUNTINGDataSet.ToolMovements);
+            int newId = tOOLACCOUNTINGDataSet.ToolMovements.Count == 0 ? 1 : tOOLACCOUNTINGDataSet.ToolMovements.Max(r => r.MovementID) + 1;
+            textBox1.Text = newId.ToString(); // номер
+
+            // Обновляем дату/время создания
+            textBox7.Text = DateTime.Now.ToString();
+
+            // Пересчитываем состояние доступности полей по текущему виду движения
+            Check_MoveType();
         }
     }
 }
