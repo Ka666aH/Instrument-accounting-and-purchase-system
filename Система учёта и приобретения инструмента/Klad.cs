@@ -24,6 +24,7 @@ namespace Система_учёта_и_приобретения_инструме
         private ContextMenuStrip defectiveContextMenu;
         private ContextMenuStrip receivingContextMenu;
         private ContextMenuStrip movementsContextMenu;
+        private ToolStripMenuItem отчетПоДвижениямToolStripMenuItem; // ДОБАВЛЕНО
         public Klad(LoginForm _login)
         {
             InitializeComponent();
@@ -34,6 +35,11 @@ namespace Система_учёта_и_приобретения_инструме
             отчетПоОстаткамToolStripMenuItem.Click += ReportBalances_Click;
             отчетПоДефектнымВедомостямToolStripMenuItem.Click += ReportDefective_Click;
             отчетПоЗаявкамToolStripMenuItem.Click += ReportApplications_Click;
+            // ===== ДОБАВЛЕНО =====
+            отчетПоДвижениямToolStripMenuItem = new ToolStripMenuItem("Отчёт по движениям");
+            отчетПоДвижениямToolStripMenuItem.Click += ReportMovements_Click;
+            Otch.DropDownItems.Add(отчетПоДвижениямToolStripMenuItem);
+            // ======================
 
             // ======== ДОБАВЛЕНО ========
             SetupContextMenus();
@@ -1233,10 +1239,37 @@ namespace Система_учёта_и_приобретения_инструме
             };
             var showToBalances = new ToolStripMenuItem("Остатки склада получателя");
             showToBalances.Click += (s, e) => ShowStorageBalances(true);
-            var showFromBalances = new ToolStripMenuItem("Остатки склада отправителя");
-            showFromBalances.Click += (s, e) => ShowStorageBalances(false);
+            var showFromBalances = new ToolStripMenuItem("Остатки склада отправителя", null, (s, e) => ShowStorageBalances(false));
+            var reportMoveItem = new ToolStripMenuItem("Сформировать отчёт");
+            reportMoveItem.Click += (s, e) =>
+            {
+                if (dataGridView2.CurrentRow?.DataBoundItem is DataRowView dvr)
+                {
+                    var mvRow = dvr.Row as TOOLACCOUNTINGDataSet.ToolMovementsRow;
+                    if (mvRow == null) return;
 
-            movementsContextMenu.Items.AddRange(new ToolStripItem[] { postItem, showNomenBalances, showToBalances, showFromBalances });
+                    var rows = tOOLACCOUNTINGDataSet.ToolMovements.Where(r => r.MovementID == mvRow.MovementID);
+                    if (!rows.Any())
+                    {
+                        NotificationService.Notify("Экспорт", "Не удалось получить строки документа.", ToolTipIcon.Info);
+                        return;
+                    }
+                    System.Data.DataTable dt = rows.CopyToDataTable();
+
+                    new Excel().ExportToolMovementInj(
+                        mvRow.MovementID,
+                        mvRow.MovementDate,
+                        mvRow.MovementTypeID,
+                        mvRow.IsFromStorageIDNull() ? (int?)null : mvRow.FromStorageID,
+                        mvRow.ToStorageID,
+                        mvRow.IsPosted,
+                        mvRow.Executor,
+                        mvRow.LastUpdated,
+                        dt);
+                }
+            };
+
+            movementsContextMenu.Items.AddRange(new ToolStripItem[] { postItem, reportMoveItem, showNomenBalances, showToBalances, showFromBalances });
 
             dataGridView2.ContextMenuStrip = movementsContextMenu;
 
@@ -1950,6 +1983,25 @@ namespace Система_учёта_и_приобретения_инструме
             else
             {
                 NotificationService.Notify("Отчёт", "Не выбрана строка ведомости.", ToolTipIcon.Warning);
+            }
+        }
+
+        private void ReportMovements_Click(object sender, EventArgs e)
+        {
+            var table = tOOLACCOUNTINGDataSet.ToolMovements.Copy();
+            if (table == null || table.Rows.Count == 0)
+            {
+                NotificationService.Notify("Экспорт", "Нет данных для экспорта.", ToolTipIcon.Info);
+                return;
+            }
+            try
+            {
+                new Excel().ExportToolMovementsSummaryInj(table);
+                NotificationService.Notify("Экспорт", "Отчёт открыт в Excel.", ToolTipIcon.Info);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
