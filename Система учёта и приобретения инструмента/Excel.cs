@@ -67,7 +67,9 @@ namespace Система_учёта_и_приобретения_инструме
             {"ReceivingRequestContentID", "№ строки"},
             // Заявки на получение (шапка)
             {"ReceivingRequestDate", "Дата заявки"},
-            {"ReceivingRequestType", "Тип заявки"}
+            {"ReceivingRequestType", "Тип заявки"},
+            {"SourceDocumentType", "Документ-источник"},
+            {"SourceDocumentID", "№ док.-источника"},
         };
 
         /// <summary>
@@ -715,8 +717,8 @@ namespace Система_учёта_и_приобретения_инструме
                 }
 
                 MSExcel.Range full = ws.Range[ws.Cells[row,1], ws.Cells[row+details.Rows.Count, cols]];
-                var table = ws.ListObjects.Add(MSExcel.XlListObjectSourceType.xlSrcRange, full, Type.Missing, MSExcel.XlYesNoGuess.xlYes);
-                table.TableStyle = "TableStyleLight1";
+                var listObj = ws.ListObjects.Add(MSExcel.XlListObjectSourceType.xlSrcRange, full, Type.Missing, MSExcel.XlYesNoGuess.xlYes);
+                listObj.TableStyle = "TableStyleLight1";
 
                 // Date field
                 int dateRow = row + details.Rows.Count + 3;
@@ -967,6 +969,183 @@ namespace Система_учёта_и_приобретения_инструме
                 ws.PageSetup.CenterHeader="Сводный отчёт по заявкам на получение";
             }
             finally{ if(app!=null && !app.Visible) app.Quit(); }
+        }
+
+        /// <summary>
+        /// Сводный отчёт по движениям инструмента. Группируется по номеру движения.
+        /// </summary>
+        public void ExportToolMovementsSummaryInj(System.Data.DataTable movements)
+        {
+            if (movements == null || movements.Rows.Count == 0) return;
+
+            var app = new MSExcel.Application();
+            try
+            {
+                app.Visible = true;
+                var wb = app.Workbooks.Add();
+                MSExcel.Worksheet ws = wb.ActiveSheet;
+
+                // Заголовок отчёта
+                ws.Cells[1, 1] = "СВОДНЫЙ ОТЧЁТ ПО ДВИЖЕНИЯМ ИНСТРУМЕНТА";
+                ws.Range["A1"].Font.Bold = true;
+                ws.Range["A1"].Font.Size = 14;
+                ws.Range["A1"].EntireRow.HorizontalAlignment = MSExcel.XlHAlign.xlHAlignLeft;
+
+                int row = 3;
+
+                // Группируем по MovementID
+                var groups = movements.AsEnumerable().GroupBy(r => r.Field<int>("MovementID"))
+                                         .OrderBy(g => g.Key);
+
+                foreach (var g in groups)
+                {
+                    var first = g.First();
+                    int id = first.Field<int>("MovementID");
+                    DateTime date = first.Field<DateTime>("MovementDate");
+                    string type = first.Field<string>("MovementTypeID");
+                    int toStore = first.Field<int>("ToStorageID");
+                    int? fromStore = first.IsNull("FromStorageID") ? (int?)null : first.Field<int>("FromStorageID");
+                    bool posted = first.Field<bool>("IsPosted");
+                    string exec = first.Field<string>("Executor");
+                    DateTime updated = first.Field<DateTime>("LastUpdated");
+
+                    // Шапка документа
+                    ws.Cells[row, 1] = $"Движение № {id} от {date:dd.MM.yyyy}";
+                    ws.Cells[row, 1].Font.Bold = true;
+                    row++;
+                    ws.Cells[row, 1] = $"Тип: {type}; От: {(fromStore.HasValue ? fromStore.Value.ToString() : "-")}; К: {toStore}; Проведено: {(posted ? "Да" : "Нет")}";
+                    row++;
+                    ws.Cells[row, 1] = $"Исполнитель: {exec}; Обновлено: {updated:dd.MM.yyyy HH:mm}";
+                    row++;
+
+                    var sampleTable = RemoveColumns(g.CopyToDataTable(), HiddenMovementColumns);
+                    int colCount = sampleTable.Columns.Count;
+                    var dateCols = new List<int>();
+
+                    // Заголовки
+                    for (int c = 0; c < colCount; c++)
+                    {
+                        string head = GetHeader(sampleTable.Columns[c].ColumnName);
+                        ws.Cells[row, c + 2] = head;
+                        if (sampleTable.Columns[c].DataType == typeof(DateTime))
+                        {
+                            dateCols.Add(c);
+                            ws.Columns[c + 2].NumberFormat = "dd.mm.yyyy;@";
+                        }
+                        else if (string.Equals(sampleTable.Columns[c].ColumnName, "NomenclatureNumber", StringComparison.OrdinalIgnoreCase))
+                        {
+                            ws.Columns[c + 2].NumberFormat = "@"; // текст
+                        }
+                    }
+                    ws.Range[ws.Cells[row, 2], ws.Cells[row, colCount + 1]].Font.Bold = true;
+                    row++;
+
+                    // Данные
+                    foreach (System.Data.DataRow dr in sampleTable.Rows)
+                    {
+                        for (int c = 0; c < colCount; c++)
+                            ws.Cells[row, c + 2] = dr[c];
+                        row++;
+                    }
+
+                    row += 2; // пробел между документами
+                }
+
+                ws.Columns.AutoFit();
+                ws.PageSetup.CenterHeader = "Сводный отчёт по движениям инструмента";
+            }
+            finally { }
+        }
+
+        /// <summary>
+        /// Отчёт по одному документу движения.
+        /// </summary>
+        public void ExportToolMovementInj(int movementId, DateTime movementDate, string type,
+            int? fromStorage, int toStorage, bool posted, string executor, DateTime lastUpdated,
+            System.Data.DataTable details)
+        {
+            if (details == null || details.Rows.Count == 0) return;
+
+            details = RemoveColumns(details, HiddenMovementColumns);
+
+            var app = new MSExcel.Application();
+            try
+            {
+                app.Visible = true;
+                var wb = app.Workbooks.Add();
+                MSExcel.Worksheet ws = wb.ActiveSheet;
+
+                int r = 1;
+                ws.Cells[r, 1] = $"ДОКУМЕНТ ДВИЖЕНИЯ № {movementId}";
+                ws.Range["A1"].Font.Bold = true;
+                ws.Range["A1"].Font.Size = 14;
+                r += 2;
+
+                ws.Cells[r, 1] = $"Дата: {movementDate:dd.MM.yyyy}";
+                ws.Cells[r, 3] = $"Тип: {type}";
+                ws.Cells[r, 5] = $"Проведено: {(posted ? "Да" : "Нет")}";
+                r++;
+                ws.Cells[r, 1] = $"Со склада: {(fromStorage.HasValue ? fromStorage.Value.ToString() : "-")}";
+                ws.Cells[r, 3] = $"На склад: {toStorage}";
+                r++;
+                ws.Cells[r, 1] = $"Исполнитель: {executor}";
+                ws.Cells[r, 4] = $"Обновлено: {lastUpdated:dd.MM.yyyy HH:mm}";
+                r += 2;
+
+                int colCount = details.Columns.Count;
+                var dateCols = new List<int>();
+
+                // Заголовки
+                for (int c = 0; c < colCount; c++)
+                {
+                    string header = GetHeader(details.Columns[c].ColumnName);
+                    ws.Cells[r, c + 1] = header;
+                    if (details.Columns[c].DataType == typeof(DateTime))
+                    {
+                        dateCols.Add(c);
+                        ws.Columns[c + 1].NumberFormat = "dd.mm.yyyy;@";
+                    }
+                    else if (string.Equals(details.Columns[c].ColumnName, "NomenclatureNumber", StringComparison.OrdinalIgnoreCase))
+                    {
+                        ws.Columns[c + 1].NumberFormat = "@"; // текст
+                    }
+                }
+                ws.Range[ws.Cells[r, 1], ws.Cells[r, colCount]].Font.Bold = true;
+                ws.Range[ws.Cells[r, 1], ws.Cells[r, colCount]].HorizontalAlignment = MSExcel.XlHAlign.xlHAlignCenter;
+                int dataStart = r + 1;
+
+                // Данные
+                for (int row = 0; row < details.Rows.Count; row++)
+                    for (int col = 0; col < colCount; col++)
+                        ws.Cells[dataStart + row, col + 1] = details.Rows[row][col];
+
+                // Табличный стиль
+                MSExcel.Range full = ws.Range[ws.Cells[r, 1], ws.Cells[dataStart + details.Rows.Count - 1, colCount]];
+                var lo = ws.ListObjects.Add(MSExcel.XlListObjectSourceType.xlSrcRange, full, Type.Missing, MSExcel.XlYesNoGuess.xlYes);
+                lo.TableStyle = "TableStyleLight1";
+                foreach (int dc in dateCols)
+                    lo.ListColumns[dc + 1].Range.NumberFormat = "dd.mm.yyyy;@";
+                if (details.Columns.Contains("NomenclatureNumber"))
+                {
+                    int idx = details.Columns["NomenclatureNumber"].Ordinal;
+                    lo.ListColumns[idx + 1].Range.NumberFormat = "@";
+                }
+
+                ws.Columns.AutoFit();
+                ws.PageSetup.CenterHeader = "Отчёт по движению инструмента";
+            }
+            finally { }
+        }
+
+        // Список технических колонок, которые не выводятся в отчётах по движениям
+        private static readonly string[] HiddenMovementColumns = { "InvoiceType", "Price", "Total" };
+
+        private static System.Data.DataTable RemoveColumns(System.Data.DataTable src, string[] cols)
+        {
+            var dt = src.Copy();
+            foreach (var c in cols)
+                if (dt.Columns.Contains(c)) dt.Columns.Remove(c);
+            return dt;
         }
     }
 }
