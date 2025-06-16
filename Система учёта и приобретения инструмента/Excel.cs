@@ -23,13 +23,23 @@ namespace Система_учёта_и_приобретения_инструме
             {"Quantity", "Количество"},
             {"BatchNumber", "Партия"},
             {"Price", "Цена"},
-            {"BalanceDate", "Дата"},
+            {"Total", "Сумма"},
+            {"Account", "Счёт"},
+            {"IsPosted", "Проведён"},
+            {"Executor", "Исполнитель"},
+            {"LastUpdated", "Последнее обновление"},
+            {"ToStorageID", "Склад-получатель"},
+            {"FromStorageID", "Склад-отправитель"},
+            {"MovementTypeID", "Вид движения"},
+            {"IsWriteOff", "Списание"},
+            {"InvoiceType", "Тип накладной"},
+            {"Supplier", "Поставщик"},
             {"FullName", "Наименование"},
+            {"BalanceDate", "Дата"},
 
             // Дефектные ведомости
             {"DefectiveID", "№ ведомости"},
             {"DefectiveDate", "Дата ведомости"},
-            {"IsWriteOff", "Списание" },
 
             // Заявки
             {"RequestID", "№ заявки"},
