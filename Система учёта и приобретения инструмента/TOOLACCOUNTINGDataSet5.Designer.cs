@@ -11286,13 +11286,6 @@ namespace Система_учёта_и_приобретения_инструме
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DataTable2Row FindByReceivingContentID(int ReceivingContentID) {
-                return ((DataTable2Row)(this.Rows.Find(new object[] {
-                            ReceivingContentID})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 DataTable2DataTable cln = ((DataTable2DataTable)(base.Clone()));
                 cln.InitVars();
@@ -11322,14 +11315,11 @@ namespace Система_учёта_и_приобретения_инструме
                 base.Columns.Add(this.columnAnalogNumber);
                 this.columnFullName = new global::System.Data.DataColumn("FullName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFullName);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnReceivingContentID}, true));
                 this.columnReceivingContentID.AutoIncrement = true;
                 this.columnReceivingContentID.AutoIncrementSeed = -1;
                 this.columnReceivingContentID.AutoIncrementStep = -1;
                 this.columnReceivingContentID.AllowDBNull = false;
                 this.columnReceivingContentID.ReadOnly = true;
-                this.columnReceivingContentID.Unique = true;
                 this.columnAnalogNumber.AllowDBNull = false;
                 this.columnAnalogNumber.MaxLength = 9;
                 this.columnFullName.ReadOnly = true;

@@ -17,6 +17,8 @@ namespace Система_учёта_и_приобретения_инструме
         LoginForm login;
         bool changeUser = false;
         private bool receivingSearchReseting = false;
+        // Флаг, позволяющий временно подавлять обработчик фильтра движений при массовом сбросе полей
+        private bool movementsSearchReseting = false;
         private ToolStripMenuItem nomenDefectiveMenuItem;
         private ToolStripMenuItem nomenMovingMenuItem;
         private ContextMenuStrip defectiveContextMenu;
@@ -68,6 +70,7 @@ namespace Система_учёта_и_приобретения_инструме
             this.defectiveListsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.DefectiveLists);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ToolMovements". При необходимости она может быть перемещена или удалена.
             this.toolMovementsTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.ToolMovements);
+           
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequestsContent1". При необходимости она может быть перемещена или удалена.
             this.receivingRequestsContent1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet.ReceivingRequestsContent1);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.ReceivingRequests1". При необходимости она может быть перемещена или удалена.
@@ -80,7 +83,7 @@ namespace Система_учёта_и_приобретения_инструме
             this.workshops1TableAdapter.Fill(this.tOOLACCOUNTINGDataSet.Workshops1);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "tOOLACCOUNTINGDataSet.NomenclatureView". При необходимости она может быть перемещена или удалена.
             this.nomenclatureViewTableAdapter.Fill(this.tOOLACCOUNTINGDataSet.NomenclatureView);
-            
+            WorkshopsRequestsContentTable.Columns[0].Visible = false;
 
             this.WindowState = FormWindowState.Maximized;
 
@@ -122,6 +125,18 @@ namespace Система_учёта_и_приобретения_инструме
             SetupClearableControl(textBox7);    // Склад
             SetupClearableControl(OstatkiNumber); // Номенклатурный номер
             SetupClearableControl(textBox16);   // Цена
+
+            // Movements (Движения) controls
+            SetupClearableControl(DateMovingSearch);
+            SetupClearableControl(NomenclatureMovingSearch);
+            SetupClearableControl(StorageToMovingSearch);
+            SetupClearableControl(StorageFromMovingSearch);
+            SetupClearableControl(ButchNumberMovingSearch);
+            SetupClearableControl(ExecutorMovingSearch);
+
+            // Кнопка «Сброс» для вкладки движений
+            if (ResetMovingSearch != null)
+                ResetMovingSearch.Click += ResetMovingSearch_Click;
 
             // Подписка на события поиска
             SubscribeReceivingSearchEvents();
@@ -819,6 +834,10 @@ namespace Система_учёта_и_приобретения_инструме
                 cb.SelectedIndex = -1;
             else if (ctl is DateTimePicker dtp)
                 dtp.Value = DateTime.Today;
+            else if (ctl is CheckBox chb)
+                chb.Checked = false;
+            else if (ctl is RadioButton rb)
+                rb.Checked = false;
         }
         #endregion
 
@@ -1088,7 +1107,9 @@ namespace Система_учёта_и_приобретения_инструме
             createWriteOff.Click += DefectiveCreateWriteOff_Click;
             var showBalances = new ToolStripMenuItem("Показать остатки по номенклатуре");
             showBalances.Click += DefectiveShowBalances_Click;
-            defectiveContextMenu.Items.AddRange(new ToolStripItem[] { createWriteOff, showBalances });
+            var reportItem = new ToolStripMenuItem("Сформировать отчёт");
+            reportItem.Click += (s, e) => OtchetDef_Click(s, e);
+            defectiveContextMenu.Items.AddRange(new ToolStripItem[] { createWriteOff, showBalances, reportItem });
 
             dataGridView3.ContextMenuStrip = defectiveContextMenu;
 
@@ -1101,6 +1122,7 @@ namespace Система_учёта_и_приобретения_инструме
                     enable = defRow != null && !tOOLACCOUNTINGDataSet.ToolMovements.Any(m => m.SourceDocumentType == "Дефектная ведомость" && m.SourceDocumentID == defRow.DefectiveListID);
                 }
                 createWriteOff.Enabled = enable;
+                reportItem.Enabled = dataGridView3.CurrentRow != null;
             };
         }
 
@@ -1446,8 +1468,11 @@ namespace Система_учёта_и_приобретения_инструме
                 string nomenNumber = row.NomenclatureNumber;
                 int qty = row.Quantity;
                 decimal price = row.Price;
-
-                int fromId = row.FromStorageID;
+                int? fromId;
+                if (row.IsFromStorageIDNull())
+                    fromId = null;
+                else
+                    fromId = row.FromStorageID;
                 int toId = row.ToStorageID;
 
                 // Проверка и перерасчёт остатков
@@ -1512,6 +1537,35 @@ namespace Система_учёта_и_приобретения_инструме
                         newBal.Price = price;
                         newBal.Quantity = qty;
                         if (newBal.Table.Columns.Contains("Account")) newBal["Account"] = "Перемещение";
+                        tOOLACCOUNTINGDataSet.Balances.AddBalancesRow(newBal);
+                    }
+                }
+                else if (movementName == "Приход")
+                {
+                    // Приход: увеличиваем остаток на складе-получателе
+                    var balTo = tOOLACCOUNTINGDataSet.Balances.FirstOrDefault(b => b.StorageID == toId && b.NomenclatureNumber == nomenNumber);
+
+                    if (balTo != null)
+                    {
+                        balTo.Quantity += qty;
+                    }
+                    else
+                    {
+                        int newBalId = tOOLACCOUNTINGDataSet.Balances.Count == 0 ? 1 : tOOLACCOUNTINGDataSet.Balances.Max(r => r.BalanceID) + 1;
+                        var newBal = tOOLACCOUNTINGDataSet.Balances.NewBalancesRow();
+                        newBal.BalanceID = newBalId;
+                        newBal.NomenclatureNumber = nomenNumber;
+                        newBal.StorageID = toId;
+                        newBal.BalanceDate = DateTime.Now;
+                        newBal.BatchNumber = row.BatchNumber;
+                        newBal.Price = price;
+                        newBal.Quantity = qty;
+
+                        if (newBal.Table.Columns.Contains("Account"))
+                        {
+                            newBal["Account"] = "Приход";
+                        }
+
                         tOOLACCOUNTINGDataSet.Balances.AddBalancesRow(newBal);
                     }
                 }
@@ -1756,9 +1810,148 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void Otchet_Click(object sender, EventArgs e)
         {
+            if (WorkshopsRequestsRequestsTable?.CurrentRow?.DataBoundItem is DataRowView drvReq)
+            {
+                var reqRow = drvReq.Row as TOOLACCOUNTINGDataSet.ReceivingRequests1Row;
+                if (reqRow == null)
+                {
+                    NotificationService.Notify("Отчёт", "Не удалось определить выбранную заявку.", ToolTipIcon.Warning);
+                    return;
+                }
 
+                var detailsRows = tOOLACCOUNTINGDataSet.ReceivingRequestsContent1
+                    .Where(r => r.ReceivingRequestID == reqRow.ReceivingRequestID);
+
+                if (!detailsRows.Any())
+                {
+                    MessageBox.Show("У выбранной заявки нет содержания.", "Экспорт", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                System.Data.DataTable dt = detailsRows.CopyToDataTable();
+
+                try
+                {
+                    new Excel().ExportReceivingRequestInj(
+                        reqRow.ReceivingRequestID,
+                        reqRow.PlannedDate,
+                        reqRow.ReceivingRequestDate,
+                        reqRow.Reason,
+                        reqRow.Status,
+                        dt);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                NotificationService.Notify("Отчёт", "Не выбрана строка заявки.", ToolTipIcon.Warning);
+            }
+        }
+
+        private void StorageToMovingSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (movementsSearchReseting) return;
+            var parameters = new List<SearchParameter>();
+           
+            if (!string.IsNullOrEmpty(NomenclatureMovingSearch.Text)) parameters.Add(new SearchParameter("NomenclatureNumber", NomenclatureMovingSearch.Text, true));
+            if (!string.IsNullOrEmpty(StorageToMovingSearch.Text)) parameters.Add(new SearchParameter("ToStorageID", Convert.ToInt32(StorageToMovingSearch.Text), true));
+            if (!string.IsNullOrEmpty(StorageFromMovingSearch.Text)) parameters.Add(new SearchParameter("FromStorageID", Convert.ToInt32(StorageFromMovingSearch.Text), true));
+            if (!string.IsNullOrEmpty(ButchNumberMovingSearch.Text)) parameters.Add(new SearchParameter("BatchNumber", ButchNumberMovingSearch.Text, false));
+            if (!string.IsNullOrEmpty(ExecutorMovingSearch.Text)) parameters.Add(new SearchParameter("Executor", ExecutorMovingSearch.Text, true));
+            if (AddMovingSearch.Checked) parameters.Add(new SearchParameter("MovementTypeID", "Приход", true));
+            if (MovingMovingSearch.Checked) parameters.Add(new SearchParameter("MovementTypeID", "Перемещение", true));
+            if (NonAddMovingSearch.Checked) parameters.Add(new SearchParameter("MovementTypeID", "Расход", true));
+            if (WriteOffMovingSearch.Checked) parameters.Add(new SearchParameter("IsPosted", true, true));
+            
+            try
+            {
+                string filter = Search.Filter(parameters);
+                dataGridView2.SuspendLayout();
+                toolMovementsBindingSource.Filter = filter;
+                dataGridView2.ResumeLayout();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка преобразования", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         // ======== КОНЕЦ ЗАГЛУШЕК ========
+
+        #region Сброс поиска – Movements
+        private void MovementsResetSearchDate() { DateMovingSearch.Value = DateTime.Today; }
+        private void MovementsResetSearchNomen() { NomenclatureMovingSearch.Text = string.Empty; }
+        private void MovementsResetSearchStorageTo() { StorageToMovingSearch.Text = string.Empty; }
+        private void MovementsResetSearchStorageFrom() { StorageFromMovingSearch.Text = string.Empty; }
+        private void MovementsResetSearchBatch() { ButchNumberMovingSearch.Text = string.Empty; }
+        private void MovementsResetSearchExecutor() { ExecutorMovingSearch.Text = string.Empty; }
+        private void MovementsResetSearchFlags()
+        {
+            if (AddMovingSearch != null) AddMovingSearch.Checked = false;
+            if (MovingMovingSearch != null) MovingMovingSearch.Checked = false;
+            if (NonAddMovingSearch != null) NonAddMovingSearch.Checked = false;
+            if (WriteOffMovingSearch != null) WriteOffMovingSearch.Checked = false;
+        }
+
+        private void MovementsResetSearch()
+        {
+            movementsSearchReseting = true;
+            MovementsResetSearchDate();
+            MovementsResetSearchNomen();
+            MovementsResetSearchStorageTo();
+            MovementsResetSearchStorageFrom();
+            MovementsResetSearchBatch();
+            MovementsResetSearchExecutor();
+            MovementsResetSearchFlags();
+            movementsSearchReseting = false;
+
+            // Убираем фильтр
+            toolMovementsBindingSource.RemoveFilter();
+        }
+
+        private void ResetMovingSearch_Click(object sender, EventArgs e)
+        {
+            MovementsResetSearch();
+        }
+        #endregion
+
+        /// <summary>
+        /// Формирует отчёт по выбранной дефектной ведомости в Excel.
+        /// </summary>
+        private void OtchetDef_Click(object sender, EventArgs e)
+        {
+            if (dataGridView3.CurrentRow?.DataBoundItem is DataRowView drv)
+            {
+                var defRow = drv.Row as TOOLACCOUNTINGDataSet.DefectiveListsRow;
+                if (defRow == null)
+                {
+                    NotificationService.Notify("Отчёт", "Не удалось определить выбранную ведомость.", ToolTipIcon.Warning);
+                    return;
+                }
+
+                // Создаём таблицу из одной строки
+                var dt = defRow.Table.Clone();
+                dt.ImportRow(defRow);
+
+                dt = PrepareForExport(dt);
+
+                try
+                {
+                    new Excel().ExportDefectiveInj(dt, null);
+                    NotificationService.Notify("Экспорт", "Отчёт открыт в Excel.", ToolTipIcon.Info);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                NotificationService.Notify("Отчёт", "Не выбрана строка ведомости.", ToolTipIcon.Warning);
+            }
+        }
     }
 
 }

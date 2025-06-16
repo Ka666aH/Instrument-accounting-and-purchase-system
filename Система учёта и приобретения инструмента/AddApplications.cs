@@ -332,11 +332,21 @@ namespace Система_учёта_и_приобретения_инструме
 
         private void ClearForm()
         {
+            // Сохраняем выбранный тип заявки, чтобы не сбивать выбор пользователя
+            var typeIndex = ApplicationType.SelectedIndex;
+
             Workshop.SelectedIndex = -1;
-            ApplicationType.SelectedIndex = 0;
+            ApplicationType.SelectedIndex = typeIndex >= 0 ? typeIndex : 0;
             Reason.SelectedIndex = -1;
             dateTimePicker1.Value = DateTime.Today;
+
             dataSet.ReceivingRequestsContent.Clear();
+
+            // Генерируем новый номер заявки
+            var reqAdapter = new ReceivingRequestsTableAdapter();
+            reqAdapter.Fill(dataSet.ReceivingRequests);
+            int newId = dataSet.ReceivingRequests.Count == 0 ? 1 : dataSet.ReceivingRequests.Max(r => r.ReceivingRequestID) + 1;
+            textBox1.Text = newId.ToString();
         }
 
         private bool AllFieldsEmpty()

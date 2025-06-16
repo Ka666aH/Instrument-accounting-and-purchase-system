@@ -240,7 +240,11 @@ namespace Система_учёта_и_приобретения_инструме
         #region Сохранение
         private void GroupFormSave_Click(object sender, EventArgs e)
         {
-            if (TrySave()) NotificationService.Notify("Успех", "Дефектная ведомость сохранена.", ToolTipIcon.Info);
+            if (TrySave())
+            {
+                NotificationService.Notify("Успех", "Дефектная ведомость сохранена.", ToolTipIcon.Info);
+                ClearForm();
+            }
         }
         private void GroupFormSaveClose_Click(object sender, EventArgs e)
         {
@@ -355,6 +359,36 @@ namespace Система_учёта_и_приобретения_инструме
             if (textBox3 != null) textBox3.Text = price.ToString("0.##");
             // textBox6 – партия
             if (textBox6 != null) textBox6.Text = batchNumber;
+        }
+
+        /// <summary>
+        /// Очищает форму после сохранения, генерируя новый номер ведомости.
+        /// </summary>
+        private void ClearForm()
+        {
+            _settingByCode = true;
+
+            // Очищаем вводимые поля
+            textBox5.Text = string.Empty; // номенклатурный номер
+            textBox2.Text = string.Empty; // цех
+            textBox6.Text = string.Empty; // партия
+            textBox3.Text = string.Empty; // цена
+            textBox4.Text = string.Empty; // количество
+
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+
+            // Обновляем дату и номер
+            ApplicationDate.Text = DateTime.Today.ToShortDateString();
+            defectiveListsTableAdapter.Fill(tOOLACCOUNTINGDataSet.DefectiveLists);
+            int newId = tOOLACCOUNTINGDataSet.DefectiveLists.Count == 0 ? 1 : tOOLACCOUNTINGDataSet.DefectiveLists.Max(r => r.DefectiveListID) + 1;
+            textBox1.Text = newId.ToString();
+
+            _settingByCode = false;
+
+            // Обновляем источники автодополнения
+            RefreshWorkshopSource();
+            RefreshNomenSource();
         }
     }
 }

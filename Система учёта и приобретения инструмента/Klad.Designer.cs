@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Klad));
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.OtchetDef = new System.Windows.Forms.Button();
             this.CreateDef = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
@@ -68,41 +67,26 @@
             this.AlterMoving = new System.Windows.Forms.Button();
             this.CreateMoving = new System.Windows.Forms.Button();
             this.SearchMoving = new System.Windows.Forms.GroupBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.button4 = new System.Windows.Forms.Button();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.Passage = new System.Windows.Forms.CheckBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.WarehouseSender = new System.Windows.Forms.ComboBox();
-            this.WarehouseRecipient = new System.Windows.Forms.ComboBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.AddMovingSearch = new System.Windows.Forms.RadioButton();
+            this.MovingMovingSearch = new System.Windows.Forms.RadioButton();
+            this.NonAddMovingSearch = new System.Windows.Forms.RadioButton();
+            this.ResetMovingSearch = new System.Windows.Forms.Button();
+            this.NomenclatureMovingSearch = new System.Windows.Forms.MaskedTextBox();
+            this.WriteOffMovingSearch = new System.Windows.Forms.CheckBox();
+            this.DateMovingSearch = new System.Windows.Forms.DateTimePicker();
+            this.ExecutorMovingSearch = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.ButchNumber = new System.Windows.Forms.TextBox();
+            this.StorageFromMovingSearch = new System.Windows.Forms.TextBox();
+            this.StorageToMovingSearch = new System.Windows.Forms.TextBox();
+            this.ButchNumberMovingSearch = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.movementIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.movementDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toStorageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fromStorageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.movementTypeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomenclatureNumberDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sourceDocumentTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sourceDocumentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.batchNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.invoiceTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isPostedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.executorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastUpdatedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolMovementsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
@@ -196,7 +180,6 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.label34 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
-            this.CreateWorkshop = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -249,6 +232,22 @@
             this.receivingRequestsContentTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ReceivingRequestsContentTableAdapter();
             this.toolMovementsTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.ToolMovementsTableAdapter();
             this.balancesTableAdapter = new Система_учёта_и_приобретения_инструмента.TOOLACCOUNTINGDataSetTableAdapters.BalancesTableAdapter();
+            this.movementIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.movementDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toStorageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fromStorageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.movementTypeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomenclatureNumberDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sourceDocumentTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sourceDocumentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.batchNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoiceTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isPostedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.executorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastUpdatedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -289,7 +288,6 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.OtchetDef);
             this.tabPage4.Controls.Add(this.CreateDef);
             this.tabPage4.Controls.Add(this.groupBox3);
             this.tabPage4.Controls.Add(this.dataGridView3);
@@ -299,16 +297,6 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Дефектные ведомости";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // OtchetDef
-            // 
-            this.OtchetDef.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.OtchetDef.Location = new System.Drawing.Point(1057, 200);
-            this.OtchetDef.Name = "OtchetDef";
-            this.OtchetDef.Size = new System.Drawing.Size(182, 44);
-            this.OtchetDef.TabIndex = 26;
-            this.OtchetDef.Text = "Отчет";
-            this.OtchetDef.UseVisualStyleBackColor = true;
             // 
             // CreateDef
             // 
@@ -658,6 +646,7 @@
             this.DeleteMoving.TabIndex = 22;
             this.DeleteMoving.Text = "Удалить";
             this.DeleteMoving.UseVisualStyleBackColor = true;
+            this.DeleteMoving.Visible = false;
             // 
             // WriteOff
             // 
@@ -680,6 +669,7 @@
             this.AlterMoving.TabIndex = 21;
             this.AlterMoving.Text = "Изменить";
             this.AlterMoving.UseVisualStyleBackColor = true;
+            this.AlterMoving.Visible = false;
             // 
             // CreateMoving
             // 
@@ -696,19 +686,20 @@
             // 
             this.SearchMoving.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchMoving.Controls.Add(this.radioButton4);
-            this.SearchMoving.Controls.Add(this.radioButton3);
-            this.SearchMoving.Controls.Add(this.button4);
-            this.SearchMoving.Controls.Add(this.maskedTextBox1);
-            this.SearchMoving.Controls.Add(this.Passage);
-            this.SearchMoving.Controls.Add(this.dateTimePicker1);
-            this.SearchMoving.Controls.Add(this.WarehouseSender);
-            this.SearchMoving.Controls.Add(this.WarehouseRecipient);
-            this.SearchMoving.Controls.Add(this.textBox10);
+            this.SearchMoving.Controls.Add(this.AddMovingSearch);
+            this.SearchMoving.Controls.Add(this.MovingMovingSearch);
+            this.SearchMoving.Controls.Add(this.NonAddMovingSearch);
+            this.SearchMoving.Controls.Add(this.ResetMovingSearch);
+            this.SearchMoving.Controls.Add(this.NomenclatureMovingSearch);
+            this.SearchMoving.Controls.Add(this.WriteOffMovingSearch);
+            this.SearchMoving.Controls.Add(this.DateMovingSearch);
+            this.SearchMoving.Controls.Add(this.ExecutorMovingSearch);
             this.SearchMoving.Controls.Add(this.label10);
             this.SearchMoving.Controls.Add(this.label12);
             this.SearchMoving.Controls.Add(this.label14);
-            this.SearchMoving.Controls.Add(this.ButchNumber);
+            this.SearchMoving.Controls.Add(this.StorageFromMovingSearch);
+            this.SearchMoving.Controls.Add(this.StorageToMovingSearch);
+            this.SearchMoving.Controls.Add(this.ButchNumberMovingSearch);
             this.SearchMoving.Controls.Add(this.label16);
             this.SearchMoving.Controls.Add(this.label19);
             this.SearchMoving.Controls.Add(this.label20);
@@ -722,109 +713,108 @@
             this.SearchMoving.TabStop = false;
             this.SearchMoving.Text = "Поиск";
             // 
-            // radioButton4
+            // AddMovingSearch
             // 
-            this.radioButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton4.Location = new System.Drawing.Point(958, 26);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(84, 24);
-            this.radioButton4.TabIndex = 40;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Приход";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.AddMovingSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddMovingSearch.AutoSize = true;
+            this.AddMovingSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddMovingSearch.Location = new System.Drawing.Point(893, 26);
+            this.AddMovingSearch.Name = "AddMovingSearch";
+            this.AddMovingSearch.Size = new System.Drawing.Size(84, 24);
+            this.AddMovingSearch.TabIndex = 40;
+            this.AddMovingSearch.TabStop = true;
+            this.AddMovingSearch.Text = "Приход";
+            this.AddMovingSearch.UseVisualStyleBackColor = true;
+            this.AddMovingSearch.CheckedChanged += new System.EventHandler(this.StorageToMovingSearch_TextChanged);
             // 
-            // radioButton3
+            // MovingMovingSearch
             // 
-            this.radioButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton3.Location = new System.Drawing.Point(1052, 26);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(81, 24);
-            this.radioButton3.TabIndex = 40;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Расход";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.MovingMovingSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MovingMovingSearch.AutoSize = true;
+            this.MovingMovingSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MovingMovingSearch.Location = new System.Drawing.Point(893, 56);
+            this.MovingMovingSearch.Name = "MovingMovingSearch";
+            this.MovingMovingSearch.Size = new System.Drawing.Size(135, 24);
+            this.MovingMovingSearch.TabIndex = 40;
+            this.MovingMovingSearch.TabStop = true;
+            this.MovingMovingSearch.Text = "Перемещение";
+            this.MovingMovingSearch.UseVisualStyleBackColor = true;
+            this.MovingMovingSearch.CheckedChanged += new System.EventHandler(this.StorageToMovingSearch_TextChanged);
             // 
-            // button4
+            // NonAddMovingSearch
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(1169, 25);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(63, 29);
-            this.button4.TabIndex = 39;
-            this.button4.Text = "Сброс";
-            this.button4.UseVisualStyleBackColor = true;
+            this.NonAddMovingSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NonAddMovingSearch.AutoSize = true;
+            this.NonAddMovingSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NonAddMovingSearch.Location = new System.Drawing.Point(893, 86);
+            this.NonAddMovingSearch.Name = "NonAddMovingSearch";
+            this.NonAddMovingSearch.Size = new System.Drawing.Size(81, 24);
+            this.NonAddMovingSearch.TabIndex = 40;
+            this.NonAddMovingSearch.TabStop = true;
+            this.NonAddMovingSearch.Text = "Расход";
+            this.NonAddMovingSearch.UseVisualStyleBackColor = true;
+            this.NonAddMovingSearch.CheckedChanged += new System.EventHandler(this.StorageToMovingSearch_TextChanged);
             // 
-            // maskedTextBox1
+            // ResetMovingSearch
             // 
-            this.maskedTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(571, 25);
-            this.maskedTextBox1.Mask = "000000000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(243, 29);
-            this.maskedTextBox1.TabIndex = 38;
+            this.ResetMovingSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResetMovingSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ResetMovingSearch.Location = new System.Drawing.Point(1169, 25);
+            this.ResetMovingSearch.Name = "ResetMovingSearch";
+            this.ResetMovingSearch.Size = new System.Drawing.Size(63, 29);
+            this.ResetMovingSearch.TabIndex = 39;
+            this.ResetMovingSearch.Text = "Сброс";
+            this.ResetMovingSearch.UseVisualStyleBackColor = true;
             // 
-            // Passage
+            // NomenclatureMovingSearch
             // 
-            this.Passage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Passage.AutoSize = true;
-            this.Passage.Location = new System.Drawing.Point(946, 68);
-            this.Passage.Name = "Passage";
-            this.Passage.Size = new System.Drawing.Size(15, 14);
-            this.Passage.TabIndex = 37;
-            this.Passage.UseVisualStyleBackColor = true;
+            this.NomenclatureMovingSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NomenclatureMovingSearch.Location = new System.Drawing.Point(571, 25);
+            this.NomenclatureMovingSearch.Mask = "000000000";
+            this.NomenclatureMovingSearch.Name = "NomenclatureMovingSearch";
+            this.NomenclatureMovingSearch.Size = new System.Drawing.Size(189, 29);
+            this.NomenclatureMovingSearch.TabIndex = 38;
+            this.NomenclatureMovingSearch.TextChanged += new System.EventHandler(this.StorageToMovingSearch_TextChanged);
             // 
-            // dateTimePicker1
+            // WriteOffMovingSearch
             // 
-            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.WriteOffMovingSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.WriteOffMovingSearch.AutoSize = true;
+            this.WriteOffMovingSearch.Location = new System.Drawing.Point(1138, 35);
+            this.WriteOffMovingSearch.Name = "WriteOffMovingSearch";
+            this.WriteOffMovingSearch.Size = new System.Drawing.Size(15, 14);
+            this.WriteOffMovingSearch.TabIndex = 37;
+            this.WriteOffMovingSearch.UseVisualStyleBackColor = true;
+            this.WriteOffMovingSearch.CheckedChanged += new System.EventHandler(this.StorageToMovingSearch_TextChanged);
+            // 
+            // DateMovingSearch
+            // 
+            this.DateMovingSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(175, 25);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(226, 29);
-            this.dateTimePicker1.TabIndex = 3;
+            this.DateMovingSearch.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DateMovingSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DateMovingSearch.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DateMovingSearch.Location = new System.Drawing.Point(175, 25);
+            this.DateMovingSearch.Name = "DateMovingSearch";
+            this.DateMovingSearch.Size = new System.Drawing.Size(226, 29);
+            this.DateMovingSearch.TabIndex = 3;
+            this.DateMovingSearch.ValueChanged += new System.EventHandler(this.StorageToMovingSearch_TextChanged);
             // 
-            // WarehouseSender
+            // ExecutorMovingSearch
             // 
-            this.WarehouseSender.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.WarehouseSender.FormattingEnabled = true;
-            this.WarehouseSender.Location = new System.Drawing.Point(175, 62);
-            this.WarehouseSender.Name = "WarehouseSender";
-            this.WarehouseSender.Size = new System.Drawing.Size(226, 32);
-            this.WarehouseSender.TabIndex = 29;
-            // 
-            // WarehouseRecipient
-            // 
-            this.WarehouseRecipient.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.WarehouseRecipient.FormattingEnabled = true;
-            this.WarehouseRecipient.Location = new System.Drawing.Point(175, 96);
-            this.WarehouseRecipient.Name = "WarehouseRecipient";
-            this.WarehouseRecipient.Size = new System.Drawing.Size(226, 32);
-            this.WarehouseRecipient.TabIndex = 29;
-            this.WarehouseRecipient.Text = " ";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox10.Location = new System.Drawing.Point(571, 96);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(242, 29);
-            this.textBox10.TabIndex = 31;
+            this.ExecutorMovingSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExecutorMovingSearch.Location = new System.Drawing.Point(571, 96);
+            this.ExecutorMovingSearch.Name = "ExecutorMovingSearch";
+            this.ExecutorMovingSearch.Size = new System.Drawing.Size(189, 29);
+            this.ExecutorMovingSearch.TabIndex = 31;
+            this.ExecutorMovingSearch.TextChanged += new System.EventHandler(this.StorageToMovingSearch_TextChanged);
             // 
             // label10
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(820, 65);
+            this.label10.Location = new System.Drawing.Point(1046, 31);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(86, 20);
             this.label10.TabIndex = 36;
@@ -853,20 +843,41 @@
             this.label14.TabIndex = 35;
             this.label14.Text = "Исполнитель";
             // 
-            // ButchNumber
+            // StorageFromMovingSearch
             // 
-            this.ButchNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButchNumber.Location = new System.Drawing.Point(571, 62);
-            this.ButchNumber.Name = "ButchNumber";
-            this.ButchNumber.Size = new System.Drawing.Size(243, 29);
-            this.ButchNumber.TabIndex = 28;
+            this.StorageFromMovingSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.StorageFromMovingSearch.Location = new System.Drawing.Point(175, 96);
+            this.StorageFromMovingSearch.Name = "StorageFromMovingSearch";
+            this.StorageFromMovingSearch.Size = new System.Drawing.Size(226, 29);
+            this.StorageFromMovingSearch.TabIndex = 28;
+            this.StorageFromMovingSearch.TextChanged += new System.EventHandler(this.StorageToMovingSearch_TextChanged);
+            // 
+            // StorageToMovingSearch
+            // 
+            this.StorageToMovingSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.StorageToMovingSearch.Location = new System.Drawing.Point(175, 62);
+            this.StorageToMovingSearch.Name = "StorageToMovingSearch";
+            this.StorageToMovingSearch.Size = new System.Drawing.Size(226, 29);
+            this.StorageToMovingSearch.TabIndex = 28;
+            this.StorageToMovingSearch.TextChanged += new System.EventHandler(this.StorageToMovingSearch_TextChanged);
+            // 
+            // ButchNumberMovingSearch
+            // 
+            this.ButchNumberMovingSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButchNumberMovingSearch.Location = new System.Drawing.Point(571, 62);
+            this.ButchNumberMovingSearch.Name = "ButchNumberMovingSearch";
+            this.ButchNumberMovingSearch.Size = new System.Drawing.Size(189, 29);
+            this.ButchNumberMovingSearch.TabIndex = 28;
+            this.ButchNumberMovingSearch.TextChanged += new System.EventHandler(this.StorageToMovingSearch_TextChanged);
             // 
             // label16
             // 
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.Location = new System.Drawing.Point(820, 30);
+            this.label16.Location = new System.Drawing.Point(767, 30);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(120, 20);
             this.label16.TabIndex = 30;
@@ -952,106 +963,6 @@
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(1035, 459);
             this.dataGridView2.TabIndex = 1;
-            // 
-            // movementIDDataGridViewTextBoxColumn
-            // 
-            this.movementIDDataGridViewTextBoxColumn.DataPropertyName = "MovementID";
-            this.movementIDDataGridViewTextBoxColumn.HeaderText = "Номер движения";
-            this.movementIDDataGridViewTextBoxColumn.Name = "movementIDDataGridViewTextBoxColumn";
-            this.movementIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // movementDateDataGridViewTextBoxColumn
-            // 
-            this.movementDateDataGridViewTextBoxColumn.DataPropertyName = "MovementDate";
-            this.movementDateDataGridViewTextBoxColumn.HeaderText = "Дата";
-            this.movementDateDataGridViewTextBoxColumn.Name = "movementDateDataGridViewTextBoxColumn";
-            // 
-            // toStorageIDDataGridViewTextBoxColumn
-            // 
-            this.toStorageIDDataGridViewTextBoxColumn.DataPropertyName = "ToStorageID";
-            this.toStorageIDDataGridViewTextBoxColumn.HeaderText = "Склад-получатель";
-            this.toStorageIDDataGridViewTextBoxColumn.Name = "toStorageIDDataGridViewTextBoxColumn";
-            // 
-            // fromStorageIDDataGridViewTextBoxColumn
-            // 
-            this.fromStorageIDDataGridViewTextBoxColumn.DataPropertyName = "FromStorageID";
-            this.fromStorageIDDataGridViewTextBoxColumn.HeaderText = "Склад-отправитель";
-            this.fromStorageIDDataGridViewTextBoxColumn.Name = "fromStorageIDDataGridViewTextBoxColumn";
-            // 
-            // movementTypeIDDataGridViewTextBoxColumn
-            // 
-            this.movementTypeIDDataGridViewTextBoxColumn.DataPropertyName = "MovementTypeID";
-            this.movementTypeIDDataGridViewTextBoxColumn.HeaderText = "Тип движения";
-            this.movementTypeIDDataGridViewTextBoxColumn.Name = "movementTypeIDDataGridViewTextBoxColumn";
-            // 
-            // nomenclatureNumberDataGridViewTextBoxColumn1
-            // 
-            this.nomenclatureNumberDataGridViewTextBoxColumn1.DataPropertyName = "NomenclatureNumber";
-            this.nomenclatureNumberDataGridViewTextBoxColumn1.HeaderText = "Номенклатурный номер";
-            this.nomenclatureNumberDataGridViewTextBoxColumn1.Name = "nomenclatureNumberDataGridViewTextBoxColumn1";
-            // 
-            // sourceDocumentTypeDataGridViewTextBoxColumn
-            // 
-            this.sourceDocumentTypeDataGridViewTextBoxColumn.DataPropertyName = "SourceDocumentType";
-            this.sourceDocumentTypeDataGridViewTextBoxColumn.HeaderText = "Тип документа источника";
-            this.sourceDocumentTypeDataGridViewTextBoxColumn.Name = "sourceDocumentTypeDataGridViewTextBoxColumn";
-            // 
-            // sourceDocumentIDDataGridViewTextBoxColumn
-            // 
-            this.sourceDocumentIDDataGridViewTextBoxColumn.DataPropertyName = "SourceDocumentID";
-            this.sourceDocumentIDDataGridViewTextBoxColumn.HeaderText = "Документ источник";
-            this.sourceDocumentIDDataGridViewTextBoxColumn.Name = "sourceDocumentIDDataGridViewTextBoxColumn";
-            // 
-            // batchNumberDataGridViewTextBoxColumn
-            // 
-            this.batchNumberDataGridViewTextBoxColumn.DataPropertyName = "BatchNumber";
-            this.batchNumberDataGridViewTextBoxColumn.HeaderText = "Партия";
-            this.batchNumberDataGridViewTextBoxColumn.Name = "batchNumberDataGridViewTextBoxColumn";
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Учетная цена";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Количество";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            // 
-            // totalDataGridViewTextBoxColumn
-            // 
-            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
-            this.totalDataGridViewTextBoxColumn.HeaderText = "Сумма";
-            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
-            this.totalDataGridViewTextBoxColumn.ReadOnly = true;
-            this.totalDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // invoiceTypeDataGridViewTextBoxColumn
-            // 
-            this.invoiceTypeDataGridViewTextBoxColumn.DataPropertyName = "InvoiceType";
-            this.invoiceTypeDataGridViewTextBoxColumn.HeaderText = "Тип накладной";
-            this.invoiceTypeDataGridViewTextBoxColumn.Name = "invoiceTypeDataGridViewTextBoxColumn";
-            // 
-            // isPostedDataGridViewCheckBoxColumn
-            // 
-            this.isPostedDataGridViewCheckBoxColumn.DataPropertyName = "IsPosted";
-            this.isPostedDataGridViewCheckBoxColumn.HeaderText = "Проведено";
-            this.isPostedDataGridViewCheckBoxColumn.Name = "isPostedDataGridViewCheckBoxColumn";
-            // 
-            // executorDataGridViewTextBoxColumn
-            // 
-            this.executorDataGridViewTextBoxColumn.DataPropertyName = "Executor";
-            this.executorDataGridViewTextBoxColumn.HeaderText = "Исполнитель";
-            this.executorDataGridViewTextBoxColumn.Name = "executorDataGridViewTextBoxColumn";
-            // 
-            // lastUpdatedDataGridViewTextBoxColumn
-            // 
-            this.lastUpdatedDataGridViewTextBoxColumn.DataPropertyName = "LastUpdated";
-            this.lastUpdatedDataGridViewTextBoxColumn.HeaderText = "Последнее изменение";
-            this.lastUpdatedDataGridViewTextBoxColumn.Name = "lastUpdatedDataGridViewTextBoxColumn";
             // 
             // toolMovementsBindingSource
             // 
@@ -2018,7 +1929,6 @@
             // 
             this.tabPage5.Controls.Add(this.label34);
             this.tabPage5.Controls.Add(this.label33);
-            this.tabPage5.Controls.Add(this.CreateWorkshop);
             this.tabPage5.Controls.Add(this.groupBox4);
             this.tabPage5.Controls.Add(this.dataGridView5);
             this.tabPage5.Controls.Add(this.WorkshopsMain);
@@ -2049,18 +1959,6 @@
             this.label33.Size = new System.Drawing.Size(124, 24);
             this.label33.TabIndex = 34;
             this.label33.Text = "Склады цеха";
-            // 
-            // CreateWorkshop
-            // 
-            this.CreateWorkshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CreateWorkshop.Enabled = false;
-            this.CreateWorkshop.Location = new System.Drawing.Point(1056, 110);
-            this.CreateWorkshop.Name = "CreateWorkshop";
-            this.CreateWorkshop.Size = new System.Drawing.Size(182, 48);
-            this.CreateWorkshop.TabIndex = 20;
-            this.CreateWorkshop.Text = "Создать заявку на получение";
-            this.CreateWorkshop.UseVisualStyleBackColor = true;
-            this.CreateWorkshop.Click += new System.EventHandler(this.CreateWorkshop_Click);
             // 
             // groupBox4
             // 
@@ -2151,7 +2049,7 @@
             this.dataGridView5.MultiSelect = false;
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.RowHeadersVisible = false;
-            this.dataGridView5.Size = new System.Drawing.Size(1030, 194);
+            this.dataGridView5.Size = new System.Drawing.Size(1230, 194);
             this.dataGridView5.TabIndex = 0;
             // 
             // storageIDDataGridViewTextBoxColumn
@@ -2204,7 +2102,7 @@
             this.WorkshopsMain.ReadOnly = true;
             this.WorkshopsMain.RowHeadersVisible = false;
             this.WorkshopsMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.WorkshopsMain.Size = new System.Drawing.Size(1030, 275);
+            this.WorkshopsMain.Size = new System.Drawing.Size(1230, 275);
             this.WorkshopsMain.TabIndex = 0;
             this.WorkshopsMain.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.WorkshopsMain_CellBeginEdit);
             this.WorkshopsMain.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.WorkshopsMain_CellValidating);
@@ -2525,6 +2423,107 @@
             // 
             this.balancesTableAdapter.ClearBeforeFill = true;
             // 
+            // movementIDDataGridViewTextBoxColumn
+            // 
+            this.movementIDDataGridViewTextBoxColumn.DataPropertyName = "MovementID";
+            this.movementIDDataGridViewTextBoxColumn.HeaderText = "Номер движения";
+            this.movementIDDataGridViewTextBoxColumn.Name = "movementIDDataGridViewTextBoxColumn";
+            this.movementIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // movementDateDataGridViewTextBoxColumn
+            // 
+            this.movementDateDataGridViewTextBoxColumn.DataPropertyName = "MovementDate";
+            this.movementDateDataGridViewTextBoxColumn.HeaderText = "Дата";
+            this.movementDateDataGridViewTextBoxColumn.Name = "movementDateDataGridViewTextBoxColumn";
+            // 
+            // toStorageIDDataGridViewTextBoxColumn
+            // 
+            this.toStorageIDDataGridViewTextBoxColumn.DataPropertyName = "ToStorageID";
+            this.toStorageIDDataGridViewTextBoxColumn.HeaderText = "Склад-получатель";
+            this.toStorageIDDataGridViewTextBoxColumn.Name = "toStorageIDDataGridViewTextBoxColumn";
+            // 
+            // fromStorageIDDataGridViewTextBoxColumn
+            // 
+            this.fromStorageIDDataGridViewTextBoxColumn.DataPropertyName = "FromStorageID";
+            this.fromStorageIDDataGridViewTextBoxColumn.HeaderText = "Склад-отправитель";
+            this.fromStorageIDDataGridViewTextBoxColumn.Name = "fromStorageIDDataGridViewTextBoxColumn";
+            // 
+            // movementTypeIDDataGridViewTextBoxColumn
+            // 
+            this.movementTypeIDDataGridViewTextBoxColumn.DataPropertyName = "MovementTypeID";
+            this.movementTypeIDDataGridViewTextBoxColumn.HeaderText = "Тип движения";
+            this.movementTypeIDDataGridViewTextBoxColumn.Name = "movementTypeIDDataGridViewTextBoxColumn";
+            // 
+            // nomenclatureNumberDataGridViewTextBoxColumn1
+            // 
+            this.nomenclatureNumberDataGridViewTextBoxColumn1.DataPropertyName = "NomenclatureNumber";
+            this.nomenclatureNumberDataGridViewTextBoxColumn1.HeaderText = "Номенклатурный номер";
+            this.nomenclatureNumberDataGridViewTextBoxColumn1.Name = "nomenclatureNumberDataGridViewTextBoxColumn1";
+            // 
+            // sourceDocumentTypeDataGridViewTextBoxColumn
+            // 
+            this.sourceDocumentTypeDataGridViewTextBoxColumn.DataPropertyName = "SourceDocumentType";
+            this.sourceDocumentTypeDataGridViewTextBoxColumn.HeaderText = "Тип документа источника";
+            this.sourceDocumentTypeDataGridViewTextBoxColumn.Name = "sourceDocumentTypeDataGridViewTextBoxColumn";
+            // 
+            // sourceDocumentIDDataGridViewTextBoxColumn
+            // 
+            this.sourceDocumentIDDataGridViewTextBoxColumn.DataPropertyName = "SourceDocumentID";
+            this.sourceDocumentIDDataGridViewTextBoxColumn.HeaderText = "Документ источник";
+            this.sourceDocumentIDDataGridViewTextBoxColumn.Name = "sourceDocumentIDDataGridViewTextBoxColumn";
+            // 
+            // batchNumberDataGridViewTextBoxColumn
+            // 
+            this.batchNumberDataGridViewTextBoxColumn.DataPropertyName = "BatchNumber";
+            this.batchNumberDataGridViewTextBoxColumn.HeaderText = "Партия";
+            this.batchNumberDataGridViewTextBoxColumn.Name = "batchNumberDataGridViewTextBoxColumn";
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Учетная цена";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Количество";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            // 
+            // totalDataGridViewTextBoxColumn
+            // 
+            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
+            this.totalDataGridViewTextBoxColumn.HeaderText = "Сумма";
+            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
+            this.totalDataGridViewTextBoxColumn.ReadOnly = true;
+            this.totalDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // invoiceTypeDataGridViewTextBoxColumn
+            // 
+            this.invoiceTypeDataGridViewTextBoxColumn.DataPropertyName = "InvoiceType";
+            this.invoiceTypeDataGridViewTextBoxColumn.HeaderText = "Тип накладной";
+            this.invoiceTypeDataGridViewTextBoxColumn.Name = "invoiceTypeDataGridViewTextBoxColumn";
+            this.invoiceTypeDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // isPostedDataGridViewCheckBoxColumn
+            // 
+            this.isPostedDataGridViewCheckBoxColumn.DataPropertyName = "IsPosted";
+            this.isPostedDataGridViewCheckBoxColumn.HeaderText = "Проведено";
+            this.isPostedDataGridViewCheckBoxColumn.Name = "isPostedDataGridViewCheckBoxColumn";
+            // 
+            // executorDataGridViewTextBoxColumn
+            // 
+            this.executorDataGridViewTextBoxColumn.DataPropertyName = "Executor";
+            this.executorDataGridViewTextBoxColumn.HeaderText = "Исполнитель";
+            this.executorDataGridViewTextBoxColumn.Name = "executorDataGridViewTextBoxColumn";
+            // 
+            // lastUpdatedDataGridViewTextBoxColumn
+            // 
+            this.lastUpdatedDataGridViewTextBoxColumn.DataPropertyName = "LastUpdated";
+            this.lastUpdatedDataGridViewTextBoxColumn.HeaderText = "Последнее изменение";
+            this.lastUpdatedDataGridViewTextBoxColumn.Name = "lastUpdatedDataGridViewTextBoxColumn";
+            // 
             // Klad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2598,15 +2597,13 @@
         private System.Windows.Forms.Button AlterMoving;
         private System.Windows.Forms.Button CreateMoving;
         private System.Windows.Forms.GroupBox SearchMoving;
-        private System.Windows.Forms.CheckBox Passage;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox WarehouseSender;
-        private System.Windows.Forms.ComboBox WarehouseRecipient;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.CheckBox WriteOffMovingSearch;
+        private System.Windows.Forms.DateTimePicker DateMovingSearch;
+        private System.Windows.Forms.TextBox ExecutorMovingSearch;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox ButchNumber;
+        private System.Windows.Forms.TextBox ButchNumberMovingSearch;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
@@ -2626,7 +2623,6 @@
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.Button OtchetDef;
         private System.Windows.Forms.Button CreateDef;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
@@ -2696,7 +2692,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.MaskedTextBox textBox1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox NomenclatureMovingSearch;
         private TOOLACCOUNTINGDataSet tOOLACCOUNTINGDataSet;
         private System.Windows.Forms.BindingSource nomenclatureViewBindingSource;
         private TOOLACCOUNTINGDataSetTableAdapters.NomenclatureViewTableAdapter nomenclatureViewTableAdapter;
@@ -2738,7 +2734,7 @@
         private System.Windows.Forms.Button NomenButtonResetSearch;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button ResetMovingSearch;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button6;
@@ -2753,8 +2749,8 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.RadioButton NonPlanned;
         private System.Windows.Forms.RadioButton Planned;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton AddMovingSearch;
+        private System.Windows.Forms.RadioButton NonAddMovingSearch;
         private System.Windows.Forms.BindingSource toolMovementsBindingSource;
         private TOOLACCOUNTINGDataSetTableAdapters.ToolMovementsTableAdapter toolMovementsTableAdapter;
         private System.Windows.Forms.BindingSource balancesBindingSource;
@@ -2787,6 +2783,16 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button WriteOff;
+        private System.Windows.Forms.DataGridViewTextBoxColumn balanceIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn storageIDDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn balanceDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn batchNumberDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.TextBox StorageFromMovingSearch;
+        private System.Windows.Forms.TextBox StorageToMovingSearch;
+        private System.Windows.Forms.RadioButton MovingMovingSearch;
         private System.Windows.Forms.DataGridViewTextBoxColumn movementIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn movementDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn toStorageIDDataGridViewTextBoxColumn;
@@ -2803,12 +2809,5 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn isPostedDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn executorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdatedDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn balanceIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomenclatureNumberDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn storageIDDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn balanceDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn batchNumberDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn1;
     }
 }
